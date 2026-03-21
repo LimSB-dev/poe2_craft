@@ -1,0 +1,22 @@
+{
+  "strategyView": {
+    "title": "Strategy comparison",
+    "intro": "Monte Carlo results from the crafting simulator: three strategies share the same success rule. Costs use Chaos = 1, Essence = 3 unless changed in code.",
+    "loading": "Running simulation…",
+    "error": "Could not load results. Try again.",
+    "retry": "Run again",
+    "criteriaLine": "Success: at least {minAffixes} affixes and at least {minGood} good mods (tier ≤ {tier}).",
+    "metaLine": "Trials: {trials} · Max chaos per attempt: {maxChaos} · Engine v{version}",
+    "costLine": "Unit costs — Chaos: {chaos} · Essence: {essence} · Essence strategy uses: {essenceKey}",
+    "simulatedAt": "Simulated at: {iso}",
+    "table": {
+      "strategy": "Strategy",
+      "averageCost": "Average cost",
+      "successRate": "Success rate",
+      "costPerSuccess": "Cost per success",
+      "successes": "Successes / trials"
+    },
+    "navToSimulator": "Item simulator",
+    "navLabel": "Open strategy view"
+  }
+}

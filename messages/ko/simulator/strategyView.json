@@ -1,0 +1,22 @@
+{
+  "strategyView": {
+    "title": "전략 비교",
+    "intro": "크래프트 시뮬레이터 몬테카를로 결과입니다. 세 전략은 동일한 성공 조건을 사용합니다. 비용은 기본 Chaos=1, Essence=3입니다(코드에서 변경 가능).",
+    "loading": "시뮬레이션 실행 중…",
+    "error": "결과를 불러오지 못했습니다. 다시 시도하세요.",
+    "retry": "다시 실행",
+    "criteriaLine": "성공: 접두·접미 합 {minAffixes}개 이상, 좋은 옵션 {minGood}개 이상(티어 ≤ {tier}).",
+    "metaLine": "시도 횟수: {trials} · 시도당 최대 카오스: {maxChaos} · 엔진 v{version}",
+    "costLine": "단위 비용 — 카오스: {chaos} · 에센스: {essence} · 에센스 전략 사용: {essenceKey}",
+    "simulatedAt": "실행 시각: {iso}",
+    "table": {
+      "strategy": "전략",
+      "averageCost": "평균 비용",
+      "successRate": "성공률",
+      "costPerSuccess": "성공당 비용",
+      "successes": "성공 / 시도"
+    },
+    "navToSimulator": "아이템 시뮬레이터",
+    "navLabel": "전략 화면 열기"
+  }
+}

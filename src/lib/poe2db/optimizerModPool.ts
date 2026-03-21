@@ -17,7 +17,12 @@ const inferModType = (name: string, url: string): "prefix" | "suffix" => {
   return hash % 2 === 0 ? "prefix" : "suffix";
 };
 
-const inferTier = (name: string): number => {
+const inferTier = (name: string, metadata: Record<string, unknown>): number => {
+  const metadataTier = metadata.tier;
+  if (typeof metadataTier === "number" && Number.isFinite(metadataTier)) {
+    return Math.max(1, Math.min(5, Math.trunc(metadataTier)));
+  }
+
   const tierMatch = name.match(/(?:^|\s)t(?:ier)?\s*([1-5])(?:\s|$)/i);
   if (tierMatch?.[1]) {
     return Number.parseInt(tierMatch[1], 10);
@@ -43,8 +48,16 @@ const toKey = (value: string): string => {
     .replace(/^_+|_+$/g, "");
 };
 
-const isModifierCandidate = (params: { kind: string; url: string; name: string }): boolean => {
+const isModifierCandidate = (params: {
+  kind: string;
+  url: string;
+  name: string;
+  tags: string[];
+}): boolean => {
   if (params.kind === "modifier") {
+    return true;
+  }
+  if (params.tags.includes("prefix") || params.tags.includes("suffix")) {
     return true;
   }
 
@@ -67,6 +80,7 @@ export const toOptimizerModPoolFromPoe2Db = (
       kind: entity.kind,
       url: entity.url,
       name: entity.name,
+      tags: entity.tags,
     });
   });
 
@@ -81,7 +95,7 @@ export const toOptimizerModPoolFromPoe2Db = (
     modPool.push({
       modKey,
       displayName: candidate.name,
-      tier: inferTier(candidate.name),
+      tier: inferTier(candidate.name, candidate.metadata),
       modType: inferModType(candidate.name, candidate.url),
       weight: inferWeight(candidate.name),
     });

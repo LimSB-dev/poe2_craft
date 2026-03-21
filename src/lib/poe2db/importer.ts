@@ -1,18 +1,18 @@
 import type {
   IPoe2DbAnchorType,
-  IPoe2DbEntityKindType,
   IPoe2DbEntityType,
   IPoe2DbImportResultType,
 } from "@/lib/poe2db/schema";
+import { normalizePoe2DbAnchor } from "@/lib/poe2db/normalize";
 
 const DEFAULT_BASE_URL: string = "https://poe2db.tw";
 
-const normalizeWhitespace = (value: string): string => {
-  return value.replace(/\s+/g, " ").trim();
-};
-
 const stripTags = (value: string): string => {
   return value.replace(/<[^>]+>/g, "");
+};
+
+const normalizeWhitespace = (value: string): string => {
+  return value.replace(/\s+/g, " ").trim();
 };
 
 const toAbsoluteUrl = (baseUrl: string, href: string): string => {
@@ -21,33 +21,6 @@ const toAbsoluteUrl = (baseUrl: string, href: string): string => {
   } catch {
     return `${baseUrl}${href.startsWith("/") ? href : `/${href}`}`;
   }
-};
-
-const toKey = (name: string): string => {
-  return name
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "_")
-    .replace(/^_+|_+$/g, "");
-};
-
-const inferKind = (url: string, text: string): IPoe2DbEntityKindType => {
-  const lower = `${url} ${text}`.toLowerCase();
-  if (lower.includes("essence")) {
-    return "essence";
-  }
-  if (lower.includes("omen")) {
-    return "omen";
-  }
-  if (lower.includes("currency")) {
-    return "currency";
-  }
-  if (lower.includes("modifier") || lower.includes("mod")) {
-    return "modifier";
-  }
-  if (lower.includes("item")) {
-    return "base_item";
-  }
-  return "unknown";
 };
 
 const extractPatchVersion = (html: string): string | null => {
@@ -86,29 +59,22 @@ const toEntities = (params: {
   const entities: IPoe2DbEntityType[] = [];
 
   for (const anchor of params.anchors) {
-    const url = toAbsoluteUrl(params.baseUrl, anchor.href);
-    const name = anchor.text;
-    const key = toKey(name);
-    const id = `poe2db:${key}:${toKey(url)}`;
-    if (dedupe.has(id)) {
+    const entity = normalizePoe2DbAnchor({
+      baseUrl: params.baseUrl,
+      pageUrl: params.pageUrl,
+      anchor,
+      patchVersion: params.patchVersion,
+      importedAt: params.importedAt,
+    });
+    if (entity === null) {
+      continue;
+    }
+    if (dedupe.has(entity.id)) {
       continue;
     }
 
-    dedupe.add(id);
-    entities.push({
-      id,
-      source: "poe2db",
-      kind: inferKind(url, name),
-      key,
-      name,
-      url,
-      tags: [],
-      patchVersion: params.patchVersion,
-      updatedAt: params.importedAt,
-      metadata: {
-        pageUrl: params.pageUrl,
-      },
-    });
+    dedupe.add(entity.id);
+    entities.push(entity);
   }
 
   return entities;

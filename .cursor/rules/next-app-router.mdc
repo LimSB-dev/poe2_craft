@@ -2,31 +2,31 @@
 alwaysApply: true
 ---
 
-# Next.js App Router · 데이터 경계
+# Next.js App Router · Data Boundaries
 
 ## Server vs Client
 
-- **기본은 Server Component**: 데이터 fetch·DB·비밀 토큰 접근은 **서버**에서만 한다. `"use client"`는 꼭 필요한 경우에만 파일 상단에 둔다.
-- **`use client`가 필요한 경우**: 브라우저 API, `useState`·`useEffect` 등 React 클라이언트 훅, 구독·애니메이션 등 클라이언트 전용 동작.
-- **경계 최소화**: 클라이언트 트리를 **얇게** 유지하고, 무거운 데이터 처리는 서버 컴포넌트에 남긴다.
+- **Default to Server Components**: perform data fetching, DB access, and secret token access only on the **server**. Put `"use client"` at the top of a file only when it is truly necessary.
+- **When `use client` is needed**: browser APIs, React client hooks like `useState`/`useEffect`, subscriptions, animations, and other client-only behaviors.
+- **Minimize boundaries**: keep the client tree **thin**, and leave heavy data processing in server components.
 
-## 데이터·캐시
+## Data · Caching
 
-- `fetch` 사용 시 **캐시 의도**를 명시한다 (`cache`, `next: { revalidate }`, `no-store` 등). 기본 동작에만 맡기지 않는다.
-- **변경이 잦은 데이터**와 **정적에 가까운 데이터**의 정책을 구분한다. 불확실하면 주석으로 이유를 남긴다.
+- When using `fetch`, explicitly state the **caching intent** (`cache`, `next: { revalidate }`, `no-store`, etc.). Do not rely only on defaults.
+- Separate policies for **frequently changing data** vs **mostly-static data**. If uncertain, document the reason with a comment.
 
-## 라우팅·UI 경계
+## Routing · UI boundaries
 
-- **로딩**: 해당 세그먼트에 `loading.tsx`를 두어 스켈레톤·스피너 등으로 일관되게 처리한다 (필요 시).
-- **에러**: `error.tsx`에서 복구 가능한 범위의 에러를 처리하고, 사용자에게 **의미 있는 메시지**와 재시도 경로를 제공한다.
-- **레이아웃**: 공통 셸·네비는 `layout.tsx`에 두고, 페이지별로 중복하지 않는다.
+- **Loading**: use `loading.tsx` at the segment level to handle skeletons/spinners consistently (only when needed).
+- **Errors**: handle recoverable errors in `error.tsx` and provide users with a **meaningful message** and a retry path.
+- **Layout**: keep shared shell/navigation in `layout.tsx` and avoid duplicating it per page.
 
-## 파일 배치 (권장)
+## Recommended file placement
 
-- 라우트: `app/<segment>/page.tsx`, `layout.tsx`, `loading.tsx`, `error.tsx`.
-- 재사용 UI: `components/` (컴포넌트화 규칙과 함께).
-- 순수 로직·헬퍼: `lib/`.
+- Route segments: `app/<segment>/page.tsx`, `layout.tsx`, `loading.tsx`, `error.tsx`.
+- Reusable UI: `components/` (together with the componentization rules).
+- Pure logic / helpers: `lib/`.
 
-## 요약
+## Summary
 
-서버에서 할 수 있는 일은 서버에 두고, 클라이언트는 **상호작용·표시** 중심으로 유지한다.
+Do what you can on the server, and keep the client focused on **interaction and rendering**.

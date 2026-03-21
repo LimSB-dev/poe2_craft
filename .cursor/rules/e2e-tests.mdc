@@ -2,42 +2,42 @@
 alwaysApply: true
 ---
 
-# E2E 테스트 (Playwright) — 최소 스모크
+# E2E Tests (Playwright) — Minimal Smoke
 
-E2E만으로 전부 커버하면 **느리고** 실패 시 **원인 파악이 어렵다**. 상세 검증은 **Jest 규칙**을 따르고, E2E는 아래 수준만 유지한다.
+Covering everything with E2E is **slow**, and debugging failures is **hard**. Follow the **Jest rules** for detailed validation, and keep E2E at the level below.
 
-## E2E에서 할 일 (한 줄)
+## What to do in E2E (one-liner)
 
-**“이 서비스가 살아 있는가?”** — 핵심 사용자 여정이 끝까지 통과하는지 **얇게** 확인한다.
+**"Is this service alive?"** — do a **thin** end-to-end pass for the most important happy path.
 
-## 포함해도 되는 예시
+## Examples you can include
 
-- 로그인(또는 인증) 플로우가 **끝까지 된다**.
-- 글(또는 주요 리소스) **작성이 반영된다**.
-- 목록·상세 등에서 **기대한 화면에 보인다**.
+- Authentication/login flow completes successfully.
+- Creation of a key resource (e.g., "post") is reflected.
+- Expected screens appear in list/detail flows.
 
-기능별 세부 케이스·에러 메시지·상태 변화는 **Jest**에서 다룬다.
+Detailed cases (edge validations, error messages, and state transitions) belong in **Jest**.
 
-## 포함하지 않을 것
+## What not to include
 
-- 모든 버튼·모든 validation·모든 API 실패 케이스를 E2E로 채우지 않는다.
-- 이미 Jest로 안정적으로 잡히는 로직을 E2E로 **중복 검증**하지 않는다.
+- Do not put every button, every validation, or every API failure case into E2E.
+- Do not **duplicate** Jest-stable logic checks inside E2E.
 
-## 작성 원칙
+## Writing principles
 
-- 스펙 수를 **적게** 유지하고, 실행 시간과 flakiness를 감안해 **가장 중요한 해피 패스** 위주로 둔다.
-- **역할·접근성** 기반 선택자(`getByRole`, `getByLabel` 등)를 우선한다.
-- 하드 `sleep` 대신 Playwright의 자동 대기·web-first assertion을 쓴다.
-- 스테이징·프로덕션 의존이 크면 **테스트 전용 계정·시드 데이터** 정책을 문서화한다.
+- Keep the number of specs **small**; prioritize the most important happy paths, considering runtime and flakiness.
+- Prefer role/accessibility-based selectors (`getByRole`, `getByLabel`, etc.).
+- Avoid hard `sleep`; use Playwright's auto-wait and web-first assertions.
+- If staging/production dependencies are strong, document a policy for test-only accounts and seed data.
 
-## 구조·실행
+## Structure / Execution
 
-- 디렉터리: 보통 `e2e/` (프로젝트 컨벤션에 따름).
-- 실행: `package.json`의 스크립트(예: `npm run test:e2e`)로 통일한다.
+- Directory: usually `e2e/` (follow repository conventions).
+- Execution: use `package.json` scripts (e.g., `npm run test:e2e`).
 
-## 요약
+## Summary
 
-| 구분 | Jest | E2E |
+| Category | Jest | E2E |
 | --- | --- | --- |
-| 목적 | 상태·API mock·컴포넌트·에러 등 **대부분** | 서비스 **생존**·핵심 여정만 |
-| 범위 | 넓고 빠른 피드백 | 최소·느리게 보조 |
+| Purpose | Mostly: state, API mocks, component interactions, errors | Service **survival** + key user journey only |
+| Scope | Broad, fast feedback | Minimal, slow support |

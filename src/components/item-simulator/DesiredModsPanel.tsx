@@ -5,8 +5,14 @@ import { useRef, useState } from "react";
 import type { ReactElement } from "react";
 
 import { getModPool } from "@/lib/poe2-item-simulator/modPool";
-import type { IBaseItemStatTagType, IBaseItemSubTypeType } from "@/lib/poe2-item-simulator/baseItemDb";
-import type { IDesiredModEntryType, ModTypeType } from "@/lib/poe2-item-simulator/types";
+import type {
+  IBaseItemStatTagType,
+  IBaseItemSubTypeType,
+} from "@/lib/poe2-item-simulator/baseItemDb";
+import type {
+  IDesiredModEntryType,
+  ModTypeType,
+} from "@/lib/poe2-item-simulator/types";
 
 interface DesiredModsPanelPropsType {
   subType?: IBaseItemSubTypeType;
@@ -25,9 +31,12 @@ const isPrefixType = (modType: ModTypeType): boolean =>
 
 const MOD_TYPE_BADGE_CLASSES: Record<ModTypeType, string> = {
   prefix: "bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300",
-  suffix: "bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300",
-  corruptedPrefix: "bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-300",
-  corruptedSuffix: "bg-orange-100 dark:bg-orange-900/40 text-orange-700 dark:text-orange-300",
+  suffix:
+    "bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300",
+  corruptedPrefix:
+    "bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-300",
+  corruptedSuffix:
+    "bg-orange-100 dark:bg-orange-900/40 text-orange-700 dark:text-orange-300",
 };
 
 const modTypeLabelKey: Record<ModTypeType, string> = {
@@ -69,13 +78,23 @@ export const DesiredModsPanel = ({
     return tMods(mod.nameTemplateKey).toLowerCase().includes(trimmedQuery);
   });
 
-  const prefixSlotsUsed = desiredMods.filter((m) => isPrefixType(m.modType)).length;
-  const suffixSlotsUsed = desiredMods.filter((m) => !isPrefixType(m.modType)).length;
+  const prefixSlotsUsed = desiredMods.filter((m) =>
+    isPrefixType(m.modType),
+  ).length;
+  const suffixSlotsUsed = desiredMods.filter(
+    (m) => !isPrefixType(m.modType),
+  ).length;
 
   const isSlotFull = (modType: ModTypeType): boolean =>
-    isPrefixType(modType) ? prefixSlotsUsed >= MAX_PREFIX_SLOTS : suffixSlotsUsed >= MAX_SUFFIX_SLOTS;
+    isPrefixType(modType)
+      ? prefixSlotsUsed >= MAX_PREFIX_SLOTS
+      : suffixSlotsUsed >= MAX_SUFFIX_SLOTS;
 
-  const handleAdd = (modKey: string, nameTemplateKey: string, modType: ModTypeType): void => {
+  const handleAdd = (
+    modKey: string,
+    nameTemplateKey: string,
+    modType: ModTypeType,
+  ): void => {
     if (alreadyAddedKeys.has(modKey) || isSlotFull(modType)) {
       return;
     }
@@ -89,41 +108,48 @@ export const DesiredModsPanel = ({
 
   return (
     <div ref={containerRef} className="flex flex-col gap-3">
-      {/* 1. 추가된 속성 목록 — 항상 최상단 */}
-      {desiredMods.length === 0 ? (
-        <p className="text-sm text-zinc-400 dark:text-zinc-500 py-1">
-          {tForm("desiredMods.emptyState")}
-        </p>
-      ) : (
-        <ul className="flex flex-col gap-1" aria-label={tForm("desiredMods.addedTitle")}>
-          {desiredMods.map((mod) => {
-            const modName = tMods(mod.nameTemplateKey);
-            return (
-              <li
-                key={mod.id}
-                className="flex items-center gap-2 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/50 px-3 py-1.5"
-              >
-                <span
-                  className={`shrink-0 text-xs px-1.5 py-0.5 rounded-full font-medium ${MOD_TYPE_BADGE_CLASSES[mod.modType]}`}
+      {/* 1. 추가된 속성 목록 — 항상 최상단, 6개 분량 고정 높이로 레이아웃 안정 */}
+      <div className="min-h-[216px] flex flex-col justify-start">
+        {desiredMods.length === 0 ? (
+          <p className="text-sm text-zinc-400 dark:text-zinc-500 py-1">
+            {tForm("desiredMods.emptyState")}
+          </p>
+        ) : (
+          <ul
+            className="flex flex-col gap-1"
+            aria-label={tForm("desiredMods.addedTitle")}
+          >
+            {desiredMods.map((mod) => {
+              const modName = tMods(mod.nameTemplateKey);
+              return (
+                <li
+                  key={mod.id}
+                  className="flex items-center gap-2 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/50 px-3 py-1.5"
                 >
-                  {tForm(modTypeLabelKey[mod.modType])}
-                </span>
-                <span className="flex-1 min-w-0 text-sm text-zinc-800 dark:text-zinc-200 truncate">
-                  {modName}
-                </span>
-                <button
-                  type="button"
-                  onClick={() => onRemove(mod.id)}
-                  aria-label={tForm("desiredMods.removeAriaLabel", { name: modName })}
-                  className="shrink-0 w-5 h-5 flex items-center justify-center rounded-full text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors text-xs"
-                >
-                  ✕
-                </button>
-              </li>
-            );
-          })}
-        </ul>
-      )}
+                  <span
+                    className={`shrink-0 text-xs px-1.5 py-0.5 rounded-full font-medium ${MOD_TYPE_BADGE_CLASSES[mod.modType]}`}
+                  >
+                    {tForm(modTypeLabelKey[mod.modType])}
+                  </span>
+                  <span className="flex-1 min-w-0 text-sm text-zinc-800 dark:text-zinc-200 truncate">
+                    {modName}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => onRemove(mod.id)}
+                    aria-label={tForm("desiredMods.removeAriaLabel", {
+                      name: modName,
+                    })}
+                    className="shrink-0 w-5 h-5 flex items-center justify-center rounded-full text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors text-xs"
+                  >
+                    ✕
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+        )}
+      </div>
 
       {/* 2. 검색 입력 + 슬롯 카운터 + 결과 — 목록 아래 */}
       <input
@@ -141,16 +167,6 @@ export const DesiredModsPanel = ({
         placeholder={tForm("desiredMods.searchPlaceholder")}
         className="w-full rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-3 py-2 text-sm placeholder:text-zinc-400 dark:placeholder:text-zinc-600 focus:outline-none focus:ring-2 focus:ring-amber-500/50"
       />
-
-      {/* 슬롯 카운터 — 검색 입력 하단 우측 */}
-      <div className="flex gap-3 text-xs font-medium justify-end">
-        <span className={prefixSlotsUsed >= MAX_PREFIX_SLOTS ? "text-red-500 dark:text-red-400" : "text-zinc-500 dark:text-zinc-400"}>
-          {tForm("desiredMods.typePrefix")} {prefixSlotsUsed}/{MAX_PREFIX_SLOTS}
-        </span>
-        <span className={suffixSlotsUsed >= MAX_SUFFIX_SLOTS ? "text-red-500 dark:text-red-400" : "text-zinc-500 dark:text-zinc-400"}>
-          {tForm("desiredMods.typeSuffix")} {suffixSlotsUsed}/{MAX_SUFFIX_SLOTS}
-        </span>
-      </div>
 
       {isOpen && (
         <ul
@@ -194,7 +210,9 @@ export const DesiredModsPanel = ({
                       <span className="shrink-0 text-xs text-zinc-400">✓</span>
                     )}
                     {isFull && (
-                      <span className="shrink-0 text-xs text-red-400">{tForm("desiredMods.slotFull")}</span>
+                      <span className="shrink-0 text-xs text-red-400">
+                        {tForm("desiredMods.slotFull")}
+                      </span>
                     )}
                   </button>
                 </li>
@@ -203,6 +221,28 @@ export const DesiredModsPanel = ({
           )}
         </ul>
       )}
+
+      {/* 슬롯 카운터 — 검색 입력 하단 우측 */}
+      <div className="flex gap-3 text-xs font-medium justify-end">
+        <span
+          className={
+            prefixSlotsUsed >= MAX_PREFIX_SLOTS
+              ? "text-red-500 dark:text-red-400"
+              : "text-zinc-500 dark:text-zinc-400"
+          }
+        >
+          {tForm("desiredMods.typePrefix")} {prefixSlotsUsed}/{MAX_PREFIX_SLOTS}
+        </span>
+        <span
+          className={
+            suffixSlotsUsed >= MAX_SUFFIX_SLOTS
+              ? "text-red-500 dark:text-red-400"
+              : "text-zinc-500 dark:text-zinc-400"
+          }
+        >
+          {tForm("desiredMods.typeSuffix")} {suffixSlotsUsed}/{MAX_SUFFIX_SLOTS}
+        </span>
+      </div>
     </div>
   );
 };

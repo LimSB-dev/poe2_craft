@@ -4,15 +4,12 @@ alwaysApply: true
 
 # Deployment & PR workflow
 
-## Triggers (deployment = PR as one workflow)
-
-Treat the following as the **same workflow**. **Do not** run only hosting deployment (Vercel CLI, `vercel deploy`, etc.) and stop.
+## Triggers
 
 - Korean: **「배포」**, **「배포해줘」**, **「배포해」**, **「배포 좀」**, **「프로덕션 배포」**, and similar
 - English: **"deploy"**, **"ship it"**, **"push to production"**, and similar
 
-**Required order when there are changes to ship:** check branch → commit and push → **`gh pr create` (or verify an existing PR)** → then run remote deployment (Vercel, etc.) if needed.  
-**Deploy-only without a PR** is allowed only when the user explicitly narrows the request (for example: “only rerun Vercel; it’s already merged”).
+Vercel deployment runs automatically via GitHub integration when a PR is pushed. **Do not run Vercel CLI or any hosting deployment commands.**
 
 ## 1. Check the branch
 
@@ -20,34 +17,27 @@ Treat the following as the **same workflow**. **Do not** run only hosting deploy
 
 ## 2. If you are on `main` or `master`
 
-- If you are on **main** or **master**, **do not** commit or push directly.
-- Create a new **feature branch**.
-  - Example names: `feature/description` or `fix/description` (match the change type)
-- Stage the changed files and **commit** them. (Commit message should summarize the changes.)
+- **Do not** commit or push directly to `main` / `master`.
+- Create a new **feature branch** (`feature/description` or `fix/description`).
+- Stage the changed files and **commit** them.
 - **Push to remote**: `git push -u origin <branch-name>`
-- **Create a PR (required)**.
-  - **Language (GitHub)**: Write the **PR title** and **PR body (description)** in **Korean** (`한글`). Commit messages may stay English if the repo already uses them; this rule targets GitHub-facing title/body only.
-  - **Title**: a one-line summary aligned with the commit message (e.g., `feat(시뮬레이터): 전략 비교 엔진 및 벤치마크 스크립트 추가`).
-  - **Body**: write the description yourself and include:
-    - **Summary of changes**: 2–3 sentences describing what this PR does.
-    - **Files / features changed**: briefly list changed paths and responsibilities.
-    - Attach a screenshot and indicate what was changed visually.
-  - If `gh pr create` is available, run it with `--title` and `--body` to **create the actual PR**.
-  - If `gh` is not available, provide the GitHub PR creation URL and output the **title** and **body markdown** so the user can copy/paste.
+- **Create a PR** with `gh pr create`.
+  - **Language**: PR title and body must be written in **Korean**.
+  - **Title**: one-line summary (e.g., `feat(시뮬레이터): 전략 비교 엔진 추가`).
+  - **Body**: summary of changes (2–3 sentences) + list of changed files/features.
 
-## 3. If you are on a feature branch (not `main` / `master`)
+## 3. If you are on a feature branch
 
-- If there are **uncommitted or unpushed** changes: stage, **commit**, **push** to `origin`.
-- **Open or create a PR** for that branch: use `gh pr view` / `gh pr list` to check; if none exists, run **`gh pr create`** (Korean title/body rules same as above).
-- Run deployment (Vercel, etc.) **after** the PR is reflected on the remote, or **immediately after** creating the PR in the same conversation.
+- If there are uncommitted or unpushed changes: stage, **commit**, **push** to `origin`.
+- Use `gh pr view` / `gh pr list` to check for an existing PR; if none exists, run **`gh pr create`** (Korean title/body rules same as above).
 
 ## 4. If the user mistakenly requests deployment from an already-merged branch
 
-- Fetch `main` or `master`, move the work onto it, then repeat step 2.
+- Move the work onto a new feature branch, then repeat step 2.
 
 ## 5. Summary
 
-- For deployment requests: **check branch → commit & push as needed → create or confirm PR → (then) host deploy if requested**.
-- **PR creation is mandatory** whenever there are changes to merge; do not skip it in favor of only running Vercel.
+- **Deployment = commit & push → create or confirm PR.** That's it.
 - Do not directly push to `main` / `master`.
+- Do not run Vercel CLI or any external deploy commands.
 - During deployment / PR work, do not ask git/PR questions; follow the workflow above.

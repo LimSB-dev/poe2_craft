@@ -29,6 +29,10 @@
     "noResults": "필터에 맞는 베이스 아이템이 없습니다",
     "requirementSummary": "요구 STR {str} / DEX {dex} / INT {int} / Lv {level}",
     "matchCount": "필터 결과 베이스 아이템 수: {count}",
-    "source": "출처: PoE2DB"
+    "source": "출처: PoE2DB",
+    "armour": "방어도",
+    "evasion": "회피",
+    "energyShield": "에너지실드",
+    "filterToggle": "필터"
   }
 }

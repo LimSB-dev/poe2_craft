@@ -29,6 +29,10 @@
     "noResults": "没有符合筛选条件的基础物品",
     "requirementSummary": "需求 STR {str} / DEX {dex} / INT {int} / Lv {level}",
     "matchCount": "筛选匹配基础物品数: {count}",
-    "source": "来源：PoE2DB"
+    "source": "来源：PoE2DB",
+    "armour": "护甲",
+    "evasion": "闪避",
+    "energyShield": "能量护盾",
+    "filterToggle": "筛选"
   }
 }

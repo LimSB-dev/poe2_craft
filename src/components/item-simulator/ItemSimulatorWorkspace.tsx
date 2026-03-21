@@ -97,7 +97,7 @@ export const ItemSimulatorWorkspace = (): ReactElement => {
   const firstBaseItem: IBaseItemDefinition | undefined = BASE_ITEMS[0];
   const baseItemRecords: ReadonlyArray<IBaseItemDbRecordType> =
     BASE_ITEM_DB.records;
-  const [selectedBaseItemKey] = useState<string>(
+  const [selectedBaseItemKey, setSelectedBaseItemKey] = useState<string>(
     firstBaseItem ? firstBaseItem.baseItemKey : "",
   );
   const [equipmentTypeFilter, setEquipmentTypeFilter] =
@@ -106,17 +106,24 @@ export const ItemSimulatorWorkspace = (): ReactElement => {
   const [minimumRequiredStrength, setMinimumRequiredStrength] =
     useState<number>(0);
   const [maximumRequiredStrength, setMaximumRequiredStrength] =
-    useState<number>(100);
+    useState<number>(999);
   const [minimumRequiredDexterity, setMinimumRequiredDexterity] =
     useState<number>(0);
   const [maximumRequiredDexterity, setMaximumRequiredDexterity] =
-    useState<number>(100);
+    useState<number>(999);
   const [minimumRequiredIntelligence, setMinimumRequiredIntelligence] =
     useState<number>(0);
   const [maximumRequiredIntelligence, setMaximumRequiredIntelligence] =
-    useState<number>(100);
+    useState<number>(999);
   const [minimumRequiredLevel, setMinimumRequiredLevel] = useState<number>(1);
   const [maximumRequiredLevel, setMaximumRequiredLevel] = useState<number>(100);
+  const [minimumArmour, setMinimumArmour] = useState<number>(0);
+  const [maximumArmour, setMaximumArmour] = useState<number>(9999);
+  const [minimumEvasion, setMinimumEvasion] = useState<number>(0);
+  const [maximumEvasion, setMaximumEvasion] = useState<number>(9999);
+  const [minimumEnergyShield, setMinimumEnergyShield] = useState<number>(0);
+  const [maximumEnergyShield, setMaximumEnergyShield] = useState<number>(9999);
+  const [isFilterOpen, setIsFilterOpen] = useState<boolean>(false);
   const [rarity, setRarity] = useState<ItemRarityType>("rare");
   const [desiredPrefixCount, setDesiredPrefixCount] = useState<number>(2);
   const [desiredSuffixCount, setDesiredSuffixCount] = useState<number>(2);
@@ -179,6 +186,18 @@ export const ItemSimulatorWorkspace = (): ReactElement => {
       if (record.levelRequirement > maximumRequiredLevel) {
         return false;
       }
+      const armour = record.armour ?? 0;
+      if (armour < minimumArmour || armour > maximumArmour) {
+        return false;
+      }
+      const evasion = record.evasion ?? 0;
+      if (evasion < minimumEvasion || evasion > maximumEvasion) {
+        return false;
+      }
+      const energyShield = record.energyShield ?? 0;
+      if (energyShield < minimumEnergyShield || energyShield > maximumEnergyShield) {
+        return false;
+      }
       return true;
     });
   }, [
@@ -193,6 +212,12 @@ export const ItemSimulatorWorkspace = (): ReactElement => {
     maximumRequiredIntelligence,
     minimumRequiredLevel,
     maximumRequiredLevel,
+    minimumArmour,
+    maximumArmour,
+    minimumEvasion,
+    maximumEvasion,
+    minimumEnergyShield,
+    maximumEnergyShield,
   ]);
 
   const effectiveSelectedBaseItemKey = useMemo(() => {
@@ -309,6 +334,100 @@ export const ItemSimulatorWorkspace = (): ReactElement => {
             <div className="flex flex-col gap-3">
               <label className="flex flex-col gap-1 text-sm">
                 <span className="font-medium text-zinc-800 dark:text-zinc-200">
+                  {t("baseFilter.baseItem")}
+                  <span className="ml-1.5 text-xs font-normal text-zinc-500 dark:text-zinc-400">
+                    ({filteredBaseItemRecords.length})
+                  </span>
+                </span>
+                {filteredBaseItemRecords.length === 0 ? (
+                  <div className="rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-3 py-2 text-sm text-zinc-500 dark:text-zinc-400">
+                    {t("baseFilter.noResults")}
+                  </div>
+                ) : (
+                  <select
+                    value={effectiveSelectedBaseItemKey}
+                    onChange={(event) => {
+                      setSelectedBaseItemKey(event.target.value);
+                    }}
+                    className="rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-3 py-2 text-sm"
+                  >
+                    {filteredBaseItemRecords.map((record) => {
+                      const def = BASE_ITEMS.find(
+                        (b) => b.baseItemKey === record.baseItemKey,
+                      );
+                      const label = def ? baseName(def) : record.baseItemKey;
+                      return (
+                        <option key={record.baseItemKey} value={record.baseItemKey}>
+                          {label}
+                        </option>
+                      );
+                    })}
+                  </select>
+                )}
+              </label>
+
+              {selectedBaseItemRecord && (
+                <div className="rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50/80 dark:bg-zinc-900/50 px-3 py-2 flex flex-col gap-1">
+                  <div className="text-xs font-medium text-zinc-500 dark:text-zinc-400">
+                    {selectedBaseItem && itemClassLabel(selectedBaseItem)}
+                  </div>
+                  {(selectedBaseItemRecord.armour !== undefined ||
+                    selectedBaseItemRecord.evasion !== undefined ||
+                    selectedBaseItemRecord.energyShield !== undefined) && (
+                    <div className="flex flex-wrap gap-x-3 gap-y-0.5 tabular-nums">
+                      {selectedBaseItemRecord.armour !== undefined && (
+                        <span className="text-xs text-amber-700 dark:text-amber-400">
+                          {t("baseFilter.armour")} {selectedBaseItemRecord.armour}
+                        </span>
+                      )}
+                      {selectedBaseItemRecord.evasion !== undefined && (
+                        <span className="text-xs text-green-700 dark:text-green-400">
+                          {t("baseFilter.evasion")} {selectedBaseItemRecord.evasion}
+                        </span>
+                      )}
+                      {selectedBaseItemRecord.energyShield !== undefined && (
+                        <span className="text-xs text-sky-700 dark:text-sky-400">
+                          {t("baseFilter.energyShield")} {selectedBaseItemRecord.energyShield}
+                        </span>
+                      )}
+                    </div>
+                  )}
+                  <div className="text-xs text-zinc-600 dark:text-zinc-400 tabular-nums">
+                    {t("baseFilter.requirementSummary", {
+                      str: selectedBaseItemRecord.requiredStrength,
+                      dex: selectedBaseItemRecord.requiredDexterity,
+                      int: selectedBaseItemRecord.requiredIntelligence,
+                      level: selectedBaseItemRecord.levelRequirement,
+                    })}
+                  </div>
+                </div>
+              )}
+
+              <button
+                type="button"
+                onClick={() => { setIsFilterOpen((prev) => !prev); }}
+                className="flex items-center gap-2 text-xs font-medium text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200 transition-colors self-start"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 16 16"
+                  fill="currentColor"
+                  className={`size-3.5 shrink-0 transition-transform duration-200 ${isFilterOpen ? "rotate-180" : ""}`}
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+                {t("baseFilter.filterToggle")}
+              </button>
+
+              {isFilterOpen && (
+              <div className="flex flex-col gap-3">
+
+              <label className="flex flex-col gap-1 text-sm">
+                <span className="font-medium text-zinc-800 dark:text-zinc-200">
                   {t("baseFilter.type")}
                 </span>
                 <select
@@ -367,6 +486,66 @@ export const ItemSimulatorWorkspace = (): ReactElement => {
               <div className="flex flex-col gap-2">
                 {(
                   [
+                    {
+                      label: t("baseFilter.requiredLevel"),
+                      minValue: minimumRequiredLevel,
+                      maxValue: maximumRequiredLevel,
+                      onMinChange: (value: number) =>
+                        setMinimumRequiredLevel(
+                          Math.max(1, Math.min(value, maximumRequiredLevel)),
+                        ),
+                      onMaxChange: (value: number) =>
+                        setMaximumRequiredLevel(
+                          Math.max(minimumRequiredLevel, Math.min(100, value)),
+                        ),
+                      absMin: 1,
+                      absMax: 100,
+                    },
+                    {
+                      label: t("baseFilter.armour"),
+                      minValue: minimumArmour,
+                      maxValue: maximumArmour,
+                      onMinChange: (value: number) =>
+                        setMinimumArmour(
+                          Math.max(0, Math.min(value, maximumArmour)),
+                        ),
+                      onMaxChange: (value: number) =>
+                        setMaximumArmour(
+                          Math.max(minimumArmour, Math.min(9999, value)),
+                        ),
+                      absMin: 0,
+                      absMax: 9999,
+                    },
+                    {
+                      label: t("baseFilter.evasion"),
+                      minValue: minimumEvasion,
+                      maxValue: maximumEvasion,
+                      onMinChange: (value: number) =>
+                        setMinimumEvasion(
+                          Math.max(0, Math.min(value, maximumEvasion)),
+                        ),
+                      onMaxChange: (value: number) =>
+                        setMaximumEvasion(
+                          Math.max(minimumEvasion, Math.min(9999, value)),
+                        ),
+                      absMin: 0,
+                      absMax: 9999,
+                    },
+                    {
+                      label: t("baseFilter.energyShield"),
+                      minValue: minimumEnergyShield,
+                      maxValue: maximumEnergyShield,
+                      onMinChange: (value: number) =>
+                        setMinimumEnergyShield(
+                          Math.max(0, Math.min(value, maximumEnergyShield)),
+                        ),
+                      onMaxChange: (value: number) =>
+                        setMaximumEnergyShield(
+                          Math.max(minimumEnergyShield, Math.min(9999, value)),
+                        ),
+                      absMin: 0,
+                      absMax: 9999,
+                    },
                     {
                       label: t("baseFilter.requiredStr"),
                       minValue: minimumRequiredStrength,
@@ -427,104 +606,50 @@ export const ItemSimulatorWorkspace = (): ReactElement => {
                       absMin: 0,
                       absMax: 999,
                     },
-                    {
-                      label: t("baseFilter.requiredLevel"),
-                      minValue: minimumRequiredLevel,
-                      maxValue: maximumRequiredLevel,
-                      onMinChange: (value: number) =>
-                        setMinimumRequiredLevel(
-                          Math.max(1, Math.min(value, maximumRequiredLevel)),
-                        ),
-                      onMaxChange: (value: number) =>
-                        setMaximumRequiredLevel(
-                          Math.max(minimumRequiredLevel, Math.min(100, value)),
-                        ),
-                      absMin: 1,
-                      absMax: 100,
-                    },
                   ] as const
                 ).map((stat) => (
-                  <div key={stat.label} className="flex items-center gap-2">
-                    <span className="w-8 shrink-0 text-xs font-medium text-zinc-700 dark:text-zinc-300">
+                  <div key={stat.label} className="flex flex-col gap-1">
+                    <span className="text-xs font-medium text-zinc-700 dark:text-zinc-300">
                       {stat.label}
                     </span>
-                    <input
-                      type="number"
-                      min={stat.absMin}
-                      max={stat.absMax}
-                      value={stat.minValue}
-                      onChange={(event) => {
-                        const next = Number.parseInt(event.target.value, 10);
-                        if (Number.isFinite(next)) {
-                          stat.onMinChange(next);
-                        }
-                      }}
-                      className="w-16 rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-2 py-1.5 text-xs text-center"
-                    />
-                    <span className="text-xs text-zinc-400">–</span>
-                    <input
-                      type="number"
-                      min={stat.absMin}
-                      max={stat.absMax}
-                      value={stat.maxValue}
-                      onChange={(event) => {
-                        const next = Number.parseInt(event.target.value, 10);
-                        if (Number.isFinite(next)) {
-                          stat.onMaxChange(next);
-                        }
-                      }}
-                      className="w-16 rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-2 py-1.5 text-xs text-center"
-                    />
+                    <div className="flex items-center gap-2">
+                      <input
+                        type="number"
+                        min={stat.absMin}
+                        max={stat.absMax}
+                        value={stat.minValue}
+                        onFocus={(event) => { event.target.select(); }}
+                        onChange={(event) => {
+                          const next = Number.parseInt(event.target.value, 10);
+                          if (Number.isFinite(next)) {
+                            stat.onMinChange(next);
+                          }
+                        }}
+                        className="min-w-0 flex-1 rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-2 py-1.5 text-xs text-center"
+                      />
+                      <span className="shrink-0 text-xs text-zinc-400">~</span>
+                      <input
+                        type="number"
+                        min={stat.absMin}
+                        max={stat.absMax}
+                        value={stat.maxValue}
+                        onFocus={(event) => { event.target.select(); }}
+                        onChange={(event) => {
+                          const next = Number.parseInt(event.target.value, 10);
+                          if (Number.isFinite(next)) {
+                            stat.onMaxChange(next);
+                          }
+                        }}
+                        className="min-w-0 flex-1 rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-2 py-1.5 text-xs text-center"
+                      />
+                    </div>
                   </div>
                 ))}
               </div>
 
-              <p className="text-xs text-zinc-600 dark:text-zinc-400">
-                {t("baseFilter.matchCount", {
-                  count: filteredBaseItemRecords.length,
-                })}
-              </p>
+              </div>
+              )}
 
-              {selectedBaseItem !== undefined && (
-                <div className="rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50/80 dark:bg-zinc-900/50 px-3 py-2">
-                  <div className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-                    {baseName(selectedBaseItem)}
-                  </div>
-                  <div className="text-xs text-zinc-600 dark:text-zinc-400 mt-1">
-                    {itemClassLabel(selectedBaseItem)}
-                  </div>
-                  <div className="text-xs text-zinc-600 dark:text-zinc-400 mt-1 tabular-nums">
-                    {selectedBaseItemRecord
-                      ? t("baseFilter.requirementSummary", {
-                          str: selectedBaseItemRecord.requiredStrength,
-                          dex: selectedBaseItemRecord.requiredDexterity,
-                          int: selectedBaseItemRecord.requiredIntelligence,
-                          level: selectedBaseItemRecord.levelRequirement,
-                        })
-                      : t("baseFilter.requirementSummary", {
-                          str: 0,
-                          dex: 0,
-                          int: 0,
-                          level: 0,
-                        })}
-                  </div>
-                  {selectedBaseItemRecord && (
-                    <a
-                      href={selectedBaseItemRecord.sourceUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="mt-1 inline-flex text-xs text-amber-700 dark:text-amber-400 underline-offset-2 hover:underline"
-                    >
-                      {t("baseFilter.source")}
-                    </a>
-                  )}
-                </div>
-              )}
-              {selectedBaseItem === undefined && (
-                <div className="rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50/80 dark:bg-zinc-900/50 px-3 py-2 text-xs text-zinc-600 dark:text-zinc-400">
-                  {t("baseFilter.noResults")}
-                </div>
-              )}
             </div>
           </PanelShell>
 
@@ -626,17 +751,47 @@ export const ItemSimulatorWorkspace = (): ReactElement => {
               </p>
             ) : (
               <div className="flex flex-col gap-4">
-                <div className="rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50/80 dark:bg-zinc-900/50 px-4 py-3">
-                  <div className="text-lg font-semibold text-amber-700 dark:text-amber-400">
-                    {baseName(simulationResult.baseItem)}
-                  </div>
-                  <div className="text-xs text-zinc-500 dark:text-zinc-500 mt-1">
-                    {itemClassLabel(simulationResult.baseItem)}
-                  </div>
-                  <div className="text-sm text-zinc-700 dark:text-zinc-300 mt-2">
-                    {t(`rarity.${simulationResult.roll.rarity}`)}
-                  </div>
-                </div>
+                {(() => {
+                  const resultRecord = BASE_ITEM_DB.records.find(
+                    (r) => r.baseItemKey === simulationResult.baseItem.baseItemKey,
+                  );
+                  return (
+                    <div className="rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50/80 dark:bg-zinc-900/50 px-4 py-3 flex flex-col gap-1">
+                      <div className="text-lg font-semibold text-amber-700 dark:text-amber-400">
+                        {baseName(simulationResult.baseItem)}
+                      </div>
+                      <div className="text-xs text-zinc-500 dark:text-zinc-500">
+                        {itemClassLabel(simulationResult.baseItem)}
+                      </div>
+                      {resultRecord &&
+                        (resultRecord.armour !== undefined ||
+                          resultRecord.evasion !== undefined ||
+                          resultRecord.energyShield !== undefined) && (
+                          <div className="flex flex-wrap gap-x-3 gap-y-0.5 tabular-nums">
+                            {resultRecord.armour !== undefined && (
+                              <span className="text-sm font-medium text-amber-700 dark:text-amber-400">
+                                {t("baseFilter.armour")} {resultRecord.armour}
+                              </span>
+                            )}
+                            {resultRecord.evasion !== undefined && (
+                              <span className="text-sm font-medium text-green-700 dark:text-green-400">
+                                {t("baseFilter.evasion")} {resultRecord.evasion}
+                              </span>
+                            )}
+                            {resultRecord.energyShield !== undefined && (
+                              <span className="text-sm font-medium text-sky-700 dark:text-sky-400">
+                                {t("baseFilter.energyShield")} {resultRecord.energyShield}
+                              </span>
+                            )}
+                          </div>
+                        )}
+                      <div className="text-sm text-zinc-700 dark:text-zinc-300 mt-1">
+                        {t(`rarity.${simulationResult.roll.rarity}`)}
+                      </div>
+                    </div>
+                  );
+                })()}
+
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <ModListSection
                     title={tMods("prefixes")}

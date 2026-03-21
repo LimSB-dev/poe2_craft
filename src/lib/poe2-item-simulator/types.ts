@@ -42,6 +42,16 @@ export interface IItemSimulationResultType {
   roll: IItemRoll;
 }
 
+/** A mod the user has explicitly marked as desired for the crafting target. */
+export interface IDesiredModEntryType {
+  /** Unique ID for list management (modKey + timestamp). */
+  id: string;
+  modKey: string;
+  /** i18n key → `simulator.mods.{nameTemplateKey}` */
+  nameTemplateKey: string;
+  modType: ModTypeType;
+}
+
 /** Crafting essence: guarantees one mod (tier `forcedTierMin`..`forcedTierMax`, typically 1–3). */
 export interface IEssenceDefinitionType {
   essenceKey: string;

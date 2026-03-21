@@ -5,6 +5,20 @@
     "suffixes": "接尾辞",
     "effectiveRoll": "実効ロール: 接頭辞 {prefixCount}、接尾辞 {suffixCount}。{hint}",
     "effectiveRollHint": "マジックは各最大1、レアは各最大3。",
-    "rollPreview": "ロールをプレビュー"
+    "rollPreview": "ロールをプレビュー",
+    "rollSettings": "ロール設定"
+  },
+  "desiredMods": {
+    "sectionTitle": "希望する属性",
+    "searchPlaceholder": "属性を検索...",
+    "noResults": "結果が見つかりません",
+    "emptyState": "希望する属性を追加してください",
+    "slotFull": "スロット満杯",
+    "addedTitle": "追加済み属性",
+    "removeAriaLabel": "属性を削除: {name}",
+    "typePrefix": "接頭辞",
+    "typeSuffix": "接尾辞",
+    "typeCorruptedPrefix": "汚染接頭辞",
+    "typeCorruptedSuffix": "汚染接尾辞"
   }
 }

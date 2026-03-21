@@ -5,8 +5,8 @@
       "description": "Select the item you are crafting on."
     },
     "options": {
-      "title": "Options",
-      "description": "Set rarity and how many mods to roll (limits are applied automatically)."
+      "title": "Modifiers",
+      "description": "Add the modifiers you want on your item and adjust roll settings."
     },
     "result": {
       "title": "Expected result",

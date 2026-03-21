@@ -1,0 +1,32 @@
+---
+alwaysApply: true
+---
+
+# npx skills · 에이전트 스킬 (베스트 프랙티스)
+
+이 저장소는 [Vercel Labs `agent-skills`](https://github.com/vercel-labs/agent-skills)를 **`npx skills`**로 설치해 두었고, 소스는 **`.agents/skills/`**에 둔다. `skills-lock.json`으로 버전·출처를 고정한다.
+
+## 에이전트가 할 일
+
+- **React / Next.js 성능·리팩터·번들** 관련 작업이면, 작업 전 **`.agents/skills/vercel-react-best-practices/SKILL.md`**를 읽고, 필요 시 같은 폴더의 `rules/*.md`를 인용한다.
+- **컴포넌트 API 설계·boolean prop 남발·합성 패턴**이면 **`.agents/skills/vercel-composition-patterns/SKILL.md`**를 읽는다.
+- **UI 리뷰·접근성·웹 인터페이스 가이드** 요청이면 **`.agents/skills/web-design-guidelines/SKILL.md`**를 읽는다.
+- **Vercel 배포**를 직접 다루는 요청이면 **`.agents/skills/deploy-to-vercel/SKILL.md`**를 읽는다.
+- **Vercel CLI + 액세스 토큰**(비대화형 로그인)이면 **`.agents/skills/vercel-cli-with-tokens/SKILL.md`**를 읽는다.
+- **React Native / Expo** 작업이면 **`.agents/skills/vercel-react-native-skills/SKILL.md`**를 읽는다 (이 저장소는 웹 우선이며, 모바일은 참고용).
+
+프로젝트의 `.cursor/rules`(TypeScript 스타일, 성능, 접근성 등)와 **충돌하면** 프로젝트 규칙을 우선하고, 스킬은 **보조 참고**로 쓴다.
+
+## CLI (로컬)
+
+- 목록: `npm run skills:list` (또는 `npx skills list`)
+- 검색: `npx skills find [키워드]`
+- Vercel 패키지 재설치(동일 스킬 세트): `npm run skills:add:vercel`
+- 갱신: `npm run skills:update`
+- `skills-lock.json` 기준 복원: `npx skills experimental_install`
+
+더 많은 스킬은 [https://skills.sh/](https://skills.sh/)에서 찾는다.
+
+## 요약
+
+베스트 프랙티스는 저장소 루트 기준 **`.agents/skills/*/SKILL.md`**에 있다. 해당 주제의 작업을 시작할 때 **먼저 읽고** 적용한다.

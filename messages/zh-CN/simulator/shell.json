@@ -13,17 +13,18 @@
   "baseItemLevel": "需求等级 {level}",
   "equipmentType": {
     "weapon": "武器",
+    "offhand": "副手装备",
     "armour": "防具",
-    "accessory": "饰品"
+    "jewellery": "首饰"
   },
   "baseFilter": {
     "type": "类型",
     "subType": "子类型",
     "all": "全部",
-    "requiredStr": "最大 STR",
-    "requiredDex": "最大 DEX",
-    "requiredInt": "最大 INT",
-    "requiredLevel": "最大装备等级",
+    "requiredStr": "STR",
+    "requiredDex": "DEX",
+    "requiredInt": "INT",
+    "requiredLevel": "Lv",
     "baseItem": "基础物品",
     "noResults": "没有符合筛选条件的基础物品",
     "requirementSummary": "需求 STR {str} / DEX {dex} / INT {int} / Lv {level}",

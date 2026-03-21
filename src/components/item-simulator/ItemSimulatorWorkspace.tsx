@@ -8,6 +8,7 @@ import { Link } from "@/lib/i18n/navigation";
 import { BASE_ITEMS } from "@/lib/poe2-item-simulator/baseItems";
 import {
   BASE_ITEM_DB,
+  BASE_ITEM_SUB_TYPES_BY_EQUIPMENT,
   type IBaseItemDbRecordType,
   type IBaseItemEquipmentTypeType,
   type IBaseItemSubTypeType,
@@ -102,12 +103,19 @@ export const ItemSimulatorWorkspace = (): ReactElement => {
   const [equipmentTypeFilter, setEquipmentTypeFilter] =
     useState<EquipmentFilterType>("all");
   const [subTypeFilter, setSubTypeFilter] = useState<SubTypeFilterType>("all");
+  const [minimumRequiredStrength, setMinimumRequiredStrength] =
+    useState<number>(0);
   const [maximumRequiredStrength, setMaximumRequiredStrength] =
-    useState<number>(999);
+    useState<number>(100);
+  const [minimumRequiredDexterity, setMinimumRequiredDexterity] =
+    useState<number>(0);
   const [maximumRequiredDexterity, setMaximumRequiredDexterity] =
-    useState<number>(999);
+    useState<number>(100);
+  const [minimumRequiredIntelligence, setMinimumRequiredIntelligence] =
+    useState<number>(0);
   const [maximumRequiredIntelligence, setMaximumRequiredIntelligence] =
-    useState<number>(999);
+    useState<number>(100);
+  const [minimumRequiredLevel, setMinimumRequiredLevel] = useState<number>(1);
   const [maximumRequiredLevel, setMaximumRequiredLevel] = useState<number>(100);
   const [rarity, setRarity] = useState<ItemRarityType>("rare");
   const [desiredPrefixCount, setDesiredPrefixCount] = useState<number>(2);
@@ -116,18 +124,17 @@ export const ItemSimulatorWorkspace = (): ReactElement => {
     useState<IItemSimulationResultType | null>(null);
 
   const availableSubTypes = useMemo(() => {
-    const source =
-      equipmentTypeFilter === "all"
-        ? baseItemRecords
-        : baseItemRecords.filter(
-            (record) => record.equipmentType === equipmentTypeFilter,
-          );
-    const dedupe = new Set<IBaseItemSubTypeType>();
-    for (const record of source) {
-      dedupe.add(record.subType);
+    if (equipmentTypeFilter === "all") {
+      const dedupe = new Set<IBaseItemSubTypeType>();
+      for (const subTypes of Object.values(BASE_ITEM_SUB_TYPES_BY_EQUIPMENT)) {
+        for (const subType of subTypes) {
+          dedupe.add(subType);
+        }
+      }
+      return Array.from(dedupe);
     }
-    return Array.from(dedupe).sort();
-  }, [baseItemRecords, equipmentTypeFilter]);
+    return [...BASE_ITEM_SUB_TYPES_BY_EQUIPMENT[equipmentTypeFilter]];
+  }, [equipmentTypeFilter]);
 
   const normalizedSubTypeFilter: SubTypeFilterType =
     subTypeFilter === "all" || availableSubTypes.includes(subTypeFilter)
@@ -148,13 +155,25 @@ export const ItemSimulatorWorkspace = (): ReactElement => {
       ) {
         return false;
       }
+      if (record.requiredStrength < minimumRequiredStrength) {
+        return false;
+      }
       if (record.requiredStrength > maximumRequiredStrength) {
+        return false;
+      }
+      if (record.requiredDexterity < minimumRequiredDexterity) {
         return false;
       }
       if (record.requiredDexterity > maximumRequiredDexterity) {
         return false;
       }
+      if (record.requiredIntelligence < minimumRequiredIntelligence) {
+        return false;
+      }
       if (record.requiredIntelligence > maximumRequiredIntelligence) {
+        return false;
+      }
+      if (record.levelRequirement < minimumRequiredLevel) {
         return false;
       }
       if (record.levelRequirement > maximumRequiredLevel) {
@@ -166,9 +185,13 @@ export const ItemSimulatorWorkspace = (): ReactElement => {
     baseItemRecords,
     equipmentTypeFilter,
     normalizedSubTypeFilter,
+    minimumRequiredStrength,
     maximumRequiredStrength,
+    minimumRequiredDexterity,
     maximumRequiredDexterity,
+    minimumRequiredIntelligence,
     maximumRequiredIntelligence,
+    minimumRequiredLevel,
     maximumRequiredLevel,
   ]);
 
@@ -295,8 +318,9 @@ export const ItemSimulatorWorkspace = (): ReactElement => {
                     if (
                       value === "all" ||
                       value === "weapon" ||
+                      value === "offhand" ||
                       value === "armour" ||
-                      value === "accessory"
+                      value === "jewellery"
                     ) {
                       setEquipmentTypeFilter(value);
                       setSubTypeFilter("all");
@@ -306,9 +330,10 @@ export const ItemSimulatorWorkspace = (): ReactElement => {
                 >
                   <option value="all">{t("baseFilter.all")}</option>
                   <option value="weapon">{t("equipmentType.weapon")}</option>
+                  <option value="offhand">{t("equipmentType.offhand")}</option>
                   <option value="armour">{t("equipmentType.armour")}</option>
-                  <option value="accessory">
-                    {t("equipmentType.accessory")}
+                  <option value="jewellery">
+                    {t("equipmentType.jewellery")}
                   </option>
                 </select>
               </label>
@@ -339,87 +364,119 @@ export const ItemSimulatorWorkspace = (): ReactElement => {
                 </select>
               </label>
 
-              <div className="grid grid-cols-2 gap-2">
-                <label className="flex flex-col gap-1 text-xs">
-                  <span className="font-medium text-zinc-700 dark:text-zinc-300">
-                    {t("baseFilter.requiredStr")}
-                  </span>
-                  <input
-                    type="number"
-                    min={0}
-                    max={999}
-                    value={maximumRequiredStrength}
-                    onChange={(event) => {
-                      const next = Number.parseInt(event.target.value, 10);
-                      if (Number.isFinite(next)) {
+              <div className="flex flex-col gap-2">
+                {(
+                  [
+                    {
+                      label: t("baseFilter.requiredStr"),
+                      minValue: minimumRequiredStrength,
+                      maxValue: maximumRequiredStrength,
+                      onMinChange: (value: number) =>
+                        setMinimumRequiredStrength(
+                          Math.max(0, Math.min(value, maximumRequiredStrength)),
+                        ),
+                      onMaxChange: (value: number) =>
                         setMaximumRequiredStrength(
-                          Math.max(0, Math.min(999, next)),
-                        );
-                      }
-                    }}
-                    className="rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-2 py-1.5 text-sm"
-                  />
-                </label>
-                <label className="flex flex-col gap-1 text-xs">
-                  <span className="font-medium text-zinc-700 dark:text-zinc-300">
-                    {t("baseFilter.requiredDex")}
-                  </span>
-                  <input
-                    type="number"
-                    min={0}
-                    max={999}
-                    value={maximumRequiredDexterity}
-                    onChange={(event) => {
-                      const next = Number.parseInt(event.target.value, 10);
-                      if (Number.isFinite(next)) {
+                          Math.max(
+                            minimumRequiredStrength,
+                            Math.min(999, value),
+                          ),
+                        ),
+                      absMin: 0,
+                      absMax: 999,
+                    },
+                    {
+                      label: t("baseFilter.requiredDex"),
+                      minValue: minimumRequiredDexterity,
+                      maxValue: maximumRequiredDexterity,
+                      onMinChange: (value: number) =>
+                        setMinimumRequiredDexterity(
+                          Math.max(
+                            0,
+                            Math.min(value, maximumRequiredDexterity),
+                          ),
+                        ),
+                      onMaxChange: (value: number) =>
                         setMaximumRequiredDexterity(
-                          Math.max(0, Math.min(999, next)),
-                        );
-                      }
-                    }}
-                    className="rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-2 py-1.5 text-sm"
-                  />
-                </label>
-                <label className="flex flex-col gap-1 text-xs">
-                  <span className="font-medium text-zinc-700 dark:text-zinc-300">
-                    {t("baseFilter.requiredInt")}
-                  </span>
-                  <input
-                    type="number"
-                    min={0}
-                    max={999}
-                    value={maximumRequiredIntelligence}
-                    onChange={(event) => {
-                      const next = Number.parseInt(event.target.value, 10);
-                      if (Number.isFinite(next)) {
+                          Math.max(
+                            minimumRequiredDexterity,
+                            Math.min(999, value),
+                          ),
+                        ),
+                      absMin: 0,
+                      absMax: 999,
+                    },
+                    {
+                      label: t("baseFilter.requiredInt"),
+                      minValue: minimumRequiredIntelligence,
+                      maxValue: maximumRequiredIntelligence,
+                      onMinChange: (value: number) =>
+                        setMinimumRequiredIntelligence(
+                          Math.max(
+                            0,
+                            Math.min(value, maximumRequiredIntelligence),
+                          ),
+                        ),
+                      onMaxChange: (value: number) =>
                         setMaximumRequiredIntelligence(
-                          Math.max(0, Math.min(999, next)),
-                        );
-                      }
-                    }}
-                    className="rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-2 py-1.5 text-sm"
-                  />
-                </label>
-                <label className="flex flex-col gap-1 text-xs">
-                  <span className="font-medium text-zinc-700 dark:text-zinc-300">
-                    {t("baseFilter.requiredLevel")}
-                  </span>
-                  <input
-                    type="number"
-                    min={1}
-                    max={100}
-                    value={maximumRequiredLevel}
-                    onChange={(event) => {
-                      const next = Number.parseInt(event.target.value, 10);
-                      if (Number.isFinite(next)) {
+                          Math.max(
+                            minimumRequiredIntelligence,
+                            Math.min(999, value),
+                          ),
+                        ),
+                      absMin: 0,
+                      absMax: 999,
+                    },
+                    {
+                      label: t("baseFilter.requiredLevel"),
+                      minValue: minimumRequiredLevel,
+                      maxValue: maximumRequiredLevel,
+                      onMinChange: (value: number) =>
+                        setMinimumRequiredLevel(
+                          Math.max(1, Math.min(value, maximumRequiredLevel)),
+                        ),
+                      onMaxChange: (value: number) =>
                         setMaximumRequiredLevel(
-                          Math.max(1, Math.min(100, next)),
-                        );
-                      }
-                    }}
-                    className="rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-2 py-1.5 text-sm"
-                  />
-                </label>
+                          Math.max(minimumRequiredLevel, Math.min(100, value)),
+                        ),
+                      absMin: 1,
+                      absMax: 100,
+                    },
+                  ] as const
+                ).map((stat) => (
+                  <div key={stat.label} className="flex items-center gap-2">
+                    <span className="w-8 shrink-0 text-xs font-medium text-zinc-700 dark:text-zinc-300">
+                      {stat.label}
+                    </span>
+                    <input
+                      type="number"
+                      min={stat.absMin}
+                      max={stat.absMax}
+                      value={stat.minValue}
+                      onChange={(event) => {
+                        const next = Number.parseInt(event.target.value, 10);
+                        if (Number.isFinite(next)) {
+                          stat.onMinChange(next);
+                        }
+                      }}
+                      className="w-16 rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-2 py-1.5 text-xs text-center"
+                    />
+                    <span className="text-xs text-zinc-400">–</span>
+                    <input
+                      type="number"
+                      min={stat.absMin}
+                      max={stat.absMax}
+                      value={stat.maxValue}
+                      onChange={(event) => {
+                        const next = Number.parseInt(event.target.value, 10);
+                        if (Number.isFinite(next)) {
+                          stat.onMaxChange(next);
+                        }
+                      }}
+                      className="w-16 rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-2 py-1.5 text-xs text-center"
+                    />
+                  </div>
+                ))}
               </div>
 
               <p className="text-xs text-zinc-600 dark:text-zinc-400">

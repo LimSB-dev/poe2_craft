@@ -13,17 +13,18 @@
   "baseItemLevel": "Required level {level}",
   "equipmentType": {
     "weapon": "Weapon",
+    "offhand": "Off-hand",
     "armour": "Armour",
-    "accessory": "Accessory"
+    "jewellery": "Jewellery"
   },
   "baseFilter": {
     "type": "Type",
     "subType": "Subtype",
     "all": "All",
-    "requiredStr": "Max STR",
-    "requiredDex": "Max DEX",
-    "requiredInt": "Max INT",
-    "requiredLevel": "Max level",
+    "requiredStr": "STR",
+    "requiredDex": "DEX",
+    "requiredInt": "INT",
+    "requiredLevel": "Lv",
     "baseItem": "Base item",
     "noResults": "No base items match filters",
     "requirementSummary": "Req STR {str} / DEX {dex} / INT {int} / Lv {level}",

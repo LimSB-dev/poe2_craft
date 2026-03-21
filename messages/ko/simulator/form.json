@@ -7,18 +7,5 @@
     "effectiveRollHint": "매직은 각각 최대 1개, 레어는 각각 최대 3개.",
     "rollPreview": "굴림 미리보기",
     "rollSettings": "굴림 설정"
-  },
-  "desiredMods": {
-    "sectionTitle": "원하는 속성",
-    "searchPlaceholder": "속성 검색...",
-    "noResults": "검색 결과가 없습니다",
-    "emptyState": "원하는 속성을 추가하세요",
-    "slotFull": "슬롯 가득",
-    "addedTitle": "추가된 속성",
-    "removeAriaLabel": "속성 제거: {name}",
-    "typePrefix": "접두",
-    "typeSuffix": "접미",
-    "typeCorruptedPrefix": "훼손 접두",
-    "typeCorruptedSuffix": "훼손 접미"
   }
 }

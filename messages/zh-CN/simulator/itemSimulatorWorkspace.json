@@ -1,0 +1,66 @@
+{
+  "itemSimulatorWorkspace": {
+    "title": "流放之路2 — 物品模拟器",
+    "intro": "选择基底物品，设定要roll的前缀与后缀数量，然后预览一次结果。这是用于布局与迭代的简化模型。",
+    "nav": {
+      "strategy": "打开策略页",
+      "rl": "RL环境",
+      "optimizer": "打开优化页",
+      "db": "DB"
+    },
+    "panels": {
+      "baseItem": {
+        "title": "基底物品",
+        "description": "选择你要制作的物品。"
+      },
+      "desiredMods": {
+        "title": "词缀",
+        "description": "添加你想要的词缀并调整roll设置。"
+      },
+      "result": {
+        "title": "预期结果",
+        "description": "从当前词缀池与权重中随机抽取的一次结果。"
+      }
+    },
+    "baseFilter": {
+      "type": "类型",
+      "subType": "子类型",
+      "all": "全部",
+      "requiredStr": "STR",
+      "requiredDex": "DEX",
+      "requiredInt": "INT",
+      "requiredLevel": "Lv",
+      "baseItem": "基础物品",
+      "noResults": "没有符合筛选条件的基础物品",
+      "matchCount": "筛选匹配基础物品数: {count}",
+      "source": "来源：PoE2DB",
+      "quality": "品质",
+      "armour": "护甲",
+      "evasion": "闪避",
+      "energyShield": "能量护盾",
+      "filterToggle": "筛选",
+      "baseItemSearchPlaceholder": "搜索{label}… ({count})"
+    },
+    "equipmentType": {
+      "weapon": "武器",
+      "offhand": "副手装备",
+      "armour": "防具",
+      "jewellery": "首饰"
+    },
+    "resultCard": {
+      "empty": "选择基底与选项后，点击「Roll预览」。"
+    },
+    "rarity": {
+      "magic": "魔法",
+      "rare": "稀有"
+    },
+    "resultModList": {
+      "prefixes": "前缀",
+      "suffixes": "后缀",
+      "empty": "无"
+    },
+    "actions": {
+      "runRoll": "Roll预览"
+    }
+  }
+}

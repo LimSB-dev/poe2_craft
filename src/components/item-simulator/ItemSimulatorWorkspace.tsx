@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { useMemo, useRef, useState } from "react";
+import { useMemo, useState } from "react";
 import type { ReactElement, ReactNode } from "react";
 import { LocaleSwitcher } from "@/components/i18n/LocaleSwitcher";
 import { Link } from "@/lib/i18n/navigation";
@@ -20,7 +20,12 @@ import type {
   IItemSimulationResultType,
   IModDefinition,
 } from "@/lib/poe2-item-simulator/types";
+import { ItemSimulatorBaseItemSearchBlock } from "@/components/item-simulator/ItemSimulatorBaseItemSearchBlock";
 import { DesiredModsPanel } from "@/components/item-simulator/DesiredModsPanel";
+import { ItemSimulatorBaseItemSubtypeOptions } from "@/components/item-simulator/i18n/ItemSimulatorBaseItemSubtypeOptions";
+import { ItemSimulatorCatalogBaseName } from "@/components/item-simulator/i18n/ItemSimulatorCatalogBaseName";
+import { ItemSimulatorCatalogItemClassLabel } from "@/components/item-simulator/i18n/ItemSimulatorCatalogItemClassLabel";
+import { SimulatorModTemplateText } from "@/components/item-simulator/i18n/SimulatorModTemplateText";
 
 /** Lv → STR → DEX → INT 순, 값이 0이면 제외 */
 const buildBaseItemRequirementLineParts = (
@@ -93,7 +98,11 @@ const ModListSection = ({
                     ★
                   </span>
                 )}
-                <span>{modDefinition.displayName}</span>
+                <span>
+                  <SimulatorModTemplateText
+                    nameTemplateKey={modDefinition.displayName}
+                  />
+                </span>
                 <span
                   className={`text-xs px-2 py-0.5 rounded-full ${
                     isDesired
@@ -140,9 +149,7 @@ type EquipmentFilterType = "all" | IBaseItemEquipmentTypeType;
 type SubTypeFilterType = "all" | IBaseItemSubTypeType;
 
 export const ItemSimulatorWorkspace = (): ReactElement => {
-  const t = useTranslations("simulator");
-  const tPanels = useTranslations("simulator.panels");
-  const tMods = useTranslations("simulator.mods");
+  const t = useTranslations("simulator.itemSimulatorWorkspace");
 
   const firstBaseItem: IBaseItemDefinition | undefined = BASE_ITEMS[0];
   const baseItemRecords: ReadonlyArray<IBaseItemDbRecordType> =
@@ -174,11 +181,6 @@ export const ItemSimulatorWorkspace = (): ReactElement => {
   const [minimumEnergyShield, setMinimumEnergyShield] = useState<number>(0);
   const [maximumEnergyShield, setMaximumEnergyShield] = useState<number>(9999);
   const [isFilterOpen, setIsFilterOpen] = useState<boolean>(false);
-  const [baseItemQuery, setBaseItemQuery] = useState<string>("");
-  const [isBaseItemDropdownOpen, setIsBaseItemDropdownOpen] =
-    useState<boolean>(false);
-  const baseItemInputRef = useRef<HTMLInputElement>(null);
-  const baseItemContainerRef = useRef<HTMLDivElement>(null);
   const [simulationResult, setSimulationResult] =
     useState<IItemSimulationResultType | null>(null);
   const [desiredMods, setDesiredMods] = useState<
@@ -325,18 +327,6 @@ export const ItemSimulatorWorkspace = (): ReactElement => {
     });
   };
 
-  const baseName = (baseItem: IBaseItemDefinition): string => {
-    try {
-      return t(`baseItems.${baseItem.baseItemKey}.name`);
-    } catch {
-      return baseItem.baseItemKey;
-    }
-  };
-
-  const itemClassLabel = (baseItem: IBaseItemDefinition): string => {
-    return t(`itemClass.${baseItem.itemClassKey}`);
-  };
-
   return (
     <div className="flex min-h-full flex-col items-center bg-zinc-50 dark:bg-black px-4 py-8 sm:px-6 sm:py-10">
       <div className="w-full max-w-6xl flex flex-col gap-8">
@@ -355,33 +345,33 @@ export const ItemSimulatorWorkspace = (): ReactElement => {
               href="/strategy"
               className="text-sm font-medium text-amber-700 dark:text-amber-400 underline-offset-2 hover:underline"
             >
-              {t("strategyView.navLabel")}
+              {t("nav.strategy")}
             </Link>
             <Link
               href="/rl"
               className="text-sm font-medium text-amber-700 dark:text-amber-400 underline-offset-2 hover:underline"
             >
-              {t("rlView.navLabel")}
+              {t("nav.rl")}
             </Link>
             <Link
               href="/optimizer"
               className="text-sm font-medium text-amber-700 dark:text-amber-400 underline-offset-2 hover:underline"
             >
-              {t("optimizerView.navLabel")}
+              {t("nav.optimizer")}
             </Link>
             <Link
               href="/db"
               className="text-sm font-medium text-amber-700 dark:text-amber-400 underline-offset-2 hover:underline"
             >
-              {t("dbView.navLabel")}
+              {t("nav.db")}
             </Link>
           </div>
         </header>
 
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 lg:items-start">
           <PanelShell
-            title={tPanels("baseItem.title")}
-            description={tPanels("baseItem.description")}
+            title={t("panels.baseItem.title")}
+            description={t("panels.baseItem.description")}
           >
             <div className="flex flex-col gap-3">
               {/* 1. 선택된 아이템 정보 — 항상 최상단, 고정 높이로 레이아웃 안정 */}
@@ -402,7 +392,11 @@ export const ItemSimulatorWorkspace = (): ReactElement => {
                     <div className="flex-1 min-w-0 flex flex-col items-center py-2 px-3 text-center">
                       {/* 아이템 이름 */}
                       <p className="font-sc text-[#c8a55a] text-sm leading-snug w-full">
-                        {selectedBaseItem && baseName(selectedBaseItem)}
+                        {selectedBaseItem ? (
+                          <ItemSimulatorCatalogBaseName
+                            baseItemKey={selectedBaseItem.baseItemKey}
+                          />
+                        ) : null}
                       </p>
                       {/* 베이스 아이템 퀄리티 (고정 0%) */}
                       <p className="text-xs mt-0.5 mb-2 w-full">
@@ -490,102 +484,17 @@ export const ItemSimulatorWorkspace = (): ReactElement => {
                 )}
               </div>
 
-              {/* 2. 검색 입력 + 결과 — 아이템 카드 아래 */}
-              <div ref={baseItemContainerRef} className="flex flex-col gap-2">
-                <input
-                  ref={baseItemInputRef}
-                  type="search"
-                  aria-label={t("baseFilter.baseItem")}
-                  value={baseItemQuery}
-                  onChange={(event) => setBaseItemQuery(event.target.value)}
-                  onFocus={() => setIsBaseItemDropdownOpen(true)}
-                  onBlur={(event) => {
-                    if (
-                      !baseItemContainerRef.current?.contains(
-                        event.relatedTarget,
-                      )
-                    ) {
-                      setIsBaseItemDropdownOpen(false);
-                      setBaseItemQuery("");
-                    }
-                  }}
-                  placeholder={`${t("baseFilter.baseItem")} 검색... (${filteredBaseItemRecords.length})`}
-                  className="w-full rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-3 py-2 text-sm placeholder:text-zinc-400 dark:placeholder:text-zinc-600 focus:outline-none focus:ring-2 focus:ring-amber-500/50"
-                />
-
-                {isBaseItemDropdownOpen &&
-                  (() => {
-                    const trimmed = baseItemQuery.trim().toLowerCase();
-                    const dropdownItems = filteredBaseItemRecords.filter(
-                      (record) => {
-                        if (trimmed.length === 0) {
-                          return true;
-                        }
-                        const def = BASE_ITEMS.find(
-                          (b) => b.baseItemKey === record.baseItemKey,
-                        );
-                        const label = def ? baseName(def) : record.baseItemKey;
-                        return label.toLowerCase().includes(trimmed);
-                      },
-                    );
-                    return (
-                      <ul
-                        role="listbox"
-                        aria-label={t("baseFilter.baseItem")}
-                        className="rounded-lg border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 max-h-52 overflow-y-auto divide-y divide-zinc-100 dark:divide-zinc-800"
-                      >
-                        {dropdownItems.length === 0 ? (
-                          <li className="px-3 py-2.5 text-sm text-zinc-400 dark:text-zinc-500">
-                            {t("baseFilter.noResults")}
-                          </li>
-                        ) : (
-                          dropdownItems.map((record) => {
-                            const def = BASE_ITEMS.find(
-                              (b) => b.baseItemKey === record.baseItemKey,
-                            );
-                            const label = def
-                              ? baseName(def)
-                              : record.baseItemKey;
-                            const isSelected =
-                              record.baseItemKey ===
-                              effectiveSelectedBaseItemKey;
-                            return (
-                              <li
-                                key={record.baseItemKey}
-                                role="option"
-                                aria-selected={isSelected}
-                              >
-                                <button
-                                  type="button"
-                                  onMouseDown={(event) => {
-                                    event.preventDefault();
-                                    setSelectedBaseItemKey(record.baseItemKey);
-                                    setIsBaseItemDropdownOpen(false);
-                                    setBaseItemQuery("");
-                                  }}
-                                  className={`w-full px-3 py-2 text-left text-sm flex items-center gap-2 transition-colors ${
-                                    isSelected
-                                      ? "bg-amber-50 dark:bg-amber-900/20 text-amber-800 dark:text-amber-300"
-                                      : "hover:bg-zinc-50 dark:hover:bg-zinc-800 text-zinc-800 dark:text-zinc-200"
-                                  }`}
-                                >
-                                  <span className="flex-1 truncate">
-                                    {label}
-                                  </span>
-                                  {isSelected && (
-                                    <span className="shrink-0 text-xs text-amber-500">
-                                      ✓
-                                    </span>
-                                  )}
-                                </button>
-                              </li>
-                            );
-                          })
-                        )}
-                      </ul>
-                    );
-                  })()}
-              </div>
+              <ItemSimulatorBaseItemSearchBlock
+                filteredBaseItemRecords={filteredBaseItemRecords}
+                effectiveSelectedBaseItemKey={effectiveSelectedBaseItemKey}
+                onSelectBaseItemKey={setSelectedBaseItemKey}
+                searchPlaceholder={t("baseFilter.baseItemSearchPlaceholder", {
+                  label: t("baseFilter.baseItem"),
+                  count: filteredBaseItemRecords.length,
+                })}
+                ariaLabelBaseItem={t("baseFilter.baseItem")}
+                noResultsLabel={t("baseFilter.noResults")}
+              />
 
               <button
                 type="button"
@@ -666,12 +575,10 @@ export const ItemSimulatorWorkspace = (): ReactElement => {
                       }}
                       className="rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-3 py-2 text-sm"
                     >
-                      <option value="all">{t("baseFilter.all")}</option>
-                      {availableSubTypes.map((subType) => (
-                        <option key={subType} value={subType}>
-                          {t(`itemClass.${subType}`)}
-                        </option>
-                      ))}
+                      <ItemSimulatorBaseItemSubtypeOptions
+                        allLabel={t("baseFilter.all")}
+                        subTypes={availableSubTypes}
+                      />
                     </select>
                   </label>
 
@@ -868,8 +775,8 @@ export const ItemSimulatorWorkspace = (): ReactElement => {
           </PanelShell>
 
           <PanelShell
-            title={tPanels("options.title")}
-            description={tPanels("options.description")}
+            title={t("panels.desiredMods.title")}
+            description={t("panels.desiredMods.description")}
           >
             <DesiredModsPanel
               subType={selectedBaseItemRecord?.subType}
@@ -881,12 +788,19 @@ export const ItemSimulatorWorkspace = (): ReactElement => {
           </PanelShell>
 
           <PanelShell
-            title={tPanels("result.title")}
-            description={tPanels("result.description")}
+            title={t("panels.result.title")}
+            description={t("panels.result.description")}
           >
+            <button
+              type="button"
+              onClick={handleSimulate}
+              className="w-full sm:w-auto rounded-lg bg-amber-600 px-4 py-2 text-sm font-semibold text-white hover:bg-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/60"
+            >
+              {t("actions.runRoll")}
+            </button>
             {!simulationResult ? (
               <p className="text-sm text-zinc-600 dark:text-zinc-400">
-                {t("result.empty")}
+                {t("resultCard.empty")}
               </p>
             ) : (
               <div className="flex flex-col gap-4">
@@ -898,10 +812,14 @@ export const ItemSimulatorWorkspace = (): ReactElement => {
                   return (
                     <div className="rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50/80 dark:bg-zinc-900/50 px-4 py-3 flex flex-col gap-1">
                       <div className="text-lg font-semibold text-amber-700 dark:text-amber-400">
-                        {baseName(simulationResult.baseItem)}
+                        <ItemSimulatorCatalogBaseName
+                          baseItemKey={simulationResult.baseItem.baseItemKey}
+                        />
                       </div>
                       <div className="text-xs text-zinc-500 dark:text-zinc-500">
-                        {itemClassLabel(simulationResult.baseItem)}
+                        <ItemSimulatorCatalogItemClassLabel
+                          itemClassKey={simulationResult.baseItem.itemClassKey}
+                        />
                       </div>
                       {resultRecord &&
                         (resultRecord.armour !== undefined ||
@@ -940,15 +858,15 @@ export const ItemSimulatorWorkspace = (): ReactElement => {
                   return (
                     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                       <ModListSection
-                        title={tMods("prefixes")}
+                        title={t("resultModList.prefixes")}
                         mods={simulationResult.roll.prefixes}
-                        emptyLabel={tMods("empty")}
+                        emptyLabel={t("resultModList.empty")}
                         desiredModKeys={desiredModKeys}
                       />
                       <ModListSection
-                        title={tMods("suffixes")}
+                        title={t("resultModList.suffixes")}
                         mods={simulationResult.roll.suffixes}
-                        emptyLabel={tMods("empty")}
+                        emptyLabel={t("resultModList.empty")}
                         desiredModKeys={desiredModKeys}
                       />
                     </div>

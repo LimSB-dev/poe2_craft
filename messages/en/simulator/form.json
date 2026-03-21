@@ -7,18 +7,5 @@
     "effectiveRollHint": "Magic max 1 each; rare max 3 each.",
     "rollPreview": "Roll preview",
     "rollSettings": "Roll settings"
-  },
-  "desiredMods": {
-    "sectionTitle": "Desired modifiers",
-    "searchPlaceholder": "Search modifiers...",
-    "noResults": "No results found",
-    "emptyState": "Add the modifiers you want",
-    "slotFull": "Slot full",
-    "addedTitle": "Added modifiers",
-    "removeAriaLabel": "Remove modifier: {name}",
-    "typePrefix": "Prefix",
-    "typeSuffix": "Suffix",
-    "typeCorruptedPrefix": "Corrupted Prefix",
-    "typeCorruptedSuffix": "Corrupted Suffix"
   }
 }

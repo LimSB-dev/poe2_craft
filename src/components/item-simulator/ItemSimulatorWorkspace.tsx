@@ -22,6 +22,27 @@ import type {
 } from "@/lib/poe2-item-simulator/types";
 import { DesiredModsPanel } from "@/components/item-simulator/DesiredModsPanel";
 
+/** Lv → STR → DEX → INT 순, 값이 0이면 제외 */
+const buildBaseItemRequirementLineParts = (
+  record: IBaseItemDbRecordType,
+  translate: (key: string) => string
+): string[] => {
+  const parts: string[] = [];
+  if (record.levelRequirement > 0) {
+    parts.push(`${translate("baseFilter.requiredLevel")} ${record.levelRequirement}`);
+  }
+  if (record.requiredStrength > 0) {
+    parts.push(`${translate("baseFilter.requiredStr")} ${record.requiredStrength}`);
+  }
+  if (record.requiredDexterity > 0) {
+    parts.push(`${translate("baseFilter.requiredDex")} ${record.requiredDexterity}`);
+  }
+  if (record.requiredIntelligence > 0) {
+    parts.push(`${translate("baseFilter.requiredInt")} ${record.requiredIntelligence}`);
+  }
+  return parts;
+};
+
 const ModListSection = ({
   title,
   mods,
@@ -357,56 +378,70 @@ export const ItemSimulatorWorkspace = (): ReactElement => {
                     </div>
                   </div>
 
-                  {/* 오른쪽: 아이템 정보 */}
-                  <div className="flex-1 min-w-0 flex flex-col py-2 px-3">
+                  {/* 오른쪽: 아이템 정보 (중앙 정렬, space-between 미사용) */}
+                  <div className="flex-1 min-w-0 flex flex-col items-center py-2 px-3 text-center">
                     {/* 아이템 이름 */}
-                    <p className="font-sc text-[#c8a55a] text-sm text-center leading-snug">
+                    <p className="font-sc text-[#c8a55a] text-sm leading-snug w-full">
                       {selectedBaseItem && baseName(selectedBaseItem)}
                     </p>
-                    <p className="text-[10px] text-[#7a6435] text-center mt-0.5 mb-2">
-                      {selectedBaseItem && itemClassLabel(selectedBaseItem)}
+                    {/* 베이스 아이템 퀄리티 (고정 0%) */}
+                    <p className="text-xs mt-0.5 mb-2 w-full">
+                      <span className="text-[#a38d6d]">{t("baseFilter.quality")}</span>
+                      <span className="text-[#c8c8c8]"> 0%</span>
                     </p>
 
-                    <div className="border-t border-[#3d2e10] mb-2" />
+                    <div className="w-full border-t border-[#3d2e10] mb-2" />
 
                     {/* 방어 스탯 */}
                     {(selectedBaseItemRecord.armour !== undefined ||
                       selectedBaseItemRecord.evasion !== undefined ||
                       selectedBaseItemRecord.energyShield !== undefined) && (
                       <>
-                        <div className="flex flex-col gap-0.5 tabular-nums mb-2">
+                        <div className="flex flex-col gap-1 tabular-nums mb-2 w-full">
                           {selectedBaseItemRecord.armour !== undefined && (
-                            <div className="flex justify-between text-xs">
+                            <p className="text-xs">
                               <span className="text-[#a38d6d]">{t("baseFilter.armour")}</span>
-                              <span className="text-[#c8c8c8]">{selectedBaseItemRecord.armour}</span>
-                            </div>
+                              <span className="text-[#c8c8c8]"> {selectedBaseItemRecord.armour}</span>
+                            </p>
                           )}
                           {selectedBaseItemRecord.evasion !== undefined && (
-                            <div className="flex justify-between text-xs">
+                            <p className="text-xs">
                               <span className="text-[#a38d6d]">{t("baseFilter.evasion")}</span>
-                              <span className="text-[#c8c8c8]">{selectedBaseItemRecord.evasion}</span>
-                            </div>
+                              <span className="text-[#c8c8c8]"> {selectedBaseItemRecord.evasion}</span>
+                            </p>
                           )}
                           {selectedBaseItemRecord.energyShield !== undefined && (
-                            <div className="flex justify-between text-xs">
+                            <p className="text-xs">
                               <span className="text-[#a38d6d]">{t("baseFilter.energyShield")}</span>
-                              <span className="text-[#c8c8c8]">{selectedBaseItemRecord.energyShield}</span>
-                            </div>
+                              <span className="text-[#c8c8c8]"> {selectedBaseItemRecord.energyShield}</span>
+                            </p>
                           )}
                         </div>
-                        <div className="border-t border-[#3d2e10] mb-2" />
+                        <div className="w-full border-t border-[#3d2e10] mb-2" />
                       </>
                     )}
 
-                    {/* 요구 스탯 */}
-                    <p className="text-xs text-[#a38d6d] tabular-nums">
-                      {t("baseFilter.requirementSummary", {
-                        str: selectedBaseItemRecord.requiredStrength,
-                        dex: selectedBaseItemRecord.requiredDexterity,
-                        int: selectedBaseItemRecord.requiredIntelligence,
-                        level: selectedBaseItemRecord.levelRequirement,
-                      })}
-                    </p>
+                    {/* 요구 스탯 — Lv → STR → DEX → INT, 0은 미표시 */}
+                    {(() => {
+                      const requirementParts = buildBaseItemRequirementLineParts(
+                        selectedBaseItemRecord,
+                        t
+                      );
+                      if (requirementParts.length === 0) {
+                        return null;
+                      }
+                      return (
+                        <p className="text-xs text-[#a38d6d] tabular-nums w-full mb-2">
+                          {requirementParts.join(" / ")}
+                        </p>
+                      );
+                    })()}
+
+                    {/* 특수 옵션 1줄 분 — 표시 없이 패딩만 (추후 콘텐츠) */}
+                    <div
+                      className="w-full border-t border-[#3d2e10] pt-2 pb-1 min-h-[1.35rem]"
+                      aria-hidden="true"
+                    />
                   </div>
                 </div>
               ) : (

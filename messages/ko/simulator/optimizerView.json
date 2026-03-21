@@ -1,0 +1,35 @@
+{
+  "optimizerView": {
+    "title": "크래프팅 최적화",
+    "intro": "모든 롤 옵션이 유효 옵션이면서 가능한 경우 전부 1티어가 되도록, 성공당 기대 비용이 가장 낮은 전략을 찾습니다. 현재 데이터셋은 프로젝트 내 샘플 풀을 사용하며, PoE2DB 기반 확장은 다음 단계에서 연결합니다.",
+    "navToSimulator": "아이템 시뮬레이터로 돌아가기",
+    "navLabel": "최적화 화면",
+    "inputs": {
+      "title": "최적화 입력",
+      "budgetChaos": "카오스 예산(시도당 최대)",
+      "trials": "몬테카를로 반복 횟수",
+      "minTotalAffixes": "최소 옵션 수",
+      "requireTierOne": "옵션 성능을 전부 1티어로 제한",
+      "prefixMods": "유효 접두 옵션",
+      "suffixMods": "유효 접미 옵션",
+      "selectedModCount": "선택된 옵션: {count}개",
+      "selectAllMods": "모든 옵션 선택",
+      "clearAllMods": "옵션 선택 해제",
+      "run": "최적 전략 계산",
+      "optimizing": "계산 중..."
+    },
+    "result": {
+      "title": "최적화 결과",
+      "bestStrategy": "추천 전략: {name}",
+      "note": "정렬 기준은 성공당 기대 비용(expected cost per success)이며, 성공이 없는 전략은 성공률 순으로 밀립니다."
+    },
+    "table": {
+      "strategy": "전략",
+      "successRate": "성공률",
+      "averageCost": "평균 비용",
+      "costOnSuccess": "성공 평균 비용",
+      "expectedCostPerSuccess": "성공당 기대 비용"
+    },
+    "error": "최적화 결과를 불러오지 못했습니다. 다시 시도해 주세요."
+  }
+}

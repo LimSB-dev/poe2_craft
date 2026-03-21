@@ -1,0 +1,35 @@
+{
+  "optimizerView": {
+    "title": "制作优化",
+    "intro": "寻找达到目标时“单次成功期望成本”最低的策略。目标条件是“所有词缀都在有效列表中”，并可选“所有词缀都为T1”。当前使用项目内样例数据，下一阶段将扩展为PoE2DB数据源。",
+    "navToSimulator": "返回物品模拟器",
+    "navLabel": "打开优化页",
+    "inputs": {
+      "title": "优化输入",
+      "budgetChaos": "混沌预算（每次尝试最大）",
+      "trials": "蒙特卡洛次数",
+      "minTotalAffixes": "最少词缀数",
+      "requireTierOne": "要求所有词缀为T1",
+      "prefixMods": "有效前缀",
+      "suffixMods": "有效后缀",
+      "selectedModCount": "已选词缀: {count}",
+      "selectAllMods": "全选词缀",
+      "clearAllMods": "清空选择",
+      "run": "开始优化",
+      "optimizing": "优化中..."
+    },
+    "result": {
+      "title": "优化结果",
+      "bestStrategy": "推荐策略: {name}",
+      "note": "排序基于单次成功期望成本。若策略成功率为0，则按成功率排序。"
+    },
+    "table": {
+      "strategy": "策略",
+      "successRate": "成功率",
+      "averageCost": "平均成本",
+      "costOnSuccess": "成功时平均成本",
+      "expectedCostPerSuccess": "单次成功期望成本"
+    },
+    "error": "无法加载优化结果，请重试。"
+  }
+}

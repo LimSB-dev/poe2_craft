@@ -1,0 +1,35 @@
+{
+  "optimizerView": {
+    "title": "Crafting optimizer",
+    "intro": "Find the strategy with the lowest expected cost to reach your target: all rolled affixes must be valid, and optionally every affix must be tier 1. Current dataset uses the local sample pool; PoE2DB-backed expansion is the next step.",
+    "navToSimulator": "Back to item simulator",
+    "navLabel": "Open optimizer",
+    "inputs": {
+      "title": "Optimization inputs",
+      "budgetChaos": "Chaos budget (max per attempt)",
+      "trials": "Monte Carlo trials",
+      "minTotalAffixes": "Minimum total affixes",
+      "requireTierOne": "Require all affixes to be tier 1",
+      "prefixMods": "Valid prefix mods",
+      "suffixMods": "Valid suffix mods",
+      "selectedModCount": "Selected mods: {count}",
+      "selectAllMods": "Select all mods",
+      "clearAllMods": "Clear mod selection",
+      "run": "Run optimization",
+      "optimizing": "Optimizing..."
+    },
+    "result": {
+      "title": "Optimization result",
+      "bestStrategy": "Recommended strategy: {name}",
+      "note": "Strategies are ranked by expected cost per success. If a strategy has zero success, it is ranked by success rate."
+    },
+    "table": {
+      "strategy": "Strategy",
+      "successRate": "Success rate",
+      "averageCost": "Average cost",
+      "costOnSuccess": "Average cost on success",
+      "expectedCostPerSuccess": "Expected cost per success"
+    },
+    "error": "Could not load optimization result. Please try again."
+  }
+}

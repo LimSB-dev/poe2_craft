@@ -12,7 +12,10 @@ import {
   type IBaseItemEquipmentTypeType,
   type IBaseItemSubTypeType,
 } from "@/lib/poe2-item-simulator/baseItemDb";
-import { resolveSimulationCounts, rollSimulation } from "@/lib/poe2-item-simulator/roller";
+import {
+  resolveSimulationCounts,
+  rollSimulation,
+} from "@/lib/poe2-item-simulator/roller";
 import type {
   IBaseItemDefinition,
   IItemSimulationResultType,
@@ -36,7 +39,9 @@ const ModListSection = ({
       </h3>
       <ul className="flex flex-col gap-1">
         {mods.length === 0 ? (
-          <li className="text-sm text-zinc-500 dark:text-zinc-500">{emptyLabel}</li>
+          <li className="text-sm text-zinc-500 dark:text-zinc-500">
+            {emptyLabel}
+          </li>
         ) : (
           mods.map((modDefinition) => (
             <li
@@ -67,8 +72,12 @@ const PanelShell = ({
   return (
     <section className="flex flex-col gap-4 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 p-5 shadow-sm">
       <header className="flex flex-col gap-1">
-        <h2 className="text-base font-semibold text-zinc-950 dark:text-zinc-50">{title}</h2>
-        <p className="text-sm text-zinc-600 dark:text-zinc-400">{description}</p>
+        <h2 className="text-base font-semibold text-zinc-950 dark:text-zinc-50">
+          {title}
+        </h2>
+        <p className="text-sm text-zinc-600 dark:text-zinc-400">
+          {description}
+        </p>
       </header>
       {children}
     </section>
@@ -85,26 +94,34 @@ export const ItemSimulatorWorkspace = (): ReactElement => {
   const tMods = useTranslations("simulator.mods");
 
   const firstBaseItem: IBaseItemDefinition | undefined = BASE_ITEMS[0];
-  const baseItemRecords: ReadonlyArray<IBaseItemDbRecordType> = BASE_ITEM_DB.records;
+  const baseItemRecords: ReadonlyArray<IBaseItemDbRecordType> =
+    BASE_ITEM_DB.records;
   const [selectedBaseItemKey] = useState<string>(
-    firstBaseItem ? firstBaseItem.baseItemKey : ""
+    firstBaseItem ? firstBaseItem.baseItemKey : "",
   );
-  const [equipmentTypeFilter, setEquipmentTypeFilter] = useState<EquipmentFilterType>("all");
+  const [equipmentTypeFilter, setEquipmentTypeFilter] =
+    useState<EquipmentFilterType>("all");
   const [subTypeFilter, setSubTypeFilter] = useState<SubTypeFilterType>("all");
-  const [maximumRequiredStrength, setMaximumRequiredStrength] = useState<number>(999);
-  const [maximumRequiredDexterity, setMaximumRequiredDexterity] = useState<number>(999);
-  const [maximumRequiredIntelligence, setMaximumRequiredIntelligence] = useState<number>(999);
+  const [maximumRequiredStrength, setMaximumRequiredStrength] =
+    useState<number>(999);
+  const [maximumRequiredDexterity, setMaximumRequiredDexterity] =
+    useState<number>(999);
+  const [maximumRequiredIntelligence, setMaximumRequiredIntelligence] =
+    useState<number>(999);
   const [maximumRequiredLevel, setMaximumRequiredLevel] = useState<number>(100);
   const [rarity, setRarity] = useState<ItemRarityType>("rare");
   const [desiredPrefixCount, setDesiredPrefixCount] = useState<number>(2);
   const [desiredSuffixCount, setDesiredSuffixCount] = useState<number>(2);
-  const [simulationResult, setSimulationResult] = useState<IItemSimulationResultType | null>(null);
+  const [simulationResult, setSimulationResult] =
+    useState<IItemSimulationResultType | null>(null);
 
   const availableSubTypes = useMemo(() => {
     const source =
       equipmentTypeFilter === "all"
         ? baseItemRecords
-        : baseItemRecords.filter((record) => record.equipmentType === equipmentTypeFilter);
+        : baseItemRecords.filter(
+            (record) => record.equipmentType === equipmentTypeFilter,
+          );
     const dedupe = new Set<IBaseItemSubTypeType>();
     for (const record of source) {
       dedupe.add(record.subType);
@@ -113,14 +130,22 @@ export const ItemSimulatorWorkspace = (): ReactElement => {
   }, [baseItemRecords, equipmentTypeFilter]);
 
   const normalizedSubTypeFilter: SubTypeFilterType =
-    subTypeFilter === "all" || availableSubTypes.includes(subTypeFilter) ? subTypeFilter : "all";
+    subTypeFilter === "all" || availableSubTypes.includes(subTypeFilter)
+      ? subTypeFilter
+      : "all";
 
   const filteredBaseItemRecords = useMemo(() => {
     return baseItemRecords.filter((record) => {
-      if (equipmentTypeFilter !== "all" && record.equipmentType !== equipmentTypeFilter) {
+      if (
+        equipmentTypeFilter !== "all" &&
+        record.equipmentType !== equipmentTypeFilter
+      ) {
         return false;
       }
-      if (normalizedSubTypeFilter !== "all" && record.subType !== normalizedSubTypeFilter) {
+      if (
+        normalizedSubTypeFilter !== "all" &&
+        record.subType !== normalizedSubTypeFilter
+      ) {
         return false;
       }
       if (record.requiredStrength > maximumRequiredStrength) {
@@ -148,7 +173,9 @@ export const ItemSimulatorWorkspace = (): ReactElement => {
   ]);
 
   const effectiveSelectedBaseItemKey = useMemo(() => {
-    const exists = filteredBaseItemRecords.some((record) => record.baseItemKey === selectedBaseItemKey);
+    const exists = filteredBaseItemRecords.some(
+      (record) => record.baseItemKey === selectedBaseItemKey,
+    );
     if (exists) {
       return selectedBaseItemKey;
     }
@@ -156,17 +183,24 @@ export const ItemSimulatorWorkspace = (): ReactElement => {
     return first ? first.baseItemKey : "";
   }, [filteredBaseItemRecords, selectedBaseItemKey]);
 
-  const selectedBaseItem: IBaseItemDefinition | undefined = BASE_ITEMS.find((baseItem) => {
-    return baseItem.baseItemKey === effectiveSelectedBaseItemKey;
-  });
-  const selectedBaseItemRecord: IBaseItemDbRecordType | undefined = filteredBaseItemRecords.find((record) => {
-    if (!selectedBaseItem) {
-      return false;
-    }
-    return record.baseItemKey === selectedBaseItem.baseItemKey;
-  });
+  const selectedBaseItem: IBaseItemDefinition | undefined = BASE_ITEMS.find(
+    (baseItem) => {
+      return baseItem.baseItemKey === effectiveSelectedBaseItemKey;
+    },
+  );
+  const selectedBaseItemRecord: IBaseItemDbRecordType | undefined =
+    filteredBaseItemRecords.find((record) => {
+      if (!selectedBaseItem) {
+        return false;
+      }
+      return record.baseItemKey === selectedBaseItem.baseItemKey;
+    });
 
-  const effectiveCounts = resolveSimulationCounts(rarity, desiredPrefixCount, desiredSuffixCount);
+  const effectiveCounts = resolveSimulationCounts(
+    rarity,
+    desiredPrefixCount,
+    desiredSuffixCount,
+  );
 
   const handleRarityChange = (nextRarity: ItemRarityType): void => {
     setRarity(nextRarity);
@@ -214,8 +248,12 @@ export const ItemSimulatorWorkspace = (): ReactElement => {
       <div className="w-full max-w-6xl flex flex-col gap-8">
         <header className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
           <div className="flex flex-col gap-2 min-w-0">
-            <h1 className="text-2xl font-bold text-zinc-950 dark:text-zinc-50">{t("title")}</h1>
-            <p className="text-sm text-zinc-700 dark:text-zinc-300 max-w-2xl">{t("intro")}</p>
+            <h1 className="text-2xl font-bold text-zinc-950 dark:text-zinc-50">
+              {t("title")}
+            </h1>
+            <p className="text-sm text-zinc-700 dark:text-zinc-300 max-w-2xl">
+              {t("intro")}
+            </p>
           </div>
           <div className="flex flex-col items-end gap-2 shrink-0">
             <LocaleSwitcher />
@@ -247,7 +285,9 @@ export const ItemSimulatorWorkspace = (): ReactElement => {
           >
             <div className="flex flex-col gap-3">
               <label className="flex flex-col gap-1 text-sm">
-                <span className="font-medium text-zinc-800 dark:text-zinc-200">{t("baseFilter.type")}</span>
+                <span className="font-medium text-zinc-800 dark:text-zinc-200">
+                  {t("baseFilter.type")}
+                </span>
                 <select
                   value={equipmentTypeFilter}
                   onChange={(event) => {
@@ -267,17 +307,24 @@ export const ItemSimulatorWorkspace = (): ReactElement => {
                   <option value="all">{t("baseFilter.all")}</option>
                   <option value="weapon">{t("equipmentType.weapon")}</option>
                   <option value="armour">{t("equipmentType.armour")}</option>
-                  <option value="accessory">{t("equipmentType.accessory")}</option>
+                  <option value="accessory">
+                    {t("equipmentType.accessory")}
+                  </option>
                 </select>
               </label>
 
               <label className="flex flex-col gap-1 text-sm">
-                <span className="font-medium text-zinc-800 dark:text-zinc-200">{t("baseFilter.subType")}</span>
+                <span className="font-medium text-zinc-800 dark:text-zinc-200">
+                  {t("baseFilter.subType")}
+                </span>
                 <select
                   value={normalizedSubTypeFilter}
                   onChange={(event) => {
                     const value = event.target.value as SubTypeFilterType;
-                    if (value === "all" || availableSubTypes.includes(value as IBaseItemSubTypeType)) {
+                    if (
+                      value === "all" ||
+                      availableSubTypes.includes(value as IBaseItemSubTypeType)
+                    ) {
                       setSubTypeFilter(value);
                     }
                   }}
@@ -305,7 +352,9 @@ export const ItemSimulatorWorkspace = (): ReactElement => {
                     onChange={(event) => {
                       const next = Number.parseInt(event.target.value, 10);
                       if (Number.isFinite(next)) {
-                        setMaximumRequiredStrength(Math.max(0, Math.min(999, next)));
+                        setMaximumRequiredStrength(
+                          Math.max(0, Math.min(999, next)),
+                        );
                       }
                     }}
                     className="rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-2 py-1.5 text-sm"
@@ -323,7 +372,9 @@ export const ItemSimulatorWorkspace = (): ReactElement => {
                     onChange={(event) => {
                       const next = Number.parseInt(event.target.value, 10);
                       if (Number.isFinite(next)) {
-                        setMaximumRequiredDexterity(Math.max(0, Math.min(999, next)));
+                        setMaximumRequiredDexterity(
+                          Math.max(0, Math.min(999, next)),
+                        );
                       }
                     }}
                     className="rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-2 py-1.5 text-sm"
@@ -341,7 +392,9 @@ export const ItemSimulatorWorkspace = (): ReactElement => {
                     onChange={(event) => {
                       const next = Number.parseInt(event.target.value, 10);
                       if (Number.isFinite(next)) {
-                        setMaximumRequiredIntelligence(Math.max(0, Math.min(999, next)));
+                        setMaximumRequiredIntelligence(
+                          Math.max(0, Math.min(999, next)),
+                        );
                       }
                     }}
                     className="rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-2 py-1.5 text-sm"
@@ -359,7 +412,9 @@ export const ItemSimulatorWorkspace = (): ReactElement => {
                     onChange={(event) => {
                       const next = Number.parseInt(event.target.value, 10);
                       if (Number.isFinite(next)) {
-                        setMaximumRequiredLevel(Math.max(1, Math.min(100, next)));
+                        setMaximumRequiredLevel(
+                          Math.max(1, Math.min(100, next)),
+                        );
                       }
                     }}
                     className="rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-2 py-1.5 text-sm"
@@ -368,7 +423,9 @@ export const ItemSimulatorWorkspace = (): ReactElement => {
               </div>
 
               <p className="text-xs text-zinc-600 dark:text-zinc-400">
-                {t("baseFilter.matchCount", { count: filteredBaseItemRecords.length })}
+                {t("baseFilter.matchCount", {
+                  count: filteredBaseItemRecords.length,
+                })}
               </p>
 
               {selectedBaseItem !== undefined && (
@@ -446,7 +503,9 @@ export const ItemSimulatorWorkspace = (): ReactElement => {
                   <select
                     value={desiredPrefixCount}
                     onChange={(event) => {
-                      setDesiredPrefixCount(Number.parseInt(event.target.value, 10));
+                      setDesiredPrefixCount(
+                        Number.parseInt(event.target.value, 10),
+                      );
                     }}
                     className="rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-3 py-2 text-sm"
                   >
@@ -464,7 +523,9 @@ export const ItemSimulatorWorkspace = (): ReactElement => {
                   <select
                     value={desiredSuffixCount}
                     onChange={(event) => {
-                      setDesiredSuffixCount(Number.parseInt(event.target.value, 10));
+                      setDesiredSuffixCount(
+                        Number.parseInt(event.target.value, 10),
+                      );
                     }}
                     className="rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-3 py-2 text-sm"
                   >
@@ -503,7 +564,9 @@ export const ItemSimulatorWorkspace = (): ReactElement => {
             description={tPanels("result.description")}
           >
             {!simulationResult ? (
-              <p className="text-sm text-zinc-600 dark:text-zinc-400">{t("result.empty")}</p>
+              <p className="text-sm text-zinc-600 dark:text-zinc-400">
+                {t("result.empty")}
+              </p>
             ) : (
               <div className="flex flex-col gap-4">
                 <div className="rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50/80 dark:bg-zinc-900/50 px-4 py-3">

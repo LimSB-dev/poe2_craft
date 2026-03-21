@@ -5,24 +5,7 @@ import { useState } from "react";
 import type { ReactElement } from "react";
 import { LocaleSwitcher } from "@/components/i18n/LocaleSwitcher";
 import { Link } from "@/lib/i18n/navigation";
-
-type IRlTrainResponseType = {
-  params: {
-    desiredGoodMods: number;
-    budget: number;
-    episodes: number;
-  };
-  summary: {
-    meanReward: number;
-    last10AverageReward: number;
-    actionRatio: {
-      chaos: number;
-      essence: number;
-      stop: number;
-    };
-    bestInitialAction: "chaos" | "essence" | "stop";
-  };
-};
+import type { IRlTrainResponseType } from "@/lib/rl/rlTrainApiTypes";
 
 const toPercent = (value: number): string => {
   return `${(value * 100).toFixed(2)}%`;

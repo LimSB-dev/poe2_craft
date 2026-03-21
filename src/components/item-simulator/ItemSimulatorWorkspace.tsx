@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 import type { ReactElement } from "react";
 
@@ -8,13 +9,14 @@ import { ItemSimulatorDesiredModsPanelSection } from "@/components/item-simulato
 import { ItemSimulatorHeader } from "@/components/item-simulator/ItemSimulatorHeader";
 import { ItemSimulatorResultPanel } from "@/components/item-simulator/ItemSimulatorResultPanel";
 import { useItemSimulatorBaseItemPanelState } from "@/components/item-simulator/useItemSimulatorBaseItemPanelState";
-import {
-  buildEfficientCraftingPlan,
-  type IEfficientCraftingPlanType,
-} from "@/lib/poe2-item-simulator/efficientCraftingPlan";
 import type { IDesiredModEntryType } from "@/lib/poe2-item-simulator/types";
+import type { IRlTrainResponseType } from "@/lib/rl/rlTrainApiTypes";
+
+const SIMULATOR_RL_BUDGET: number = 80;
+const SIMULATOR_RL_EPISODES: number = 3500;
 
 export const ItemSimulatorWorkspace = (): ReactElement => {
+  const tRl = useTranslations("simulator.rlView");
   const {
     setSelectedBaseItemKey,
     equipmentTypeFilter,
@@ -31,11 +33,15 @@ export const ItemSimulatorWorkspace = (): ReactElement => {
     handleEquipmentTypeChange,
   } = useItemSimulatorBaseItemPanelState();
 
-  const [efficientPlan, setEfficientPlan] =
-    useState<IEfficientCraftingPlanType | null>(null);
+  const [rlTrainResponse, setRlTrainResponse] = useState<IRlTrainResponseType | null>(
+    null,
+  );
+  const [isRlTraining, setIsRlTraining] = useState<boolean>(false);
+  const [rlError, setRlError] = useState<string | null>(null);
 
   const handleSelectBaseItemKey = (baseItemKey: string): void => {
-    setEfficientPlan(null);
+    setRlTrainResponse(null);
+    setRlError(null);
     setSelectedBaseItemKey(baseItemKey);
   };
   const [desiredMods, setDesiredMods] = useState<
@@ -50,11 +56,48 @@ export const ItemSimulatorWorkspace = (): ReactElement => {
     setDesiredMods((prev) => prev.filter((m) => m.id !== id));
   };
 
-  const handleComputeEfficientPlan = (): void => {
+  const handleRunOptimizationExplore = async (): Promise<void> => {
     if (!selectedBaseItem) {
       return;
     }
-    setEfficientPlan(buildEfficientCraftingPlan(desiredMods));
+    setIsRlTraining(true);
+    setRlError(null);
+    try {
+      const desiredGoodMods =
+        desiredMods.length === 0
+          ? 3
+          : Math.min(6, Math.max(1, desiredMods.length));
+      const response = await fetch("/api/rl-train", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({
+          desiredGoodMods,
+          budget: SIMULATOR_RL_BUDGET,
+          episodes: SIMULATOR_RL_EPISODES,
+          baseItemKey: selectedBaseItem.baseItemKey,
+          desiredMods: desiredMods.map((entry) => {
+            return {
+              id: entry.id,
+              modKey: entry.modKey,
+              nameTemplateKey: entry.nameTemplateKey,
+              modType: entry.modType,
+            };
+          }),
+        }),
+      });
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`);
+      }
+      const data = (await response.json()) as IRlTrainResponseType;
+      setRlTrainResponse(data);
+    } catch {
+      setRlError(tRl("error"));
+      setRlTrainResponse(null);
+    } finally {
+      setIsRlTraining(false);
+    }
   };
 
   return (
@@ -91,9 +134,13 @@ export const ItemSimulatorWorkspace = (): ReactElement => {
 
           <ItemSimulatorResultPanel
             selectedBaseItem={selectedBaseItem ?? null}
-            plan={efficientPlan}
             desiredMods={desiredMods}
-            onComputePlan={handleComputeEfficientPlan}
+            rlTrainResponse={rlTrainResponse}
+            isRlTraining={isRlTraining}
+            rlError={rlError}
+            onRunOptimizationExplore={() => {
+              void handleRunOptimizationExplore();
+            }}
           />
         </div>
       </div>

@@ -1,20 +1,13 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { useMemo, type ReactElement } from "react";
+import type { ReactElement } from "react";
 
 import { ItemSimulatorCatalogBaseName } from "@/components/item-simulator/i18n/ItemSimulatorCatalogBaseName";
 import { ItemSimulatorCatalogItemClassLabel } from "@/components/item-simulator/i18n/ItemSimulatorCatalogItemClassLabel";
 import { ItemSimulatorPanelShell } from "@/components/item-simulator/ItemSimulatorPanelShell";
 import { BASE_ITEM_DB } from "@/lib/poe2-item-simulator/baseItemDb";
-import {
-  exaltedValueOfOneCurrencyUnit,
-  getRlCraftingActionCostsExalt,
-} from "@/lib/poe2-item-simulator/currencyExaltExchangeRates";
-import type {
-  IEfficientCraftingPlanType,
-  IEfficientPlanStepType,
-} from "@/lib/poe2-item-simulator/efficientCraftingPlan";
+import type { IRlTrainResponseType } from "@/lib/rl/rlTrainApiTypes";
 import type {
   IDesiredModEntryType,
   IBaseItemDefinition,
@@ -22,40 +15,31 @@ import type {
 
 type ItemSimulatorResultPanelPropsType = {
   selectedBaseItem: IBaseItemDefinition | null;
-  plan: IEfficientCraftingPlanType | null;
   desiredMods: ReadonlyArray<IDesiredModEntryType>;
-  onComputePlan: () => void;
+  rlTrainResponse: IRlTrainResponseType | null;
+  isRlTraining: boolean;
+  rlError: string | null;
+  onRunOptimizationExplore: () => void;
 };
 
-type ItemSimulatorWorkspaceTranslateType = (
-  key: string,
-  values?: Record<string, string | number | Date>,
-) => string;
-
-const renderStepLabel = (
-  step: IEfficientPlanStepType,
-  t: ItemSimulatorWorkspaceTranslateType,
-): string => {
-  if (step.key === "essenceEachDesired") {
-    return t("efficientPlan.steps.essenceEachDesired", {
-      count: step.desiredCount,
-    });
-  }
-  return t(`efficientPlan.steps.${step.key}`);
+const toPercent = (value: number): string => {
+  return `${(value * 100).toFixed(2)}%`;
 };
 
 export const ItemSimulatorResultPanel = ({
   selectedBaseItem,
-  plan,
   desiredMods,
-  onComputePlan,
+  rlTrainResponse,
+  isRlTraining,
+  rlError,
+  onRunOptimizationExplore,
 }: ItemSimulatorResultPanelPropsType): ReactElement => {
   const t = useTranslations("simulator.itemSimulatorWorkspace");
-  const costsExalt = useMemo(() => getRlCraftingActionCostsExalt(), []);
-  const alchemyExalt = useMemo(
-    () => exaltedValueOfOneCurrencyUnit("orbOfAlchemy"),
-    [],
-  );
+  const tRl = useTranslations("simulator.rlView");
+
+  const actionLabel = (action: "chaos" | "essence" | "stop"): string => {
+    return tRl(`actions.${action}`);
+  };
 
   return (
     <ItemSimulatorPanelShell
@@ -64,15 +48,19 @@ export const ItemSimulatorResultPanel = ({
     >
       <button
         type="button"
-        onClick={onComputePlan}
-        className="w-full sm:w-auto rounded-lg bg-amber-600 px-4 py-2 text-sm font-semibold text-white hover:bg-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/60"
+        onClick={() => {
+          onRunOptimizationExplore();
+        }}
+        disabled={!selectedBaseItem || isRlTraining}
+        aria-busy={isRlTraining}
+        className="w-full sm:w-auto rounded-lg bg-amber-600 px-4 py-2 text-sm font-semibold text-white hover:bg-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/60 disabled:pointer-events-none disabled:opacity-50"
       >
-        {t("computeEfficientPlanButton")}
+        {isRlTraining ? tRl("inputs.training") : t("optimizationExplore.runButton")}
       </button>
 
       {!selectedBaseItem ? (
         <p className="text-sm text-zinc-600 dark:text-zinc-400">
-          {t("efficientPlan.emptyNeedBase")}
+          {t("optimizationExplore.emptyNeedBase")}
         </p>
       ) : (
         <div className="flex flex-col gap-4">
@@ -119,53 +107,138 @@ export const ItemSimulatorResultPanel = ({
             );
           })()}
 
-          {!plan ? (
+          {rlError !== null ? (
+            <p className="text-sm text-red-600 dark:text-red-400" role="alert">
+              {rlError}
+            </p>
+          ) : null}
+
+          {!rlTrainResponse ? (
             <p className="text-sm text-zinc-600 dark:text-zinc-400">
-              {t("resultCard.empty")}
+              {t("optimizationExplore.emptyPrompt")}
             </p>
           ) : (
-            <>
-              <section
-                className="rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-950/40 px-3 py-2.5"
-                aria-labelledby="efficient-plan-heading"
+            <section
+              className="rounded-lg border border-amber-200 dark:border-amber-900/50 bg-amber-50/50 dark:bg-amber-950/20 px-3 py-2.5"
+              aria-labelledby="optimization-explore-heading"
+            >
+              <h3
+                id="optimization-explore-heading"
+                className="text-sm font-semibold text-zinc-800 dark:text-zinc-200"
               >
-                <h3
-                  id="efficient-plan-heading"
-                  className="text-sm font-semibold text-zinc-800 dark:text-zinc-200"
-                >
-                  {t("efficientPlan.heading")}
-                </h3>
-                <p className="mt-1 text-xs leading-relaxed text-zinc-500 dark:text-zinc-500">
-                  {t("efficientPlan.intro")}
+                {tRl("result.title")}
+              </h3>
+              <p className="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
+                {t("optimizationExplore.paramsSummary", {
+                  desiredGoodMods: rlTrainResponse.params.desiredGoodMods,
+                  budget: rlTrainResponse.params.budget,
+                  episodes: rlTrainResponse.params.episodes,
+                })}
+              </p>
+              {rlTrainResponse.params.baseItemKey !== null ? (
+                <p className="mt-1 text-xs text-zinc-600 dark:text-zinc-400 break-all">
+                  {t("optimizationExplore.payloadEchoBase", {
+                    baseItemKey: rlTrainResponse.params.baseItemKey,
+                  })}
                 </p>
-                {desiredMods.length > 0 ? (
-                  <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-                    {t("efficientPlan.targetCount", {
-                      count: desiredMods.length,
-                    })}
+              ) : null}
+              {rlTrainResponse.params.desiredMods.length > 0 ? (
+                <div className="mt-2">
+                  <p className="text-xs font-medium text-zinc-700 dark:text-zinc-300">
+                    {t("optimizationExplore.payloadEchoModsHeading")}
                   </p>
-                ) : null}
-                <ol className="mt-2 list-decimal list-inside space-y-1.5 text-sm text-zinc-700 dark:text-zinc-300">
-                  {plan.steps.map((step, index) => {
-                    return (
-                      <li key={`${step.key}-${index}`}>
-                        {renderStepLabel(step, t)}
-                      </li>
-                    );
-                  })}
-                </ol>
-                <p className="mt-3 text-xs leading-relaxed text-zinc-500 dark:text-zinc-500">
-                  {t("efficientPlan.costsLine", {
-                    alchemy: alchemyExalt.toFixed(2),
-                    chaos: costsExalt.chaosOrb.toFixed(2),
-                    essence: costsExalt.essence.toFixed(2),
+                  <ul className="mt-1 list-disc list-inside space-y-0.5 text-xs text-zinc-600 dark:text-zinc-400 break-all">
+                    {rlTrainResponse.params.desiredMods.map((row) => {
+                      return (
+                        <li key={row.id}>
+                          {t("optimizationExplore.payloadEchoModLine", {
+                            modKey: row.modKey,
+                            modType: row.modType,
+                          })}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              ) : null}
+              {desiredMods.length > 0 ? (
+                <p className="mt-1 text-xs text-zinc-500 dark:text-zinc-500">
+                  {t("optimizationExplore.desiredModsHint", {
+                    count: desiredMods.length,
                   })}
                 </p>
-                <p className="mt-2 text-xs leading-relaxed text-zinc-500 dark:text-zinc-500">
-                  {t("efficientPlan.rlNote")}
+              ) : (
+                <p className="mt-1 text-xs text-zinc-500 dark:text-zinc-500">
+                  {t("optimizationExplore.defaultDesiredModsHint")}
                 </p>
-              </section>
-            </>
+              )}
+              <p className="mt-2 text-xs text-zinc-500 dark:text-zinc-500 tabular-nums">
+                {t("optimizationExplore.costsLine", {
+                  chaos: rlTrainResponse.summary.costsExaltPerAction.chaosOrb.toFixed(
+                    4,
+                  ),
+                  essence: rlTrainResponse.summary.costsExaltPerAction.essence.toFixed(
+                    4,
+                  ),
+                })}
+              </p>
+
+              <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-3">
+                <div className="rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white/70 dark:bg-zinc-900/40 p-3">
+                  <p className="text-xs text-zinc-500 dark:text-zinc-400">
+                    {tRl("result.meanReward")}
+                  </p>
+                  <p className="text-lg font-semibold text-zinc-900 dark:text-zinc-50 tabular-nums">
+                    {rlTrainResponse.summary.meanReward.toFixed(4)}
+                  </p>
+                </div>
+                <div className="rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white/70 dark:bg-zinc-900/40 p-3">
+                  <p className="text-xs text-zinc-500 dark:text-zinc-400">
+                    {tRl("result.last10Reward")}
+                  </p>
+                  <p className="text-lg font-semibold text-zinc-900 dark:text-zinc-50 tabular-nums">
+                    {rlTrainResponse.summary.last10AverageReward.toFixed(4)}
+                  </p>
+                </div>
+                <div className="rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white/70 dark:bg-zinc-900/40 p-3">
+                  <p className="text-xs text-zinc-500 dark:text-zinc-400">
+                    {tRl("result.bestInitialAction")}
+                  </p>
+                  <p className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
+                    {actionLabel(rlTrainResponse.summary.bestInitialAction)}
+                  </p>
+                </div>
+              </div>
+
+              <h4 className="mt-4 text-xs font-semibold text-zinc-800 dark:text-zinc-200">
+                {tRl("result.actionRatio")}
+              </h4>
+              <div className="mt-2 space-y-3">
+                {(
+                  [
+                    { key: "chaos", value: rlTrainResponse.summary.actionRatio.chaos },
+                    {
+                      key: "essence",
+                      value: rlTrainResponse.summary.actionRatio.essence,
+                    },
+                    { key: "stop", value: rlTrainResponse.summary.actionRatio.stop },
+                  ] as const
+                ).map((row) => (
+                  <div key={row.key}>
+                    <div className="flex justify-between text-xs text-zinc-600 dark:text-zinc-400 mb-1">
+                      <span>{tRl(`actions.${row.key}`)}</span>
+                      <span className="tabular-nums">{toPercent(row.value)}</span>
+                    </div>
+                    <div className="h-2.5 w-full rounded-full bg-zinc-100 dark:bg-zinc-800 overflow-hidden">
+                      <div
+                        className="h-full rounded-full bg-amber-500/90"
+                        style={{ width: toPercent(row.value) }}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
           )}
         </div>
       )}

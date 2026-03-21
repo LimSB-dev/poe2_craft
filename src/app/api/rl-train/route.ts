@@ -1,11 +1,17 @@
 import { NextResponse } from "next/server";
 
 import { getRlCraftingActionCostsExalt } from "@/lib/poe2-item-simulator/currencyExaltExchangeRates";
+import {
+  normalizeRlTrainDesiredMods,
+  parseRlTrainBaseItemKey,
+} from "@/lib/rl/normalizeRlTrainDesiredMods";
 
 type ITrainRequestType = {
   desiredGoodMods?: number;
   budget?: number;
   episodes?: number;
+  baseItemKey?: unknown;
+  desiredMods?: unknown;
 };
 
 type IEnvStateType = {
@@ -303,7 +309,12 @@ const trainAgent = (
 export const POST = async (request: Request): Promise<Response> => {
   const body = (await request.json()) as ITrainRequestType;
 
-  const desiredGoodMods = clampInt(body.desiredGoodMods, 3, MIN_GOOD_MODS, MAX_GOOD_MODS);
+  const desiredModsPayload = normalizeRlTrainDesiredMods(body.desiredMods);
+  const baseItemKey = parseRlTrainBaseItemKey(body.baseItemKey);
+  const desiredGoodMods =
+    desiredModsPayload.length > 0
+      ? clampInt(desiredModsPayload.length, 3, MIN_GOOD_MODS, MAX_GOOD_MODS)
+      : clampInt(body.desiredGoodMods, 3, MIN_GOOD_MODS, MAX_GOOD_MODS);
   const budget = clampInt(body.budget, 80, MIN_BUDGET, MAX_BUDGET);
   const episodes = clampInt(body.episodes, 3000, MIN_EPISODES, MAX_EPISODES);
 
@@ -313,6 +324,8 @@ export const POST = async (request: Request): Promise<Response> => {
       desiredGoodMods,
       budget,
       episodes,
+      baseItemKey,
+      desiredMods: desiredModsPayload,
     },
     summary: {
       meanReward: Number(summary.meanReward.toFixed(4)),

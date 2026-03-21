@@ -9,5 +9,25 @@
       "ja": "日本語",
       "zh-CN": "简体中文"
     }
+  },
+  "baseItemLevel": "Required level {level}",
+  "equipmentType": {
+    "weapon": "Weapon",
+    "armour": "Armour",
+    "accessory": "Accessory"
+  },
+  "baseFilter": {
+    "type": "Type",
+    "subType": "Subtype",
+    "all": "All",
+    "requiredStr": "Max STR",
+    "requiredDex": "Max DEX",
+    "requiredInt": "Max INT",
+    "requiredLevel": "Max level",
+    "baseItem": "Base item",
+    "noResults": "No base items match filters",
+    "requirementSummary": "Req STR {str} / DEX {dex} / INT {int} / Lv {level}",
+    "matchCount": "Matched base items: {count}",
+    "source": "Source: PoE2DB"
   }
 }

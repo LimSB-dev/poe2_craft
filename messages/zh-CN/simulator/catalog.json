@@ -1,18 +1,54 @@
 {
   "itemClass": {
-    "ring": "戒指",
-    "amulet": "护身符",
-    "belt": "腰带",
+    "staff": "法杖",
+    "wand": "魔杖",
+    "bow": "弓",
     "claw": "爪",
-    "shield": "盾牌",
-    "bodyArmour": "胸甲"
+    "helmet": "头盔",
+    "focus": "聚焦器",
+    "gloves": "手套",
+    "bodyArmour": "胸甲",
+    "boots": "靴子",
+    "amulet": "护身符",
+    "ring": "戒指",
+    "belt": "腰带"
   },
   "baseItems": {
-    "base_iron_ring": { "name": "铁戒指" },
-    "base_jade_amulet": { "name": "翠玉护身符" },
-    "base_leather_belt": { "name": "皮革腰带" },
-    "base_grinning_fangs": { "name": "狞笑之牙" },
-    "base_maple_round_shield": { "name": "枫木圆盾" },
-    "base_silk_robe": { "name": "丝绸长袍" }
+    "base_oak_staff": {
+      "name": "灰烬法杖"
+    },
+    "base_ember_wand": {
+      "name": "枯萎魔杖"
+    },
+    "base_hunter_bow": {
+      "name": "短弓"
+    },
+    "base_twin_fang_claw": {
+      "name": "皮克特爪"
+    },
+    "base_iron_helmet": {
+      "name": "士兵巨盔"
+    },
+    "base_etched_focus": {
+      "name": "编织聚焦器"
+    },
+    "base_leather_gloves": {
+      "name": "铆钉手套"
+    },
+    "base_chain_vest": {
+      "name": "毛皮板甲"
+    },
+    "base_hardsole_boots": {
+      "name": "铁胫甲靴"
+    },
+    "base_lapis_amulet": {
+      "name": "青金石护身符"
+    },
+    "base_gold_ring": {
+      "name": "金戒指"
+    },
+    "base_heavy_belt": {
+      "name": "重型腰带"
+    }
   }
 }

@@ -1,0 +1,4659 @@
+{
+  "source": "poe2db",
+  "importedAt": "2026-03-21T09:18:21.184Z",
+  "patchVersion": "5.3.8",
+  "baseUrl": "https://poe2db.tw",
+  "pages": [
+    "https://poe2db.tw/"
+  ],
+  "stats": {
+    "pageCount": 1,
+    "anchorCount": 321,
+    "entityCount": 309
+  },
+  "entities": [
+    {
+      "id": "poe2db:poe2db:https_poe2db_tw_us",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "poe2db",
+      "name": "PoE2DB",
+      "url": "https://poe2db.tw/us/",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:item:https_poe2db_tw",
+      "source": "poe2db",
+      "kind": "base_item",
+      "key": "item",
+      "name": "Item",
+      "url": "https://poe2db.tw/#",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:item:https_poe2db_tw_us_items",
+      "source": "poe2db",
+      "kind": "base_item",
+      "key": "item",
+      "name": "Item",
+      "url": "https://poe2db.tw/us/Items",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:gem:https_poe2db_tw_us_gem",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "gem",
+      "name": "Gem",
+      "url": "https://poe2db.tw/us/Gem",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:skill_gems:https_poe2db_tw_us_skill_gems",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "skill_gems",
+      "name": "Skill Gems",
+      "url": "https://poe2db.tw/us/Skill_Gems",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:support_gems:https_poe2db_tw_us_support_gems",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "support_gems",
+      "name": "Support Gems",
+      "url": "https://poe2db.tw/us/Support_Gems",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:spirit_gems:https_poe2db_tw_us_spirit_gems",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "spirit_gems",
+      "name": "Spirit Gems",
+      "url": "https://poe2db.tw/us/Spirit_Gems",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:lineage_supports:https_poe2db_tw_us_lineage_supports",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "lineage_supports",
+      "name": "Lineage Supports",
+      "url": "https://poe2db.tw/us/Lineage_Supports",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:modifiers:https_poe2db_tw",
+      "source": "poe2db",
+      "kind": "modifier",
+      "key": "modifiers",
+      "name": "Modifiers",
+      "url": "https://poe2db.tw/#",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:modifiers:https_poe2db_tw_us_modifiers",
+      "source": "poe2db",
+      "kind": "modifier",
+      "key": "modifiers",
+      "name": "Modifiers",
+      "url": "https://poe2db.tw/us/Modifiers",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:desecrated_modifiers:https_poe2db_tw_us_desecrated_modifiers",
+      "source": "poe2db",
+      "kind": "modifier",
+      "key": "desecrated_modifiers",
+      "name": "Desecrated Modifiers",
+      "url": "https://poe2db.tw/us/Desecrated_Modifiers",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:keywords:https_poe2db_tw_us_keywords",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "keywords",
+      "name": "Keywords",
+      "url": "https://poe2db.tw/us/Keywords",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:crafting:https_poe2db_tw_us_crafting",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "crafting",
+      "name": "Crafting",
+      "url": "https://poe2db.tw/us/Crafting",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:quest:https_poe2db_tw",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "quest",
+      "name": "Quest",
+      "url": "https://poe2db.tw/#",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:quest:https_poe2db_tw_us_quest",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "quest",
+      "name": "Quest",
+      "url": "https://poe2db.tw/us/Quest",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:ascendancy_classes:https_poe2db_tw_us_ascendancy_class",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "ascendancy_classes",
+      "name": "Ascendancy Classes",
+      "url": "https://poe2db.tw/us/Ascendancy_class",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:passive_skill_tree:https_poe2db_tw_us_passive_skill_tree",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "passive_skill_tree",
+      "name": "Passive Skill Tree",
+      "url": "https://poe2db.tw/us/passive-skill-tree/",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:act:https_poe2db_tw_us_act",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "act",
+      "name": "Act",
+      "url": "https://poe2db.tw/us/Act",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:waystones:https_poe2db_tw_us_waystones",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "waystones",
+      "name": "Waystones",
+      "url": "https://poe2db.tw/us/Waystones",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:economy:https_poe2db_tw_economy",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "economy",
+      "name": "Economy",
+      "url": "https://poe2db.tw/Economy",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:patreon:https_poe2db_tw_us_patreon",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "patreon",
+      "name": "Patreon",
+      "url": "https://poe2db.tw/us/patreon",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:poedb:https_poedb_tw_us",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "poedb",
+      "name": "PoEDB",
+      "url": "https://poedb.tw/us/",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:tw:https_poe2db_tw_tw",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "tw",
+      "name": "TW 正體中文",
+      "url": "https://poe2db.tw/tw/",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:cn:https_poe2db_tw_cn",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "cn",
+      "name": "CN 简体中文",
+      "url": "https://poe2db.tw/cn/",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:us_english:https_poe2db_tw_us",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "us_english",
+      "name": "US English",
+      "url": "https://poe2db.tw/us/",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:kr:https_poe2db_tw_kr",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "kr",
+      "name": "KR 한국어",
+      "url": "https://poe2db.tw/kr/",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:jp_japanese:https_poe2db_tw_jp",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "jp_japanese",
+      "name": "JP Japanese",
+      "url": "https://poe2db.tw/jp/",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:ru:https_poe2db_tw_ru",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "ru",
+      "name": "RU Русский",
+      "url": "https://poe2db.tw/ru/",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:po_portugu_s:https_poe2db_tw_pt",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "po_portugu_s",
+      "name": "PO Português",
+      "url": "https://poe2db.tw/pt/",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:th:https_poe2db_tw_th",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "th",
+      "name": "TH ภาษาไทย",
+      "url": "https://poe2db.tw/th/",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:fr_fran_ais:https_poe2db_tw_fr",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "fr_fran_ais",
+      "name": "FR Français",
+      "url": "https://poe2db.tw/fr/",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:de_deutsch:https_poe2db_tw_de",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "de_deutsch",
+      "name": "DE Deutsch",
+      "url": "https://poe2db.tw/de/",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:es_spanish:https_poe2db_tw_sp",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "es_spanish",
+      "name": "ES Spanish",
+      "url": "https://poe2db.tw/sp/",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:exilecon:https_pathofexile2_com_exilecon",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "exilecon",
+      "name": "ExileCon",
+      "url": "https://pathofexile2.com/exilecon",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:predict_starts_in:https_poe2db_tw_version_0_5_0",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "predict_starts_in",
+      "name": "Predict Starts in",
+      "url": "https://poe2db.tw/Version_0.5.0",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:running_for:https_poe2db_tw_fate_of_the_vaal_league",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "running_for",
+      "name": "Running for",
+      "url": "https://poe2db.tw/Fate_of_the_Vaal_league",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:starts_in:https_poe2db_tw_shop",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "starts_in",
+      "name": "Starts in",
+      "url": "https://poe2db.tw/shop",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:atziri_s_temple:https_poe2db_tw_us_atziris_temple",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "atziri_s_temple",
+      "name": "Atziri's Temple",
+      "url": "https://poe2db.tw/us/Atziris_Temple",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:atziri_the_red_queen:https_poe2db_tw_us_atziri_2c_the_red_queen",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "atziri_the_red_queen",
+      "name": "Atziri, the Red Queen",
+      "url": "https://poe2db.tw/us/Atziri%2C_the_Red_Queen",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:core_destabiliser:https_poe2db_tw_core_destabiliser",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "core_destabiliser",
+      "name": "Core Destabiliser",
+      "url": "https://poe2db.tw/Core_Destabiliser",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:vaal_infuser:https_poe2db_tw_vaal_infuser",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "vaal_infuser",
+      "name": "Vaal Infuser",
+      "url": "https://poe2db.tw/Vaal_Infuser",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:architect_s_orb:https_poe2db_tw_architects_orb",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "architect_s_orb",
+      "name": "Architect's Orb",
+      "url": "https://poe2db.tw/Architects_Orb",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:ancient_infuser:https_poe2db_tw_ancient_infuser",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "ancient_infuser",
+      "name": "Ancient Infuser",
+      "url": "https://poe2db.tw/Ancient_Infuser",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:orb_of_extraction:https_poe2db_tw_orb_of_extraction",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "orb_of_extraction",
+      "name": "Orb of Extraction",
+      "url": "https://poe2db.tw/Orb_of_Extraction",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:crystallised_corruption:https_poe2db_tw_crystallised_corruption",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "crystallised_corruption",
+      "name": "Crystallised Corruption",
+      "url": "https://poe2db.tw/Crystallised_Corruption",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:vaal_cultivation_orb:https_poe2db_tw_vaal_cultivation_orb",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "vaal_cultivation_orb",
+      "name": "Vaal Cultivation Orb",
+      "url": "https://poe2db.tw/Vaal_Cultivation_Orb",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:quipolatl_s_thesis:https_poe2db_tw_quipolatls_thesis",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "quipolatl_s_thesis",
+      "name": "Quipolatl's Thesis",
+      "url": "https://poe2db.tw/Quipolatls_Thesis",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:jiquani_s_thesis:https_poe2db_tw_jiquanis_thesis",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "jiquani_s_thesis",
+      "name": "Jiquani's Thesis",
+      "url": "https://poe2db.tw/Jiquanis_Thesis",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:guatelitzi_s_thesis:https_poe2db_tw_guatelitzis_thesis",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "guatelitzi_s_thesis",
+      "name": "Guatelitzi's Thesis",
+      "url": "https://poe2db.tw/Guatelitzis_Thesis",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:citaqualotl_s_thesis:https_poe2db_tw_citaqualotls_thesis",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "citaqualotl_s_thesis",
+      "name": "Citaqualotl's Thesis",
+      "url": "https://poe2db.tw/Citaqualotls_Thesis",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:vaal_siphoner:https_poe2db_tw_vaal_siphoner",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "vaal_siphoner",
+      "name": "Vaal Siphoner",
+      "url": "https://poe2db.tw/Vaal_Siphoner",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:sacrificial_regalia:https_poe2db_tw_sacrificial_regalia",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "sacrificial_regalia",
+      "name": "Sacrificial Regalia",
+      "url": "https://poe2db.tw/Sacrificial_Regalia",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:guatelitzi_s_ablation:https_poe2db_tw_us_guatelitzis_ablation",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "guatelitzi_s_ablation",
+      "name": "Guatelitzi's Ablation",
+      "url": "https://poe2db.tw/us/Guatelitzis_Ablation",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:hayoxi_s_fulmination:https_poe2db_tw_us_hayoxis_fulmination",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "hayoxi_s_fulmination",
+      "name": "Hayoxi's Fulmination",
+      "url": "https://poe2db.tw/us/Hayoxis_Fulmination",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:zerphi_s_infamy:https_poe2db_tw_us_zerphis_infamy",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "zerphi_s_infamy",
+      "name": "Zerphi's Infamy",
+      "url": "https://poe2db.tw/us/Zerphis_Infamy",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:atziri_s_impatience:https_poe2db_tw_us_atziris_impatience",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "atziri_s_impatience",
+      "name": "Atziri's Impatience",
+      "url": "https://poe2db.tw/us/Atziris_Impatience",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:amor_mandragora:https_poe2db_tw_amor_mandragora",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "amor_mandragora",
+      "name": "Amor Mandragora",
+      "url": "https://poe2db.tw/Amor_Mandragora",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:drillneck:https_poe2db_tw_drillneck",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "drillneck",
+      "name": "Drillneck",
+      "url": "https://poe2db.tw/Drillneck",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:atziri_s_rule:https_poe2db_tw_atziris_rule",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "atziri_s_rule",
+      "name": "Atziri's Rule",
+      "url": "https://poe2db.tw/Atziris_Rule",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:fury_of_the_king:https_poe2db_tw_fury_of_the_king",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "fury_of_the_king",
+      "name": "Fury of the King",
+      "url": "https://poe2db.tw/Fury_of_the_King",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:atziri_s_splendour:https_poe2db_tw_atziris_splendour",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "atziri_s_splendour",
+      "name": "Atziri's Splendour",
+      "url": "https://poe2db.tw/Atziris_Splendour",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:atziri_s_step:https_poe2db_tw_atziris_step",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "atziri_s_step",
+      "name": "Atziri's Step",
+      "url": "https://poe2db.tw/Atziris_Step",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:atziri_s_contempt:https_poe2db_tw_atziris_contempt",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "atziri_s_contempt",
+      "name": "Atziri's Contempt",
+      "url": "https://poe2db.tw/Atziris_Contempt",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:flesh_crucible:https_poe2db_tw_flesh_crucible",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "flesh_crucible",
+      "name": "Flesh Crucible",
+      "url": "https://poe2db.tw/Flesh_Crucible",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:hysseg_s_claw:https_poe2db_tw_hyssegs_claw",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "hysseg_s_claw",
+      "name": "Hysseg's Claw",
+      "url": "https://poe2db.tw/Hyssegs_Claw",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:lavianga_s_spirits:https_poe2db_tw_laviangas_spirits",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "lavianga_s_spirits",
+      "name": "Lavianga's Spirits",
+      "url": "https://poe2db.tw/Laviangas_Spirits",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:the_flesh_poppet:https_poe2db_tw_the_flesh_poppet",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "the_flesh_poppet",
+      "name": "The Flesh Poppet",
+      "url": "https://poe2db.tw/The_Flesh_Poppet",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:unforeseen_consequences:https_poe2db_tw_unforeseen_consequences",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "unforeseen_consequences",
+      "name": "Unforeseen Consequences",
+      "url": "https://poe2db.tw/Unforeseen_Consequences",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:druid:https_poe2db_tw_us_druid",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "druid",
+      "name": "Druid",
+      "url": "https://poe2db.tw/us/Druid",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:oracle:https_poe2db_tw_us_oracle",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "oracle",
+      "name": "Oracle",
+      "url": "https://poe2db.tw/us/Oracle",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:paths_not_taken:https_poe2db_tw_paths_not_taken",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "paths_not_taken",
+      "name": "Paths Not Taken",
+      "url": "https://poe2db.tw/Paths_Not_Taken",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:shaman:https_poe2db_tw_us_shaman",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "shaman",
+      "name": "Shaman",
+      "url": "https://poe2db.tw/us/Shaman",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:bonded_modifiers:https_poe2db_tw_bonded_modifiers",
+      "source": "poe2db",
+      "kind": "modifier",
+      "key": "bonded_modifiers",
+      "name": "Bonded Modifiers",
+      "url": "https://poe2db.tw/Bonded_Modifiers",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:talismans:https_poe2db_tw_talismans",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "talismans",
+      "name": "Talismans",
+      "url": "https://poe2db.tw/Talismans",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:disciple_of_varashta:https_poe2db_tw_us_disciple_of_varashta",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "disciple_of_varashta",
+      "name": "Disciple of Varashta",
+      "url": "https://poe2db.tw/us/Disciple_of_Varashta",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:the_last_of_the_druids:https_poe2db_tw_the_last_of_the_druids",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "the_last_of_the_druids",
+      "name": "The Last of the Druids",
+      "url": "https://poe2db.tw/The_Last_of_the_Druids",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:skullcrusher_quarterstaff:https_poe2db_tw_skullcrusher_quarterstaff",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "skullcrusher_quarterstaff",
+      "name": "Skullcrusher Quarterstaff",
+      "url": "https://poe2db.tw/Skullcrusher_Quarterstaff",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:reflecting_staff:https_poe2db_tw_reflecting_staff",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "reflecting_staff",
+      "name": "Reflecting Staff",
+      "url": "https://poe2db.tw/Reflecting_Staff",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:jade_talisman:https_poe2db_tw_jade_talisman",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "jade_talisman",
+      "name": "Jade Talisman",
+      "url": "https://poe2db.tw/Jade_Talisman",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:lumbering_talisman:https_poe2db_tw_lumbering_talisman",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "lumbering_talisman",
+      "name": "Lumbering Talisman",
+      "url": "https://poe2db.tw/Lumbering_Talisman",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:thunder_talisman:https_poe2db_tw_thunder_talisman",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "thunder_talisman",
+      "name": "Thunder Talisman",
+      "url": "https://poe2db.tw/Thunder_Talisman",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:cinderbark_talisman:https_poe2db_tw_cinderbark_talisman",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "cinderbark_talisman",
+      "name": "Cinderbark Talisman",
+      "url": "https://poe2db.tw/Cinderbark_Talisman",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:primal_talisman:https_poe2db_tw_primal_talisman",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "primal_talisman",
+      "name": "Primal Talisman",
+      "url": "https://poe2db.tw/Primal_Talisman",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:maji_talisman:https_poe2db_tw_maji_talisman",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "maji_talisman",
+      "name": "Maji Talisman",
+      "url": "https://poe2db.tw/Maji_Talisman",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:rabid_talisman:https_poe2db_tw_rabid_talisman",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "rabid_talisman",
+      "name": "Rabid Talisman",
+      "url": "https://poe2db.tw/Rabid_Talisman",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:condemned_talisman:https_poe2db_tw_condemned_talisman",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "condemned_talisman",
+      "name": "Condemned Talisman",
+      "url": "https://poe2db.tw/Condemned_Talisman",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:cruel_talisman:https_poe2db_tw_cruel_talisman",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "cruel_talisman",
+      "name": "Cruel Talisman",
+      "url": "https://poe2db.tw/Cruel_Talisman",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:nettle_talisman:https_poe2db_tw_nettle_talisman",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "nettle_talisman",
+      "name": "Nettle Talisman",
+      "url": "https://poe2db.tw/Nettle_Talisman",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:spiny_talisman:https_poe2db_tw_spiny_talisman",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "spiny_talisman",
+      "name": "Spiny Talisman",
+      "url": "https://poe2db.tw/Spiny_Talisman",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:howling_talisman:https_poe2db_tw_howling_talisman",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "howling_talisman",
+      "name": "Howling Talisman",
+      "url": "https://poe2db.tw/Howling_Talisman",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:roaring_talisman:https_poe2db_tw_roaring_talisman",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "roaring_talisman",
+      "name": "Roaring Talisman",
+      "url": "https://poe2db.tw/Roaring_Talisman",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:ashbark_talisman:https_poe2db_tw_ashbark_talisman",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "ashbark_talisman",
+      "name": "Ashbark Talisman",
+      "url": "https://poe2db.tw/Ashbark_Talisman",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:vicious_talisman:https_poe2db_tw_vicious_talisman",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "vicious_talisman",
+      "name": "Vicious Talisman",
+      "url": "https://poe2db.tw/Vicious_Talisman",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:fury_talisman:https_poe2db_tw_fury_talisman",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "fury_talisman",
+      "name": "Fury Talisman",
+      "url": "https://poe2db.tw/Fury_Talisman",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:familial_talisman:https_poe2db_tw_familial_talisman",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "familial_talisman",
+      "name": "Familial Talisman",
+      "url": "https://poe2db.tw/Familial_Talisman",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:alpha_talisman:https_poe2db_tw_alpha_talisman",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "alpha_talisman",
+      "name": "Alpha Talisman",
+      "url": "https://poe2db.tw/Alpha_Talisman",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:frenzied_talisman:https_poe2db_tw_frenzied_talisman",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "frenzied_talisman",
+      "name": "Frenzied Talisman",
+      "url": "https://poe2db.tw/Frenzied_Talisman",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:fang_talisman:https_poe2db_tw_fang_talisman",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "fang_talisman",
+      "name": "Fang Talisman",
+      "url": "https://poe2db.tw/Fang_Talisman",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:fungal_talisman:https_poe2db_tw_fungal_talisman",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "fungal_talisman",
+      "name": "Fungal Talisman",
+      "url": "https://poe2db.tw/Fungal_Talisman",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:voltfang_talisman:https_poe2db_tw_voltfang_talisman",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "voltfang_talisman",
+      "name": "Voltfang Talisman",
+      "url": "https://poe2db.tw/Voltfang_Talisman",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:wildwood_talisman:https_poe2db_tw_wildwood_talisman",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "wildwood_talisman",
+      "name": "Wildwood Talisman",
+      "url": "https://poe2db.tw/Wildwood_Talisman",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:wingbeat_talisman:https_poe2db_tw_wingbeat_talisman",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "wingbeat_talisman",
+      "name": "Wingbeat Talisman",
+      "url": "https://poe2db.tw/Wingbeat_Talisman",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:changeling_talisman:https_poe2db_tw_changeling_talisman",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "changeling_talisman",
+      "name": "Changeling Talisman",
+      "url": "https://poe2db.tw/Changeling_Talisman",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:soaring_spear:https_poe2db_tw_soaring_spear",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "soaring_spear",
+      "name": "Soaring Spear",
+      "url": "https://poe2db.tw/Soaring_Spear",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:guardian_spear:https_poe2db_tw_guardian_spear",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "guardian_spear",
+      "name": "Guardian Spear",
+      "url": "https://poe2db.tw/Guardian_Spear",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:abyss_precursor_tablet:https_poe2db_tw_abyss_precursor_tablet",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "abyss_precursor_tablet",
+      "name": "Abyss Precursor Tablet",
+      "url": "https://poe2db.tw/Abyss_Precursor_Tablet",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:pounce:https_poe2db_tw_us_pounce",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "pounce",
+      "name": "Pounce",
+      "url": "https://poe2db.tw/us/Pounce",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:oil_barrage:https_poe2db_tw_us_oil_barrage",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "oil_barrage",
+      "name": "Oil Barrage",
+      "url": "https://poe2db.tw/us/Oil_Barrage",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:ferocious_roar:https_poe2db_tw_us_ferocious_roar",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "ferocious_roar",
+      "name": "Ferocious Roar",
+      "url": "https://poe2db.tw/us/Ferocious_Roar",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:feral_invocation:https_poe2db_tw_us_feral_invocation",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "feral_invocation",
+      "name": "Feral Invocation",
+      "url": "https://poe2db.tw/us/Feral_Invocation",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:wolf_pack:https_poe2db_tw_us_wolf_pack",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "wolf_pack",
+      "name": "Wolf Pack",
+      "url": "https://poe2db.tw/us/Wolf_Pack",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:cross_slash:https_poe2db_tw_us_cross_slash",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "cross_slash",
+      "name": "Cross Slash",
+      "url": "https://poe2db.tw/us/Cross_Slash",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:devour:https_poe2db_tw_us_devour",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "devour",
+      "name": "Devour",
+      "url": "https://poe2db.tw/us/Devour",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:fury_of_the_mountain:https_poe2db_tw_us_fury_of_the_mountain",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "fury_of_the_mountain",
+      "name": "Fury of the Mountain",
+      "url": "https://poe2db.tw/us/Fury_of_the_Mountain",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:entangle:https_poe2db_tw_us_entangle",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "entangle",
+      "name": "Entangle",
+      "url": "https://poe2db.tw/us/Entangle",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:lunar_blessing:https_poe2db_tw_us_lunar_blessing",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "lunar_blessing",
+      "name": "Lunar Blessing",
+      "url": "https://poe2db.tw/us/Lunar_Blessing",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:arctic_howl:https_poe2db_tw_us_arctic_howl",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "arctic_howl",
+      "name": "Arctic Howl",
+      "url": "https://poe2db.tw/us/Arctic_Howl",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:flame_breath:https_poe2db_tw_us_flame_breath",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "flame_breath",
+      "name": "Flame Breath",
+      "url": "https://poe2db.tw/us/Flame_Breath",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:thunderstorm:https_poe2db_tw_us_thunderstorm",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "thunderstorm",
+      "name": "Thunderstorm",
+      "url": "https://poe2db.tw/us/Thunderstorm",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:rolling_magma:https_poe2db_tw_us_rolling_magma",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "rolling_magma",
+      "name": "Rolling Magma",
+      "url": "https://poe2db.tw/us/Rolling_Magma",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:savage_fury:https_poe2db_tw_us_savage_fury",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "savage_fury",
+      "name": "Savage Fury",
+      "url": "https://poe2db.tw/us/Savage_Fury",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:furious_slam:https_poe2db_tw_us_furious_slam",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "furious_slam",
+      "name": "Furious Slam",
+      "url": "https://poe2db.tw/us/Furious_Slam",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:barkskin:https_poe2db_tw_us_barkskin",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "barkskin",
+      "name": "Barkskin",
+      "url": "https://poe2db.tw/us/Barkskin",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:walking_calamity:https_poe2db_tw_us_walking_calamity",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "walking_calamity",
+      "name": "Walking Calamity",
+      "url": "https://poe2db.tw/us/Walking_Calamity",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:volcano:https_poe2db_tw_us_volcano",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "volcano",
+      "name": "Volcano",
+      "url": "https://poe2db.tw/us/Volcano",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:thrashing_vines:https_poe2db_tw_us_thrashing_vines",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "thrashing_vines",
+      "name": "Thrashing Vines",
+      "url": "https://poe2db.tw/us/Thrashing_Vines",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:wing_blast:https_poe2db_tw_us_wing_blast",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "wing_blast",
+      "name": "Wing Blast",
+      "url": "https://poe2db.tw/us/Wing_Blast",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:eternal_rage:https_poe2db_tw_us_eternal_rage",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "eternal_rage",
+      "name": "Eternal Rage",
+      "url": "https://poe2db.tw/us/Eternal_Rage",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:tornado:https_poe2db_tw_us_tornado",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "tornado",
+      "name": "Tornado",
+      "url": "https://poe2db.tw/us/Tornado",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:lunar_assault:https_poe2db_tw_us_lunar_assault",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "lunar_assault",
+      "name": "Lunar Assault",
+      "url": "https://poe2db.tw/us/Lunar_Assault",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:spell_totem:https_poe2db_tw_us_spell_totem",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "spell_totem",
+      "name": "Spell Totem",
+      "url": "https://poe2db.tw/us/Spell_Totem",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:briarpatch:https_poe2db_tw_us_briarpatch",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "briarpatch",
+      "name": "Briarpatch",
+      "url": "https://poe2db.tw/us/Briarpatch",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:rampage:https_poe2db_tw_us_rampage",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "rampage",
+      "name": "Rampage",
+      "url": "https://poe2db.tw/us/Rampage",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:thrill_of_the_kill_ii:https_poe2db_tw_us_thrill_of_the_kill_ii",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "thrill_of_the_kill_ii",
+      "name": "Thrill of the Kill II",
+      "url": "https://poe2db.tw/us/Thrill_of_the_Kill_II",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:cirel_s_cultivation:https_poe2db_tw_us_cirels_cultivation",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "cirel_s_cultivation",
+      "name": "Cirel's Cultivation",
+      "url": "https://poe2db.tw/us/Cirels_Cultivation",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:xibaqua_s_rending:https_poe2db_tw_us_xibaquas_rending",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "xibaqua_s_rending",
+      "name": "Xibaqua's Rending",
+      "url": "https://poe2db.tw/us/Xibaquas_Rending",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:rending_apex:https_poe2db_tw_us_rending_apex",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "rending_apex",
+      "name": "Rending Apex",
+      "url": "https://poe2db.tw/us/Rending_Apex",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:ois_n_s_oath:https_poe2db_tw_us_ois_c3_adns_oath",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "ois_n_s_oath",
+      "name": "Oisín's Oath",
+      "url": "https://poe2db.tw/us/Ois%C3%ADns_Oath",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:tasalio_s_rhythm:https_poe2db_tw_us_tasalios_rhythm",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "tasalio_s_rhythm",
+      "name": "Tasalio's Rhythm",
+      "url": "https://poe2db.tw/us/Tasalios_Rhythm",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:dreamer_s_knell:https_poe2db_tw_us_dreamers_knell",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "dreamer_s_knell",
+      "name": "Dreamer's Knell",
+      "url": "https://poe2db.tw/us/Dreamers_Knell",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:splinter_totem_ii:https_poe2db_tw_us_splinter_totem_ii",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "splinter_totem_ii",
+      "name": "Splinter Totem II",
+      "url": "https://poe2db.tw/us/Splinter_Totem_II",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:ambrosia_ii:https_poe2db_tw_us_ambrosia_ii",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "ambrosia_ii",
+      "name": "Ambrosia II",
+      "url": "https://poe2db.tw/us/Ambrosia_II",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:nova_projectiles_ii:https_poe2db_tw_us_nova_projectiles_ii",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "nova_projectiles_ii",
+      "name": "Nova Projectiles II",
+      "url": "https://poe2db.tw/us/Nova_Projectiles_II",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:deadly_resolve:https_poe2db_tw_us_deadly_resolve",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "deadly_resolve",
+      "name": "Deadly Resolve",
+      "url": "https://poe2db.tw/us/Deadly_Resolve",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:empowered_sparks_ii:https_poe2db_tw_us_empowered_sparks_ii",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "empowered_sparks_ii",
+      "name": "Empowered Sparks II",
+      "url": "https://poe2db.tw/us/Empowered_Sparks_II",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:fan_the_flames_ii:https_poe2db_tw_us_fan_the_flames_ii",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "fan_the_flames_ii",
+      "name": "Fan The Flames II",
+      "url": "https://poe2db.tw/us/Fan_The_Flames_II",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:mark_for_death_ii:https_poe2db_tw_us_mark_for_death_ii",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "mark_for_death_ii",
+      "name": "Mark for Death II",
+      "url": "https://poe2db.tw/us/Mark_for_Death_II",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:practical_magic_ii:https_poe2db_tw_us_practical_magic_ii",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "practical_magic_ii",
+      "name": "Practical Magic II",
+      "url": "https://poe2db.tw/us/Practical_Magic_II",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:khatal_s_rejuvenation:https_poe2db_tw_us_khatals_rejuvenation",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "khatal_s_rejuvenation",
+      "name": "Khatal's Rejuvenation",
+      "url": "https://poe2db.tw/us/Khatals_Rejuvenation",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:concussive_spells:https_poe2db_tw_us_concussive_spells",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "concussive_spells",
+      "name": "Concussive Spells",
+      "url": "https://poe2db.tw/us/Concussive_Spells",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:helbrym_s_hide:https_poe2db_tw_us_helbryms_hide",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "helbrym_s_hide",
+      "name": "Helbrym's Hide",
+      "url": "https://poe2db.tw/us/Helbryms_Hide",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:ice_bite_ii:https_poe2db_tw_us_ice_bite_ii",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "ice_bite_ii",
+      "name": "Ice Bite II",
+      "url": "https://poe2db.tw/us/Ice_Bite_II",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:advancing_storm:https_poe2db_tw_us_advancing_storm",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "advancing_storm",
+      "name": "Advancing Storm",
+      "url": "https://poe2db.tw/us/Advancing_Storm",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:mark_of_siphoning:https_poe2db_tw_us_mark_of_siphoning",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "mark_of_siphoning",
+      "name": "Mark of Siphoning",
+      "url": "https://poe2db.tw/us/Mark_of_Siphoning",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:atziri_s_call:https_poe2db_tw_us_atziris_call",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "atziri_s_call",
+      "name": "Atziri's Call",
+      "url": "https://poe2db.tw/us/Atziris_Call",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:mark_of_siphoning_ii:https_poe2db_tw_us_mark_of_siphoning_ii",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "mark_of_siphoning_ii",
+      "name": "Mark of Siphoning II",
+      "url": "https://poe2db.tw/us/Mark_of_Siphoning_II",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:morgana_s_tempest:https_poe2db_tw_us_morganas_tempest",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "morgana_s_tempest",
+      "name": "Morgana's Tempest",
+      "url": "https://poe2db.tw/us/Morganas_Tempest",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:opening_move:https_poe2db_tw_us_opening_move",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "opening_move",
+      "name": "Opening Move",
+      "url": "https://poe2db.tw/us/Opening_Move",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:eternal_mark:https_poe2db_tw_us_eternal_mark",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "eternal_mark",
+      "name": "Eternal Mark",
+      "url": "https://poe2db.tw/us/Eternal_Mark",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:brittle_armour:https_poe2db_tw_us_brittle_armour",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "brittle_armour",
+      "name": "Brittle Armour",
+      "url": "https://poe2db.tw/us/Brittle_Armour",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:empowered_sparks_i:https_poe2db_tw_us_empowered_sparks_i",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "empowered_sparks_i",
+      "name": "Empowered Sparks I",
+      "url": "https://poe2db.tw/us/Empowered_Sparks_I",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:exposing_cry:https_poe2db_tw_us_exposing_cry",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "exposing_cry",
+      "name": "Exposing Cry",
+      "url": "https://poe2db.tw/us/Exposing_Cry",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:accelerated_growth:https_poe2db_tw_us_accelerated_growth",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "accelerated_growth",
+      "name": "Accelerated Growth",
+      "url": "https://poe2db.tw/us/Accelerated_Growth",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:accelerated_growth_ii:https_poe2db_tw_us_accelerated_growth_ii",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "accelerated_growth_ii",
+      "name": "Accelerated Growth II",
+      "url": "https://poe2db.tw/us/Accelerated_Growth_II",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:poison_spores:https_poe2db_tw_us_poison_spores",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "poison_spores",
+      "name": "Poison Spores",
+      "url": "https://poe2db.tw/us/Poison_Spores",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:coursing_current:https_poe2db_tw_us_coursing_current",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "coursing_current",
+      "name": "Coursing Current",
+      "url": "https://poe2db.tw/us/Coursing_Current",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:gorge:https_poe2db_tw_us_gorge",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "gorge",
+      "name": "Gorge",
+      "url": "https://poe2db.tw/us/Gorge",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:thrill_of_the_kill:https_poe2db_tw_us_thrill_of_the_kill",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "thrill_of_the_kill",
+      "name": "Thrill of the Kill",
+      "url": "https://poe2db.tw/us/Thrill_of_the_Kill",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:inexorable_critical_ii:https_poe2db_tw_us_inexorable_critical_ii",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "inexorable_critical_ii",
+      "name": "Inexorable Critical II",
+      "url": "https://poe2db.tw/us/Inexorable_Critical_II",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:echoing_cry:https_poe2db_tw_us_echoing_cry",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "echoing_cry",
+      "name": "Echoing Cry",
+      "url": "https://poe2db.tw/us/Echoing_Cry",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:controlled_hazard:https_poe2db_tw_us_controlled_hazard",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "controlled_hazard",
+      "name": "Controlled Hazard",
+      "url": "https://poe2db.tw/us/Controlled_Hazard",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:practical_magic_i:https_poe2db_tw_us_practical_magic_i",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "practical_magic_i",
+      "name": "Practical Magic I",
+      "url": "https://poe2db.tw/us/Practical_Magic_I",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:eonyr_s_thunder:https_poe2db_tw_us_eonyrs_thunder",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "eonyr_s_thunder",
+      "name": "Eonyr's Thunder",
+      "url": "https://poe2db.tw/us/Eonyrs_Thunder",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:fan_the_flames:https_poe2db_tw_us_fan_the_flames",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "fan_the_flames",
+      "name": "Fan The Flames",
+      "url": "https://poe2db.tw/us/Fan_The_Flames",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:bhatair_s_vengeance:https_poe2db_tw_us_bhatairs_vengeance",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "bhatair_s_vengeance",
+      "name": "Bhatair's Vengeance",
+      "url": "https://poe2db.tw/us/Bhatairs_Vengeance",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:creeping_chill:https_poe2db_tw_us_creeping_chill",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "creeping_chill",
+      "name": "Creeping Chill",
+      "url": "https://poe2db.tw/us/Creeping_Chill",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:zarokh_s_revolt:https_poe2db_tw_us_zarokhs_revolt",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "zarokh_s_revolt",
+      "name": "Zarokh's Revolt",
+      "url": "https://poe2db.tw/us/Zarokhs_Revolt",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:shock_conduction_ii:https_poe2db_tw_us_shock_conduction_ii",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "shock_conduction_ii",
+      "name": "Shock Conduction II",
+      "url": "https://poe2db.tw/us/Shock_Conduction_II",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:blazing_critical:https_poe2db_tw_us_blazing_critical",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "blazing_critical",
+      "name": "Blazing Critical",
+      "url": "https://poe2db.tw/us/Blazing_Critical",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:catalysing_elements:https_poe2db_tw_us_catalysing_elements",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "catalysing_elements",
+      "name": "Catalysing Elements",
+      "url": "https://poe2db.tw/us/Catalysing_Elements",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:biting_frost_ii:https_poe2db_tw_us_biting_frost_ii",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "biting_frost_ii",
+      "name": "Biting Frost II",
+      "url": "https://poe2db.tw/us/Biting_Frost_II",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:tectonic_slams:https_poe2db_tw_us_tectonic_slams",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "tectonic_slams",
+      "name": "Tectonic Slams",
+      "url": "https://poe2db.tw/us/Tectonic_Slams",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:splinter_totem_i:https_poe2db_tw_us_splinter_totem_i",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "splinter_totem_i",
+      "name": "Splinter Totem I",
+      "url": "https://poe2db.tw/us/Splinter_Totem_I",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:charged_mark:https_poe2db_tw_us_charged_mark",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "charged_mark",
+      "name": "Charged Mark",
+      "url": "https://poe2db.tw/us/Charged_Mark",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:waystones:https_poe2db_tw_waystones",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "waystones",
+      "name": "Waystones",
+      "url": "https://poe2db.tw/Waystones",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:tablet:https_poe2db_tw_tablet",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "tablet",
+      "name": "Tablet",
+      "url": "https://poe2db.tw/Tablet",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:the_realmgate:https_poe2db_tw_the_realmgate",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "the_realmgate",
+      "name": "The Realmgate",
+      "url": "https://poe2db.tw/The_Realmgate",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:extra_content:https_poe2db_tw_extra_content",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "extra_content",
+      "name": "Extra Content",
+      "url": "https://poe2db.tw/Extra_Content",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:shrine:https_poe2db_tw_shrine",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "shrine",
+      "name": "Shrine",
+      "url": "https://poe2db.tw/Shrine",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:strongbox:https_poe2db_tw_strongbox",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "strongbox",
+      "name": "Strongbox",
+      "url": "https://poe2db.tw/Strongbox",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:essence:https_poe2db_tw_essence",
+      "source": "poe2db",
+      "kind": "essence",
+      "key": "essence",
+      "name": "Essence",
+      "url": "https://poe2db.tw/Essence",
+      "tags": [
+        "essence"
+      ],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:azmeri_spirit:https_poe2db_tw_azmeri_spirit",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "azmeri_spirit",
+      "name": "Azmeri Spirit",
+      "url": "https://poe2db.tw/Azmeri_Spirit",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:rogue_exile:https_poe2db_tw_rogue_exile",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "rogue_exile",
+      "name": "Rogue Exile",
+      "url": "https://poe2db.tw/Rogue_Exile",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:map_boss:https_poe2db_tw_map_boss",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "map_boss",
+      "name": "Map Boss",
+      "url": "https://poe2db.tw/Map_Boss",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:powerful_map_boss:https_poe2db_tw_powerful_map_boss",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "powerful_map_boss",
+      "name": "Powerful Map Boss",
+      "url": "https://poe2db.tw/Powerful_Map_Boss",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:coalesced_corruption:https_poe2db_tw_coalesced_corruption",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "coalesced_corruption",
+      "name": "Coalesced Corruption",
+      "url": "https://poe2db.tw/Coalesced_Corruption",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:corrupted_nexus:https_poe2db_tw_corrupted_nexus",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "corrupted_nexus",
+      "name": "Corrupted Nexus",
+      "url": "https://poe2db.tw/Corrupted_Nexus",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:cleansed:https_poe2db_tw_cleansed",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "cleansed",
+      "name": "Cleansed",
+      "url": "https://poe2db.tw/Cleansed",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:abyss:https_poe2db_tw_abyss",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "abyss",
+      "name": "Abyss",
+      "url": "https://poe2db.tw/Abyss",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:vessel_of_kulemak:https_poe2db_tw_us_vessel_of_kulemak",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "vessel_of_kulemak",
+      "name": "Vessel of Kulemak",
+      "url": "https://poe2db.tw/us/Vessel_of_Kulemak",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:kulemak_s_invitation:https_poe2db_tw_kulemaks_invitation",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "kulemak_s_invitation",
+      "name": "Kulemak's Invitation",
+      "url": "https://poe2db.tw/Kulemaks_Invitation",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:desecrated_modifiers:https_poe2db_tw_desecrated_modifiers",
+      "source": "poe2db",
+      "kind": "modifier",
+      "key": "desecrated_modifiers",
+      "name": "Desecrated Modifiers",
+      "url": "https://poe2db.tw/Desecrated_Modifiers",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:breach:https_poe2db_tw_breach",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "breach",
+      "name": "Breach",
+      "url": "https://poe2db.tw/Breach",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:xesht_we_that_are_one:https_poe2db_tw_us_xesht_2c_we_that_are_one",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "xesht_we_that_are_one",
+      "name": "Xesht, We That Are One",
+      "url": "https://poe2db.tw/us/Xesht%2C_We_That_Are_One",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:breach_splinter:https_poe2db_tw_breach_splinter",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "breach_splinter",
+      "name": "Breach Splinter",
+      "url": "https://poe2db.tw/Breach_Splinter",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:catalysts:https_poe2db_tw_catalysts",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "catalysts",
+      "name": "Catalysts",
+      "url": "https://poe2db.tw/Catalysts",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:ritual:https_poe2db_tw_ritual",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "ritual",
+      "name": "Ritual",
+      "url": "https://poe2db.tw/Ritual",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:the_king_in_the_mists:https_poe2db_tw_us_the_king_in_the_mists",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "the_king_in_the_mists",
+      "name": "The King in the Mists",
+      "url": "https://poe2db.tw/us/The_King_in_the_Mists",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:petition_splinter:https_poe2db_tw_petition_splinter",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "petition_splinter",
+      "name": "Petition Splinter",
+      "url": "https://poe2db.tw/Petition_Splinter",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:omens:https_poe2db_tw_omens",
+      "source": "poe2db",
+      "kind": "omen",
+      "key": "omens",
+      "name": "Omens",
+      "url": "https://poe2db.tw/Omens",
+      "tags": [
+        "omen"
+      ],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:delirium:https_poe2db_tw_delirium",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "delirium",
+      "name": "Delirium",
+      "url": "https://poe2db.tw/Delirium",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:kosis_the_revelation:https_poe2db_tw_us_kosis_2c_the_revelation",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "kosis_the_revelation",
+      "name": "Kosis, The Revelation",
+      "url": "https://poe2db.tw/us/Kosis%2C_The_Revelation",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:omniphobia_fear_manifest:https_poe2db_tw_us_omniphobia_2c_fear_manifest",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "omniphobia_fear_manifest",
+      "name": "Omniphobia, Fear Manifest",
+      "url": "https://poe2db.tw/us/Omniphobia%2C_Fear_Manifest",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:simulacrum_splinter:https_poe2db_tw_simulacrum_splinter",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "simulacrum_splinter",
+      "name": "Simulacrum Splinter",
+      "url": "https://poe2db.tw/Simulacrum_Splinter",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:liquid_emotions:https_poe2db_tw_liquid_emotions",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "liquid_emotions",
+      "name": "Liquid Emotions",
+      "url": "https://poe2db.tw/Liquid_Emotions",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:expedition:https_poe2db_tw_expedition",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "expedition",
+      "name": "Expedition",
+      "url": "https://poe2db.tw/Expedition",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:olroth_origin_of_the_fall:https_poe2db_tw_us_olroth_2c_origin_of_the_fall",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "olroth_origin_of_the_fall",
+      "name": "Olroth, Origin of the Fall",
+      "url": "https://poe2db.tw/us/Olroth%2C_Origin_of_the_Fall",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:runic_splinter:https_poe2db_tw_runic_splinter",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "runic_splinter",
+      "name": "Runic Splinter",
+      "url": "https://poe2db.tw/Runic_Splinter",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:expedition_logbook:https_poe2db_tw_expedition_logbook",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "expedition_logbook",
+      "name": "Expedition Logbook",
+      "url": "https://poe2db.tw/Expedition_Logbook",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:the_burning_monolith:https_poe2db_tw_the_burning_monolith",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "the_burning_monolith",
+      "name": "The Burning Monolith",
+      "url": "https://poe2db.tw/The_Burning_Monolith",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:the_arbiter_of_ash:https_poe2db_tw_us_the_arbiter_of_ash",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "the_arbiter_of_ash",
+      "name": "The Arbiter of Ash",
+      "url": "https://poe2db.tw/us/The_Arbiter_of_Ash",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:pinnacle_keys:https_poe2db_tw_pinnacle_keys",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "pinnacle_keys",
+      "name": "Pinnacle Keys",
+      "url": "https://poe2db.tw/Pinnacle_Keys",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:trial_of_the_sekhemas:https_poe2db_tw_trial_of_the_sekhemas",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "trial_of_the_sekhemas",
+      "name": "Trial of the Sekhemas",
+      "url": "https://poe2db.tw/Trial_of_the_Sekhemas",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:zarokh_the_temporal:https_poe2db_tw_us_zarokh_2c_the_temporal",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "zarokh_the_temporal",
+      "name": "Zarokh, the Temporal",
+      "url": "https://poe2db.tw/us/Zarokh%2C_the_Temporal",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:trial_coins:https_poe2db_tw_trial_coins",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "trial_coins",
+      "name": "Trial Coins",
+      "url": "https://poe2db.tw/Trial_Coins",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:relics:https_poe2db_tw_relics",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "relics",
+      "name": "Relics",
+      "url": "https://poe2db.tw/Relics",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:the_trial_of_chaos:https_poe2db_tw_the_trial_of_chaos",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "the_trial_of_chaos",
+      "name": "The Trial of Chaos",
+      "url": "https://poe2db.tw/The_Trial_of_Chaos",
+      "tags": [
+        "chaos"
+      ],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:the_trialmaster:https_poe2db_tw_us_the_trialmaster",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "the_trialmaster",
+      "name": "The Trialmaster",
+      "url": "https://poe2db.tw/us/The_Trialmaster",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:inscribed_ultimatum:https_poe2db_tw_inscribed_ultimatum",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "inscribed_ultimatum",
+      "name": "Inscribed Ultimatum",
+      "url": "https://poe2db.tw/Inscribed_Ultimatum",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:soul_core:https_poe2db_tw_soul_core",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "soul_core",
+      "name": "Soul Core",
+      "url": "https://poe2db.tw/Soul_Core",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:skill_gems:https_poe2db_tw_skill_gems",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "skill_gems",
+      "name": "Skill Gems",
+      "url": "https://poe2db.tw/Skill_Gems",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:support_gems:https_poe2db_tw_support_gems",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "support_gems",
+      "name": "Support Gems",
+      "url": "https://poe2db.tw/Support_Gems",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:meta_skill_gem:https_poe2db_tw_meta_skill_gem",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "meta_skill_gem",
+      "name": "Meta Skill Gem",
+      "url": "https://poe2db.tw/Meta_Skill_Gem",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:lineage_supports:https_poe2db_tw_lineage_supports",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "lineage_supports",
+      "name": "Lineage Supports",
+      "url": "https://poe2db.tw/Lineage_Supports",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:claws:https_poe2db_tw_claws",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "claws",
+      "name": "Claws",
+      "url": "https://poe2db.tw/Claws",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:daggers:https_poe2db_tw_daggers",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "daggers",
+      "name": "Daggers",
+      "url": "https://poe2db.tw/Daggers",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:wands:https_poe2db_tw_wands",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "wands",
+      "name": "Wands",
+      "url": "https://poe2db.tw/Wands",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:one_hand_swords:https_poe2db_tw_one_hand_swords",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "one_hand_swords",
+      "name": "One Hand Swords",
+      "url": "https://poe2db.tw/One_Hand_Swords",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:one_hand_axes:https_poe2db_tw_one_hand_axes",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "one_hand_axes",
+      "name": "One Hand Axes",
+      "url": "https://poe2db.tw/One_Hand_Axes",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:one_hand_maces:https_poe2db_tw_one_hand_maces",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "one_hand_maces",
+      "name": "One Hand Maces",
+      "url": "https://poe2db.tw/One_Hand_Maces",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:sceptres:https_poe2db_tw_sceptres",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "sceptres",
+      "name": "Sceptres",
+      "url": "https://poe2db.tw/Sceptres",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:spears:https_poe2db_tw_spears",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "spears",
+      "name": "Spears",
+      "url": "https://poe2db.tw/Spears",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:flails:https_poe2db_tw_flails",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "flails",
+      "name": "Flails",
+      "url": "https://poe2db.tw/Flails",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:bows:https_poe2db_tw_bows",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "bows",
+      "name": "Bows",
+      "url": "https://poe2db.tw/Bows",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:staves:https_poe2db_tw_staves",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "staves",
+      "name": "Staves",
+      "url": "https://poe2db.tw/Staves",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:two_hand_swords:https_poe2db_tw_two_hand_swords",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "two_hand_swords",
+      "name": "Two Hand Swords",
+      "url": "https://poe2db.tw/Two_Hand_Swords",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:two_hand_axes:https_poe2db_tw_two_hand_axes",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "two_hand_axes",
+      "name": "Two Hand Axes",
+      "url": "https://poe2db.tw/Two_Hand_Axes",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:two_hand_maces:https_poe2db_tw_two_hand_maces",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "two_hand_maces",
+      "name": "Two Hand Maces",
+      "url": "https://poe2db.tw/Two_Hand_Maces",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:quarterstaves:https_poe2db_tw_quarterstaves",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "quarterstaves",
+      "name": "Quarterstaves",
+      "url": "https://poe2db.tw/Quarterstaves",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:fishing_rods:https_poe2db_tw_fishing_rods",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "fishing_rods",
+      "name": "Fishing Rods",
+      "url": "https://poe2db.tw/Fishing_Rods",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:crossbows:https_poe2db_tw_crossbows",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "crossbows",
+      "name": "Crossbows",
+      "url": "https://poe2db.tw/Crossbows",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:traps:https_poe2db_tw_traps",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "traps",
+      "name": "Traps",
+      "url": "https://poe2db.tw/Traps",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:quivers:https_poe2db_tw_quivers",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "quivers",
+      "name": "Quivers",
+      "url": "https://poe2db.tw/Quivers",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:shields:https_poe2db_tw_shields",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "shields",
+      "name": "Shields",
+      "url": "https://poe2db.tw/Shields",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:bucklers:https_poe2db_tw_bucklers",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "bucklers",
+      "name": "Bucklers",
+      "url": "https://poe2db.tw/Bucklers",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:foci:https_poe2db_tw_foci",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "foci",
+      "name": "Foci",
+      "url": "https://poe2db.tw/Foci",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:gloves:https_poe2db_tw_gloves",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "gloves",
+      "name": "Gloves",
+      "url": "https://poe2db.tw/Gloves",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:boots:https_poe2db_tw_boots",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "boots",
+      "name": "Boots",
+      "url": "https://poe2db.tw/Boots",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:body_armours:https_poe2db_tw_body_armours",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "body_armours",
+      "name": "Body Armours",
+      "url": "https://poe2db.tw/Body_Armours",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:helmets:https_poe2db_tw_helmets",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "helmets",
+      "name": "Helmets",
+      "url": "https://poe2db.tw/Helmets",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:amulets:https_poe2db_tw_amulets",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "amulets",
+      "name": "Amulets",
+      "url": "https://poe2db.tw/Amulets",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:rings:https_poe2db_tw_rings",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "rings",
+      "name": "Rings",
+      "url": "https://poe2db.tw/Rings",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:belts:https_poe2db_tw_belts",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "belts",
+      "name": "Belts",
+      "url": "https://poe2db.tw/Belts",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:life_flasks:https_poe2db_tw_life_flasks",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "life_flasks",
+      "name": "Life Flasks",
+      "url": "https://poe2db.tw/Life_Flasks",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:mana_flasks:https_poe2db_tw_mana_flasks",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "mana_flasks",
+      "name": "Mana Flasks",
+      "url": "https://poe2db.tw/Mana_Flasks",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:charms:https_poe2db_tw_charms",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "charms",
+      "name": "Charms",
+      "url": "https://poe2db.tw/Charms",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:stackable_currency:https_poe2db_tw_stackable_currency",
+      "source": "poe2db",
+      "kind": "currency",
+      "key": "stackable_currency",
+      "name": "Stackable Currency",
+      "url": "https://poe2db.tw/Stackable_Currency",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:augment:https_poe2db_tw_augment",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "augment",
+      "name": "Augment",
+      "url": "https://poe2db.tw/Augment",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:omen:https_poe2db_tw_omen",
+      "source": "poe2db",
+      "kind": "omen",
+      "key": "omen",
+      "name": "Omen",
+      "url": "https://poe2db.tw/Omen",
+      "tags": [
+        "omen"
+      ],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:incubators:https_poe2db_tw_incubators",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "incubators",
+      "name": "Incubators",
+      "url": "https://poe2db.tw/Incubators",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:map_fragments:https_poe2db_tw_map_fragments",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "map_fragments",
+      "name": "Map Fragments",
+      "url": "https://poe2db.tw/Map_Fragments",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:expedition_logbooks:https_poe2db_tw_expedition_logbooks",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "expedition_logbooks",
+      "name": "Expedition Logbooks",
+      "url": "https://poe2db.tw/Expedition_Logbooks",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:jewels:https_poe2db_tw_jewels",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "jewels",
+      "name": "Jewels",
+      "url": "https://poe2db.tw/Jewels",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:vault_keys:https_poe2db_tw_vault_keys",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "vault_keys",
+      "name": "Vault Keys",
+      "url": "https://poe2db.tw/Vault_Keys",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:warrior:https_poe2db_tw_us_warrior",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "warrior",
+      "name": "Warrior",
+      "url": "https://poe2db.tw/us/Warrior",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:titan:https_poe2db_tw_us_titan",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "titan",
+      "name": "Titan",
+      "url": "https://poe2db.tw/us/Titan",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:warbringer:https_poe2db_tw_us_warbringer",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "warbringer",
+      "name": "Warbringer",
+      "url": "https://poe2db.tw/us/Warbringer",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:smith_of_kitava:https_poe2db_tw_us_smith_of_kitava",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "smith_of_kitava",
+      "name": "Smith of Kitava",
+      "url": "https://poe2db.tw/us/Smith_of_Kitava",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:ranger:https_poe2db_tw_us_ranger",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "ranger",
+      "name": "Ranger",
+      "url": "https://poe2db.tw/us/Ranger",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:deadeye:https_poe2db_tw_us_deadeye",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "deadeye",
+      "name": "Deadeye",
+      "url": "https://poe2db.tw/us/Deadeye",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:pathfinder:https_poe2db_tw_us_pathfinder",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "pathfinder",
+      "name": "Pathfinder",
+      "url": "https://poe2db.tw/us/Pathfinder",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:huntress:https_poe2db_tw_us_huntress",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "huntress",
+      "name": "Huntress",
+      "url": "https://poe2db.tw/us/Huntress",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:amazon:https_poe2db_tw_us_amazon",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "amazon",
+      "name": "Amazon",
+      "url": "https://poe2db.tw/us/Amazon",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:ritualist:https_poe2db_tw_us_ritualist",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "ritualist",
+      "name": "Ritualist",
+      "url": "https://poe2db.tw/us/Ritualist",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:witch:https_poe2db_tw_us_witch",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "witch",
+      "name": "Witch",
+      "url": "https://poe2db.tw/us/Witch",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:infernalist:https_poe2db_tw_us_infernalist",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "infernalist",
+      "name": "Infernalist",
+      "url": "https://poe2db.tw/us/Infernalist",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:blood_mage:https_poe2db_tw_us_blood_mage",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "blood_mage",
+      "name": "Blood Mage",
+      "url": "https://poe2db.tw/us/Blood_Mage",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:lich:https_poe2db_tw_us_lich",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "lich",
+      "name": "Lich",
+      "url": "https://poe2db.tw/us/Lich",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:abyssal_lich:https_poe2db_tw_us_abyssal_lich",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "abyssal_lich",
+      "name": "Abyssal Lich",
+      "url": "https://poe2db.tw/us/Abyssal_Lich",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:sorceress:https_poe2db_tw_us_sorceress",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "sorceress",
+      "name": "Sorceress",
+      "url": "https://poe2db.tw/us/Sorceress",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:stormweaver:https_poe2db_tw_us_stormweaver",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "stormweaver",
+      "name": "Stormweaver",
+      "url": "https://poe2db.tw/us/Stormweaver",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:chronomancer:https_poe2db_tw_us_chronomancer",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "chronomancer",
+      "name": "Chronomancer",
+      "url": "https://poe2db.tw/us/Chronomancer",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:mercenary:https_poe2db_tw_us_mercenary",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "mercenary",
+      "name": "Mercenary",
+      "url": "https://poe2db.tw/us/Mercenary",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:tactician:https_poe2db_tw_us_tactician",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "tactician",
+      "name": "Tactician",
+      "url": "https://poe2db.tw/us/Tactician",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:witchhunter:https_poe2db_tw_us_witchhunter",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "witchhunter",
+      "name": "Witchhunter",
+      "url": "https://poe2db.tw/us/Witchhunter",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:gemling_legionnaire:https_poe2db_tw_us_gemling_legionnaire",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "gemling_legionnaire",
+      "name": "Gemling Legionnaire",
+      "url": "https://poe2db.tw/us/Gemling_Legionnaire",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:monk:https_poe2db_tw_us_monk",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "monk",
+      "name": "Monk",
+      "url": "https://poe2db.tw/us/Monk",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:invoker:https_poe2db_tw_us_invoker",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "invoker",
+      "name": "Invoker",
+      "url": "https://poe2db.tw/us/Invoker",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:acolyte_of_chayula:https_poe2db_tw_us_acolyte_of_chayula",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "acolyte_of_chayula",
+      "name": "Acolyte of Chayula",
+      "url": "https://poe2db.tw/us/Acolyte_of_Chayula",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:poedb_tw:https_poedb_tw",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "poedb_tw",
+      "name": "poedb.tw",
+      "url": "https://poedb.tw/",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:tlidb_com:https_tlidb_com",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "tlidb_com",
+      "name": "tlidb.com",
+      "url": "https://tlidb.com/",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:diablo4_cc:https_diablo4_cc",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "diablo4_cc",
+      "name": "diablo4.cc",
+      "url": "https://diablo4.cc/",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:poe2db_tw:https_poe2db_tw",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "poe2db_tw",
+      "name": "poe2db.tw",
+      "url": "https://poe2db.tw/",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:paldb_cc:https_paldb_cc",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "paldb_cc",
+      "name": "paldb.cc",
+      "url": "https://paldb.cc/",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:ggg_tracker:https_poe2db_tw_news",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "ggg_tracker",
+      "name": "GGG Tracker",
+      "url": "https://poe2db.tw/news",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:privacy:https_poe2db_tw_privacy",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "privacy",
+      "name": "Privacy",
+      "url": "https://poe2db.tw/privacy",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:disclaimers:https_poe2db_tw_general_disclaimer",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "disclaimers",
+      "name": "Disclaimers",
+      "url": "https://poe2db.tw/General_disclaimer",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:patreon:https_poe2db_tw_patreon",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "patreon",
+      "name": "Patreon",
+      "url": "https://poe2db.tw/patreon",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    },
+    {
+      "id": "poe2db:u_chuanhsing:https_www_reddit_com_user_chuanhsing",
+      "source": "poe2db",
+      "kind": "unknown",
+      "key": "u_chuanhsing",
+      "name": "/u/chuanhsing",
+      "url": "https://www.reddit.com/user/chuanhsing",
+      "tags": [],
+      "patchVersion": "5.3.8",
+      "updatedAt": "2026-03-21T09:18:21.184Z",
+      "metadata": {
+        "pageUrl": "https://poe2db.tw/",
+        "tier": null
+      }
+    }
+  ]
+}

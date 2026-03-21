@@ -12,6 +12,7 @@ export const SIMULATOR_MESSAGE_FRAGMENT_BASENAMES = [
   "catalog",
   "strategyView",
   "rlView",
+  "optimizerView",
 ] as const;
 
 export type SimulatorMessageFragmentBasenameType =

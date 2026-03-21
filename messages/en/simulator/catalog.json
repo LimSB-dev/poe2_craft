@@ -1,18 +1,54 @@
 {
   "itemClass": {
-    "ring": "Ring",
-    "amulet": "Amulet",
-    "belt": "Belt",
+    "staff": "Staff",
+    "wand": "Wand",
+    "bow": "Bow",
     "claw": "Claw",
-    "shield": "Shield",
-    "bodyArmour": "Body Armour"
+    "helmet": "Helmet",
+    "focus": "Focus",
+    "gloves": "Gloves",
+    "bodyArmour": "Body Armour",
+    "boots": "Boots",
+    "amulet": "Amulet",
+    "ring": "Ring",
+    "belt": "Belt"
   },
   "baseItems": {
-    "base_iron_ring": { "name": "Iron Ring" },
-    "base_jade_amulet": { "name": "Jade Amulet" },
-    "base_leather_belt": { "name": "Leather Belt" },
-    "base_grinning_fangs": { "name": "Grinning Fangs" },
-    "base_maple_round_shield": { "name": "Maple Round Shield" },
-    "base_silk_robe": { "name": "Silk Robe" }
+    "base_oak_staff": {
+      "name": "Ashen Staff"
+    },
+    "base_ember_wand": {
+      "name": "Withered Wand"
+    },
+    "base_hunter_bow": {
+      "name": "Shortbow"
+    },
+    "base_twin_fang_claw": {
+      "name": "Pict Claw"
+    },
+    "base_iron_helmet": {
+      "name": "Soldier Greathelm"
+    },
+    "base_etched_focus": {
+      "name": "Woven Focus"
+    },
+    "base_leather_gloves": {
+      "name": "Riveted Mitts"
+    },
+    "base_chain_vest": {
+      "name": "Fur Plate"
+    },
+    "base_hardsole_boots": {
+      "name": "Iron Greaves"
+    },
+    "base_lapis_amulet": {
+      "name": "Lapis Amulet"
+    },
+    "base_gold_ring": {
+      "name": "Gold Ring"
+    },
+    "base_heavy_belt": {
+      "name": "Heavy Belt"
+    }
   }
 }

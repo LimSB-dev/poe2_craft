@@ -8,7 +8,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-fontin), serif;
   --font-mono: var(--font-geist-mono);
 }
 
@@ -22,7 +22,13 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-fontin), serif;
+}
+
+/* PoE2 Small Caps — 제목, 라벨, 뱃지 등 강조 요소에 사용 */
+.font-sc {
+  font-family: var(--font-fontin-sc), var(--font-fontin), serif;
+  letter-spacing: 0.04em;
 }
 
 ::-webkit-scrollbar {

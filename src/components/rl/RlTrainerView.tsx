@@ -70,7 +70,7 @@ export const RlTrainerView = (): ReactElement => {
       <div className="w-full max-w-5xl flex flex-col gap-6">
         <header className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
           <div className="flex flex-col gap-2 min-w-0">
-            <h1 className="text-2xl font-bold text-zinc-950 dark:text-zinc-50">{t("title")}</h1>
+            <h1 className="font-sc text-2xl font-bold text-zinc-950 dark:text-zinc-50">{t("title")}</h1>
             <p className="text-sm text-zinc-700 dark:text-zinc-300 max-w-3xl">{t("intro")}</p>
             <p className="text-sm text-zinc-600 dark:text-zinc-400">
               <Link
@@ -85,7 +85,7 @@ export const RlTrainerView = (): ReactElement => {
         </header>
 
         <section className="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 p-5 shadow-sm">
-          <h2 className="text-base font-semibold text-zinc-900 dark:text-zinc-50 mb-4">
+          <h2 className="font-sc text-base font-semibold text-zinc-900 dark:text-zinc-50 mb-4">
             {t("inputs.title")}
           </h2>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
@@ -160,7 +160,7 @@ export const RlTrainerView = (): ReactElement => {
         </section>
 
         <section className="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 p-5 shadow-sm">
-          <h2 className="text-base font-semibold text-zinc-900 dark:text-zinc-50 mb-2">
+          <h2 className="font-sc text-base font-semibold text-zinc-900 dark:text-zinc-50 mb-2">
             {t("definition.title")}
           </h2>
           <ul className="text-sm text-zinc-700 dark:text-zinc-300 space-y-1">
@@ -174,7 +174,7 @@ export const RlTrainerView = (): ReactElement => {
 
         {result !== null && (
           <section className="rounded-2xl border border-amber-200 dark:border-amber-900/50 bg-amber-50/50 dark:bg-amber-950/20 p-5">
-            <h2 className="text-base font-semibold text-zinc-900 dark:text-zinc-50 mb-4">
+            <h2 className="font-sc text-base font-semibold text-zinc-900 dark:text-zinc-50 mb-4">
               {t("result.title")}
             </h2>
 
@@ -201,7 +201,7 @@ export const RlTrainerView = (): ReactElement => {
               </div>
             </div>
 
-            <h3 className="text-sm font-semibold text-zinc-800 dark:text-zinc-200 mb-2">
+            <h3 className="font-sc text-sm font-semibold text-zinc-800 dark:text-zinc-200 mb-2">
               {t("result.actionRatio")}
             </h3>
             <div className="space-y-3">

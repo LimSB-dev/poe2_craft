@@ -16,12 +16,17 @@
       "selectAllMods": "全选词缀",
       "clearAllMods": "清空选择",
       "run": "开始优化",
-      "optimizing": "优化中..."
+      "optimizing": "优化中...",
+      "dataSource": "数据来源",
+      "dataSourceLocal": "本地样例词缀池",
+      "dataSourcePoe2db": "PoE2DB导入目录"
     },
     "result": {
       "title": "优化结果",
       "bestStrategy": "推荐策略: {name}",
-      "note": "排序基于单次成功期望成本。若策略成功率为0，则按成功率排序。"
+      "note": "排序基于单次成功期望成本。若策略成功率为0，则按成功率排序。",
+      "fallbackDataSource": "PoE2DB 数据不可用，已回退到本地样例数据。",
+      "activeDataSource": "当前数据来源: {source}"
     },
     "table": {
       "strategy": "策略",

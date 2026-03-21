@@ -16,12 +16,17 @@
       "selectAllMods": "全モッド選択",
       "clearAllMods": "モッド選択解除",
       "run": "最適化を実行",
-      "optimizing": "最適化中..."
+      "optimizing": "最適化中...",
+      "dataSource": "データソース",
+      "dataSourceLocal": "ローカルサンプルモッドプール",
+      "dataSourcePoe2db": "PoE2DBインポートカタログ"
     },
     "result": {
       "title": "最適化結果",
       "bestStrategy": "推奨戦略: {name}",
-      "note": "並び順は成功あたり期待コストです。成功が0の戦略は成功率順で後ろに回します。"
+      "note": "並び順は成功あたり期待コストです。成功が0の戦略は成功率順で後ろに回します。",
+      "fallbackDataSource": "PoE2DBデータが利用できないため、ローカルサンプルデータを使用しました。",
+      "activeDataSource": "現在のデータソース: {source}"
     },
     "table": {
       "strategy": "戦略",

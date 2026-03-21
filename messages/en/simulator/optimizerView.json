@@ -16,12 +16,17 @@
       "selectAllMods": "Select all mods",
       "clearAllMods": "Clear mod selection",
       "run": "Run optimization",
-      "optimizing": "Optimizing..."
+      "optimizing": "Optimizing...",
+      "dataSource": "Data source",
+      "dataSourceLocal": "Local sample mod pool",
+      "dataSourcePoe2db": "PoE2DB imported catalog"
     },
     "result": {
       "title": "Optimization result",
       "bestStrategy": "Recommended strategy: {name}",
-      "note": "Strategies are ranked by expected cost per success. If a strategy has zero success, it is ranked by success rate."
+      "note": "Strategies are ranked by expected cost per success. If a strategy has zero success, it is ranked by success rate.",
+      "fallbackDataSource": "PoE2DB data was unavailable, so local sample data was used.",
+      "activeDataSource": "Active data source: {source}"
     },
     "table": {
       "strategy": "Strategy",

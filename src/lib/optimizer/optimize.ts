@@ -3,6 +3,7 @@ import {
   type ICurrencyCostModelType,
   type IOptimizationStrategyIdType,
 } from "@/lib/optimizer/actionModel";
+import type { IModDefinition } from "@/lib/poe2-item-simulator/types";
 import type { IOptimizationTargetSpecType } from "@/lib/optimizer/targetSpec";
 
 export type IOptimizationStrategySummaryType = {
@@ -58,6 +59,7 @@ const compareStrategies = (
 };
 
 export const runOptimization = (params: {
+  modPool: ReadonlyArray<IModDefinition>;
   target: IOptimizationTargetSpecType;
   budgetChaos: number;
   trials: number;
@@ -74,6 +76,7 @@ export const runOptimization = (params: {
     for (let trialIndex = 0; trialIndex < params.trials; trialIndex += 1) {
       const trial = simulateSingleTrial({
         strategyId,
+        modPool: params.modPool,
         targetSpec: params.target,
         budgetChaos: params.budgetChaos,
         costModel: params.costModel,

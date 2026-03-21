@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { ReactElement } from "react";
 import { LocaleSwitcher } from "@/components/i18n/LocaleSwitcher";
 import { Link } from "@/lib/i18n/navigation";
@@ -16,6 +16,8 @@ type IModType = {
 };
 
 type IOptimizationResponseType = {
+  requestedDataSource: "local" | "poe2db";
+  activeDataSource: "local" | "poe2db";
   result: {
     target: {
       validModKeys: string[];
@@ -70,20 +72,56 @@ export const OptimizerView = (): ReactElement => {
   const [trials, setTrials] = useState<number>(4000);
   const [minTotalAffixes, setMinTotalAffixes] = useState<number>(6);
   const [requireTierOne, setRequireTierOne] = useState<boolean>(true);
-  const [selectedModKeys, setSelectedModKeys] = useState<string[]>(() => {
-    return MOD_POOL.map((modDefinition) => modDefinition.modKey);
-  });
+  const [dataSource, setDataSource] = useState<"local" | "poe2db">("local");
+  const [activeDataSource, setActiveDataSource] = useState<"local" | "poe2db">("local");
+  const [availableMods, setAvailableMods] = useState<IModType[]>(() => [...MOD_POOL]);
+  const [selectedModKeys, setSelectedModKeys] = useState<string[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
+  const [loadingMods, setLoadingMods] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<IOptimizationResponseType | null>(null);
 
   const modGroups = useMemo(() => {
-    const prefixes = MOD_POOL.filter((modDefinition) => modDefinition.modType === "prefix");
-    const suffixes = MOD_POOL.filter((modDefinition) => modDefinition.modType === "suffix");
+    const prefixes = availableMods.filter((modDefinition) => modDefinition.modType === "prefix");
+    const suffixes = availableMods.filter((modDefinition) => modDefinition.modType === "suffix");
     return { prefixes, suffixes };
-  }, []);
+  }, [availableMods]);
 
-  const isAllSelected = selectedModKeys.length === MOD_POOL.length;
+  const isAllSelected = selectedModKeys.length === availableMods.length;
+
+  useEffect(() => {
+    const loadMods = async (): Promise<void> => {
+      setLoadingMods(true);
+      setError(null);
+      try {
+        const response = await fetch(`/api/optimize?dataSource=${dataSource}`, {
+          method: "GET",
+          cache: "no-store",
+        });
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`);
+        }
+
+        const json = (await response.json()) as {
+          requestedDataSource: "local" | "poe2db";
+          activeDataSource: "local" | "poe2db";
+          availableMods: IModType[];
+        };
+        setAvailableMods(json.availableMods);
+        setActiveDataSource(json.activeDataSource);
+        setSelectedModKeys(json.availableMods.map((modDefinition) => modDefinition.modKey));
+      } catch {
+        setError(t("error"));
+        setAvailableMods([...MOD_POOL]);
+        setActiveDataSource("local");
+        setSelectedModKeys(MOD_POOL.map((modDefinition) => modDefinition.modKey));
+      } finally {
+        setLoadingMods(false);
+      }
+    };
+
+    void loadMods();
+  }, [dataSource, t]);
 
   const toggleModSelection = (modKey: string): void => {
     const current = new Set(selectedModKeys);
@@ -106,6 +144,7 @@ export const OptimizerView = (): ReactElement => {
           "content-type": "application/json",
         },
         body: JSON.stringify({
+          dataSource,
           validModKeys: selectedModKeys,
           minTotalAffixes,
           requireTierOne,
@@ -119,6 +158,8 @@ export const OptimizerView = (): ReactElement => {
       }
 
       const json = (await response.json()) as IOptimizationResponseType;
+      setActiveDataSource(json.activeDataSource);
+      setAvailableMods(json.availableMods);
       setResult(json);
     } catch {
       setError(t("error"));
@@ -153,6 +194,25 @@ export const OptimizerView = (): ReactElement => {
           </h2>
 
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-4">
+            <label className="flex flex-col gap-1.5">
+              <span className="text-xs font-medium text-zinc-600 dark:text-zinc-400">
+                {t("inputs.dataSource")}
+              </span>
+              <select
+                value={dataSource}
+                onChange={(event) => {
+                  const next = event.target.value;
+                  if (next === "local" || next === "poe2db") {
+                    setDataSource(next);
+                  }
+                }}
+                className="rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-3 py-2 text-sm"
+              >
+                <option value="local">{t("inputs.dataSourceLocal")}</option>
+                <option value="poe2db">{t("inputs.dataSourcePoe2db")}</option>
+              </select>
+            </label>
+
             <label className="flex flex-col gap-1.5">
               <span className="text-xs font-medium text-zinc-600 dark:text-zinc-400">
                 {t("inputs.budgetChaos")}
@@ -229,7 +289,7 @@ export const OptimizerView = (): ReactElement => {
                 if (isAllSelected) {
                   setSelectedModKeys([]);
                 } else {
-                  setSelectedModKeys(MOD_POOL.map((modDefinition) => modDefinition.modKey));
+                  setSelectedModKeys(availableMods.map((modDefinition) => modDefinition.modKey));
                 }
               }}
               className="rounded-lg border border-zinc-300 dark:border-zinc-700 px-3 py-1.5 text-sm text-zinc-800 dark:text-zinc-200"
@@ -292,10 +352,10 @@ export const OptimizerView = (): ReactElement => {
             onClick={() => {
               void runOptimization();
             }}
-            disabled={loading}
+            disabled={loading || loadingMods}
             className="mt-5 rounded-lg bg-zinc-900 dark:bg-zinc-100 px-4 py-2.5 text-sm font-semibold text-white dark:text-zinc-900 disabled:opacity-50"
           >
-            {loading ? t("inputs.optimizing") : t("inputs.run")}
+            {loading || loadingMods ? t("inputs.optimizing") : t("inputs.run")}
           </button>
         </section>
 
@@ -308,6 +368,19 @@ export const OptimizerView = (): ReactElement => {
             </h2>
             <p className="text-sm text-zinc-700 dark:text-zinc-300 mb-3">
               {t("result.bestStrategy", { name: result.result.bestStrategy.strategyLabel })}
+            </p>
+            {result.requestedDataSource !== result.activeDataSource && (
+              <p className="text-xs text-amber-700 dark:text-amber-300 mb-2">
+                {t("result.fallbackDataSource")}
+              </p>
+            )}
+            <p className="text-xs text-zinc-600 dark:text-zinc-400 mb-1">
+              {t("result.activeDataSource", {
+                source:
+                  activeDataSource === "poe2db"
+                    ? t("inputs.dataSourcePoe2db")
+                    : t("inputs.dataSourceLocal"),
+              })}
             </p>
             <p className="text-xs text-zinc-600 dark:text-zinc-400 mb-4">
               {t("result.note")}

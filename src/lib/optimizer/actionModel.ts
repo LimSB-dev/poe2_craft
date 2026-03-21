@@ -1,5 +1,3 @@
-import { applyChaosOrb } from "@/lib/poe2-item-simulator/chaosOrb";
-import { applyEssence, LIFE_ESSENCE } from "@/lib/poe2-item-simulator/essence";
 import type { IItemRoll, IModDefinition } from "@/lib/poe2-item-simulator/types";
 import {
   estimateQualityScore,
@@ -30,6 +28,108 @@ const EMPTY_RARE_ITEM: IItemRoll = {
   rarity: "rare",
   prefixes: [],
   suffixes: [],
+};
+
+const pickWeighted = (choices: ReadonlyArray<IModDefinition>): IModDefinition => {
+  let totalWeight = 0;
+  for (const choice of choices) {
+    totalWeight += Math.max(0.000001, choice.weight);
+  }
+
+  let randomValue = Math.random() * totalWeight;
+  for (const choice of choices) {
+    randomValue -= Math.max(0.000001, choice.weight);
+    if (randomValue <= 0) {
+      return copyMod(choice);
+    }
+  }
+
+  const fallback = choices[choices.length - 1];
+  if (!fallback) {
+    throw new Error("No mod choices available.");
+  }
+  return copyMod(fallback);
+};
+
+const getCandidates = (
+  modPool: ReadonlyArray<IModDefinition>,
+  modType: "prefix" | "suffix",
+  excludedModKeys: ReadonlySet<string>
+): IModDefinition[] => {
+  return modPool.filter((modDefinition) => {
+    if (modDefinition.modType !== modType) {
+      return false;
+    }
+    if (excludedModKeys.has(modDefinition.modKey)) {
+      return false;
+    }
+    return true;
+  });
+};
+
+const randomSplit = (): { prefixCount: number; suffixCount: number } => {
+  const totalAffixes = 4 + Math.floor(Math.random() * 3);
+  const splits: Array<{ prefixCount: number; suffixCount: number }> = [];
+
+  for (let prefixCount = 0; prefixCount <= 3; prefixCount += 1) {
+    const suffixCount = totalAffixes - prefixCount;
+    if (suffixCount >= 0 && suffixCount <= 3) {
+      splits.push({ prefixCount, suffixCount });
+    }
+  }
+
+  const index = Math.floor(Math.random() * splits.length);
+  const chosen = splits[index];
+  if (!chosen) {
+    throw new Error("No prefix/suffix split available.");
+  }
+  return chosen;
+};
+
+const rollRareItemFromPool = (modPool: ReadonlyArray<IModDefinition>): IItemRoll => {
+  const excludedModKeys = new Set<string>();
+  const { prefixCount, suffixCount } = randomSplit();
+  const prefixes: IModDefinition[] = [];
+  const suffixes: IModDefinition[] = [];
+
+  for (let index = 0; index < prefixCount; index += 1) {
+    const candidates = getCandidates(modPool, "prefix", excludedModKeys);
+    if (candidates.length === 0) {
+      break;
+    }
+    const picked = pickWeighted(candidates);
+    excludedModKeys.add(picked.modKey);
+    prefixes.push(picked);
+  }
+
+  for (let index = 0; index < suffixCount; index += 1) {
+    const candidates = getCandidates(modPool, "suffix", excludedModKeys);
+    if (candidates.length === 0) {
+      break;
+    }
+    const picked = pickWeighted(candidates);
+    excludedModKeys.add(picked.modKey);
+    suffixes.push(picked);
+  }
+
+  return {
+    rarity: "rare",
+    prefixes,
+    suffixes,
+  };
+};
+
+const applyEssenceFromPool = (modPool: ReadonlyArray<IModDefinition>): IItemRoll => {
+  const rolled = rollRareItemFromPool(modPool);
+  const allMods = [...rolled.prefixes, ...rolled.suffixes];
+  if (allMods.length > 0) {
+    const forcedIndex = Math.floor(Math.random() * allMods.length);
+    const forced = allMods[forcedIndex];
+    if (forced) {
+      forced.tier = Math.min(forced.tier, 3);
+    }
+  }
+  return rolled;
 };
 
 const copyMod = (modDefinition: IModDefinition): IModDefinition => {
@@ -63,6 +163,7 @@ const upgradeRandomModToTierOne = (item: IItemRoll): IItemRoll => {
 
 const runChaosUntilDone = (
   initialItem: IItemRoll,
+  modPool: ReadonlyArray<IModDefinition>,
   targetSpec: IOptimizationTargetSpecType,
   budgetChaos: number,
   costModel: ICurrencyCostModelType,
@@ -75,7 +176,7 @@ const runChaosUntilDone = (
   let omenApplied = omenActive;
 
   while (usedChaos < budgetChaos) {
-    item = applyChaosOrb(item);
+    item = rollRareItemFromPool(modPool);
     if (omenApplied) {
       item = upgradeRandomModToTierOne(item);
       omenApplied = false;
@@ -106,6 +207,7 @@ const runChaosUntilDone = (
 
 export const simulateSingleTrial = (params: {
   strategyId: IOptimizationStrategyIdType;
+  modPool: ReadonlyArray<IModDefinition>;
   targetSpec: IOptimizationTargetSpecType;
   budgetChaos: number;
   costModel: ICurrencyCostModelType;
@@ -115,6 +217,7 @@ export const simulateSingleTrial = (params: {
   if (params.strategyId === "chaos_only") {
     return runChaosUntilDone(
       EMPTY_RARE_ITEM,
+      params.modPool,
       params.targetSpec,
       params.budgetChaos,
       params.costModel,
@@ -124,7 +227,7 @@ export const simulateSingleTrial = (params: {
   }
 
   if (params.strategyId === "essence_then_chaos") {
-    const item = applyEssence(EMPTY_RARE_ITEM, LIFE_ESSENCE);
+    const item = applyEssenceFromPool(params.modPool);
     const totalCost = params.costModel.essence;
     actions.push("essence");
 
@@ -140,6 +243,7 @@ export const simulateSingleTrial = (params: {
 
     const next = runChaosUntilDone(
       item,
+      params.modPool,
       params.targetSpec,
       params.budgetChaos,
       params.costModel,
@@ -152,7 +256,7 @@ export const simulateSingleTrial = (params: {
     };
   }
 
-  const item = applyEssence(EMPTY_RARE_ITEM, LIFE_ESSENCE);
+  const item = applyEssenceFromPool(params.modPool);
   let totalCost = params.costModel.essence + params.costModel.omen;
   actions.push("essence");
   actions.push("omen");
@@ -169,6 +273,7 @@ export const simulateSingleTrial = (params: {
 
   const next = runChaosUntilDone(
     item,
+    params.modPool,
     params.targetSpec,
     params.budgetChaos,
     params.costModel,

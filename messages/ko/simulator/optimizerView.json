@@ -16,12 +16,17 @@
       "selectAllMods": "모든 옵션 선택",
       "clearAllMods": "옵션 선택 해제",
       "run": "최적 전략 계산",
-      "optimizing": "계산 중..."
+      "optimizing": "계산 중...",
+      "dataSource": "데이터 소스",
+      "dataSourceLocal": "로컬 샘플 모드 풀",
+      "dataSourcePoe2db": "PoE2DB 수집 카탈로그"
     },
     "result": {
       "title": "최적화 결과",
       "bestStrategy": "추천 전략: {name}",
-      "note": "정렬 기준은 성공당 기대 비용(expected cost per success)이며, 성공이 없는 전략은 성공률 순으로 밀립니다."
+      "note": "정렬 기준은 성공당 기대 비용(expected cost per success)이며, 성공이 없는 전략은 성공률 순으로 밀립니다.",
+      "fallbackDataSource": "PoE2DB 데이터가 없어 로컬 샘플 데이터로 대체했습니다.",
+      "activeDataSource": "현재 사용 데이터 소스: {source}"
     },
     "table": {
       "strategy": "전략",

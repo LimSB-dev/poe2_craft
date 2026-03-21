@@ -2,37 +2,37 @@
 alwaysApply: true
 ---
 
-# 배포·PR 워크플로
+# Deployment & PR Workflow
 
-사용자가 **배포해달라**거나 **배포하게** 등 배포를 요청하면 다음 순서로 진행한다.
+When a user requests a deployment (e.g., "deploy it", "make it deploy"), follow this workflow.
 
-## 1. 브랜치 확인
+## 1. Check the branch
 
-- `git status`, `git branch`로 현재 브랜치와 변경 파일을 확인한다.
+- Check the current branch and changed files with `git status` and `git branch`.
 
-## 2. main 또는 master 에 있는 경우
+## 2. If you are on `main` or `master`
 
-- **main** or **master** 브랜치에 있으면 **직접 커밋·푸시하지 않는다.**
-- **새 feature 브랜치**를 만든다.
-  - 이름 예: `feature/설명` 또는 `fix/설명` (변경 성격에 맞게)
-- 변경 파일을 스테이징하고 **커밋**한다. (커밋 메시지는 변경 내용을 요약)
-- **원격에 푸시**한다: `git push -u origin <브랜치명>`
-- **PR을 반드시 생성**한다.
-  - **제목**: 커밋 메시지와 맞춘 한 줄 요약 (예: `feat(telegram): 채널 브로드캐스트 + 기준 시각 표시`).
-  - **설명(body)**: 아래를 포함해 **설명을 직접 작성**한다.
-    - **변경 요약**: 이 PR이 무엇을 하는지 2~3문장으로 요약.
-    - **수정/추가된 파일·기능**: 변경된 경로와 담당 기능을 짧게 나열.
-    - 변경 사항이 무엇인지 화면 스크린샷 후 이미지 첨부
-  - `gh pr create`가 있으면 `--title`과 `--body`로 **실제 PR 생성**까지 실행한다.
-  - `gh`가 없으면 GitHub PR 생성 URL을 알려주고, **제목**과 **설명 본문**을 마크다운으로 그대로 제공해 사용자가 복사·붙여넣기 할 수 있게 한다.
+- If you are on **main** or **master**, **do not** commit or push directly.
+- Create a new **feature branch**.
+  - Example names: `feature/description` or `fix/description` (match the change type)
+- Stage the changed files and **commit** them. (Commit message should summarize the changes.)
+- **Push to remote**: `git push -u origin <branch-name>`
+- **Create a PR (required)**.
+  - **Title**: a one-line summary aligned with the commit message (e.g., `feat(telegram): channel broadcast + reference time`).
+  - **Body**: write the description yourself and include:
+    - **Summary of changes**: 2-3 sentences describing what this PR does.
+    - **Files / features changed**: briefly list changed paths and responsibilities.
+    - Attach a screenshot and indicate what was changed visually.
+  - If `gh pr create` is available, run it with `--title` and `--body` to **create the actual PR**.
+  - If `gh` is not available, provide the GitHub PR creation URL and output the **title** and **body markdown** so the user can copy/paste.
 
-## 3. 사용자가 실수로 이미 머지한 브랜치에서 배포 요청한 경우
+## 3. If the user mistakenly requests deployment from an already-merged branch
 
-- main 또는 master를 fetching 후 작업 내용을 가지고 이동 후 2번을 반복
+- Fetch `main` or `master`, move the work onto it, then repeat step 2.
 
-## 4. 요약
+## 4. Summary
 
-- 배포 요청 시: **브랜치 확인 → (main / master이면 새 브랜치) → 커밋 → 푸시 → PR 생성**까지 진행한다.
-- **PR은 반드시 생성**하고, 제목과 **설명을 직접 작성**해 넣는다. (도움만이 아니라 실제 생성 또는 복붙용 본문 제공)
-- main / master 직접 푸시는 하지 않는다.
-- 배포·PR 진행 시 git/PR 관련은 묻지 않고 위 순서대로 진행한다.
+- For deployment requests: **check branch → (if main/master, create new branch) → commit → push → create PR**.
+- **PR creation is mandatory**, and you must write the **title and body yourself**. (Not just assistance—provide actual PR creation or copy/paste-ready content.)
+- Do not directly push to `main` / `master`.
+- During deployment / PR work, do not ask git/PR questions; follow the workflow above.

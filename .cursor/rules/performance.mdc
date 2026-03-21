@@ -2,31 +2,31 @@
 alwaysApply: true
 ---
 
-# 성능 (Next.js · React)
+# Performance (Next.js · React)
 
-## 이미지
+## Images
 
-- **`next/image`**: 레이아웃 시프트 방지를 위해 `width`/`height` 또는 `fill`과 `sizes`를 적절히 지정한다.
-- **용량**: 가능한 포맷·크기 최적화(압축, 소스셋)를 고려한다.
+- **`next/image`**: specify `width`/`height` or `fill` plus `sizes` appropriately to prevent layout shifts.
+- **Size/format**: consider optimizing formats and sizes (compression, source sets, etc.).
 
-## 코드 분할
+## Code splitting
 
-- **큰 라이브러리**는 해당 기능이 필요한 경로에서만 `dynamic()` 또는 `import()`로 **지연 로딩**한다.
-- **페이지 단위**로 불필요한 클라이언트 번들을 늘리지 않는다.
+- For **large libraries**, use `dynamic()` or `import()` for **only the routes that need the feature** (defer loading).
+- Keep it **page/route scoped**; do not grow the client bundle unnecessarily.
 
-## 목록·렌더링
+## Lists / rendering
 
-- **매우 긴 목록**은 가상화(virtualization) 등을 검토한다. 단순한 짧은 목록은 과도한 최적화를 하지 않는다.
+- For **very long lists**, consider virtualization. For short/simple lists, avoid premature optimization.
 
-## 데이터
+## Data
 
-- **불필요한 클라이언트 fetch**를 반복하지 않는다. 서버에서 가져올 수 있는 데이터는 서버에서 처리한다 (App Router 규칙과 연동).
-- **캐시·재검증** 정책은 `next-app-router` 규칙에 맞춘다.
+- Avoid unnecessary repeated client `fetch` calls. Handle data on the server when possible (aligned with App Router rules).
+- Match caching/revalidation policies to the `next-app-router` rules.
 
-## 측정
+## Measurement
 
-- 문제가 보일 때 **번들 분석기**·Lighthouse·Web Vitals로 원인을 확인하고, 추측만으로 미리 최적화하지 않는다.
+- When you see an issue, identify the cause with bundle analysis, Lighthouse, and Web Vitals. Do not optimize purely by guess.
 
-## 요약
+## Summary
 
-이미지·번들·데이터 경로를 의식하고, 필요할 때 측정 기반으로 개선한다.
+Be mindful of image sizes, bundle paths, and data routes, and improve based on measurements when needed.

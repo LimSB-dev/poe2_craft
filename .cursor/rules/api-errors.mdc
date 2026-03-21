@@ -2,32 +2,32 @@
 alwaysApply: true
 ---
 
-# API · 에러 응답 규칙
+# API · Error Response Rules
 
-## 목적
+## Goal
 
-클라이언트·Jest mock·서버 구현이 **같은 계약**을 따르도록 성공·실패 응답 형태를 통일한다.
+Unify the success/failure response shapes so that the client, Jest mocks, and server implementations follow the **same contract**.
 
-## HTTP 상태 코드
+## HTTP status codes
 
-- **2xx**: 성공. `200` 일반, `201` 생성, `204` 본문 없음 성공 등 용도에 맞게 사용한다.
-- **4xx**: 클라이언트 책임 (잘못된 입력, 인증·권한 없음). `400`·`401`·`403`·`404`·`422` 등 의미에 맞게 구분한다.
-- **5xx**: 서버 오류. 사용자에게는 **구체적 스택을 노출하지 않는다**.
+- **2xx**: success. Use appropriately (`200` OK, `201` created, `204` no-body success, etc.).
+- **4xx**: client responsibility (invalid input, authentication/authorization missing). Differentiate by meaning (`400`, `401`, `403`, `404`, `422`, etc.).
+- **5xx**: server error. Do **not** leak detailed stack traces to users.
 
-## 응답 본문 (권장 패턴)
+## Response body (recommended pattern)
 
-- **성공**: `{ "data": ... }` 또는 도메인에 맞는 명확한 필드명. 일관되게 유지한다.
-- **실패**: `{ "error": { "code": "...", "message": "..." } }` 형태 등 **프로젝트에서 정한 한 가지**를 따른다. `message`는 사용자에게 보여줄 수 있는 수준의 문구로만 (내부 디버그는 로그에).
+- **Success**: either `{ "data": ... }` or an explicit, domain-appropriate field name. Keep it consistent.
+- **Failure**: follow **one** project-defined shape, e.g. `{ "error": { "code": "...", "message": "..." } }`. Keep `message` at a user-safe level (put internal debug details in logs).
 
-## 클라이언트 처리
+## Client handling
 
-- **fetch** 실패 시 `response.ok`와 본문을 분기하고, **에러 메시지·토스트**는 i18n 규칙과 맞춘다.
-- **재시도**: 네트워크·5xx에만 제한적으로 적용하고, 무한 재시도는 피한다.
+- On `fetch` failure, branch on `response.ok` and parse the body. Ensure error messages/toasts match your i18n rules.
+- **Retry**: limit it to network issues and 5xx responses only; avoid infinite retries.
 
-## 테스트와의 정합
+## Alignment with tests
 
-- Jest에서 API를 mock할 때 **실제 Route Handler와 동일한 성공/실패 형태**를 맞춘다.
+- When mocking the API in Jest, match the **exact success/failure shapes** used by the real Route Handler.
 
-## 요약
+## Summary
 
-상태 코드 의미를 지키고, 성공·실패 JSON 형태를 한 곳에서 정의해 일관되게 사용한다.
+Respect the meaning of status codes, define success/failure JSON shapes in one place, and use them consistently.

@@ -1,0 +1,18 @@
+{
+  "itemClass": {
+    "ring": "指輪",
+    "amulet": "アミュレット",
+    "belt": "ベルト",
+    "claw": "クロー",
+    "shield": "盾",
+    "bodyArmour": "ボディアーマー"
+  },
+  "baseItems": {
+    "base_iron_ring": { "name": "鉄の指輪" },
+    "base_jade_amulet": { "name": "翡翠のアミュレット" },
+    "base_leather_belt": { "name": "革ベルト" },
+    "base_grinning_fangs": { "name": "ニヤリと笑う牙" },
+    "base_maple_round_shield": { "name": "楓の円盾" },
+    "base_silk_robe": { "name": "絹のローブ" }
+  }
+}

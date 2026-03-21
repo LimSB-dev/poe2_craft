@@ -1,0 +1,18 @@
+{
+  "itemClass": {
+    "ring": "戒指",
+    "amulet": "护身符",
+    "belt": "腰带",
+    "claw": "爪",
+    "shield": "盾牌",
+    "bodyArmour": "胸甲"
+  },
+  "baseItems": {
+    "base_iron_ring": { "name": "铁戒指" },
+    "base_jade_amulet": { "name": "翠玉护身符" },
+    "base_leather_belt": { "name": "皮革腰带" },
+    "base_grinning_fangs": { "name": "狞笑之牙" },
+    "base_maple_round_shield": { "name": "枫木圆盾" },
+    "base_silk_robe": { "name": "丝绸长袍" }
+  }
+}

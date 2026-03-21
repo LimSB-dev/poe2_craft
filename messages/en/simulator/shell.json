@@ -1,0 +1,13 @@
+{
+  "title": "Path of Exile 2 — Item simulator",
+  "intro": "Pick a base item, choose how many prefixes and suffixes you want to roll, then preview one outcome. This is a simplified model for layout and iteration.",
+  "localeSwitcher": {
+    "label": "Language",
+    "localeNames": {
+      "en": "English",
+      "ko": "한국어",
+      "ja": "日本語",
+      "zh-CN": "简体中文"
+    }
+  }
+}

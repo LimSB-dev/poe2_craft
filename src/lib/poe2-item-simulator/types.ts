@@ -22,3 +22,24 @@ export interface IModRollContext {
   excludedModKeys: ReadonlySet<string>;
 }
 
+export interface IBaseItemDefinition {
+  baseItemKey: string;
+  displayName: string;
+  itemClass: string;
+  /** Stable key for i18n (e.g. `simulator.itemClass.{itemClassKey}`). */
+  itemClassKey: string;
+}
+
+/** User-selected knobs before rolling a preview. */
+export interface ISimulationOptionsType {
+  rarity: ItemRarityType;
+  desiredPrefixCount: number;
+  desiredSuffixCount: number;
+}
+
+/** One preview: chosen base + rolled mods. */
+export interface IItemSimulationResultType {
+  baseItem: IBaseItemDefinition;
+  roll: IItemRoll;
+}
+

@@ -1,0 +1,18 @@
+{
+  "itemClass": {
+    "ring": "반지",
+    "amulet": "목걸이",
+    "belt": "벨트",
+    "claw": "클로",
+    "shield": "방패",
+    "bodyArmour": "몸 방어구"
+  },
+  "baseItems": {
+    "base_iron_ring": { "name": "철 반지" },
+    "base_jade_amulet": { "name": "비취 목걸이" },
+    "base_leather_belt": { "name": "가죽 벨트" },
+    "base_grinning_fangs": { "name": "씨익 웃는 송곳니" },
+    "base_maple_round_shield": { "name": "단풍나무 원형 방패" },
+    "base_silk_robe": { "name": "비단 로브" }
+  }
+}

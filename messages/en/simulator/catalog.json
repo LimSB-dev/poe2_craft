@@ -1,0 +1,18 @@
+{
+  "itemClass": {
+    "ring": "Ring",
+    "amulet": "Amulet",
+    "belt": "Belt",
+    "claw": "Claw",
+    "shield": "Shield",
+    "bodyArmour": "Body Armour"
+  },
+  "baseItems": {
+    "base_iron_ring": { "name": "Iron Ring" },
+    "base_jade_amulet": { "name": "Jade Amulet" },
+    "base_leather_belt": { "name": "Leather Belt" },
+    "base_grinning_fangs": { "name": "Grinning Fangs" },
+    "base_maple_round_shield": { "name": "Maple Round Shield" },
+    "base_silk_robe": { "name": "Silk Robe" }
+  }
+}

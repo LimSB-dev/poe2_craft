@@ -1,0 +1,10 @@
+{
+  "options": {
+    "targetRarity": "Target rarity",
+    "prefixes": "Prefixes",
+    "suffixes": "Suffixes",
+    "effectiveRoll": "Effective roll: {prefixCount} prefix(es), {suffixCount} suffix(es). {hint}",
+    "effectiveRollHint": "Magic max 1 each; rare max 3 each.",
+    "rollPreview": "Roll preview"
+  }
+}

@@ -5,9 +5,9 @@ import type { ReactNode } from "react";
 
 const fontin = localFont({
   src: [
-    { path: "../../public/fonts/Fontin-Regular.woff", weight: "400", style: "normal" },
-    { path: "../../public/fonts/Fontin-Italic.woff",  weight: "400", style: "italic" },
-    { path: "../../public/fonts/Fontin-Bold.woff",    weight: "700", style: "normal" },
+    { path: "./fonts/Fontin-Regular.woff", weight: "400", style: "normal" },
+    { path: "./fonts/Fontin-Italic.woff",  weight: "400", style: "italic" },
+    { path: "./fonts/Fontin-Bold.woff",    weight: "700", style: "normal" },
   ],
   variable: "--font-fontin",
   display: "swap",
@@ -15,7 +15,7 @@ const fontin = localFont({
 
 const fontinSmallCaps = localFont({
   src: [
-    { path: "../../public/fonts/Fontin-SmallCaps.woff", weight: "400", style: "normal" },
+    { path: "./fonts/Fontin-SmallCaps.woff", weight: "400", style: "normal" },
   ],
   variable: "--font-fontin-sc",
   display: "swap",

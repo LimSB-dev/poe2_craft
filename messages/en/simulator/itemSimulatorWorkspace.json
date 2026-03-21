@@ -1,7 +1,7 @@
 {
   "itemSimulatorWorkspace": {
     "title": "Path of Exile 2 — Item simulator",
-    "intro": "Pick a base item, choose how many prefixes and suffixes you want to roll, then preview one outcome. This is a simplified model for layout and iteration.",
+    "intro": "Pick a base and target modifiers, then view a recommended crafting order that favours lower exalted-orb spend—the same cost axis used for reinforcement-learning rewards.",
     "nav": {
       "strategy": "Open strategy view",
       "rl": "RL environment",
@@ -18,8 +18,8 @@
         "description": "Add the modifiers you want on your item and adjust roll settings."
       },
       "result": {
-        "title": "Expected result",
-        "description": "One random outcome from the current mod pool and weights."
+        "title": "Efficient crafting path",
+        "description": "Suggested steps from your base toward the modifiers you listed. Currency costs are compared in exalted orbs."
       }
     },
     "baseFilter": {
@@ -48,19 +48,35 @@
       "jewellery": "Jewellery"
     },
     "resultCard": {
-      "empty": "Choose a base item and options, then press \"Roll preview\"."
+      "empty": "Press the button below to generate the recommended path for this base and your targets. With no targets, you will only see a reminder to add some."
     },
     "rarity": {
+      "normal": "Normal",
       "magic": "Magic",
       "rare": "Rare"
+    },
+    "efficientPlan": {
+      "emptyNeedBase": "Select a base item first.",
+      "heading": "Recommended order (exalt-efficient)",
+      "intro": "Orb of Alchemy is usually the cheapest way to reach rare. Then anchor each goal mod with a Greater Essence, and refine with Chaos Orbs.",
+      "targetCount": "Plan assumes {count} target modifier(s).",
+      "costsLine": "Reference cost per use (exalted): alchemy ≈ {alchemy}, chaos ≈ {chaos}, sim-essence ≈ {essence}.",
+      "rlNote": "Reinforcement learning in this project scores policies that spend fewer exalts in this normalised sense.",
+      "steps": {
+        "selectTargetsFirst": "Add target modifiers in the modifiers panel. Without them we cannot tie essences and chaos steps to concrete goals.",
+        "alchemyNormalMagic": "On a normal or magic base, use Orb of Alchemy to make the item rare (2 prefixes and 2 suffixes rolled at random). This is the lowest-exalt entry to rare in our model.",
+        "essenceEachDesired": "For each of the {count} target modifiers, use a matching Greater Essence to force that line. (High exalt cost, but cuts variance.)",
+        "chaosUntilTargets": "In PoE2, Chaos removes one explicit then adds another. Repeat until the remaining goals appear.",
+        "exaltTopUp": "If prefix/suffix slots remain, fill them with Exalted Orbs.",
+        "annulOptional": "If only unwanted mods block progress, consider Orb of Annulment, then revisit chaos/exalt."
+      }
     },
     "resultModList": {
       "prefixes": "Prefixes",
       "suffixes": "Suffixes",
-      "empty": "None"
+      "empty": "None",
+      "matchedDesiredRow": "Matches a target modifier, tier {tier}"
     },
-    "actions": {
-      "runRoll": "Roll preview"
-    }
+    "computeEfficientPlanButton": "Show efficient path"
   }
 }

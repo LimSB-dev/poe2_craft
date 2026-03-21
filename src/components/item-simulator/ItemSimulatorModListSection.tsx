@@ -1,3 +1,6 @@
+"use client";
+
+import { useTranslations } from "next-intl";
 import type { ReactElement } from "react";
 
 import { SimulatorModTemplateText } from "@/components/item-simulator/i18n/SimulatorModTemplateText";
@@ -16,6 +19,8 @@ export const ItemSimulatorModListSection = ({
   emptyLabel,
   desiredModKeys,
 }: ItemSimulatorModListSectionPropsType): ReactElement => {
+  const t = useTranslations("simulator.itemSimulatorWorkspace");
+
   return (
     <div className="flex flex-col gap-2">
       <h3 className="text-xs font-semibold font-sc uppercase tracking-wide text-zinc-500 dark:text-zinc-400">
@@ -38,6 +43,13 @@ export const ItemSimulatorModListSection = ({
                     ? "bg-amber-50 dark:bg-amber-900/20 text-amber-800 dark:text-amber-300"
                     : "text-zinc-800 dark:text-zinc-200"
                 }`}
+                aria-label={
+                  isDesired
+                    ? t("resultModList.matchedDesiredRow", {
+                        tier: modDefinition.tier,
+                      })
+                    : undefined
+                }
               >
                 {isDesired && (
                   <span

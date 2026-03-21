@@ -1,8 +1,9 @@
 {
-    "i18n-ally.localesPaths": [
-        "messages",
-        "src/i18n",
-        "src/components/i18n",
-        "src/lib/i18n"
-    ]
+  "i18n-ally.localesPaths": [
+    "messages",
+    "src/i18n",
+    "src/components/i18n",
+    "src/lib/i18n"
+  ],
+  "i18n-ally.keystyle": "nested"
 }

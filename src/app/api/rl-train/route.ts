@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 
+import { getRlCraftingActionCostsExalt } from "@/lib/poe2-item-simulator/currencyExaltExchangeRates";
+
 type ITrainRequestType = {
   desiredGoodMods?: number;
   budget?: number;
@@ -12,6 +14,7 @@ type IEnvStateType = {
   avgTierBucket: number;
   chaosUsed: number;
   usedEssence: number;
+  /** 누적 엑잘 비용 (행동당 `getRlCraftingActionCostsExalt`). */
   totalCost: number;
   stepCount: number;
 };
@@ -31,6 +34,10 @@ type ITrainSummaryType = {
     stop: number;
   };
   bestInitialAction: "chaos" | "essence" | "stop";
+  costsExaltPerAction: {
+    chaosOrb: number;
+    essence: number;
+  };
 };
 
 const ACTION_CHAOS: number = 0;
@@ -44,8 +51,6 @@ const MAX_BUDGET: number = 200;
 const MIN_EPISODES: number = 200;
 const MAX_EPISODES: number = 20000;
 
-const CHAOS_COST: number = 1;
-const ESSENCE_COST: number = 3;
 const GOOD_TIER_MAX_INCLUSIVE: number = 2;
 const MAX_STEPS: number = 120;
 
@@ -73,8 +78,8 @@ const createInitialState = (): IEnvStateType => {
   };
 };
 
-const stateKey = (state: IEnvStateType): string => {
-  const budgetLeft = Math.max(0, MAX_BUDGET - state.chaosUsed);
+const stateKey = (state: IEnvStateType, budget: number): string => {
+  const budgetLeft = Math.max(0, budget - state.chaosUsed);
   return [
     state.goodMods,
     state.totalAffixes,
@@ -120,6 +125,7 @@ const quality = (state: IEnvStateType, desiredGoodMods: number): number => {
   return (2.2 * state.goodMods) + (0.4 * state.totalAffixes) + (0.6 * tierScore) + targetBonus;
 };
 
+/** 종료 시: 아이템 품질 − 누적 엑잘 소모 (엑잘을 적게 쓸수록 보상↑). */
 const terminalReward = (state: IEnvStateType, desiredGoodMods: number): number => {
   return quality(state, desiredGoodMods) - state.totalCost;
 };
@@ -128,7 +134,8 @@ const step = (
   state: IEnvStateType,
   action: number,
   desiredGoodMods: number,
-  budget: number
+  budget: number,
+  costsExalt: { chaosOrb: number; essence: number }
 ): IStepResultType => {
   if (state.chaosUsed >= budget) {
     return {
@@ -157,7 +164,7 @@ const step = (
       totalAffixes: rolled.totalAffixes,
       avgTierBucket: rolled.avgTierBucket,
       chaosUsed: state.chaosUsed + 1,
-      totalCost: state.totalCost + CHAOS_COST,
+      totalCost: state.totalCost + costsExalt.chaosOrb,
       stepCount: state.stepCount + 1,
     };
     const done = nextState.chaosUsed >= budget || nextState.stepCount >= MAX_STEPS;
@@ -175,7 +182,7 @@ const step = (
     totalAffixes: rolled.totalAffixes,
     avgTierBucket: rolled.avgTierBucket,
     usedEssence: 1,
-    totalCost: state.totalCost + ESSENCE_COST,
+    totalCost: state.totalCost + costsExalt.essence,
     stepCount: state.stepCount + 1,
   };
   const done = nextState.stepCount >= MAX_STEPS;
@@ -213,6 +220,7 @@ const trainAgent = (
   budget: number,
   episodes: number
 ): ITrainSummaryType => {
+  const costsExalt = getRlCraftingActionCostsExalt();
   const qTable = new Map<string, [number, number, number]>();
   const learningRate = 0.1;
   const gamma = 0.95;
@@ -229,7 +237,7 @@ const trainAgent = (
     let totalReward = 0;
 
     while (!done) {
-      const key = stateKey(state);
+      const key = stateKey(state, budget);
       const currentQ = qTable.get(key) ?? [0, 0, 0];
       if (!qTable.has(key)) {
         qTable.set(key, currentQ);
@@ -243,8 +251,14 @@ const trainAgent = (
       }
 
       actionCounts[action] += 1;
-      const { nextState, reward, done: episodeDone } = step(state, action, desiredGoodMods, budget);
-      const nextKey = stateKey(nextState);
+      const { nextState, reward, done: episodeDone } = step(
+        state,
+        action,
+        desiredGoodMods,
+        budget,
+        costsExalt
+      );
+      const nextKey = stateKey(nextState, budget);
       const nextQ = qTable.get(nextKey) ?? [0, 0, 0];
       if (!qTable.has(nextKey)) {
         qTable.set(nextKey, nextQ);
@@ -264,7 +278,7 @@ const trainAgent = (
   }
 
   const startState = createInitialState();
-  const startQ = qTable.get(stateKey(startState)) ?? [0, 0, 0];
+  const startQ = qTable.get(stateKey(startState, budget)) ?? [0, 0, 0];
   const bestInitialAction = actionLabel(argMax(startQ));
   const rewardSum = episodeRewards.reduce((a, b) => a + b, 0);
   const meanReward = rewardSum / Math.max(1, episodeRewards.length);
@@ -282,6 +296,7 @@ const trainAgent = (
       stop: actionCounts[ACTION_STOP] / Math.max(1, actionSum),
     },
     bestInitialAction,
+    costsExaltPerAction: costsExalt,
   };
 };
 
@@ -308,6 +323,10 @@ export const POST = async (request: Request): Promise<Response> => {
         stop: Number(summary.actionRatio.stop.toFixed(4)),
       },
       bestInitialAction: summary.bestInitialAction,
+      costsExaltPerAction: {
+        chaosOrb: Number(summary.costsExaltPerAction.chaosOrb.toFixed(6)),
+        essence: Number(summary.costsExaltPerAction.essence.toFixed(6)),
+      },
     },
   });
 };

@@ -128,7 +128,7 @@ export const StrategyComparisonView = (): ReactElement => {
       <div className="w-full max-w-5xl flex flex-col gap-8">
         <header className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
           <div className="flex flex-col gap-2 min-w-0">
-            <h1 className="text-2xl font-bold text-zinc-950 dark:text-zinc-50">{t("title")}</h1>
+            <h1 className="font-sc text-2xl font-bold text-zinc-950 dark:text-zinc-50">{t("title")}</h1>
             <p className="text-sm text-zinc-700 dark:text-zinc-300 max-w-2xl">{t("intro")}</p>
             <p className="text-sm text-zinc-600 dark:text-zinc-400">
               <Link

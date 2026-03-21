@@ -174,7 +174,7 @@ export const OptimizerView = (): ReactElement => {
       <div className="w-full max-w-6xl flex flex-col gap-6">
         <header className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
           <div className="flex flex-col gap-2 min-w-0">
-            <h1 className="text-2xl font-bold text-zinc-950 dark:text-zinc-50">{t("title")}</h1>
+            <h1 className="font-sc text-2xl font-bold text-zinc-950 dark:text-zinc-50">{t("title")}</h1>
             <p className="text-sm text-zinc-700 dark:text-zinc-300 max-w-3xl">{t("intro")}</p>
             <p className="text-sm text-zinc-600 dark:text-zinc-400">
               <Link
@@ -189,7 +189,7 @@ export const OptimizerView = (): ReactElement => {
         </header>
 
         <section className="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 p-5 shadow-sm">
-          <h2 className="text-base font-semibold text-zinc-900 dark:text-zinc-50 mb-4">
+          <h2 className="font-sc text-base font-semibold text-zinc-900 dark:text-zinc-50 mb-4">
             {t("inputs.title")}
           </h2>
 
@@ -303,7 +303,7 @@ export const OptimizerView = (): ReactElement => {
 
           <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div className="rounded-xl border border-zinc-200 dark:border-zinc-800 p-3">
-              <h3 className="text-sm font-semibold text-zinc-800 dark:text-zinc-200 mb-2">
+              <h3 className="font-sc text-sm font-semibold text-zinc-800 dark:text-zinc-200 mb-2">
                 {t("inputs.prefixMods")}
               </h3>
               <div className="space-y-1.5">
@@ -325,7 +325,7 @@ export const OptimizerView = (): ReactElement => {
             </div>
 
             <div className="rounded-xl border border-zinc-200 dark:border-zinc-800 p-3">
-              <h3 className="text-sm font-semibold text-zinc-800 dark:text-zinc-200 mb-2">
+              <h3 className="font-sc text-sm font-semibold text-zinc-800 dark:text-zinc-200 mb-2">
                 {t("inputs.suffixMods")}
               </h3>
               <div className="space-y-1.5">
@@ -363,7 +363,7 @@ export const OptimizerView = (): ReactElement => {
 
         {result !== null && (
           <section className="rounded-2xl border border-amber-200 dark:border-amber-900/50 bg-amber-50/60 dark:bg-amber-950/20 p-5">
-            <h2 className="text-base font-semibold text-zinc-900 dark:text-zinc-50 mb-3">
+            <h2 className="font-sc text-base font-semibold text-zinc-900 dark:text-zinc-50 mb-3">
               {t("result.title")}
             </h2>
             <p className="text-sm text-zinc-700 dark:text-zinc-300 mb-3">

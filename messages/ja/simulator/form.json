@@ -1,0 +1,10 @@
+{
+  "options": {
+    "targetRarity": "目標レアリティ",
+    "prefixes": "接頭辞",
+    "suffixes": "接尾辞",
+    "effectiveRoll": "実効ロール: 接頭辞 {prefixCount}、接尾辞 {suffixCount}。{hint}",
+    "effectiveRollHint": "マジックは各最大1、レアは各最大3。",
+    "rollPreview": "ロールをプレビュー"
+  }
+}

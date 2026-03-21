@@ -1,0 +1,16 @@
+{
+  "panels": {
+    "baseItem": {
+      "title": "베이스 아이템",
+      "description": "제작할 아이템을 선택합니다."
+    },
+    "options": {
+      "title": "옵션",
+      "description": "희귀도와 굴릴 옵션 수를 설정합니다(상한은 자동 적용)."
+    },
+    "result": {
+      "title": "예상 결과",
+      "description": "현재 모드 풀과 가중치에서 무작위로 하나 뽑은 결과입니다."
+    }
+  }
+}

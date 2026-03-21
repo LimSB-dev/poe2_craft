@@ -1,0 +1,16 @@
+{
+  "panels": {
+    "baseItem": {
+      "title": "基底物品",
+      "description": "选择你要制作的物品。"
+    },
+    "options": {
+      "title": "选项",
+      "description": "设定稀有度与要roll的词缀数量（上限会自动应用）。"
+    },
+    "result": {
+      "title": "预期结果",
+      "description": "从当前词缀池与权重中随机抽取的一次结果。"
+    }
+  }
+}

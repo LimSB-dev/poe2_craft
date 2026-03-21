@@ -86,7 +86,7 @@ export const resolveSimulationCounts = (
 
   if (rarity === "magic") {
     let prefixCount = Math.min(1, Math.max(0, prefixFloored));
-    let suffixCount = Math.min(1, Math.max(0, suffixFloored));
+    const suffixCount = Math.min(1, Math.max(0, suffixFloored));
     if (prefixCount === 0 && suffixCount === 0) {
       prefixCount = 1;
     }

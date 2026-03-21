@@ -41,6 +41,12 @@ export type IStrategyMetricsJsonType = {
   costPerSuccess: number | null;
 };
 
+export type IStrategyComparisonStrategiesBundleType = {
+  chaosSpam: IStrategyMetricsJsonType;
+  essenceThenChaos: IStrategyMetricsJsonType;
+  smartStop: IStrategyMetricsJsonType;
+};
+
 export type IStrategyComparisonEngineResultType = {
   engineVersion: string;
   simulatedAt: string;
@@ -49,11 +55,9 @@ export type IStrategyComparisonEngineResultType = {
   successCriteria: ISuccessCriteriaType;
   unitCosts: ICurrencyUnitCostsType;
   essenceKeyForEssenceStrategy: string;
-  strategies: {
-    chaosSpam: IStrategyMetricsJsonType;
-    essenceThenChaos: IStrategyMetricsJsonType;
-    smartStop: IStrategyMetricsJsonType;
-  };
+  strategies: IStrategyComparisonStrategiesBundleType;
+  /** Highest success rate; ties broken by lower average cost per trial. */
+  bestStrategy: IStrategyMetricsJsonType;
 };
 
 export type IStrategyComparisonEngineOptionsType = {
@@ -247,6 +251,33 @@ export const runStrategyComparisonEngine = (
     }
   }
 
+  const strategies: IStrategyComparisonStrategiesBundleType = {
+    chaosSpam: buildMetrics(
+      "chaos_spam",
+      "Chaos spam",
+      trials,
+      totalChaos,
+      sumCostSuccessChaos,
+      successesChaos
+    ),
+    essenceThenChaos: buildMetrics(
+      "essence_then_chaos",
+      "Essence → Chaos",
+      trials,
+      totalEssence,
+      sumCostSuccessEssence,
+      successesEssence
+    ),
+    smartStop: buildMetrics(
+      "smart_stop",
+      "Smart stop",
+      trials,
+      totalSmart,
+      sumCostSuccessSmart,
+      successesSmart
+    ),
+  };
+
   return {
     engineVersion: ENGINE_VERSION,
     simulatedAt: new Date().toISOString(),
@@ -255,32 +286,8 @@ export const runStrategyComparisonEngine = (
     successCriteria,
     unitCosts,
     essenceKeyForEssenceStrategy: essence.essenceKey,
-    strategies: {
-      chaosSpam: buildMetrics(
-        "chaos_spam",
-        "Chaos spam",
-        trials,
-        totalChaos,
-        sumCostSuccessChaos,
-        successesChaos
-      ),
-      essenceThenChaos: buildMetrics(
-        "essence_then_chaos",
-        "Essence → Chaos",
-        trials,
-        totalEssence,
-        sumCostSuccessEssence,
-        successesEssence
-      ),
-      smartStop: buildMetrics(
-        "smart_stop",
-        "Smart stop",
-        trials,
-        totalSmart,
-        sumCostSuccessSmart,
-        successesSmart
-      ),
-    },
+    strategies,
+    bestStrategy: pickBestStrategyMetrics(strategies),
   };
 };
 
@@ -288,12 +295,12 @@ export const runStrategyComparisonEngine = (
  * Picks the strategy with the highest success rate; on tie, lowest average cost per trial.
  */
 export const pickBestStrategyMetrics = (
-  result: IStrategyComparisonEngineResultType
+  strategies: IStrategyComparisonStrategiesBundleType
 ): IStrategyMetricsJsonType => {
   const rows = [
-    result.strategies.chaosSpam,
-    result.strategies.essenceThenChaos,
-    result.strategies.smartStop,
+    strategies.chaosSpam,
+    strategies.essenceThenChaos,
+    strategies.smartStop,
   ];
   const maxRate = Math.max(...rows.map((row) => row.successRate));
   const epsilon = 1e-12;

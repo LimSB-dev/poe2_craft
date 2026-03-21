@@ -10,7 +10,7 @@
  *
  * The printed Δ lines make the cost / success trade-off explicit for the current mod pool and limits.
  */
-import { applyChaosOrb, countGoodMods, GOOD_MOD_MAX_TIER } from "./chaosOrb";
+import { applyLegacyChaosOrbFullReroll, countGoodMods, GOOD_MOD_MAX_TIER } from "./chaosOrb";
 import { shouldContinue, type IShouldContinueOptionsType } from "./craftingDecision";
 import type { IItemRoll } from "./types";
 
@@ -58,7 +58,7 @@ const simulateAlwaysContinueTrial = (
   let chaosUsed = 0;
 
   while (chaosUsed < maxChaos && countGoodMods(item, goodTierMaxInclusive) < minGoodModsForSuccess) {
-    item = applyChaosOrb(item);
+    item = applyLegacyChaosOrbFullReroll(item);
     chaosUsed += 1;
   }
 
@@ -83,7 +83,7 @@ const simulateSmartStopTrial = (
     if (!shouldContinue(item, shouldContinueOptions)) {
       break;
     }
-    item = applyChaosOrb(item);
+    item = applyLegacyChaosOrbFullReroll(item);
     chaosUsed += 1;
   }
 

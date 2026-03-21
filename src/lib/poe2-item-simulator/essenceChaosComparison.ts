@@ -1,4 +1,4 @@
-import { applyChaosOrb, countGoodMods, GOOD_MOD_MAX_TIER } from "./chaosOrb";
+import { applyLegacyChaosOrbFullReroll, countGoodMods, GOOD_MOD_MAX_TIER } from "./chaosOrb";
 import { applyEssence, ATTACK_ESSENCE, LIFE_ESSENCE } from "./essence";
 import type { IEssenceDefinitionType, IItemRoll } from "./types";
 
@@ -33,7 +33,7 @@ const runChaosSpamUntilGood = (
   let item = initialRare;
   let chaosUsed = 0;
   while (countGoodMods(item, goodTierMaxInclusive) < minGoodMods && chaosUsed < maxChaos) {
-    item = applyChaosOrb(item);
+    item = applyLegacyChaosOrbFullReroll(item);
     chaosUsed += 1;
   }
   const success = countGoodMods(item, goodTierMaxInclusive) >= minGoodMods;
@@ -167,7 +167,7 @@ const simulateEssenceThenChaosOutcome = (
   let chaosUsed = 0;
 
   while (countGoodMods(item, goodTierMaxInclusive) < minGoodMods && chaosUsed < maxChaos) {
-    item = applyChaosOrb(item);
+    item = applyLegacyChaosOrbFullReroll(item);
     chaosUsed += 1;
     cost += chaosOrbCost;
   }

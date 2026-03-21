@@ -46,12 +46,12 @@ const pickRandomSplit = (totalModCount: number): IPrefixSuffixSplitType => {
 };
 
 /**
- * Chaos Orb: only on rare items; strips mods and rerolls 4–6 random mods with duplicate prevention
- * and tier limits unchanged from `rollRandomMod` (rare tier cap 5).
+ * Legacy **full rare re-roll** (PoE1-style / bench-style): strips all mods and rolls 4–6 new rare affixes.
+ * PoE2’s Chaos Orb instead removes one mod and adds one; see `applyChaosOrb` in `basicCurrencyOrbs.ts`.
  */
-export const applyChaosOrb = (item: IItemRoll): IItemRoll => {
+export const applyLegacyChaosOrbFullReroll = (item: IItemRoll): IItemRoll => {
   if (item.rarity !== "rare") {
-    throw new Error("Chaos Orb can only be used on rare items.");
+    throw new Error("Legacy Chaos Orb full reroll can only be used on rare items.");
   }
 
   const totalMods = getRandomIntInclusive(RARE_FULL_REROLL_AFFIX_MIN, RARE_FULL_REROLL_AFFIX_MAX);
@@ -101,7 +101,7 @@ export const simulateChaosOrbGoodModAverage = (
 
   let totalGoodMods = 0;
   for (let i = 0; i < iterations; i += 1) {
-    const afterChaos = applyChaosOrb(baselineRare);
+    const afterChaos = applyLegacyChaosOrbFullReroll(baselineRare);
     totalGoodMods += countGoodMods(afterChaos, goodTierMaxInclusive);
   }
 

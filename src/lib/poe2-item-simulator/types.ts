@@ -1,6 +1,7 @@
 export type ModTypeType = "prefix" | "suffix" | "corruptedPrefix" | "corruptedSuffix";
 
-export type ItemRarityType = "magic" | "rare";
+/** `normal` = no explicit modifiers; used by Transmutation / Alchemy-style orbs. */
+export type ItemRarityType = "normal" | "magic" | "rare";
 
 export interface IModDefinition {
   modKey: string;

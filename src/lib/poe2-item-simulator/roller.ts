@@ -13,6 +13,9 @@ const MAGIC_MAX_TIER: number = 3;
 const RARE_MAX_TIER: number = 5;
 
 const getTierLimit = (rarity: ItemRarityType): number => {
+  if (rarity === "normal") {
+    throw new Error("Normal items cannot roll explicit modifiers until rarity is upgraded.");
+  }
   if (rarity === "magic") {
     return MAGIC_MAX_TIER;
   }
@@ -84,6 +87,10 @@ export const resolveSimulationCounts = (
   const prefixFloored = Math.floor(desiredPrefixCount);
   const suffixFloored = Math.floor(desiredSuffixCount);
 
+  if (rarity === "normal") {
+    return { prefixCount: 0, suffixCount: 0 };
+  }
+
   if (rarity === "magic") {
     let prefixCount = Math.min(1, Math.max(0, prefixFloored));
     const suffixCount = Math.min(1, Math.max(0, suffixFloored));
@@ -108,6 +115,17 @@ const buildItemRoll = (rarity: ItemRarityType, prefixCount: number, suffixCount:
 
   const safePrefixCount = Math.min(Math.max(0, prefixCount), maximumPrefixCount);
   const safeSuffixCount = Math.min(Math.max(0, suffixCount), maximumSuffixCount);
+
+  if (rarity === "normal") {
+    if (safePrefixCount > 0 || safeSuffixCount > 0) {
+      throw new Error("Normal items cannot have explicit modifiers in this simulator.");
+    }
+    return {
+      rarity: "normal",
+      prefixes: [],
+      suffixes: [],
+    };
+  }
 
   const excludedModKeys = new Set<string>();
 

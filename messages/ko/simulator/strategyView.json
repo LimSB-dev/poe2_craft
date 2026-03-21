@@ -1,10 +1,32 @@
 {
   "strategyView": {
-    "title": "전략 비교",
-    "intro": "크래프트 시뮬레이터 몬테카를로 결과입니다. 세 전략은 동일한 성공 조건을 사용합니다. 비용은 기본 Chaos=1, Essence=3입니다(코드에서 변경 가능).",
+    "title": "크래프트 시뮬레이터",
+    "intro": "목표 좋은 옵션 수와 예산을 넣고 전략을 비교합니다. 성공 조건은 최소 접두·접미 합, 좋은 옵션 수(티어 기준), 시도당 카오스 최대 사용 횟수입니다. 비용 단위: 기본 Chaos=1, Essence=3(코드에서 변경 가능).",
     "loading": "시뮬레이션 실행 중…",
     "error": "결과를 불러오지 못했습니다. 다시 시도하세요.",
     "retry": "다시 실행",
+    "strategyNames": {
+      "chaos_spam": "카오스 스팸",
+      "essence_then_chaos": "에센스 → 카오스",
+      "smart_stop": "스마트 스톱"
+    },
+    "form": {
+      "sectionTitle": "입력",
+      "desiredGoodMods": "목표 좋은 옵션 수",
+      "budget": "예산 (시도당 최대 카오스 오브)",
+      "budgetHint": "이 횟수만큼 카오스를 굴린 뒤 중단합니다. 에센스+카오스 비용은 전략에 따라 포함됩니다.",
+      "run": "시뮬레이션 실행"
+    },
+    "best": {
+      "title": "추천 전략",
+      "name": "전략",
+      "cost": "비용",
+      "costValue": "평균 {avg} / 시도 · 성공 {perSuccess} / 건",
+      "successRate": "성공률"
+    },
+    "chart": {
+      "title": "성공률 비교"
+    },
     "criteriaLine": "성공: 접두·접미 합 {minAffixes}개 이상, 좋은 옵션 {minGood}개 이상(티어 ≤ {tier}).",
     "metaLine": "시도 횟수: {trials} · 시도당 최대 카오스: {maxChaos} · 엔진 v{version}",
     "costLine": "단위 비용 — 카오스: {chaos} · 에센스: {essence} · 에센스 전략 사용: {essenceKey}",

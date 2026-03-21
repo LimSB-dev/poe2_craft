@@ -1,8 +1,5 @@
 import express, { type Request, type Response } from "express";
-import {
-  pickBestStrategyMetrics,
-  runStrategyComparisonEngine,
-} from "../src/lib/poe2-item-simulator/strategyComparisonEngine";
+import { runStrategyComparisonEngine } from "../src/lib/poe2-item-simulator/strategyComparisonEngine";
 import { GOOD_MOD_MAX_TIER } from "../src/lib/poe2-item-simulator/chaosOrb";
 
 const DEFAULT_TRIALS: number = 4000;
@@ -67,7 +64,7 @@ app.post("/simulate", (req: Request, res: Response) => {
       },
     });
 
-    const best = pickBestStrategyMetrics(result);
+    const best = result.bestStrategy;
 
     res.json({
       bestStrategy: best.strategyId,

@@ -1,18 +1,54 @@
 {
   "itemClass": {
-    "ring": "반지",
-    "amulet": "목걸이",
-    "belt": "벨트",
+    "staff": "지팡이",
+    "wand": "완드",
+    "bow": "활",
     "claw": "클로",
-    "shield": "방패",
-    "bodyArmour": "몸 방어구"
+    "helmet": "투구",
+    "focus": "집중구",
+    "gloves": "장갑",
+    "bodyArmour": "갑옷",
+    "boots": "장화",
+    "amulet": "목걸이",
+    "ring": "반지",
+    "belt": "벨트"
   },
   "baseItems": {
-    "base_iron_ring": { "name": "철 반지" },
-    "base_jade_amulet": { "name": "비취 목걸이" },
-    "base_leather_belt": { "name": "가죽 벨트" },
-    "base_grinning_fangs": { "name": "씨익 웃는 송곳니" },
-    "base_maple_round_shield": { "name": "단풍나무 원형 방패" },
-    "base_silk_robe": { "name": "비단 로브" }
+    "base_oak_staff": {
+      "name": "애시즌 지팡이"
+    },
+    "base_ember_wand": {
+      "name": "위더드 완드"
+    },
+    "base_hunter_bow": {
+      "name": "숏보우"
+    },
+    "base_twin_fang_claw": {
+      "name": "픽트 클로"
+    },
+    "base_iron_helmet": {
+      "name": "솔저 그레이트헬름"
+    },
+    "base_etched_focus": {
+      "name": "우븐 집중구"
+    },
+    "base_leather_gloves": {
+      "name": "리벳 장갑"
+    },
+    "base_chain_vest": {
+      "name": "퍼 플레이트"
+    },
+    "base_hardsole_boots": {
+      "name": "아이언 그리브즈"
+    },
+    "base_lapis_amulet": {
+      "name": "청금석 목걸이"
+    },
+    "base_gold_ring": {
+      "name": "금 반지"
+    },
+    "base_heavy_belt": {
+      "name": "헤비 벨트"
+    }
   }
 }

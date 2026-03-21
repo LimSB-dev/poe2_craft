@@ -9,5 +9,25 @@
       "ja": "日本語",
       "zh-CN": "简体中文"
     }
+  },
+  "baseItemLevel": "需求等级 {level}",
+  "equipmentType": {
+    "weapon": "武器",
+    "armour": "防具",
+    "accessory": "饰品"
+  },
+  "baseFilter": {
+    "type": "类型",
+    "subType": "子类型",
+    "all": "全部",
+    "requiredStr": "最大 STR",
+    "requiredDex": "最大 DEX",
+    "requiredInt": "最大 INT",
+    "requiredLevel": "最大装备等级",
+    "baseItem": "基础物品",
+    "noResults": "没有符合筛选条件的基础物品",
+    "requirementSummary": "需求 STR {str} / DEX {dex} / INT {int} / Lv {level}",
+    "matchCount": "筛选匹配基础物品数: {count}",
+    "source": "来源：PoE2DB"
   }
 }

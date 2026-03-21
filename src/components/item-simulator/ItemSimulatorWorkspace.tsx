@@ -8,11 +8,11 @@ import { ItemSimulatorDesiredModsPanelSection } from "@/components/item-simulato
 import { ItemSimulatorHeader } from "@/components/item-simulator/ItemSimulatorHeader";
 import { ItemSimulatorResultPanel } from "@/components/item-simulator/ItemSimulatorResultPanel";
 import { useItemSimulatorBaseItemPanelState } from "@/components/item-simulator/useItemSimulatorBaseItemPanelState";
-import { rollSimulation } from "@/lib/poe2-item-simulator/roller";
-import type {
-  IDesiredModEntryType,
-  IItemSimulationResultType,
-} from "@/lib/poe2-item-simulator/types";
+import {
+  buildEfficientCraftingPlan,
+  type IEfficientCraftingPlanType,
+} from "@/lib/poe2-item-simulator/efficientCraftingPlan";
+import type { IDesiredModEntryType } from "@/lib/poe2-item-simulator/types";
 
 export const ItemSimulatorWorkspace = (): ReactElement => {
   const {
@@ -31,8 +31,13 @@ export const ItemSimulatorWorkspace = (): ReactElement => {
     handleEquipmentTypeChange,
   } = useItemSimulatorBaseItemPanelState();
 
-  const [simulationResult, setSimulationResult] =
-    useState<IItemSimulationResultType | null>(null);
+  const [efficientPlan, setEfficientPlan] =
+    useState<IEfficientCraftingPlanType | null>(null);
+
+  const handleSelectBaseItemKey = (baseItemKey: string): void => {
+    setEfficientPlan(null);
+    setSelectedBaseItemKey(baseItemKey);
+  };
   const [desiredMods, setDesiredMods] = useState<
     ReadonlyArray<IDesiredModEntryType>
   >([]);
@@ -45,19 +50,11 @@ export const ItemSimulatorWorkspace = (): ReactElement => {
     setDesiredMods((prev) => prev.filter((m) => m.id !== id));
   };
 
-  const handleSimulate = (): void => {
+  const handleComputeEfficientPlan = (): void => {
     if (!selectedBaseItem) {
       return;
     }
-    const roll = rollSimulation({
-      rarity: "rare",
-      desiredPrefixCount: 3,
-      desiredSuffixCount: 3,
-    });
-    setSimulationResult({
-      baseItem: selectedBaseItem,
-      roll,
-    });
+    setEfficientPlan(buildEfficientCraftingPlan(desiredMods));
   };
 
   return (
@@ -71,7 +68,7 @@ export const ItemSimulatorWorkspace = (): ReactElement => {
             selectedBaseItemKey={selectedBaseItem?.baseItemKey ?? ""}
             filteredBaseItemRecords={filteredBaseItemRecords}
             effectiveSelectedBaseItemKey={effectiveSelectedBaseItemKey}
-            onSelectBaseItemKey={setSelectedBaseItemKey}
+            onSelectBaseItemKey={handleSelectBaseItemKey}
             isFilterOpen={isFilterOpen}
             onFilterToggle={() => {
               setIsFilterOpen((prev) => !prev);
@@ -93,9 +90,10 @@ export const ItemSimulatorWorkspace = (): ReactElement => {
           />
 
           <ItemSimulatorResultPanel
-            simulationResult={simulationResult}
+            selectedBaseItem={selectedBaseItem ?? null}
+            plan={efficientPlan}
             desiredMods={desiredMods}
-            onRunRoll={handleSimulate}
+            onComputePlan={handleComputeEfficientPlan}
           />
         </div>
       </div>

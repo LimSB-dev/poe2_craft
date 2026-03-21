@@ -29,7 +29,13 @@ def train_q_learning(
     epsilon_end: float = 0.05,
     epsilon_decay: float = 0.999,
 ) -> tuple[DefaultDict[StateType, list[float]], list[float]]:
-    env = CraftingEnv(budget=80, good_tier_max_inclusive=2, max_steps=100, seed=42)
+    env = CraftingEnv(
+        budget=80,
+        good_tier_max_inclusive=2,
+        desired_good_mods=3,
+        max_steps=100,
+        seed=42,
+    )
     q_table: DefaultDict[StateType, list[float]] = defaultdict(lambda: [0.0, 0.0, 0.0])
     episode_rewards: list[float] = []
 
@@ -62,7 +68,13 @@ def evaluate_policy(
     q_table: DefaultDict[StateType, list[float]],
     episodes: int = 500,
 ) -> dict[str, float]:
-    env = CraftingEnv(budget=80, good_tier_max_inclusive=2, max_steps=100, seed=777)
+    env = CraftingEnv(
+        budget=80,
+        good_tier_max_inclusive=2,
+        desired_good_mods=3,
+        max_steps=100,
+        seed=777,
+    )
     action_counts = {
         ACTION_CHAOS: 0,
         ACTION_ESSENCE: 0,

@@ -4,6 +4,8 @@ from dataclasses import dataclass
 import random
 from typing import Any
 
+from currency_exalt_rates import CHAOS_ORB_EXALT_PER_USE, ESSENCE_EXALT_PER_USE
+
 try:
     import gymnasium as gym
     from gymnasium import spaces
@@ -37,7 +39,7 @@ class ItemStateType:
     average_tier: float
     chaos_used: int
     used_essence: int
-    total_cost: float
+    total_exalt_spent: float
 
 
 class CraftingEnv:
@@ -46,24 +48,32 @@ class CraftingEnv:
 
     State = (good_mods, total_affixes, average_tier_bucket, budget_left, used_essence)
     Action = chaos / essence / stop
-    Reward = item_quality - total_cost  (terminal reward)
+
+    **Reward (terminal):** ``item_quality - total_exalt_spent`` — lower exalt spend ⇒ higher score.
+
+    Per-action exalt cost matches ``currency_exalt_rates.py`` (synced from TS
+    ``currencyExaltExchangeRates.ts``).
     """
 
     def __init__(
         self,
         budget: int = 80,
         good_tier_max_inclusive: int = 2,
-        chaos_cost: float = 1.0,
-        essence_cost: float = 3.0,
+        desired_good_mods: int = 3,
+        chaos_exalt_per_use: float = CHAOS_ORB_EXALT_PER_USE,
+        essence_exalt_per_use: float = ESSENCE_EXALT_PER_USE,
         max_steps: int = 120,
         seed: int | None = None,
     ) -> None:
         if budget <= 0:
             raise ValueError("budget must be positive.")
+        if desired_good_mods < 1 or desired_good_mods > 6:
+            raise ValueError("desired_good_mods must be in 1..6.")
         self.budget = budget
         self.good_tier_max_inclusive = good_tier_max_inclusive
-        self.chaos_cost = chaos_cost
-        self.essence_cost = essence_cost
+        self.desired_good_mods = desired_good_mods
+        self.chaos_exalt_per_use = chaos_exalt_per_use
+        self.essence_exalt_per_use = essence_exalt_per_use
         self.max_steps = max_steps
         self.rng = random.Random(seed)
 
@@ -82,7 +92,7 @@ class CraftingEnv:
             average_tier=5.0,
             chaos_used=0,
             used_essence=0,
-            total_cost=0.0,
+            total_exalt_spent=0.0,
         )
 
     def _roll_random_tiers(self, n: int, force_one_essence_tier: bool) -> list[int]:
@@ -103,16 +113,15 @@ class CraftingEnv:
             average_tier=avg_tier,
             chaos_used=self.item.chaos_used,
             used_essence=self.item.used_essence,
-            total_cost=self.item.total_cost,
+            total_exalt_spent=self.item.total_exalt_spent,
         )
 
     def _item_quality(self, item: ItemStateType) -> float:
-        # Simple quality proxy:
-        # - Good mods matter most
-        # - More affixes helps
-        # - Lower average tier is better
-        tier_score = max(0.0, 6.0 - item.average_tier)
-        return (2.2 * item.good_mods) + (0.4 * item.total_affixes) + (0.6 * tier_score)
+        # Aligns with ``src/app/api/rl-train/route.ts`` ``quality()``.
+        avg_tier_bucket = int(min(4, max(0, round(item.average_tier) - 1)))
+        tier_score = float(5 - avg_tier_bucket)
+        target_bonus = 2.0 if item.good_mods >= self.desired_good_mods else 0.0
+        return (2.2 * item.good_mods) + (0.4 * item.total_affixes) + (0.6 * tier_score) + target_bonus
 
     def _observation(self) -> tuple[int, int, int, int, int]:
         avg_tier_bucket = int(min(4, max(0, round(self.item.average_tier) - 1)))
@@ -133,7 +142,7 @@ class CraftingEnv:
         return self._observation(), {"message": "episode_reset"}
 
     def _terminal_reward(self) -> float:
-        return self._item_quality(self.item) - self.item.total_cost
+        return self._item_quality(self.item) - self.item.total_exalt_spent
 
     def step(self, action: int) -> tuple[tuple[int, int, int, int, int], float, bool, bool, dict[str, Any]]:
         if action not in (ACTION_CHAOS, ACTION_ESSENCE, ACTION_STOP):
@@ -153,12 +162,12 @@ class CraftingEnv:
         if action == ACTION_CHAOS:
             rolled = self._roll_item(force_one_essence_tier=False)
             rolled.chaos_used = self.item.chaos_used + 1
-            rolled.total_cost = self.item.total_cost + self.chaos_cost
+            rolled.total_exalt_spent = self.item.total_exalt_spent + self.chaos_exalt_per_use
             rolled.used_essence = self.item.used_essence
             self.item = rolled
         elif action == ACTION_ESSENCE:
             rolled = self._roll_item(force_one_essence_tier=True)
-            rolled.total_cost = self.item.total_cost + self.essence_cost
+            rolled.total_exalt_spent = self.item.total_exalt_spent + self.essence_exalt_per_use
             rolled.chaos_used = self.item.chaos_used
             rolled.used_essence = 1
             self.item = rolled
@@ -176,7 +185,7 @@ class CraftingEnv:
 
         info: dict[str, Any] = {
             "quality": round(self._item_quality(self.item), 4),
-            "cost": round(self.item.total_cost, 4),
+            "total_exalt_spent": round(self.item.total_exalt_spent, 4),
             "chaos_used": self.item.chaos_used,
             "good_mods": self.item.good_mods,
             "total_affixes": self.item.total_affixes,

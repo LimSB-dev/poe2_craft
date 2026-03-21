@@ -1,7 +1,7 @@
 {
   "itemSimulatorWorkspace": {
     "title": "流放之路2 — 物品模拟器",
-    "intro": "选择基底物品，设定要roll的前缀与后缀数量，然后预览一次结果。这是用于布局与迭代的简化模型。",
+    "intro": "选择基底与目标词缀后，查看按崇高石消耗尽量省的制作顺序（与强化学习奖励同一成本口径）。",
     "nav": {
       "strategy": "打开策略页",
       "rl": "RL环境",
@@ -18,8 +18,8 @@
         "description": "添加你想要的词缀并调整roll设置。"
       },
       "result": {
-        "title": "预期结果",
-        "description": "从当前词缀池与权重中随机抽取的一次结果。"
+        "title": "高效制作路径",
+        "description": "从所选基底走向你列出目标词缀的推荐顺序，货币按崇高石换算比较。"
       }
     },
     "baseFilter": {
@@ -48,19 +48,35 @@
       "jewellery": "首饰"
     },
     "resultCard": {
-      "empty": "选择基底与选项后，点击「Roll预览」。"
+      "empty": "点击下方按钮，根据当前基底与目标生成推荐步骤。若无目标，将只提示先添加词缀。"
     },
     "rarity": {
+      "normal": "普通",
       "magic": "魔法",
       "rare": "稀有"
+    },
+    "efficientPlan": {
+      "emptyNeedBase": "请先选择基底物品。",
+      "heading": "推荐顺序（优先省崇高）",
+      "intro": "用点金石变稀有通常是我们模型里崇高花费最低的入稀有方式；再用精华固定每条目标，用混沌调整。",
+      "targetCount": "当前以 {count} 条目标词缀为前提。",
+      "costsLine": "参考单价（崇高/次）：点金约 {alchemy}，混沌约 {chaos}，模拟精华约 {essence}。",
+      "rlNote": "本项目的强化学习会偏好这种换算下更少消耗崇高的策略。",
+      "steps": {
+        "selectTargetsFirst": "请在词缀面板添加目标词缀；否则难以把精华与混沌步骤落到具体词缀上。",
+        "alchemyNormalMagic": "在普通或魔法基底上使用点金石变稀有（随机2前缀2后缀）。在本模型中这是入稀有时崇高倾向最低的路线。",
+        "essenceEachDesired": "对 {count} 条目标词缀，各用对应的「Greater 精华」强制一条。（崇高贵，但降方差。）",
+        "chaosUntilTargets": "PoE2 混沌会先移除一条再新增一条，重复直到剩余目标出现。",
+        "exaltTopUp": "若还有前缀/后缀空位，用崇高石补齐。",
+        "annulOptional": "若只剩干扰词缀，可考虑剥离石后再评估混沌/崇高。"
+      }
     },
     "resultModList": {
       "prefixes": "前缀",
       "suffixes": "后缀",
-      "empty": "无"
+      "empty": "无",
+      "matchedDesiredRow": "与所选目标词缀一致，阶 {tier}"
     },
-    "actions": {
-      "runRoll": "Roll预览"
-    }
+    "computeEfficientPlanButton": "查看高效路径"
   }
 }

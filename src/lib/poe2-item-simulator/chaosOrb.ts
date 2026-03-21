@@ -60,6 +60,10 @@ export const applyChaosOrb = (item: IItemRoll): IItemRoll => {
   return rollRareItemRoll(prefixCount, suffixCount);
 };
 
+export const countTotalAffixes = (roll: IItemRoll): number => {
+  return roll.prefixes.length + roll.suffixes.length;
+};
+
 export const countGoodMods = (roll: IItemRoll, goodTierMaxInclusive: number = GOOD_MOD_MAX_TIER): number => {
   const allMods = [...roll.prefixes, ...roll.suffixes];
   let count = 0;

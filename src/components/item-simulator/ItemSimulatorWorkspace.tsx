@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { useState } from "react";
 import type { ReactElement, ReactNode } from "react";
 import { LocaleSwitcher } from "@/components/i18n/LocaleSwitcher";
+import { Link } from "@/lib/i18n/navigation";
 import { BASE_ITEMS } from "@/lib/poe2-item-simulator/baseItems";
 import { resolveSimulationCounts, rollSimulation } from "@/lib/poe2-item-simulator/roller";
 import type {
@@ -134,7 +135,15 @@ export const ItemSimulatorWorkspace = (): ReactElement => {
             <h1 className="text-2xl font-bold text-zinc-950 dark:text-zinc-50">{t("title")}</h1>
             <p className="text-sm text-zinc-700 dark:text-zinc-300 max-w-2xl">{t("intro")}</p>
           </div>
-          <LocaleSwitcher />
+          <div className="flex flex-col items-end gap-2 shrink-0">
+            <LocaleSwitcher />
+            <Link
+              href="/strategy"
+              className="text-sm font-medium text-amber-700 dark:text-amber-400 underline-offset-2 hover:underline"
+            >
+              {t("strategyView.navLabel")}
+            </Link>
+          </div>
         </header>
 
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 lg:items-start">

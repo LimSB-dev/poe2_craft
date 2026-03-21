@@ -10,6 +10,7 @@ export const SIMULATOR_MESSAGE_FRAGMENT_BASENAMES = [
   "result",
   "mods",
   "catalog",
+  "strategyView",
 ] as const;
 
 export type SimulatorMessageFragmentBasenameType =

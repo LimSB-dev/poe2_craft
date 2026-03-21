@@ -1,0 +1,22 @@
+{
+  "strategyView": {
+    "title": "戦略比較",
+    "intro": "クラフトシミュレーターのモンテカルロ結果。3つの戦略は同じ成功条件を共有します。コストは既定で Chaos=1、Essence=3（コードで変更可）。",
+    "loading": "シミュレーション実行中…",
+    "error": "結果を読み込めませんでした。再試行してください。",
+    "retry": "再実行",
+    "criteriaLine": "成功: 接頭辞+接尾辞 合計 {minAffixes} 以上、良いモッド {minGood} 以上（ティア ≤ {tier}）。",
+    "metaLine": "試行: {trials} · 1試行あたり最大カオス: {maxChaos} · エンジン v{version}",
+    "costLine": "単位コスト — カオス: {chaos} · エッセンス: {essence} · エッセンス戦略: {essenceKey}",
+    "simulatedAt": "実行時刻: {iso}",
+    "table": {
+      "strategy": "戦略",
+      "averageCost": "平均コスト",
+      "successRate": "成功率",
+      "costPerSuccess": "成功あたりコスト",
+      "successes": "成功 / 試行"
+    },
+    "navToSimulator": "アイテムシミュレーター",
+    "navLabel": "戦略画面を開く"
+  }
+}

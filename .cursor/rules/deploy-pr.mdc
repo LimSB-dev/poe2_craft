@@ -2,9 +2,17 @@
 alwaysApply: true
 ---
 
-# Deployment & PR Workflow
+# Deployment & PR workflow
 
-When a user requests a deployment (e.g., "deploy it", "make it deploy"), follow this workflow.
+## Triggers (deployment = PR as one workflow)
+
+Treat the following as the **same workflow**. **Do not** run only hosting deployment (Vercel CLI, `vercel deploy`, etc.) and stop.
+
+- Korean: **「배포」**, **「배포해줘」**, **「배포해」**, **「배포 좀」**, **「프로덕션 배포」**, and similar
+- English: **"deploy"**, **"ship it"**, **"push to production"**, and similar
+
+**Required order when there are changes to ship:** check branch → commit and push → **`gh pr create` (or verify an existing PR)** → then run remote deployment (Vercel, etc.) if needed.  
+**Deploy-only without a PR** is allowed only when the user explicitly narrows the request (for example: “only rerun Vercel; it’s already merged”).
 
 ## 1. Check the branch
 
@@ -18,21 +26,28 @@ When a user requests a deployment (e.g., "deploy it", "make it deploy"), follow 
 - Stage the changed files and **commit** them. (Commit message should summarize the changes.)
 - **Push to remote**: `git push -u origin <branch-name>`
 - **Create a PR (required)**.
-  - **Title**: a one-line summary aligned with the commit message (e.g., `feat(telegram): channel broadcast + reference time`).
+  - **Language (GitHub)**: Write the **PR title** and **PR body (description)** in **Korean** (`한글`). Commit messages may stay English if the repo already uses them; this rule targets GitHub-facing title/body only.
+  - **Title**: a one-line summary aligned with the commit message (e.g., `feat(시뮬레이터): 전략 비교 엔진 및 벤치마크 스크립트 추가`).
   - **Body**: write the description yourself and include:
-    - **Summary of changes**: 2-3 sentences describing what this PR does.
+    - **Summary of changes**: 2–3 sentences describing what this PR does.
     - **Files / features changed**: briefly list changed paths and responsibilities.
     - Attach a screenshot and indicate what was changed visually.
   - If `gh pr create` is available, run it with `--title` and `--body` to **create the actual PR**.
   - If `gh` is not available, provide the GitHub PR creation URL and output the **title** and **body markdown** so the user can copy/paste.
 
-## 3. If the user mistakenly requests deployment from an already-merged branch
+## 3. If you are on a feature branch (not `main` / `master`)
+
+- If there are **uncommitted or unpushed** changes: stage, **commit**, **push** to `origin`.
+- **Open or create a PR** for that branch: use `gh pr view` / `gh pr list` to check; if none exists, run **`gh pr create`** (Korean title/body rules same as above).
+- Run deployment (Vercel, etc.) **after** the PR is reflected on the remote, or **immediately after** creating the PR in the same conversation.
+
+## 4. If the user mistakenly requests deployment from an already-merged branch
 
 - Fetch `main` or `master`, move the work onto it, then repeat step 2.
 
-## 4. Summary
+## 5. Summary
 
-- For deployment requests: **check branch → (if main/master, create new branch) → commit → push → create PR**.
-- **PR creation is mandatory**, and you must write the **title and body yourself**. (Not just assistance—provide actual PR creation or copy/paste-ready content.)
+- For deployment requests: **check branch → commit & push as needed → create or confirm PR → (then) host deploy if requested**.
+- **PR creation is mandatory** whenever there are changes to merge; do not skip it in favor of only running Vercel.
 - Do not directly push to `main` / `master`.
 - During deployment / PR work, do not ask git/PR questions; follow the workflow above.

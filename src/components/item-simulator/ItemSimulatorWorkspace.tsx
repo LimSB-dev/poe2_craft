@@ -348,51 +348,65 @@ export const ItemSimulatorWorkspace = (): ReactElement => {
               {/* 1. 선택된 아이템 정보 — 항상 최상단, 고정 높이로 레이아웃 안정 */}
               <div className="min-h-[216px] flex flex-col justify-start">
               {selectedBaseItemRecord ? (
-                <div className="rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50/80 dark:bg-zinc-900/50 px-3 py-2.5 flex gap-3">
-                  {/* 아이템 이미지 자리 — 추후 next/image로 교체 */}
-                  <div className="shrink-0 w-16 h-16 rounded-lg border border-dashed border-zinc-300 dark:border-zinc-700 bg-zinc-100 dark:bg-zinc-800/60 flex items-center justify-center">
-                    <span className="text-[10px] text-zinc-400 dark:text-zinc-600 select-none">img</span>
+                /* PoE2 아이템 툴팁 스타일 카드 */
+                <div className="rounded border border-[#7a5c1e] bg-[#0f0c07] overflow-hidden flex">
+                  {/* 왼쪽: 아이템 이미지 자리 — 추후 next/image로 교체 */}
+                  <div className="shrink-0 w-20 bg-[#0a0806] border-r border-[#3d2e10] flex items-center justify-center p-2">
+                    <div className="w-14 h-14 border border-dashed border-[#3d2e10] flex items-center justify-center">
+                      <span className="text-[10px] text-[#4a3c20] select-none">img</span>
+                    </div>
                   </div>
 
-                  {/* 아이템 텍스트 정보 */}
-                  <div className="flex flex-col gap-1 min-w-0">
-                    <div className="flex items-center justify-between gap-2">
-                      <span className="font-medium text-sm text-zinc-900 dark:text-zinc-100 truncate">
-                        {selectedBaseItem && baseName(selectedBaseItem)}
-                      </span>
-                      <span className="text-xs text-zinc-500 dark:text-zinc-400 shrink-0">
-                        {selectedBaseItem && itemClassLabel(selectedBaseItem)}
-                      </span>
-                    </div>
+                  {/* 오른쪽: 아이템 정보 */}
+                  <div className="flex-1 min-w-0 flex flex-col py-2 px-3">
+                    {/* 아이템 이름 */}
+                    <p className="font-sc text-[#c8a55a] text-sm text-center leading-snug">
+                      {selectedBaseItem && baseName(selectedBaseItem)}
+                    </p>
+                    <p className="text-[10px] text-[#7a6435] text-center mt-0.5 mb-2">
+                      {selectedBaseItem && itemClassLabel(selectedBaseItem)}
+                    </p>
+
+                    <div className="border-t border-[#3d2e10] mb-2" />
+
+                    {/* 방어 스탯 */}
                     {(selectedBaseItemRecord.armour !== undefined ||
                       selectedBaseItemRecord.evasion !== undefined ||
                       selectedBaseItemRecord.energyShield !== undefined) && (
-                      <div className="flex flex-wrap gap-x-3 gap-y-0.5 tabular-nums">
-                        {selectedBaseItemRecord.armour !== undefined && (
-                          <span className="text-xs text-amber-700 dark:text-amber-400">
-                            {t("baseFilter.armour")} {selectedBaseItemRecord.armour}
-                          </span>
-                        )}
-                        {selectedBaseItemRecord.evasion !== undefined && (
-                          <span className="text-xs text-green-700 dark:text-green-400">
-                            {t("baseFilter.evasion")} {selectedBaseItemRecord.evasion}
-                          </span>
-                        )}
-                        {selectedBaseItemRecord.energyShield !== undefined && (
-                          <span className="text-xs text-sky-700 dark:text-sky-400">
-                            {t("baseFilter.energyShield")} {selectedBaseItemRecord.energyShield}
-                          </span>
-                        )}
-                      </div>
+                      <>
+                        <div className="flex flex-col gap-0.5 tabular-nums mb-2">
+                          {selectedBaseItemRecord.armour !== undefined && (
+                            <div className="flex justify-between text-xs">
+                              <span className="text-[#a38d6d]">{t("baseFilter.armour")}</span>
+                              <span className="text-[#c8c8c8]">{selectedBaseItemRecord.armour}</span>
+                            </div>
+                          )}
+                          {selectedBaseItemRecord.evasion !== undefined && (
+                            <div className="flex justify-between text-xs">
+                              <span className="text-[#a38d6d]">{t("baseFilter.evasion")}</span>
+                              <span className="text-[#c8c8c8]">{selectedBaseItemRecord.evasion}</span>
+                            </div>
+                          )}
+                          {selectedBaseItemRecord.energyShield !== undefined && (
+                            <div className="flex justify-between text-xs">
+                              <span className="text-[#a38d6d]">{t("baseFilter.energyShield")}</span>
+                              <span className="text-[#c8c8c8]">{selectedBaseItemRecord.energyShield}</span>
+                            </div>
+                          )}
+                        </div>
+                        <div className="border-t border-[#3d2e10] mb-2" />
+                      </>
                     )}
-                    <div className="text-xs text-zinc-500 dark:text-zinc-500 tabular-nums">
+
+                    {/* 요구 스탯 */}
+                    <p className="text-xs text-[#a38d6d] tabular-nums">
                       {t("baseFilter.requirementSummary", {
                         str: selectedBaseItemRecord.requiredStrength,
                         dex: selectedBaseItemRecord.requiredDexterity,
                         int: selectedBaseItemRecord.requiredIntelligence,
                         level: selectedBaseItemRecord.levelRequirement,
                       })}
-                    </div>
+                    </p>
                   </div>
                 </div>
               ) : (

@@ -89,14 +89,15 @@ export const DesiredModsPanel = ({
 
   return (
     <div ref={containerRef} className="flex flex-col gap-3">
-      {/* 1. 추가된 속성 목록 — 항상 최상단 */}
-      {desiredMods.length === 0 ? (
-        <p className="text-sm text-zinc-400 dark:text-zinc-500 py-1">
-          {tForm("desiredMods.emptyState")}
-        </p>
-      ) : (
-        <ul className="flex flex-col gap-1" aria-label={tForm("desiredMods.addedTitle")}>
-          {desiredMods.map((mod) => {
+      {/* 1. 추가된 속성 목록 — 항상 최상단, 6개 분량 고정 높이로 레이아웃 안정 */}
+      <div className="min-h-[216px] flex flex-col justify-start">
+        {desiredMods.length === 0 ? (
+          <p className="text-sm text-zinc-400 dark:text-zinc-500 py-1">
+            {tForm("desiredMods.emptyState")}
+          </p>
+        ) : (
+          <ul className="flex flex-col gap-1" aria-label={tForm("desiredMods.addedTitle")}>
+            {desiredMods.map((mod) => {
             const modName = tMods(mod.nameTemplateKey);
             return (
               <li
@@ -121,9 +122,10 @@ export const DesiredModsPanel = ({
                 </button>
               </li>
             );
-          })}
-        </ul>
-      )}
+            })}
+          </ul>
+        )}
+      </div>
 
       {/* 2. 검색 입력 + 슬롯 카운터 + 결과 — 목록 아래 */}
       <input

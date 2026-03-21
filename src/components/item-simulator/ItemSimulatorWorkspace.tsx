@@ -345,45 +345,54 @@ export const ItemSimulatorWorkspace = (): ReactElement => {
             description={tPanels("baseItem.description")}
           >
             <div className="flex flex-col gap-3">
-              {/* 1. 선택된 아이템 정보 — 항상 최상단 */}
+              {/* 1. 선택된 아이템 정보 — 항상 최상단, 고정 높이로 레이아웃 안정 */}
+              <div className="min-h-[216px] flex flex-col justify-start">
               {selectedBaseItemRecord ? (
-                <div className="rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50/80 dark:bg-zinc-900/50 px-3 py-2.5 flex flex-col gap-1">
-                  <div className="flex items-center justify-between gap-2">
-                    <span className="font-medium text-sm text-zinc-900 dark:text-zinc-100">
-                      {selectedBaseItem && baseName(selectedBaseItem)}
-                    </span>
-                    <span className="text-xs text-zinc-500 dark:text-zinc-400 shrink-0">
-                      {selectedBaseItem && itemClassLabel(selectedBaseItem)}
-                    </span>
+                <div className="rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50/80 dark:bg-zinc-900/50 px-3 py-2.5 flex gap-3">
+                  {/* 아이템 이미지 자리 — 추후 next/image로 교체 */}
+                  <div className="shrink-0 w-16 h-16 rounded-lg border border-dashed border-zinc-300 dark:border-zinc-700 bg-zinc-100 dark:bg-zinc-800/60 flex items-center justify-center">
+                    <span className="text-[10px] text-zinc-400 dark:text-zinc-600 select-none">img</span>
                   </div>
-                  {(selectedBaseItemRecord.armour !== undefined ||
-                    selectedBaseItemRecord.evasion !== undefined ||
-                    selectedBaseItemRecord.energyShield !== undefined) && (
-                    <div className="flex flex-wrap gap-x-3 gap-y-0.5 tabular-nums">
-                      {selectedBaseItemRecord.armour !== undefined && (
-                        <span className="text-xs text-amber-700 dark:text-amber-400">
-                          {t("baseFilter.armour")} {selectedBaseItemRecord.armour}
-                        </span>
-                      )}
-                      {selectedBaseItemRecord.evasion !== undefined && (
-                        <span className="text-xs text-green-700 dark:text-green-400">
-                          {t("baseFilter.evasion")} {selectedBaseItemRecord.evasion}
-                        </span>
-                      )}
-                      {selectedBaseItemRecord.energyShield !== undefined && (
-                        <span className="text-xs text-sky-700 dark:text-sky-400">
-                          {t("baseFilter.energyShield")} {selectedBaseItemRecord.energyShield}
-                        </span>
-                      )}
+
+                  {/* 아이템 텍스트 정보 */}
+                  <div className="flex flex-col gap-1 min-w-0">
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="font-medium text-sm text-zinc-900 dark:text-zinc-100 truncate">
+                        {selectedBaseItem && baseName(selectedBaseItem)}
+                      </span>
+                      <span className="text-xs text-zinc-500 dark:text-zinc-400 shrink-0">
+                        {selectedBaseItem && itemClassLabel(selectedBaseItem)}
+                      </span>
                     </div>
-                  )}
-                  <div className="text-xs text-zinc-500 dark:text-zinc-500 tabular-nums">
-                    {t("baseFilter.requirementSummary", {
-                      str: selectedBaseItemRecord.requiredStrength,
-                      dex: selectedBaseItemRecord.requiredDexterity,
-                      int: selectedBaseItemRecord.requiredIntelligence,
-                      level: selectedBaseItemRecord.levelRequirement,
-                    })}
+                    {(selectedBaseItemRecord.armour !== undefined ||
+                      selectedBaseItemRecord.evasion !== undefined ||
+                      selectedBaseItemRecord.energyShield !== undefined) && (
+                      <div className="flex flex-wrap gap-x-3 gap-y-0.5 tabular-nums">
+                        {selectedBaseItemRecord.armour !== undefined && (
+                          <span className="text-xs text-amber-700 dark:text-amber-400">
+                            {t("baseFilter.armour")} {selectedBaseItemRecord.armour}
+                          </span>
+                        )}
+                        {selectedBaseItemRecord.evasion !== undefined && (
+                          <span className="text-xs text-green-700 dark:text-green-400">
+                            {t("baseFilter.evasion")} {selectedBaseItemRecord.evasion}
+                          </span>
+                        )}
+                        {selectedBaseItemRecord.energyShield !== undefined && (
+                          <span className="text-xs text-sky-700 dark:text-sky-400">
+                            {t("baseFilter.energyShield")} {selectedBaseItemRecord.energyShield}
+                          </span>
+                        )}
+                      </div>
+                    )}
+                    <div className="text-xs text-zinc-500 dark:text-zinc-500 tabular-nums">
+                      {t("baseFilter.requirementSummary", {
+                        str: selectedBaseItemRecord.requiredStrength,
+                        dex: selectedBaseItemRecord.requiredDexterity,
+                        int: selectedBaseItemRecord.requiredIntelligence,
+                        level: selectedBaseItemRecord.levelRequirement,
+                      })}
+                    </div>
                   </div>
                 </div>
               ) : (
@@ -391,6 +400,7 @@ export const ItemSimulatorWorkspace = (): ReactElement => {
                   {t("baseFilter.noResults")}
                 </p>
               )}
+              </div>
 
               {/* 2. 검색 입력 + 결과 — 아이템 카드 아래 */}
               <div ref={baseItemContainerRef} className="flex flex-col gap-2">

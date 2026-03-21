@@ -258,7 +258,7 @@ export const ItemSimulatorWorkspace = (): ReactElement => {
     try {
       return t(`baseItems.${baseItem.baseItemKey}.name`);
     } catch {
-      return baseItem.displayName;
+      return baseItem.baseItemKey;
     }
   };
 

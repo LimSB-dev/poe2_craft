@@ -1,5 +1,5 @@
 import {
-  applyChaosOrb,
+  applyLegacyChaosOrbFullReroll,
   countGoodMods,
   countTotalAffixes,
   GOOD_MOD_MAX_TIER,
@@ -102,7 +102,7 @@ const simulateChaosSpamTrial = (
   let cost = 0;
 
   while (chaosUsed < maxChaos && !meetsSuccess(item, criteria)) {
-    item = applyChaosOrb(item);
+    item = applyLegacyChaosOrbFullReroll(item);
     chaosUsed += 1;
     cost += chaosOrbCost;
   }
@@ -125,7 +125,7 @@ const simulateEssenceThenChaosTrial = (
   let cost = essenceCost;
 
   while (chaosUsed < maxChaos && !meetsSuccess(item, criteria)) {
-    item = applyChaosOrb(item);
+    item = applyLegacyChaosOrbFullReroll(item);
     chaosUsed += 1;
     cost += chaosOrbCost;
   }
@@ -150,7 +150,7 @@ const simulateSmartStopTrial = (
     if (!shouldContinue(item, shouldContinueOptions)) {
       break;
     }
-    item = applyChaosOrb(item);
+    item = applyLegacyChaosOrbFullReroll(item);
     chaosUsed += 1;
     cost += chaosOrbCost;
   }

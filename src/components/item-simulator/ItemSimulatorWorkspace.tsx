@@ -35,7 +35,7 @@ const ModListSection = ({
 }): ReactElement => {
   return (
     <div className="flex flex-col gap-2">
-      <h3 className="text-xs font-semibold uppercase tracking-wide text-zinc-500 dark:text-zinc-400">
+      <h3 className="text-xs font-semibold font-sc uppercase tracking-wide text-zinc-500 dark:text-zinc-400">
         {title}
       </h3>
       <ul className="flex flex-col gap-1">
@@ -73,7 +73,7 @@ const PanelShell = ({
   return (
     <section className="flex flex-col gap-4 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 p-5 shadow-sm">
       <header className="flex flex-col gap-1">
-        <h2 className="text-base font-semibold text-zinc-950 dark:text-zinc-50">
+        <h2 className="font-sc text-base font-semibold text-zinc-950 dark:text-zinc-50">
           {title}
         </h2>
         <p className="text-sm text-zinc-600 dark:text-zinc-400">
@@ -296,7 +296,7 @@ export const ItemSimulatorWorkspace = (): ReactElement => {
       <div className="w-full max-w-6xl flex flex-col gap-8">
         <header className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
           <div className="flex flex-col gap-2 min-w-0">
-            <h1 className="text-2xl font-bold text-zinc-950 dark:text-zinc-50">
+            <h1 className="font-sc text-2xl font-bold text-zinc-950 dark:text-zinc-50">
               {t("title")}
             </h1>
             <p className="text-sm text-zinc-700 dark:text-zinc-300 max-w-2xl">

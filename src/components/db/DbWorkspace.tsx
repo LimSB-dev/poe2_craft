@@ -111,7 +111,7 @@ export const DbWorkspace = (): ReactElement => {
         {/* Header */}
         <header className="flex items-start justify-between gap-4">
           <div className="flex flex-col gap-1">
-            <h1 className="text-2xl font-bold text-zinc-950 dark:text-zinc-50">
+            <h1 className="font-sc text-2xl font-bold text-zinc-950 dark:text-zinc-50">
               {t("dbView.title")}
             </h1>
             <p className="text-sm text-zinc-600 dark:text-zinc-400">
@@ -215,13 +215,13 @@ export const DbWorkspace = (): ReactElement => {
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900">
-                  <th className="px-4 py-3 text-left text-xs font-semibold text-zinc-500 uppercase tracking-wide">{t("dbView.colName")}</th>
-                  <th className="px-4 py-3 text-left text-xs font-semibold text-zinc-500 uppercase tracking-wide">{t("dbView.colSubType")}</th>
-                  <th className="px-4 py-3 text-left text-xs font-semibold text-zinc-500 uppercase tracking-wide">{t("dbView.colStatTags")}</th>
-                  <th className="px-4 py-3 text-right text-xs font-semibold text-zinc-500 uppercase tracking-wide">{t("dbView.colArmour")}</th>
-                  <th className="px-4 py-3 text-right text-xs font-semibold text-zinc-500 uppercase tracking-wide">{t("dbView.colEvasion")}</th>
-                  <th className="px-4 py-3 text-right text-xs font-semibold text-zinc-500 uppercase tracking-wide">{t("dbView.colES")}</th>
-                  <th className="px-4 py-3 text-left text-xs font-semibold text-zinc-500 uppercase tracking-wide">{t("dbView.colReq")}</th>
+                  <th className="px-4 py-3 text-left text-xs font-semibold text-zinc-500 font-sc uppercase tracking-wide">{t("dbView.colName")}</th>
+                  <th className="px-4 py-3 text-left text-xs font-semibold text-zinc-500 font-sc uppercase tracking-wide">{t("dbView.colSubType")}</th>
+                  <th className="px-4 py-3 text-left text-xs font-semibold text-zinc-500 font-sc uppercase tracking-wide">{t("dbView.colStatTags")}</th>
+                  <th className="px-4 py-3 text-right text-xs font-semibold text-zinc-500 font-sc uppercase tracking-wide">{t("dbView.colArmour")}</th>
+                  <th className="px-4 py-3 text-right text-xs font-semibold text-zinc-500 font-sc uppercase tracking-wide">{t("dbView.colEvasion")}</th>
+                  <th className="px-4 py-3 text-right text-xs font-semibold text-zinc-500 font-sc uppercase tracking-wide">{t("dbView.colES")}</th>
+                  <th className="px-4 py-3 text-left text-xs font-semibold text-zinc-500 font-sc uppercase tracking-wide">{t("dbView.colReq")}</th>
                 </tr>
               </thead>
               <tbody>
@@ -295,13 +295,13 @@ export const DbWorkspace = (): ReactElement => {
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900">
-                  <th className="px-4 py-3 text-left text-xs font-semibold text-zinc-500 uppercase tracking-wide">{t("dbView.colName")}</th>
-                  <th className="px-4 py-3 text-left text-xs font-semibold text-zinc-500 uppercase tracking-wide">{t("dbView.colModType")}</th>
-                  <th className="px-4 py-3 text-left text-xs font-semibold text-zinc-500 uppercase tracking-wide">{t("dbView.colTags")}</th>
-                  <th className="px-4 py-3 text-left text-xs font-semibold text-zinc-500 uppercase tracking-wide">{t("dbView.colStatReq")}</th>
-                  <th className="px-4 py-3 text-right text-xs font-semibold text-zinc-500 uppercase tracking-wide">{t("dbView.colTiers")}</th>
-                  <th className="px-4 py-3 text-right text-xs font-semibold text-zinc-500 uppercase tracking-wide">{t("dbView.colWeight")}</th>
-                  <th className="px-4 py-3 text-left text-xs font-semibold text-zinc-500 uppercase tracking-wide">{t("dbView.colApplicable")}</th>
+                  <th className="px-4 py-3 text-left text-xs font-semibold text-zinc-500 font-sc uppercase tracking-wide">{t("dbView.colName")}</th>
+                  <th className="px-4 py-3 text-left text-xs font-semibold text-zinc-500 font-sc uppercase tracking-wide">{t("dbView.colModType")}</th>
+                  <th className="px-4 py-3 text-left text-xs font-semibold text-zinc-500 font-sc uppercase tracking-wide">{t("dbView.colTags")}</th>
+                  <th className="px-4 py-3 text-left text-xs font-semibold text-zinc-500 font-sc uppercase tracking-wide">{t("dbView.colStatReq")}</th>
+                  <th className="px-4 py-3 text-right text-xs font-semibold text-zinc-500 font-sc uppercase tracking-wide">{t("dbView.colTiers")}</th>
+                  <th className="px-4 py-3 text-right text-xs font-semibold text-zinc-500 font-sc uppercase tracking-wide">{t("dbView.colWeight")}</th>
+                  <th className="px-4 py-3 text-left text-xs font-semibold text-zinc-500 font-sc uppercase tracking-wide">{t("dbView.colApplicable")}</th>
                 </tr>
               </thead>
               <tbody>

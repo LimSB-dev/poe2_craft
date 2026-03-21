@@ -2,114 +2,42 @@
 alwaysApply: true
 ---
 
-# E2E 테스트 (Playwright)
+# E2E 테스트 (Playwright) — 최소 스모크
 
-새 화면·기능을 추가하거나 수정할 때 **해당 플로우에 대한 E2E 테스트**를 함께 작성·보완한다.
-이 스킬의 중심은 Playwright 공식 Best Practices를 지켜 신뢰 가능한 E2E 테스트를 만드는 것이다.
-locator/test-id 규칙은 이 중심 원칙을 안정적으로 구현하기 위한 추가 필수 점검 항목으로 적용한다.
+E2E만으로 전부 커버하면 **느리고** 실패 시 **원인 파악이 어렵다**. 상세 검증은 **Jest 규칙**을 따르고, E2E는 아래 수준만 유지한다.
 
-## 구조
+## E2E에서 할 일 (한 줄)
 
-- **테스트 디렉터리**: `e2e/`
-- **스펙 파일**: 기능·페이지별로 분리 (예: `mypage.spec.ts`, `about.spec.ts`, `navigation.spec.ts`)
-- **공용**: `e2e/helpers/test-utils.ts` (로케일 초기화 등), `e2e/test-i18n.ts` (번역 키), 필요 시 `e2e/helpers/*-mock.ts` (API 모킹)
+**“이 서비스가 살아 있는가?”** — 핵심 사용자 여정이 끝까지 통과하는지 **얇게** 확인한다.
+
+## 포함해도 되는 예시
+
+- 로그인(또는 인증) 플로우가 **끝까지 된다**.
+- 글(또는 주요 리소스) **작성이 반영된다**.
+- 목록·상세 등에서 **기대한 화면에 보인다**.
+
+기능별 세부 케이스·에러 메시지·상태 변화는 **Jest**에서 다룬다.
+
+## 포함하지 않을 것
+
+- 모든 버튼·모든 validation·모든 API 실패 케이스를 E2E로 채우지 않는다.
+- 이미 Jest로 안정적으로 잡히는 로직을 E2E로 **중복 검증**하지 않는다.
 
 ## 작성 원칙
 
-- **번역 키 사용**: UI 텍스트 검증 시 문자열을 하드코딩하지 말고 `t`(test-i18n)를 사용한다.  
-  예: `getByRole("button", { name: t.mypage.edit })`, `getByText(t.mypage.emptyMessage)`
-- **로케일 초기화**: `beforeEach`에서 `page.addInitScript(getLocaleInitScript(), localeInitPayload)`로 한국어(ko)를 설정한다.
-- **역할·접근성 기준 선택자**: `getByRole`, `getByLabel`, `getByRole("button", { name: ... })` 등을 우선 사용하고, `getByText`는 보조로만 사용한다.
-- **대기 조건**: 페이지 전환·API 로딩 후 본문이 나온 뒤 검증하려면, 먼저 의미 있는 요소(예: heading, main)가 보일 때까지 기다린 다음 나머지 assertion을 수행한다.
+- 스펙 수를 **적게** 유지하고, 실행 시간과 flakiness를 감안해 **가장 중요한 해피 패스** 위주로 둔다.
+- **역할·접근성** 기반 선택자(`getByRole`, `getByLabel` 등)를 우선한다.
+- 하드 `sleep` 대신 Playwright의 자동 대기·web-first assertion을 쓴다.
+- 스테이징·프로덕션 의존이 크면 **테스트 전용 계정·시드 데이터** 정책을 문서화한다.
 
-## 인증이 필요한 페이지
+## 구조·실행
 
-- **비인증 플로우**: 리다이렉트·로그인 유도 등은 실제 세션 없이 테스트한다.
-- **인증된 플로우**: `e2e/helpers/mypage-mock.ts`처럼 **API 라우트를 모킹**한다.
-  - 세션: `GET /api/auth/session` → 더미 세션 반환
-  - 기타 API: 해당 경로의 GET/POST/PATCH를 `page.route()`로 가로채서 `route.fulfill()`로 응답 제공
-  - **URL 매칭**: glob `**/path**`는 의도한 경로와 안 맞을 수 있으므로, `(req) => new URL(req.url()).pathname === "/api/..."` 형태의 **pathname 기준 predicate**를 사용한다.
+- 디렉터리: 보통 `e2e/` (프로젝트 컨벤션에 따름).
+- 실행: `package.json`의 스크립트(예: `npm run test:e2e`)로 통일한다.
 
-## 테스트 구성
+## 요약
 
-- **describe**: 페이지 또는 기능 단위 (예: "마이페이지 비인증", "마이페이지 인증 (관심 리스트·구독)")
-- **test**: 한 시나리오당 하나의 동작·기대 결과를 서술 (예: "비인증 시 /mypage 접속하면 / 로 리다이렉트된다")
-- **중복 제거**: 공통 설정(모킹, 로케일)은 `beforeEach`에 두고, 각 test는 `page.goto`와 assertion만 담당한다.
-
-## 실행
-
-- `npm run test:e2e` — 전체 E2E (서버 자동 기동)
-- `npm run test:e2e:local` — 이미 떠 있는 서버로만 실행 (`NO_WEB_SERVER=1`)
-- Node 18 이상 필요 (Playwright 요구 사항)
-
-## 규칙 요약
-
-- 새 페이지/기능 추가 시 **해당 경로·플로우에 대한 E2E**를 추가한다.
-- assertion은 **역할·라벨·번역 키** 기준으로 작성하고, 로딩·리다이렉트를 고려해 **필요 시 대기**를 넣는다.
-- 인증·외부 API가 관여하면 **모킹**으로 일관되게 재현하고, 라우트 매칭은 **pathname**으로 한다.
-
-## 핵심 운영 원칙 (Best Practices 중심)
-
-1. 구현 세부사항이 아니라 사용자에게 보이는 동작을 검증한다.
-2. 테스트를 서로 독립적으로 유지해 단독 실행과 병렬 실행이 가능하게 한다.
-3. Playwright 자동 대기와 web-first assertion을 우선 사용한다.
-4. `waitForTimeout` 같은 하드 대기를 사용하지 않는다.
-5. 통제 불가능한 외부 의존성은 mock 또는 route로 제어한다.
-6. CI에서 다중 브라우저 실행을 유지한다.
-
-## 작성 워크플로우
-
-1. 사용자 시나리오를 먼저 정의하고 검증 목표를 사용자 관점으로 작성한다.
-2. 테스트 격리 전략(초기 데이터, 상태, 네트워크)을 정리한다.
-3. 상호작용과 검증은 web-first assertion 기반으로 작성한다.
-4. flaky 이슈가 발생하면 trace/inspector로 원인을 확인하고 대기 방식부터 수정한다.
-5. CI 실행 결과를 확인해 브라우저별 안정성을 보장한다.
-
-## 추가 필수 확인 (Locator / Test ID)
-
-1. locator를 작성하거나 수정하기 전에 Playwright MCP에서 시나리오를 재현한다.
-2. MCP에서 대상 요소를 확인하고 locator가 고유하고 안정적인지 검증한다.
-3. 테스트 코드에서 요소 접근은 `getByTestId`로만 수행한다.
-4. 요소에 test id가 없으면 제품 코드에 먼저 추가한 뒤 사용한다.
-5. 새 test id는 반드시 `test-` 접두사로 시작한다.
-
-## Test ID 규칙
-
-- `data-testid="test-<feature>-<element>"` 형태를 사용한다.
-- 이름은 읽기 쉽고 결정적이게 유지한다.
-- 랜덤 값, 배열 인덱스, 런타임 전용 값을 test id에 넣지 않는다.
-- 시각적 이름보다 도메인 의미를 우선한다. 예: `test-notification-item`.
-
-예시:
-
-```jsx
-<li data-testid="test-notification-item">...</li>
-```
-
-## Locator 및 Assertion 패턴
-
-권장:
-
-```ts
-await page.getByTestId("test-notification-item").click();
-await expect(page.getByTestId("test-notification-item")).toBeVisible();
-```
-
-지양:
-
-```ts
-await page.locator(".notification-item").click();
-await page.locator('//li[contains(@class,"notification")]').click();
-expect(await page.getByTestId("test-notification-item").isVisible()).toBe(true);
-```
-
-## 완료 체크리스트
-
-- [Best Practices] 검증이 사용자 가시 동작 중심으로 작성되었는지 확인한다.
-- [Best Practices] 테스트가 독립 실행 가능하도록 상태 의존성이 제거되었는지 확인한다.
-- [Best Practices] 하드 대기 없이 Playwright 자동 대기와 web-first assertion을 사용했는지 확인한다.
-- [Best Practices] 외부 의존성을 통제 가능한 방식(mock/route)으로 처리했는지 확인한다.
-- [Locator] 상호작용/검증 대상 요소가 모두 `getByTestId`를 사용하는지 확인한다.
-- [Locator] locator 확정 전 Playwright MCP 시나리오 재현을 완료했는지 확인한다.
-- [Locator] 사용한 test id가 모두 `test-`로 시작하는지 확인한다.
-- [Locator] 누락된 test id를 우회하지 않고 소스 코드에 추가했는지 확인한다.
+| 구분 | Jest | E2E |
+| --- | --- | --- |
+| 목적 | 상태·API mock·컴포넌트·에러 등 **대부분** | 서비스 **생존**·핵심 여정만 |
+| 범위 | 넓고 빠른 피드백 | 최소·느리게 보조 |

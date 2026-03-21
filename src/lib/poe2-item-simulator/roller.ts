@@ -141,6 +141,52 @@ const buildItemRoll = (rarity: ItemRarityType, prefixCount: number, suffixCount:
   };
 };
 
+/** Full rare reroll with explicit prefix/suffix counts (each capped at 3). Used by Chaos Orb and benchmarks. */
+export const rollRareItemRoll = (prefixCount: number, suffixCount: number): IItemRoll => {
+  return buildItemRoll("rare", prefixCount, suffixCount);
+};
+
+/**
+ * Rolls additional rare prefix/suffix slots using `rollRandomMod`, respecting `initialExcludedModKeys`.
+ * Does not mutate the input set.
+ */
+export const rollRareModSlots = (
+  prefixCount: number,
+  suffixCount: number,
+  initialExcludedModKeys: ReadonlySet<string>
+): { prefixes: IModDefinition[]; suffixes: IModDefinition[] } => {
+  const maximumPrefixCount = 3;
+  const maximumSuffixCount = 3;
+  const safePrefixCount = Math.min(Math.max(0, prefixCount), maximumPrefixCount);
+  const safeSuffixCount = Math.min(Math.max(0, suffixCount), maximumSuffixCount);
+
+  const excludedModKeys = new Set(initialExcludedModKeys);
+  const prefixes: IModDefinition[] = [];
+  const suffixes: IModDefinition[] = [];
+
+  for (let prefixIndex = 0; prefixIndex < safePrefixCount; prefixIndex += 1) {
+    const rolledMod = rollRandomMod({
+      rarity: "rare",
+      modType: "prefix",
+      excludedModKeys,
+    });
+    excludedModKeys.add(rolledMod.modKey);
+    prefixes.push(rolledMod);
+  }
+
+  for (let suffixIndex = 0; suffixIndex < safeSuffixCount; suffixIndex += 1) {
+    const rolledMod = rollRandomMod({
+      rarity: "rare",
+      modType: "suffix",
+      excludedModKeys,
+    });
+    excludedModKeys.add(rolledMod.modKey);
+    suffixes.push(rolledMod);
+  }
+
+  return { prefixes, suffixes };
+};
+
 export const rollSimulation = (simulationOptions: ISimulationOptionsType): IItemRoll => {
   const { prefixCount, suffixCount } = resolveSimulationCounts(
     simulationOptions.rarity,

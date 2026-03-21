@@ -13,6 +13,7 @@
     "searchPlaceholder": "속성 검색...",
     "noResults": "검색 결과가 없습니다",
     "emptyState": "원하는 속성을 추가하세요",
+    "slotFull": "슬롯 가득",
     "addedTitle": "추가된 속성",
     "removeAriaLabel": "속성 제거: {name}",
     "typePrefix": "접두",

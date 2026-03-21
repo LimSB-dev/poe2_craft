@@ -13,6 +13,7 @@
     "searchPlaceholder": "Search modifiers...",
     "noResults": "No results found",
     "emptyState": "Add the modifiers you want",
+    "slotFull": "Slot full",
     "addedTitle": "Added modifiers",
     "removeAriaLabel": "Remove modifier: {name}",
     "typePrefix": "Prefix",

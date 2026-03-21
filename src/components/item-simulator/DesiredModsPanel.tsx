@@ -17,6 +17,12 @@ interface DesiredModsPanelPropsType {
   onRemove: (id: string) => void;
 }
 
+const MAX_PREFIX_SLOTS = 3;
+const MAX_SUFFIX_SLOTS = 3;
+
+const isPrefixType = (modType: ModTypeType): boolean =>
+  modType === "prefix" || modType === "corruptedPrefix";
+
 const MOD_TYPE_BADGE_CLASSES: Record<ModTypeType, string> = {
   prefix: "bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300",
   suffix: "bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300",
@@ -63,12 +69,18 @@ export const DesiredModsPanel = ({
     return tMods(mod.nameTemplateKey).toLowerCase().includes(trimmedQuery);
   });
 
+  const prefixSlotsUsed = desiredMods.filter((m) => isPrefixType(m.modType)).length;
+  const suffixSlotsUsed = desiredMods.filter((m) => !isPrefixType(m.modType)).length;
+
+  const isSlotFull = (modType: ModTypeType): boolean =>
+    isPrefixType(modType) ? prefixSlotsUsed >= MAX_PREFIX_SLOTS : suffixSlotsUsed >= MAX_SUFFIX_SLOTS;
+
   const handleAdd = (modKey: string, nameTemplateKey: string, modType: ModTypeType): void => {
-    if (alreadyAddedKeys.has(modKey)) {
+    if (alreadyAddedKeys.has(modKey) || isSlotFull(modType)) {
       return;
     }
     onAdd({
-      id: `${modKey}-${Date.now()}`,
+      id: `${modKey}-${crypto.randomUUID()}`,
       modKey,
       nameTemplateKey,
       modType,
@@ -113,7 +125,7 @@ export const DesiredModsPanel = ({
         </ul>
       )}
 
-      {/* 2. 검색 입력 + 결과 — 목록 아래 */}
+      {/* 2. 검색 입력 + 슬롯 카운터 + 결과 — 목록 아래 */}
       <input
         type="search"
         aria-label={tForm("desiredMods.searchPlaceholder")}
@@ -130,6 +142,16 @@ export const DesiredModsPanel = ({
         className="w-full rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-3 py-2 text-sm placeholder:text-zinc-400 dark:placeholder:text-zinc-600 focus:outline-none focus:ring-2 focus:ring-amber-500/50"
       />
 
+      {/* 슬롯 카운터 — 검색 입력 하단 우측 */}
+      <div className="flex gap-3 text-xs font-medium justify-end">
+        <span className={prefixSlotsUsed >= MAX_PREFIX_SLOTS ? "text-red-500 dark:text-red-400" : "text-zinc-500 dark:text-zinc-400"}>
+          {tForm("desiredMods.typePrefix")} {prefixSlotsUsed}/{MAX_PREFIX_SLOTS}
+        </span>
+        <span className={suffixSlotsUsed >= MAX_SUFFIX_SLOTS ? "text-red-500 dark:text-red-400" : "text-zinc-500 dark:text-zinc-400"}>
+          {tForm("desiredMods.typeSuffix")} {suffixSlotsUsed}/{MAX_SUFFIX_SLOTS}
+        </span>
+      </div>
+
       {isOpen && (
         <ul
           role="listbox"
@@ -143,6 +165,8 @@ export const DesiredModsPanel = ({
           ) : (
             filteredMods.map((mod) => {
               const isAdded = alreadyAddedKeys.has(mod.modKey);
+              const isFull = !isAdded && isSlotFull(mod.modType);
+              const isDisabled = isAdded || isFull;
               return (
                 <li key={mod.modKey} role="option" aria-selected={isAdded}>
                   <button
@@ -151,9 +175,9 @@ export const DesiredModsPanel = ({
                       event.preventDefault();
                       handleAdd(mod.modKey, mod.nameTemplateKey, mod.modType);
                     }}
-                    disabled={isAdded}
+                    disabled={isDisabled}
                     className={`w-full px-3 py-2 text-left text-sm flex items-center gap-2 transition-colors ${
-                      isAdded
+                      isDisabled
                         ? "opacity-40 cursor-default"
                         : "hover:bg-zinc-50 dark:hover:bg-zinc-800 cursor-pointer"
                     }`}
@@ -168,6 +192,9 @@ export const DesiredModsPanel = ({
                     </span>
                     {isAdded && (
                       <span className="shrink-0 text-xs text-zinc-400">✓</span>
+                    )}
+                    {isFull && (
+                      <span className="shrink-0 text-xs text-red-400">{tForm("desiredMods.slotFull")}</span>
                     )}
                   </button>
                 </li>

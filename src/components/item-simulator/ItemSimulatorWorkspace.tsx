@@ -143,6 +143,12 @@ export const ItemSimulatorWorkspace = (): ReactElement => {
             >
               {t("strategyView.navLabel")}
             </Link>
+            <Link
+              href="/rl"
+              className="text-sm font-medium text-amber-700 dark:text-amber-400 underline-offset-2 hover:underline"
+            >
+              {t("rlView.navLabel")}
+            </Link>
           </div>
         </header>
 

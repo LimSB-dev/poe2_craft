@@ -6,8 +6,8 @@ import type { ReactNode } from "react";
 const fontin = localFont({
   src: [
     { path: "./fonts/Fontin-Regular.otf", weight: "400", style: "normal" },
-    { path: "./fonts/Fontin-Italic.otf",  weight: "400", style: "italic" },
-    { path: "./fonts/Fontin-Bold.otf",    weight: "700", style: "normal" },
+    { path: "./fonts/Fontin-Italic.otf", weight: "400", style: "italic" },
+    { path: "./fonts/Fontin-Bold.otf", weight: "700", style: "normal" },
   ],
   variable: "--font-fontin",
   display: "swap",
@@ -36,7 +36,7 @@ const RootLayout = ({ children }: RootLayoutPropsType) => {
       suppressHydrationWarning
       className={`${fontin.variable} ${fontinSmallCaps.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className={`${fontin.className} ${fontinSmallCaps.variable} min-h-full flex flex-col`}>{children}</body>
     </html>
   );
 };

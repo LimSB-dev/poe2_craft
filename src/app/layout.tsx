@@ -34,9 +34,9 @@ const RootLayout = ({ children }: RootLayoutPropsType) => {
   return (
     <html
       suppressHydrationWarning
-      className={`${fontin.variable} ${fontinSmallCaps.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${fontin.className} ${fontin.variable} ${fontinSmallCaps.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className={`${fontin.className} ${fontinSmallCaps.variable} min-h-full flex flex-col`}>{children}</body>
+      <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );
 };

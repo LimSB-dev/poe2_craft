@@ -1,0 +1,35 @@
+{
+  "rlView": {
+    "title": "Reinforcement learning crafting environment",
+    "intro": "Treat item status as state, crafting choices as actions, and train a simple Q-learning agent to maximize reward.",
+    "navToSimulator": "Back to item simulator",
+    "navLabel": "RL environment",
+    "inputs": {
+      "title": "Training inputs",
+      "desiredGoodMods": "Desired good mods",
+      "budget": "Budget (max Chaos uses)",
+      "episodes": "Training episodes",
+      "run": "Train agent",
+      "training": "Training..."
+    },
+    "definition": {
+      "title": "Environment definition",
+      "state": "state = item state (good mods, total affixes, average tier bucket, remaining budget, essence usage)",
+      "action": "action = crafting action (Chaos, Essence, Stop)",
+      "reward": "reward = item quality - cost"
+    },
+    "result": {
+      "title": "Training result",
+      "meanReward": "Mean reward",
+      "last10Reward": "Last 10 episodes avg reward",
+      "bestInitialAction": "Best initial action",
+      "actionRatio": "Action ratio"
+    },
+    "actions": {
+      "chaos": "Chaos",
+      "essence": "Essence",
+      "stop": "Stop"
+    },
+    "error": "Could not load training result. Please try again."
+  }
+}

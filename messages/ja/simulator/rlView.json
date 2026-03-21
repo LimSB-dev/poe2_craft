@@ -1,0 +1,35 @@
+{
+  "rlView": {
+    "title": "強化学習クラフト環境",
+    "intro": "アイテム状態を状態として扱い、クラフト行動を選び、シンプルなQ-learningエージェントを学習します。",
+    "navToSimulator": "アイテムシミュレーターに戻る",
+    "navLabel": "RL環境",
+    "inputs": {
+      "title": "学習入力",
+      "desiredGoodMods": "目標の良いモッド数",
+      "budget": "予算（最大カオス使用回数）",
+      "episodes": "学習エピソード数",
+      "run": "学習開始",
+      "training": "学習中..."
+    },
+    "definition": {
+      "title": "環境定義",
+      "state": "state = アイテム状態（良いモッド数、総アフィックス数、平均ティアバケット、残予算、エッセンス使用有無）",
+      "action": "action = クラフト行動（Chaos, Essence, Stop）",
+      "reward": "reward = アイテム品質 - コスト"
+    },
+    "result": {
+      "title": "学習結果",
+      "meanReward": "平均報酬",
+      "last10Reward": "直近10エピソード平均報酬",
+      "bestInitialAction": "初期状態の推奨行動",
+      "actionRatio": "行動比率"
+    },
+    "actions": {
+      "chaos": "カオス",
+      "essence": "エッセンス",
+      "stop": "停止"
+    },
+    "error": "学習結果を読み込めませんでした。再試行してください。"
+  }
+}

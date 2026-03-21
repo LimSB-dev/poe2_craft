@@ -34,5 +34,30 @@
     "evasion": "EVA",
     "energyShield": "ES",
     "filterToggle": "Filters"
+  },
+  "dbView": {
+    "title": "Database",
+    "description": "Browse base items and mods.",
+    "tabItems": "Base Items",
+    "tabMods": "Mods",
+    "colName": "Name",
+    "colType": "Type",
+    "colSubType": "Sub-type",
+    "colStatTags": "Stats",
+    "colArmour": "Armour",
+    "colEvasion": "Evasion",
+    "colES": "ES",
+    "colReq": "Requirements",
+    "colModType": "Type",
+    "colTags": "Tags",
+    "colTiers": "Tiers",
+    "colWeight": "Weight",
+    "colApplicable": "Applicable to",
+    "colStatReq": "Stat Req.",
+    "prefix": "Prefix",
+    "suffix": "Suffix",
+    "navLabel": "DB",
+    "corruptedPrefix": "Corrupted Prefix",
+    "corruptedSuffix": "Corrupted Suffix"
   }
 }

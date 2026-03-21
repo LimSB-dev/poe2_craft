@@ -1,4 +1,4 @@
-export type ModTypeType = "prefix" | "suffix";
+export type ModTypeType = "prefix" | "suffix" | "corruptedPrefix" | "corruptedSuffix";
 
 export type ItemRarityType = "magic" | "rare";
 

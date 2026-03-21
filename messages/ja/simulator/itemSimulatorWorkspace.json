@@ -1,0 +1,66 @@
+{
+  "itemSimulatorWorkspace": {
+    "title": "Path of Exile 2 — アイテムシミュレーター",
+    "intro": "ベースアイテムを選び、接頭辞・接尾辞の数を指定してから1回の結果をプレビューします。レイアウトと反復のための簡略モデルです。",
+    "nav": {
+      "strategy": "戦略画面を開く",
+      "rl": "RL環境",
+      "optimizer": "最適化画面を開く",
+      "db": "DB"
+    },
+    "panels": {
+      "baseItem": {
+        "title": "ベースアイテム",
+        "description": "クラフトするアイテムを選びます。"
+      },
+      "desiredMods": {
+        "title": "属性",
+        "description": "アイテムに付与したい属性を追加し、ロール設定を調整します。"
+      },
+      "result": {
+        "title": "想定結果",
+        "description": "現在のモッドプールと重みからランダムに1つ選んだ結果です。"
+      }
+    },
+    "baseFilter": {
+      "type": "タイプ",
+      "subType": "種別",
+      "all": "すべて",
+      "requiredStr": "STR",
+      "requiredDex": "DEX",
+      "requiredInt": "INT",
+      "requiredLevel": "Lv",
+      "baseItem": "ベースアイテム",
+      "noResults": "条件に合うベースアイテムがありません",
+      "matchCount": "条件一致のベースアイテム数: {count}",
+      "source": "出典: PoE2DB",
+      "quality": "品質",
+      "armour": "アーマー",
+      "evasion": "回避",
+      "energyShield": "エナジーシールド",
+      "filterToggle": "フィルター",
+      "baseItemSearchPlaceholder": "{label}を検索… ({count})"
+    },
+    "equipmentType": {
+      "weapon": "武器",
+      "offhand": "補助装備",
+      "armour": "防具",
+      "jewellery": "装身具"
+    },
+    "resultCard": {
+      "empty": "ベースとオプションを選び、「ロールをプレビュー」を押してください。"
+    },
+    "rarity": {
+      "magic": "マジック",
+      "rare": "レア"
+    },
+    "resultModList": {
+      "prefixes": "接頭辞",
+      "suffixes": "接尾辞",
+      "empty": "なし"
+    },
+    "actions": {
+      "runRoll": "ロールをプレビュー"
+    }
+  }
+}

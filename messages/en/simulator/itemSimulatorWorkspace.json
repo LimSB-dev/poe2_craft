@@ -1,0 +1,66 @@
+{
+  "itemSimulatorWorkspace": {
+    "title": "Path of Exile 2 — Item simulator",
+    "intro": "Pick a base item, choose how many prefixes and suffixes you want to roll, then preview one outcome. This is a simplified model for layout and iteration.",
+    "nav": {
+      "strategy": "Open strategy view",
+      "rl": "RL environment",
+      "optimizer": "Open optimizer",
+      "db": "DB"
+    },
+    "panels": {
+      "baseItem": {
+        "title": "Base item",
+        "description": "Select the item you are crafting on."
+      },
+      "desiredMods": {
+        "title": "Modifiers",
+        "description": "Add the modifiers you want on your item and adjust roll settings."
+      },
+      "result": {
+        "title": "Expected result",
+        "description": "One random outcome from the current mod pool and weights."
+      }
+    },
+    "baseFilter": {
+      "type": "Type",
+      "subType": "Subtype",
+      "all": "All",
+      "requiredStr": "STR",
+      "requiredDex": "DEX",
+      "requiredInt": "INT",
+      "requiredLevel": "Lv",
+      "baseItem": "Base item",
+      "noResults": "No base items match filters",
+      "matchCount": "Matched base items: {count}",
+      "source": "Source: PoE2DB",
+      "quality": "Quality",
+      "armour": "ARM",
+      "evasion": "EVA",
+      "energyShield": "ES",
+      "filterToggle": "Filters",
+      "baseItemSearchPlaceholder": "Search {label}… ({count})"
+    },
+    "equipmentType": {
+      "weapon": "Weapon",
+      "offhand": "Off-hand",
+      "armour": "Armour",
+      "jewellery": "Jewellery"
+    },
+    "resultCard": {
+      "empty": "Choose a base item and options, then press \"Roll preview\"."
+    },
+    "rarity": {
+      "magic": "Magic",
+      "rare": "Rare"
+    },
+    "resultModList": {
+      "prefixes": "Prefixes",
+      "suffixes": "Suffixes",
+      "empty": "None"
+    },
+    "actions": {
+      "runRoll": "Roll preview"
+    }
+  }
+}

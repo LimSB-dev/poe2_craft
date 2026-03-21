@@ -5,6 +5,19 @@
     "suffixes": "Suffixes",
     "effectiveRoll": "Effective roll: {prefixCount} prefix(es), {suffixCount} suffix(es). {hint}",
     "effectiveRollHint": "Magic max 1 each; rare max 3 each.",
-    "rollPreview": "Roll preview"
+    "rollPreview": "Roll preview",
+    "rollSettings": "Roll settings"
+  },
+  "desiredMods": {
+    "sectionTitle": "Desired modifiers",
+    "searchPlaceholder": "Search modifiers...",
+    "noResults": "No results found",
+    "emptyState": "Add the modifiers you want",
+    "addedTitle": "Added modifiers",
+    "removeAriaLabel": "Remove modifier: {name}",
+    "typePrefix": "Prefix",
+    "typeSuffix": "Suffix",
+    "typeCorruptedPrefix": "Corrupted Prefix",
+    "typeCorruptedSuffix": "Corrupted Suffix"
   }
 }

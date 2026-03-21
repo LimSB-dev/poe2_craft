@@ -5,6 +5,19 @@
     "suffixes": "后缀",
     "effectiveRoll": "实际roll：前缀 {prefixCount}，后缀 {suffixCount}。{hint}",
     "effectiveRollHint": "魔法各最多1条；稀有各最多3条。",
-    "rollPreview": "Roll预览"
+    "rollPreview": "Roll预览",
+    "rollSettings": "Roll设置"
+  },
+  "desiredMods": {
+    "sectionTitle": "目标词缀",
+    "searchPlaceholder": "搜索词缀...",
+    "noResults": "没有找到结果",
+    "emptyState": "添加你想要的词缀",
+    "addedTitle": "已添加词缀",
+    "removeAriaLabel": "移除词缀：{name}",
+    "typePrefix": "前缀",
+    "typeSuffix": "后缀",
+    "typeCorruptedPrefix": "腐化前缀",
+    "typeCorruptedSuffix": "腐化后缀"
   }
 }

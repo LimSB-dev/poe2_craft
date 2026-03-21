@@ -37,9 +37,9 @@
   },
   "dbView": {
     "title": "데이터베이스",
-    "description": "베이스 아이템과 옵션을 한 눈에 확인합니다.",
+    "description": "베이스 아이템과 속성을 한 눈에 확인합니다.",
     "tabItems": "베이스 아이템",
-    "tabMods": "옵션",
+    "tabMods": "속성",
     "colName": "이름",
     "colType": "타입",
     "colSubType": "유형",

@@ -168,28 +168,6 @@ export const DesiredModsPanel = ({
         className="w-full rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-3 py-2 text-sm placeholder:text-zinc-400 dark:placeholder:text-zinc-600 focus:outline-none focus:ring-2 focus:ring-amber-500/50"
       />
 
-      {/* 슬롯 카운터 — 검색 입력 하단 우측 */}
-      <div className="flex gap-3 text-xs font-medium justify-end">
-        <span
-          className={
-            prefixSlotsUsed >= MAX_PREFIX_SLOTS
-              ? "text-red-500 dark:text-red-400"
-              : "text-zinc-500 dark:text-zinc-400"
-          }
-        >
-          {tForm("desiredMods.typePrefix")} {prefixSlotsUsed}/{MAX_PREFIX_SLOTS}
-        </span>
-        <span
-          className={
-            suffixSlotsUsed >= MAX_SUFFIX_SLOTS
-              ? "text-red-500 dark:text-red-400"
-              : "text-zinc-500 dark:text-zinc-400"
-          }
-        >
-          {tForm("desiredMods.typeSuffix")} {suffixSlotsUsed}/{MAX_SUFFIX_SLOTS}
-        </span>
-      </div>
-
       {isOpen && (
         <ul
           role="listbox"
@@ -243,6 +221,28 @@ export const DesiredModsPanel = ({
           )}
         </ul>
       )}
+
+      {/* 슬롯 카운터 — 검색 입력 하단 우측 */}
+      <div className="flex gap-3 text-xs font-medium justify-end">
+        <span
+          className={
+            prefixSlotsUsed >= MAX_PREFIX_SLOTS
+              ? "text-red-500 dark:text-red-400"
+              : "text-zinc-500 dark:text-zinc-400"
+          }
+        >
+          {tForm("desiredMods.typePrefix")} {prefixSlotsUsed}/{MAX_PREFIX_SLOTS}
+        </span>
+        <span
+          className={
+            suffixSlotsUsed >= MAX_SUFFIX_SLOTS
+              ? "text-red-500 dark:text-red-400"
+              : "text-zinc-500 dark:text-zinc-400"
+          }
+        >
+          {tForm("desiredMods.typeSuffix")} {suffixSlotsUsed}/{MAX_SUFFIX_SLOTS}
+        </span>
+      </div>
     </div>
   );
 };

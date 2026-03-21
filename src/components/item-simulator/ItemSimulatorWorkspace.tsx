@@ -587,103 +587,6 @@ export const ItemSimulatorWorkspace = (): ReactElement => {
                   })()}
               </div>
 
-              {/* 2. 검색 입력 + 결과 — 아이템 카드 아래 */}
-              <div ref={baseItemContainerRef} className="flex flex-col gap-2">
-                <input
-                  ref={baseItemInputRef}
-                  type="search"
-                  aria-label={t("baseFilter.baseItem")}
-                  value={baseItemQuery}
-                  onChange={(event) => setBaseItemQuery(event.target.value)}
-                  onFocus={() => setIsBaseItemDropdownOpen(true)}
-                  onBlur={(event) => {
-                    if (
-                      !baseItemContainerRef.current?.contains(
-                        event.relatedTarget,
-                      )
-                    ) {
-                      setIsBaseItemDropdownOpen(false);
-                      setBaseItemQuery("");
-                    }
-                  }}
-                  placeholder={`${t("baseFilter.baseItem")} 검색... (${filteredBaseItemRecords.length})`}
-                  className="w-full rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-3 py-2 text-sm placeholder:text-zinc-400 dark:placeholder:text-zinc-600 focus:outline-none focus:ring-2 focus:ring-amber-500/50"
-                />
-
-                {isBaseItemDropdownOpen &&
-                  (() => {
-                    const trimmed = baseItemQuery.trim().toLowerCase();
-                    const dropdownItems = filteredBaseItemRecords.filter(
-                      (record) => {
-                        if (trimmed.length === 0) {
-                          return true;
-                        }
-                        const def = BASE_ITEMS.find(
-                          (b) => b.baseItemKey === record.baseItemKey,
-                        );
-                        const label = def ? baseName(def) : record.baseItemKey;
-                        return label.toLowerCase().includes(trimmed);
-                      },
-                    );
-                    return (
-                      <ul
-                        role="listbox"
-                        aria-label={t("baseFilter.baseItem")}
-                        className="rounded-lg border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 max-h-52 overflow-y-auto divide-y divide-zinc-100 dark:divide-zinc-800"
-                      >
-                        {dropdownItems.length === 0 ? (
-                          <li className="px-3 py-2.5 text-sm text-zinc-400 dark:text-zinc-500">
-                            {t("baseFilter.noResults")}
-                          </li>
-                        ) : (
-                          dropdownItems.map((record) => {
-                            const def = BASE_ITEMS.find(
-                              (b) => b.baseItemKey === record.baseItemKey,
-                            );
-                            const label = def
-                              ? baseName(def)
-                              : record.baseItemKey;
-                            const isSelected =
-                              record.baseItemKey ===
-                              effectiveSelectedBaseItemKey;
-                            return (
-                              <li
-                                key={record.baseItemKey}
-                                role="option"
-                                aria-selected={isSelected}
-                              >
-                                <button
-                                  type="button"
-                                  onMouseDown={(event) => {
-                                    event.preventDefault();
-                                    setSelectedBaseItemKey(record.baseItemKey);
-                                    setIsBaseItemDropdownOpen(false);
-                                    setBaseItemQuery("");
-                                  }}
-                                  className={`w-full px-3 py-2 text-left text-sm flex items-center gap-2 transition-colors ${
-                                    isSelected
-                                      ? "bg-amber-50 dark:bg-amber-900/20 text-amber-800 dark:text-amber-300"
-                                      : "hover:bg-zinc-50 dark:hover:bg-zinc-800 text-zinc-800 dark:text-zinc-200"
-                                  }`}
-                                >
-                                  <span className="flex-1 truncate">
-                                    {label}
-                                  </span>
-                                  {isSelected && (
-                                    <span className="shrink-0 text-xs text-amber-500">
-                                      ✓
-                                    </span>
-                                  )}
-                                </button>
-                              </li>
-                            );
-                          })
-                        )}
-                      </ul>
-                    );
-                  })()}
-              </div>
-
               <button
                 type="button"
                 onClick={() => {
@@ -744,7 +647,6 @@ export const ItemSimulatorWorkspace = (): ReactElement => {
                       </option>
                     </select>
                   </label>
-
                   <label className="flex flex-col gap-1 text-sm">
                     <span className="font-medium text-zinc-800 dark:text-zinc-200">
                       {t("baseFilter.subType")}

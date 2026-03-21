@@ -1,9 +1,27 @@
 {
   "itemClass": {
+    "dagger": "Dagger",
+    "oneHandSword": "One Hand Sword",
+    "oneHandAxe": "One Hand Axe",
+    "oneHandMace": "One Hand Mace",
+    "sceptre": "Sceptre",
+    "spear": "Spear",
+    "flail": "Flail",
     "staff": "Staff",
     "wand": "Wand",
     "bow": "Bow",
     "claw": "Claw",
+    "twoHandSword": "Two Hand Sword",
+    "twoHandAxe": "Two Hand Axe",
+    "twoHandMace": "Two Hand Mace",
+    "quarterstaff": "Quarterstaff",
+    "fishingRod": "Fishing Rod",
+    "crossbow": "Crossbow",
+    "trap": "Trap",
+    "talisman": "Talisman",
+    "quiver": "Quiver",
+    "shield": "Shield",
+    "buckler": "Buckler",
     "helmet": "Helmet",
     "focus": "Focus",
     "gloves": "Gloves",
@@ -49,6 +67,745 @@
     },
     "base_heavy_belt": {
       "name": "Heavy Belt"
+    },
+    "gloves_001": {
+      "name": "다부진 미트"
+    },
+    "gloves_002": {
+      "name": "고정못 미트"
+    },
+    "gloves_003": {
+      "name": "단조한 미트"
+    },
+    "gloves_004": {
+      "name": "발전된 미트"
+    },
+    "gloves_005": {
+      "name": "주조한 미트"
+    },
+    "gloves_006": {
+      "name": "정교한 미트"
+    },
+    "gloves_007": {
+      "name": "거신 미트"
+    },
+    "gloves_008": {
+      "name": "우수한 미트"
+    },
+    "gloves_009": {
+      "name": "스웨드 팔보호구"
+    },
+    "gloves_010": {
+      "name": "굳건한 팔보호구"
+    },
+    "gloves_011": {
+      "name": "속박된 팔보호구"
+    },
+    "gloves_012": {
+      "name": "절개된 팔보호구"
+    },
+    "gloves_013": {
+      "name": "가시 팔보호구"
+    },
+    "gloves_014": {
+      "name": "섬세한 팔보호구"
+    },
+    "gloves_015": {
+      "name": "굳어진 팔보호구"
+    },
+    "gloves_016": {
+      "name": "아로새긴 팔보호구"
+    },
+    "gloves_017": {
+      "name": "찢긴 장갑"
+    },
+    "gloves_018": {
+      "name": "암울한 장갑"
+    },
+    "gloves_019": {
+      "name": "꿰맨 장갑"
+    },
+    "gloves_020": {
+      "name": "보석 박힌 장갑"
+    },
+    "gloves_021": {
+      "name": "복잡한 장갑"
+    },
+    "gloves_022": {
+      "name": "파우아비늘 장갑"
+    },
+    "gloves_023": {
+      "name": "수놓은 장갑"
+    },
+    "gloves_024": {
+      "name": "치장된 장갑"
+    },
+    "gloves_025": {
+      "name": "고리 갑옷 건틀릿"
+    },
+    "gloves_026": {
+      "name": "겹겹의 건틀릿"
+    },
+    "gloves_027": {
+      "name": "이중 건틀릿"
+    },
+    "gloves_028": {
+      "name": "판금 건틀릿"
+    },
+    "gloves_029": {
+      "name": "윤이 나는 건틀릿"
+    },
+    "gloves_030": {
+      "name": "화려한 건틀릿"
+    },
+    "gloves_031": {
+      "name": "밧줄 수갑"
+    },
+    "gloves_032": {
+      "name": "오래된 수갑"
+    },
+    "gloves_033": {
+      "name": "금주물 수갑"
+    },
+    "gloves_034": {
+      "name": "베리시움 수갑"
+    },
+    "gloves_035": {
+      "name": "정의로운 수갑"
+    },
+    "gloves_036": {
+      "name": "인장 수갑"
+    },
+    "gloves_037": {
+      "name": "거즈 싸개"
+    },
+    "gloves_038": {
+      "name": "리넨 싸개"
+    },
+    "gloves_039": {
+      "name": "나선 싸개"
+    },
+    "gloves_040": {
+      "name": "버클 싸개"
+    },
+    "gloves_041": {
+      "name": "은밀한 싸개"
+    },
+    "gloves_042": {
+      "name": "특수 싸개"
+    },
+    "gloves_043": {
+      "name": "우수한 소맷부리"
+    },
+    "gloves_044": {
+      "name": "판금 미트"
+    },
+    "gloves_045": {
+      "name": "우아한 미트"
+    },
+    "gloves_046": {
+      "name": "고대 미트"
+    },
+    "gloves_047": {
+      "name": "깃털 미트"
+    },
+    "gloves_048": {
+      "name": "사냥 팔보호구"
+    },
+    "gloves_049": {
+      "name": "재빠른 팔보호구"
+    },
+    "gloves_050": {
+      "name": "제련된 팔보호구"
+    },
+    "gloves_051": {
+      "name": "가시 팔보호구"
+    },
+    "gloves_052": {
+      "name": "불길한 장갑"
+    },
+    "gloves_053": {
+      "name": "장식된 장갑"
+    },
+    "gloves_054": {
+      "name": "바로크 장갑"
+    },
+    "gloves_055": {
+      "name": "금 장갑"
+    },
+    "gloves_056": {
+      "name": "철사슬 건틀릿"
+    },
+    "gloves_057": {
+      "name": "대장 건틀릿"
+    },
+    "gloves_058": {
+      "name": "맹신자 건틀릿"
+    },
+    "gloves_059": {
+      "name": "땋은 수갑"
+    },
+    "gloves_060": {
+      "name": "가보 수갑"
+    },
+    "gloves_061": {
+      "name": "화려한 수갑"
+    },
+    "gloves_062": {
+      "name": "붕대 싸개"
+    },
+    "gloves_063": {
+      "name": "캠브릭 싸개"
+    },
+    "gloves_064": {
+      "name": "치장된 싸개"
+    },
+    "gloves_065": {
+      "name": "기사의 미트"
+    },
+    "gloves_066": {
+      "name": "화려한 미트"
+    },
+    "gloves_067": {
+      "name": "바알 미트"
+    },
+    "gloves_068": {
+      "name": "거대한 미트"
+    },
+    "gloves_069": {
+      "name": "뒤를 쫓는 팔보호구"
+    },
+    "gloves_070": {
+      "name": "우수한 팔보호구"
+    },
+    "gloves_071": {
+      "name": "가시 돋친 팔보호구"
+    },
+    "gloves_072": {
+      "name": "광택 나는 팔보호구"
+    },
+    "gloves_073": {
+      "name": "으스스한 장갑"
+    },
+    "gloves_074": {
+      "name": "호화로운 장갑"
+    },
+    "gloves_075": {
+      "name": "바알 장갑"
+    },
+    "gloves_076": {
+      "name": "사이렌비늘 장갑"
+    },
+    "gloves_077": {
+      "name": "강철사슬 건틀릿"
+    },
+    "gloves_078": {
+      "name": "지휘관 건틀릿"
+    },
+    "gloves_079": {
+      "name": "광신자 건틀릿"
+    },
+    "gloves_080": {
+      "name": "검은강철 건틀릿"
+    },
+    "gloves_081": {
+      "name": "속박된 수갑"
+    },
+    "gloves_082": {
+      "name": "고대의 수갑"
+    },
+    "gloves_083": {
+      "name": "번뜩이는 수갑"
+    },
+    "gloves_084": {
+      "name": "지지자 수갑"
+    },
+    "gloves_085": {
+      "name": "전쟁 싸개"
+    },
+    "gloves_086": {
+      "name": "우아한 싸개"
+    },
+    "gloves_087": {
+      "name": "바알 싸개"
+    },
+    "gloves_088": {
+      "name": "고정된 싸개"
+    },
+    "body_armour_001": {
+      "name": "녹슨 흉갑"
+    },
+    "body_armour_002": {
+      "name": "모피 판금 갑옷"
+    },
+    "body_armour_003": {
+      "name": "철 흉갑"
+    },
+    "body_armour_004": {
+      "name": "레이더 판금 갑옷"
+    },
+    "body_armour_005": {
+      "name": "마라케스 흉갑"
+    },
+    "body_armour_006": {
+      "name": "강철 판금 갑옷"
+    },
+    "body_armour_007": {
+      "name": "전신 판금 갑옷"
+    },
+    "body_armour_008": {
+      "name": "바알 흉갑"
+    },
+    "body_armour_009": {
+      "name": "거수 판금 갑옷"
+    },
+    "body_armour_010": {
+      "name": "치프틴 흉갑"
+    },
+    "body_armour_011": {
+      "name": "원형 경기장 판금 갑옷"
+    },
+    "body_armour_012": {
+      "name": "챔피언 흉갑"
+    },
+    "body_armour_013": {
+      "name": "영광의 판금 갑옷"
+    },
+    "body_armour_014": {
+      "name": "정복자 판금 갑옷"
+    },
+    "body_armour_015": {
+      "name": "심연의 흉갑"
+    },
+    "body_armour_016": {
+      "name": "가죽 조끼"
+    },
+    "body_armour_017": {
+      "name": "누비 조끼"
+    },
+    "body_armour_018": {
+      "name": "패스파인더 외투"
+    },
+    "body_armour_019": {
+      "name": "연막의 조끼"
+    },
+    "body_armour_020": {
+      "name": "로아가죽 외투"
+    },
+    "body_armour_021": {
+      "name": "징 박힌 조끼"
+    },
+    "body_armour_022": {
+      "name": "정찰병의 조끼"
+    },
+    "body_armour_023": {
+      "name": "뱀 비늘 외투"
+    },
+    "body_armour_024": {
+      "name": "해적 조끼"
+    },
+    "body_armour_025": {
+      "name": "밀수범 외투"
+    },
+    "body_armour_026": {
+      "name": "질주자 조끼"
+    },
+    "body_armour_027": {
+      "name": "경화가죽 외투"
+    },
+    "body_armour_028": {
+      "name": "정교한 조끼"
+    },
+    "body_armour_029": {
+      "name": "사슬 외투"
+    },
+    "body_armour_030": {
+      "name": "장갑을 두른 조끼"
+    },
+    "body_armour_031": {
+      "name": "조각난 로브"
+    },
+    "body_armour_032": {
+      "name": "깃털 로브"
+    },
+    "body_armour_033": {
+      "name": "사술사의 로브"
+    },
+    "body_armour_034": {
+      "name": "뼈 의복"
+    },
+    "body_armour_035": {
+      "name": "실크 로브"
+    },
+    "body_armour_036": {
+      "name": "케스 의복"
+    },
+    "body_armour_037": {
+      "name": "봉헌된 의복"
+    },
+    "body_armour_038": {
+      "name": "제단 로브"
+    },
+    "body_armour_039": {
+      "name": "엘리멘탈리스트 로브"
+    },
+    "body_armour_040": {
+      "name": "신비한 의복"
+    },
+    "body_armour_041": {
+      "name": "제국 로브"
+    },
+    "body_armour_042": {
+      "name": "판금 의복"
+    },
+    "body_armour_043": {
+      "name": "혼란의 의복"
+    },
+    "body_armour_044": {
+      "name": "계몽의 로브"
+    },
+    "body_armour_045": {
+      "name": "비전 의복"
+    },
+    "body_armour_046": {
+      "name": "사슬 갑옷"
+    },
+    "body_armour_047": {
+      "name": "악한 방어구"
+    },
+    "body_armour_048": {
+      "name": "방랑자 방어구"
+    },
+    "body_armour_049": {
+      "name": "은폐 사슬옷"
+    },
+    "body_armour_050": {
+      "name": "탐험가 방어구"
+    },
+    "body_armour_051": {
+      "name": "미늘 갑옷"
+    },
+    "body_armour_052": {
+      "name": "기사 방어구"
+    },
+    "body_armour_053": {
+      "name": "선대의 사슬옷"
+    },
+    "body_armour_054": {
+      "name": "라멜라 사슬옷"
+    },
+    "body_armour_055": {
+      "name": "검투사 방어구"
+    },
+    "body_armour_056": {
+      "name": "영웅의 방어구"
+    },
+    "body_armour_057": {
+      "name": "토너먼트 사슬옷"
+    },
+    "body_armour_058": {
+      "name": "토너먼트 사슬옷"
+    },
+    "body_armour_059": {
+      "name": "토너먼트 사슬옷"
+    },
+    "body_armour_060": {
+      "name": "처형자 방어구"
+    },
+    "body_armour_061": {
+      "name": "순례자 법의"
+    },
+    "body_armour_062": {
+      "name": "털가죽 외투"
+    },
+    "body_armour_063": {
+      "name": "사슬 법의"
+    },
+    "body_armour_064": {
+      "name": "주술사 외투"
+    },
+    "body_armour_065": {
+      "name": "철갑 법의"
+    },
+    "body_armour_066": {
+      "name": "희생의 외투"
+    },
+    "body_armour_067": {
+      "name": "성직자 법의"
+    },
+    "body_armour_068": {
+      "name": "파도예견자 외투"
+    },
+    "body_armour_069": {
+      "name": "도금된 법의"
+    },
+    "body_armour_070": {
+      "name": "공경받는 외투"
+    },
+    "body_armour_071": {
+      "name": "존경받는 법의"
+    },
+    "body_armour_072": {
+      "name": "까마귀 외투"
+    },
+    "body_armour_073": {
+      "name": "북극성 법의"
+    },
+    "body_armour_074": {
+      "name": "은자 의복"
+    },
+    "body_armour_075": {
+      "name": "밀랍재질 재킷"
+    },
+    "body_armour_076": {
+      "name": "도사 의복"
+    },
+    "body_armour_077": {
+      "name": "나그네 재킷"
+    },
+    "body_armour_078": {
+      "name": "은둔자 의복"
+    },
+    "body_armour_079": {
+      "name": "두피수집가의 재킷"
+    },
+    "body_armour_080": {
+      "name": "불한당 재킷"
+    },
+    "body_armour_081": {
+      "name": "고행자 의복"
+    },
+    "body_armour_082": {
+      "name": "은밀한 재킷"
+    },
+    "body_armour_083": {
+      "name": "수도원 의복"
+    },
+    "body_armour_084": {
+      "name": "고통 재킷"
+    },
+    "body_armour_085": {
+      "name": "헌신자 의복"
+    },
+    "body_armour_086": {
+      "name": "암살자 의복"
+    },
+    "body_armour_087": {
+      "name": "우수한 예복"
+    },
+    "body_armour_088": {
+      "name": "희생의 예복"
+    },
+    "body_armour_089": {
+      "name": "야만인의 판금 갑옷"
+    },
+    "body_armour_090": {
+      "name": "투박한 흉갑"
+    },
+    "body_armour_091": {
+      "name": "모래맹세 흉갑"
+    },
+    "body_armour_092": {
+      "name": "우아한 판금 갑옷"
+    },
+    "body_armour_093": {
+      "name": "무거운 판금 갑옷"
+    },
+    "body_armour_094": {
+      "name": "돌 흉갑"
+    },
+    "body_armour_095": {
+      "name": "쪽모이 조끼"
+    },
+    "body_armour_096": {
+      "name": "사냥 외투"
+    },
+    "body_armour_097": {
+      "name": "승마 외투"
+    },
+    "body_armour_098": {
+      "name": "겹겹의 조끼"
+    },
+    "body_armour_099": {
+      "name": "주자 조끼"
+    },
+    "body_armour_100": {
+      "name": "도마뱀비늘 외투"
+    },
+    "body_armour_101": {
+      "name": "새의 로브"
+    },
+    "body_armour_102": {
+      "name": "저주발화자의 로브"
+    },
+    "body_armour_103": {
+      "name": "호화로운 로브"
+    },
+    "body_armour_104": {
+      "name": "강 의복"
+    },
+    "body_armour_105": {
+      "name": "지지자의 의복"
+    },
+    "body_armour_106": {
+      "name": "의식용 로브"
+    },
+    "body_armour_107": {
+      "name": "고리 사슬옷"
+    },
+    "body_armour_108": {
+      "name": "불한당 방어구"
+    },
+    "body_armour_109": {
+      "name": "방랑자 방어구"
+    },
+    "body_armour_110": {
+      "name": "덮개 덮은 사슬옷"
+    },
+    "body_armour_111": {
+      "name": "창시자 방어구"
+    },
+    "body_armour_112": {
+      "name": "황금 사슬옷"
+    },
+    "body_armour_113": {
+      "name": "템플러 법의"
+    },
+    "body_armour_114": {
+      "name": "곰가죽 외투"
+    },
+    "body_armour_115": {
+      "name": "쇠사슬 법의"
+    },
+    "body_armour_116": {
+      "name": "비술사 외투"
+    },
+    "body_armour_117": {
+      "name": "판금 법의"
+    },
+    "body_armour_118": {
+      "name": "심장도륙자 외투"
+    },
+    "body_armour_119": {
+      "name": "고행자 의복"
+    },
+    "body_armour_120": {
+      "name": "기름칠된 재킷"
+    },
+    "body_armour_121": {
+      "name": "선교사 의복"
+    },
+    "body_armour_122": {
+      "name": "순회자 재킷"
+    },
+    "body_armour_123": {
+      "name": "하툰고 의복"
+    },
+    "body_armour_124": {
+      "name": "행상 재킷"
+    },
+    "body_armour_125": {
+      "name": "병사 흉갑"
+    },
+    "body_armour_126": {
+      "name": "화려한 판금 갑옷"
+    },
+    "body_armour_127": {
+      "name": "웃자알 흉갑"
+    },
+    "body_armour_128": {
+      "name": "전쟁군주 흉갑"
+    },
+    "body_armour_129": {
+      "name": "재빠른 추적자 외투"
+    },
+    "body_armour_130": {
+      "name": "미끄러진 타격 조끼"
+    },
+    "body_armour_131": {
+      "name": "아룡 비늘 외투"
+    },
+    "body_armour_132": {
+      "name": "해적 외투"
+    },
+    "body_armour_133": {
+      "name": "끔찍한 로브"
+    },
+    "body_armour_134": {
+      "name": "흐르는 의복"
+    },
+    "body_armour_135": {
+      "name": "성찬의 로브"
+    },
+    "body_armour_136": {
+      "name": "깃털 의복"
+    },
+    "body_armour_137": {
+      "name": "비겁자 방어구"
+    },
+    "body_armour_138": {
+      "name": "연막의 사슬옷"
+    },
+    "body_armour_139": {
+      "name": "연막의 사슬옷"
+    },
+    "body_armour_140": {
+      "name": "연막의 사슬옷"
+    },
+    "body_armour_141": {
+      "name": "죽음의 사슬옷"
+    },
+    "body_armour_142": {
+      "name": "테인 사슬옷"
+    },
+    "body_armour_143": {
+      "name": "늑대가죽 외투"
+    },
+    "body_armour_144": {
+      "name": "요술사 외투"
+    },
+    "body_armour_145": {
+      "name": "죽음의 외투"
+    },
+    "body_armour_146": {
+      "name": "바다폭풍 외투"
+    },
+    "body_armour_147": {
+      "name": "매끈한 재킷"
+    },
+    "body_armour_148": {
+      "name": "뚜벅이 재킷"
+    },
+    "body_armour_149": {
+      "name": "매 조련사의 재킷"
+    },
+    "body_armour_150": {
+      "name": "금욕적인 의복"
+    },
+    "base_steel_ring": {
+      "name": "Iron Ring"
     }
+  },
+  "baseItemImplicits": {
+    "stun_threshold_inc": "(30–40)% increased Stun Threshold",
+    "life_regen_per_sec": "Regenerate (1.5–2.5)% of Life per second",
+    "debuff_slow_reduced": "(20–30)% reduced Effect of Slowing Debuffs on you",
+    "elemental_ailment_threshold_inc": "(30–40)% increased Elemental Ailment Threshold",
+    "mana_regen_rate_inc": "(40–50)% increased Mana Regeneration Rate",
+    "es_recharge_faster": "(40–50)% faster start of Energy Shield Recharge",
+    "max_life_plus": "+(60–80) to maximum Life",
+    "fire_resist_plus": "+(20–25)% to Fire Resistance",
+    "cold_resist_plus": "+(20–25)% to Cold Resistance",
+    "lightning_resist_plus": "+(20–25)% to Lightning Resistance",
+    "max_elem_resist_plus": "+1% to all maximum Elemental Resistances",
+    "spirit_plus": "+(20–30) to Spirit",
+    "corrupted_skill_gem_level": "+1 to Level of all Corrupted Skill Gems",
+    "chaos_resist_plus": "+(7–13)% to Chaos Resistance",
+    "move_speed_inc": "5% increased Movement Speed",
+    "crit_damage_bonus_reduced": "(15–25)% reduced Critical Damage Bonus taken from Hits",
+    "armour_applies_to_elem_damage": "+(15–25)% of Armour also applies to Elemental Damage",
+    "damage_to_mana": "(5–10)% of Damage taken from Hits is Recovered as Mana",
+    "damage_to_life_leech": "(8–14)% of Damage taken Recouped as Life",
+    "elemental_ailment_duration_reduced": "(10–15)% reduced Duration of Elemental Ailments on you"
   }
 }

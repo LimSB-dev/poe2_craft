@@ -13,21 +13,26 @@
   "baseItemLevel": "요구 레벨 {level}",
   "equipmentType": {
     "weapon": "무기",
+    "offhand": "보조 장비",
     "armour": "방어구",
-    "accessory": "악세사리"
+    "jewellery": "장신구"
   },
   "baseFilter": {
     "type": "타입",
     "subType": "유형",
     "all": "전체",
-    "requiredStr": "최대 STR",
-    "requiredDex": "최대 DEX",
-    "requiredInt": "최대 INT",
-    "requiredLevel": "최대 착용 레벨",
+    "requiredStr": "STR",
+    "requiredDex": "DEX",
+    "requiredInt": "INT",
+    "requiredLevel": "Lv",
     "baseItem": "베이스 아이템",
     "noResults": "필터에 맞는 베이스 아이템이 없습니다",
     "requirementSummary": "요구 STR {str} / DEX {dex} / INT {int} / Lv {level}",
     "matchCount": "필터 결과 베이스 아이템 수: {count}",
-    "source": "출처: PoE2DB"
+    "source": "출처: PoE2DB",
+    "armour": "방어도",
+    "evasion": "회피",
+    "energyShield": "에너지실드",
+    "filterToggle": "필터"
   }
 }

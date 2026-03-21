@@ -13,21 +13,26 @@
   "baseItemLevel": "必要レベル {level}",
   "equipmentType": {
     "weapon": "武器",
+    "offhand": "補助装備",
     "armour": "防具",
-    "accessory": "アクセサリー"
+    "jewellery": "装身具"
   },
   "baseFilter": {
     "type": "タイプ",
     "subType": "種別",
     "all": "すべて",
-    "requiredStr": "最大 STR",
-    "requiredDex": "最大 DEX",
-    "requiredInt": "最大 INT",
-    "requiredLevel": "最大装備レベル",
+    "requiredStr": "STR",
+    "requiredDex": "DEX",
+    "requiredInt": "INT",
+    "requiredLevel": "Lv",
     "baseItem": "ベースアイテム",
     "noResults": "条件に合うベースアイテムがありません",
     "requirementSummary": "必要 STR {str} / DEX {dex} / INT {int} / Lv {level}",
     "matchCount": "条件一致のベースアイテム数: {count}",
-    "source": "出典: PoE2DB"
+    "source": "出典: PoE2DB",
+    "armour": "アーマー",
+    "evasion": "回避",
+    "energyShield": "エナジーシールド",
+    "filterToggle": "フィルター"
   }
 }

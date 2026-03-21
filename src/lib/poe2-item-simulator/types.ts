@@ -24,7 +24,6 @@ export interface IModRollContext {
 
 export interface IBaseItemDefinition {
   baseItemKey: string;
-  displayName: string;
   itemClass: string;
   /** Stable key for i18n (e.g. `simulator.itemClass.{itemClassKey}`). */
   itemClassKey: string;

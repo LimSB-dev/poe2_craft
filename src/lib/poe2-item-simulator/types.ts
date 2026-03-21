@@ -43,3 +43,14 @@ export interface IItemSimulationResultType {
   roll: IItemRoll;
 }
 
+/** Crafting essence: guarantees one mod (tier `forcedTierMin`..`forcedTierMax`, typically 1–3). */
+export interface IEssenceDefinitionType {
+  essenceKey: string;
+  displayName: string;
+  forcedModKey: string;
+  forcedDisplayName: string;
+  guaranteedModType: ModTypeType;
+  forcedTierMin: number;
+  forcedTierMax: number;
+}
+

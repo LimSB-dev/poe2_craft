@@ -34,5 +34,30 @@
     "evasion": "회피",
     "energyShield": "에너지실드",
     "filterToggle": "필터"
+  },
+  "dbView": {
+    "title": "데이터베이스",
+    "description": "베이스 아이템과 옵션을 한 눈에 확인합니다.",
+    "tabItems": "베이스 아이템",
+    "tabMods": "옵션",
+    "colName": "이름",
+    "colType": "타입",
+    "colSubType": "유형",
+    "colStatTags": "스텟",
+    "colArmour": "방어도",
+    "colEvasion": "회피",
+    "colES": "에너지실드",
+    "colReq": "요구사항",
+    "colModType": "타입",
+    "colTags": "태그",
+    "colTiers": "티어 수",
+    "colWeight": "가중치",
+    "colApplicable": "적용 유형",
+    "colStatReq": "스텟 조건",
+    "prefix": "접두어",
+    "suffix": "접미어",
+    "navLabel": "DB",
+    "corruptedPrefix": "훼손된 접두어",
+    "corruptedSuffix": "훼손된 접미어"
   }
 }

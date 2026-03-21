@@ -323,6 +323,12 @@ export const ItemSimulatorWorkspace = (): ReactElement => {
             >
               {t("optimizerView.navLabel")}
             </Link>
+            <Link
+              href="/db"
+              className="text-sm font-medium text-amber-700 dark:text-amber-400 underline-offset-2 hover:underline"
+            >
+              {t("dbView.navLabel")}
+            </Link>
           </div>
         </header>
 

@@ -11,7 +11,7 @@ type IModType = {
   modKey: string;
   displayName: string;
   tier: number;
-  modType: "prefix" | "suffix";
+  modType: "prefix" | "suffix" | "corruptedPrefix" | "corruptedSuffix";
   weight: number;
 };
 

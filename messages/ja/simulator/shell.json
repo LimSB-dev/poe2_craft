@@ -34,5 +34,30 @@
     "evasion": "回避",
     "energyShield": "エナジーシールド",
     "filterToggle": "フィルター"
+  },
+  "dbView": {
+    "title": "データベース",
+    "description": "ベースアイテムとModを一覧表示します。",
+    "tabItems": "ベースアイテム",
+    "tabMods": "Mod",
+    "colName": "名前",
+    "colType": "タイプ",
+    "colSubType": "サブタイプ",
+    "colStatTags": "ステータス",
+    "colArmour": "アーマー",
+    "colEvasion": "回避",
+    "colES": "ESシールド",
+    "colReq": "必要条件",
+    "colModType": "タイプ",
+    "colTags": "タグ",
+    "colTiers": "ティア数",
+    "colWeight": "重み",
+    "colApplicable": "適用タイプ",
+    "colStatReq": "必要ステータス",
+    "prefix": "プレフィックス",
+    "suffix": "サフィックス",
+    "navLabel": "DB",
+    "corruptedPrefix": "腐敗プレフィックス",
+    "corruptedSuffix": "腐敗サフィックス"
   }
 }

@@ -34,5 +34,30 @@
     "evasion": "闪避",
     "energyShield": "能量护盾",
     "filterToggle": "筛选"
+  },
+  "dbView": {
+    "title": "数据库",
+    "description": "浏览基础物品和词缀。",
+    "tabItems": "基础物品",
+    "tabMods": "词缀",
+    "colName": "名称",
+    "colType": "类型",
+    "colSubType": "子类型",
+    "colStatTags": "属性",
+    "colArmour": "护甲",
+    "colEvasion": "闪避",
+    "colES": "能量护盾",
+    "colReq": "需求",
+    "colModType": "类型",
+    "colTags": "标签",
+    "colTiers": "层数",
+    "colWeight": "权重",
+    "colApplicable": "适用类型",
+    "colStatReq": "属性要求",
+    "prefix": "前缀",
+    "suffix": "后缀",
+    "navLabel": "DB",
+    "corruptedPrefix": "腐化前缀",
+    "corruptedSuffix": "腐化后缀"
   }
 }

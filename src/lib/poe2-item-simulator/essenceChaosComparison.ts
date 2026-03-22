@@ -1,5 +1,10 @@
 import { applyLegacyChaosOrbFullReroll, countGoodMods, GOOD_MOD_MAX_TIER } from "./chaosOrb";
-import { applyEssence, ATTACK_ESSENCE, LIFE_ESSENCE } from "./essence";
+import {
+  applyEssence,
+  ATTACK_ESSENCE,
+  getBenchModFiltersForEssence,
+  LIFE_ESSENCE,
+} from "./essence";
 import type { IEssenceDefinitionType, IItemRoll } from "./types";
 
 const EMPTY_MAGIC: IItemRoll = { rarity: "magic", prefixes: [], suffixes: [] };
@@ -162,7 +167,7 @@ const simulateEssenceThenChaosOutcome = (
   chaosOrbCost: number,
   essenceCost: number
 ): { cost: number; success: boolean } => {
-  let item = applyEssence(EMPTY_MAGIC, essence);
+  let item = applyEssence(EMPTY_MAGIC, essence, getBenchModFiltersForEssence(essence));
   let cost = essenceCost;
   let chaosUsed = 0;
 

@@ -73,6 +73,13 @@
     },
     "tooltipCard": {
       "implicitHeading": "基底词缀"
+    },
+    "explicitMod": {
+      "desecratedUnrevealed": "········",
+      "desecratedUnrevealedAria": "未公开的亵渎词缀",
+      "desecratedFamilyKurgal": "库尔加尔深渊修饰（模拟）",
+      "desecratedFamilyAmanamu": "阿玛纳姆深渊修饰（模拟）",
+      "desecratedFamilyUlaman": "乌拉曼深渊修饰（模拟）"
     }
   }
 }

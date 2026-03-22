@@ -73,6 +73,13 @@
     },
     "tooltipCard": {
       "implicitHeading": "固有"
+    },
+    "explicitMod": {
+      "desecratedUnrevealed": "········",
+      "desecratedUnrevealedAria": "未公開の腐敗（Desecrated）行",
+      "desecratedFamilyKurgal": "クルガル・アビス修正（シミュル）",
+      "desecratedFamilyAmanamu": "アマナム・アビス修正（シミュル）",
+      "desecratedFamilyUlaman": "ウラマン・アビス修正（シミュル）"
     }
   }
 }

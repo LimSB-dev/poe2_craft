@@ -73,6 +73,13 @@
     },
     "tooltipCard": {
       "implicitHeading": "특수 속성"
+    },
+    "explicitMod": {
+      "desecratedUnrevealed": "········",
+      "desecratedUnrevealedAria": "미공개 타락(Desecrated) 옵션",
+      "desecratedFamilyKurgal": "쿠르갈 심연 수정 (시뮬)",
+      "desecratedFamilyAmanamu": "아마나무 심연 수정 (시뮬)",
+      "desecratedFamilyUlaman": "울라만 심연 수정 (시뮬)"
     }
   }
 }

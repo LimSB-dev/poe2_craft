@@ -5,7 +5,7 @@ import {
   GOOD_MOD_MAX_TIER,
 } from "./chaosOrb";
 import { shouldContinue, type IShouldContinueOptionsType } from "./craftingDecision";
-import { applyEssence, LIFE_ESSENCE } from "./essence";
+import { applyEssence, getBenchModFiltersForEssence, LIFE_ESSENCE } from "./essence";
 import type { IEssenceDefinitionType, IItemRoll } from "./types";
 
 const ENGINE_VERSION: string = "1.0.0";
@@ -120,7 +120,7 @@ const simulateEssenceThenChaosTrial = (
   chaosOrbCost: number,
   essenceCost: number
 ): ITrialOutcomeType => {
-  let item = applyEssence(EMPTY_MAGIC, essence);
+  let item = applyEssence(EMPTY_MAGIC, essence, getBenchModFiltersForEssence(essence));
   let chaosUsed = 0;
   let cost = essenceCost;
 

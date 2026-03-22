@@ -25,8 +25,8 @@ import {
 } from "@/lib/poe2-item-simulator/basicCurrencyOrbs";
 import {
   applyEssence,
-  ATTACK_ESSENCE,
-  LIFE_ESSENCE,
+  canApplyEssence,
+  CRAFT_LAB_ESSENCE_DEFINITIONS,
 } from "@/lib/poe2-item-simulator/essence";
 import type { IModRollBaseFiltersType } from "@/lib/poe2-item-simulator/roller";
 import type { IItemRoll } from "@/lib/poe2-item-simulator/types";
@@ -107,23 +107,19 @@ export const buildHinekoraLockedDraftTable = (
       // 적용 불가/내부 오류는 해당 슬롯만 생략
     }
   }
-  try {
-    out.essence_life = applyEssence(
-      cloneItemRoll(strippedBase),
-      LIFE_ESSENCE,
-      filters,
-    );
-  } catch {
-    // omit
-  }
-  try {
-    out.essence_attack = applyEssence(
-      cloneItemRoll(strippedBase),
-      ATTACK_ESSENCE,
-      filters,
-    );
-  } catch {
-    // omit
+  for (const essenceDef of CRAFT_LAB_ESSENCE_DEFINITIONS) {
+    if (!canApplyEssence(rollForApplicability, essenceDef, filters)) {
+      continue;
+    }
+    try {
+      out[essenceDef.essenceKey] = applyEssence(
+        cloneItemRoll(strippedBase),
+        essenceDef,
+        filters,
+      );
+    } catch {
+      // omit
+    }
   }
   return out;
 };

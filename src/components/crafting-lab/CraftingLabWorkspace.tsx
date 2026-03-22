@@ -12,6 +12,7 @@ import {
 import { CraftingLabOrbPreviewPanel } from "@/components/crafting-lab/CraftingLabOrbPreviewPanel";
 import { CraftingLabOrbSlotButton } from "@/components/crafting-lab/CraftingLabOrbSlotButton";
 import { LocaleSwitcher } from "@/components/i18n/LocaleSwitcher";
+import { SimulatorModTemplateText } from "@/components/item-simulator/i18n/SimulatorModTemplateText";
 import { ItemSimulatorBaseItemFilterCollapsible } from "@/components/item-simulator/ItemSimulatorBaseItemFilterCollapsible";
 import { ItemSimulatorBaseItemSearchBlock } from "@/components/item-simulator/ItemSimulatorBaseItemSearchBlock";
 import { ItemSimulatorBaseItemTooltipCard } from "@/components/item-simulator/ItemSimulatorBaseItemTooltipCard";
@@ -23,6 +24,7 @@ import {
 import { getCraftingLabCurrencyIconUrl } from "@/lib/crafting-lab/craftingLabCurrencyIconUrls";
 import {
   CRAFT_LAB_CURRENCY_TAB_BOTTOM_ROW,
+  CRAFT_LAB_ORB_SINGLE_SLOT_ROW,
   getCraftLabOrbSlotIdsGrouped,
   getOrbSlotTierRoman,
   normalizeCraftingCurrencyEventId,
@@ -43,23 +45,48 @@ import {
 } from "@/lib/crafting-lab/craftingLabUsageStorage";
 import { Link } from "@/lib/i18n/navigation";
 import {
+  applyPreservedBone,
+  applySoulWellRevealChoice,
+  canApplyPreservedBone,
+  CRAFT_LAB_ABYSS_BONE_CRANIUM_ID,
+  CRAFT_LAB_ABYSS_BONE_GRID,
+  CRAFT_LAB_ABYSS_BONE_IDS,
+  CRAFT_LAB_ABYSS_OMEN_IDS,
+  getBoneDefinition,
+  isCraftLabBoneId,
+  isUnrevealedDesecratedMod,
+  rollSoulWellRevealCandidates,
+  type CraftLabAbyssBoneIdType,
+} from "@/lib/poe2-item-simulator/abyssCrafting";
+import {
+  toAbyssOmenForBone,
+  type CraftLabStagedOmenIdType,
+} from "@/lib/poe2-item-simulator/craftLabStagedOmen";
+import {
   applyChaosOrb,
+  applyChaosOrbWithWhittling,
   applyExaltedOrb,
   applyFracturingOrb,
   applyOrbOfAlchemy,
   applyOrbOfAnnulment,
+  applyOrbOfAnnulmentDesecratedOnly,
   applyOrbOfAugmentation,
   applyOrbOfTransmutation,
   applyRegalOrb,
   canApplyOrbOfAlchemy,
   canApplyOrbOfAnnulment,
+  canApplyOrbOfAnnulmentDesecratedOnly,
   canApplyOrbOfAugmentation,
   canApplyOrbOfTransmutation,
   canApplyChaosOrb,
   canApplyExaltedOrb,
   canApplyFracturingOrb,
   canApplyRegalOrb,
+  enforceAtMostOneFracturedMod,
 } from "@/lib/poe2-item-simulator/basicCurrencyOrbs";
+import {
+  CRAFT_LAB_RITUAL_OMEN_IDS,
+} from "@/lib/poe2-item-simulator/ritualCrafting";
 import {
   applyHinekorasLock,
   canApplyHinekorasLock,
@@ -67,14 +94,27 @@ import {
 } from "@/lib/poe2-item-simulator/hinekorasLock";
 import {
   applyEssence,
-  ATTACK_ESSENCE,
-  LIFE_ESSENCE,
+  buildEssenceGuaranteedModPreviewRoll,
+  canApplyEssence,
+  CRAFT_LAB_ESSENCE_DEFINITIONS,
 } from "@/lib/poe2-item-simulator/essence";
-import type { IItemRoll } from "@/lib/poe2-item-simulator/types";
+import type { IItemRoll, IModDefinition } from "@/lib/poe2-item-simulator/types";
 
 type CraftLabModeType = "random" | "simulation";
 
 type CraftLabStashTabIdType = "currency" | "essence" | "abyss" | "ritual";
+
+type SoulWellRevealStateType = {
+  affixKind: "prefix" | "suffix";
+  slotIndex: number;
+  candidates: IModDefinition[];
+};
+
+const getCraftLabOmenPreviewNoteKey = (
+  omenId: CraftLabStagedOmenIdType,
+): string => {
+  return `omenPreview_${omenId.replace(/^omen_/, "")}`;
+};
 
 const CRAFT_LAB_STASH_TABS: readonly CraftLabStashTabIdType[] = [
   "currency",
@@ -83,7 +123,15 @@ const CRAFT_LAB_STASH_TABS: readonly CraftLabStashTabIdType[] = [
   "ritual",
 ] as const;
 
-const ABYSS_STASH_SLOT_COUNT = 9;
+const HINEKORA_SKIP_CURRENCY_IDS = new Set<CraftingCurrencyIdType>([
+  "orb_divine",
+  "orb_vaal",
+  "orb_mirror",
+  "omen_placeholder",
+  ...CRAFT_LAB_ABYSS_BONE_IDS,
+  ...CRAFT_LAB_ABYSS_OMEN_IDS,
+  ...CRAFT_LAB_RITUAL_OMEN_IDS,
+]);
 
 const CRAFT_LAB_STASH_TAB_LABEL_KEYS: Record<CraftLabStashTabIdType, string> = {
   currency: "stashTabCurrency",
@@ -112,7 +160,10 @@ const cloneItemRoll = (roll: IItemRoll): IItemRoll => {
     }),
   };
   if (roll.hinekoraLockActive === true) {
-    return { ...base, hinekoraLockActive: true };
+    base.hinekoraLockActive = true;
+  }
+  if (roll.isCorrupted === true) {
+    base.isCorrupted = true;
   }
   return base;
 };
@@ -120,16 +171,29 @@ const cloneItemRoll = (roll: IItemRoll): IItemRoll => {
 type CraftLabHistorySnapshotType = {
   itemRoll: IItemRoll;
   usageEvents: CraftingCurrencyIdType[];
+  activeStagedOmenId: CraftLabStagedOmenIdType | null;
 };
 
 const makeHistorySnapshot = (
   roll: IItemRoll,
   events: CraftingCurrencyIdType[],
+  activeStagedOmenId: CraftLabStagedOmenIdType | null,
 ): CraftLabHistorySnapshotType => {
   return {
     itemRoll: cloneItemRoll(roll),
     usageEvents: [...events],
+    activeStagedOmenId,
   };
+};
+
+const readStagedOmenFromSnapshot = (
+  snap: CraftLabHistorySnapshotType,
+): CraftLabStagedOmenIdType | null => {
+  const row = snap as Record<string, unknown>;
+  if ("activeStagedOmenId" in row) {
+    return (row.activeStagedOmenId ?? null) as CraftLabStagedOmenIdType | null;
+  }
+  return (row.activeAbyssOmenId ?? null) as CraftLabStagedOmenIdType | null;
 };
 
 const getErrorMessage = (error: unknown): string => {
@@ -245,6 +309,9 @@ export const CraftingLabWorkspace = (): ReactElement => {
     CraftingCurrencyIdType[] | null
   >(null);
   const [lastError, setLastError] = useState<string | null>(null);
+  const [stashValidationMessage, setStashValidationMessage] = useState<
+    string | null
+  >(null);
   const [undoStack, setUndoStack] = useState<CraftLabHistorySnapshotType[]>([]);
   const [redoStack, setRedoStack] = useState<CraftLabHistorySnapshotType[]>([]);
   const [craftLabMode, setCraftLabMode] = useState<CraftLabModeType>("random");
@@ -255,6 +322,14 @@ export const CraftingLabWorkspace = (): ReactElement => {
   const [stashTab, setStashTab] = useState<CraftLabStashTabIdType>("currency");
   const [hinekoraHoverPreview, setHinekoraHoverPreview] =
     useState<IItemRoll | null>(null);
+  const [essenceHoverPreview, setEssenceHoverPreview] =
+    useState<IItemRoll | null>(null);
+  const [activeStagedOmenId, setActiveStagedOmenId] = useState<
+    CraftLabStagedOmenIdType | null
+  >(null);
+  const [soulWellReveal, setSoulWellReveal] = useState<SoulWellRevealStateType | null>(
+    null,
+  );
 
   const hinekoraLockSessionKey = useMemo(() => {
     if (itemRoll.hinekoraLockActive !== true) {
@@ -307,17 +382,19 @@ export const CraftingLabWorkspace = (): ReactElement => {
       if (id === "orb_hinekoras_lock") {
         return null;
       }
+      if (HINEKORA_SKIP_CURRENCY_IDS.has(id)) {
+        return null;
+      }
       if (
-        id === "orb_divine" ||
-        id === "orb_vaal" ||
-        id === "orb_mirror" ||
-        id === "omen_placeholder"
+        orbSlotIdToFamilyKind(id as CraftingLabOrbSlotIdType) === "orb_chaos" &&
+        activeStagedOmenId === "omen_whittling"
       ) {
         return null;
       }
       return hinekoraLockedDraftTable?.[id] ?? null;
     },
     [
+      activeStagedOmenId,
       craftLabMode,
       effectiveSelectedBaseItemKey.length,
       hinekoraLockedDraftTable,
@@ -327,10 +404,18 @@ export const CraftingLabWorkspace = (): ReactElement => {
   );
 
   useEffect(() => {
-    // 히네코라 호버 미리보기는 이전 롤·탭과 불일치하면 무효
+    // 히네코라·에센스 호버 미리보기는 이전 롤·탭과 불일치하면 무효
     // eslint-disable-next-line react-hooks/set-state-in-effect -- 동기 초기화만 수행
     setHinekoraHoverPreview(null);
+    setEssenceHoverPreview(null);
   }, [craftLabMode, effectiveSelectedBaseItemKey, itemRoll, stashTab]);
+
+  useEffect(() => {
+    if (craftLabMode !== "random") {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- 모드 전환 시 패널만 닫음
+      setSoulWellReveal(null);
+    }
+  }, [craftLabMode]);
 
   useEffect(() => {
     // 베이스가 바뀌면 롤·완료 스냅샷 초기화, 로컬에 동일 베이스 기록이 있으면 복원 후 저장
@@ -342,6 +427,8 @@ export const CraftingLabWorkspace = (): ReactElement => {
     setRedoStack([]);
     setSimPreview(null);
     setSimPreviewLabel("");
+    setStashValidationMessage(null);
+    setSoulWellReveal(null);
     if (effectiveSelectedBaseItemKey.length === 0) {
       setUsageEvents([]);
       return;
@@ -370,6 +457,9 @@ export const CraftingLabWorkspace = (): ReactElement => {
     setRedoStack([]);
     setSimPreview(null);
     setSimPreviewLabel("");
+    setStashValidationMessage(null);
+    setActiveStagedOmenId(null);
+    setSoulWellReveal(null);
     writeCraftingLabUsage({
       baseItemKey: effectiveSelectedBaseItemKey,
       events: [],
@@ -388,16 +478,19 @@ export const CraftingLabWorkspace = (): ReactElement => {
       return stack.slice(0, -1);
     });
     setRedoStack((stack) => {
-      return [...stack, makeHistorySnapshot(itemRoll, usageEvents)];
+      return [...stack, makeHistorySnapshot(itemRoll, usageEvents, activeStagedOmenId)];
     });
-    setItemRoll(prev.itemRoll);
+    setItemRoll(enforceAtMostOneFracturedMod(prev.itemRoll));
     setUsageEvents(prev.usageEvents);
+    setActiveStagedOmenId(readStagedOmenFromSnapshot(prev));
     writeCraftingLabUsage({
       baseItemKey: effectiveSelectedBaseItemKey,
       events: prev.usageEvents,
     });
     setCompletionSnapshot(null);
     setLastError(null);
+    setStashValidationMessage(null);
+    setSoulWellReveal(null);
   };
 
   const handleRedoCraft = (): void => {
@@ -412,45 +505,58 @@ export const CraftingLabWorkspace = (): ReactElement => {
       return stack.slice(0, -1);
     });
     setUndoStack((stack) => {
-      const appended = [...stack, makeHistorySnapshot(itemRoll, usageEvents)];
+      const appended = [...stack, makeHistorySnapshot(itemRoll, usageEvents, activeStagedOmenId)];
       if (appended.length > MAX_CRAFT_UNDO_DEPTH) {
         return appended.slice(-MAX_CRAFT_UNDO_DEPTH);
       }
       return appended;
     });
-    setItemRoll(nextSnap.itemRoll);
+    setItemRoll(enforceAtMostOneFracturedMod(nextSnap.itemRoll));
     setUsageEvents(nextSnap.usageEvents);
+    setActiveStagedOmenId(readStagedOmenFromSnapshot(nextSnap));
     writeCraftingLabUsage({
       baseItemKey: effectiveSelectedBaseItemKey,
       events: nextSnap.usageEvents,
     });
     setCompletionSnapshot(null);
     setLastError(null);
+    setStashValidationMessage(null);
+    setSoulWellReveal(null);
+  };
+
+  type CommitCraftLabOptionsType = {
+    clearActiveStagedOmen?: boolean;
   };
 
   const commitCraftingResult = (
     nextRoll: IItemRoll,
     id: CraftingCurrencyIdType,
+    options?: CommitCraftLabOptionsType,
   ): void => {
     const nextEvents = [...usageEvents, id];
     setUndoStack((stack) => {
-      const appended = [...stack, makeHistorySnapshot(itemRoll, usageEvents)];
+      const appended = [...stack, makeHistorySnapshot(itemRoll, usageEvents, activeStagedOmenId)];
       if (appended.length > MAX_CRAFT_UNDO_DEPTH) {
         return appended.slice(-MAX_CRAFT_UNDO_DEPTH);
       }
       return appended;
     });
     setRedoStack([]);
-    setItemRoll(nextRoll);
+    setItemRoll(enforceAtMostOneFracturedMod(nextRoll));
     setUsageEvents(nextEvents);
+    if (options?.clearActiveStagedOmen === true) {
+      setActiveStagedOmenId(null);
+    }
     writeCraftingLabUsage({
       baseItemKey: effectiveSelectedBaseItemKey,
       events: nextEvents,
     });
     setLastError(null);
+    setStashValidationMessage(null);
     setCompletionSnapshot(null);
     setSimPreview(null);
     setSimPreviewLabel("");
+    setSoulWellReveal(null);
   };
 
   const tryApply = (
@@ -459,6 +565,7 @@ export const CraftingLabWorkspace = (): ReactElement => {
       roll: IItemRoll,
       filters: IModRollBaseFiltersType | undefined,
     ) => IItemRoll,
+    options?: CommitCraftLabOptionsType,
   ): void => {
     if (
       effectiveSelectedBaseItemKey.length === 0 ||
@@ -470,30 +577,135 @@ export const CraftingLabWorkspace = (): ReactElement => {
     if (id === "orb_hinekoras_lock") {
       try {
         const nextRoll = applyHinekorasLock(itemRoll);
-        commitCraftingResult(nextRoll, id);
+        commitCraftingResult(nextRoll, id, options);
       } catch (error: unknown) {
         setLastError(getErrorMessage(error));
       }
       return;
     }
-    if (itemRoll.hinekoraLockActive === true && craftLabMode === "random") {
+    if (
+      itemRoll.hinekoraLockActive === true &&
+      craftLabMode === "random" &&
+      !isCraftLabBoneId(id)
+    ) {
       const draft = hinekoraLockedDraftTable?.[id];
       if (draft === undefined) {
         setLastError(t("hinekoraDraftTableMissing"));
         return;
       }
-      commitCraftingResult(draft, id);
+      commitCraftingResult(draft, id, options);
       return;
     }
     try {
       const nextRoll = apply(stripHinekoraLock(itemRoll), modRollFilters);
-      commitCraftingResult(nextRoll, id);
+      commitCraftingResult(nextRoll, id, options);
+    } catch (error: unknown) {
+      setLastError(getErrorMessage(error));
+      setStashValidationMessage(null);
+    }
+  };
+
+  const tryApplyPreservedBone = (boneId: CraftLabAbyssBoneIdType): void => {
+    if (
+      effectiveSelectedBaseItemKey.length === 0 ||
+      selectedBaseItemRecord === undefined
+    ) {
+      setLastError(tWs("baseFilter.noResults"));
+      return;
+    }
+    const boneDef = getBoneDefinition(boneId);
+    if (boneDef === undefined) {
+      return;
+    }
+    if (craftLabMode === "simulation") {
+      setSimPreview({
+        status: "ok",
+        noteKeys: ["boneSimulationNote"],
+        sections: [],
+      });
+      setSimPreviewLabel(t(`currency.${boneId}`));
+      setLastError(null);
+      return;
+    }
+    const stagedForBone =
+      activeStagedOmenId === null || activeStagedOmenId === "omen_light"
+        ? null
+        : toAbyssOmenForBone(activeStagedOmenId);
+    tryApply(
+      boneId,
+      (roll, filters) => {
+        return applyPreservedBone(roll, boneDef, filters, stagedForBone);
+      },
+      {
+        clearActiveStagedOmen:
+          activeStagedOmenId !== null && activeStagedOmenId !== "omen_light",
+      },
+    );
+  };
+
+  const isOrbApplicableForLab = useCallback(
+    (id: CraftingLabOrbSlotIdType, roll: IItemRoll): boolean => {
+      const family = orbSlotIdToFamilyKind(id);
+      if (family === "orb_annulment" && activeStagedOmenId === "omen_light") {
+        return canApplyOrbOfAnnulmentDesecratedOnly(roll);
+      }
+      return isCraftLabOrbApplicable(id, roll);
+    },
+    [activeStagedOmenId],
+  );
+
+  const hasBaseForCraft = selectedBaseItemRecord !== undefined;
+
+  const handleUnrevealedDesecratedModClick = useCallback(
+    (payload: { affixKind: "prefix" | "suffix"; slotIndex: number }) => {
+      if (
+        craftLabMode !== "random" ||
+        selectedBaseItemRecord === undefined
+      ) {
+        return;
+      }
+      const list =
+        payload.affixKind === "prefix" ? itemRoll.prefixes : itemRoll.suffixes;
+      const mod = list[payload.slotIndex];
+      if (!isUnrevealedDesecratedMod(mod)) {
+        return;
+      }
+      try {
+        const candidates = rollSoulWellRevealCandidates(
+          itemRoll,
+          payload.affixKind,
+          modRollFilters,
+        );
+        setSoulWellReveal({
+          affixKind: payload.affixKind,
+          slotIndex: payload.slotIndex,
+          candidates,
+        });
+        setLastError(null);
+      } catch (error: unknown) {
+        setLastError(getErrorMessage(error));
+        setSoulWellReveal(null);
+      }
+    },
+    [craftLabMode, itemRoll, modRollFilters, selectedBaseItemRecord],
+  );
+
+  const handleSoulWellConfirmChoice = (chosen: IModDefinition): void => {
+    if (soulWellReveal === null) {
+      return;
+    }
+    try {
+      const nextRoll = applySoulWellRevealChoice(
+        itemRoll,
+        soulWellReveal.affixKind,
+        soulWellReveal.slotIndex,
+        chosen,
+      );
+      commitCraftingResult(nextRoll, "soul_well_reveal");
     } catch (error: unknown) {
       setLastError(getErrorMessage(error));
     }
   };
-
-  const hasBaseForCraft = selectedBaseItemRecord !== undefined;
 
   const usageTotalsLine = useMemo(() => {
     if (completionSnapshot === null || completionSnapshot.length === 0) {
@@ -514,6 +726,145 @@ export const CraftingLabWorkspace = (): ReactElement => {
       })
       .join(", ");
   }, [completionSnapshot, t]);
+
+  const renderCraftLabOrbSlot = (id: CraftingLabOrbSlotIdType): ReactElement => {
+    const applicable = isOrbApplicableForLab(id, itemRoll);
+    const family = orbSlotIdToFamilyKind(id);
+    const applyOrb =
+      family === "orb_annulment" && activeStagedOmenId === "omen_light"
+        ? (
+            roll: IItemRoll,
+            filters: IModRollBaseFiltersType | undefined,
+          ) => {
+            void filters;
+            return applyOrbOfAnnulmentDesecratedOnly(roll);
+          }
+        : family === "orb_chaos" && activeStagedOmenId === "omen_whittling"
+          ? (
+              roll: IItemRoll,
+              filters: IModRollBaseFiltersType | undefined,
+            ) => {
+              return applyChaosOrbWithWhittling(roll, filters);
+            }
+          : CRAFT_LAB_ORB_APPLY[family];
+    const orbCommitOpts =
+      family === "orb_annulment" && activeStagedOmenId === "omen_light"
+        ? { clearActiveStagedOmen: true as const }
+        : family === "orb_chaos" && activeStagedOmenId === "omen_whittling"
+          ? { clearActiveStagedOmen: true as const }
+          : undefined;
+    const name = t(`currency.${id}`);
+    const hoverHint = t(`currencyHoverHint.${id}`);
+    const orbBlockedReason = applicable ? undefined : t("orbDisabledTooltip");
+    const iconSrc = getCraftingLabCurrencyIconUrl(id);
+    const tierRoman = getOrbSlotTierRoman(id);
+    return (
+      <CraftingLabOrbSlotButton
+        key={id}
+        iconSrc={iconSrc}
+        applicable={applicable}
+        currencyName={name}
+        hoverHint={hoverHint}
+        disabledReason={orbBlockedReason}
+        onBlockedClick={() => {
+          if (orbBlockedReason !== undefined) {
+            setStashValidationMessage(orbBlockedReason);
+          }
+        }}
+        onUse={() => {
+          if (craftLabMode === "simulation") {
+            if (!applicable) {
+              return;
+            }
+            const prev = buildCraftLabOrbPreview(
+              family,
+              stripHinekoraLock(itemRoll),
+              modRollFilters,
+            );
+            setSimPreview(prev);
+            setSimPreviewLabel(name);
+            setLastError(null);
+            setStashValidationMessage(null);
+            return;
+          }
+          tryApply(id, applyOrb, orbCommitOpts);
+        }}
+        onHoverChange={(hovered) => {
+          if (!hovered) {
+            setHinekoraHoverPreview(null);
+            return;
+          }
+          setEssenceHoverPreview(null);
+          setHinekoraHoverPreview(resolveHinekoraHoverDraft(id));
+        }}
+        tierRoman={tierRoman}
+        ariaLabel={
+          applicable
+            ? craftLabMode === "simulation"
+              ? t("orbSimulateAria", { name })
+              : name
+            : t("orbDisabledAria", { name })
+        }
+        showQuantityBadge={applicable}
+        quantityLabel={t("stashOrbQuantityUnlimited")}
+        strongDisabled={id === "orb_fracturing" && !applicable}
+      />
+    );
+  };
+
+  const renderAbyssBoneSlot = (
+    boneId: CraftLabAbyssBoneIdType,
+  ): ReactElement | null => {
+    const boneDef = getBoneDefinition(boneId);
+    if (boneDef === undefined) {
+      return null;
+    }
+    const name = t(`currency.${boneId}`);
+    const hoverHint = t(`currencyHoverHint.${boneId}`);
+    const boneOk = canApplyPreservedBone(
+      itemRoll,
+      boneDef,
+      modRollFilters,
+    );
+    const boneDisabledInRandom = craftLabMode !== "random" || !boneOk;
+    const boneDisabledTitle = boneDisabledInRandom
+      ? !boneOk
+        ? itemRoll.rarity !== "rare"
+          ? t("boneRequiresRare")
+          : t("boneWrongSlotOrFull")
+        : t("boneRequiresRandomMode")
+      : undefined;
+    return (
+      <CraftingLabOrbSlotButton
+        key={boneId}
+        iconSrc={getCraftingLabCurrencyIconUrl(boneId)}
+        applicable={!boneDisabledInRandom}
+        currencyName={name}
+        hoverHint={hoverHint}
+        disabledReason={boneDisabledTitle}
+        onBlockedClick={() => {
+          if (boneDisabledTitle !== undefined) {
+            setStashValidationMessage(boneDisabledTitle);
+          }
+        }}
+        onUse={() => {
+          tryApplyPreservedBone(boneId);
+        }}
+        onHoverChange={(hovered) => {
+          if (hovered) {
+            setHinekoraHoverPreview(null);
+            setEssenceHoverPreview(null);
+          }
+        }}
+        tierRoman={null}
+        ariaLabel={
+          boneDisabledInRandom ? t("orbDisabledAria", { name }) : name
+        }
+        showQuantityBadge
+        quantityLabel={t("stashOrbQuantityUnlimited")}
+      />
+    );
+  };
 
   return (
     <div className="flex min-h-full flex-col items-center bg-zinc-50 dark:bg-black px-4 py-8 sm:px-6 sm:py-10">
@@ -595,7 +946,17 @@ export const CraftingLabWorkspace = (): ReactElement => {
                     record={selectedBaseItemRecord}
                     baseItemKey={selectedBaseItem?.baseItemKey ?? ""}
                     explicitItemRoll={itemRoll}
-                    previewExplicitItemRoll={hinekoraHoverPreview}
+                    previewExplicitItemRoll={
+                      essenceHoverPreview ?? hinekoraHoverPreview
+                    }
+                    onUnrevealedDesecratedModClick={
+                      craftLabMode === "random"
+                        ? handleUnrevealedDesecratedModClick
+                        : undefined
+                    }
+                    soulWellInteractionDisabled={
+                      essenceHoverPreview !== null || hinekoraHoverPreview !== null
+                    }
                   />
                 ) : (
                   <p className="text-sm text-zinc-400 dark:text-zinc-500 py-1">
@@ -603,6 +964,62 @@ export const CraftingLabWorkspace = (): ReactElement => {
                   </p>
                 )}
               </div>
+
+              {soulWellReveal !== null ? (
+                <div
+                  className="rounded-xl border border-emerald-900/40 bg-emerald-950/15 dark:bg-emerald-950/25 p-3 flex flex-col gap-2"
+                  role="region"
+                  aria-labelledby="craft-lab-soul-well-heading"
+                >
+                  <h3
+                    id="craft-lab-soul-well-heading"
+                    className="text-xs font-semibold text-emerald-800 dark:text-emerald-200/95"
+                  >
+                    {t("soulWellRevealTitle")}
+                  </h3>
+                  <p className="text-[11px] leading-snug text-zinc-600 dark:text-zinc-400">
+                    {t("soulWellRevealHint")}
+                  </p>
+                  <ul className="m-0 flex list-none flex-col gap-1.5 p-0">
+                    {soulWellReveal.candidates.map((cand, idx) => {
+                      return (
+                        <li key={`${cand.modKey}-${String(idx)}`}>
+                          <button
+                            type="button"
+                            onClick={() => {
+                              handleSoulWellConfirmChoice(cand);
+                            }}
+                            className="w-full rounded-lg border border-zinc-300 dark:border-zinc-600 bg-white/80 dark:bg-zinc-900/80 px-2.5 py-2 text-left text-xs leading-snug text-zinc-900 dark:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800"
+                            aria-label={t("soulWellRevealCandidateAria", {
+                              index: idx + 1,
+                            })}
+                          >
+                            <span className="text-[10px] font-medium tabular-nums text-zinc-500 dark:text-zinc-400">
+                              T{cand.tier}
+                            </span>{" "}
+                            {cand.modKey.startsWith("essence_forced_") ? (
+                              <span>{cand.displayName}</span>
+                            ) : (
+                              <SimulatorModTemplateText
+                                nameTemplateKey={cand.displayName}
+                              />
+                            )}
+                          </button>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setSoulWellReveal(null);
+                    }}
+                    className="self-start rounded-lg border border-zinc-300 dark:border-zinc-600 px-2.5 py-1 text-xs font-medium text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800"
+                  >
+                    {t("soulWellRevealCancel")}
+                  </button>
+                </div>
+              ) : null}
 
               <ItemSimulatorBaseItemSearchBlock
                 filteredBaseItemRecords={filteredBaseItemRecords}
@@ -706,6 +1123,7 @@ export const CraftingLabWorkspace = (): ReactElement => {
                         setCraftLabMode("random");
                         setSimPreview(null);
                         setSimPreviewLabel("");
+                        setStashValidationMessage(null);
                       }}
                       className={`rounded-md border px-2.5 py-1 text-xs font-medium transition ${
                         craftLabMode === "random"
@@ -721,6 +1139,7 @@ export const CraftingLabWorkspace = (): ReactElement => {
                       aria-checked={craftLabMode === "simulation"}
                       onClick={() => {
                         setCraftLabMode("simulation");
+                        setStashValidationMessage(null);
                       }}
                       className={`rounded-md border px-2.5 py-1 text-xs font-medium transition ${
                         craftLabMode === "simulation"
@@ -735,6 +1154,17 @@ export const CraftingLabWorkspace = (): ReactElement => {
                     {t("craftModeSimulationHint")}
                   </p>
                 </fieldset>
+
+                {activeStagedOmenId !== null ? (
+                  <p
+                    className="mb-2 text-[11px] font-medium text-emerald-700 dark:text-emerald-400/95"
+                    role="status"
+                  >
+                    {t("stagedOmenBanner", {
+                      name: t(`currency.${activeStagedOmenId}`),
+                    })}
+                  </p>
+                ) : null}
 
                 <div
                   role="tablist"
@@ -753,6 +1183,7 @@ export const CraftingLabWorkspace = (): ReactElement => {
                         aria-controls={`craft-stash-panel-${tabId}`}
                         onClick={() => {
                           setStashTab(tabId);
+                          setStashValidationMessage(null);
                         }}
                         className={`rounded-md px-3 py-1.5 text-xs font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-500/80 ${
                           isSelected
@@ -776,92 +1207,56 @@ export const CraftingLabWorkspace = (): ReactElement => {
                   >
                     <div className="rounded-lg border border-[#3d3429] bg-[#141210] p-2 shadow-[inset_0_2px_8px_rgba(0,0,0,0.45)] dark:bg-[#141210]">
                       <div className="flex flex-col gap-3 sm:gap-3.5">
-                        {getCraftLabOrbSlotIdsGrouped().map((rowSlotIds, rowIndex) => {
-                          return (
-                            <div
-                              key={`${String(rowIndex)}-orb-row`}
-                              className="w-full min-w-0"
-                            >
-                              <div className="mx-auto grid w-max grid-cols-3 gap-1.5 sm:gap-2">
-                                {rowSlotIds.map((id) => {
-                                  const applicable = isCraftLabOrbApplicable(
-                                    id,
-                                    itemRoll,
-                                  );
-                                  const applyOrb =
-                                    CRAFT_LAB_ORB_APPLY[orbSlotIdToFamilyKind(id)];
-                                  const family = orbSlotIdToFamilyKind(id);
-                                  const name = t(`currency.${id}`);
-                                  const iconSrc = getCraftingLabCurrencyIconUrl(id);
-                                  const tierRoman = getOrbSlotTierRoman(id);
-                                  return (
-                                    <CraftingLabOrbSlotButton
-                                      key={id}
-                                      iconSrc={iconSrc}
-                                      disabled={!applicable}
-                                      onUse={() => {
-                                        if (craftLabMode === "simulation") {
-                                          if (!applicable) {
-                                            return;
-                                          }
-                                          const prev = buildCraftLabOrbPreview(
-                                            family,
-                                            stripHinekoraLock(itemRoll),
-                                            modRollFilters,
-                                          );
-                                          setSimPreview(prev);
-                                          setSimPreviewLabel(name);
-                                          setLastError(null);
-                                          return;
-                                        }
-                                        tryApply(id, applyOrb);
-                                      }}
-                                      onHoverChange={(hovered) => {
-                                        if (!hovered) {
-                                          setHinekoraHoverPreview(null);
-                                          return;
-                                        }
-                                        setHinekoraHoverPreview(
-                                          resolveHinekoraHoverDraft(id),
-                                        );
-                                      }}
-                                      tierRoman={tierRoman}
-                                      ariaLabel={
-                                        applicable
-                                          ? craftLabMode === "simulation"
-                                            ? t("orbSimulateAria", { name })
-                                            : name
-                                          : t("orbDisabledAria", { name })
-                                      }
-                                      disabledTitle={
-                                        applicable
-                                          ? undefined
-                                          : t("orbDisabledTooltip")
-                                      }
-                                      showQuantityBadge={applicable}
-                                      quantityLabel={t("stashOrbQuantityUnlimited")}
-                                      strongDisabled={
-                                        id === "orb_fracturing" && !applicable
-                                      }
-                                    />
-                                  );
-                                })}
-                              </div>
-                            </div>
-                          );
-                        })}
+                        <div className="flex w-full min-w-0 flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
+                          <div className="flex min-w-0 flex-1 flex-col gap-3 sm:gap-3.5">
+                            {getCraftLabOrbSlotIdsGrouped().map((rowSlotIds, rowIndex) => {
+                              return (
+                                <div
+                                  key={`${String(rowIndex)}-orb-row`}
+                                  className="w-full min-w-0"
+                                >
+                                  <div className="grid w-max max-w-full grid-cols-3 gap-1.5 sm:gap-2">
+                                    {rowSlotIds.map((id) => {
+                                      return renderCraftLabOrbSlot(id);
+                                    })}
+                                  </div>
+                                </div>
+                              );
+                            })}
+                          </div>
+                          <div className="flex shrink-0 flex-col gap-1.5 sm:gap-2 sm:pt-0">
+                            {CRAFT_LAB_ORB_SINGLE_SLOT_ROW.map((id) => {
+                              return renderCraftLabOrbSlot(id);
+                            })}
+                          </div>
+                        </div>
                         <div className="w-full min-w-0">
                           <div className="mx-auto grid w-max grid-cols-4 gap-1.5 sm:gap-2">
                             {CRAFT_LAB_CURRENCY_TAB_BOTTOM_ROW.map((id) => {
                               const iconSrc = getCraftingLabCurrencyIconUrl(id);
                               const name = t(`currency.${id}`);
+                              const hoverHint = t(`currencyHoverHint.${id}`);
                               if (id === "orb_hinekoras_lock") {
-                                const disabled = !canApplyHinekorasLock(itemRoll);
+                                const hinekoraApplicable =
+                                  canApplyHinekorasLock(itemRoll);
+                                const hinekoraBlockedReason = hinekoraApplicable
+                                  ? undefined
+                                  : t("hinekoraLockAlreadyActive");
                                 return (
                                   <CraftingLabOrbSlotButton
                                     key={id}
                                     iconSrc={iconSrc}
-                                    disabled={disabled}
+                                    applicable={hinekoraApplicable}
+                                    currencyName={name}
+                                    hoverHint={hoverHint}
+                                    disabledReason={hinekoraBlockedReason}
+                                    onBlockedClick={() => {
+                                      if (hinekoraBlockedReason !== undefined) {
+                                        setStashValidationMessage(
+                                          hinekoraBlockedReason,
+                                        );
+                                      }
+                                    }}
                                     onUse={() => {
                                       if (craftLabMode === "simulation") {
                                         setLastError(t("hinekoraLockNoSimPreview"));
@@ -876,45 +1271,48 @@ export const CraftingLabWorkspace = (): ReactElement => {
                                         setHinekoraHoverPreview(null);
                                         return;
                                       }
+                                      setEssenceHoverPreview(null);
                                       setHinekoraHoverPreview(
                                         resolveHinekoraHoverDraft("orb_hinekoras_lock"),
                                       );
                                     }}
                                     tierRoman={null}
                                     ariaLabel={
-                                      disabled
-                                        ? t("orbDisabledAria", { name })
-                                        : name
+                                      hinekoraApplicable
+                                        ? name
+                                        : t("orbDisabledAria", { name })
                                     }
-                                    disabledTitle={
-                                      disabled ? t("hinekoraLockAlreadyActive") : undefined
-                                    }
-                                    showQuantityBadge={!disabled}
+                                    showQuantityBadge={hinekoraApplicable}
                                     quantityLabel={t("stashOrbQuantityUnlimited")}
                                   />
                                 );
                               }
+                              const rowDisabledReason =
+                                getCraftLabDisabledCurrencyRowTooltip(id, t);
                               return (
                                 <CraftingLabOrbSlotButton
                                   key={id}
                                   iconSrc={iconSrc}
-                                  disabled
+                                  applicable={false}
+                                  currencyName={name}
+                                  hoverHint={hoverHint}
+                                  disabledReason={rowDisabledReason}
+                                  onBlockedClick={() => {
+                                    setStashValidationMessage(rowDisabledReason);
+                                  }}
                                   onUse={() => {}}
                                   onHoverChange={(hovered) => {
                                     if (!hovered) {
                                       setHinekoraHoverPreview(null);
                                       return;
                                     }
+                                    setEssenceHoverPreview(null);
                                     setHinekoraHoverPreview(
                                       resolveHinekoraHoverDraft(id),
                                     );
                                   }}
                                   tierRoman={null}
                                   ariaLabel={name}
-                                  disabledTitle={getCraftLabDisabledCurrencyRowTooltip(
-                                    id,
-                                    t,
-                                  )}
                                   showQuantityBadge={false}
                                   quantityLabel=""
                                 />
@@ -934,83 +1332,83 @@ export const CraftingLabWorkspace = (): ReactElement => {
                     className={stashTab !== "essence" ? "hidden" : undefined}
                   >
                     <div className="rounded-lg border border-[#3d3429] bg-[#141210] p-2 shadow-[inset_0_2px_8px_rgba(0,0,0,0.45)] dark:bg-[#141210]">
-                      <div className="mx-auto grid w-max grid-cols-3 gap-1.5 sm:gap-2">
-                        <CraftingLabOrbSlotButton
-                          iconSrc={getCraftingLabCurrencyIconUrl("essence_life")}
-                          disabled={false}
-                          onUse={() => {
-                            if (craftLabMode === "simulation") {
-                              setSimPreview({
-                                status: "ok",
-                                noteKeys: ["essenceSimulationNote"],
-                                sections: [],
-                              });
-                              setSimPreviewLabel(t("currency.essence_life"));
-                              setLastError(null);
-                              return;
-                            }
-                            tryApply("essence_life", (roll, filters) => {
-                              return applyEssence(roll, LIFE_ESSENCE, filters);
-                            });
-                          }}
-                          onHoverChange={(hovered) => {
-                            if (!hovered) {
-                              setHinekoraHoverPreview(null);
-                              return;
-                            }
-                            setHinekoraHoverPreview(
-                              resolveHinekoraHoverDraft("essence_life"),
-                            );
-                          }}
-                          tierRoman={null}
-                          ariaLabel={
-                            craftLabMode === "simulation"
-                              ? t("orbSimulateAria", {
-                                  name: t("currency.essence_life"),
-                                })
-                              : t("currency.essence_life")
-                          }
-                          showQuantityBadge
-                          quantityLabel={t("stashOrbQuantityUnlimited")}
-                        />
-                        <CraftingLabOrbSlotButton
-                          iconSrc={getCraftingLabCurrencyIconUrl("essence_attack")}
-                          disabled={false}
-                          onUse={() => {
-                            if (craftLabMode === "simulation") {
-                              setSimPreview({
-                                status: "ok",
-                                noteKeys: ["essenceSimulationNote"],
-                                sections: [],
-                              });
-                              setSimPreviewLabel(t("currency.essence_attack"));
-                              setLastError(null);
-                              return;
-                            }
-                            tryApply("essence_attack", (roll, filters) => {
-                              return applyEssence(roll, ATTACK_ESSENCE, filters);
-                            });
-                          }}
-                          onHoverChange={(hovered) => {
-                            if (!hovered) {
-                              setHinekoraHoverPreview(null);
-                              return;
-                            }
-                            setHinekoraHoverPreview(
-                              resolveHinekoraHoverDraft("essence_attack"),
-                            );
-                          }}
-                          tierRoman={null}
-                          ariaLabel={
-                            craftLabMode === "simulation"
-                              ? t("orbSimulateAria", {
-                                  name: t("currency.essence_attack"),
-                                })
-                              : t("currency.essence_attack")
-                          }
-                          showQuantityBadge
-                          quantityLabel={t("stashOrbQuantityUnlimited")}
-                        />
+                      <div className="mx-auto max-h-[min(70vh,28rem)] w-max max-w-full overflow-y-auto overflow-x-hidden pr-0.5">
+                        <div className="mx-auto grid w-max grid-cols-3 gap-1.5 sm:gap-2">
+                        {CRAFT_LAB_ESSENCE_DEFINITIONS.map((essenceDef) => {
+                          const id = essenceDef.essenceKey;
+                          const name = t(`currency.${id}`);
+                          const hoverHint = t(`currencyHoverHint.${id}`);
+                          const essenceApplicable = canApplyEssence(
+                            itemRoll,
+                            essenceDef,
+                            modRollFilters,
+                          );
+                          const essenceDisabledInRandom =
+                            craftLabMode !== "simulation" && !essenceApplicable;
+                          const essenceDisabledTitle = essenceDisabledInRandom
+                            ? itemRoll.rarity !== "magic"
+                              ? t("essenceRequiresMagicItem")
+                              : t("essenceIncompatibleBase")
+                            : undefined;
+                          return (
+                            <CraftingLabOrbSlotButton
+                              key={id}
+                              iconSrc={getCraftingLabCurrencyIconUrl(id)}
+                              applicable={!essenceDisabledInRandom}
+                              currencyName={name}
+                              hoverHint={hoverHint}
+                              disabledReason={essenceDisabledTitle}
+                              onBlockedClick={() => {
+                                if (essenceDisabledTitle !== undefined) {
+                                  setStashValidationMessage(essenceDisabledTitle);
+                                }
+                              }}
+                              onUse={() => {
+                                if (craftLabMode === "simulation") {
+                                  setSimPreview({
+                                    status: "ok",
+                                    noteKeys: ["essenceSimulationNote"],
+                                    sections: [],
+                                  });
+                                  setSimPreviewLabel(name);
+                                  setLastError(null);
+                                  setStashValidationMessage(null);
+                                  return;
+                                }
+                                tryApply(id, (roll, filters) => {
+                                  return applyEssence(roll, essenceDef, filters);
+                                });
+                              }}
+                              onHoverChange={(hovered) => {
+                                if (!hovered) {
+                                  setEssenceHoverPreview(null);
+                                  return;
+                                }
+                                setHinekoraHoverPreview(null);
+                                setEssenceHoverPreview(
+                                  buildEssenceGuaranteedModPreviewRoll(
+                                    itemRoll,
+                                    essenceDef,
+                                    modRollFilters,
+                                  ),
+                                );
+                              }}
+                              tierRoman={null}
+                              ariaLabel={
+                                essenceDisabledInRandom
+                                  ? t("orbDisabledAria", { name })
+                                  : craftLabMode === "simulation"
+                                    ? t("orbSimulateAria", {
+                                        name,
+                                      })
+                                    : name
+                              }
+                              showQuantityBadge
+                              quantityLabel={t("stashOrbQuantityUnlimited")}
+                            />
+                          );
+                        })}
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -1026,27 +1424,93 @@ export const CraftingLabWorkspace = (): ReactElement => {
                       {t("abyssTabHint")}
                     </p>
                     <div className="rounded-lg border border-[#3d3429] bg-[#141210] p-2 shadow-[inset_0_2px_8px_rgba(0,0,0,0.45)] dark:bg-[#141210]">
-                      <div className="mx-auto grid w-max grid-cols-3 gap-1.5 sm:gap-2">
-                        {Array.from({ length: ABYSS_STASH_SLOT_COUNT }, (_, slotIndex) => {
-                          return (
-                            <CraftingLabOrbSlotButton
-                              key={`abyss-slot-${String(slotIndex)}`}
-                              iconSrc={undefined}
-                              disabled
-                              onUse={() => {}}
-                              onHoverChange={(hovered) => {
-                                if (hovered) {
-                                  setHinekoraHoverPreview(null);
+                      <div className="w-full min-w-0">
+                        <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between md:gap-5">
+                          <div className="flex min-w-0 flex-col gap-3 sm:flex-row sm:items-start sm:gap-4">
+                            <div className="grid w-max grid-cols-3 gap-1.5 sm:gap-2">
+                              {CRAFT_LAB_ABYSS_BONE_GRID.flat().map((boneId) => {
+                                return renderAbyssBoneSlot(boneId);
+                              })}
+                            </div>
+                            <div
+                              className={[
+                                "flex w-max shrink-0 flex-col justify-start",
+                                "border-t border-[#3d3429]/80 pt-3 sm:border-l sm:border-t-0 sm:pt-0 sm:pl-4 dark:border-zinc-700/80",
+                              ].join(" ")}
+                            >
+                              {renderAbyssBoneSlot(CRAFT_LAB_ABYSS_BONE_CRANIUM_ID)}
+                            </div>
+                          </div>
+                          <div className="flex min-w-0 flex-1 flex-col gap-1.5 md:max-w-none lg:max-w-md">
+                            <p className="text-[10px] font-semibold uppercase tracking-wide text-zinc-500 dark:text-zinc-400">
+                              {t("abyssTabAbyssOmensHeading")}
+                            </p>
+                            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-1.5 sm:gap-2">
+                          {CRAFT_LAB_ABYSS_OMEN_IDS.map((omenId) => {
+                            const name = t(`currency.${omenId}`);
+                            const hoverHint = t(`currencyHoverHint.${omenId}`);
+                            const isSelected = activeStagedOmenId === omenId;
+                            return (
+                              <CraftingLabOrbSlotButton
+                                key={omenId}
+                                iconSrc={getCraftingLabCurrencyIconUrl(omenId)}
+                                applicable
+                                currencyName={name}
+                                hoverHint={hoverHint}
+                                isSelected={isSelected}
+                                onUse={() => {
+                                  const willClearSelection =
+                                    activeStagedOmenId === omenId;
+                                  if (craftLabMode === "simulation") {
+                                    if (willClearSelection) {
+                                      setSimPreview({
+                                        status: "ok",
+                                        noteKeys: ["omenPreview_cleared"],
+                                        sections: [],
+                                      });
+                                    } else {
+                                      setSimPreview({
+                                        status: "ok",
+                                        noteKeys: [
+                                          getCraftLabOmenPreviewNoteKey(omenId),
+                                        ],
+                                        sections: [],
+                                      });
+                                    }
+                                    setSimPreviewLabel(name);
+                                    setLastError(null);
+                                    setStashValidationMessage(null);
+                                  }
+                                  setActiveStagedOmenId((prev) => {
+                                    return prev === omenId ? null : omenId;
+                                  });
+                                  if (craftLabMode !== "simulation") {
+                                    setLastError(null);
+                                    setStashValidationMessage(null);
+                                  }
+                                }}
+                                onHoverChange={(hovered) => {
+                                  if (hovered) {
+                                    setHinekoraHoverPreview(null);
+                                    setEssenceHoverPreview(null);
+                                  }
+                                }}
+                                tierRoman={null}
+                                ariaLabel={
+                                  craftLabMode === "simulation"
+                                    ? t("orbSimulateAria", { name })
+                                    : isSelected
+                                      ? t("omenSelectedAria", { name })
+                                      : t("omenToggleAria", { name })
                                 }
-                              }}
-                              tierRoman={null}
-                              ariaLabel={t("abyssSlotDisabledTooltip")}
-                              disabledTitle={t("abyssSlotDisabledTooltip")}
-                              showQuantityBadge={false}
-                              quantityLabel=""
-                            />
-                          );
-                        })}
+                                showQuantityBadge={false}
+                                quantityLabel=""
+                              />
+                            );
+                          })}
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -1061,26 +1525,93 @@ export const CraftingLabWorkspace = (): ReactElement => {
                     <p className="mb-2 text-[11px] leading-snug text-zinc-500 dark:text-zinc-400">
                       {t("ritualTabHint")}
                     </p>
+                    <p className="mb-2 text-[11px] leading-snug text-zinc-500 dark:text-zinc-400">
+                      {t("ritualOmenSimulationNote")}
+                    </p>
                     <div className="rounded-lg border border-[#3d3429] bg-[#141210] p-2 shadow-[inset_0_2px_8px_rgba(0,0,0,0.45)] dark:bg-[#141210]">
-                      <div className="mx-auto grid w-max grid-cols-3 gap-1.5 sm:gap-2">
-                        <CraftingLabOrbSlotButton
-                          iconSrc={getCraftingLabCurrencyIconUrl("omen_placeholder")}
-                          disabled
-                          onUse={() => {}}
-                          onHoverChange={(hovered) => {
-                            if (hovered) {
-                              setHinekoraHoverPreview(null);
-                            }
-                          }}
-                          tierRoman={null}
-                          ariaLabel={t("currency.omen_placeholder")}
-                          disabledTitle={t("omenDisabledHint")}
-                          showQuantityBadge={false}
-                          quantityLabel=""
-                        />
+                      <div className="mx-auto max-h-[min(70vh,28rem)] w-max max-w-full overflow-y-auto overflow-x-hidden pr-0.5">
+                        <div className="mx-auto grid w-max grid-cols-3 gap-1.5 sm:gap-2">
+                          {CRAFT_LAB_RITUAL_OMEN_IDS.map((omenId) => {
+                            const name = t(`currency.${omenId}`);
+                            const hoverHint = t(`currencyHoverHint.${omenId}`);
+                            const isSelected = activeStagedOmenId === omenId;
+                            return (
+                              <CraftingLabOrbSlotButton
+                                key={omenId}
+                                iconSrc={getCraftingLabCurrencyIconUrl(omenId)}
+                                applicable
+                                currencyName={name}
+                                hoverHint={hoverHint}
+                                isSelected={isSelected}
+                                onUse={() => {
+                                  const willClearSelection =
+                                    activeStagedOmenId === omenId;
+                                  if (craftLabMode === "simulation") {
+                                    if (willClearSelection) {
+                                      setSimPreview({
+                                        status: "ok",
+                                        noteKeys: ["omenPreview_cleared"],
+                                        sections: [],
+                                      });
+                                    } else {
+                                      setSimPreview({
+                                        status: "ok",
+                                        noteKeys: [
+                                          getCraftLabOmenPreviewNoteKey(omenId),
+                                        ],
+                                        sections: [],
+                                      });
+                                    }
+                                    setSimPreviewLabel(name);
+                                    setLastError(null);
+                                    setStashValidationMessage(null);
+                                  }
+                                  setActiveStagedOmenId((prev) => {
+                                    return prev === omenId ? null : omenId;
+                                  });
+                                  if (craftLabMode !== "simulation") {
+                                    setLastError(null);
+                                    setStashValidationMessage(null);
+                                  }
+                                }}
+                                onHoverChange={(hovered) => {
+                                  if (hovered) {
+                                    setHinekoraHoverPreview(null);
+                                    setEssenceHoverPreview(null);
+                                  }
+                                }}
+                                tierRoman={null}
+                                ariaLabel={
+                                  craftLabMode === "simulation"
+                                    ? t("orbSimulateAria", { name })
+                                    : isSelected
+                                      ? t("omenSelectedAria", { name })
+                                      : t("omenToggleAria", { name })
+                                }
+                                showQuantityBadge={false}
+                                quantityLabel=""
+                              />
+                            );
+                          })}
+                        </div>
                       </div>
                     </div>
                   </div>
+                </div>
+
+                <div
+                  className="min-h-[2.75rem] w-full shrink-0 px-0.5 py-1"
+                  aria-live="polite"
+                  aria-atomic="true"
+                >
+                  {stashValidationMessage !== null ? (
+                    <p
+                      className="text-xs leading-snug text-amber-900 dark:text-amber-200/95"
+                      role="status"
+                    >
+                      {stashValidationMessage}
+                    </p>
+                  ) : null}
                 </div>
 
                 {simPreview !== null ? (

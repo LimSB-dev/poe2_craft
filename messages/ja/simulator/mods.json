@@ -75,6 +75,7 @@
     "corrupted_arcane_shadow_on_crit": "クリティカル命中時(10–15)%の確率でアーケインシャドウ獲得",
     "corrupted_cast_speed_at_full_life": "ライフ最大時に詠唱速度(8–15)%増加",
     "corrupted_skill_speed_consume_frenzy": "激怒チャージ消費時スキル速度(8–12)%増加",
-    "corrupted_lacerate_on_hit": "攻撃命中時(15–25)%の確率で裂傷付与"
+    "corrupted_lacerate_on_hit": "攻撃命中時(15–25)%の確率で裂傷付与",
+    "desecratedUnrevealedLine": "未公開の堕落（Desecrated）行"
   }
 }

@@ -1,3 +1,10 @@
+import type {
+  CraftLabAbyssBoneIdType,
+  CraftLabAbyssOmenIdType,
+} from "@/lib/poe2-item-simulator/abyssCrafting";
+import type { CraftLabRitualOmenIdType } from "@/lib/poe2-item-simulator/ritualCrafting";
+import type { CraftLabEssenceCurrencyIdType } from "@/lib/poe2-item-simulator/essence";
+
 /**
  * 크래프트 랩 화폐 id — 일부 오브는 게임과 같이 **티어(3단)** 슬롯이 있다.
  * 연금술 오브는 PoE2에서 일반(단일)만 두고 티어 슬롯은 두지 않는다.
@@ -62,9 +69,14 @@ export type CraftingCurrencyIdType =
   | "orb_hinekoras_lock"
   /** 칼란드라의 거울 — UI만, 시뮬 미구현 */
   | "orb_mirror"
-  | "essence_life"
-  | "essence_attack"
-  | "omen_placeholder";
+  | CraftLabEssenceCurrencyIdType
+  | CraftLabAbyssBoneIdType
+  | CraftLabAbyssOmenIdType
+  | CraftLabRitualOmenIdType
+  /** 레거시 사용 기록 호환 */
+  | "omen_placeholder"
+  /** 영혼의 우물: 미공개 타락 줄 확정(창고 소모 없음, 기록·실행 취소용) */
+  | "soul_well_reveal";
 
 /**
  * 화폐 탭 하단 행(표시 순): 바알·디바인·히네코라·미러 — 히네코라만 시뮬 연결.
@@ -73,7 +85,7 @@ export const CRAFT_LAB_CURRENCY_TAB_BOTTOM_ROW: readonly CraftingCurrencyIdType[
   ["orb_vaal", "orb_divine", "orb_hinekoras_lock", "orb_mirror"] as const;
 
 /**
- * 창고 오브 UI: 5줄(각 3티어) + 마지막 줄(연금술·소멸·분열) — {@link CRAFT_LAB_ORB_UI_GROUPS}.
+ * 창고 오브 UI — **왼쪽 열**: 일반·상위·완벽 3티어 패밀리만 한 줄씩(3열 그리드).
  */
 export const CRAFT_LAB_ORB_UI_GROUPS: readonly (readonly CraftingOrbFamilyIdType[])[] =
   [
@@ -82,11 +94,21 @@ export const CRAFT_LAB_ORB_UI_GROUPS: readonly (readonly CraftingOrbFamilyIdType
     ["orb_regal"],
     ["orb_exalted"],
     ["orb_chaos"],
-    ["orb_alchemy", "orb_annulment", "orb_fracturing"],
   ] as const;
 
-export const CRAFT_LAB_ORB_FAMILY_ORDER: readonly CraftingOrbFamilyIdType[] =
-  CRAFT_LAB_ORB_UI_GROUPS.flat() as readonly CraftingOrbFamilyIdType[];
+/** **오른쪽 열**: 티어 구분 없는 단일 슬롯 오브(연금술·소멸·분열). */
+export const CRAFT_LAB_ORB_SINGLE_SLOT_ROW: readonly CraftingLabOrbSlotIdType[] = [
+  "orb_alchemy",
+  "orb_annulment",
+  "orb_fracturing",
+] as const;
+
+export const CRAFT_LAB_ORB_FAMILY_ORDER: readonly CraftingOrbFamilyIdType[] = [
+  ...CRAFT_LAB_ORB_UI_GROUPS.flat(),
+  "orb_alchemy",
+  "orb_annulment",
+  "orb_fracturing",
+] as const satisfies readonly CraftingOrbFamilyIdType[];
 
 export const expandOrbFamilyToSlotIds = (
   family: CraftingOrbFamilyIdType,

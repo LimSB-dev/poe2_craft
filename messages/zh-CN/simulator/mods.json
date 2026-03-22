@@ -75,6 +75,7 @@
     "corrupted_arcane_shadow_on_crit": "暴击命中时(10–15)%概率获得奥术暗影",
     "corrupted_cast_speed_at_full_life": "满生命值时施法速度提高(8–15)%",
     "corrupted_skill_speed_consume_frenzy": "消耗激怒充能后技能速度提高(8–12)%",
-    "corrupted_lacerate_on_hit": "攻击命中时(15–25)%概率施加割裂"
+    "corrupted_lacerate_on_hit": "攻击命中时(15–25)%概率施加割裂",
+    "desecratedUnrevealedLine": "未公开的亵渎词缀"
   }
 }

@@ -23,7 +23,7 @@ alwaysApply: true
 
 - Use **React Testing Library** for React component tests (avoid selectors tightly coupled to implementation details).
 - Place test files under `__tests__/` or use `*.test.ts` / `*.test.tsx` following your repository conventions.
-- Standardize execution through `package.json` scripts (e.g., `npm run test`, `npm run test:watch`).
+- Standardize execution through `package.json` scripts (e.g., `yarn test`, `yarn test:watch`).
 
 ## Separation of concerns with E2E
 

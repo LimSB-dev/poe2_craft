@@ -33,7 +33,7 @@ Detailed cases (edge validations, error messages, and state transitions) belong 
 ## Structure / Execution
 
 - Directory: usually `e2e/` (follow repository conventions).
-- Execution: use `package.json` scripts (e.g., `npm run test:e2e`).
+- Execution: use `package.json` scripts (e.g., `yarn test:e2e`).
 
 ## Summary
 

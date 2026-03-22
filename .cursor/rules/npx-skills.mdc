@@ -2,9 +2,9 @@
 alwaysApply: true
 ---
 
-# npx skills · Agent Skills (Best Practices)
+# Agent skills · Vercel Labs (Best Practices)
 
-This repository installs [Vercel Labs `agent-skills`](https://github.com/vercel-labs/agent-skills) via **`npx skills`**, and keeps the sources under **`.agents/skills/`**. Versions and sources are pinned with `skills-lock.json`.
+This repository installs [Vercel Labs `agent-skills`](https://github.com/vercel-labs/agent-skills) via the **`skills`** CLI (see `package.json` scripts), and keeps the sources under **`.agents/skills/`**. Versions and sources are pinned with `skills-lock.json`.
 
 ## What the agent should do
 
@@ -19,11 +19,11 @@ If there is a conflict with the repository's `.cursor/rules` (TypeScript style, 
 
 ## CLI (local)
 
-- List: `npm run skills:list` (or `npx skills list`)
-- Search: `npx skills find [keyword]`
-- Re-install Vercel package (same skill set): `npm run skills:add:vercel`
-- Update: `npm run skills:update`
-- Restore from `skills-lock.json`: `npx skills experimental_install`
+- List: `yarn skills:list` (or `yarn run skills list`)
+- Search: `yarn run skills find [keyword]`
+- Re-install Vercel package (same skill set): `yarn skills:add:vercel`
+- Update: `yarn skills:update`
+- Restore from `skills-lock.json`: `yarn skills:restore`
 
 You can discover more skills at [https://skills.sh/](https://skills.sh/).
 

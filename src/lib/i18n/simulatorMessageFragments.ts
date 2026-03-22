@@ -11,6 +11,7 @@ export const SIMULATOR_MESSAGE_FRAGMENT_BASENAMES = [
   "result",
   "mods",
   "catalog",
+  "craftLab",
   "desiredModsPanel",
   "itemSimulatorCatalog",
   "itemSimulatorWorkspace",

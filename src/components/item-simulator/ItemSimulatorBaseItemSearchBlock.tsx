@@ -45,13 +45,25 @@ export const ItemSimulatorBaseItemSearchBlock = ({
   };
 
   const trimmed = baseItemQuery.trim().toLowerCase();
-  const dropdownItems = filteredBaseItemRecords.filter((record) => {
+  const matched = filteredBaseItemRecords.filter((record) => {
     if (trimmed.length === 0) {
       return true;
     }
     const label = resolveLabel(record.baseItemKey);
     return label.toLowerCase().includes(trimmed);
   });
+  const selectedRecord = matched.find((record) => {
+    return record.baseItemKey === effectiveSelectedBaseItemKey;
+  });
+  const dropdownItems =
+    selectedRecord !== undefined
+      ? [
+          selectedRecord,
+          ...matched.filter((record) => {
+            return record.baseItemKey !== effectiveSelectedBaseItemKey;
+          }),
+        ]
+      : matched;
 
   return (
     <div ref={baseItemContainerRef} className="flex flex-col gap-2">

@@ -1,0 +1,43 @@
+{
+  "craftLab": {
+    "metaTitle": "クラフトラボ — 手動通貨テスト",
+    "metaDescription": "ベースを選び、スタッシュのオーブ・エッセンスでクラフトを試します。シミュレーター規則でありゲーム本体と同一ではありません。",
+    "title": "クラフトラボ",
+    "intro": "左でベースを選び、右のスタッシュから通貨を使います。挙動は basicCurrencyOrbs / essence のシミュレーター実装に従います。ディバインとオーメンは未接続です。",
+    "navToSimulator": "アイテムシミュレーターに戻る",
+    "itemColumnTitle": "アイテム",
+    "stashColumnTitle": "スタッシュ",
+    "selectBaseHeading": "ベース選択",
+    "searchBaseLabel": "ベース検索",
+    "searchBasePlaceholder": "キーや種別で絞り込み…",
+    "pickBaseHint": "行を選ぶとそのベースのノーマル（明示なし）が読み込まれます。",
+    "noBaseMatches": "一致するベースがありません。",
+    "currentBase": "ベース",
+    "rarityLabel": "レアリティ",
+    "prefixesHeading": "接頭辞",
+    "suffixesHeading": "接尾辞",
+    "emptyMods": "なし",
+    "resetItem": "ノーマル（空）にリセット",
+    "lastActionError": "適用できませんでした: {message}",
+    "stashDepleted": "スタッシュの数量が足りません。",
+    "orbsHeading": "オーブ",
+    "essencesHeading": "エッセンス",
+    "omensHeading": "オーメンなど",
+    "stashCount": "×{count}",
+    "divineDisabledHint": "ディバインオーブ: 数値ロールは未モデルです。",
+    "omenDisabledHint": "オーメンは手動クラフト未接続です。",
+    "currency": {
+      "orb_transmutation": "変成のオーブ",
+      "orb_augmentation": "拡張のオーブ",
+      "orb_regal": "レガルのオーブ",
+      "orb_alchemy": "錬金術のオーブ",
+      "orb_exalted": "エクスオルトのオーブ",
+      "orb_chaos": "カオスのオーブ",
+      "orb_annulment": "消滅のオーブ",
+      "orb_divine": "ディバインオーブ",
+      "essence_life": "ライフエッセンス（サンプル）",
+      "essence_attack": "アタックエッセンス（サンプル）",
+      "omen_placeholder": "オーメン（枠のみ）"
+    }
+  }
+}

@@ -25,6 +25,7 @@ const SIMULATOR_FRAGMENT_MODULES: Record<AppLocaleType, LocaleFragmentLoadersTyp
       result: () => import("../../../messages/en/simulator/result.json"),
       mods: () => import("../../../messages/en/simulator/mods.json"),
       catalog: () => import("../../../messages/en/simulator/catalog.json"),
+      craftLab: () => import("../../../messages/en/simulator/craftLab.json"),
       desiredModsPanel: () =>
         import("../../../messages/en/simulator/desiredModsPanel.json"),
       itemSimulatorCatalog: () =>
@@ -44,6 +45,7 @@ const SIMULATOR_FRAGMENT_MODULES: Record<AppLocaleType, LocaleFragmentLoadersTyp
       result: () => import("../../../messages/ko/simulator/result.json"),
       mods: () => import("../../../messages/ko/simulator/mods.json"),
       catalog: () => import("../../../messages/ko/simulator/catalog.json"),
+      craftLab: () => import("../../../messages/ko/simulator/craftLab.json"),
       desiredModsPanel: () =>
         import("../../../messages/ko/simulator/desiredModsPanel.json"),
       itemSimulatorCatalog: () =>
@@ -63,6 +65,7 @@ const SIMULATOR_FRAGMENT_MODULES: Record<AppLocaleType, LocaleFragmentLoadersTyp
       result: () => import("../../../messages/ja/simulator/result.json"),
       mods: () => import("../../../messages/ja/simulator/mods.json"),
       catalog: () => import("../../../messages/ja/simulator/catalog.json"),
+      craftLab: () => import("../../../messages/ja/simulator/craftLab.json"),
       desiredModsPanel: () =>
         import("../../../messages/ja/simulator/desiredModsPanel.json"),
       itemSimulatorCatalog: () =>
@@ -82,6 +85,7 @@ const SIMULATOR_FRAGMENT_MODULES: Record<AppLocaleType, LocaleFragmentLoadersTyp
       result: () => import("../../../messages/zh-CN/simulator/result.json"),
       mods: () => import("../../../messages/zh-CN/simulator/mods.json"),
       catalog: () => import("../../../messages/zh-CN/simulator/catalog.json"),
+      craftLab: () => import("../../../messages/zh-CN/simulator/craftLab.json"),
       desiredModsPanel: () =>
         import("../../../messages/zh-CN/simulator/desiredModsPanel.json"),
       itemSimulatorCatalog: () =>

@@ -1,0 +1,43 @@
+{
+  "craftLab": {
+    "metaTitle": "工艺实验室 — 手动通货测试",
+    "metaDescription": "选择基底，从仓库使用通货与精华。遵循本项目的模拟器规则，与游戏客户端并非一一对应。",
+    "title": "工艺实验室",
+    "intro": "左侧选择基底，右侧从仓库使用货币。行为遵循 basicCurrencyOrbs 与 essence 的模拟实现。神圣石与预兆尚未接入手动工艺。",
+    "navToSimulator": "返回物品模拟器",
+    "itemColumnTitle": "物品",
+    "stashColumnTitle": "仓库",
+    "selectBaseHeading": "选择基底",
+    "searchBaseLabel": "搜索基底",
+    "searchBasePlaceholder": "按键名或子类型筛选…",
+    "pickBaseHint": "点击一行以加载该基底的普通（无词缀）物品。",
+    "noBaseMatches": "没有匹配的基底。",
+    "currentBase": "基底",
+    "rarityLabel": "稀有度",
+    "prefixesHeading": "前缀",
+    "suffixesHeading": "后缀",
+    "emptyMods": "无",
+    "resetItem": "重置为普通（空词缀）",
+    "lastActionError": "无法应用: {message}",
+    "stashDepleted": "仓库中该通货不足。",
+    "orbsHeading": "通货",
+    "essencesHeading": "精华",
+    "omensHeading": "预兆等",
+    "stashCount": "×{count}",
+    "divineDisabledHint": "神圣石：本应用未建模数值 roll。",
+    "omenDisabledHint": "预兆尚未接入手动工艺。",
+    "currency": {
+      "orb_transmutation": "蜕变石",
+      "orb_augmentation": "增幅石",
+      "orb_regal": "富豪石",
+      "orb_alchemy": "点金石",
+      "orb_exalted": "崇高石",
+      "orb_chaos": "混沌石",
+      "orb_annulment": "剥离石",
+      "orb_divine": "神圣石",
+      "essence_life": "生命精华（示例）",
+      "essence_attack": "攻击精华（示例）",
+      "omen_placeholder": "预兆（占位）"
+    }
+  }
+}

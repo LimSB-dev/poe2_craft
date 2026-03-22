@@ -6,6 +6,7 @@
       "strategy": "戦略画面を開く",
       "rl": "RL環境",
       "optimizer": "最適化画面を開く",
+      "craftingLab": "クラフトラボ",
       "db": "DB"
     },
     "panels": {
@@ -69,6 +70,9 @@
       "suffixes": "接尾辞",
       "empty": "なし",
       "matchedDesiredRow": "目標として選んだ属性と一致、ティア {tier}"
+    },
+    "tooltipCard": {
+      "implicitHeading": "固有"
     }
   }
 }

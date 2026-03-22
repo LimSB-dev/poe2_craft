@@ -1,0 +1,43 @@
+{
+  "craftLab": {
+    "metaTitle": "크래프팅 랩 — 수동 화폐 테스트",
+    "metaDescription": "베이스를 고르고 창고의 오브·에센스로 제작해 보세요. 시뮬레이터 규칙이며 게임 클라이언트와 1:1은 아닙니다.",
+    "title": "크래프팅 랩",
+    "intro": "왼쪽에서 베이스를 고른 뒤, 오른쪽 창고의 화폐를 사용합니다. 동작은 이 프로젝트의 시뮬 코드(basicCurrencyOrbs, essence)를 따릅니다. 디바인·징조는 아직 수동 제작에 연결되지 않았습니다.",
+    "navToSimulator": "아이템 시뮬레이터로 돌아가기",
+    "itemColumnTitle": "아이템",
+    "stashColumnTitle": "창고",
+    "selectBaseHeading": "베이스 선택",
+    "searchBaseLabel": "베이스 검색",
+    "searchBasePlaceholder": "키 또는 유형으로 필터…",
+    "pickBaseHint": "행을 누르면 해당 베이스의 노말(접미·접두 없음) 아이템이 로드됩니다.",
+    "noBaseMatches": "조건에 맞는 베이스가 없습니다.",
+    "currentBase": "베이스",
+    "rarityLabel": "희귀도",
+    "prefixesHeading": "접두",
+    "suffixesHeading": "접미",
+    "emptyMods": "없음",
+    "resetItem": "노말(빈 옵션)으로 초기화",
+    "lastActionError": "적용 실패: {message}",
+    "stashDepleted": "창고에 해당 화폐가 부족합니다.",
+    "orbsHeading": "오브",
+    "essencesHeading": "에센스",
+    "omensHeading": "징조 등",
+    "stashCount": "×{count}",
+    "divineDisabledHint": "디바인 오브: 이 앱은 옵션 수치 롤을 모델링하지 않습니다.",
+    "omenDisabledHint": "징조는 아직 수동 크래프팅에 연결되지 않았습니다.",
+    "currency": {
+      "orb_transmutation": "진화의 오브",
+      "orb_augmentation": "확장의 오브",
+      "orb_regal": "제왕의 오브",
+      "orb_alchemy": "연금술 오브",
+      "orb_exalted": "엑잘티드 오브",
+      "orb_chaos": "카오스 오브",
+      "orb_annulment": "소멸의 오브",
+      "orb_divine": "디바인 오브",
+      "essence_life": "라이프 에센스(샘플)",
+      "essence_attack": "공격 에센스(샘플)",
+      "omen_placeholder": "징조(자리만)"
+    }
+  }
+}

@@ -55,7 +55,9 @@ export const ItemSimulatorResultPanel = ({
         aria-busy={isRlTraining}
         className="w-full sm:w-auto rounded-lg bg-amber-600 px-4 py-2 text-sm font-semibold text-white hover:bg-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/60 disabled:pointer-events-none disabled:opacity-50"
       >
-        {isRlTraining ? tRl("inputs.training") : t("optimizationExplore.runButton")}
+        {isRlTraining
+          ? tRl("inputs.training")
+          : t("optimizationExplore.runButton")}
       </button>
 
       {!selectedBaseItem ? (
@@ -174,12 +176,14 @@ export const ItemSimulatorResultPanel = ({
               )}
               <p className="mt-2 text-xs text-zinc-500 dark:text-zinc-500 tabular-nums">
                 {t("optimizationExplore.costsLine", {
-                  chaos: rlTrainResponse.summary.costsExaltPerAction.chaosOrb.toFixed(
-                    4,
-                  ),
-                  essence: rlTrainResponse.summary.costsExaltPerAction.essence.toFixed(
-                    4,
-                  ),
+                  chaos:
+                    rlTrainResponse.summary.costsExaltPerAction.chaosOrb.toFixed(
+                      4,
+                    ),
+                  essence:
+                    rlTrainResponse.summary.costsExaltPerAction.essence.toFixed(
+                      4,
+                    ),
                 })}
               </p>
 
@@ -216,18 +220,26 @@ export const ItemSimulatorResultPanel = ({
               <div className="mt-2 space-y-3">
                 {(
                   [
-                    { key: "chaos", value: rlTrainResponse.summary.actionRatio.chaos },
+                    {
+                      key: "chaos",
+                      value: rlTrainResponse.summary.actionRatio.chaos,
+                    },
                     {
                       key: "essence",
                       value: rlTrainResponse.summary.actionRatio.essence,
                     },
-                    { key: "stop", value: rlTrainResponse.summary.actionRatio.stop },
+                    {
+                      key: "stop",
+                      value: rlTrainResponse.summary.actionRatio.stop,
+                    },
                   ] as const
                 ).map((row) => (
                   <div key={row.key}>
                     <div className="flex justify-between text-xs text-zinc-600 dark:text-zinc-400 mb-1">
                       <span>{tRl(`actions.${row.key}`)}</span>
-                      <span className="tabular-nums">{toPercent(row.value)}</span>
+                      <span className="tabular-nums">
+                        {toPercent(row.value)}
+                      </span>
                     </div>
                     <div className="h-2.5 w-full rounded-full bg-zinc-100 dark:bg-zinc-800 overflow-hidden">
                       <div

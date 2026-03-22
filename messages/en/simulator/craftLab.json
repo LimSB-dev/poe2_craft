@@ -1,0 +1,43 @@
+{
+  "craftLab": {
+    "metaTitle": "Crafting lab — manual currency test",
+    "metaDescription": "Pick a base item, use orbs and essences from a stash, and compare outcomes with Path of Exile 2. Simulator rules; not a 1:1 game client.",
+    "title": "Crafting lab",
+    "intro": "Select a base on the left, then spend currency from the stash on the right. Behaviour follows this project’s simulator code (basicCurrencyOrbs, essence). Divine Orb and omens are not implemented yet.",
+    "navToSimulator": "Back to item simulator",
+    "itemColumnTitle": "Item",
+    "stashColumnTitle": "Stash",
+    "selectBaseHeading": "Choose base",
+    "searchBaseLabel": "Search bases",
+    "searchBasePlaceholder": "Filter by key or subtype…",
+    "pickBaseHint": "Pick a row to load a normal item on that base.",
+    "noBaseMatches": "No bases match your filter.",
+    "currentBase": "Base",
+    "rarityLabel": "Rarity",
+    "prefixesHeading": "Prefixes",
+    "suffixesHeading": "Suffixes",
+    "emptyMods": "None",
+    "resetItem": "Reset to normal (empty)",
+    "lastActionError": "Could not apply: {message}",
+    "stashDepleted": "Not enough of that currency in the stash.",
+    "orbsHeading": "Orbs",
+    "essencesHeading": "Essences",
+    "omensHeading": "Omens & other",
+    "stashCount": "×{count}",
+    "divineDisabledHint": "Divine Orb: numeric rolls are not modeled in this app.",
+    "omenDisabledHint": "Omens are not wired to manual crafting yet.",
+    "currency": {
+      "orb_transmutation": "Orb of Transmutation",
+      "orb_augmentation": "Orb of Augmentation",
+      "orb_regal": "Regal Orb",
+      "orb_alchemy": "Orb of Alchemy",
+      "orb_exalted": "Exalted Orb",
+      "orb_chaos": "Chaos Orb",
+      "orb_annulment": "Orb of Annulment",
+      "orb_divine": "Divine Orb",
+      "essence_life": "Life Essence (sample)",
+      "essence_attack": "Attack Essence (sample)",
+      "omen_placeholder": "Omen (placeholder)"
+    }
+  }
+}

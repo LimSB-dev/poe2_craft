@@ -40,6 +40,12 @@ export const ItemSimulatorHeader = (): ReactElement => {
           {t("nav.optimizer")}
         </Link>
         <Link
+          href="/crafting-lab"
+          className="text-sm font-medium text-amber-700 dark:text-amber-400 underline-offset-2 hover:underline"
+        >
+          {t("nav.craftingLab")}
+        </Link>
+        <Link
           href="/db"
           className="text-sm font-medium text-amber-700 dark:text-amber-400 underline-offset-2 hover:underline"
         >

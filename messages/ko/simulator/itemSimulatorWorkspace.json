@@ -6,6 +6,7 @@
       "strategy": "전략 화면 열기",
       "rl": "RL 환경",
       "optimizer": "최적화 화면",
+      "craftingLab": "크래프트 랩",
       "db": "DB"
     },
     "panels": {
@@ -69,6 +70,9 @@
       "suffixes": "접미",
       "empty": "없음",
       "matchedDesiredRow": "목표로 선택한 속성과 일치, 티어 {tier}"
+    },
+    "tooltipCard": {
+      "implicitHeading": "특수 속성"
     }
   }
 }

@@ -6,6 +6,7 @@
       "strategy": "打开策略页",
       "rl": "RL环境",
       "optimizer": "打开优化页",
+      "craftingLab": "工艺实验室",
       "db": "DB"
     },
     "panels": {
@@ -69,6 +70,9 @@
       "suffixes": "后缀",
       "empty": "无",
       "matchedDesiredRow": "与所选目标词缀一致，阶 {tier}"
+    },
+    "tooltipCard": {
+      "implicitHeading": "基底词缀"
     }
   }
 }

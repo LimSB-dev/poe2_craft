@@ -13,7 +13,7 @@ import { ItemSimulatorBaseItemTooltipCard } from "@/components/item-simulator/It
 import { useItemSimulatorBaseItemPanelState } from "@/components/item-simulator/useItemSimulatorBaseItemPanelState";
 import { getCraftingLabCurrencyIconUrl } from "@/lib/crafting-lab/craftingLabCurrencyIconUrls";
 import {
-  CRAFT_LAB_ORB_SLOT_IDS,
+  getCraftLabOrbSlotIdsGrouped,
   getOrbSlotTierRoman,
   normalizeCraftingCurrencyEventId,
   orbSlotIdToFamilyKind,
@@ -612,52 +612,71 @@ export const CraftingLabWorkspace = (): ReactElement => {
                 </p>
               ) : (
                 <>
-                  <div className="rounded-lg border border-[#3d3429] bg-[#141210] p-1.5 shadow-[inset_0_2px_8px_rgba(0,0,0,0.45)] dark:bg-[#141210]">
-                    <div className="mx-auto grid w-max grid-cols-3 gap-1.5 sm:gap-2">
-                      {CRAFT_LAB_ORB_SLOT_IDS.map((id) => {
-                        const applicable = isCraftLabOrbApplicable(id, itemRoll);
-                        const applyOrb =
-                          CRAFT_LAB_ORB_APPLY[orbSlotIdToFamilyKind(id)];
-                        const family = orbSlotIdToFamilyKind(id);
-                        const name = t(`currency.${id}`);
-                        const iconSrc = getCraftingLabCurrencyIconUrl(id);
-                        const tierRoman = getOrbSlotTierRoman(id);
+                  <div className="rounded-lg border border-[#3d3429] bg-[#141210] p-2 shadow-[inset_0_2px_8px_rgba(0,0,0,0.45)] dark:bg-[#141210]">
+                    <div className="flex flex-col gap-3 sm:gap-3.5">
+                      {getCraftLabOrbSlotIdsGrouped().map((rowSlotIds, rowIndex) => {
                         return (
-                          <CraftingLabOrbSlotButton
-                            key={id}
-                            iconSrc={iconSrc}
-                            disabled={!applicable}
-                            onUse={() => {
-                              if (craftLabMode === "simulation") {
-                                if (!applicable) {
-                                  return;
-                                }
-                                const prev = buildCraftLabOrbPreview(
-                                  family,
+                          <div
+                            key={`${String(rowIndex)}-orb-row`}
+                            className="w-full min-w-0"
+                          >
+                            <div className="mx-auto grid w-max grid-cols-3 gap-1.5 sm:gap-2">
+                              {rowSlotIds.map((id) => {
+                                const applicable = isCraftLabOrbApplicable(
+                                  id,
                                   itemRoll,
-                                  modRollFilters,
                                 );
-                                setSimPreview(prev);
-                                setSimPreviewLabel(name);
-                                setLastError(null);
-                                return;
-                              }
-                              tryApply(id, applyOrb);
-                            }}
-                            tierRoman={tierRoman}
-                            ariaLabel={
-                              applicable
-                                ? craftLabMode === "simulation"
-                                  ? t("orbSimulateAria", { name })
-                                  : name
-                                : t("orbDisabledAria", { name })
-                            }
-                            disabledTitle={
-                              applicable ? undefined : t("orbDisabledTooltip")
-                            }
-                            showQuantityBadge={applicable}
-                            quantityLabel={t("stashOrbQuantityUnlimited")}
-                          />
+                                const applyOrb =
+                                  CRAFT_LAB_ORB_APPLY[orbSlotIdToFamilyKind(id)];
+                                const family = orbSlotIdToFamilyKind(id);
+                                const name = t(`currency.${id}`);
+                                const iconSrc = getCraftingLabCurrencyIconUrl(id);
+                                const tierRoman = getOrbSlotTierRoman(id);
+                                return (
+                                  <CraftingLabOrbSlotButton
+                                    key={id}
+                                    iconSrc={iconSrc}
+                                    disabled={!applicable}
+                                    onUse={() => {
+                                      if (craftLabMode === "simulation") {
+                                        if (!applicable) {
+                                          return;
+                                        }
+                                        const prev = buildCraftLabOrbPreview(
+                                          family,
+                                          itemRoll,
+                                          modRollFilters,
+                                        );
+                                        setSimPreview(prev);
+                                        setSimPreviewLabel(name);
+                                        setLastError(null);
+                                        return;
+                                      }
+                                      tryApply(id, applyOrb);
+                                    }}
+                                    tierRoman={tierRoman}
+                                    ariaLabel={
+                                      applicable
+                                        ? craftLabMode === "simulation"
+                                          ? t("orbSimulateAria", { name })
+                                          : name
+                                        : t("orbDisabledAria", { name })
+                                    }
+                                    disabledTitle={
+                                      applicable
+                                        ? undefined
+                                        : t("orbDisabledTooltip")
+                                    }
+                                    showQuantityBadge={applicable}
+                                    quantityLabel={t("stashOrbQuantityUnlimited")}
+                                    strongDisabled={
+                                      id === "orb_fracturing" && !applicable
+                                    }
+                                  />
+                                );
+                              })}
+                            </div>
+                          </div>
                         );
                       })}
                     </div>

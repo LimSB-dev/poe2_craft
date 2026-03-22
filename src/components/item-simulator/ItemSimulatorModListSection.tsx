@@ -36,13 +36,23 @@ export const ItemSimulatorModListSection = ({
             const isDesired =
               desiredModKeys?.has(modDefinition.modKey) ?? false;
             const isFractured = modDefinition.isFractured === true;
+            const contentTone =
+              isFractured && isDesired
+                ? "text-amber-900/75 dark:text-amber-400/65"
+                : isFractured
+                  ? "text-zinc-600 dark:text-zinc-500"
+                  : isDesired
+                    ? "text-amber-800 dark:text-amber-300"
+                    : "text-zinc-800 dark:text-zinc-200";
             return (
               <li
                 key={`${modDefinition.modKey}-${String(modIndex)}`}
-                className={`text-sm flex flex-wrap items-center gap-2 rounded-md px-2 py-1 -mx-2 transition-colors ${
-                  isDesired
-                    ? "bg-amber-50 dark:bg-amber-900/20 text-amber-800 dark:text-amber-300"
-                    : "text-zinc-800 dark:text-zinc-200"
+                className={`flex items-start gap-2 rounded-md px-2 py-1 text-sm -mx-2 transition-colors ${
+                  isDesired && !isFractured
+                    ? "bg-amber-50 dark:bg-amber-900/20"
+                    : isDesired && isFractured
+                      ? "bg-amber-50/80 dark:bg-amber-900/15"
+                      : ""
                 }`}
                 aria-label={
                   isDesired
@@ -52,33 +62,31 @@ export const ItemSimulatorModListSection = ({
                     : undefined
                 }
               >
-                {isDesired && (
-                  <span
-                    className="text-amber-500 dark:text-amber-400 text-xs"
-                    aria-hidden="true"
-                  >
-                    ★
-                  </span>
-                )}
-                <span>
-                  <SimulatorModTemplateText
-                    nameTemplateKey={modDefinition.displayName}
-                  />
-                </span>
                 <span
-                  className={`text-xs px-2 py-0.5 rounded-full ${
-                    isDesired
-                      ? "bg-amber-200 dark:bg-amber-800/50 text-amber-700 dark:text-amber-300"
-                      : "bg-zinc-100 dark:bg-zinc-800"
-                  }`}
+                  className="shrink-0 w-8 pt-0.5 text-left text-[10px] font-medium tabular-nums text-zinc-500 dark:text-zinc-600"
+                  aria-hidden
                 >
                   T{modDefinition.tier}
                 </span>
-                {isFractured ? (
-                  <span className="text-xs px-2 py-0.5 rounded-full bg-violet-100 dark:bg-violet-900/40 text-violet-800 dark:text-violet-200">
-                    {t("resultModList.fracturedBadge")}
-                  </span>
-                ) : null}
+                <div
+                  className={`min-w-0 flex flex-1 justify-center px-1 ${contentTone}`}
+                >
+                  <div className="flex max-w-full flex-wrap items-center justify-center gap-2 text-center">
+                    {isDesired && (
+                      <span
+                        className="text-amber-500 dark:text-amber-400 text-xs"
+                        aria-hidden="true"
+                      >
+                        ★
+                      </span>
+                    )}
+                    <span>
+                      <SimulatorModTemplateText
+                        nameTemplateKey={modDefinition.displayName}
+                      />
+                    </span>
+                  </div>
+                </div>
               </li>
             );
           })

@@ -5,6 +5,12 @@ import random
 from typing import DefaultDict
 
 from crafting_env import ACTION_CHAOS, ACTION_ESSENCE, ACTION_STOP, CraftingEnv
+from currency_exalt_rates import (
+    CHAOS_ORB_EXALT_PER_USE,
+    ESSENCE_EXALT_PER_USE,
+    RL_ESSENCE_TO_CHAOS_COST_RATIO,
+)
+from poe_currency_exchange import load_poe2_rl_exalt_rates_or_fallback
 
 
 StateType = tuple[int, int, int, int, int]
@@ -29,10 +35,17 @@ def train_q_learning(
     epsilon_end: float = 0.05,
     epsilon_decay: float = 0.999,
 ) -> tuple[DefaultDict[StateType, list[float]], list[float]]:
+    rates = load_poe2_rl_exalt_rates_or_fallback(
+        CHAOS_ORB_EXALT_PER_USE,
+        ESSENCE_EXALT_PER_USE,
+        RL_ESSENCE_TO_CHAOS_COST_RATIO,
+    )
     env = CraftingEnv(
         budget=80,
         good_tier_max_inclusive=2,
         desired_good_mods=3,
+        chaos_exalt_per_use=rates.chaos_exalt_per_use,
+        essence_exalt_per_use=rates.essence_exalt_per_use,
         max_steps=100,
         seed=42,
     )
@@ -61,17 +74,21 @@ def train_q_learning(
         episode_rewards.append(total_reward)
         epsilon = max(epsilon_end, epsilon * epsilon_decay)
 
-    return q_table, episode_rewards
+    return q_table, episode_rewards, rates
 
 
 def evaluate_policy(
     q_table: DefaultDict[StateType, list[float]],
     episodes: int = 500,
+    chaos_exalt_per_use: float = CHAOS_ORB_EXALT_PER_USE,
+    essence_exalt_per_use: float = ESSENCE_EXALT_PER_USE,
 ) -> dict[str, float]:
     env = CraftingEnv(
         budget=80,
         good_tier_max_inclusive=2,
         desired_good_mods=3,
+        chaos_exalt_per_use=chaos_exalt_per_use,
+        essence_exalt_per_use=essence_exalt_per_use,
         max_steps=100,
         seed=777,
     )
@@ -111,10 +128,17 @@ def evaluate_policy(
 
 
 if __name__ == "__main__":
-    q_table, history = train_q_learning()
-    metrics = evaluate_policy(q_table)
+    q_table, history, rates = train_q_learning()
+    metrics = evaluate_policy(
+        q_table,
+        chaos_exalt_per_use=rates.chaos_exalt_per_use,
+        essence_exalt_per_use=rates.essence_exalt_per_use,
+    )
 
     print("=== RL Training Done ===")
+    print(f"Exalt cost source: {rates.source} — {rates.detail}")
+    if rates.market_id_used:
+        print(f"Exchange row: {rates.market_id_used}, next_change_id={rates.next_change_id}")
     print(f"Episodes: {len(history)}")
     print(f"Last 10 average reward: {sum(history[-10:]) / 10:.4f}")
     print("Policy metrics:", metrics)

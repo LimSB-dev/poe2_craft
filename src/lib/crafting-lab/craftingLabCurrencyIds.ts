@@ -1,5 +1,7 @@
 /**
  * 크래프트 랩 화폐 id — 일부 오브는 게임과 같이 **티어(3단)** 슬롯이 있다.
+ * 연금술 오브는 PoE2에서 일반(단일)만 두고 티어 슬롯은 두지 않는다.
+ * 제왕의 오브는 일반·상위·완벽(티어 3종) 슬롯이 있다.
  * 티어별 수치·가중치는 아직 시뮬에 없으므로, 적용 로직은 동일 패밀리로 묶는다.
  */
 
@@ -23,9 +25,9 @@ export const CRAFT_LAB_ORB_FAMILIES_WITH_THREE_TIERS: readonly CraftingOrbFamily
   [
     "orb_transmutation",
     "orb_augmentation",
-    "orb_alchemy",
     "orb_chaos",
     "orb_exalted",
+    "orb_regal",
   ] as const;
 
 export type CraftingLabTieredOrbIdType =
@@ -35,19 +37,19 @@ export type CraftingLabTieredOrbIdType =
   | "orb_augmentation_t1"
   | "orb_augmentation_t2"
   | "orb_augmentation_t3"
-  | "orb_alchemy_t1"
-  | "orb_alchemy_t2"
-  | "orb_alchemy_t3"
   | "orb_chaos_t1"
   | "orb_chaos_t2"
   | "orb_chaos_t3"
   | "orb_exalted_t1"
   | "orb_exalted_t2"
-  | "orb_exalted_t3";
+  | "orb_exalted_t3"
+  | "orb_regal_t1"
+  | "orb_regal_t2"
+  | "orb_regal_t3";
 
 export type CraftingLabOrbSlotIdType =
   | CraftingLabTieredOrbIdType
-  | "orb_regal"
+  | "orb_alchemy"
   | "orb_fracturing"
   | "orb_annulment";
 
@@ -59,18 +61,20 @@ export type CraftingCurrencyIdType =
   | "omen_placeholder";
 
 /**
- * 창고 오브: 게임과 같이 티어 오브는 3열, 그 다음 한 줄에 단일 오브 3종(제왕·분열·소멸).
+ * 창고 오브 UI: 5줄(각 3티어) + 마지막 줄(연금술·소멸·분열) — {@link CRAFT_LAB_ORB_UI_GROUPS}.
  */
-export const CRAFT_LAB_ORB_FAMILY_ORDER: readonly CraftingOrbFamilyIdType[] = [
-  "orb_transmutation",
-  "orb_augmentation",
-  "orb_alchemy",
-  "orb_chaos",
-  "orb_exalted",
-  "orb_regal",
-  "orb_fracturing",
-  "orb_annulment",
-] as const;
+export const CRAFT_LAB_ORB_UI_GROUPS: readonly (readonly CraftingOrbFamilyIdType[])[] =
+  [
+    ["orb_transmutation"],
+    ["orb_augmentation"],
+    ["orb_regal"],
+    ["orb_exalted"],
+    ["orb_chaos"],
+    ["orb_alchemy", "orb_annulment", "orb_fracturing"],
+  ] as const;
+
+export const CRAFT_LAB_ORB_FAMILY_ORDER: readonly CraftingOrbFamilyIdType[] =
+  CRAFT_LAB_ORB_UI_GROUPS.flat() as readonly CraftingOrbFamilyIdType[];
 
 export const expandOrbFamilyToSlotIds = (
   family: CraftingOrbFamilyIdType,
@@ -78,9 +82,9 @@ export const expandOrbFamilyToSlotIds = (
   if (
     family === "orb_transmutation" ||
     family === "orb_augmentation" ||
-    family === "orb_alchemy" ||
     family === "orb_chaos" ||
-    family === "orb_exalted"
+    family === "orb_exalted" ||
+    family === "orb_regal"
   ) {
     return [
       `${family}_t1`,
@@ -95,6 +99,15 @@ export const CRAFT_LAB_ORB_SLOT_IDS: readonly CraftingLabOrbSlotIdType[] =
   CRAFT_LAB_ORB_FAMILY_ORDER.flatMap((family) => {
     return [...expandOrbFamilyToSlotIds(family)];
   });
+
+/** 창고 그리드 한 줄씩(슬롯 id) — UI에서 행 간격·라벨에 사용. */
+export const getCraftLabOrbSlotIdsGrouped = (): CraftingLabOrbSlotIdType[][] => {
+  return CRAFT_LAB_ORB_UI_GROUPS.map((rowFamilies) => {
+    return rowFamilies.flatMap((family) => {
+      return [...expandOrbFamilyToSlotIds(family)];
+    });
+  });
+};
 
 /**
  * 티어 슬롯 id → 시뮬 적용에 쓰는 패밀리 id (예: orb_transmutation_t2 → orb_transmutation).
@@ -133,15 +146,22 @@ export const getOrbSlotTierRoman = (
 const LEGACY_ORB_ID_TO_TIER1: Readonly<Record<string, string>> = {
   orb_transmutation: "orb_transmutation_t1",
   orb_augmentation: "orb_augmentation_t1",
-  orb_alchemy: "orb_alchemy_t1",
   orb_chaos: "orb_chaos_t1",
   orb_exalted: "orb_exalted_t1",
+  orb_regal: "orb_regal_t1",
 };
 
 /**
  * localStorage 등 레거시 이벤트 id 정규화 (구버전 단일 키 → 티어 슬롯 id).
  */
 export const normalizeCraftingCurrencyEventId = (id: string): string => {
+  if (
+    id === "orb_alchemy_t1" ||
+    id === "orb_alchemy_t2" ||
+    id === "orb_alchemy_t3"
+  ) {
+    return "orb_alchemy";
+  }
   const mapped = LEGACY_ORB_ID_TO_TIER1[id];
   if (mapped !== undefined) {
     return mapped;

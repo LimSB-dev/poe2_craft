@@ -21,14 +21,16 @@ export const CRAFTING_LAB_CURRENCY_ICON_URLS = {
     "https://www.poe2wiki.net/images/c/cb/Orb_of_Augmentation_inventory_icon.png",
   orb_augmentation_t3:
     "https://www.poe2wiki.net/images/c/cb/Orb_of_Augmentation_inventory_icon.png",
-  orb_regal: "https://www.poe2wiki.net/images/3/33/Regal_Orb_inventory_icon.png",
+  orb_regal:
+    "https://www.poe2wiki.net/images/3/33/Regal_Orb_inventory_icon.png",
+  /** 티어별 아이콘이 위키에 분리되어 있으면 교체. */
+  orb_regal_t1:
+    "https://www.poe2wiki.net/images/3/33/Regal_Orb_inventory_icon.png",
+  orb_regal_t2:
+    "https://www.poe2wiki.net/images/3/33/Regal_Orb_inventory_icon.png",
+  orb_regal_t3:
+    "https://www.poe2wiki.net/images/3/33/Regal_Orb_inventory_icon.png",
   orb_alchemy:
-    "https://www.poe2wiki.net/images/9/9f/Orb_of_Alchemy_inventory_icon.png",
-  orb_alchemy_t1:
-    "https://www.poe2wiki.net/images/9/9f/Orb_of_Alchemy_inventory_icon.png",
-  orb_alchemy_t2:
-    "https://www.poe2wiki.net/images/9/9f/Orb_of_Alchemy_inventory_icon.png",
-  orb_alchemy_t3:
     "https://www.poe2wiki.net/images/9/9f/Orb_of_Alchemy_inventory_icon.png",
   orb_exalted:
     "https://www.poe2wiki.net/images/2/26/Exalted_Orb_inventory_icon.png",

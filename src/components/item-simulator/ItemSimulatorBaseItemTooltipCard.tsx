@@ -157,23 +157,33 @@ export const ItemSimulatorBaseItemTooltipCard = ({
             ) : null}
 
             {showExplicitSection ? (
-              <ul className="w-full flex flex-col gap-0.5 list-none m-0 p-0">
+              <ul className="m-0 flex w-full list-none flex-col gap-0.5 p-0">
                 {[0, 1, 2].map((index) => {
                   const mod = explicitItemRoll.prefixes[index];
                   return (
                     <li
                       key={`explicit-prefix-${String(index)}`}
-                      className="text-xs min-h-[1.15rem] leading-snug text-sky-200/90"
+                      className="flex min-h-[1.15rem] items-start gap-2 text-xs leading-snug"
                     >
                       {mod !== undefined ? (
                         <>
-                          <ItemSimulatorExplicitModLine modDefinition={mod} />{" "}
-                          <span className="text-[10px] text-sky-400/50 tabular-nums">
+                          <span
+                            className="w-8 shrink-0 pt-0.5 text-left text-[10px] font-medium tabular-nums text-[#3d3d3d]"
+                            aria-hidden
+                          >
                             T{mod.tier}
-                            {mod.isFractured === true
-                              ? ` ${t("tooltipCard.fracturedModifier")}`
-                              : ""}
                           </span>
+                          <div
+                            className={`flex min-w-0 flex-1 justify-center ${
+                              mod.isFractured === true
+                                ? "text-sky-200/45"
+                                : "text-sky-200/90"
+                            }`}
+                          >
+                            <div className="text-center">
+                              <ItemSimulatorExplicitModLine modDefinition={mod} />
+                            </div>
+                          </div>
                         </>
                       ) : null}
                     </li>
@@ -184,17 +194,27 @@ export const ItemSimulatorBaseItemTooltipCard = ({
                   return (
                     <li
                       key={`explicit-suffix-${String(index)}`}
-                      className="text-xs min-h-[1.15rem] leading-snug text-rose-200/90"
+                      className="flex min-h-[1.15rem] items-start gap-2 text-xs leading-snug"
                     >
                       {mod !== undefined ? (
                         <>
-                          <ItemSimulatorExplicitModLine modDefinition={mod} />{" "}
-                          <span className="text-[10px] text-rose-400/50 tabular-nums">
+                          <span
+                            className="w-8 shrink-0 pt-0.5 text-left text-[10px] font-medium tabular-nums text-[#3d3d3d]"
+                            aria-hidden
+                          >
                             T{mod.tier}
-                            {mod.isFractured === true
-                              ? ` ${t("tooltipCard.fracturedModifier")}`
-                              : ""}
                           </span>
+                          <div
+                            className={`flex min-w-0 flex-1 justify-center ${
+                              mod.isFractured === true
+                                ? "text-rose-200/45"
+                                : "text-rose-200/90"
+                            }`}
+                          >
+                            <div className="text-center">
+                              <ItemSimulatorExplicitModLine modDefinition={mod} />
+                            </div>
+                          </div>
                         </>
                       ) : null}
                     </li>

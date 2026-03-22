@@ -47,7 +47,7 @@ const pickRandomSplit = (totalModCount: number): IPrefixSuffixSplitType => {
 
 /**
  * Legacy **full rare re-roll** (PoE1-style / bench-style): strips all mods and rolls 4–6 new rare affixes.
- * PoE2’s Chaos Orb instead removes one mod and adds one; see `applyChaosOrb` in `basicCurrencyOrbs.ts`.
+ * PoE2’s Chaos Orb (in `basicCurrencyOrbs.ts`) removes one mod and adds one on **rare** items only.
  */
 export const applyLegacyChaosOrbFullReroll = (item: IItemRoll): IItemRoll => {
   if (item.rarity !== "rare") {

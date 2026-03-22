@@ -69,10 +69,12 @@
       "prefixes": "接頭辞",
       "suffixes": "接尾辞",
       "empty": "なし",
-      "matchedDesiredRow": "目標として選んだ属性と一致、ティア {tier}"
+      "matchedDesiredRow": "目標として選んだ属性と一致、ティア {tier}",
+      "fracturedBadge": "破砕"
     },
     "tooltipCard": {
-      "implicitHeading": "固有"
+      "implicitHeading": "固有",
+      "fracturedModifier": "(破砕)"
     }
   }
 }

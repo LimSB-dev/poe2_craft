@@ -9,6 +9,8 @@ export interface IModDefinition {
   tier: number; // 1..5
   modType: ModTypeType;
   weight: number; // probability weight > 0
+  /** 분열의 오브(Fracturing Orb) 등으로 고정된 옵션 — 제거·변경 불가(시뮬 범위). */
+  isFractured?: boolean;
 }
 
 export interface IItemRoll {

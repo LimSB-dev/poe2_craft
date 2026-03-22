@@ -4,7 +4,7 @@ import {
   type IPrefixSuffixSplitType,
 } from "./chaosOrb";
 import { getRandomIntInclusive } from "./random";
-import { rollRareModSlots } from "./roller";
+import { rollRareModSlots, type IModRollBaseFiltersType } from "./roller";
 import type { IEssenceDefinitionType, IItemRoll, IModDefinition, ModTypeType } from "./types";
 
 const RARE_MAX_PREFIX_SLOTS: number = 3;
@@ -62,7 +62,17 @@ const buildForcedMod = (essence: IEssenceDefinitionType): IModDefinition => {
  * then fills remaining affixes at random (4–6 total, same range as Chaos Orb full reroll).
  * Prior affixes on `item` are discarded (simplified PoE-style essence craft).
  */
-export const applyEssence = (_item: IItemRoll, essence: IEssenceDefinitionType): IItemRoll => {
+/** 에센스는 베이스 롤을 희귀 풀리롤로 바꾸며, 희귀도·기존 옵션 제약 없이 항상 적용 가능. */
+export const canApplyEssence = (item: IItemRoll): boolean => {
+  void item;
+  return true;
+};
+
+export const applyEssence = (
+  _item: IItemRoll,
+  essence: IEssenceDefinitionType,
+  baseFilters?: IModRollBaseFiltersType,
+): IItemRoll => {
   const forcedMod = buildForcedMod(essence);
   const totalAffixes = getRandomIntInclusive(RARE_FULL_REROLL_AFFIX_MIN, RARE_FULL_REROLL_AFFIX_MAX);
   const remainingAffixes = totalAffixes - 1;
@@ -71,7 +81,7 @@ export const applyEssence = (_item: IItemRoll, essence: IEssenceDefinitionType):
   const { prefixCount: extraPrefixCount, suffixCount: extraSuffixCount } = pickRandomSplit(splits);
 
   const excludedModKeys = new Set<string>([forcedMod.modKey]);
-  const rolled = rollRareModSlots(extraPrefixCount, extraSuffixCount, excludedModKeys);
+  const rolled = rollRareModSlots(extraPrefixCount, extraSuffixCount, excludedModKeys, baseFilters);
 
   const prefixes: IModDefinition[] =
     essence.guaranteedModType === "prefix" ? [forcedMod, ...rolled.prefixes] : [...rolled.prefixes];

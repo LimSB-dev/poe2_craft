@@ -69,10 +69,12 @@
       "prefixes": "前缀",
       "suffixes": "后缀",
       "empty": "无",
-      "matchedDesiredRow": "与所选目标词缀一致，阶 {tier}"
+      "matchedDesiredRow": "与所选目标词缀一致，阶 {tier}",
+      "fracturedBadge": "分裂"
     },
     "tooltipCard": {
-      "implicitHeading": "基底词缀"
+      "implicitHeading": "基底词缀",
+      "fracturedModifier": "(分裂)"
     }
   }
 }

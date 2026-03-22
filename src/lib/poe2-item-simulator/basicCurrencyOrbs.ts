@@ -17,11 +17,20 @@ const RARE_MAX_TOTAL_AFFIXES: number = 6;
 const ALCHEMY_PREFIX_COUNT: number = 2;
 const ALCHEMY_SUFFIX_COUNT: number = 2;
 
-const cloneRoll = (item: IItemRoll): IItemRoll => ({
-  rarity: item.rarity,
-  prefixes: [...item.prefixes],
-  suffixes: [...item.suffixes],
-});
+const cloneRoll = (item: IItemRoll): IItemRoll => {
+  const base: IItemRoll = {
+    rarity: item.rarity,
+    prefixes: [...item.prefixes],
+    suffixes: [...item.suffixes],
+  };
+  if (item.hinekoraLockActive === true) {
+    base.hinekoraLockActive = true;
+  }
+  if (item.isCorrupted === true) {
+    base.isCorrupted = true;
+  }
+  return base;
+};
 
 const totalAffixCount = (item: IItemRoll): number => {
   return item.prefixes.length + item.suffixes.length;
@@ -31,8 +40,44 @@ const isFracturedMod = (mod: IModDefinition): boolean => {
   return mod.isFractured === true;
 };
 
+const isDesecratedMod = (mod: IModDefinition): boolean => {
+  return mod.isDesecrated === true;
+};
+
 const hasFracturedMod = (item: IItemRoll): boolean => {
   return [...item.prefixes, ...item.suffixes].some(isFracturedMod);
+};
+
+/**
+ * PoE2 규칙: 아이템에 **훼손(분열) 옵션은 최대 1개**.
+ * 비정상 상태(복수 isFractured)가 들어오면 접두 순·접미 순으로 첫 줄만 유지한다.
+ */
+export const enforceAtMostOneFracturedMod = (item: IItemRoll): IItemRoll => {
+  let fractureKept = false;
+  const mapMod = (mod: IModDefinition): IModDefinition => {
+    if (mod.isFractured !== true) {
+      return mod;
+    }
+    if (!fractureKept) {
+      fractureKept = true;
+      return mod;
+    }
+    const withoutFracture: IModDefinition = { ...mod };
+    delete withoutFracture.isFractured;
+    return withoutFracture;
+  };
+  const base: IItemRoll = {
+    rarity: item.rarity,
+    prefixes: item.prefixes.map(mapMod),
+    suffixes: item.suffixes.map(mapMod),
+  };
+  if (item.hinekoraLockActive === true) {
+    base.hinekoraLockActive = true;
+  }
+  if (item.isCorrupted === true) {
+    base.isCorrupted = true;
+  }
+  return base;
 };
 
 const countRemovableAffixes = (item: IItemRoll): number => {
@@ -114,6 +159,16 @@ export const canApplyOrbOfAnnulment = (item: IItemRoll): boolean => {
   return countRemovableAffixes(item) > 0;
 };
 
+/** 징조: 빛 — 제거 가능한 **타락(Desecrated)** 옵션이 하나 이상 있을 때만. */
+export const canApplyOrbOfAnnulmentDesecratedOnly = (item: IItemRoll): boolean => {
+  if (item.rarity !== "magic" && item.rarity !== "rare") {
+    return false;
+  }
+  return [...item.prefixes, ...item.suffixes].some((m) => {
+    return !isFracturedMod(m) && isDesecratedMod(m);
+  });
+};
+
 const removeOneRandomAffix = (item: IItemRoll): IItemRoll => {
   const next = cloneRoll(item);
   const removablePrefixIndices: number[] = [];
@@ -145,6 +200,43 @@ const removeOneRandomAffix = (item: IItemRoll): IItemRoll => {
     const idx = removableSuffixIndices[pick - removablePrefixIndices.length];
     if (idx === undefined) {
       throw new Error("Internal error: removable suffix index missing.");
+    }
+    next.suffixes.splice(idx, 1);
+  }
+  return next;
+};
+
+const removeOneRandomDesecratedAffix = (item: IItemRoll): IItemRoll => {
+  const next = cloneRoll(item);
+  const removablePrefixIndices: number[] = [];
+  next.prefixes.forEach((mod, index) => {
+    if (!isFracturedMod(mod) && isDesecratedMod(mod)) {
+      removablePrefixIndices.push(index);
+    }
+  });
+  const removableSuffixIndices: number[] = [];
+  next.suffixes.forEach((mod, index) => {
+    if (!isFracturedMod(mod) && isDesecratedMod(mod)) {
+      removableSuffixIndices.push(index);
+    }
+  });
+  const totalRemovable = removablePrefixIndices.length + removableSuffixIndices.length;
+  if (totalRemovable === 0) {
+    throw new Error(
+      "Cannot remove a modifier: no removable desecrated modifiers (fractured mods cannot be removed).",
+    );
+  }
+  const pick = getRandomIntInclusive(0, totalRemovable - 1);
+  if (pick < removablePrefixIndices.length) {
+    const idx = removablePrefixIndices[pick];
+    if (idx === undefined) {
+      throw new Error("Internal error: removable desecrated prefix index missing.");
+    }
+    next.prefixes.splice(idx, 1);
+  } else {
+    const idx = removableSuffixIndices[pick - removablePrefixIndices.length];
+    if (idx === undefined) {
+      throw new Error("Internal error: removable desecrated suffix index missing.");
     }
     next.suffixes.splice(idx, 1);
   }
@@ -300,12 +392,13 @@ export const applyExaltedOrb = (item: IItemRoll, baseFilters?: IModRollBaseFilte
  * 분열의 오브 — Fracturing Orb: 레어에 옵션 4개 이상일 때 무작위 옵션 하나를 분열(고정)시킴. 이미 분열된 아이템에는 사용 불가.
  */
 export const applyFracturingOrb = (item: IItemRoll): IItemRoll => {
-  if (!canApplyFracturingOrb(item)) {
+  const normalized = enforceAtMostOneFracturedMod(item);
+  if (!canApplyFracturingOrb(normalized)) {
     throw new Error(
       "Fracturing Orb can only be used on a rare item with at least four modifiers that is not already fractured.",
     );
   }
-  const next = cloneRoll(item);
+  const next = cloneRoll(normalized);
   const pCount = next.prefixes.length;
   const sCount = next.suffixes.length;
   const total = pCount + sCount;
@@ -324,7 +417,7 @@ export const applyFracturingOrb = (item: IItemRoll): IItemRoll => {
     }
     next.suffixes[sIdx] = { ...mod, isFractured: true };
   }
-  return next;
+  return enforceAtMostOneFracturedMod(next);
 };
 
 /**
@@ -344,6 +437,78 @@ export const applyChaosOrb = (item: IItemRoll, baseFilters?: IModRollBaseFilters
   return addOneRandomMod(without, "rare", baseFilters);
 };
 
+/**
+ * 절사의 징조(Omen of Whittling) — 카오스: **가장 높은 tier 숫자(가장 약한 롤)** 옵션을 제거한 뒤 1줄 추가.
+ * 게임은 아이템 레벨 요구가 가장 낮은 옵션 — 시뮬에서는 `tier` 최댓값으로 근사.
+ */
+const removeWeakestAffixByTier = (item: IItemRoll): IItemRoll => {
+  const next = cloneRoll(item);
+  type CandidateType = {
+    kind: "prefix" | "suffix";
+    index: number;
+    tier: number;
+  };
+  const candidates: CandidateType[] = [];
+  next.prefixes.forEach((mod, index) => {
+    if (!isFracturedMod(mod)) {
+      candidates.push({
+        kind: "prefix",
+        index,
+        tier: mod.tier,
+      });
+    }
+  });
+  next.suffixes.forEach((mod, index) => {
+    if (!isFracturedMod(mod)) {
+      candidates.push({
+        kind: "suffix",
+        index,
+        tier: mod.tier,
+      });
+    }
+  });
+  if (candidates.length === 0) {
+    throw new Error(
+      "Cannot remove a modifier: no removable modifiers (fractured mods cannot be removed).",
+    );
+  }
+  const maxTier = Math.max(
+    ...candidates.map((c) => {
+      return c.tier;
+    }),
+  );
+  const weakest = candidates.filter((c) => {
+    return c.tier === maxTier;
+  });
+  const pick = weakest[getRandomIntInclusive(0, weakest.length - 1)];
+  if (pick === undefined) {
+    throw new Error("Internal error: Whittling pick missing.");
+  }
+  if (pick.kind === "prefix") {
+    next.prefixes.splice(pick.index, 1);
+  } else {
+    next.suffixes.splice(pick.index, 1);
+  }
+  return next;
+};
+
+export const applyChaosOrbWithWhittling = (
+  item: IItemRoll,
+  baseFilters?: IModRollBaseFiltersType,
+): IItemRoll => {
+  if (item.rarity !== "rare") {
+    throw new Error("Chaos Orb can only be used on rare items.");
+  }
+  if (totalAffixCount(item) === 0) {
+    throw new Error("Chaos Orb requires at least one explicit modifier to remove.");
+  }
+  const without = removeWeakestAffixByTier(item);
+  if (totalAffixCount(without) >= RARE_MAX_TOTAL_AFFIXES) {
+    throw new Error("Chaos Orb: internal state has no room for a new modifier.");
+  }
+  return addOneRandomMod(without, "rare", baseFilters);
+};
+
 /** 소멸의 오브 — Orb of Annulment: 무작위 명시 하나 제거. 일반/매직/레어 등급은 유지(옵션 0개여도). */
 export const applyOrbOfAnnulment = (item: IItemRoll): IItemRoll => {
   if (item.rarity !== "magic" && item.rarity !== "rare") {
@@ -353,6 +518,19 @@ export const applyOrbOfAnnulment = (item: IItemRoll): IItemRoll => {
     throw new Error("Orb of Annulment requires at least one explicit modifier.");
   }
   return removeOneRandomAffix(item);
+};
+
+/**
+ * 징조: 빛 — 타락(Desecrated) 옵션만 무작위 제거.
+ */
+export const applyOrbOfAnnulmentDesecratedOnly = (item: IItemRoll): IItemRoll => {
+  if (item.rarity !== "magic" && item.rarity !== "rare") {
+    throw new Error("Orb of Annulment can only be used on magic or rare items.");
+  }
+  if (!canApplyOrbOfAnnulmentDesecratedOnly(item)) {
+    throw new Error("Orb of Annulment: no removable desecrated modifiers.");
+  }
+  return removeOneRandomDesecratedAffix(item);
 };
 
 /**

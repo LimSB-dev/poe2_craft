@@ -40,11 +40,18 @@ export type CraftLabOrbPreviewResultType =
     };
 
 const cloneRoll = (item: IItemRoll): IItemRoll => {
-  return {
+  const base: IItemRoll = {
     rarity: item.rarity,
     prefixes: [...item.prefixes],
     suffixes: [...item.suffixes],
   };
+  if (item.hinekoraLockActive === true) {
+    base.hinekoraLockActive = true;
+  }
+  if (item.isCorrupted === true) {
+    base.isCorrupted = true;
+  }
+  return base;
 };
 
 const totalAffixCount = (item: IItemRoll): number => {

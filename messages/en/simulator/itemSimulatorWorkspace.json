@@ -73,6 +73,13 @@
     },
     "tooltipCard": {
       "implicitHeading": "Implicit"
+    },
+    "explicitMod": {
+      "desecratedUnrevealed": "········",
+      "desecratedUnrevealedAria": "Unrevealed Desecrated modifier",
+      "desecratedFamilyKurgal": "Kurgal Abyss modifier (sim)",
+      "desecratedFamilyAmanamu": "Amanamu Abyss modifier (sim)",
+      "desecratedFamilyUlaman": "Ulaman Abyss modifier (sim)"
     }
   }
 }

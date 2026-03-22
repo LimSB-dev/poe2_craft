@@ -42,6 +42,11 @@ const TOOLTIP_RARITY_STYLE: Record<ItemRarityType, TooltipRarityStyleType> = {
   },
 };
 
+type UnrevealedDesecratedClickPayloadType = {
+  affixKind: "prefix" | "suffix";
+  slotIndex: number;
+};
+
 type ItemSimulatorBaseItemTooltipCardPropsType = {
   record: IBaseItemDbRecordType;
   baseItemKey: string;
@@ -52,6 +57,12 @@ type ItemSimulatorBaseItemTooltipCardPropsType = {
    * {@link explicitItemRoll}은 현재 상태(비교 베이스라인), 본 props는 예상 결과.
    */
   previewExplicitItemRoll?: IItemRoll | null;
+  /** 미공개 타락 줄 클릭 — 영혼의 우물 후보 선택 등 */
+  onUnrevealedDesecratedModClick?: (
+    payload: UnrevealedDesecratedClickPayloadType,
+  ) => void;
+  /** 히네코라·에센스 호버 미리보기 중에는 클릭 비활성 */
+  soulWellInteractionDisabled?: boolean;
 };
 
 export const ItemSimulatorBaseItemTooltipCard = ({
@@ -59,6 +70,8 @@ export const ItemSimulatorBaseItemTooltipCard = ({
   baseItemKey,
   explicitItemRoll,
   previewExplicitItemRoll,
+  onUnrevealedDesecratedModClick,
+  soulWellInteractionDisabled = false,
 }: ItemSimulatorBaseItemTooltipCardPropsType): ReactElement => {
   const t = useTranslations("simulator.itemSimulatorWorkspace");
   const tSim = useTranslations("simulator");
@@ -73,6 +86,9 @@ export const ItemSimulatorBaseItemTooltipCard = ({
     previewExplicitItemRoll !== undefined && previewExplicitItemRoll !== null
       ? previewExplicitItemRoll
       : explicitItemRoll;
+  const soulWellLineDisabled =
+    soulWellInteractionDisabled ||
+    (previewExplicitItemRoll !== undefined && previewExplicitItemRoll !== null);
   const hinekoraPreviewHighlight =
     previewExplicitItemRoll !== undefined &&
     previewExplicitItemRoll !== null &&
@@ -213,7 +229,20 @@ export const ItemSimulatorBaseItemTooltipCard = ({
                             }`}
                           >
                             <div className="text-center">
-                              <ItemSimulatorExplicitModLine modDefinition={mod} />
+                              <ItemSimulatorExplicitModLine
+                                modDefinition={mod}
+                                onUnrevealedDesecratedActivate={
+                                  onUnrevealedDesecratedModClick !== undefined &&
+                                  !soulWellLineDisabled
+                                    ? () => {
+                                        onUnrevealedDesecratedModClick({
+                                          affixKind: "prefix",
+                                          slotIndex: index,
+                                        });
+                                      }
+                                    : undefined
+                                }
+                              />
                             </div>
                           </div>
                         </>
@@ -257,7 +286,20 @@ export const ItemSimulatorBaseItemTooltipCard = ({
                             }`}
                           >
                             <div className="text-center">
-                              <ItemSimulatorExplicitModLine modDefinition={mod} />
+                              <ItemSimulatorExplicitModLine
+                                modDefinition={mod}
+                                onUnrevealedDesecratedActivate={
+                                  onUnrevealedDesecratedModClick !== undefined &&
+                                  !soulWellLineDisabled
+                                    ? () => {
+                                        onUnrevealedDesecratedModClick({
+                                          affixKind: "suffix",
+                                          slotIndex: index,
+                                        });
+                                      }
+                                    : undefined
+                                }
+                              />
                             </div>
                           </div>
                         </>

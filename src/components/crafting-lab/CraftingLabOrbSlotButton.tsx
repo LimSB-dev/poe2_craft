@@ -1,50 +1,106 @@
 "use client";
 
 import Image from "next/image";
-import type { ReactElement } from "react";
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  type ReactElement,
+} from "react";
+import { createPortal } from "react-dom";
 
 export type CraftingLabOrbSlotButtonPropsType = {
   iconSrc: string | undefined;
-  disabled: boolean;
+  /** false면 비활성 표시. 네이티브 disabled는 쓰지 않아 클릭으로 안내 가능 */
+  applicable: boolean;
   onUse: () => void;
-  /** 호버(포인터 진입/이탈) — 히네코라 예견 미리보기 등 */
+  /** applicable이 false일 때 클릭 시 (창고 하단 검증 영역 등) */
+  onBlockedClick?: () => void;
+  /** 툴팁·스크린리더용 재료 이름(항상 표시) */
+  currencyName: string;
+  /** 호버 툴팁: 이름 아래 한 줄 (`simulator.craftLab.currencyHoverHint.*`) */
+  hoverHint?: string;
+  /** 비활성 사유 — 툴팁 아래, 클릭 시 onBlockedClick과 함께 쓰면 됨 */
+  disabledReason?: string;
   onHoverChange?: (hovered: boolean) => void;
-  /** 티어 오브만 — 로마 숫자 (우하단). 단일 오브는 null. */
   tierRoman: "I" | "II" | "III" | null;
-  /** 분열 오브 등 비활성 시 더 뚜렷한 dim (선택). */
   strongDisabled?: boolean;
   /** 접근성·스크린리더용 전체 이름 */
   ariaLabel: string;
-  /** 비활성 시 툴팁 */
-  disabledTitle?: string;
-  /** 활성 슬롯에만 좌상단 수량(시뮬 무제한 등) */
   showQuantityBadge: boolean;
   quantityLabel: string;
+  /** 징조 등 토글 선택 시 슬롯 안쪽에 링(바깥 ring-offset 없음) */
+  isSelected?: boolean;
 };
 
 /**
  * 게임 창고 슬롯과 유사: 3열 그리드 셀, 티어 로마 숫자, 비활성 시 어둡게·아이콘 고스트.
- * 툴팁은 네이티브 `title` 대신 즉시 뜨는 레이어(브라우저 기본 지연 없음).
+ * 툴팁은 `document.body`로 포털해 스크롤 영역에 잘리지 않게 함.
  */
 export const CraftingLabOrbSlotButton = ({
   iconSrc,
-  disabled,
+  applicable,
   onUse,
+  onBlockedClick,
+  currencyName,
+  hoverHint,
+  disabledReason,
   onHoverChange,
   tierRoman,
   ariaLabel,
-  disabledTitle,
   showQuantityBadge,
   quantityLabel,
+  isSelected = false,
   strongDisabled = false,
 }: CraftingLabOrbSlotButtonPropsType): ReactElement => {
-  const ghosted = disabled;
+  const ghosted = !applicable;
   const dimStrong = ghosted && strongDisabled;
-  const tipText = ghosted ? (disabledTitle ?? ariaLabel) : ariaLabel;
+  const anchorRef = useRef<HTMLSpanElement>(null);
+  const [tipOpen, setTipOpen] = useState(false);
+  const [tipPos, setTipPos] = useState<{
+    left: number;
+    top: number;
+    placeAbove: boolean;
+  } | null>(null);
+
+  const updateTipPosition = useCallback(() => {
+    const el = anchorRef.current;
+    if (el === null) {
+      return;
+    }
+    const r = el.getBoundingClientRect();
+    const margin = 8;
+    const preferAbove = r.top > 80;
+    setTipPos({
+      left: r.left + r.width / 2,
+      top: preferAbove ? r.top - margin : r.bottom + margin,
+      placeAbove: preferAbove,
+    });
+  }, []);
+
+  useEffect(() => {
+    if (!tipOpen) {
+      return;
+    }
+    updateTipPosition();
+    const handler = (): void => {
+      updateTipPosition();
+    };
+    window.addEventListener("scroll", handler, true);
+    window.addEventListener("resize", handler);
+    return () => {
+      window.removeEventListener("scroll", handler, true);
+      window.removeEventListener("resize", handler);
+    };
+  }, [tipOpen, updateTipPosition]);
 
   const shellClass = [
     "relative block h-full w-full min-h-0 min-w-0 overflow-hidden rounded-sm border p-0 transition-colors",
     "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-amber-500/80",
+    isSelected
+      ? "z-10 ring-2 ring-inset ring-amber-500/90"
+      : "",
     ghosted
       ? dimStrong
         ? "cursor-not-allowed border-zinc-600/65 bg-zinc-900/90 opacity-90 shadow-[inset_0_0_10px_rgba(0,0,0,0.82)] saturate-0"
@@ -99,36 +155,81 @@ export const CraftingLabOrbSlotButton = ({
     </>
   );
 
+  const portalTooltip =
+    typeof document !== "undefined" &&
+    tipOpen &&
+    tipPos !== null &&
+    createPortal(
+      <div
+        role="tooltip"
+        className={[
+          "pointer-events-none fixed z-[9999] w-max max-w-[min(18rem,calc(100vw-1rem))]",
+          "rounded-md border border-zinc-600/90 bg-zinc-950 px-2 py-1.5 text-left text-[10px] font-medium leading-snug text-zinc-100 shadow-lg",
+          "whitespace-normal break-words",
+        ].join(" ")}
+        style={{
+          left: tipPos.left,
+          top: tipPos.top,
+          transform: tipPos.placeAbove
+            ? "translate(-50%, -100%)"
+            : "translate(-50%, 0)",
+        }}
+      >
+        <span className="text-zinc-50">{currencyName}</span>
+        {hoverHint !== undefined && hoverHint.length > 0 ? (
+          <span className="mt-1 block text-[9px] font-normal leading-snug text-zinc-400">
+            {hoverHint}
+          </span>
+        ) : null}
+        {ghosted && disabledReason !== undefined && disabledReason.length > 0 ? (
+          <span className="mt-1 block text-[10px] font-normal leading-snug text-zinc-400">
+            {disabledReason}
+          </span>
+        ) : null}
+      </div>,
+      document.body,
+    );
+
   return (
     <span
+      ref={anchorRef}
       className={[
         "group/orb relative inline-flex h-9 w-9 shrink-0 overflow-visible sm:h-10 sm:w-10",
         ghosted ? "cursor-not-allowed" : "",
       ].join(" ")}
       onMouseEnter={() => {
+        setTipOpen(true);
+        updateTipPosition();
         onHoverChange?.(true);
       }}
       onMouseLeave={() => {
+        setTipOpen(false);
+        setTipPos(null);
         onHoverChange?.(false);
       }}
     >
-      <span
-        role="tooltip"
-        className={[
-          "pointer-events-none absolute bottom-full left-1/2 z-[100] mb-1.5 w-max max-w-[min(16rem,calc(100vw-1.5rem))] -translate-x-1/2",
-          "rounded-md border border-zinc-600/90 bg-zinc-950 px-2 py-1 text-left text-[10px] font-medium leading-snug text-zinc-100 shadow-lg",
-          "whitespace-normal break-words",
-          "opacity-0 transition-none",
-          "group-hover/orb:opacity-100 group-focus-within/orb:opacity-100",
-        ].join(" ")}
-      >
-        {tipText}
-      </span>
+      {portalTooltip}
       <button
         type="button"
-        disabled={ghosted}
         aria-label={ariaLabel}
+        aria-disabled={ghosted}
+        tabIndex={0}
         onClick={() => {
+          if (ghosted) {
+            onBlockedClick?.();
+            return;
+          }
+          onUse();
+        }}
+        onKeyDown={(e) => {
+          if (e.key !== "Enter" && e.key !== " ") {
+            return;
+          }
+          e.preventDefault();
+          if (ghosted) {
+            onBlockedClick?.();
+            return;
+          }
           onUse();
         }}
         className={shellClass}

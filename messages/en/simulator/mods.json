@@ -75,6 +75,7 @@
     "corrupted_arcane_shadow_on_crit": "(10–15)% chance to gain Arcane Surge on Critical Hit",
     "corrupted_cast_speed_at_full_life": "(8–15)% increased Cast Speed while on Full Life",
     "corrupted_skill_speed_consume_frenzy": "(8–12)% increased Skill Speed if you have consumed a Frenzy Charge recently",
-    "corrupted_lacerate_on_hit": "(15–25)% chance to Lacerate on Hit"
+    "corrupted_lacerate_on_hit": "(15–25)% chance to Lacerate on Hit",
+    "desecratedUnrevealedLine": "Unrevealed Desecrated modifier"
   }
 }

@@ -22,7 +22,7 @@ alwaysApply: true
 
 ## Dependencies
 
-- Regularly check for **vulnerabilities** (`npm audit`, etc.) and address critical issues first.
+- Regularly check for **vulnerabilities** (`yarn audit`, etc.) and address critical issues first.
 
 ## Summary
 

@@ -32,12 +32,13 @@ export const ItemSimulatorModListSection = ({
             {emptyLabel}
           </li>
         ) : (
-          mods.map((modDefinition) => {
+          mods.map((modDefinition, modIndex) => {
             const isDesired =
               desiredModKeys?.has(modDefinition.modKey) ?? false;
+            const isFractured = modDefinition.isFractured === true;
             return (
               <li
-                key={modDefinition.modKey}
+                key={`${modDefinition.modKey}-${String(modIndex)}`}
                 className={`text-sm flex flex-wrap items-center gap-2 rounded-md px-2 py-1 -mx-2 transition-colors ${
                   isDesired
                     ? "bg-amber-50 dark:bg-amber-900/20 text-amber-800 dark:text-amber-300"
@@ -73,6 +74,11 @@ export const ItemSimulatorModListSection = ({
                 >
                   T{modDefinition.tier}
                 </span>
+                {isFractured ? (
+                  <span className="text-xs px-2 py-0.5 rounded-full bg-violet-100 dark:bg-violet-900/40 text-violet-800 dark:text-violet-200">
+                    {t("resultModList.fracturedBadge")}
+                  </span>
+                ) : null}
               </li>
             );
           })

@@ -170,6 +170,9 @@ export const ItemSimulatorBaseItemTooltipCard = ({
                           <ItemSimulatorExplicitModLine modDefinition={mod} />{" "}
                           <span className="text-[10px] text-sky-400/50 tabular-nums">
                             T{mod.tier}
+                            {mod.isFractured === true
+                              ? ` ${t("tooltipCard.fracturedModifier")}`
+                              : ""}
                           </span>
                         </>
                       ) : null}
@@ -188,6 +191,9 @@ export const ItemSimulatorBaseItemTooltipCard = ({
                           <ItemSimulatorExplicitModLine modDefinition={mod} />{" "}
                           <span className="text-[10px] text-rose-400/50 tabular-nums">
                             T{mod.tier}
+                            {mod.isFractured === true
+                              ? ` ${t("tooltipCard.fracturedModifier")}`
+                              : ""}
                           </span>
                         </>
                       ) : null}

@@ -1,3 +1,6 @@
+import type { IBaseItemStatTagType, IBaseItemSubTypeType } from "./baseItemDb";
+import { MOD_DB } from "./modDb";
+import type { IModDbRecordType } from "./modDb";
 import { MOD_POOL } from "./modPool";
 import type {
   IItemRoll,
@@ -8,6 +11,56 @@ import type {
   ModTypeType,
 } from "./types";
 import { getRandomIntInclusive, pickWeightedRandom } from "./random";
+
+/** 베이스가 알려질 때만 적용(크래프트 랩 등). 생략 시 기존 전역 MOD_POOL 동작. */
+export type IModRollBaseFiltersType = {
+  baseItemSubType?: IBaseItemSubTypeType;
+  itemStatTags?: ReadonlyArray<IBaseItemStatTagType>;
+};
+
+export type IModRollContextInputType = IModRollContext & IModRollBaseFiltersType;
+
+const MOD_KEY_TO_RECORD: ReadonlyMap<string, IModDbRecordType> = new Map(
+  MOD_DB.records.map((record) => {
+    return [record.modKey, record] as const;
+  }),
+);
+
+const isModEligibleForBaseFilters = (
+  modDefinition: IModDefinition,
+  filters: IModRollBaseFiltersType | undefined,
+): boolean => {
+  if (filters === undefined) {
+    return true;
+  }
+  const hasSubType = filters.baseItemSubType !== undefined;
+  const hasStatTags = filters.itemStatTags !== undefined;
+  if (!hasSubType && !hasStatTags) {
+    return true;
+  }
+  const record = MOD_KEY_TO_RECORD.get(modDefinition.modKey);
+  if (record === undefined) {
+    return true;
+  }
+  if (hasSubType) {
+    const subType = filters.baseItemSubType;
+    if (subType !== undefined && !record.applicableSubTypes.includes(subType)) {
+      return false;
+    }
+  }
+  if (hasStatTags) {
+    const tags = filters.itemStatTags;
+    if (tags === undefined) {
+      return true;
+    }
+    for (const requiredTag of record.requiredItemTags) {
+      if (!tags.includes(requiredTag)) {
+        return false;
+      }
+    }
+  }
+  return true;
+};
 
 const MAGIC_MAX_TIER: number = 3;
 const RARE_MAX_TIER: number = 5;
@@ -22,8 +75,15 @@ const getTierLimit = (rarity: ItemRarityType): number => {
   return RARE_MAX_TIER;
 };
 
-export const rollRandomMod = (modRollContext: IModRollContext): IModDefinition => {
+export const rollRandomMod = (modRollContext: IModRollContextInputType): IModDefinition => {
   const tierLimit = getTierLimit(modRollContext.rarity);
+  const baseFilters: IModRollBaseFiltersType | undefined =
+    modRollContext.baseItemSubType !== undefined || modRollContext.itemStatTags !== undefined
+      ? {
+          baseItemSubType: modRollContext.baseItemSubType,
+          itemStatTags: modRollContext.itemStatTags,
+        }
+      : undefined;
 
   const candidates = MOD_POOL.filter((modDefinition) => {
     if (modDefinition.modType !== modRollContext.modType) {
@@ -36,6 +96,9 @@ export const rollRandomMod = (modRollContext: IModRollContext): IModDefinition =
       return false;
     }
     if (modDefinition.weight <= 0) {
+      return false;
+    }
+    if (!isModEligibleForBaseFilters(modDefinition, baseFilters)) {
       return false;
     }
     return true;
@@ -53,6 +116,39 @@ export const rollRandomMod = (modRollContext: IModRollContext): IModDefinition =
   }));
 
   return pickWeightedRandom(weightedChoices);
+};
+
+/**
+ * `rollRandomMod`와 동일한 필터로 후보 목록만 반환 (크래프트 랩 시뮬 확률 UI용).
+ */
+export const listModRollCandidates = (modRollContext: IModRollContextInputType): IModDefinition[] => {
+  const tierLimit = getTierLimit(modRollContext.rarity);
+  const baseFilters: IModRollBaseFiltersType | undefined =
+    modRollContext.baseItemSubType !== undefined || modRollContext.itemStatTags !== undefined
+      ? {
+          baseItemSubType: modRollContext.baseItemSubType,
+          itemStatTags: modRollContext.itemStatTags,
+        }
+      : undefined;
+
+  return MOD_POOL.filter((modDefinition) => {
+    if (modDefinition.modType !== modRollContext.modType) {
+      return false;
+    }
+    if (modDefinition.tier > tierLimit) {
+      return false;
+    }
+    if (modRollContext.excludedModKeys.has(modDefinition.modKey)) {
+      return false;
+    }
+    if (modDefinition.weight <= 0) {
+      return false;
+    }
+    if (!isModEligibleForBaseFilters(modDefinition, baseFilters)) {
+      return false;
+    }
+    return true;
+  });
 };
 
 const rollRarity = (): ItemRarityType => {
@@ -109,7 +205,12 @@ export const resolveSimulationCounts = (
   return { prefixCount, suffixCount };
 };
 
-const buildItemRoll = (rarity: ItemRarityType, prefixCount: number, suffixCount: number): IItemRoll => {
+const buildItemRoll = (
+  rarity: ItemRarityType,
+  prefixCount: number,
+  suffixCount: number,
+  baseFilters?: IModRollBaseFiltersType,
+): IItemRoll => {
   const maximumPrefixCount = 3;
   const maximumSuffixCount = 3;
 
@@ -137,6 +238,7 @@ const buildItemRoll = (rarity: ItemRarityType, prefixCount: number, suffixCount:
       rarity,
       modType: "prefix",
       excludedModKeys,
+      ...baseFilters,
     });
     excludedModKeys.add(rolledMod.modKey);
     prefixes.push(rolledMod);
@@ -147,6 +249,7 @@ const buildItemRoll = (rarity: ItemRarityType, prefixCount: number, suffixCount:
       rarity,
       modType: "suffix",
       excludedModKeys,
+      ...baseFilters,
     });
     excludedModKeys.add(rolledMod.modKey);
     suffixes.push(rolledMod);
@@ -160,8 +263,12 @@ const buildItemRoll = (rarity: ItemRarityType, prefixCount: number, suffixCount:
 };
 
 /** Full rare reroll with explicit prefix/suffix counts (each capped at 3). Used by Chaos Orb and benchmarks. */
-export const rollRareItemRoll = (prefixCount: number, suffixCount: number): IItemRoll => {
-  return buildItemRoll("rare", prefixCount, suffixCount);
+export const rollRareItemRoll = (
+  prefixCount: number,
+  suffixCount: number,
+  baseFilters?: IModRollBaseFiltersType,
+): IItemRoll => {
+  return buildItemRoll("rare", prefixCount, suffixCount, baseFilters);
 };
 
 /**
@@ -171,7 +278,8 @@ export const rollRareItemRoll = (prefixCount: number, suffixCount: number): IIte
 export const rollRareModSlots = (
   prefixCount: number,
   suffixCount: number,
-  initialExcludedModKeys: ReadonlySet<string>
+  initialExcludedModKeys: ReadonlySet<string>,
+  baseFilters?: IModRollBaseFiltersType,
 ): { prefixes: IModDefinition[]; suffixes: IModDefinition[] } => {
   const maximumPrefixCount = 3;
   const maximumSuffixCount = 3;
@@ -187,6 +295,7 @@ export const rollRareModSlots = (
       rarity: "rare",
       modType: "prefix",
       excludedModKeys,
+      ...baseFilters,
     });
     excludedModKeys.add(rolledMod.modKey);
     prefixes.push(rolledMod);
@@ -197,6 +306,7 @@ export const rollRareModSlots = (
       rarity: "rare",
       modType: "suffix",
       excludedModKeys,
+      ...baseFilters,
     });
     excludedModKeys.add(rolledMod.modKey);
     suffixes.push(rolledMod);

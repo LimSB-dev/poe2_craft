@@ -69,10 +69,12 @@
       "prefixes": "접두",
       "suffixes": "접미",
       "empty": "없음",
-      "matchedDesiredRow": "목표로 선택한 속성과 일치, 티어 {tier}"
+      "matchedDesiredRow": "목표로 선택한 속성과 일치, 티어 {tier}",
+      "fracturedBadge": "분열"
     },
     "tooltipCard": {
-      "implicitHeading": "특수 속성"
+      "implicitHeading": "특수 속성",
+      "fracturedModifier": "(분열)"
     }
   }
 }

@@ -69,10 +69,12 @@
       "prefixes": "Prefixes",
       "suffixes": "Suffixes",
       "empty": "None",
-      "matchedDesiredRow": "Matches a target modifier, tier {tier}"
+      "matchedDesiredRow": "Matches a target modifier, tier {tier}",
+      "fracturedBadge": "Fractured"
     },
     "tooltipCard": {
-      "implicitHeading": "Implicit"
+      "implicitHeading": "Implicit",
+      "fracturedModifier": "(fractured)"
     }
   }
 }

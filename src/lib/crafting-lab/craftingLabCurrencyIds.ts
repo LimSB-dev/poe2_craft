@@ -56,9 +56,21 @@ export type CraftingLabOrbSlotIdType =
 export type CraftingCurrencyIdType =
   | CraftingLabOrbSlotIdType
   | "orb_divine"
+  /** 바알 오브(타락) — UI만, 시뮬 미구현 */
+  | "orb_vaal"
+  /** 히네코라의 자물쇠 — 시뮬: 예견 후 다음 화폐 적용 */
+  | "orb_hinekoras_lock"
+  /** 칼란드라의 거울 — UI만, 시뮬 미구현 */
+  | "orb_mirror"
   | "essence_life"
   | "essence_attack"
   | "omen_placeholder";
+
+/**
+ * 화폐 탭 하단 행(표시 순): 바알·디바인·히네코라·미러 — 히네코라만 시뮬 연결.
+ */
+export const CRAFT_LAB_CURRENCY_TAB_BOTTOM_ROW: readonly CraftingCurrencyIdType[] =
+  ["orb_vaal", "orb_divine", "orb_hinekoras_lock", "orb_mirror"] as const;
 
 /**
  * 창고 오브 UI: 5줄(각 3티어) + 마지막 줄(연금술·소멸·분열) — {@link CRAFT_LAB_ORB_UI_GROUPS}.

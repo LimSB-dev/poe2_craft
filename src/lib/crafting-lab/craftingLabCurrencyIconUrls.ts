@@ -51,6 +51,17 @@ export const CRAFTING_LAB_CURRENCY_ICON_URLS = {
     "https://www.poe2wiki.net/images/9/9c/Chaos_Orb_inventory_icon.png",
   orb_annulment:
     "https://www.poe2wiki.net/images/4/4c/Orb_of_Annulment_inventory_icon.png",
+  orb_divine:
+    "https://www.poe2wiki.net/images/5/58/Divine_Orb_inventory_icon.png",
+  orb_vaal:
+    "https://www.poe2wiki.net/images/2/2c/Vaal_Orb_inventory_icon.png",
+  orb_hinekoras_lock:
+    "https://www.poe2wiki.net/images/5/53/Hinekora%27s_Lock_inventory_icon.png",
+  orb_mirror:
+    "https://www.poe2wiki.net/images/9/9c/Mirror_of_Kalandra_inventory_icon.png",
+  /** 징조 샘플 아이콘 — UI 자리 표시용 */
+  omen_placeholder:
+    "https://www.poe2wiki.net/images/5/5d/Omen_of_Sanctification_inventory_icon.png",
   /** LIFE_ESSENCE — 시각: Lesser Essence of the Body */
   essence_life:
     "https://www.poe2wiki.net/images/c/cb/Lesser_Essence_of_the_Body_inventory_icon.png",

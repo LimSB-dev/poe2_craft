@@ -37,10 +37,20 @@ const loadSimulatorFragments = async (locale: AppLocaleType) => {
 };
 
 export const loadLocaleMessages = async (locale: AppLocaleType) => {
-  const [metadataMod, simulator] = await Promise.all([
+  const [metadataMod, simulatorLocale] = await Promise.all([
     import(`../../../messages/${locale}/metadata.json`),
     loadSimulatorFragments(locale),
   ]);
+
+  /** 비영어 로케일에서 새 키가 아직 없으면 `en` 시뮬레이터 조각을 베이스로 깊게 합쳐 누락을 방지한다. */
+  let simulator: Record<string, unknown> = simulatorLocale;
+  if (locale !== "en") {
+    const simulatorEn = await loadSimulatorFragments("en");
+    simulator = deepMergeRecords(
+      simulatorEn as Record<string, unknown>,
+      simulatorLocale as Record<string, unknown>,
+    );
+  }
 
   return {
     metadata: metadataMod.default,

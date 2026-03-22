@@ -7,6 +7,8 @@ export type CraftingLabOrbSlotButtonPropsType = {
   iconSrc: string | undefined;
   disabled: boolean;
   onUse: () => void;
+  /** 호버(포인터 진입/이탈) — 히네코라 예견 미리보기 등 */
+  onHoverChange?: (hovered: boolean) => void;
   /** 티어 오브만 — 로마 숫자 (우하단). 단일 오브는 null. */
   tierRoman: "I" | "II" | "III" | null;
   /** 분열 오브 등 비활성 시 더 뚜렷한 dim (선택). */
@@ -28,6 +30,7 @@ export const CraftingLabOrbSlotButton = ({
   iconSrc,
   disabled,
   onUse,
+  onHoverChange,
   tierRoman,
   ariaLabel,
   disabledTitle,
@@ -102,6 +105,12 @@ export const CraftingLabOrbSlotButton = ({
         "group/orb relative inline-flex h-9 w-9 shrink-0 overflow-visible sm:h-10 sm:w-10",
         ghosted ? "cursor-not-allowed" : "",
       ].join(" ")}
+      onMouseEnter={() => {
+        onHoverChange?.(true);
+      }}
+      onMouseLeave={() => {
+        onHoverChange?.(false);
+      }}
     >
       <span
         role="tooltip"
@@ -122,10 +131,7 @@ export const CraftingLabOrbSlotButton = ({
         onClick={() => {
           onUse();
         }}
-        className={[
-          ghosted ? "pointer-events-none" : "",
-          shellClass,
-        ].join(" ")}
+        className={shellClass}
       >
         {inner}
       </button>

@@ -2,6 +2,10 @@
 Mirror of ``src/lib/poe2-item-simulator/currencyExaltExchangeRates.ts`` for RL.
 
 Keep numbers in sync when editing TypeScript.
+
+**Live rates:** ``poe_currency_exchange.py`` can pull PoE2 Currency Exchange digests
+(``service:cxapi``) and set chaos/essence exalt costs for training; see that module
+and ``python/README.md``.
 """
 
 # exaltedValueOfOneCurrencyUnit("chaosOrb") — user ratio 1 chaos : 8 exalted

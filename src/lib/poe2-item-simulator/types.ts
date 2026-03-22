@@ -17,6 +17,8 @@ export interface IItemRoll {
   rarity: ItemRarityType;
   prefixes: IModDefinition[];
   suffixes: IModDefinition[];
+  /** 히네코라의 자물쇠 적용 후 — 다음 화폐 1회 결과를 예견한 뒤 적용 가능 */
+  hinekoraLockActive?: boolean;
 }
 
 export interface IModRollContext {

@@ -1,8 +1,13 @@
 "use client";
 
-import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { useEffect, useMemo, useState, type ReactElement } from "react";
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+  type ReactElement,
+} from "react";
 
 import { CraftingLabOrbPreviewPanel } from "@/components/crafting-lab/CraftingLabOrbPreviewPanel";
 import { CraftingLabOrbSlotButton } from "@/components/crafting-lab/CraftingLabOrbSlotButton";
@@ -11,9 +16,14 @@ import { ItemSimulatorBaseItemFilterCollapsible } from "@/components/item-simula
 import { ItemSimulatorBaseItemSearchBlock } from "@/components/item-simulator/ItemSimulatorBaseItemSearchBlock";
 import { ItemSimulatorBaseItemTooltipCard } from "@/components/item-simulator/ItemSimulatorBaseItemTooltipCard";
 import { useItemSimulatorBaseItemPanelState } from "@/components/item-simulator/useItemSimulatorBaseItemPanelState";
+import {
+  buildHinekoraLockedDraftTable,
+  getCachedHinekoraLockedDraftTable,
+} from "@/lib/crafting-lab/buildHinekoraLockedDraftTable";
 import { getCraftingLabCurrencyIconUrl } from "@/lib/crafting-lab/craftingLabCurrencyIconUrls";
 import {
-  CRAFT_LAB_ORB_SLOT_IDS,
+  CRAFT_LAB_CURRENCY_TAB_BOTTOM_ROW,
+  getCraftLabOrbSlotIdsGrouped,
   getOrbSlotTierRoman,
   normalizeCraftingCurrencyEventId,
   orbSlotIdToFamilyKind,
@@ -51,6 +61,11 @@ import {
   canApplyRegalOrb,
 } from "@/lib/poe2-item-simulator/basicCurrencyOrbs";
 import {
+  applyHinekorasLock,
+  canApplyHinekorasLock,
+  stripHinekoraLock,
+} from "@/lib/poe2-item-simulator/hinekorasLock";
+import {
   applyEssence,
   ATTACK_ESSENCE,
   LIFE_ESSENCE,
@@ -58,6 +73,24 @@ import {
 import type { IItemRoll } from "@/lib/poe2-item-simulator/types";
 
 type CraftLabModeType = "random" | "simulation";
+
+type CraftLabStashTabIdType = "currency" | "essence" | "abyss" | "ritual";
+
+const CRAFT_LAB_STASH_TABS: readonly CraftLabStashTabIdType[] = [
+  "currency",
+  "essence",
+  "abyss",
+  "ritual",
+] as const;
+
+const ABYSS_STASH_SLOT_COUNT = 9;
+
+const CRAFT_LAB_STASH_TAB_LABEL_KEYS: Record<CraftLabStashTabIdType, string> = {
+  currency: "stashTabCurrency",
+  essence: "stashTabEssence",
+  abyss: "stashTabAbyss",
+  ritual: "stashTabRitual",
+};
 
 const EMPTY_NORMAL_ROLL: IItemRoll = {
   rarity: "normal",
@@ -69,7 +102,7 @@ const EMPTY_NORMAL_ROLL: IItemRoll = {
 const MAX_CRAFT_UNDO_DEPTH: number = 100;
 
 const cloneItemRoll = (roll: IItemRoll): IItemRoll => {
-  return {
+  const base: IItemRoll = {
     rarity: roll.rarity,
     prefixes: roll.prefixes.map((m) => {
       return { ...m };
@@ -78,6 +111,10 @@ const cloneItemRoll = (roll: IItemRoll): IItemRoll => {
       return { ...m };
     }),
   };
+  if (roll.hinekoraLockActive === true) {
+    return { ...base, hinekoraLockActive: true };
+  }
+  return base;
 };
 
 type CraftLabHistorySnapshotType = {
@@ -134,6 +171,26 @@ const isCraftLabOrbApplicable = (
     }
     default: {
       return false;
+    }
+  }
+};
+
+const getCraftLabDisabledCurrencyRowTooltip = (
+  id: CraftingCurrencyIdType,
+  tCraft: (key: string) => string,
+): string => {
+  switch (id) {
+    case "orb_divine": {
+      return tCraft("divineDisabledHint");
+    }
+    case "orb_vaal": {
+      return tCraft("vaalOrbDisabledHint");
+    }
+    case "orb_mirror": {
+      return tCraft("mirrorDisabledHint");
+    }
+    default: {
+      return tCraft("currencyTabDisabledGeneric");
     }
   }
 };
@@ -195,6 +252,85 @@ export const CraftingLabWorkspace = (): ReactElement => {
     null,
   );
   const [simPreviewLabel, setSimPreviewLabel] = useState<string>("");
+  const [stashTab, setStashTab] = useState<CraftLabStashTabIdType>("currency");
+  const [hinekoraHoverPreview, setHinekoraHoverPreview] =
+    useState<IItemRoll | null>(null);
+
+  const hinekoraLockSessionKey = useMemo(() => {
+    if (itemRoll.hinekoraLockActive !== true) {
+      return null;
+    }
+    if (selectedBaseItemRecord === undefined) {
+      return null;
+    }
+    const stripped = stripHinekoraLock(itemRoll);
+    return JSON.stringify({
+      baseItemKey: effectiveSelectedBaseItemKey,
+      rarity: stripped.rarity,
+      prefixes: stripped.prefixes,
+      suffixes: stripped.suffixes,
+      filters: modRollFilters,
+    });
+  }, [
+    effectiveSelectedBaseItemKey,
+    itemRoll,
+    modRollFilters,
+    selectedBaseItemRecord,
+  ]);
+
+  const hinekoraLockedDraftTable = useMemo(() => {
+    return getCachedHinekoraLockedDraftTable(
+      hinekoraLockSessionKey,
+      modRollFilters,
+      () => {
+        const stripped = stripHinekoraLock(itemRoll);
+        return buildHinekoraLockedDraftTable(
+          stripped,
+          itemRoll,
+          modRollFilters,
+          cloneItemRoll,
+        );
+      },
+    );
+  }, [hinekoraLockSessionKey, itemRoll, modRollFilters]);
+
+  const resolveHinekoraHoverDraft = useCallback(
+    (id: CraftingCurrencyIdType): IItemRoll | null => {
+      if (
+        itemRoll.hinekoraLockActive !== true ||
+        craftLabMode !== "random" ||
+        effectiveSelectedBaseItemKey.length === 0 ||
+        selectedBaseItemRecord === undefined
+      ) {
+        return null;
+      }
+      if (id === "orb_hinekoras_lock") {
+        return null;
+      }
+      if (
+        id === "orb_divine" ||
+        id === "orb_vaal" ||
+        id === "orb_mirror" ||
+        id === "omen_placeholder"
+      ) {
+        return null;
+      }
+      return hinekoraLockedDraftTable?.[id] ?? null;
+    },
+    [
+      craftLabMode,
+      effectiveSelectedBaseItemKey.length,
+      hinekoraLockedDraftTable,
+      itemRoll.hinekoraLockActive,
+      selectedBaseItemRecord,
+    ],
+  );
+
+  useEffect(() => {
+    // 히네코라 호버 미리보기는 이전 롤·탭과 불일치하면 무효
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- 동기 초기화만 수행
+    setHinekoraHoverPreview(null);
+  }, [craftLabMode, effectiveSelectedBaseItemKey, itemRoll, stashTab]);
 
   useEffect(() => {
     // 베이스가 바뀌면 롤·완료 스냅샷 초기화, 로컬에 동일 베이스 기록이 있으면 복원 후 저장
@@ -292,6 +428,31 @@ export const CraftingLabWorkspace = (): ReactElement => {
     setLastError(null);
   };
 
+  const commitCraftingResult = (
+    nextRoll: IItemRoll,
+    id: CraftingCurrencyIdType,
+  ): void => {
+    const nextEvents = [...usageEvents, id];
+    setUndoStack((stack) => {
+      const appended = [...stack, makeHistorySnapshot(itemRoll, usageEvents)];
+      if (appended.length > MAX_CRAFT_UNDO_DEPTH) {
+        return appended.slice(-MAX_CRAFT_UNDO_DEPTH);
+      }
+      return appended;
+    });
+    setRedoStack([]);
+    setItemRoll(nextRoll);
+    setUsageEvents(nextEvents);
+    writeCraftingLabUsage({
+      baseItemKey: effectiveSelectedBaseItemKey,
+      events: nextEvents,
+    });
+    setLastError(null);
+    setCompletionSnapshot(null);
+    setSimPreview(null);
+    setSimPreviewLabel("");
+  };
+
   const tryApply = (
     id: CraftingCurrencyIdType,
     apply: (
@@ -306,71 +467,30 @@ export const CraftingLabWorkspace = (): ReactElement => {
       setLastError(tWs("baseFilter.noResults"));
       return;
     }
+    if (id === "orb_hinekoras_lock") {
+      try {
+        const nextRoll = applyHinekorasLock(itemRoll);
+        commitCraftingResult(nextRoll, id);
+      } catch (error: unknown) {
+        setLastError(getErrorMessage(error));
+      }
+      return;
+    }
+    if (itemRoll.hinekoraLockActive === true && craftLabMode === "random") {
+      const draft = hinekoraLockedDraftTable?.[id];
+      if (draft === undefined) {
+        setLastError(t("hinekoraDraftTableMissing"));
+        return;
+      }
+      commitCraftingResult(draft, id);
+      return;
+    }
     try {
-      const nextRoll = apply(itemRoll, modRollFilters);
-      const nextEvents = [...usageEvents, id];
-      setUndoStack((stack) => {
-        const appended = [...stack, makeHistorySnapshot(itemRoll, usageEvents)];
-        if (appended.length > MAX_CRAFT_UNDO_DEPTH) {
-          return appended.slice(-MAX_CRAFT_UNDO_DEPTH);
-        }
-        return appended;
-      });
-      setRedoStack([]);
-      setItemRoll(nextRoll);
-      setUsageEvents(nextEvents);
-      writeCraftingLabUsage({
-        baseItemKey: effectiveSelectedBaseItemKey,
-        events: nextEvents,
-      });
-      setLastError(null);
-      setCompletionSnapshot(null);
+      const nextRoll = apply(stripHinekoraLock(itemRoll), modRollFilters);
+      commitCraftingResult(nextRoll, id);
     } catch (error: unknown) {
       setLastError(getErrorMessage(error));
     }
-  };
-
-  const stashButton = (
-    id: CraftingCurrencyIdType,
-    onUse: () => void,
-    options?: { disabled?: boolean; title?: string; ariaLabel?: string },
-  ): ReactElement => {
-    const disabled = options?.disabled === true;
-    const iconSrc = getCraftingLabCurrencyIconUrl(id);
-    const labelText = t(`currency.${id}`);
-    const ariaLabel =
-      options?.ariaLabel !== undefined && options.ariaLabel.length > 0
-        ? options.ariaLabel
-        : labelText;
-    return (
-      <button
-        type="button"
-        disabled={disabled}
-        title={options?.title}
-        aria-label={ariaLabel}
-        onClick={() => {
-          onUse();
-        }}
-        className="flex items-center gap-2 rounded-lg border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-3 py-2 text-left text-sm transition hover:border-amber-400/60 disabled:opacity-40 disabled:pointer-events-none"
-      >
-        {iconSrc !== undefined ? (
-          <span className="relative h-10 w-10 shrink-0 overflow-hidden rounded-sm bg-zinc-100/80 dark:bg-zinc-800/80">
-            <Image
-              src={iconSrc}
-              alt=""
-              width={40}
-              height={40}
-              className="object-contain"
-              sizes="40px"
-              aria-hidden
-            />
-          </span>
-        ) : null}
-        <span className="font-medium text-zinc-900 dark:text-zinc-100 leading-snug min-w-0">
-          {t(`currency.${id}`)}
-        </span>
-      </button>
-    );
   };
 
   const hasBaseForCraft = selectedBaseItemRecord !== undefined;
@@ -461,12 +581,21 @@ export const CraftingLabWorkspace = (): ReactElement => {
             </div>
 
             <div className="flex flex-col gap-3">
+              {itemRoll.hinekoraLockActive === true && hasBaseForCraft ? (
+                <p
+                  className="text-xs font-medium text-amber-800 dark:text-amber-300/95"
+                  role="status"
+                >
+                  {t("hinekoraLockActiveBanner")}
+                </p>
+              ) : null}
               <div className="min-h-[216px] flex flex-col justify-start">
                 {selectedBaseItemRecord ? (
                   <ItemSimulatorBaseItemTooltipCard
                     record={selectedBaseItemRecord}
                     baseItemKey={selectedBaseItem?.baseItemKey ?? ""}
                     explicitItemRoll={itemRoll}
+                    previewExplicitItemRoll={hinekoraHoverPreview}
                   />
                 ) : (
                   <p className="text-sm text-zinc-400 dark:text-zinc-500 py-1">
@@ -553,11 +682,12 @@ export const CraftingLabWorkspace = (): ReactElement => {
               </div>
             </div>
 
-            <div>
-              <h3 className="text-xs font-semibold uppercase tracking-wide text-zinc-500 dark:text-zinc-400 mb-2">
-                {t("orbsHeading")}
-              </h3>
-              {hasBaseForCraft ? (
+            {!hasBaseForCraft ? (
+              <p className="text-sm text-zinc-500 dark:text-zinc-400">
+                {t("stashPickBaseForCurrencies")}
+              </p>
+            ) : (
+              <>
                 <fieldset className="mb-3 min-w-0 border-0 p-0 m-0">
                   <legend className="sr-only">{t("craftModeLegend")}</legend>
                   <div
@@ -605,122 +735,368 @@ export const CraftingLabWorkspace = (): ReactElement => {
                     {t("craftModeSimulationHint")}
                   </p>
                 </fieldset>
-              ) : null}
-              {!hasBaseForCraft ? (
-                <p className="text-sm text-zinc-500 dark:text-zinc-400">
-                  {t("stashPickBaseForCurrencies")}
-                </p>
-              ) : (
-                <>
-                  <div className="rounded-lg border border-[#3d3429] bg-[#141210] p-1.5 shadow-[inset_0_2px_8px_rgba(0,0,0,0.45)] dark:bg-[#141210]">
-                    <div className="mx-auto grid w-max grid-cols-3 gap-1.5 sm:gap-2">
-                      {CRAFT_LAB_ORB_SLOT_IDS.map((id) => {
-                        const applicable = isCraftLabOrbApplicable(id, itemRoll);
-                        const applyOrb =
-                          CRAFT_LAB_ORB_APPLY[orbSlotIdToFamilyKind(id)];
-                        const family = orbSlotIdToFamilyKind(id);
-                        const name = t(`currency.${id}`);
-                        const iconSrc = getCraftingLabCurrencyIconUrl(id);
-                        const tierRoman = getOrbSlotTierRoman(id);
-                        return (
-                          <CraftingLabOrbSlotButton
-                            key={id}
-                            iconSrc={iconSrc}
-                            disabled={!applicable}
-                            onUse={() => {
-                              if (craftLabMode === "simulation") {
-                                if (!applicable) {
-                                  return;
-                                }
-                                const prev = buildCraftLabOrbPreview(
-                                  family,
-                                  itemRoll,
-                                  modRollFilters,
-                                );
-                                setSimPreview(prev);
-                                setSimPreviewLabel(name);
-                                setLastError(null);
-                                return;
-                              }
-                              tryApply(id, applyOrb);
-                            }}
-                            tierRoman={tierRoman}
-                            ariaLabel={
-                              applicable
-                                ? craftLabMode === "simulation"
-                                  ? t("orbSimulateAria", { name })
-                                  : name
-                                : t("orbDisabledAria", { name })
-                            }
-                            disabledTitle={
-                              applicable ? undefined : t("orbDisabledTooltip")
-                            }
-                            showQuantityBadge={applicable}
-                            quantityLabel={t("stashOrbQuantityUnlimited")}
-                          />
-                        );
-                      })}
-                    </div>
-                  </div>
-                  {simPreview !== null ? (
-                    <div className="mt-3">
-                      <CraftingLabOrbPreviewPanel
-                        orbLabel={simPreviewLabel}
-                        preview={simPreview}
-                        onClose={() => {
-                          setSimPreview(null);
-                          setSimPreviewLabel("");
-                        }}
-                      />
-                    </div>
-                  ) : null}
-                </>
-              )}
-            </div>
 
-            <div>
-              <h3 className="text-xs font-semibold uppercase tracking-wide text-zinc-500 dark:text-zinc-400 mb-2">
-                {t("essencesHeading")}
-              </h3>
-              {!hasBaseForCraft ? (
-                <p className="text-sm text-zinc-500 dark:text-zinc-400">
-                  {t("stashPickBaseForCurrencies")}
-                </p>
-              ) : (
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                  {stashButton("essence_life", () => {
-                    if (craftLabMode === "simulation") {
-                      setSimPreview({
-                        status: "ok",
-                        noteKeys: ["essenceSimulationNote"],
-                        sections: [],
-                      });
-                      setSimPreviewLabel(t("currency.essence_life"));
-                      setLastError(null);
-                      return;
-                    }
-                    tryApply("essence_life", (roll, filters) => {
-                      return applyEssence(roll, LIFE_ESSENCE, filters);
-                    });
-                  })}
-                  {stashButton("essence_attack", () => {
-                    if (craftLabMode === "simulation") {
-                      setSimPreview({
-                        status: "ok",
-                        noteKeys: ["essenceSimulationNote"],
-                        sections: [],
-                      });
-                      setSimPreviewLabel(t("currency.essence_attack"));
-                      setLastError(null);
-                      return;
-                    }
-                    tryApply("essence_attack", (roll, filters) => {
-                      return applyEssence(roll, ATTACK_ESSENCE, filters);
-                    });
+                <div
+                  role="tablist"
+                  aria-label={t("stashTabListAria")}
+                  className="mb-3 flex flex-wrap gap-1.5 rounded-lg border border-zinc-200 dark:border-zinc-700 bg-zinc-100/80 p-1 dark:bg-zinc-900/50"
+                >
+                  {CRAFT_LAB_STASH_TABS.map((tabId) => {
+                    const isSelected = stashTab === tabId;
+                    return (
+                      <button
+                        key={tabId}
+                        id={`craft-stash-tab-${tabId}`}
+                        type="button"
+                        role="tab"
+                        aria-selected={isSelected}
+                        aria-controls={`craft-stash-panel-${tabId}`}
+                        onClick={() => {
+                          setStashTab(tabId);
+                        }}
+                        className={`rounded-md px-3 py-1.5 text-xs font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-500/80 ${
+                          isSelected
+                            ? "bg-amber-600/90 text-white shadow-sm dark:bg-amber-700/90"
+                            : "text-zinc-600 hover:bg-zinc-200/90 dark:text-zinc-400 dark:hover:bg-zinc-800/90"
+                        }`}
+                      >
+                        {t(CRAFT_LAB_STASH_TAB_LABEL_KEYS[tabId])}
+                      </button>
+                    );
                   })}
                 </div>
-              )}
-            </div>
+
+                <div className="min-h-[200px]">
+                  <div
+                    id="craft-stash-panel-currency"
+                    role="tabpanel"
+                    aria-labelledby="craft-stash-tab-currency"
+                    hidden={stashTab !== "currency"}
+                    className={stashTab !== "currency" ? "hidden" : undefined}
+                  >
+                    <div className="rounded-lg border border-[#3d3429] bg-[#141210] p-2 shadow-[inset_0_2px_8px_rgba(0,0,0,0.45)] dark:bg-[#141210]">
+                      <div className="flex flex-col gap-3 sm:gap-3.5">
+                        {getCraftLabOrbSlotIdsGrouped().map((rowSlotIds, rowIndex) => {
+                          return (
+                            <div
+                              key={`${String(rowIndex)}-orb-row`}
+                              className="w-full min-w-0"
+                            >
+                              <div className="mx-auto grid w-max grid-cols-3 gap-1.5 sm:gap-2">
+                                {rowSlotIds.map((id) => {
+                                  const applicable = isCraftLabOrbApplicable(
+                                    id,
+                                    itemRoll,
+                                  );
+                                  const applyOrb =
+                                    CRAFT_LAB_ORB_APPLY[orbSlotIdToFamilyKind(id)];
+                                  const family = orbSlotIdToFamilyKind(id);
+                                  const name = t(`currency.${id}`);
+                                  const iconSrc = getCraftingLabCurrencyIconUrl(id);
+                                  const tierRoman = getOrbSlotTierRoman(id);
+                                  return (
+                                    <CraftingLabOrbSlotButton
+                                      key={id}
+                                      iconSrc={iconSrc}
+                                      disabled={!applicable}
+                                      onUse={() => {
+                                        if (craftLabMode === "simulation") {
+                                          if (!applicable) {
+                                            return;
+                                          }
+                                          const prev = buildCraftLabOrbPreview(
+                                            family,
+                                            stripHinekoraLock(itemRoll),
+                                            modRollFilters,
+                                          );
+                                          setSimPreview(prev);
+                                          setSimPreviewLabel(name);
+                                          setLastError(null);
+                                          return;
+                                        }
+                                        tryApply(id, applyOrb);
+                                      }}
+                                      onHoverChange={(hovered) => {
+                                        if (!hovered) {
+                                          setHinekoraHoverPreview(null);
+                                          return;
+                                        }
+                                        setHinekoraHoverPreview(
+                                          resolveHinekoraHoverDraft(id),
+                                        );
+                                      }}
+                                      tierRoman={tierRoman}
+                                      ariaLabel={
+                                        applicable
+                                          ? craftLabMode === "simulation"
+                                            ? t("orbSimulateAria", { name })
+                                            : name
+                                          : t("orbDisabledAria", { name })
+                                      }
+                                      disabledTitle={
+                                        applicable
+                                          ? undefined
+                                          : t("orbDisabledTooltip")
+                                      }
+                                      showQuantityBadge={applicable}
+                                      quantityLabel={t("stashOrbQuantityUnlimited")}
+                                      strongDisabled={
+                                        id === "orb_fracturing" && !applicable
+                                      }
+                                    />
+                                  );
+                                })}
+                              </div>
+                            </div>
+                          );
+                        })}
+                        <div className="w-full min-w-0">
+                          <div className="mx-auto grid w-max grid-cols-4 gap-1.5 sm:gap-2">
+                            {CRAFT_LAB_CURRENCY_TAB_BOTTOM_ROW.map((id) => {
+                              const iconSrc = getCraftingLabCurrencyIconUrl(id);
+                              const name = t(`currency.${id}`);
+                              if (id === "orb_hinekoras_lock") {
+                                const disabled = !canApplyHinekorasLock(itemRoll);
+                                return (
+                                  <CraftingLabOrbSlotButton
+                                    key={id}
+                                    iconSrc={iconSrc}
+                                    disabled={disabled}
+                                    onUse={() => {
+                                      if (craftLabMode === "simulation") {
+                                        setLastError(t("hinekoraLockNoSimPreview"));
+                                        return;
+                                      }
+                                      tryApply("orb_hinekoras_lock", (roll) => {
+                                        return applyHinekorasLock(roll);
+                                      });
+                                    }}
+                                    onHoverChange={(hovered) => {
+                                      if (!hovered) {
+                                        setHinekoraHoverPreview(null);
+                                        return;
+                                      }
+                                      setHinekoraHoverPreview(
+                                        resolveHinekoraHoverDraft("orb_hinekoras_lock"),
+                                      );
+                                    }}
+                                    tierRoman={null}
+                                    ariaLabel={
+                                      disabled
+                                        ? t("orbDisabledAria", { name })
+                                        : name
+                                    }
+                                    disabledTitle={
+                                      disabled ? t("hinekoraLockAlreadyActive") : undefined
+                                    }
+                                    showQuantityBadge={!disabled}
+                                    quantityLabel={t("stashOrbQuantityUnlimited")}
+                                  />
+                                );
+                              }
+                              return (
+                                <CraftingLabOrbSlotButton
+                                  key={id}
+                                  iconSrc={iconSrc}
+                                  disabled
+                                  onUse={() => {}}
+                                  onHoverChange={(hovered) => {
+                                    if (!hovered) {
+                                      setHinekoraHoverPreview(null);
+                                      return;
+                                    }
+                                    setHinekoraHoverPreview(
+                                      resolveHinekoraHoverDraft(id),
+                                    );
+                                  }}
+                                  tierRoman={null}
+                                  ariaLabel={name}
+                                  disabledTitle={getCraftLabDisabledCurrencyRowTooltip(
+                                    id,
+                                    t,
+                                  )}
+                                  showQuantityBadge={false}
+                                  quantityLabel=""
+                                />
+                              );
+                            })}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    id="craft-stash-panel-essence"
+                    role="tabpanel"
+                    aria-labelledby="craft-stash-tab-essence"
+                    hidden={stashTab !== "essence"}
+                    className={stashTab !== "essence" ? "hidden" : undefined}
+                  >
+                    <div className="rounded-lg border border-[#3d3429] bg-[#141210] p-2 shadow-[inset_0_2px_8px_rgba(0,0,0,0.45)] dark:bg-[#141210]">
+                      <div className="mx-auto grid w-max grid-cols-3 gap-1.5 sm:gap-2">
+                        <CraftingLabOrbSlotButton
+                          iconSrc={getCraftingLabCurrencyIconUrl("essence_life")}
+                          disabled={false}
+                          onUse={() => {
+                            if (craftLabMode === "simulation") {
+                              setSimPreview({
+                                status: "ok",
+                                noteKeys: ["essenceSimulationNote"],
+                                sections: [],
+                              });
+                              setSimPreviewLabel(t("currency.essence_life"));
+                              setLastError(null);
+                              return;
+                            }
+                            tryApply("essence_life", (roll, filters) => {
+                              return applyEssence(roll, LIFE_ESSENCE, filters);
+                            });
+                          }}
+                          onHoverChange={(hovered) => {
+                            if (!hovered) {
+                              setHinekoraHoverPreview(null);
+                              return;
+                            }
+                            setHinekoraHoverPreview(
+                              resolveHinekoraHoverDraft("essence_life"),
+                            );
+                          }}
+                          tierRoman={null}
+                          ariaLabel={
+                            craftLabMode === "simulation"
+                              ? t("orbSimulateAria", {
+                                  name: t("currency.essence_life"),
+                                })
+                              : t("currency.essence_life")
+                          }
+                          showQuantityBadge
+                          quantityLabel={t("stashOrbQuantityUnlimited")}
+                        />
+                        <CraftingLabOrbSlotButton
+                          iconSrc={getCraftingLabCurrencyIconUrl("essence_attack")}
+                          disabled={false}
+                          onUse={() => {
+                            if (craftLabMode === "simulation") {
+                              setSimPreview({
+                                status: "ok",
+                                noteKeys: ["essenceSimulationNote"],
+                                sections: [],
+                              });
+                              setSimPreviewLabel(t("currency.essence_attack"));
+                              setLastError(null);
+                              return;
+                            }
+                            tryApply("essence_attack", (roll, filters) => {
+                              return applyEssence(roll, ATTACK_ESSENCE, filters);
+                            });
+                          }}
+                          onHoverChange={(hovered) => {
+                            if (!hovered) {
+                              setHinekoraHoverPreview(null);
+                              return;
+                            }
+                            setHinekoraHoverPreview(
+                              resolveHinekoraHoverDraft("essence_attack"),
+                            );
+                          }}
+                          tierRoman={null}
+                          ariaLabel={
+                            craftLabMode === "simulation"
+                              ? t("orbSimulateAria", {
+                                  name: t("currency.essence_attack"),
+                                })
+                              : t("currency.essence_attack")
+                          }
+                          showQuantityBadge
+                          quantityLabel={t("stashOrbQuantityUnlimited")}
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    id="craft-stash-panel-abyss"
+                    role="tabpanel"
+                    aria-labelledby="craft-stash-tab-abyss"
+                    hidden={stashTab !== "abyss"}
+                    className={stashTab !== "abyss" ? "hidden" : undefined}
+                  >
+                    <p className="mb-2 text-[11px] leading-snug text-zinc-500 dark:text-zinc-400">
+                      {t("abyssTabHint")}
+                    </p>
+                    <div className="rounded-lg border border-[#3d3429] bg-[#141210] p-2 shadow-[inset_0_2px_8px_rgba(0,0,0,0.45)] dark:bg-[#141210]">
+                      <div className="mx-auto grid w-max grid-cols-3 gap-1.5 sm:gap-2">
+                        {Array.from({ length: ABYSS_STASH_SLOT_COUNT }, (_, slotIndex) => {
+                          return (
+                            <CraftingLabOrbSlotButton
+                              key={`abyss-slot-${String(slotIndex)}`}
+                              iconSrc={undefined}
+                              disabled
+                              onUse={() => {}}
+                              onHoverChange={(hovered) => {
+                                if (hovered) {
+                                  setHinekoraHoverPreview(null);
+                                }
+                              }}
+                              tierRoman={null}
+                              ariaLabel={t("abyssSlotDisabledTooltip")}
+                              disabledTitle={t("abyssSlotDisabledTooltip")}
+                              showQuantityBadge={false}
+                              quantityLabel=""
+                            />
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    id="craft-stash-panel-ritual"
+                    role="tabpanel"
+                    aria-labelledby="craft-stash-tab-ritual"
+                    hidden={stashTab !== "ritual"}
+                    className={stashTab !== "ritual" ? "hidden" : undefined}
+                  >
+                    <p className="mb-2 text-[11px] leading-snug text-zinc-500 dark:text-zinc-400">
+                      {t("ritualTabHint")}
+                    </p>
+                    <div className="rounded-lg border border-[#3d3429] bg-[#141210] p-2 shadow-[inset_0_2px_8px_rgba(0,0,0,0.45)] dark:bg-[#141210]">
+                      <div className="mx-auto grid w-max grid-cols-3 gap-1.5 sm:gap-2">
+                        <CraftingLabOrbSlotButton
+                          iconSrc={getCraftingLabCurrencyIconUrl("omen_placeholder")}
+                          disabled
+                          onUse={() => {}}
+                          onHoverChange={(hovered) => {
+                            if (hovered) {
+                              setHinekoraHoverPreview(null);
+                            }
+                          }}
+                          tierRoman={null}
+                          ariaLabel={t("currency.omen_placeholder")}
+                          disabledTitle={t("omenDisabledHint")}
+                          showQuantityBadge={false}
+                          quantityLabel=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {simPreview !== null ? (
+                  <div className="mt-3">
+                    <CraftingLabOrbPreviewPanel
+                      orbLabel={simPreviewLabel}
+                      preview={simPreview}
+                      onClose={() => {
+                        setSimPreview(null);
+                        setSimPreviewLabel("");
+                      }}
+                    />
+                  </div>
+                ) : null}
+              </>
+            )}
           </section>
         </div>
 

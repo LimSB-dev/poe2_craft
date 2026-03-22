@@ -5,6 +5,7 @@ import type { ReactElement } from "react";
 
 import { ItemSimulatorCatalogBaseName } from "@/components/item-simulator/i18n/ItemSimulatorCatalogBaseName";
 import { ItemSimulatorExplicitModLine } from "@/components/item-simulator/ItemSimulatorExplicitModLine";
+import { buildHinekoraExplicitSlotHighlights } from "@/lib/crafting-lab/hinekoraHoverPreviewDiff";
 import type { IBaseItemDbRecordType } from "@/lib/poe2-item-simulator/baseItemDb";
 import { buildBaseItemRequirementLineParts } from "@/lib/poe2-item-simulator/buildBaseItemRequirementLineParts";
 import type { IItemRoll, ItemRarityType } from "@/lib/poe2-item-simulator/types";
@@ -46,12 +47,18 @@ type ItemSimulatorBaseItemTooltipCardPropsType = {
   baseItemKey: string;
   /** 크래프트 랩 등: 툴팁 안에 접두·접미를 표시할 때 전달 */
   explicitItemRoll?: IItemRoll | null;
+  /**
+   * 히네코라 잠금 후 화폐 호버 시: 적용 직후 롤 미리보기.
+   * {@link explicitItemRoll}은 현재 상태(비교 베이스라인), 본 props는 예상 결과.
+   */
+  previewExplicitItemRoll?: IItemRoll | null;
 };
 
 export const ItemSimulatorBaseItemTooltipCard = ({
   record,
   baseItemKey,
   explicitItemRoll,
+  previewExplicitItemRoll,
 }: ItemSimulatorBaseItemTooltipCardPropsType): ReactElement => {
   const t = useTranslations("simulator.itemSimulatorWorkspace");
   const tSim = useTranslations("simulator");
@@ -62,7 +69,19 @@ export const ItemSimulatorBaseItemTooltipCard = ({
   const showExplicitSection = explicitItemRoll !== undefined && explicitItemRoll !== null;
   const hasBottomContent = hasImplicits || showExplicitSection;
 
-  const rollRarity: ItemRarityType = explicitItemRoll?.rarity ?? "normal";
+  const displayExplicitRoll =
+    previewExplicitItemRoll !== undefined && previewExplicitItemRoll !== null
+      ? previewExplicitItemRoll
+      : explicitItemRoll;
+  const hinekoraPreviewHighlight =
+    previewExplicitItemRoll !== undefined &&
+    previewExplicitItemRoll !== null &&
+    explicitItemRoll !== undefined &&
+    explicitItemRoll !== null
+      ? buildHinekoraExplicitSlotHighlights(previewExplicitItemRoll, explicitItemRoll)
+      : null;
+
+  const rollRarity: ItemRarityType = displayExplicitRoll?.rarity ?? "normal";
   const rc = TOOLTIP_RARITY_STYLE[rollRarity];
 
   return (
@@ -157,44 +176,90 @@ export const ItemSimulatorBaseItemTooltipCard = ({
             ) : null}
 
             {showExplicitSection ? (
-              <ul className="w-full flex flex-col gap-0.5 list-none m-0 p-0">
+              <ul className="m-0 flex w-full list-none flex-col gap-0.5 p-0">
                 {[0, 1, 2].map((index) => {
-                  const mod = explicitItemRoll.prefixes[index];
+                  const mod = displayExplicitRoll?.prefixes[index];
+                  const highlight =
+                    hinekoraPreviewHighlight !== null
+                      ? hinekoraPreviewHighlight.prefix[index]
+                      : false;
                   return (
                     <li
                       key={`explicit-prefix-${String(index)}`}
-                      className="text-xs min-h-[1.15rem] leading-snug text-sky-200/90"
+                      className="flex min-h-[1.15rem] items-start gap-2 text-xs leading-snug"
                     >
                       {mod !== undefined ? (
                         <>
-                          <ItemSimulatorExplicitModLine modDefinition={mod} />{" "}
-                          <span className="text-[10px] text-sky-400/50 tabular-nums">
+                          <span
+                            className={[
+                              "w-8 shrink-0 pt-0.5 text-left text-[10px] font-medium tabular-nums",
+                              highlight
+                                ? "text-amber-300/95"
+                                : "text-[#3d3d3d]",
+                            ].join(" ")}
+                            aria-hidden
+                          >
                             T{mod.tier}
-                            {mod.isFractured === true
-                              ? ` ${t("tooltipCard.fracturedModifier")}`
-                              : ""}
                           </span>
+                          <div
+                            className={`flex min-w-0 flex-1 justify-center ${
+                              highlight
+                                ? mod.isFractured === true
+                                  ? "text-amber-300/70"
+                                  : "text-amber-300"
+                                : mod.isFractured === true
+                                  ? "text-sky-200/45"
+                                  : "text-sky-200/90"
+                            }`}
+                          >
+                            <div className="text-center">
+                              <ItemSimulatorExplicitModLine modDefinition={mod} />
+                            </div>
+                          </div>
                         </>
                       ) : null}
                     </li>
                   );
                 })}
                 {[0, 1, 2].map((index) => {
-                  const mod = explicitItemRoll.suffixes[index];
+                  const mod = displayExplicitRoll?.suffixes[index];
+                  const highlight =
+                    hinekoraPreviewHighlight !== null
+                      ? hinekoraPreviewHighlight.suffix[index]
+                      : false;
                   return (
                     <li
                       key={`explicit-suffix-${String(index)}`}
-                      className="text-xs min-h-[1.15rem] leading-snug text-rose-200/90"
+                      className="flex min-h-[1.15rem] items-start gap-2 text-xs leading-snug"
                     >
                       {mod !== undefined ? (
                         <>
-                          <ItemSimulatorExplicitModLine modDefinition={mod} />{" "}
-                          <span className="text-[10px] text-rose-400/50 tabular-nums">
+                          <span
+                            className={[
+                              "w-8 shrink-0 pt-0.5 text-left text-[10px] font-medium tabular-nums",
+                              highlight
+                                ? "text-amber-300/95"
+                                : "text-[#3d3d3d]",
+                            ].join(" ")}
+                            aria-hidden
+                          >
                             T{mod.tier}
-                            {mod.isFractured === true
-                              ? ` ${t("tooltipCard.fracturedModifier")}`
-                              : ""}
                           </span>
+                          <div
+                            className={`flex min-w-0 flex-1 justify-center ${
+                              highlight
+                                ? mod.isFractured === true
+                                  ? "text-amber-300/70"
+                                  : "text-amber-300"
+                                : mod.isFractured === true
+                                  ? "text-rose-200/45"
+                                  : "text-rose-200/90"
+                            }`}
+                          >
+                            <div className="text-center">
+                              <ItemSimulatorExplicitModLine modDefinition={mod} />
+                            </div>
+                          </div>
                         </>
                       ) : null}
                     </li>

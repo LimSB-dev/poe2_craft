@@ -78,7 +78,7 @@ export const CraftingLabOrbPreviewPanel = ({
                           <th className="px-2 py-1.5 font-medium">
                             {t("previewModCol")}
                           </th>
-                          <th className="w-10 px-1 py-1.5 font-medium">
+                          <th className="w-10 px-1 py-1.5 font-medium text-center">
                             {t("previewTierCol")}
                           </th>
                           <th className="w-16 px-1 py-1.5 font-medium text-right">
@@ -101,7 +101,7 @@ export const CraftingLabOrbPreviewPanel = ({
                                   nameTemplateKey={row.nameTemplateKey}
                                 />
                               </td>
-                              <td className="px-1 py-1 tabular-nums text-zinc-400">
+                              <td className="px-1 py-1 text-center tabular-nums text-zinc-400">
                                 {row.tier}
                               </td>
                               <td className="px-1 py-1 text-right tabular-nums text-amber-200/95">

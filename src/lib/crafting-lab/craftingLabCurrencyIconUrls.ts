@@ -21,14 +21,16 @@ export const CRAFTING_LAB_CURRENCY_ICON_URLS = {
     "https://www.poe2wiki.net/images/c/cb/Orb_of_Augmentation_inventory_icon.png",
   orb_augmentation_t3:
     "https://www.poe2wiki.net/images/c/cb/Orb_of_Augmentation_inventory_icon.png",
-  orb_regal: "https://www.poe2wiki.net/images/3/33/Regal_Orb_inventory_icon.png",
+  orb_regal:
+    "https://www.poe2wiki.net/images/3/33/Regal_Orb_inventory_icon.png",
+  /** 티어별 아이콘이 위키에 분리되어 있으면 교체. */
+  orb_regal_t1:
+    "https://www.poe2wiki.net/images/3/33/Regal_Orb_inventory_icon.png",
+  orb_regal_t2:
+    "https://www.poe2wiki.net/images/3/33/Regal_Orb_inventory_icon.png",
+  orb_regal_t3:
+    "https://www.poe2wiki.net/images/3/33/Regal_Orb_inventory_icon.png",
   orb_alchemy:
-    "https://www.poe2wiki.net/images/9/9f/Orb_of_Alchemy_inventory_icon.png",
-  orb_alchemy_t1:
-    "https://www.poe2wiki.net/images/9/9f/Orb_of_Alchemy_inventory_icon.png",
-  orb_alchemy_t2:
-    "https://www.poe2wiki.net/images/9/9f/Orb_of_Alchemy_inventory_icon.png",
-  orb_alchemy_t3:
     "https://www.poe2wiki.net/images/9/9f/Orb_of_Alchemy_inventory_icon.png",
   orb_exalted:
     "https://www.poe2wiki.net/images/2/26/Exalted_Orb_inventory_icon.png",
@@ -49,6 +51,17 @@ export const CRAFTING_LAB_CURRENCY_ICON_URLS = {
     "https://www.poe2wiki.net/images/9/9c/Chaos_Orb_inventory_icon.png",
   orb_annulment:
     "https://www.poe2wiki.net/images/4/4c/Orb_of_Annulment_inventory_icon.png",
+  orb_divine:
+    "https://www.poe2wiki.net/images/5/58/Divine_Orb_inventory_icon.png",
+  orb_vaal:
+    "https://www.poe2wiki.net/images/2/2c/Vaal_Orb_inventory_icon.png",
+  orb_hinekoras_lock:
+    "https://www.poe2wiki.net/images/5/53/Hinekora%27s_Lock_inventory_icon.png",
+  orb_mirror:
+    "https://www.poe2wiki.net/images/9/9c/Mirror_of_Kalandra_inventory_icon.png",
+  /** 징조 샘플 아이콘 — UI 자리 표시용 */
+  omen_placeholder:
+    "https://www.poe2wiki.net/images/5/5d/Omen_of_Sanctification_inventory_icon.png",
   /** LIFE_ESSENCE — 시각: Lesser Essence of the Body */
   essence_life:
     "https://www.poe2wiki.net/images/c/cb/Lesser_Essence_of_the_Body_inventory_icon.png",

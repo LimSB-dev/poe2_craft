@@ -96,7 +96,7 @@ export const DesiredModsPanel = ({
 
   return (
     <div className="flex flex-col gap-3">
-      <div className="min-h-[216px] flex flex-col justify-start">
+      <div className="min-h-[280px] flex flex-col justify-start">
         {desiredMods.length === 0 ? (
           <p className="text-sm text-zinc-400 dark:text-zinc-500 py-1">
             {t("emptyState")}

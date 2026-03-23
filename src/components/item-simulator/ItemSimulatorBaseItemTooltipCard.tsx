@@ -1,19 +1,20 @@
 "use client";
 
+import Image from "next/image";
 import { useTranslations } from "next-intl";
-import type { ReactElement } from "react";
+import { useState, type ReactElement } from "react";
 
 import { ItemSimulatorCatalogBaseName } from "@/components/item-simulator/i18n/ItemSimulatorCatalogBaseName";
 import { ItemSimulatorExplicitModLine } from "@/components/item-simulator/ItemSimulatorExplicitModLine";
 import { buildHinekoraExplicitSlotHighlights } from "@/lib/crafting-lab/hinekoraHoverPreviewDiff";
 import type { IBaseItemDbRecordType } from "@/lib/poe2-item-simulator/baseItemDb";
+import { getBaseItemImageUrl } from "@/lib/poe2-item-simulator/baseItemImagePaths";
 import { buildBaseItemRequirementLineParts } from "@/lib/poe2-item-simulator/buildBaseItemRequirementLineParts";
 import type { IItemRoll, ItemRarityType } from "@/lib/poe2-item-simulator/types";
 
 type TooltipRarityStyleType = {
   outerBorder: string;
   leftColumnBorder: string;
-  leftThumbBorder: string;
   name: string;
   divider: string;
 };
@@ -22,21 +23,18 @@ const TOOLTIP_RARITY_STYLE: Record<ItemRarityType, TooltipRarityStyleType> = {
   normal: {
     outerBorder: "border-white/45",
     leftColumnBorder: "border-r-white/25",
-    leftThumbBorder: "border-white/20",
     name: "text-zinc-100",
     divider: "border-t-white/20",
   },
   magic: {
     outerBorder: "border-sky-500/80",
     leftColumnBorder: "border-r-sky-600/45",
-    leftThumbBorder: "border-sky-600/40",
     name: "text-sky-400",
     divider: "border-t-sky-700/35",
   },
   rare: {
     outerBorder: "border-amber-500/90",
     leftColumnBorder: "border-r-amber-600/45",
-    leftThumbBorder: "border-amber-700/40",
     name: "text-amber-300",
     divider: "border-t-amber-800/40",
   },
@@ -50,6 +48,8 @@ type UnrevealedDesecratedClickPayloadType = {
 type ItemSimulatorBaseItemTooltipCardPropsType = {
   record: IBaseItemDbRecordType;
   baseItemKey: string;
+  /** public 이미지 파일명 규칙용 영문명(없으면 baseItemKey fallback slug). */
+  itemImageEnglishName?: string;
   /** 크래프트 랩 등: 툴팁 안에 접두·접미를 표시할 때 전달 */
   explicitItemRoll?: IItemRoll | null;
   /**
@@ -68,6 +68,7 @@ type ItemSimulatorBaseItemTooltipCardPropsType = {
 export const ItemSimulatorBaseItemTooltipCard = ({
   record,
   baseItemKey,
+  itemImageEnglishName,
   explicitItemRoll,
   previewExplicitItemRoll,
   onUnrevealedDesecratedModClick,
@@ -75,6 +76,7 @@ export const ItemSimulatorBaseItemTooltipCard = ({
 }: ItemSimulatorBaseItemTooltipCardPropsType): ReactElement => {
   const t = useTranslations("simulator.itemSimulatorWorkspace");
   const tSim = useTranslations("simulator");
+  const [imageLoadErrorSrc, setImageLoadErrorSrc] = useState<string | null>(null);
 
   const requirementParts = buildBaseItemRequirementLineParts(record, t);
   const implicitKeys = record.implicitMods ?? [];
@@ -99,18 +101,37 @@ export const ItemSimulatorBaseItemTooltipCard = ({
 
   const rollRarity: ItemRarityType = displayExplicitRoll?.rarity ?? "normal";
   const rc = TOOLTIP_RARITY_STYLE[rollRarity];
+  const itemImageSrc = getBaseItemImageUrl({
+    baseItemKey,
+    equipmentType: record.equipmentType,
+    subType: record.subType,
+    itemEnglishName: itemImageEnglishName,
+  });
+  const isImageLoadError = imageLoadErrorSrc === itemImageSrc;
 
   return (
     <div
       className={`rounded border bg-[#0f0c07] overflow-hidden flex ${rc.outerBorder}`}
     >
       <div
-        className={`shrink-0 w-20 bg-[#0a0806] flex items-center justify-center p-2 ${rc.leftColumnBorder}`}
+        className={`shrink-0 w-32 flex items-center justify-center p-2 ${rc.leftColumnBorder}`}
       >
-        <div
-          className={`w-14 h-14 border border-dashed flex items-center justify-center ${rc.leftThumbBorder}`}
-        >
-          <span className="text-[10px] text-zinc-600 select-none">img</span>
+        <div className="flex h-28 w-28 items-center justify-center">
+          {isImageLoadError ? (
+            <span className="text-xs text-zinc-600 select-none">img</span>
+          ) : (
+            <Image
+              src={itemImageSrc}
+              alt={baseItemKey}
+              width={112}
+              height={112}
+              className="h-full w-full object-contain"
+              loading="lazy"
+              onError={() => {
+                setImageLoadErrorSrc(itemImageSrc);
+              }}
+            />
+          )}
         </div>
       </div>
 

@@ -183,12 +183,13 @@ export const CRAFTING_LAB_CURRENCY_ICON_URLS = {
 } as const;
 
 export type CraftingLabCurrencyIconIdType = keyof typeof CRAFTING_LAB_CURRENCY_ICON_URLS;
+const CRAFTING_LAB_LOCAL_ICON_BASE_PATH: string = "/images/crafting-lab/currency";
 
 export const getCraftingLabCurrencyIconUrl = (
   id: string,
 ): string | undefined => {
   if (id in CRAFTING_LAB_CURRENCY_ICON_URLS) {
-    return CRAFTING_LAB_CURRENCY_ICON_URLS[id as CraftingLabCurrencyIconIdType];
+    return `${CRAFTING_LAB_LOCAL_ICON_BASE_PATH}/${id}.png`;
   }
   return undefined;
 };

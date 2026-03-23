@@ -1002,7 +1002,7 @@ export const CraftingLabWorkspace = (): ReactElement => {
                   ) : null}
                 </ReservedStatusRegion>
               ) : null}
-              <div className="min-h-[216px] flex flex-col justify-start">
+              <div className="min-h-[280px] flex flex-col justify-start">
                 {selectedBaseItemRecord ? (
                   <ItemSimulatorBaseItemTooltipCard
                     record={selectedBaseItemRecord}

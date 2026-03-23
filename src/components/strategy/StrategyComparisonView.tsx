@@ -5,6 +5,7 @@ import { Link } from "@/lib/i18n/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { ReactElement } from "react";
 import { LocaleSwitcher } from "@/components/i18n/LocaleSwitcher";
+import { ReservedStatusRegion } from "@/components/shared/ReservedStatusRegion";
 import type { IStrategyComparisonEngineResultType } from "@/lib/poe2-item-simulator/strategyComparisonEngine";
 import {
   StrategySuccessRateChart,
@@ -207,17 +208,19 @@ export const StrategyComparisonView = (): ReactElement => {
           </div>
         </section>
 
-        {loading && (
-          <p className="text-sm text-zinc-600 dark:text-zinc-400" aria-live="polite">
-            {t("loading")}
-          </p>
-        )}
-
-        {error !== null && !loading && (
-          <p className="text-sm text-red-600 dark:text-red-400" role="alert">
-            {error}
-          </p>
-        )}
+        <ReservedStatusRegion
+          minHeightClass="min-h-[4rem]"
+          isEmpty={!loading && error === null}
+          placeholderTextClassName="text-sm leading-snug"
+        >
+          {loading ? (
+            <p className="text-sm text-zinc-600 dark:text-zinc-400">{t("loading")}</p>
+          ) : error !== null ? (
+            <p className="text-sm text-red-600 dark:text-red-400" role="alert">
+              {error}
+            </p>
+          ) : null}
+        </ReservedStatusRegion>
 
         {data !== null && !loading && best !== undefined && (
           <section

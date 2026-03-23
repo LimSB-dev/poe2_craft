@@ -6,6 +6,7 @@ import type { ReactElement } from "react";
 import { ItemSimulatorCatalogBaseName } from "@/components/item-simulator/i18n/ItemSimulatorCatalogBaseName";
 import { ItemSimulatorCatalogItemClassLabel } from "@/components/item-simulator/i18n/ItemSimulatorCatalogItemClassLabel";
 import { ItemSimulatorPanelShell } from "@/components/item-simulator/ItemSimulatorPanelShell";
+import { ReservedStatusRegion } from "@/components/shared/ReservedStatusRegion";
 import { BASE_ITEM_DB } from "@/lib/poe2-item-simulator/baseItemDb";
 import type { IRlTrainResponseType } from "@/lib/rl/rlTrainApiTypes";
 import type {
@@ -109,11 +110,17 @@ export const ItemSimulatorResultPanel = ({
             );
           })()}
 
-          {rlError !== null ? (
-            <p className="text-sm text-red-600 dark:text-red-400" role="alert">
-              {rlError}
-            </p>
-          ) : null}
+          <ReservedStatusRegion
+            minHeightClass="min-h-[3.25rem]"
+            isEmpty={rlError === null}
+            placeholderTextClassName="text-sm leading-snug"
+          >
+            {rlError !== null ? (
+              <p className="text-sm text-red-600 dark:text-red-400" role="alert">
+                {rlError}
+              </p>
+            ) : null}
+          </ReservedStatusRegion>
 
           {!rlTrainResponse ? (
             <p className="text-sm text-zinc-600 dark:text-zinc-400">

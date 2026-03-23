@@ -15,8 +15,11 @@
     "abyssTabHint": "保存された骨とアビスオーメンを同じタブで選びます。骨はレアに未公開の腐敗行を付け、カードの未公開行をクリックすると候補3つから1つを選べます（重みは近似・正確な数値は公開されていません）。",
     "abyssTabAbyssOmensHeading": "アビスオーメン",
     "stagedOmenBanner": "選択中のオーメン: {name} — 次の骨・消滅（光）・カオス（Whittling）に反映されます。",
+    "stagedOmenPanelHeading": "有効なオーメン",
+    "stagedOmenPanelEmpty": "未選択 — アビスまたは儀式タブでオーメンを押して有効化します。",
+    "stagedOmenPanelHint": "次の骨・消滅（光）・カオス（Whittling）に反映されます。",
     "abyssSlotDisabledTooltip": "手動クラフトに未接続です。",
-    "ritualTabHint": "儀式（Ritual）報酬のオーメンです。Whittling は次のカオスが最も高い tier 番号のモッドを消してから1行振り直します（このラボの近似）。",
+    "ritualTabHint": "儀式（Ritual）報酬のオーメンです。最大3つまで同時に有効化できます。Whittling は次のカオスが最も高い tier 番号のモッドを消してから1行振り直します（このラボの近似）。",
     "ritualOmenSimulationNote": "儀式オーメンはスタッシュから消費されず、選択状態だけが保持されます。シミュレーションでは効果の要約が表示されます。",
     "omenSimulationNote": "オーメンはスタッシュから消費されず、選択状態だけが保持されます。シミュレーションではオーメンを押すと、このラボでの効果の要約が表示されます。",
     "omenToggleAria": "{name}、オーメンのオン/オフ",
@@ -259,6 +262,8 @@
       "omen_the_hunt": "狩り・マップ — このラボでは未接続。",
       "omen_the_blessed": "祝福系 — このラボでは未接続。",
       "omen_placeholder": "プレースホルダーのお告げ。"
-    }
+    },
+    "stagedOmenPanelCount": "有効 {count}/{max}",
+    "stagedOmenPanelSlotHint": "押すと有効一覧から解除されます。"
   }
 }

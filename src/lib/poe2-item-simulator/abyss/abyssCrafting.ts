@@ -4,6 +4,7 @@
  * @see https://www.poe2wiki.net/wiki/Abyss
  */
 import { BASE_ITEM_SUB_TYPES_BY_EQUIPMENT, type IBaseItemSubTypeType } from "../baseItemDb";
+import { isCorruptedRoll } from "../itemCorruptionCraftingGuard";
 import { rollRandomMod, type IModRollBaseFiltersType } from "../roller";
 import { getRandomIntInclusive } from "../random";
 import type { IModDefinition, IItemRoll, ModTypeType } from "../types";
@@ -96,11 +97,23 @@ export const getBoneDefinition = (
   });
 };
 
+/**
+ * Preserved / gnawed / ancient bone (abyss) — applicability for adding a desecrated line in this sim.
+ *
+ * - `rarity === "rare"`.
+ * - Fewer than six explicit mods (room for one more).
+ * - `baseFilters.baseItemSubType` must match the bone’s {@link IBoneDefinitionType.slotCategory}
+ *   (jewellery+belt, weapon+quiver, armour+shield+buckler, or talisman for cranium).
+ * - Not corrupted (Putrefaction already corrupts; further standard abyss crafting is blocked).
+ */
 export const canApplyPreservedBone = (
   item: IItemRoll,
   bone: IBoneDefinitionType,
   baseFilters?: { baseItemSubType?: IBaseItemSubTypeType },
 ): boolean => {
+  if (isCorruptedRoll(item)) {
+    return false;
+  }
   if (item.rarity !== "rare") {
     return false;
   }

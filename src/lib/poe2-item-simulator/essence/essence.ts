@@ -4,6 +4,10 @@ import {
   type IPrefixSuffixSplitType,
 } from "../currency/chaosOrb";
 import type { IBaseItemSubTypeType } from "../baseItemDb";
+import {
+  assertRollNotCorruptedForStandardCrafting,
+  isCorruptedRoll,
+} from "../itemCorruptionCraftingGuard";
 import { getRandomIntInclusive } from "../random";
 import { rollRareModSlots, type IModRollBaseFiltersType } from "../roller";
 import type {
@@ -218,11 +222,23 @@ export const getBenchModFiltersForEssence = (
   return {};
 };
 
+/**
+ * Lesser (craft-lab) essences — applicability.
+ *
+ * - Item must not be corrupted (standard crafting).
+ * - `essence.requiresItemRarity`: magic-only essences in this DB require `rarity === "magic"`;
+ *   rare-only rules would require `rarity === "rare"` (reserved for future tiers).
+ * - When `essence.allowedSubTypes` is non-empty, `baseFilters.baseItemSubType` must be present
+ *   and included in that list (bench/base must be known).
+ */
 export const canApplyEssence = (
   item: IItemRoll,
   essence: IEssenceDefinitionType,
   baseFilters?: IModRollBaseFiltersType,
 ): boolean => {
+  if (isCorruptedRoll(item)) {
+    return false;
+  }
   if (essence.requiresItemRarity === "magic" && item.rarity !== "magic") {
     return false;
   }
@@ -280,6 +296,7 @@ export const applyEssence = (
   essence: IEssenceDefinitionType,
   baseFilters?: IModRollBaseFiltersType,
 ): IItemRoll => {
+  assertRollNotCorruptedForStandardCrafting(_item);
   if (!canApplyEssence(_item, essence, baseFilters)) {
     throw new Error("Essence: item rarity or base equipment does not match this essence.");
   }

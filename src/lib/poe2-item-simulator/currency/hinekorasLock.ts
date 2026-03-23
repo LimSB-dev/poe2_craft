@@ -1,3 +1,7 @@
+import {
+  assertRollNotCorruptedForStandardCrafting,
+  isCorruptedRoll,
+} from "../itemCorruptionCraftingGuard";
 import type { IItemRoll } from "../types";
 
 /**
@@ -16,7 +20,16 @@ export const stripHinekoraLock = (item: IItemRoll): IItemRoll => {
   };
 };
 
+/**
+ * Hinekora’s Lock — applicability.
+ *
+ * - No lock already active (`hinekoraLockActive` not true).
+ * - Not corrupted (next standard currency would be blocked anyway; keeps UI consistent).
+ */
 export const canApplyHinekorasLock = (item: IItemRoll): boolean => {
+  if (isCorruptedRoll(item)) {
+    return false;
+  }
   return item.hinekoraLockActive !== true;
 };
 
@@ -24,6 +37,7 @@ export const canApplyHinekorasLock = (item: IItemRoll): boolean => {
  * 자물쇠 적용: 옵션 수치는 바꾸지 않고, 다음 화폐 1회에 대해 예견 가능 상태만 켠다.
  */
 export const applyHinekorasLock = (item: IItemRoll): IItemRoll => {
+  assertRollNotCorruptedForStandardCrafting(item);
   if (!canApplyHinekorasLock(item)) {
     throw new Error("Hinekora's Lock is already active on this item.");
   }

@@ -2,7 +2,6 @@ import {
   CRAFT_LAB_ORB_SLOT_IDS,
   orbSlotIdToFamilyKind,
   type CraftingCurrencyIdType,
-  type CraftingLabOrbSlotIdType,
   type CraftingOrbFamilyIdType,
 } from "@/lib/crafting-lab/craftingLabCurrencyIds";
 import {
@@ -14,14 +13,6 @@ import {
   applyOrbOfAugmentation,
   applyOrbOfTransmutation,
   applyRegalOrb,
-  canApplyOrbOfAlchemy,
-  canApplyOrbOfAnnulment,
-  canApplyOrbOfAugmentation,
-  canApplyOrbOfTransmutation,
-  canApplyChaosOrb,
-  canApplyExaltedOrb,
-  canApplyFracturingOrb,
-  canApplyRegalOrb,
 } from "@/lib/poe2-item-simulator/currency";
 import {
   applyEssence,
@@ -30,6 +21,8 @@ import {
 } from "@/lib/poe2-item-simulator/essence/essence";
 import type { IModRollBaseFiltersType } from "@/lib/poe2-item-simulator/roller";
 import type { IItemRoll } from "@/lib/poe2-item-simulator/types";
+
+import { isCraftLabOrbSlotApplicable } from "./isCraftLabOrbFamilyApplicable";
 
 const CRAFT_LAB_ORB_APPLY: Record<
   CraftingOrbFamilyIdType,
@@ -43,42 +36,6 @@ const CRAFT_LAB_ORB_APPLY: Record<
   orb_fracturing: (roll) => applyFracturingOrb(roll),
   orb_chaos: (roll, filters) => applyChaosOrb(roll, filters),
   orb_annulment: (roll) => applyOrbOfAnnulment(roll),
-};
-
-const isCraftLabOrbApplicable = (
-  id: CraftingLabOrbSlotIdType,
-  roll: IItemRoll,
-): boolean => {
-  const family = orbSlotIdToFamilyKind(id);
-  switch (family) {
-    case "orb_transmutation": {
-      return canApplyOrbOfTransmutation(roll);
-    }
-    case "orb_augmentation": {
-      return canApplyOrbOfAugmentation(roll);
-    }
-    case "orb_regal": {
-      return canApplyRegalOrb(roll);
-    }
-    case "orb_alchemy": {
-      return canApplyOrbOfAlchemy(roll);
-    }
-    case "orb_exalted": {
-      return canApplyExaltedOrb(roll);
-    }
-    case "orb_fracturing": {
-      return canApplyFracturingOrb(roll);
-    }
-    case "orb_chaos": {
-      return canApplyChaosOrb(roll);
-    }
-    case "orb_annulment": {
-      return canApplyOrbOfAnnulment(roll);
-    }
-    default: {
-      return false;
-    }
-  }
 };
 
 export type CloneItemRollFnType = (roll: IItemRoll) => IItemRoll;
@@ -96,7 +53,7 @@ export const buildHinekoraLockedDraftTable = (
 ): Partial<Record<CraftingCurrencyIdType, IItemRoll>> => {
   const out: Partial<Record<CraftingCurrencyIdType, IItemRoll>> = {};
   for (const id of CRAFT_LAB_ORB_SLOT_IDS) {
-    if (!isCraftLabOrbApplicable(id, rollForApplicability)) {
+    if (!isCraftLabOrbSlotApplicable(id, rollForApplicability)) {
       continue;
     }
     try {

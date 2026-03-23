@@ -4,6 +4,10 @@
  *
  * Simulator limits: no flasks/charms/relics/corruption. Divine Orb is stubbed until mod numeric rolls exist.
  */
+import {
+  assertRollNotCorruptedForStandardCrafting,
+  isCorruptedRoll,
+} from "../itemCorruptionCraftingGuard";
 import { getRandomIntInclusive } from "../random";
 import { rollRandomMod, rollRareItemRoll, type IModRollBaseFiltersType } from "../roller";
 import type { IItemRoll, IModDefinition, ModTypeType } from "../types";
@@ -86,21 +90,49 @@ const countRemovableAffixes = (item: IItemRoll): number => {
   }).length;
 };
 
-/** `applyOrbOfTransmutation`이 예외 없이 적용 가능한지(노말·명시 옵션 없음). */
+/**
+ * Orb of Transmutation — applicability.
+ *
+ * - `rarity === "normal"`.
+ * - No explicit modifiers (prefix + suffix count === 0).
+ * - Not corrupted (`isCorrupted` unset/false); matches simulator rule for standard currency.
+ */
 export const canApplyOrbOfTransmutation = (item: IItemRoll): boolean => {
+  if (isCorruptedRoll(item)) {
+    return false;
+  }
   return item.rarity === "normal" && totalAffixCount(item) === 0;
 };
 
-/** `applyOrbOfAugmentation` 적용 가능 여부(매직·슬롯 여유). */
+/**
+ * Orb of Augmentation — applicability.
+ *
+ * - `rarity === "magic"`.
+ * - Fewer than two explicit mods (magic cap: 1 prefix + 1 suffix in this sim).
+ * - Not corrupted.
+ */
 export const canApplyOrbOfAugmentation = (item: IItemRoll): boolean => {
+  if (isCorruptedRoll(item)) {
+    return false;
+  }
   return (
     item.rarity === "magic" &&
     totalAffixCount(item) < MAGIC_MAX_PREFIX_SLOTS + MAGIC_MAX_SUFFIX_SLOTS
   );
 };
 
-/** `applyRegalOrb` 적용 가능 여부. */
+/**
+ * Regal Orb — applicability.
+ *
+ * - `rarity === "magic"`.
+ * - At least one explicit mod (Regal needs something to “carry” into rare).
+ * - After promoting to rare mentally, total affixes must stay below 6 (room for the extra roll).
+ * - Not corrupted.
+ */
 export const canApplyRegalOrb = (item: IItemRoll): boolean => {
+  if (isCorruptedRoll(item)) {
+    return false;
+  }
   if (item.rarity !== "magic" || totalAffixCount(item) === 0) {
     return false;
   }
@@ -115,8 +147,16 @@ export const canApplyRegalOrb = (item: IItemRoll): boolean => {
   return true;
 };
 
-/** `applyOrbOfAlchemy` 적용 가능 여부(노말 빈 아이템 또는 매직). */
+/**
+ * Orb of Alchemy — applicability.
+ *
+ * - Either: normal with **no** explicit mods, or any magic item (existing mods discarded on use).
+ * - Not rare / not corrupted.
+ */
 export const canApplyOrbOfAlchemy = (item: IItemRoll): boolean => {
+  if (isCorruptedRoll(item)) {
+    return false;
+  }
   if (item.rarity === "normal") {
     return totalAffixCount(item) === 0;
   }
@@ -126,13 +166,32 @@ export const canApplyOrbOfAlchemy = (item: IItemRoll): boolean => {
   return false;
 };
 
-/** `applyExaltedOrb` 적용 가능 여부. */
+/**
+ * Exalted Orb — applicability.
+ *
+ * - `rarity === "rare"`.
+ * - Total explicit affixes &lt; 6 (3 prefix / 3 suffix caps enforced when adding).
+ * - Not corrupted.
+ */
 export const canApplyExaltedOrb = (item: IItemRoll): boolean => {
+  if (isCorruptedRoll(item)) {
+    return false;
+  }
   return item.rarity === "rare" && totalAffixCount(item) < RARE_MAX_TOTAL_AFFIXES;
 };
 
-/** `applyChaosOrb` 적용 가능 여부 (레어만, PoE2). 분열 옵션만 있으면 제거할 수 없음. */
+/**
+ * Chaos Orb (PoE2-style in this sim) — applicability.
+ *
+ * - `rarity === "rare"`.
+ * - At least one explicit mod.
+ * - At least one **non-fractured** mod (fractured mods cannot be removed, so chaos would stall).
+ * - Not corrupted.
+ */
 export const canApplyChaosOrb = (item: IItemRoll): boolean => {
+  if (isCorruptedRoll(item)) {
+    return false;
+  }
   return (
     item.rarity === "rare" &&
     totalAffixCount(item) > 0 &&
@@ -140,8 +199,18 @@ export const canApplyChaosOrb = (item: IItemRoll): boolean => {
   );
 };
 
-/** 분열의 오브(Fracturing Orb): 레어·옵션 4개 이상·아직 분열 없음. */
+/**
+ * Fracturing Orb — applicability.
+ *
+ * - `rarity === "rare"`.
+ * - At least four explicit mods.
+ * - No mod already marked `isFractured` (at most one fracture in this sim).
+ * - Not corrupted.
+ */
 export const canApplyFracturingOrb = (item: IItemRoll): boolean => {
+  if (isCorruptedRoll(item)) {
+    return false;
+  }
   if (item.rarity !== "rare") {
     return false;
   }
@@ -151,15 +220,30 @@ export const canApplyFracturingOrb = (item: IItemRoll): boolean => {
   return totalAffixCount(item) >= 4;
 };
 
-/** `applyOrbOfAnnulment` 적용 가능 여부. 분열 옵션은 제거 대상에서 제외. */
+/**
+ * Orb of Annulment — applicability.
+ *
+ * - `rarity` is magic or rare.
+ * - At least one removable explicit (non-fractured) mod.
+ * - Not corrupted.
+ */
 export const canApplyOrbOfAnnulment = (item: IItemRoll): boolean => {
+  if (isCorruptedRoll(item)) {
+    return false;
+  }
   if (item.rarity !== "magic" && item.rarity !== "rare") {
     return false;
   }
   return countRemovableAffixes(item) > 0;
 };
 
-/** 징조: 빛 — 제거 가능한 **타락(Desecrated)** 옵션이 하나 이상 있을 때만. */
+/**
+ * Omen of Light — annul **desecrated** lines only — applicability.
+ *
+ * - `rarity` is magic or rare.
+ * - At least one explicit that is `isDesecrated` and not fractured (fractured still protected).
+ * - **Allowed on corrupted items** (Putrefaction / abyss paths); do not gate on `isCorrupted`.
+ */
 export const canApplyOrbOfAnnulmentDesecratedOnly = (item: IItemRoll): boolean => {
   if (item.rarity !== "magic" && item.rarity !== "rare") {
     return false;
@@ -308,6 +392,7 @@ export const applyOrbOfTransmutation = (
   item: IItemRoll,
   baseFilters?: IModRollBaseFiltersType,
 ): IItemRoll => {
+  assertRollNotCorruptedForStandardCrafting(item);
   if (item.rarity !== "normal") {
     throw new Error("Orb of Transmutation can only be used on normal items.");
   }
@@ -332,6 +417,7 @@ export const applyOrbOfAugmentation = (
   item: IItemRoll,
   baseFilters?: IModRollBaseFiltersType,
 ): IItemRoll => {
+  assertRollNotCorruptedForStandardCrafting(item);
   if (item.rarity !== "magic") {
     throw new Error("Orb of Augmentation can only be used on magic items.");
   }
@@ -343,6 +429,7 @@ export const applyOrbOfAugmentation = (
 
 /** 제왕의 오브 — Regal Orb: magic → rare, keeps current mods, adds one random explicit. */
 export const applyRegalOrb = (item: IItemRoll, baseFilters?: IModRollBaseFiltersType): IItemRoll => {
+  assertRollNotCorruptedForStandardCrafting(item);
   if (item.rarity !== "magic") {
     throw new Error("Regal Orb can only be used on magic items.");
   }
@@ -368,6 +455,7 @@ export const applyOrbOfAlchemy = (
   item: IItemRoll,
   baseFilters?: IModRollBaseFiltersType,
 ): IItemRoll => {
+  assertRollNotCorruptedForStandardCrafting(item);
   if (item.rarity !== "normal" && item.rarity !== "magic") {
     throw new Error("Orb of Alchemy can only be used on normal or magic items.");
   }
@@ -379,6 +467,7 @@ export const applyOrbOfAlchemy = (
 
 /** 엑잘티드 오브 — Exalted Orb: adds one random explicit to a rare item (up to 6 total, 3/3 cap). */
 export const applyExaltedOrb = (item: IItemRoll, baseFilters?: IModRollBaseFiltersType): IItemRoll => {
+  assertRollNotCorruptedForStandardCrafting(item);
   if (item.rarity !== "rare") {
     throw new Error("Exalted Orb can only be used on rare items.");
   }
@@ -392,6 +481,7 @@ export const applyExaltedOrb = (item: IItemRoll, baseFilters?: IModRollBaseFilte
  * 분열의 오브 — Fracturing Orb: 레어에 옵션 4개 이상일 때 무작위 옵션 하나를 분열(고정)시킴. 이미 분열된 아이템에는 사용 불가.
  */
 export const applyFracturingOrb = (item: IItemRoll): IItemRoll => {
+  assertRollNotCorruptedForStandardCrafting(item);
   const normalized = enforceAtMostOneFracturedMod(item);
   if (!canApplyFracturingOrb(normalized)) {
     throw new Error(
@@ -424,6 +514,7 @@ export const applyFracturingOrb = (item: IItemRoll): IItemRoll => {
  * 카오스 오브 — Chaos Orb (PoE2): 레어 전용. 무작위 명시 옵션 하나 제거 후 하나 추가, 희귀도 유지.
  */
 export const applyChaosOrb = (item: IItemRoll, baseFilters?: IModRollBaseFiltersType): IItemRoll => {
+  assertRollNotCorruptedForStandardCrafting(item);
   if (item.rarity !== "rare") {
     throw new Error("Chaos Orb can only be used on rare items.");
   }
@@ -496,6 +587,7 @@ export const applyChaosOrbWithWhittling = (
   item: IItemRoll,
   baseFilters?: IModRollBaseFiltersType,
 ): IItemRoll => {
+  assertRollNotCorruptedForStandardCrafting(item);
   if (item.rarity !== "rare") {
     throw new Error("Chaos Orb can only be used on rare items.");
   }
@@ -511,6 +603,7 @@ export const applyChaosOrbWithWhittling = (
 
 /** 소멸의 오브 — Orb of Annulment: 무작위 명시 하나 제거. 일반/매직/레어 등급은 유지(옵션 0개여도). */
 export const applyOrbOfAnnulment = (item: IItemRoll): IItemRoll => {
+  assertRollNotCorruptedForStandardCrafting(item);
   if (item.rarity !== "magic" && item.rarity !== "rare") {
     throw new Error("Orb of Annulment can only be used on magic or rare items.");
   }

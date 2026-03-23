@@ -4,9 +4,9 @@
  *
  * Simulator limits: no flasks/charms/relics/corruption. Divine Orb is stubbed until mod numeric rolls exist.
  */
-import { getRandomIntInclusive } from "./random";
-import { rollRandomMod, rollRareItemRoll, type IModRollBaseFiltersType } from "./roller";
-import type { IItemRoll, IModDefinition, ModTypeType } from "./types";
+import { getRandomIntInclusive } from "../random";
+import { rollRandomMod, rollRareItemRoll, type IModRollBaseFiltersType } from "../roller";
+import type { IItemRoll, IModDefinition, ModTypeType } from "../types";
 
 const MAGIC_MAX_PREFIX_SLOTS: number = 1;
 const MAGIC_MAX_SUFFIX_SLOTS: number = 1;

@@ -1,4 +1,4 @@
-import type { IItemRoll } from "./types";
+import type { IItemRoll } from "../types";
 
 /**
  * 히네코라의 자물쇠 — 다음에 사용할 화폐 1회의 결과를 미리 볼 수 있게 한다(시뮬: 예견 후 확인 시 적용).

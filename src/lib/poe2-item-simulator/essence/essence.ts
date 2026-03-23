@@ -2,16 +2,16 @@ import {
   RARE_FULL_REROLL_AFFIX_MAX,
   RARE_FULL_REROLL_AFFIX_MIN,
   type IPrefixSuffixSplitType,
-} from "./chaosOrb";
-import type { IBaseItemSubTypeType } from "./baseItemDb";
-import { getRandomIntInclusive } from "./random";
-import { rollRareModSlots, type IModRollBaseFiltersType } from "./roller";
+} from "../currency/chaosOrb";
+import type { IBaseItemSubTypeType } from "../baseItemDb";
+import { getRandomIntInclusive } from "../random";
+import { rollRareModSlots, type IModRollBaseFiltersType } from "../roller";
 import type {
   IEssenceDefinitionType,
   IItemRoll,
   IModDefinition,
   ModTypeType,
-} from "./types";
+} from "../types";
 
 const RARE_MAX_PREFIX_SLOTS: number = 3;
 const RARE_MAX_SUFFIX_SLOTS: number = 3;

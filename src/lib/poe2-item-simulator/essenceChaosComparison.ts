@@ -1,10 +1,10 @@
-import { applyLegacyChaosOrbFullReroll, countGoodMods, GOOD_MOD_MAX_TIER } from "./chaosOrb";
+import { applyLegacyChaosOrbFullReroll, countGoodMods, GOOD_MOD_MAX_TIER } from "./currency/chaosOrb";
 import {
   applyEssence,
   ATTACK_ESSENCE,
   getBenchModFiltersForEssence,
   LIFE_ESSENCE,
-} from "./essence";
+} from "./essence/essence";
 import type { IEssenceDefinitionType, IItemRoll } from "./types";
 
 const EMPTY_MAGIC: IItemRoll = { rarity: "magic", prefixes: [], suffixes: [] };

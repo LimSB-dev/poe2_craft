@@ -15,7 +15,7 @@ import {
   canApplyOrbOfTransmutation,
   canApplyRegalOrb,
   enforceAtMostOneFracturedMod,
-} from "@/lib/poe2-item-simulator/basicCurrencyOrbs";
+} from "@/lib/poe2-item-simulator/currency/basicCurrencyOrbs";
 import type { IItemRoll, IModDefinition } from "@/lib/poe2-item-simulator/types";
 
 const baseMod = (overrides: Partial<IModDefinition> = {}): IModDefinition => {

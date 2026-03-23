@@ -1,6 +1,6 @@
 import express, { type Request, type Response } from "express";
 import { runStrategyComparisonEngine } from "../src/lib/poe2-item-simulator/strategyComparisonEngine";
-import { GOOD_MOD_MAX_TIER } from "../src/lib/poe2-item-simulator/chaosOrb";
+import { GOOD_MOD_MAX_TIER } from "../src/lib/poe2-item-simulator/currency/chaosOrb";
 
 const DEFAULT_TRIALS: number = 4000;
 const MAX_TRIALS: number = 20000;

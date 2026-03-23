@@ -3,10 +3,10 @@
  * 심연 징조(Abyss Omen)로 다음 뼈/소멸 행동을 보조합니다.
  * @see https://www.poe2wiki.net/wiki/Abyss
  */
-import { BASE_ITEM_SUB_TYPES_BY_EQUIPMENT, type IBaseItemSubTypeType } from "./baseItemDb";
-import { rollRandomMod, type IModRollBaseFiltersType } from "./roller";
-import { getRandomIntInclusive } from "./random";
-import type { IModDefinition, IItemRoll, ModTypeType } from "./types";
+import { BASE_ITEM_SUB_TYPES_BY_EQUIPMENT, type IBaseItemSubTypeType } from "../baseItemDb";
+import { rollRandomMod, type IModRollBaseFiltersType } from "../roller";
+import { getRandomIntInclusive } from "../random";
+import type { IModDefinition, IItemRoll, ModTypeType } from "../types";
 
 const RARE_MAX_TOTAL_AFFIXES: number = 6;
 

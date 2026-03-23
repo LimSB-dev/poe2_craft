@@ -1,5 +1,5 @@
 """
-Mirror of ``src/lib/poe2-item-simulator/currencyExaltExchangeRates.ts`` for RL.
+Mirror of ``src/lib/poe2-item-simulator/currency/currencyExaltExchangeRates.ts`` for RL.
 
 Keep numbers in sync when editing TypeScript.
 

@@ -1,4 +1,4 @@
-import { countGoodMods, GOOD_MOD_MAX_TIER } from "./chaosOrb";
+import { countGoodMods, GOOD_MOD_MAX_TIER } from "./currency/chaosOrb";
 import type { IItemRoll } from "./types";
 
 /** When exactly one good mod exists, continue with this probability (otherwise stop). */

@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { GOOD_MOD_MAX_TIER } from "@/lib/poe2-item-simulator/chaosOrb";
+import { GOOD_MOD_MAX_TIER } from "@/lib/poe2-item-simulator/currency/chaosOrb";
 import { runStrategyComparisonEngine } from "@/lib/poe2-item-simulator/strategyComparisonEngine";
 
 const MAX_TRIALS: number = 50000;

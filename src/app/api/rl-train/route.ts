@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 
-import { getRlCraftingActionCostsExalt } from "@/lib/poe2-item-simulator/currencyExaltExchangeRates";
+import {
+  getRlCraftingActionCostsExalt,
+} from "@/lib/poe2-item-simulator/currency/currencyExaltExchangeRates";
 import {
   normalizeRlTrainDesiredMods,
   parseRlTrainBaseItemKey,

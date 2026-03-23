@@ -58,7 +58,7 @@ import {
   isUnrevealedDesecratedMod,
   rollSoulWellRevealCandidates,
   type CraftLabAbyssBoneIdType,
-} from "@/lib/poe2-item-simulator/abyssCrafting";
+} from "@/lib/poe2-item-simulator/abyss/abyssCrafting";
 import {
   toAbyssOmenForBone,
   type CraftLabStagedOmenIdType,
@@ -84,19 +84,21 @@ import {
   canApplyFracturingOrb,
   canApplyRegalOrb,
   enforceAtMostOneFracturedMod,
-} from "@/lib/poe2-item-simulator/basicCurrencyOrbs";
-import { CRAFT_LAB_RITUAL_OMEN_IDS } from "@/lib/poe2-item-simulator/ritualCrafting";
+} from "@/lib/poe2-item-simulator/currency";
+import {
+  CRAFT_LAB_RITUAL_OMEN_IDS,
+} from "@/lib/poe2-item-simulator/ritual/ritualCrafting";
 import {
   applyHinekorasLock,
   canApplyHinekorasLock,
   stripHinekoraLock,
-} from "@/lib/poe2-item-simulator/hinekorasLock";
+} from "@/lib/poe2-item-simulator/currency/hinekorasLock";
 import {
   applyEssence,
   buildEssenceGuaranteedModPreviewRoll,
   canApplyEssence,
   CRAFT_LAB_ESSENCE_DEFINITIONS,
-} from "@/lib/poe2-item-simulator/essence";
+} from "@/lib/poe2-item-simulator/essence/essence";
 import type {
   IItemRoll,
   IModDefinition,

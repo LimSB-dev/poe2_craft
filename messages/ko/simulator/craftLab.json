@@ -43,6 +43,7 @@
     "omenPreview_the_blessed": "축복 관련 — 이 랩에서는 미연결입니다.",
     "boneRequiresRare": "보존된 뼈는 희귀 아이템에만 사용할 수 있습니다.",
     "boneWrongSlotOrFull": "희귀도는 맞지만 슬롯이 맞지 않거나 옵션이 가득 찼습니다.",
+    "boneCorrupted": "타락된 아이템에는 이 시뮬에서 보존된 뼈를 쓸 수 없습니다.",
     "boneRequiresRandomMode": "보존된 뼈는 랜덤 모드에서만 적용할 수 있습니다.",
     "boneSimulationNote": "뼈는 강제 타락 줄과 영혼의 우물 공개 전 단계가 섞여 상세 미리보기는 생략합니다. 랜덤 모드로 적용해 보세요.",
     "selectBaseHeading": "베이스 선택",

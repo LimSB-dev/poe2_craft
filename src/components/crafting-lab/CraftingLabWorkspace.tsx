@@ -841,7 +841,9 @@ export const CraftingLabWorkspace = (): ReactElement => {
       ? !boneOk
         ? itemRoll.rarity !== "rare"
           ? t("boneRequiresRare")
-          : t("boneWrongSlotOrFull")
+          : itemRoll.isCorrupted === true
+            ? t("boneCorrupted")
+            : t("boneWrongSlotOrFull")
         : t("boneRequiresRandomMode")
       : undefined;
     return (

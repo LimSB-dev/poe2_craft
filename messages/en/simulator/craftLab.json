@@ -43,6 +43,7 @@
     "omenPreview_the_blessed": "Blessing-related — not wired in this lab.",
     "boneRequiresRare": "Preserved bones can only be used on rare items.",
     "boneWrongSlotOrFull": "Rarity is correct but the slot does not match or affixes are full.",
+    "boneCorrupted": "Corrupted items cannot use preserved bones in this simulator.",
     "boneRequiresRandomMode": "Preserved bones can only be used in Random mode.",
     "boneSimulationNote": "Bones mix forced Desecrated lines with pre-reveal steps; detailed preview is skipped — use random mode.",
     "selectBaseHeading": "Choose base",

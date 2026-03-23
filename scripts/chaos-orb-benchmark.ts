@@ -1,3 +1,3 @@
-import { logChaosOrbGoodModBenchmark } from "../src/lib/poe2-item-simulator/chaosOrb";
+import { logChaosOrbGoodModBenchmark } from "../src/lib/poe2-item-simulator/currency/chaosOrb";
 
 logChaosOrbGoodModBenchmark(1000);

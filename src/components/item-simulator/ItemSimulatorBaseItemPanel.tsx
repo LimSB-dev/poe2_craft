@@ -56,7 +56,7 @@ export const ItemSimulatorBaseItemPanel = ({
       description={t("panels.baseItem.description")}
     >
       <div className="flex flex-col gap-3">
-        <div className="min-h-[216px] flex flex-col justify-start">
+        <div className="min-h-[280px] flex flex-col justify-start">
           {selectedBaseItemRecord ? (
             <ItemSimulatorBaseItemTooltipCard
               record={selectedBaseItemRecord}

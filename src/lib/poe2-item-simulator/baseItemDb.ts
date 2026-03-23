@@ -98,7 +98,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
   version: "2026.03.poe2db.snapshot.v1",
     records: [
     {
-      baseItemKey: "gloves_001",
+      baseItemKey: "gloves_variant_a",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -113,7 +113,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/다부진_미트",
     },
     {
-      baseItemKey: "gloves_002",
+      baseItemKey: "gloves_variant_b",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -128,7 +128,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/고정못_미트",
     },
     {
-      baseItemKey: "gloves_003",
+      baseItemKey: "gloves_variant_c",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -143,7 +143,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/단조한_미트",
     },
     {
-      baseItemKey: "gloves_004",
+      baseItemKey: "gloves_variant_d",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -158,7 +158,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/발전된_미트",
     },
     {
-      baseItemKey: "gloves_005",
+      baseItemKey: "gloves_variant_e",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -173,7 +173,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/주조한_미트",
     },
     {
-      baseItemKey: "gloves_006",
+      baseItemKey: "gloves_variant_f",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -188,7 +188,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/정교한_미트",
     },
     {
-      baseItemKey: "gloves_007",
+      baseItemKey: "gloves_variant_g",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -203,7 +203,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/거신_미트",
     },
     {
-      baseItemKey: "gloves_008",
+      baseItemKey: "gloves_variant_h",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -218,7 +218,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/우수한_미트",
     },
     {
-      baseItemKey: "gloves_009",
+      baseItemKey: "gloves_variant_i",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -233,7 +233,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/스웨드_팔보호구",
     },
     {
-      baseItemKey: "gloves_010",
+      baseItemKey: "gloves_variant_j",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -248,7 +248,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/굳건한_팔보호구",
     },
     {
-      baseItemKey: "gloves_011",
+      baseItemKey: "gloves_variant_k",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -263,7 +263,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/속박된_팔보호구",
     },
     {
-      baseItemKey: "gloves_012",
+      baseItemKey: "gloves_variant_l",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -278,7 +278,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/절개된_팔보호구",
     },
     {
-      baseItemKey: "gloves_013",
+      baseItemKey: "gloves_variant_m",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -293,7 +293,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/가시_팔보호구",
     },
     {
-      baseItemKey: "gloves_014",
+      baseItemKey: "gloves_variant_n",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -308,7 +308,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/섬세한_팔보호구",
     },
     {
-      baseItemKey: "gloves_015",
+      baseItemKey: "gloves_variant_o",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -323,7 +323,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/굳어진_팔보호구",
     },
     {
-      baseItemKey: "gloves_016",
+      baseItemKey: "gloves_variant_p",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -338,7 +338,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/아로새긴_팔보호구",
     },
     {
-      baseItemKey: "gloves_017",
+      baseItemKey: "gloves_variant_q",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -353,7 +353,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/찢긴_장갑",
     },
     {
-      baseItemKey: "gloves_018",
+      baseItemKey: "gloves_variant_r",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -368,7 +368,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/암울한_장갑",
     },
     {
-      baseItemKey: "gloves_019",
+      baseItemKey: "gloves_variant_s",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -383,7 +383,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/꿰맨_장갑",
     },
     {
-      baseItemKey: "gloves_020",
+      baseItemKey: "gloves_variant_t",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -398,7 +398,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/보석_박힌_장갑",
     },
     {
-      baseItemKey: "gloves_021",
+      baseItemKey: "gloves_variant_u",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -413,7 +413,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/복잡한_장갑",
     },
     {
-      baseItemKey: "gloves_022",
+      baseItemKey: "gloves_variant_v",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -428,7 +428,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/파우아비늘_장갑",
     },
     {
-      baseItemKey: "gloves_023",
+      baseItemKey: "gloves_variant_w",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -443,7 +443,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/수놓은_장갑",
     },
     {
-      baseItemKey: "gloves_024",
+      baseItemKey: "gloves_variant_x",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -458,7 +458,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/치장된_장갑",
     },
     {
-      baseItemKey: "gloves_025",
+      baseItemKey: "gloves_variant_y",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -474,7 +474,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/고리_갑옷_건틀릿",
     },
     {
-      baseItemKey: "gloves_026",
+      baseItemKey: "gloves_variant_z",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -490,7 +490,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/겹겹의_건틀릿",
     },
     {
-      baseItemKey: "gloves_027",
+      baseItemKey: "gloves_variant_aa",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -506,7 +506,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/이중_건틀릿",
     },
     {
-      baseItemKey: "gloves_028",
+      baseItemKey: "gloves_variant_ab",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -522,7 +522,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/판금_건틀릿",
     },
     {
-      baseItemKey: "gloves_029",
+      baseItemKey: "gloves_variant_ac",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -538,7 +538,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/윤이_나는_건틀릿",
     },
     {
-      baseItemKey: "gloves_030",
+      baseItemKey: "gloves_variant_ad",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -554,7 +554,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/화려한_건틀릿",
     },
     {
-      baseItemKey: "gloves_031",
+      baseItemKey: "gloves_variant_ae",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -570,7 +570,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/밧줄_수갑",
     },
     {
-      baseItemKey: "gloves_032",
+      baseItemKey: "gloves_variant_af",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -586,7 +586,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/오래된_수갑",
     },
     {
-      baseItemKey: "gloves_033",
+      baseItemKey: "gloves_variant_ag",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -602,7 +602,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/금주물_수갑",
     },
     {
-      baseItemKey: "gloves_034",
+      baseItemKey: "gloves_variant_ah",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -618,7 +618,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/베리시움_수갑",
     },
     {
-      baseItemKey: "gloves_035",
+      baseItemKey: "gloves_variant_ai",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -634,7 +634,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/정의로운_수갑",
     },
     {
-      baseItemKey: "gloves_036",
+      baseItemKey: "gloves_variant_aj",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -650,7 +650,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/인장_수갑",
     },
     {
-      baseItemKey: "gloves_037",
+      baseItemKey: "gloves_variant_ak",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -666,7 +666,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/거즈_싸개",
     },
     {
-      baseItemKey: "gloves_038",
+      baseItemKey: "gloves_variant_al",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -682,7 +682,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/리넨_싸개",
     },
     {
-      baseItemKey: "gloves_039",
+      baseItemKey: "gloves_variant_am",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -698,7 +698,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/나선_싸개",
     },
     {
-      baseItemKey: "gloves_040",
+      baseItemKey: "gloves_variant_an",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -714,7 +714,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/버클_싸개",
     },
     {
-      baseItemKey: "gloves_041",
+      baseItemKey: "gloves_variant_ao",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -730,7 +730,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/은밀한_싸개",
     },
     {
-      baseItemKey: "gloves_042",
+      baseItemKey: "gloves_variant_ap",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -746,7 +746,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/특수_싸개",
     },
     {
-      baseItemKey: "gloves_043",
+      baseItemKey: "gloves_variant_aq",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -763,7 +763,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/우수한_소맷부리",
     },
     {
-      baseItemKey: "gloves_044",
+      baseItemKey: "gloves_variant_ar",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -778,7 +778,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/판금_미트",
     },
     {
-      baseItemKey: "gloves_045",
+      baseItemKey: "gloves_variant_as",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -793,7 +793,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/우아한_미트",
     },
     {
-      baseItemKey: "gloves_046",
+      baseItemKey: "gloves_variant_at",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -808,7 +808,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/고대_미트",
     },
     {
-      baseItemKey: "gloves_047",
+      baseItemKey: "gloves_variant_au",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -823,7 +823,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/깃털_미트",
     },
     {
-      baseItemKey: "gloves_048",
+      baseItemKey: "gloves_variant_av",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -838,7 +838,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/사냥_팔보호구",
     },
     {
-      baseItemKey: "gloves_049",
+      baseItemKey: "gloves_variant_aw",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -853,7 +853,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/재빠른_팔보호구",
     },
     {
-      baseItemKey: "gloves_050",
+      baseItemKey: "gloves_variant_ax",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -868,7 +868,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/제련된_팔보호구",
     },
     {
-      baseItemKey: "gloves_051",
+      baseItemKey: "gloves_variant_ay",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -883,7 +883,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/가시_팔보호구",
     },
     {
-      baseItemKey: "gloves_052",
+      baseItemKey: "gloves_variant_az",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -898,7 +898,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/불길한_장갑",
     },
     {
-      baseItemKey: "gloves_053",
+      baseItemKey: "gloves_variant_ba",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -913,7 +913,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/장식된_장갑",
     },
     {
-      baseItemKey: "gloves_054",
+      baseItemKey: "gloves_variant_bb",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -928,7 +928,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/바로크_장갑",
     },
     {
-      baseItemKey: "gloves_055",
+      baseItemKey: "gloves_variant_bc",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -943,7 +943,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/금_장갑",
     },
     {
-      baseItemKey: "gloves_056",
+      baseItemKey: "gloves_variant_bd",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -959,7 +959,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/철사슬_건틀릿",
     },
     {
-      baseItemKey: "gloves_057",
+      baseItemKey: "gloves_variant_be",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -975,7 +975,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/대장_건틀릿",
     },
     {
-      baseItemKey: "gloves_058",
+      baseItemKey: "gloves_variant_bf",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -991,7 +991,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/맹신자_건틀릿",
     },
     {
-      baseItemKey: "gloves_059",
+      baseItemKey: "gloves_variant_bg",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -1007,7 +1007,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/땋은_수갑",
     },
     {
-      baseItemKey: "gloves_060",
+      baseItemKey: "gloves_variant_bh",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -1023,7 +1023,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/가보_수갑",
     },
     {
-      baseItemKey: "gloves_061",
+      baseItemKey: "gloves_variant_bi",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -1039,7 +1039,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/화려한_수갑",
     },
     {
-      baseItemKey: "gloves_062",
+      baseItemKey: "gloves_variant_bj",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -1055,7 +1055,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/붕대_싸개",
     },
     {
-      baseItemKey: "gloves_063",
+      baseItemKey: "gloves_variant_bk",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -1071,7 +1071,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/캠브릭_싸개",
     },
     {
-      baseItemKey: "gloves_064",
+      baseItemKey: "gloves_variant_bl",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -1087,7 +1087,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/치장된_싸개",
     },
     {
-      baseItemKey: "gloves_065",
+      baseItemKey: "gloves_variant_bm",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -1102,7 +1102,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/기사의_미트",
     },
     {
-      baseItemKey: "gloves_066",
+      baseItemKey: "gloves_variant_bn",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -1117,7 +1117,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/화려한_미트",
     },
     {
-      baseItemKey: "gloves_067",
+      baseItemKey: "gloves_variant_bo",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -1132,7 +1132,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/바알_미트",
     },
     {
-      baseItemKey: "gloves_068",
+      baseItemKey: "gloves_variant_bp",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -1147,7 +1147,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/거대한_미트",
     },
     {
-      baseItemKey: "gloves_069",
+      baseItemKey: "gloves_variant_bq",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -1162,7 +1162,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/뒤를_쫓는_팔보호구",
     },
     {
-      baseItemKey: "gloves_070",
+      baseItemKey: "gloves_variant_br",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -1177,7 +1177,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/우수한_팔보호구",
     },
     {
-      baseItemKey: "gloves_071",
+      baseItemKey: "gloves_variant_bs",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -1192,7 +1192,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/가시_돋친_팔보호구",
     },
     {
-      baseItemKey: "gloves_072",
+      baseItemKey: "gloves_variant_bt",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -1207,7 +1207,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/광택_나는_팔보호구",
     },
     {
-      baseItemKey: "gloves_073",
+      baseItemKey: "gloves_variant_bu",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -1222,7 +1222,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/으스스한_장갑",
     },
     {
-      baseItemKey: "gloves_074",
+      baseItemKey: "gloves_variant_bv",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -1237,7 +1237,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/호화로운_장갑",
     },
     {
-      baseItemKey: "gloves_075",
+      baseItemKey: "gloves_variant_bw",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -1252,7 +1252,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/바알_장갑",
     },
     {
-      baseItemKey: "gloves_076",
+      baseItemKey: "gloves_variant_bx",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -1267,7 +1267,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/사이렌비늘_장갑",
     },
     {
-      baseItemKey: "gloves_077",
+      baseItemKey: "gloves_variant_by",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -1283,7 +1283,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/강철사슬_건틀릿",
     },
     {
-      baseItemKey: "gloves_078",
+      baseItemKey: "gloves_variant_bz",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -1299,7 +1299,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/지휘관_건틀릿",
     },
     {
-      baseItemKey: "gloves_079",
+      baseItemKey: "gloves_variant_ca",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -1315,7 +1315,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/광신자_건틀릿",
     },
     {
-      baseItemKey: "gloves_080",
+      baseItemKey: "gloves_variant_cb",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -1331,7 +1331,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/검은강철_건틀릿",
     },
     {
-      baseItemKey: "gloves_081",
+      baseItemKey: "gloves_variant_cc",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -1347,7 +1347,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/속박된_수갑",
     },
     {
-      baseItemKey: "gloves_082",
+      baseItemKey: "gloves_variant_cd",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -1363,7 +1363,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/고대의_수갑",
     },
     {
-      baseItemKey: "gloves_083",
+      baseItemKey: "gloves_variant_ce",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -1379,7 +1379,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/번뜩이는_수갑",
     },
     {
-      baseItemKey: "gloves_084",
+      baseItemKey: "gloves_variant_cf",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -1395,7 +1395,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/지지자_수갑",
     },
     {
-      baseItemKey: "gloves_085",
+      baseItemKey: "gloves_variant_cg",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -1411,7 +1411,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/전쟁_싸개",
     },
     {
-      baseItemKey: "gloves_086",
+      baseItemKey: "gloves_variant_ch",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -1427,7 +1427,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/우아한_싸개",
     },
     {
-      baseItemKey: "gloves_087",
+      baseItemKey: "gloves_variant_ci",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -1443,7 +1443,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/바알_싸개",
     },
     {
-      baseItemKey: "gloves_088",
+      baseItemKey: "gloves_variant_cj",
       itemClass: "Gloves",
       itemClassKey: "gloves",
       equipmentType: "armour",
@@ -1460,7 +1460,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
     },
         // --- body armour ---
     {
-      baseItemKey: "body_armour_001",
+      baseItemKey: "body_armour_variant_a",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -1475,7 +1475,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/녹슨_흉갑",
     },
     {
-      baseItemKey: "body_armour_002",
+      baseItemKey: "body_armour_variant_b",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -1490,7 +1490,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/모피_판금_갑옷",
     },
     {
-      baseItemKey: "body_armour_003",
+      baseItemKey: "body_armour_variant_c",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -1505,7 +1505,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/철_흉갑",
     },
     {
-      baseItemKey: "body_armour_004",
+      baseItemKey: "body_armour_variant_d",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -1520,7 +1520,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/레이더_판금_갑옷",
     },
     {
-      baseItemKey: "body_armour_005",
+      baseItemKey: "body_armour_variant_e",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -1535,7 +1535,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/마라케스_흉갑",
     },
     {
-      baseItemKey: "body_armour_006",
+      baseItemKey: "body_armour_variant_f",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -1550,7 +1550,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/강철_판금_갑옷",
     },
     {
-      baseItemKey: "body_armour_007",
+      baseItemKey: "body_armour_variant_g",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -1565,7 +1565,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/전신_판금_갑옷",
     },
     {
-      baseItemKey: "body_armour_008",
+      baseItemKey: "body_armour_variant_h",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -1580,7 +1580,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/바알_흉갑",
     },
     {
-      baseItemKey: "body_armour_009",
+      baseItemKey: "body_armour_variant_i",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -1595,7 +1595,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/거수_판금_갑옷",
     },
     {
-      baseItemKey: "body_armour_010",
+      baseItemKey: "body_armour_variant_j",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -1610,7 +1610,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/치프틴_흉갑",
     },
     {
-      baseItemKey: "body_armour_011",
+      baseItemKey: "body_armour_variant_k",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -1625,7 +1625,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/원형_경기장_판금_갑옷",
     },
     {
-      baseItemKey: "body_armour_012",
+      baseItemKey: "body_armour_variant_l",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -1640,7 +1640,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/챔피언_흉갑",
     },
     {
-      baseItemKey: "body_armour_013",
+      baseItemKey: "body_armour_variant_m",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -1655,7 +1655,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/영광의_판금_갑옷",
     },
     {
-      baseItemKey: "body_armour_014",
+      baseItemKey: "body_armour_variant_n",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -1671,7 +1671,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       implicitMods: ["stun_threshold_inc"],
     },
     {
-      baseItemKey: "body_armour_015",
+      baseItemKey: "body_armour_variant_o",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -1687,7 +1687,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       implicitMods: ["life_regen_per_sec"],
     },
     {
-      baseItemKey: "body_armour_016",
+      baseItemKey: "body_armour_variant_p",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -1702,7 +1702,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/가죽_조끼",
     },
     {
-      baseItemKey: "body_armour_017",
+      baseItemKey: "body_armour_variant_q",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -1717,7 +1717,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/누비_조끼",
     },
     {
-      baseItemKey: "body_armour_018",
+      baseItemKey: "body_armour_variant_r",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -1732,7 +1732,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/패스파인더_외투",
     },
     {
-      baseItemKey: "body_armour_019",
+      baseItemKey: "body_armour_variant_s",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -1747,7 +1747,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/연막의_조끼",
     },
     {
-      baseItemKey: "body_armour_020",
+      baseItemKey: "body_armour_variant_t",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -1762,7 +1762,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/로아가죽_외투",
     },
     {
-      baseItemKey: "body_armour_021",
+      baseItemKey: "body_armour_variant_u",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -1777,7 +1777,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/징_박힌_조끼",
     },
     {
-      baseItemKey: "body_armour_022",
+      baseItemKey: "body_armour_variant_v",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -1792,7 +1792,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/정찰병의_조끼",
     },
     {
-      baseItemKey: "body_armour_023",
+      baseItemKey: "body_armour_variant_w",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -1807,7 +1807,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/뱀_비늘_외투",
     },
     {
-      baseItemKey: "body_armour_024",
+      baseItemKey: "body_armour_variant_x",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -1822,7 +1822,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/해적_조끼",
     },
     {
-      baseItemKey: "body_armour_025",
+      baseItemKey: "body_armour_variant_y",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -1837,7 +1837,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/밀수범_외투",
     },
     {
-      baseItemKey: "body_armour_026",
+      baseItemKey: "body_armour_variant_z",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -1852,7 +1852,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/질주자_조끼",
     },
     {
-      baseItemKey: "body_armour_027",
+      baseItemKey: "body_armour_variant_aa",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -1867,7 +1867,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/경화가죽_외투",
     },
     {
-      baseItemKey: "body_armour_028",
+      baseItemKey: "body_armour_variant_ab",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -1882,7 +1882,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/정교한_조끼",
     },
     {
-      baseItemKey: "body_armour_029",
+      baseItemKey: "body_armour_variant_ac",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -1898,7 +1898,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       implicitMods: ["debuff_slow_reduced"],
     },
     {
-      baseItemKey: "body_armour_030",
+      baseItemKey: "body_armour_variant_ad",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -1914,7 +1914,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       implicitMods: ["elemental_ailment_threshold_inc"],
     },
     {
-      baseItemKey: "body_armour_031",
+      baseItemKey: "body_armour_variant_ae",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -1929,7 +1929,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/조각난_로브",
     },
     {
-      baseItemKey: "body_armour_032",
+      baseItemKey: "body_armour_variant_af",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -1944,7 +1944,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/깃털_로브",
     },
     {
-      baseItemKey: "body_armour_033",
+      baseItemKey: "body_armour_variant_ag",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -1959,7 +1959,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/사술사의_로브",
     },
     {
-      baseItemKey: "body_armour_034",
+      baseItemKey: "body_armour_variant_ah",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -1974,7 +1974,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/뼈_의복",
     },
     {
-      baseItemKey: "body_armour_035",
+      baseItemKey: "body_armour_variant_ai",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -1989,7 +1989,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/실크_로브",
     },
     {
-      baseItemKey: "body_armour_036",
+      baseItemKey: "body_armour_variant_aj",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2004,7 +2004,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/케스_의복",
     },
     {
-      baseItemKey: "body_armour_037",
+      baseItemKey: "body_armour_variant_ak",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2019,7 +2019,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/봉헌된_의복",
     },
     {
-      baseItemKey: "body_armour_038",
+      baseItemKey: "body_armour_variant_al",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2034,7 +2034,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/제단_로브",
     },
     {
-      baseItemKey: "body_armour_039",
+      baseItemKey: "body_armour_variant_am",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2049,7 +2049,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/엘리멘탈리스트_로브",
     },
     {
-      baseItemKey: "body_armour_040",
+      baseItemKey: "body_armour_variant_an",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2064,7 +2064,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/신비한_의복",
     },
     {
-      baseItemKey: "body_armour_041",
+      baseItemKey: "body_armour_variant_ao",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2079,7 +2079,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/제국_로브",
     },
     {
-      baseItemKey: "body_armour_042",
+      baseItemKey: "body_armour_variant_ap",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2094,7 +2094,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/판금_의복",
     },
     {
-      baseItemKey: "body_armour_043",
+      baseItemKey: "body_armour_variant_aq",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2109,7 +2109,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/혼란의_의복",
     },
     {
-      baseItemKey: "body_armour_044",
+      baseItemKey: "body_armour_variant_ar",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2125,7 +2125,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       implicitMods: ["mana_regen_rate_inc"],
     },
     {
-      baseItemKey: "body_armour_045",
+      baseItemKey: "body_armour_variant_as",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2141,7 +2141,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       implicitMods: ["es_recharge_faster"],
     },
     {
-      baseItemKey: "body_armour_046",
+      baseItemKey: "body_armour_variant_at",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2157,7 +2157,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/사슬_갑옷",
     },
     {
-      baseItemKey: "body_armour_047",
+      baseItemKey: "body_armour_variant_au",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2173,7 +2173,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/악한_방어구",
     },
     {
-      baseItemKey: "body_armour_048",
+      baseItemKey: "body_armour_variant_av",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2189,7 +2189,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/방랑자_방어구",
     },
     {
-      baseItemKey: "body_armour_049",
+      baseItemKey: "body_armour_variant_aw",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2205,7 +2205,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/은폐_사슬옷",
     },
     {
-      baseItemKey: "body_armour_050",
+      baseItemKey: "body_armour_variant_ax",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2221,7 +2221,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/탐험가_방어구",
     },
     {
-      baseItemKey: "body_armour_051",
+      baseItemKey: "body_armour_variant_ay",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2237,7 +2237,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/미늘_갑옷",
     },
     {
-      baseItemKey: "body_armour_052",
+      baseItemKey: "body_armour_variant_az",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2253,7 +2253,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/기사_방어구",
     },
     {
-      baseItemKey: "body_armour_053",
+      baseItemKey: "body_armour_variant_ba",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2269,7 +2269,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/선대의_사슬옷",
     },
     {
-      baseItemKey: "body_armour_054",
+      baseItemKey: "body_armour_variant_bb",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2285,7 +2285,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/라멜라_사슬옷",
     },
     {
-      baseItemKey: "body_armour_055",
+      baseItemKey: "body_armour_variant_bc",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2301,7 +2301,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/검투사_방어구",
     },
     {
-      baseItemKey: "body_armour_056",
+      baseItemKey: "body_armour_variant_bd",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2318,7 +2318,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       implicitMods: ["max_life_plus"],
     },
     {
-      baseItemKey: "body_armour_057",
+      baseItemKey: "body_armour_variant_be",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2335,7 +2335,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       implicitMods: ["fire_resist_plus"],
     },
     {
-      baseItemKey: "body_armour_058",
+      baseItemKey: "body_armour_variant_bf",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2352,7 +2352,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       implicitMods: ["cold_resist_plus"],
     },
     {
-      baseItemKey: "body_armour_059",
+      baseItemKey: "body_armour_variant_bg",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2369,7 +2369,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       implicitMods: ["lightning_resist_plus"],
     },
     {
-      baseItemKey: "body_armour_060",
+      baseItemKey: "body_armour_variant_bh",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2385,7 +2385,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/처형자_방어구",
     },
     {
-      baseItemKey: "body_armour_061",
+      baseItemKey: "body_armour_variant_bi",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2401,7 +2401,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/순례자_법의",
     },
     {
-      baseItemKey: "body_armour_062",
+      baseItemKey: "body_armour_variant_bj",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2417,7 +2417,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/털가죽_외투",
     },
     {
-      baseItemKey: "body_armour_063",
+      baseItemKey: "body_armour_variant_bk",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2433,7 +2433,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/사슬_법의",
     },
     {
-      baseItemKey: "body_armour_064",
+      baseItemKey: "body_armour_variant_bl",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2449,7 +2449,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/주술사_외투",
     },
     {
-      baseItemKey: "body_armour_065",
+      baseItemKey: "body_armour_variant_bm",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2465,7 +2465,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/철갑_법의",
     },
     {
-      baseItemKey: "body_armour_066",
+      baseItemKey: "body_armour_variant_bn",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2481,7 +2481,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/희생의_외투",
     },
     {
-      baseItemKey: "body_armour_067",
+      baseItemKey: "body_armour_variant_bo",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2497,7 +2497,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/성직자_법의",
     },
     {
-      baseItemKey: "body_armour_068",
+      baseItemKey: "body_armour_variant_bp",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2513,7 +2513,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/파도예견자_외투",
     },
     {
-      baseItemKey: "body_armour_069",
+      baseItemKey: "body_armour_variant_bq",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2529,7 +2529,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/도금된_법의",
     },
     {
-      baseItemKey: "body_armour_070",
+      baseItemKey: "body_armour_variant_br",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2545,7 +2545,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/공경받는_외투",
     },
     {
-      baseItemKey: "body_armour_071",
+      baseItemKey: "body_armour_variant_bs",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2562,7 +2562,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       implicitMods: ["max_elem_resist_plus"],
     },
     {
-      baseItemKey: "body_armour_072",
+      baseItemKey: "body_armour_variant_bt",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2579,7 +2579,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       implicitMods: ["spirit_plus"],
     },
     {
-      baseItemKey: "body_armour_073",
+      baseItemKey: "body_armour_variant_bu",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2595,7 +2595,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/북극성_법의",
     },
     {
-      baseItemKey: "body_armour_074",
+      baseItemKey: "body_armour_variant_bv",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2611,7 +2611,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/은자_의복",
     },
     {
-      baseItemKey: "body_armour_075",
+      baseItemKey: "body_armour_variant_bw",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2627,7 +2627,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/밀랍재질_재킷",
     },
     {
-      baseItemKey: "body_armour_076",
+      baseItemKey: "body_armour_variant_bx",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2643,7 +2643,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/도사_의복",
     },
     {
-      baseItemKey: "body_armour_077",
+      baseItemKey: "body_armour_variant_by",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2659,7 +2659,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/나그네_재킷",
     },
     {
-      baseItemKey: "body_armour_078",
+      baseItemKey: "body_armour_variant_bz",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2675,7 +2675,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/은둔자_의복",
     },
     {
-      baseItemKey: "body_armour_079",
+      baseItemKey: "body_armour_variant_ca",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2691,7 +2691,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/두피수집가의_재킷",
     },
     {
-      baseItemKey: "body_armour_080",
+      baseItemKey: "body_armour_variant_cb",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2707,7 +2707,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/불한당_재킷",
     },
     {
-      baseItemKey: "body_armour_081",
+      baseItemKey: "body_armour_variant_cc",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2723,7 +2723,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/고행자_의복",
     },
     {
-      baseItemKey: "body_armour_082",
+      baseItemKey: "body_armour_variant_cd",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2739,7 +2739,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/은밀한_재킷",
     },
     {
-      baseItemKey: "body_armour_083",
+      baseItemKey: "body_armour_variant_ce",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2755,7 +2755,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/수도원_의복",
     },
     {
-      baseItemKey: "body_armour_084",
+      baseItemKey: "body_armour_variant_cf",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2771,7 +2771,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/고통_재킷",
     },
     {
-      baseItemKey: "body_armour_085",
+      baseItemKey: "body_armour_variant_cg",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2788,7 +2788,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       implicitMods: ["chaos_resist_plus"],
     },
     {
-      baseItemKey: "body_armour_086",
+      baseItemKey: "body_armour_variant_ch",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2805,7 +2805,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       implicitMods: ["move_speed_inc"],
     },
     {
-      baseItemKey: "body_armour_087",
+      baseItemKey: "body_armour_variant_ci",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2822,7 +2822,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/우수한_예복",
     },
     {
-      baseItemKey: "body_armour_088",
+      baseItemKey: "body_armour_variant_cj",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2840,7 +2840,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       implicitMods: ["corrupted_skill_gem_level"],
     },
     {
-      baseItemKey: "body_armour_089",
+      baseItemKey: "body_armour_variant_ck",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2855,7 +2855,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/야만인의_판금_갑옷",
     },
     {
-      baseItemKey: "body_armour_090",
+      baseItemKey: "body_armour_variant_cl",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2870,7 +2870,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/투박한_흉갑",
     },
     {
-      baseItemKey: "body_armour_091",
+      baseItemKey: "body_armour_variant_cm",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2885,7 +2885,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/모래맹세_흉갑",
     },
     {
-      baseItemKey: "body_armour_092",
+      baseItemKey: "body_armour_variant_cn",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2900,7 +2900,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/우아한_판금_갑옷",
     },
     {
-      baseItemKey: "body_armour_093",
+      baseItemKey: "body_armour_variant_co",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2915,7 +2915,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/무거운_판금_갑옷",
     },
     {
-      baseItemKey: "body_armour_094",
+      baseItemKey: "body_armour_variant_cp",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2930,7 +2930,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/돌_흉갑",
     },
     {
-      baseItemKey: "body_armour_095",
+      baseItemKey: "body_armour_variant_cq",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2945,7 +2945,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/쪽모이_조끼",
     },
     {
-      baseItemKey: "body_armour_096",
+      baseItemKey: "body_armour_variant_cr",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2960,7 +2960,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/사냥_외투",
     },
     {
-      baseItemKey: "body_armour_097",
+      baseItemKey: "body_armour_variant_cs",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2975,7 +2975,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/승마_외투",
     },
     {
-      baseItemKey: "body_armour_098",
+      baseItemKey: "body_armour_variant_ct",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -2990,7 +2990,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/겹겹의_조끼",
     },
     {
-      baseItemKey: "body_armour_099",
+      baseItemKey: "body_armour_variant_cu",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -3005,7 +3005,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/주자_조끼",
     },
     {
-      baseItemKey: "body_armour_100",
+      baseItemKey: "body_armour_variant_cv",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -3020,7 +3020,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/도마뱀비늘_외투",
     },
     {
-      baseItemKey: "body_armour_101",
+      baseItemKey: "body_armour_variant_cw",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -3035,7 +3035,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/새의_로브",
     },
     {
-      baseItemKey: "body_armour_102",
+      baseItemKey: "body_armour_variant_cx",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -3050,7 +3050,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/저주발화자의_로브",
     },
     {
-      baseItemKey: "body_armour_103",
+      baseItemKey: "body_armour_variant_cy",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -3065,7 +3065,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/호화로운_로브",
     },
     {
-      baseItemKey: "body_armour_104",
+      baseItemKey: "body_armour_variant_cz",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -3080,7 +3080,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/강_의복",
     },
     {
-      baseItemKey: "body_armour_105",
+      baseItemKey: "body_armour_variant_da",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -3095,7 +3095,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/지지자의_의복",
     },
     {
-      baseItemKey: "body_armour_106",
+      baseItemKey: "body_armour_variant_db",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -3110,7 +3110,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/의식용_로브",
     },
     {
-      baseItemKey: "body_armour_107",
+      baseItemKey: "body_armour_variant_dc",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -3126,7 +3126,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/고리_사슬옷",
     },
     {
-      baseItemKey: "body_armour_108",
+      baseItemKey: "body_armour_variant_dd",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -3142,7 +3142,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/불한당_방어구",
     },
     {
-      baseItemKey: "body_armour_109",
+      baseItemKey: "body_armour_variant_de",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -3158,7 +3158,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/방랑자_방어구",
     },
     {
-      baseItemKey: "body_armour_110",
+      baseItemKey: "body_armour_variant_df",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -3174,7 +3174,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/덮개_덮은_사슬옷",
     },
     {
-      baseItemKey: "body_armour_111",
+      baseItemKey: "body_armour_variant_dg",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -3190,7 +3190,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/창시자_방어구",
     },
     {
-      baseItemKey: "body_armour_112",
+      baseItemKey: "body_armour_variant_dh",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -3206,7 +3206,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/황금_사슬옷",
     },
     {
-      baseItemKey: "body_armour_113",
+      baseItemKey: "body_armour_variant_di",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -3222,7 +3222,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/템플러_법의",
     },
     {
-      baseItemKey: "body_armour_114",
+      baseItemKey: "body_armour_variant_dj",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -3238,7 +3238,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/곰가죽_외투",
     },
     {
-      baseItemKey: "body_armour_115",
+      baseItemKey: "body_armour_variant_dk",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -3254,7 +3254,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/쇠사슬_법의",
     },
     {
-      baseItemKey: "body_armour_116",
+      baseItemKey: "body_armour_variant_dl",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -3270,7 +3270,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/비술사_외투",
     },
     {
-      baseItemKey: "body_armour_117",
+      baseItemKey: "body_armour_variant_dm",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -3286,7 +3286,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/판금_법의",
     },
     {
-      baseItemKey: "body_armour_118",
+      baseItemKey: "body_armour_variant_dn",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -3302,7 +3302,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/심장도륙자_외투",
     },
     {
-      baseItemKey: "body_armour_119",
+      baseItemKey: "body_armour_variant_do",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -3318,7 +3318,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/고행자_의복",
     },
     {
-      baseItemKey: "body_armour_120",
+      baseItemKey: "body_armour_variant_dp",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -3334,7 +3334,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/기름칠된_재킷",
     },
     {
-      baseItemKey: "body_armour_121",
+      baseItemKey: "body_armour_variant_dq",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -3350,7 +3350,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/선교사_의복",
     },
     {
-      baseItemKey: "body_armour_122",
+      baseItemKey: "body_armour_variant_dr",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -3366,7 +3366,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/순회자_재킷",
     },
     {
-      baseItemKey: "body_armour_123",
+      baseItemKey: "body_armour_variant_ds",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -3382,7 +3382,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/하툰고_의복",
     },
     {
-      baseItemKey: "body_armour_124",
+      baseItemKey: "body_armour_variant_dt",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -3398,7 +3398,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/행상_재킷",
     },
     {
-      baseItemKey: "body_armour_125",
+      baseItemKey: "body_armour_variant_du",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -3413,7 +3413,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/병사_흉갑",
     },
     {
-      baseItemKey: "body_armour_126",
+      baseItemKey: "body_armour_variant_dv",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -3429,7 +3429,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       implicitMods: ["life_regen_per_sec"],
     },
     {
-      baseItemKey: "body_armour_127",
+      baseItemKey: "body_armour_variant_dw",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -3445,7 +3445,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       implicitMods: ["stun_threshold_inc"],
     },
     {
-      baseItemKey: "body_armour_128",
+      baseItemKey: "body_armour_variant_dx",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -3461,7 +3461,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       implicitMods: ["armour_applies_to_elem_damage"],
     },
     {
-      baseItemKey: "body_armour_129",
+      baseItemKey: "body_armour_variant_dy",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -3477,7 +3477,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       implicitMods: ["debuff_slow_reduced"],
     },
     {
-      baseItemKey: "body_armour_130",
+      baseItemKey: "body_armour_variant_dz",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -3492,7 +3492,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/미끄러진_타격_조끼",
     },
     {
-      baseItemKey: "body_armour_131",
+      baseItemKey: "body_armour_variant_ea",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -3508,7 +3508,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       implicitMods: ["elemental_ailment_threshold_inc"],
     },
     {
-      baseItemKey: "body_armour_132",
+      baseItemKey: "body_armour_variant_eb",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -3524,7 +3524,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       implicitMods: ["move_speed_inc"],
     },
     {
-      baseItemKey: "body_armour_133",
+      baseItemKey: "body_armour_variant_ec",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -3539,7 +3539,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/끔찍한_로브",
     },
     {
-      baseItemKey: "body_armour_134",
+      baseItemKey: "body_armour_variant_ed",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -3555,7 +3555,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       implicitMods: ["mana_regen_rate_inc"],
     },
     {
-      baseItemKey: "body_armour_135",
+      baseItemKey: "body_armour_variant_ee",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -3571,7 +3571,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       implicitMods: ["es_recharge_faster"],
     },
     {
-      baseItemKey: "body_armour_136",
+      baseItemKey: "body_armour_variant_ef",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -3587,7 +3587,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       implicitMods: ["damage_to_mana"],
     },
     {
-      baseItemKey: "body_armour_137",
+      baseItemKey: "body_armour_variant_eg",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -3604,7 +3604,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       implicitMods: ["max_life_plus"],
     },
     {
-      baseItemKey: "body_armour_138",
+      baseItemKey: "body_armour_variant_eh",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -3621,7 +3621,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       implicitMods: ["fire_resist_plus"],
     },
     {
-      baseItemKey: "body_armour_139",
+      baseItemKey: "body_armour_variant_ei",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -3638,7 +3638,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       implicitMods: ["cold_resist_plus"],
     },
     {
-      baseItemKey: "body_armour_140",
+      baseItemKey: "body_armour_variant_ej",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -3655,7 +3655,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       implicitMods: ["lightning_resist_plus"],
     },
     {
-      baseItemKey: "body_armour_141",
+      baseItemKey: "body_armour_variant_ek",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -3671,7 +3671,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/죽음의_사슬옷",
     },
     {
-      baseItemKey: "body_armour_142",
+      baseItemKey: "body_armour_variant_el",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -3688,7 +3688,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       implicitMods: ["crit_damage_bonus_reduced"],
     },
     {
-      baseItemKey: "body_armour_143",
+      baseItemKey: "body_armour_variant_em",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -3704,7 +3704,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/늑대가죽_외투",
     },
     {
-      baseItemKey: "body_armour_144",
+      baseItemKey: "body_armour_variant_en",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -3721,7 +3721,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       implicitMods: ["spirit_plus"],
     },
     {
-      baseItemKey: "body_armour_145",
+      baseItemKey: "body_armour_variant_eo",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -3738,7 +3738,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       implicitMods: ["max_elem_resist_plus"],
     },
     {
-      baseItemKey: "body_armour_146",
+      baseItemKey: "body_armour_variant_ep",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -3755,7 +3755,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       implicitMods: ["damage_to_life_leech"],
     },
     {
-      baseItemKey: "body_armour_147",
+      baseItemKey: "body_armour_variant_eq",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -3771,7 +3771,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       sourceUrl: "https://poe2db.tw/kr/매끈한_재킷",
     },
     {
-      baseItemKey: "body_armour_148",
+      baseItemKey: "body_armour_variant_er",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -3788,7 +3788,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       implicitMods: ["chaos_resist_plus"],
     },
     {
-      baseItemKey: "body_armour_149",
+      baseItemKey: "body_armour_variant_es",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",
@@ -3805,7 +3805,7 @@ export const BASE_ITEM_DB: IBaseItemDbType = {
       implicitMods: ["move_speed_inc"],
     },
     {
-      baseItemKey: "body_armour_150",
+      baseItemKey: "body_armour_variant_et",
       itemClass: "Body Armour",
       itemClassKey: "bodyArmour",
       equipmentType: "armour",

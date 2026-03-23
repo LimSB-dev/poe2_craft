@@ -22,12 +22,12 @@ import {
   canApplyExaltedOrb,
   canApplyFracturingOrb,
   canApplyRegalOrb,
-} from "@/lib/poe2-item-simulator/basicCurrencyOrbs";
+} from "@/lib/poe2-item-simulator/currency";
 import {
   applyEssence,
   canApplyEssence,
   CRAFT_LAB_ESSENCE_DEFINITIONS,
-} from "@/lib/poe2-item-simulator/essence";
+} from "@/lib/poe2-item-simulator/essence/essence";
 import type { IModRollBaseFiltersType } from "@/lib/poe2-item-simulator/roller";
 import type { IItemRoll } from "@/lib/poe2-item-simulator/types";
 

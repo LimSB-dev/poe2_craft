@@ -1,9 +1,11 @@
 import type {
   CraftLabAbyssBoneIdType,
   CraftLabAbyssOmenIdType,
-} from "@/lib/poe2-item-simulator/abyssCrafting";
-import type { CraftLabRitualOmenIdType } from "@/lib/poe2-item-simulator/ritualCrafting";
-import type { CraftLabEssenceCurrencyIdType } from "@/lib/poe2-item-simulator/essence";
+} from "@/lib/poe2-item-simulator/abyss/abyssCrafting";
+import type {
+  CraftLabRitualOmenIdType,
+} from "@/lib/poe2-item-simulator/ritual/ritualCrafting";
+import type { CraftLabEssenceCurrencyIdType } from "@/lib/poe2-item-simulator/essence/essence";
 
 /**
  * 크래프트 랩 화폐 id — 일부 오브는 게임과 같이 **티어(3단)** 슬롯이 있다.

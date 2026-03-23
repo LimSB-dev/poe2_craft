@@ -3,9 +3,13 @@ import {
   countGoodMods,
   countTotalAffixes,
   GOOD_MOD_MAX_TIER,
-} from "./chaosOrb";
+} from "./currency/chaosOrb";
 import { shouldContinue, type IShouldContinueOptionsType } from "./craftingDecision";
-import { applyEssence, getBenchModFiltersForEssence, LIFE_ESSENCE } from "./essence";
+import {
+  applyEssence,
+  getBenchModFiltersForEssence,
+  LIFE_ESSENCE,
+} from "./essence/essence";
 import type { IEssenceDefinitionType, IItemRoll } from "./types";
 
 const ENGINE_VERSION: string = "1.0.0";

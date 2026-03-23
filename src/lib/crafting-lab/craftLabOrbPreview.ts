@@ -8,7 +8,7 @@ import {
   canApplyOrbOfAugmentation,
   canApplyOrbOfTransmutation,
   canApplyRegalOrb,
-} from "@/lib/poe2-item-simulator/basicCurrencyOrbs";
+} from "@/lib/poe2-item-simulator/currency";
 import {
   listModRollCandidates,
   type IModRollBaseFiltersType,

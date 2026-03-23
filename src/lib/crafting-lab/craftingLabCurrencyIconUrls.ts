@@ -6,9 +6,9 @@
 import type {
   CraftLabAbyssBoneIdType,
   CraftLabAbyssOmenIdType,
-} from "@/lib/poe2-item-simulator/abyssCrafting";
-import type { CraftLabRitualOmenIdType } from "@/lib/poe2-item-simulator/ritualCrafting";
-import type { CraftLabEssenceCurrencyIdType } from "@/lib/poe2-item-simulator/essence";
+} from "@/lib/poe2-item-simulator/abyss/abyssCrafting";
+import type { CraftLabRitualOmenIdType } from "@/lib/poe2-item-simulator/ritual/ritualCrafting";
+import type { CraftLabEssenceCurrencyIdType } from "@/lib/poe2-item-simulator/essence/essence";
 
 /** `CRAFT_LAB_ESSENCE_DEFINITIONS`와 키 1:1 — 에센스 추가 시 여기도 필수 (위키 File API URL) */
 const CRAFT_LAB_ESSENCE_ICON_URLS: Record<
@@ -183,12 +183,13 @@ export const CRAFTING_LAB_CURRENCY_ICON_URLS = {
 } as const;
 
 export type CraftingLabCurrencyIconIdType = keyof typeof CRAFTING_LAB_CURRENCY_ICON_URLS;
+const CRAFTING_LAB_LOCAL_ICON_BASE_PATH: string = "/images/crafting-lab/currency";
 
 export const getCraftingLabCurrencyIconUrl = (
   id: string,
 ): string | undefined => {
   if (id in CRAFTING_LAB_CURRENCY_ICON_URLS) {
-    return CRAFTING_LAB_CURRENCY_ICON_URLS[id as CraftingLabCurrencyIconIdType];
+    return `${CRAFTING_LAB_LOCAL_ICON_BASE_PATH}/${id}.png`;
   }
   return undefined;
 };

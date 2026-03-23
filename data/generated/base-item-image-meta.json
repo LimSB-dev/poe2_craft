@@ -1,0 +1,954 @@
+{
+  "gloves_variant_a": {
+    "englishDisplayName": "Stocky Mitts",
+    "poe2dbSlug": "Stocky_Mitts"
+  },
+  "gloves_variant_b": {
+    "englishDisplayName": "Riveted Mitts",
+    "poe2dbSlug": "Riveted_Mitts"
+  },
+  "gloves_variant_c": {
+    "englishDisplayName": "Tempered Mitts",
+    "poe2dbSlug": "Tempered_Mitts"
+  },
+  "gloves_variant_d": {
+    "englishDisplayName": "Bolstered Mitts",
+    "poe2dbSlug": "Bolstered_Mitts"
+  },
+  "gloves_variant_e": {
+    "englishDisplayName": "Moulded Mitts",
+    "poe2dbSlug": "Moulded_Mitts"
+  },
+  "gloves_variant_f": {
+    "englishDisplayName": "Detailed Mitts",
+    "poe2dbSlug": "Detailed_Mitts"
+  },
+  "gloves_variant_g": {
+    "englishDisplayName": "Titan Mitts",
+    "poe2dbSlug": "Titan_Mitts"
+  },
+  "gloves_variant_h": {
+    "englishDisplayName": "Grand Mitts",
+    "poe2dbSlug": "Grand_Mitts"
+  },
+  "gloves_variant_i": {
+    "englishDisplayName": "Suede Bracers",
+    "poe2dbSlug": "Suede_Bracers"
+  },
+  "gloves_variant_j": {
+    "englishDisplayName": "Firm Bracers",
+    "poe2dbSlug": "Firm_Bracers"
+  },
+  "gloves_variant_k": {
+    "englishDisplayName": "Bound Bracers",
+    "poe2dbSlug": "Bound_Bracers"
+  },
+  "gloves_variant_l": {
+    "englishDisplayName": "Sectioned Bracers",
+    "poe2dbSlug": "Sectioned_Bracers"
+  },
+  "gloves_variant_m": {
+    "englishDisplayName": "Spiked Bracers",
+    "poe2dbSlug": "Spiked_Bracers"
+  },
+  "gloves_variant_n": {
+    "englishDisplayName": "Fine Bracers",
+    "poe2dbSlug": "Fine_Bracers"
+  },
+  "gloves_variant_o": {
+    "englishDisplayName": "Hardened Bracers",
+    "poe2dbSlug": "Hardened_Bracers"
+  },
+  "gloves_variant_p": {
+    "englishDisplayName": "Engraved Bracers",
+    "poe2dbSlug": "Engraved_Bracers"
+  },
+  "gloves_variant_q": {
+    "englishDisplayName": "Torn Gloves",
+    "poe2dbSlug": "Torn_Gloves"
+  },
+  "gloves_variant_r": {
+    "englishDisplayName": "Sombre Gloves",
+    "poe2dbSlug": "Sombre_Gloves"
+  },
+  "gloves_variant_s": {
+    "englishDisplayName": "Stitched Gloves",
+    "poe2dbSlug": "Stitched_Gloves"
+  },
+  "gloves_variant_t": {
+    "englishDisplayName": "Jewelled Gloves",
+    "poe2dbSlug": "Jewelled_Gloves"
+  },
+  "gloves_variant_u": {
+    "englishDisplayName": "Intricate Gloves",
+    "poe2dbSlug": "Intricate_Gloves"
+  },
+  "gloves_variant_v": {
+    "englishDisplayName": "Pauascale Gloves",
+    "poe2dbSlug": "Pauascale_Gloves"
+  },
+  "gloves_variant_w": {
+    "englishDisplayName": "Embroidered Gloves",
+    "poe2dbSlug": "Embroidered_Gloves"
+  },
+  "gloves_variant_x": {
+    "englishDisplayName": "Adorned Gloves",
+    "poe2dbSlug": "Adorned_Gloves"
+  },
+  "gloves_variant_y": {
+    "englishDisplayName": "Ringmail Gauntlets",
+    "poe2dbSlug": "Ringmail_Gauntlets"
+  },
+  "gloves_variant_z": {
+    "englishDisplayName": "Layered Gauntlets",
+    "poe2dbSlug": "Layered_Gauntlets"
+  },
+  "gloves_variant_aa": {
+    "englishDisplayName": "Doubled Gauntlets",
+    "poe2dbSlug": "Doubled_Gauntlets"
+  },
+  "gloves_variant_ab": {
+    "englishDisplayName": "Plate Gauntlets",
+    "poe2dbSlug": "Plate_Gauntlets"
+  },
+  "gloves_variant_ac": {
+    "englishDisplayName": "Burnished Gauntlets",
+    "poe2dbSlug": "Burnished_Gauntlets"
+  },
+  "gloves_variant_ad": {
+    "englishDisplayName": "Ornate Gauntlets",
+    "poe2dbSlug": "Ornate_Gauntlets"
+  },
+  "gloves_variant_ae": {
+    "englishDisplayName": "Rope Cuffs",
+    "poe2dbSlug": "Rope_Cuffs"
+  },
+  "gloves_variant_af": {
+    "englishDisplayName": "Aged Cuffs",
+    "poe2dbSlug": "Aged_Cuffs"
+  },
+  "gloves_variant_ag": {
+    "englishDisplayName": "Goldcast Cuffs",
+    "poe2dbSlug": "Goldcast_Cuffs"
+  },
+  "gloves_variant_ah": {
+    "englishDisplayName": "Verisium Cuffs",
+    "poe2dbSlug": "Verisium_Cuffs"
+  },
+  "gloves_variant_ai": {
+    "englishDisplayName": "Righteous Cuffs",
+    "poe2dbSlug": "Righteous_Cuffs"
+  },
+  "gloves_variant_aj": {
+    "englishDisplayName": "Signet Cuffs",
+    "poe2dbSlug": "Signet_Cuffs"
+  },
+  "gloves_variant_ak": {
+    "englishDisplayName": "Gauze Wraps",
+    "poe2dbSlug": "Gauze_Wraps"
+  },
+  "gloves_variant_al": {
+    "englishDisplayName": "Linen Wraps",
+    "poe2dbSlug": "Linen_Wraps"
+  },
+  "gloves_variant_am": {
+    "englishDisplayName": "Spiral Wraps",
+    "poe2dbSlug": "Spiral_Wraps"
+  },
+  "gloves_variant_an": {
+    "englishDisplayName": "Buckled Wraps",
+    "poe2dbSlug": "Buckled_Wraps"
+  },
+  "gloves_variant_ao": {
+    "englishDisplayName": "Furtive Wraps",
+    "poe2dbSlug": "Furtive_Wraps"
+  },
+  "gloves_variant_ap": {
+    "englishDisplayName": "Utility Wraps",
+    "poe2dbSlug": "Utility_Wraps"
+  },
+  "gloves_variant_aq": {
+    "englishDisplayName": "Grand Manchettes",
+    "poe2dbSlug": "Grand_Manchettes"
+  },
+  "gloves_variant_ar": {
+    "englishDisplayName": "Plated Mitts",
+    "poe2dbSlug": "Plated_Mitts"
+  },
+  "gloves_variant_as": {
+    "englishDisplayName": "Elegant Mitts",
+    "poe2dbSlug": "Elegant_Mitts"
+  },
+  "gloves_variant_at": {
+    "englishDisplayName": "Ancient Mitts",
+    "poe2dbSlug": "Ancient_Mitts"
+  },
+  "gloves_variant_au": {
+    "englishDisplayName": "Feathered Mitts",
+    "poe2dbSlug": "Feathered_Mitts"
+  },
+  "gloves_variant_av": {
+    "englishDisplayName": "Hunting Bracers",
+    "poe2dbSlug": "Hunting_Bracers"
+  },
+  "gloves_variant_aw": {
+    "englishDisplayName": "Swift Bracers",
+    "poe2dbSlug": "Swift_Bracers"
+  },
+  "gloves_variant_ax": {
+    "englishDisplayName": "Refined Bracers",
+    "poe2dbSlug": "Refined_Bracers"
+  },
+  "gloves_variant_ay": {
+    "englishDisplayName": "Spiked Bracers",
+    "poe2dbSlug": "Spiked_Bracers"
+  },
+  "gloves_variant_az": {
+    "englishDisplayName": "Ominous Gloves",
+    "poe2dbSlug": "Ominous_Gloves"
+  },
+  "gloves_variant_ba": {
+    "englishDisplayName": "Embellished Gloves",
+    "poe2dbSlug": "Embellished_Gloves"
+  },
+  "gloves_variant_bb": {
+    "englishDisplayName": "Baroque Gloves",
+    "poe2dbSlug": "Baroque_Gloves"
+  },
+  "gloves_variant_bc": {
+    "englishDisplayName": "Gold Gloves",
+    "poe2dbSlug": "Gold_Gloves"
+  },
+  "gloves_variant_bd": {
+    "englishDisplayName": "Ironmail Gauntlets",
+    "poe2dbSlug": "Ironmail_Gauntlets"
+  },
+  "gloves_variant_be": {
+    "englishDisplayName": "Captain Gauntlets",
+    "poe2dbSlug": "Captain_Gauntlets"
+  },
+  "gloves_variant_bf": {
+    "englishDisplayName": "Zealot Gauntlets",
+    "poe2dbSlug": "Zealot_Gauntlets"
+  },
+  "gloves_variant_bg": {
+    "englishDisplayName": "Braided Cuffs",
+    "poe2dbSlug": "Braided_Cuffs"
+  },
+  "gloves_variant_bh": {
+    "englishDisplayName": "Heirloom Cuffs",
+    "poe2dbSlug": "Heirloom_Cuffs"
+  },
+  "gloves_variant_bi": {
+    "englishDisplayName": "Ornate Cuffs",
+    "poe2dbSlug": "Ornate_Cuffs"
+  },
+  "gloves_variant_bj": {
+    "englishDisplayName": "Bandage Wraps",
+    "poe2dbSlug": "Bandage_Wraps"
+  },
+  "gloves_variant_bk": {
+    "englishDisplayName": "Cambric Wraps",
+    "poe2dbSlug": "Cambric_Wraps"
+  },
+  "gloves_variant_bl": {
+    "englishDisplayName": "Adorned Wraps",
+    "poe2dbSlug": "Adorned_Wraps"
+  },
+  "gloves_variant_bm": {
+    "englishDisplayName": "Knightly Mitts",
+    "poe2dbSlug": "Knightly_Mitts"
+  },
+  "gloves_variant_bn": {
+    "englishDisplayName": "Ornate Mitts",
+    "poe2dbSlug": "Ornate_Mitts"
+  },
+  "gloves_variant_bo": {
+    "englishDisplayName": "Vaal Mitts",
+    "poe2dbSlug": "Vaal_Mitts"
+  },
+  "gloves_variant_bp": {
+    "englishDisplayName": "Massive Mitts",
+    "poe2dbSlug": "Massive_Mitts"
+  },
+  "gloves_variant_bq": {
+    "englishDisplayName": "Stalking Bracers",
+    "poe2dbSlug": "Stalking_Bracers"
+  },
+  "gloves_variant_br": {
+    "englishDisplayName": "Grand Bracers",
+    "poe2dbSlug": "Grand_Bracers"
+  },
+  "gloves_variant_bs": {
+    "englishDisplayName": "Barbed Bracers",
+    "poe2dbSlug": "Barbed_Bracers"
+  },
+  "gloves_variant_bt": {
+    "englishDisplayName": "Polished Bracers",
+    "poe2dbSlug": "Polished_Bracers"
+  },
+  "gloves_variant_bu": {
+    "englishDisplayName": "Grim Gloves",
+    "poe2dbSlug": "Grim_Gloves"
+  },
+  "gloves_variant_bv": {
+    "englishDisplayName": "Opulent Gloves",
+    "poe2dbSlug": "Opulent_Gloves"
+  },
+  "gloves_variant_bw": {
+    "englishDisplayName": "Vaal Gloves",
+    "poe2dbSlug": "Vaal_Gloves"
+  },
+  "gloves_variant_bx": {
+    "englishDisplayName": "Sirenscale Gloves",
+    "poe2dbSlug": "Sirenscale_Gloves"
+  },
+  "gloves_variant_by": {
+    "englishDisplayName": "Steelmail Gauntlets",
+    "poe2dbSlug": "Steelmail_Gauntlets"
+  },
+  "gloves_variant_bz": {
+    "englishDisplayName": "Commander Gauntlets",
+    "poe2dbSlug": "Commander_Gauntlets"
+  },
+  "gloves_variant_ca": {
+    "englishDisplayName": "Cultist Gauntlets",
+    "poe2dbSlug": "Cultist_Gauntlets"
+  },
+  "gloves_variant_cb": {
+    "englishDisplayName": "Blacksteel Gauntlets",
+    "poe2dbSlug": "Blacksteel_Gauntlets"
+  },
+  "gloves_variant_cc": {
+    "englishDisplayName": "Bound Cuffs",
+    "poe2dbSlug": "Bound_Cuffs"
+  },
+  "gloves_variant_cd": {
+    "englishDisplayName": "Ancient Cuffs",
+    "poe2dbSlug": "Ancient_Cuffs"
+  },
+  "gloves_variant_ce": {
+    "englishDisplayName": "Gleaming Cuffs",
+    "poe2dbSlug": "Gleaming_Cuffs"
+  },
+  "gloves_variant_cf": {
+    "englishDisplayName": "Adherent Cuffs",
+    "poe2dbSlug": "Adherent_Cuffs"
+  },
+  "gloves_variant_cg": {
+    "englishDisplayName": "War Wraps",
+    "poe2dbSlug": "War_Wraps"
+  },
+  "gloves_variant_ch": {
+    "englishDisplayName": "Elegant Wraps",
+    "poe2dbSlug": "Elegant_Wraps"
+  },
+  "gloves_variant_ci": {
+    "englishDisplayName": "Vaal Wraps",
+    "poe2dbSlug": "Vaal_Wraps"
+  },
+  "gloves_variant_cj": {
+    "englishDisplayName": "Secured Wraps",
+    "poe2dbSlug": "Secured_Wraps"
+  },
+  "body_armour_variant_a": {
+    "englishDisplayName": "Rusted Cuirass",
+    "poe2dbSlug": "Rusted_Cuirass"
+  },
+  "body_armour_variant_b": {
+    "englishDisplayName": "Fur Plate",
+    "poe2dbSlug": "Fur_Plate"
+  },
+  "body_armour_variant_c": {
+    "englishDisplayName": "Iron Cuirass",
+    "poe2dbSlug": "Iron_Cuirass"
+  },
+  "body_armour_variant_d": {
+    "englishDisplayName": "Raider Plate",
+    "poe2dbSlug": "Raider_Plate"
+  },
+  "body_armour_variant_e": {
+    "englishDisplayName": "Maraketh Cuirass",
+    "poe2dbSlug": "Maraketh_Cuirass"
+  },
+  "body_armour_variant_f": {
+    "englishDisplayName": "Steel Plate",
+    "poe2dbSlug": "Steel_Plate"
+  },
+  "body_armour_variant_g": {
+    "englishDisplayName": "Full Plate",
+    "poe2dbSlug": "Full_Plate"
+  },
+  "body_armour_variant_h": {
+    "englishDisplayName": "Vaal Cuirass",
+    "poe2dbSlug": "Vaal_Cuirass"
+  },
+  "body_armour_variant_i": {
+    "englishDisplayName": "Juggernaut Plate",
+    "poe2dbSlug": "Juggernaut_Plate"
+  },
+  "body_armour_variant_j": {
+    "englishDisplayName": "Chieftain Cuirass",
+    "poe2dbSlug": "Chieftain_Cuirass"
+  },
+  "body_armour_variant_k": {
+    "englishDisplayName": "Colosseum Plate",
+    "poe2dbSlug": "Colosseum_Plate"
+  },
+  "body_armour_variant_l": {
+    "englishDisplayName": "Champion Cuirass",
+    "poe2dbSlug": "Champion_Cuirass"
+  },
+  "body_armour_variant_m": {
+    "englishDisplayName": "Glorious Plate",
+    "poe2dbSlug": "Glorious_Plate"
+  },
+  "body_armour_variant_n": {
+    "englishDisplayName": "Conqueror Plate",
+    "poe2dbSlug": "Conqueror_Plate"
+  },
+  "body_armour_variant_o": {
+    "englishDisplayName": "Abyssal Cuirass",
+    "poe2dbSlug": "Abyssal_Cuirass"
+  },
+  "body_armour_variant_p": {
+    "englishDisplayName": "Leather Vest",
+    "poe2dbSlug": "Leather_Vest"
+  },
+  "body_armour_variant_q": {
+    "englishDisplayName": "Quilted Vest",
+    "poe2dbSlug": "Quilted_Vest"
+  },
+  "body_armour_variant_r": {
+    "englishDisplayName": "Pathfinder Coat",
+    "poe2dbSlug": "Pathfinder_Coat"
+  },
+  "body_armour_variant_s": {
+    "englishDisplayName": "Shrouded Vest",
+    "poe2dbSlug": "Shrouded_Vest"
+  },
+  "body_armour_variant_t": {
+    "englishDisplayName": "Rhoahide Coat",
+    "poe2dbSlug": "Rhoahide_Coat"
+  },
+  "body_armour_variant_u": {
+    "englishDisplayName": "Studded Vest",
+    "poe2dbSlug": "Studded_Vest"
+  },
+  "body_armour_variant_v": {
+    "englishDisplayName": "Scout's Vest",
+    "poe2dbSlug": "Scouts_Vest"
+  },
+  "body_armour_variant_w": {
+    "englishDisplayName": "Serpentscale Coat",
+    "poe2dbSlug": "Serpentscale_Coat"
+  },
+  "body_armour_variant_x": {
+    "englishDisplayName": "Corsair Vest",
+    "poe2dbSlug": "Corsair_Vest"
+  },
+  "body_armour_variant_y": {
+    "englishDisplayName": "Smuggler Coat",
+    "poe2dbSlug": "Smuggler_Coat"
+  },
+  "body_armour_variant_z": {
+    "englishDisplayName": "Strider Vest",
+    "poe2dbSlug": "Strider_Vest"
+  },
+  "body_armour_variant_aa": {
+    "englishDisplayName": "Hardleather Coat",
+    "poe2dbSlug": "Hardleather_Coat"
+  },
+  "body_armour_variant_ab": {
+    "englishDisplayName": "Exquisite Vest",
+    "poe2dbSlug": "Exquisite_Vest"
+  },
+  "body_armour_variant_ac": {
+    "englishDisplayName": "Mail Coat",
+    "poe2dbSlug": "Mail_Coat"
+  },
+  "body_armour_variant_ad": {
+    "englishDisplayName": "Armoured Vest",
+    "poe2dbSlug": "Armoured_Vest"
+  },
+  "body_armour_variant_ae": {
+    "englishDisplayName": "Tattered Robe",
+    "poe2dbSlug": "Tattered_Robe"
+  },
+  "body_armour_variant_af": {
+    "englishDisplayName": "Feathered Robe",
+    "poe2dbSlug": "Feathered_Robe"
+  },
+  "body_armour_variant_ag": {
+    "englishDisplayName": "Hexer's Robe",
+    "poe2dbSlug": "Hexers_Robe"
+  },
+  "body_armour_variant_ah": {
+    "englishDisplayName": "Bone Raiment",
+    "poe2dbSlug": "Bone_Raiment"
+  },
+  "body_armour_variant_ai": {
+    "englishDisplayName": "Silk Robe",
+    "poe2dbSlug": "Silk_Robe"
+  },
+  "body_armour_variant_aj": {
+    "englishDisplayName": "Keth Raiment",
+    "poe2dbSlug": "Keth_Raiment"
+  },
+  "body_armour_variant_ak": {
+    "englishDisplayName": "Votive Raiment",
+    "poe2dbSlug": "Votive_Raiment"
+  },
+  "body_armour_variant_al": {
+    "englishDisplayName": "Altar Robe",
+    "poe2dbSlug": "Altar_Robe"
+  },
+  "body_armour_variant_am": {
+    "englishDisplayName": "Elementalist Robe",
+    "poe2dbSlug": "Elementalist_Robe"
+  },
+  "body_armour_variant_an": {
+    "englishDisplayName": "Mystic Raiment",
+    "poe2dbSlug": "Mystic_Raiment"
+  },
+  "body_armour_variant_ao": {
+    "englishDisplayName": "Imperial Robe",
+    "poe2dbSlug": "Imperial_Robe"
+  },
+  "body_armour_variant_ap": {
+    "englishDisplayName": "Plated Raiment",
+    "poe2dbSlug": "Plated_Raiment"
+  },
+  "body_armour_variant_aq": {
+    "englishDisplayName": "Havoc Raiment",
+    "poe2dbSlug": "Havoc_Raiment"
+  },
+  "body_armour_variant_ar": {
+    "englishDisplayName": "Enlightened Robe",
+    "poe2dbSlug": "Enlightened_Robe"
+  },
+  "body_armour_variant_as": {
+    "englishDisplayName": "Arcane Raiment",
+    "poe2dbSlug": "Arcane_Raiment"
+  },
+  "body_armour_variant_at": {
+    "englishDisplayName": "Chain Mail",
+    "poe2dbSlug": "Chain_Mail"
+  },
+  "body_armour_variant_au": {
+    "englishDisplayName": "Rogue Armour",
+    "poe2dbSlug": "Rogue_Armour"
+  },
+  "body_armour_variant_av": {
+    "englishDisplayName": "Wanderer Armour",
+    "poe2dbSlug": "Wanderer_Armour"
+  },
+  "body_armour_variant_aw": {
+    "englishDisplayName": "Cloaked Mail",
+    "poe2dbSlug": "Cloaked_Mail"
+  },
+  "body_armour_variant_ax": {
+    "englishDisplayName": "Explorer Armour",
+    "poe2dbSlug": "Explorer_Armour"
+  },
+  "body_armour_variant_ay": {
+    "englishDisplayName": "Scale Mail",
+    "poe2dbSlug": "Scale_Mail"
+  },
+  "body_armour_variant_az": {
+    "englishDisplayName": "Knight Armour",
+    "poe2dbSlug": "Knight_Armour"
+  },
+  "body_armour_variant_ba": {
+    "englishDisplayName": "Ancestral Mail",
+    "poe2dbSlug": "Ancestral_Mail"
+  },
+  "body_armour_variant_bb": {
+    "englishDisplayName": "Lamellar Mail",
+    "poe2dbSlug": "Lamellar_Mail"
+  },
+  "body_armour_variant_bc": {
+    "englishDisplayName": "Gladiator Armour",
+    "poe2dbSlug": "Gladiator_Armour"
+  },
+  "body_armour_variant_bd": {
+    "englishDisplayName": "Heroic Armour",
+    "poe2dbSlug": "Heroic_Armour"
+  },
+  "body_armour_variant_be": {
+    "englishDisplayName": "Tournament Mail",
+    "poe2dbSlug": "Tournament_Mail"
+  },
+  "body_armour_variant_bf": {
+    "englishDisplayName": "Tournament Mail",
+    "poe2dbSlug": "Tournament_Mail"
+  },
+  "body_armour_variant_bg": {
+    "englishDisplayName": "Tournament Mail",
+    "poe2dbSlug": "Tournament_Mail"
+  },
+  "body_armour_variant_bh": {
+    "englishDisplayName": "Slayer Armour",
+    "poe2dbSlug": "Slayer_Armour"
+  },
+  "body_armour_variant_bi": {
+    "englishDisplayName": "Pilgrim Vestments",
+    "poe2dbSlug": "Pilgrim_Vestments"
+  },
+  "body_armour_variant_bj": {
+    "englishDisplayName": "Pelt Mantle",
+    "poe2dbSlug": "Pelt_Mantle"
+  },
+  "body_armour_variant_bk": {
+    "englishDisplayName": "Mail Vestments",
+    "poe2dbSlug": "Mail_Vestments"
+  },
+  "body_armour_variant_bl": {
+    "englishDisplayName": "Shaman Mantle",
+    "poe2dbSlug": "Shaman_Mantle"
+  },
+  "body_armour_variant_bm": {
+    "englishDisplayName": "Ironclad Vestments",
+    "poe2dbSlug": "Ironclad_Vestments"
+  },
+  "body_armour_variant_bn": {
+    "englishDisplayName": "Sacrificial Mantle",
+    "poe2dbSlug": "Sacrificial_Mantle"
+  },
+  "body_armour_variant_bo": {
+    "englishDisplayName": "Cleric Vestments",
+    "poe2dbSlug": "Cleric_Vestments"
+  },
+  "body_armour_variant_bp": {
+    "englishDisplayName": "Tideseer Mantle",
+    "poe2dbSlug": "Tideseer_Mantle"
+  },
+  "body_armour_variant_bq": {
+    "englishDisplayName": "Gilded Vestments",
+    "poe2dbSlug": "Gilded_Vestments"
+  },
+  "body_armour_variant_br": {
+    "englishDisplayName": "Venerated Mantle",
+    "poe2dbSlug": "Venerated_Mantle"
+  },
+  "body_armour_variant_bs": {
+    "englishDisplayName": "Revered Vestments",
+    "poe2dbSlug": "Revered_Vestments"
+  },
+  "body_armour_variant_bt": {
+    "englishDisplayName": "Corvus Mantle",
+    "poe2dbSlug": "Corvus_Mantle"
+  },
+  "body_armour_variant_bu": {
+    "englishDisplayName": "Zenith Vestments",
+    "poe2dbSlug": "Zenith_Vestments"
+  },
+  "body_armour_variant_bv": {
+    "englishDisplayName": "Hermit Garb",
+    "poe2dbSlug": "Hermit_Garb"
+  },
+  "body_armour_variant_bw": {
+    "englishDisplayName": "Waxed Jacket",
+    "poe2dbSlug": "Waxed_Jacket"
+  },
+  "body_armour_variant_bx": {
+    "englishDisplayName": "Marabout Garb",
+    "poe2dbSlug": "Marabout_Garb"
+  },
+  "body_armour_variant_by": {
+    "englishDisplayName": "Wayfarer Jacket",
+    "poe2dbSlug": "Wayfarer_Jacket"
+  },
+  "body_armour_variant_bz": {
+    "englishDisplayName": "Anchorite Garb",
+    "poe2dbSlug": "Anchorite_Garb"
+  },
+  "body_armour_variant_ca": {
+    "englishDisplayName": "Scalper's Jacket",
+    "poe2dbSlug": "Scalpers_Jacket"
+  },
+  "body_armour_variant_cb": {
+    "englishDisplayName": "Scoundrel Jacket",
+    "poe2dbSlug": "Scoundrel_Jacket"
+  },
+  "body_armour_variant_cc": {
+    "englishDisplayName": "Ascetic Garb",
+    "poe2dbSlug": "Ascetic_Garb"
+  },
+  "body_armour_variant_cd": {
+    "englishDisplayName": "Clandestine Jacket",
+    "poe2dbSlug": "Clandestine_Jacket"
+  },
+  "body_armour_variant_ce": {
+    "englishDisplayName": "Monastic Garb",
+    "poe2dbSlug": "Monastic_Garb"
+  },
+  "body_armour_variant_cf": {
+    "englishDisplayName": "Torment Jacket",
+    "poe2dbSlug": "Torment_Jacket"
+  },
+  "body_armour_variant_cg": {
+    "englishDisplayName": "Devout Garb",
+    "poe2dbSlug": "Devout_Garb"
+  },
+  "body_armour_variant_ch": {
+    "englishDisplayName": "Assassin Garb",
+    "poe2dbSlug": "Assassin_Garb"
+  },
+  "body_armour_variant_ci": {
+    "englishDisplayName": "Grand Regalia",
+    "poe2dbSlug": "Grand_Regalia"
+  },
+  "body_armour_variant_cj": {
+    "englishDisplayName": "Sacrificial Regalia",
+    "poe2dbSlug": "Sacrificial_Regalia"
+  },
+  "body_armour_variant_ck": {
+    "englishDisplayName": "Barbarian Plate",
+    "poe2dbSlug": "Barbarian_Plate"
+  },
+  "body_armour_variant_cl": {
+    "englishDisplayName": "Rugged Cuirass",
+    "poe2dbSlug": "Rugged_Cuirass"
+  },
+  "body_armour_variant_cm": {
+    "englishDisplayName": "Sandsworn Cuirass",
+    "poe2dbSlug": "Sandsworn_Cuirass"
+  },
+  "body_armour_variant_cn": {
+    "englishDisplayName": "Elegant Plate",
+    "poe2dbSlug": "Elegant_Plate"
+  },
+  "body_armour_variant_co": {
+    "englishDisplayName": "Heavy Plate",
+    "poe2dbSlug": "Heavy_Plate"
+  },
+  "body_armour_variant_cp": {
+    "englishDisplayName": "Stone Cuirass",
+    "poe2dbSlug": "Stone_Cuirass"
+  },
+  "body_armour_variant_cq": {
+    "englishDisplayName": "Patchwork Vest",
+    "poe2dbSlug": "Patchwork_Vest"
+  },
+  "body_armour_variant_cr": {
+    "englishDisplayName": "Hunting Coat",
+    "poe2dbSlug": "Hunting_Coat"
+  },
+  "body_armour_variant_cs": {
+    "englishDisplayName": "Riding Coat",
+    "poe2dbSlug": "Riding_Coat"
+  },
+  "body_armour_variant_ct": {
+    "englishDisplayName": "Layered Vest",
+    "poe2dbSlug": "Layered_Vest"
+  },
+  "body_armour_variant_cu": {
+    "englishDisplayName": "Runner Vest",
+    "poe2dbSlug": "Runner_Vest"
+  },
+  "body_armour_variant_cv": {
+    "englishDisplayName": "Lizardscale Coat",
+    "poe2dbSlug": "Lizardscale_Coat"
+  },
+  "body_armour_variant_cw": {
+    "englishDisplayName": "Avian Robe",
+    "poe2dbSlug": "Avian_Robe"
+  },
+  "body_armour_variant_cx": {
+    "englishDisplayName": "Cursespeaker's Robe",
+    "poe2dbSlug": "Cursespeakers_Robe"
+  },
+  "body_armour_variant_cy": {
+    "englishDisplayName": "Luxurious Robe",
+    "poe2dbSlug": "Luxurious_Robe"
+  },
+  "body_armour_variant_cz": {
+    "englishDisplayName": "River Raiment",
+    "poe2dbSlug": "River_Raiment"
+  },
+  "body_armour_variant_da": {
+    "englishDisplayName": "Adherent's Raiment",
+    "poe2dbSlug": "Adherents_Raiment"
+  },
+  "body_armour_variant_db": {
+    "englishDisplayName": "Ceremonial Robe",
+    "poe2dbSlug": "Ceremonial_Robe"
+  },
+  "body_armour_variant_dc": {
+    "englishDisplayName": "Ring Mail",
+    "poe2dbSlug": "Ring_Mail"
+  },
+  "body_armour_variant_dd": {
+    "englishDisplayName": "Scoundrel Armour",
+    "poe2dbSlug": "Scoundrel_Armour"
+  },
+  "body_armour_variant_de": {
+    "englishDisplayName": "Wanderer Armour",
+    "poe2dbSlug": "Wanderer_Armour"
+  },
+  "body_armour_variant_df": {
+    "englishDisplayName": "Mantled Mail",
+    "poe2dbSlug": "Mantled_Mail"
+  },
+  "body_armour_variant_dg": {
+    "englishDisplayName": "Trailblazer Armour",
+    "poe2dbSlug": "Trailblazer_Armour"
+  },
+  "body_armour_variant_dh": {
+    "englishDisplayName": "Golden Mail",
+    "poe2dbSlug": "Golden_Mail"
+  },
+  "body_armour_variant_di": {
+    "englishDisplayName": "Templar Vestments",
+    "poe2dbSlug": "Templar_Vestments"
+  },
+  "body_armour_variant_dj": {
+    "englishDisplayName": "Bearskin Mantle",
+    "poe2dbSlug": "Bearskin_Mantle"
+  },
+  "body_armour_variant_dk": {
+    "englishDisplayName": "Chain Vestments",
+    "poe2dbSlug": "Chain_Vestments"
+  },
+  "body_armour_variant_dl": {
+    "englishDisplayName": "Occultist Mantle",
+    "poe2dbSlug": "Occultist_Mantle"
+  },
+  "body_armour_variant_dm": {
+    "englishDisplayName": "Plated Vestments",
+    "poe2dbSlug": "Plated_Vestments"
+  },
+  "body_armour_variant_dn": {
+    "englishDisplayName": "Heartcarver Mantle",
+    "poe2dbSlug": "Heartcarver_Mantle"
+  },
+  "body_armour_variant_do": {
+    "englishDisplayName": "Ascetic Garb",
+    "poe2dbSlug": "Ascetic_Garb"
+  },
+  "body_armour_variant_dp": {
+    "englishDisplayName": "Oiled Jacket",
+    "poe2dbSlug": "Oiled_Jacket"
+  },
+  "body_armour_variant_dq": {
+    "englishDisplayName": "Evangelist Garb",
+    "poe2dbSlug": "Evangelist_Garb"
+  },
+  "body_armour_variant_dr": {
+    "englishDisplayName": "Itinerant Jacket",
+    "poe2dbSlug": "Itinerant_Jacket"
+  },
+  "body_armour_variant_ds": {
+    "englishDisplayName": "Hatungo Garb",
+    "poe2dbSlug": "Hatungo_Garb"
+  },
+  "body_armour_variant_dt": {
+    "englishDisplayName": "Hawker's Jacket",
+    "poe2dbSlug": "Hawkers_Jacket"
+  },
+  "body_armour_variant_du": {
+    "englishDisplayName": "Soldier Cuirass",
+    "poe2dbSlug": "Soldier_Cuirass"
+  },
+  "body_armour_variant_dv": {
+    "englishDisplayName": "Ornate Plate",
+    "poe2dbSlug": "Ornate_Plate"
+  },
+  "body_armour_variant_dw": {
+    "englishDisplayName": "Utzaal Cuirass",
+    "poe2dbSlug": "Utzaal_Cuirass"
+  },
+  "body_armour_variant_dx": {
+    "englishDisplayName": "Warlord Cuirass",
+    "poe2dbSlug": "Warlord_Cuirass"
+  },
+  "body_armour_variant_dy": {
+    "englishDisplayName": "Swiftstalker Coat",
+    "poe2dbSlug": "Swiftstalker_Coat"
+  },
+  "body_armour_variant_dz": {
+    "englishDisplayName": "Slipstrike Vest",
+    "poe2dbSlug": "Slipstrike_Vest"
+  },
+  "body_armour_variant_ea": {
+    "englishDisplayName": "Wyrmscale Coat",
+    "poe2dbSlug": "Wyrmscale_Coat"
+  },
+  "body_armour_variant_eb": {
+    "englishDisplayName": "Corsair Coat",
+    "poe2dbSlug": "Corsair_Coat"
+  },
+  "body_armour_variant_ec": {
+    "englishDisplayName": "Vile Robe",
+    "poe2dbSlug": "Vile_Robe"
+  },
+  "body_armour_variant_ed": {
+    "englishDisplayName": "Flowing Raiment",
+    "poe2dbSlug": "Flowing_Raiment"
+  },
+  "body_armour_variant_ee": {
+    "englishDisplayName": "Sacramental Robe",
+    "poe2dbSlug": "Sacramental_Robe"
+  },
+  "body_armour_variant_ef": {
+    "englishDisplayName": "Feathered Raiment",
+    "poe2dbSlug": "Feathered_Raiment"
+  },
+  "body_armour_variant_eg": {
+    "englishDisplayName": "Dastard Armour",
+    "poe2dbSlug": "Dastard_Armour"
+  },
+  "body_armour_variant_eh": {
+    "englishDisplayName": "Shrouded Mail",
+    "poe2dbSlug": "Shrouded_Mail"
+  },
+  "body_armour_variant_ei": {
+    "englishDisplayName": "Shrouded Mail",
+    "poe2dbSlug": "Shrouded_Mail"
+  },
+  "body_armour_variant_ej": {
+    "englishDisplayName": "Shrouded Mail",
+    "poe2dbSlug": "Shrouded_Mail"
+  },
+  "body_armour_variant_ek": {
+    "englishDisplayName": "Death Mail",
+    "poe2dbSlug": "Death_Mail"
+  },
+  "body_armour_variant_el": {
+    "englishDisplayName": "Thane Mail",
+    "poe2dbSlug": "Thane_Mail"
+  },
+  "body_armour_variant_em": {
+    "englishDisplayName": "Wolfskin Mantle",
+    "poe2dbSlug": "Wolfskin_Mantle"
+  },
+  "body_armour_variant_en": {
+    "englishDisplayName": "Conjurer Mantle",
+    "poe2dbSlug": "Conjurer_Mantle"
+  },
+  "body_armour_variant_eo": {
+    "englishDisplayName": "Death Mantle",
+    "poe2dbSlug": "Death_Mantle"
+  },
+  "body_armour_variant_ep": {
+    "englishDisplayName": "Seastorm Mantle",
+    "poe2dbSlug": "Seastorm_Mantle"
+  },
+  "body_armour_variant_eq": {
+    "englishDisplayName": "Sleek Jacket",
+    "poe2dbSlug": "Sleek_Jacket"
+  },
+  "body_armour_variant_er": {
+    "englishDisplayName": "Rambler Jacket",
+    "poe2dbSlug": "Rambler_Jacket"
+  },
+  "body_armour_variant_es": {
+    "englishDisplayName": "Falconer's Jacket",
+    "poe2dbSlug": "Falconers_Jacket"
+  },
+  "body_armour_variant_et": {
+    "englishDisplayName": "Austere Garb",
+    "poe2dbSlug": "Austere_Garb"
+  }
+}

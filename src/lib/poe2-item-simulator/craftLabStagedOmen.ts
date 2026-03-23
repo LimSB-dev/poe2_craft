@@ -3,7 +3,7 @@ import { isCraftLabAbyssOmenId } from "@/lib/poe2-item-simulator/abyssCrafting";
 import type { CraftLabRitualOmenIdType } from "@/lib/poe2-item-simulator/ritualCrafting";
 import { isCraftLabRitualOmenId } from "@/lib/poe2-item-simulator/ritualCrafting";
 
-/** 크래프트 랩에서 한 번에 하나만 선택되는 징조(심연·의식). */
+/** 크래프트 랩에서 활성화 가능한 징조(심연·의식). */
 export type CraftLabStagedOmenIdType =
   | CraftLabAbyssOmenIdType
   | CraftLabRitualOmenIdType;

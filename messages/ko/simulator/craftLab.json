@@ -16,7 +16,10 @@
     "abyssTabAbyssOmensHeading": "심연 징조",
     "abyssSlotDisabledTooltip": "아직 수동 제작에 연결되지 않았습니다.",
     "stagedOmenBanner": "선택된 징조: {name} — 심연 뼈·소멸(빛)·카오스(절사) 등 다음 제작에 반영됩니다.",
-    "ritualTabHint": "의식(Ritual)에서 얻는 징조입니다. 한 번에 하나만 활성화됩니다. 절사의 징조는 다음 카오스 오브가 가장 낮은 티어 옵션을 제거한 뒤 다시 굴립니다(시뮬 근사).",
+    "stagedOmenPanelHeading": "활성화 징조",
+    "stagedOmenPanelEmpty": "선택 없음 · 심연·의식 탭에서 징조를 눌러 활성화합니다.",
+    "stagedOmenPanelHint": "심연 뼈·소멸(빛)·카오스(절사) 등 다음 제작에 반영됩니다.",
+    "ritualTabHint": "의식(Ritual)에서 얻는 징조입니다. 최대 3개까지 동시에 활성화할 수 있습니다. 절사의 징조는 다음 카오스 오브가 가장 낮은 티어 옵션을 제거한 뒤 다시 굴립니다(시뮬 근사).",
     "ritualOmenSimulationNote": "의식 징조는 창고에서 소모되지 않고 선택 상태만 유지됩니다. 시뮬레이션 모드에서는 징조를 눌러 효과 요약을 볼 수 있습니다.",
     "omenSimulationNote": "징조는 창고에서 소모되지 않고 선택 상태만 유지됩니다. 시뮬레이션 모드에서는 징조를 눌러 이 시뮬에서의 효과 요약을 볼 수 있습니다.",
     "omenToggleAria": "{name}, 징조 활성화 또는 해제",
@@ -259,6 +262,8 @@
       "omen_the_hunt": "사냥·맵 — 이 랩에서는 미연결(선택만).",
       "omen_the_blessed": "축복 관련 — 이 랩에서는 미연결(선택만).",
       "omen_placeholder": "징조 자리만 있는 항목입니다."
-    }
+    },
+    "stagedOmenPanelCount": "활성 {count}/{max}",
+    "stagedOmenPanelSlotHint": "클릭하면 활성 목록에서 해제됩니다."
   }
 }

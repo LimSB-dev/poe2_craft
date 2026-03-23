@@ -15,8 +15,11 @@
     "abyssTabHint": "Preserved bones and Abyss omens are in one tab. Bones add an unrevealed Desecrated mod to rare items. Click an unrevealed line to pick one of three rolled candidates (weights are approximate; not datamined).",
     "abyssTabAbyssOmensHeading": "Abyss omens",
     "stagedOmenBanner": "Staged omen: {name} — applies to the next Abyss bone, annulment (Light), or Chaos (Whittling) use.",
+    "stagedOmenPanelHeading": "Active omen",
+    "stagedOmenPanelEmpty": "None selected — tap an omen in the Abyss or Ritual tab to stage it.",
+    "stagedOmenPanelHint": "Applies to your next Abyss bone, annulment (Light), or Chaos (Whittling) use.",
     "abyssSlotDisabledTooltip": "Not connected to manual crafting yet.",
-    "ritualTabHint": "Omens typically obtained from Ritual rewards. Only one omen is active at a time. Omen of Whittling: your next Chaos Orb removes the weakest rolled mod (highest tier number in this lab) then re-rolls one mod.",
+    "ritualTabHint": "Omens typically obtained from Ritual rewards. You can keep up to 3 active at once. Omen of Whittling: your next Chaos Orb removes the weakest rolled mod (highest tier number in this lab) then re-rolls one mod.",
     "ritualOmenSimulationNote": "Ritual omens are not consumed from stash—only selection state is kept. In Simulation mode, click an omen for a short effect summary.",
     "omenSimulationNote": "Omens are not consumed from stash—only selection state is kept. In Simulation mode, click an omen to read how this lab applies it.",
     "omenToggleAria": "{name}, activate or deactivate omen",
@@ -259,6 +262,8 @@
       "omen_the_hunt": "Hunt / mapping — not wired in this lab (staging only).",
       "omen_the_blessed": "Blessing-related — not wired in this lab (staging only).",
       "omen_placeholder": "Placeholder omen entry."
-    }
+    },
+    "stagedOmenPanelCount": "Active {count}/{max}",
+    "stagedOmenPanelSlotHint": "Click to remove from active omens."
   }
 }

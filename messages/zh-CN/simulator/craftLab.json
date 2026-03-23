@@ -15,8 +15,11 @@
     "abyssTabHint": "深渊标签内同时选择保存的骸骨与深渊预兆。骸骨为稀有物品附加未公开的亵渎行；点击卡片上的未公开行可从三个候选中选择一个（权重为近似，精确数值未公开）。",
     "abyssTabAbyssOmensHeading": "深渊预兆",
     "stagedOmenBanner": "已选预兆：{name} — 将作用于下一次骸骨、消灭（光）或混沌（Whittling）。",
+    "stagedOmenPanelHeading": "已激活预兆",
+    "stagedOmenPanelEmpty": "未选择 — 请在深渊或仪式标签页点击预兆以激活。",
+    "stagedOmenPanelHint": "将作用于下一次深渊骸骨、消灭（光）或混沌（Whittling）。",
     "abyssSlotDisabledTooltip": "尚未接入手动工艺。",
-    "ritualTabHint": "通常来自仪式玩法的预兆。Whittling：下一次混沌宝珠会移除 tier 最高（最弱近似）的词缀后再随机一条。",
+    "ritualTabHint": "通常来自仪式玩法的预兆。最多可同时激活 3 个。Whittling：下一次混沌宝珠会移除 tier 最高（最弱近似）的词缀后再随机一条。",
     "ritualOmenSimulationNote": "仪式预兆不会从仓库消耗，只保留选中状态。模拟模式下可查看效果摘要。",
     "omenSimulationNote": "预兆不会从仓库消耗，只保留选中状态。模拟模式下点击预兆可查看本实验室中的效果摘要。",
     "omenToggleAria": "{name}，开启或关闭预兆",
@@ -259,6 +262,8 @@
       "omen_the_hunt": "狩猎/地图 — 本实验室未连接。",
       "omen_the_blessed": "祝福相关 — 本实验室未连接。",
       "omen_placeholder": "占位预兆。"
-    }
+    },
+    "stagedOmenPanelCount": "已激活 {count}/{max}",
+    "stagedOmenPanelSlotHint": "点击可从激活列表移除。"
   }
 }

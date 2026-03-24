@@ -8,13 +8,18 @@ type SimulatorModTemplateTextPropsType = {
   className?: string;
 };
 
-/**
- * mod DB의 `nameTemplateKey` → `simulator.mods` 번역. 속성 패널 전용 리프 (단일 훅).
- */
+/** Resolves mod line text from i18n: simulator namespace, mods object, key = nameTemplateKey. */
 export const SimulatorModTemplateText = ({
   nameTemplateKey,
   className,
 }: SimulatorModTemplateTextPropsType): ReactElement => {
-  const t = useTranslations("simulator.mods");
-  return <span className={className}>{t(nameTemplateKey)}</span>;
+  const t = useTranslations("simulator");
+  const text = (() => {
+    try {
+      return t(`mods.${nameTemplateKey}` as never);
+    } catch {
+      return nameTemplateKey;
+    }
+  })();
+  return <span className={className}>{text}</span>;
 };

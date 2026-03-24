@@ -21,9 +21,9 @@
     "type": "タイプ",
     "subType": "種別",
     "all": "すべて",
-    "requiredStr": "STR",
-    "requiredDex": "DEX",
-    "requiredInt": "INT",
+    "requiredStr": "筋力",
+    "requiredDex": "敏捷性",
+    "requiredInt": "知性",
     "requiredLevel": "Lv",
     "baseItem": "ベースアイテム",
     "noResults": "条件に合うベースアイテムがありません",
@@ -54,10 +54,10 @@
     "colWeight": "重み",
     "colApplicable": "適用タイプ",
     "colStatReq": "必要ステータス",
-    "prefix": "プレフィックス",
-    "suffix": "サフィックス",
+    "prefix": "基本接頭辞",
+    "suffix": "基本接尾辞",
     "navLabel": "DB",
-    "corruptedPrefix": "腐敗プレフィックス",
-    "corruptedSuffix": "腐敗サフィックス"
+    "corruptedPrefix": "汚染された接頭辞",
+    "corruptedSuffix": "汚染された接尾辞"
   }
 }

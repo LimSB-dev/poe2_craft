@@ -21,10 +21,10 @@
     "type": "타입",
     "subType": "유형",
     "all": "전체",
-    "requiredStr": "STR",
-    "requiredDex": "DEX",
-    "requiredInt": "INT",
-    "requiredLevel": "Lv",
+    "requiredStr": "힘",
+    "requiredDex": "민첩",
+    "requiredInt": "지능",
+    "requiredLevel": "레벨",
     "baseItem": "베이스 아이템",
     "noResults": "필터에 맞는 베이스 아이템이 없습니다",
     "matchCount": "필터 결과 베이스 아이템 수: {count}",
@@ -54,10 +54,10 @@
     "colWeight": "가중치",
     "colApplicable": "적용 유형",
     "colStatReq": "스텟 조건",
-    "prefix": "접두어",
-    "suffix": "접미어",
+    "prefix": "기본 접두사",
+    "suffix": "기본 접미사",
     "navLabel": "DB",
-    "corruptedPrefix": "훼손된 접두어",
-    "corruptedSuffix": "훼손된 접미어"
+    "corruptedPrefix": "훼손된 접두사",
+    "corruptedSuffix": "훼손된 접미사"
   }
 }

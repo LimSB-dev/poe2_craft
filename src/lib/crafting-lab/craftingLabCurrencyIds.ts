@@ -71,6 +71,8 @@ export type CraftingCurrencyIdType =
   | "orb_hinekoras_lock"
   /** 칼란드라의 거울 — UI만, 시뮬 미구현 */
   | "orb_mirror"
+  /** 기회의 오브 — UI만, 시뮬 미구현 */
+  | "orb_chance"
   | CraftLabEssenceCurrencyIdType
   | CraftLabAbyssBoneIdType
   | CraftLabAbyssOmenIdType
@@ -81,10 +83,16 @@ export type CraftingCurrencyIdType =
   | "soul_well_reveal";
 
 /**
- * 화폐 탭 하단 행(표시 순): 바알·디바인·히네코라·미러 — 히네코라만 시뮬 연결.
+ * 화폐 탭 — 티어 오브 오른쪽 **단일 오브 블록**(3열 기준 줄 단위, 중앙 정렬).
+ * 행: 연금술·타락·소멸 / 기회·분열·디바인 / 미러·히네코라(2칸).
  */
-export const CRAFT_LAB_CURRENCY_TAB_BOTTOM_ROW: readonly CraftingCurrencyIdType[] =
-  ["orb_vaal", "orb_divine", "orb_hinekoras_lock", "orb_mirror"] as const;
+export const CRAFT_LAB_CURRENCY_MISC_GRID_ROWS: readonly (
+  readonly CraftingCurrencyIdType[]
+)[] = [
+  ["orb_alchemy", "orb_vaal", "orb_annulment"],
+  ["orb_chance", "orb_fracturing", "orb_divine"],
+  ["orb_mirror", "orb_hinekoras_lock"],
+] as const;
 
 /**
  * 창고 오브 UI — **왼쪽 열**: 일반·상위·완벽 3티어 패밀리만 한 줄씩(3열 그리드).
@@ -97,13 +105,6 @@ export const CRAFT_LAB_ORB_UI_GROUPS: readonly (readonly CraftingOrbFamilyIdType
     ["orb_exalted"],
     ["orb_chaos"],
   ] as const;
-
-/** **오른쪽 열**: 티어 구분 없는 단일 슬롯 오브(연금술·소멸·분열). */
-export const CRAFT_LAB_ORB_SINGLE_SLOT_ROW: readonly CraftingLabOrbSlotIdType[] = [
-  "orb_alchemy",
-  "orb_annulment",
-  "orb_fracturing",
-] as const;
 
 export const CRAFT_LAB_ORB_FAMILY_ORDER: readonly CraftingOrbFamilyIdType[] = [
   ...CRAFT_LAB_ORB_UI_GROUPS.flat(),

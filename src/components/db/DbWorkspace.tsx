@@ -1,6 +1,6 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useMemo, useState } from "react";
 import type { ReactElement } from "react";
 import { LocaleSwitcher } from "@/components/i18n/LocaleSwitcher";
@@ -11,6 +11,11 @@ import {
   type IBaseItemEquipmentTypeType,
   type IBaseItemSubTypeType,
 } from "@/lib/poe2-item-simulator/baseItemDb";
+import {
+  formatBaseItemRequirementSummary,
+  getAttributeRequirementPrefix,
+} from "@/lib/poe2-item-simulator/coreAttributeLabels";
+import { getModTypeDisplayName } from "@/lib/poe2-item-simulator/modTypeLabels";
 import { MOD_DB } from "@/lib/poe2-item-simulator/modDb";
 
 type TabType = "items" | "mods";
@@ -26,6 +31,7 @@ type SubTypeFilterType = "all" | IBaseItemSubTypeType;
 // ---------------------------------------------------------------------------
 
 export const DbWorkspace = (): ReactElement => {
+  const locale = useLocale();
   const t = useTranslations("simulator");
 
   const [activeTab, setActiveTab] = useState<TabType>("items");
@@ -80,7 +86,13 @@ export const DbWorkspace = (): ReactElement => {
       if (modTypeFilter !== "all" && r.modType !== modTypeFilter) { return false; }
       if (modSubTypeFilter !== "all" && !r.applicableSubTypes.includes(modSubTypeFilter)) { return false; }
       if (q) {
-        const name = (() => { try { return t(`mods.${r.nameTemplateKey}`).toLowerCase(); } catch { return r.modKey.toLowerCase(); } })();
+        const name = (() => {
+          try {
+            return t(`mods.${r.nameTemplateKey}` as never).toLowerCase();
+          } catch {
+            return r.modKey.toLowerCase();
+          }
+        })();
         if (!name.includes(q) && !r.modKey.includes(q)) { return false; }
       }
       return true;
@@ -91,7 +103,11 @@ export const DbWorkspace = (): ReactElement => {
     try { return t(`baseItems.${key}.name`); } catch { return key; }
   };
   const modName = (key: string): string => {
-    try { return t(`mods.${key}`); } catch { return key; }
+    try {
+      return t(`mods.${key}` as never);
+    } catch {
+      return key;
+    }
   };
   const subTypeLabel = (s: string): string => {
     try { return t(`itemClass.${s}`); } catch { return s; }
@@ -186,10 +202,18 @@ export const DbWorkspace = (): ReactElement => {
                 className="rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-3 py-1.5 text-sm"
               >
                 <option value="all">{t("baseFilter.all")}</option>
-                <option value="prefix">{t("dbView.prefix")}</option>
-                <option value="suffix">{t("dbView.suffix")}</option>
-                <option value="corruptedPrefix">{t("dbView.corruptedPrefix")}</option>
-                <option value="corruptedSuffix">{t("dbView.corruptedSuffix")}</option>
+                <option value="prefix">
+                  {getModTypeDisplayName("prefix", locale)}
+                </option>
+                <option value="suffix">
+                  {getModTypeDisplayName("suffix", locale)}
+                </option>
+                <option value="corruptedPrefix">
+                  {getModTypeDisplayName("corruptedPrefix", locale)}
+                </option>
+                <option value="corruptedSuffix">
+                  {getModTypeDisplayName("corruptedSuffix", locale)}
+                </option>
               </select>
               <select
                 value={modSubTypeFilter}
@@ -251,7 +275,7 @@ export const DbWorkspace = (): ReactElement => {
                                 : "bg-sky-100 text-sky-700 dark:bg-sky-900/40 dark:text-sky-300"
                             }`}
                           >
-                            {tag.toUpperCase()}
+                            {getAttributeRequirementPrefix(tag, locale)}
                           </span>
                         ))}
                         {r.statTags.length === 0 && (
@@ -275,12 +299,7 @@ export const DbWorkspace = (): ReactElement => {
                       ) : <span className="text-zinc-300 dark:text-zinc-700">–</span>}
                     </td>
                     <td className="px-4 py-2.5 text-xs text-zinc-500 dark:text-zinc-400 tabular-nums whitespace-nowrap">
-                      {[
-                        r.requiredStrength > 0 ? `STR ${r.requiredStrength}` : null,
-                        r.requiredDexterity > 0 ? `DEX ${r.requiredDexterity}` : null,
-                        r.requiredIntelligence > 0 ? `INT ${r.requiredIntelligence}` : null,
-                        `Lv.${r.levelRequirement}`,
-                      ].filter(Boolean).join(" · ")}
+                      {formatBaseItemRequirementSummary(r, locale)}
                     </td>
                   </tr>
                 ))}
@@ -325,13 +344,7 @@ export const DbWorkspace = (): ReactElement => {
                           ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300"
                           : "bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300"
                       }`}>
-                        {r.modType === "prefix"
-                          ? t("dbView.prefix")
-                          : r.modType === "suffix"
-                          ? t("dbView.suffix")
-                          : r.modType === "corruptedPrefix"
-                          ? t("dbView.corruptedPrefix")
-                          : t("dbView.corruptedSuffix")}
+                        {getModTypeDisplayName(r.modType, locale)}
                       </span>
                     </td>
                     <td className="px-4 py-2.5">

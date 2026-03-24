@@ -7,9 +7,9 @@
     "slotFull": "槽位已满",
     "addedTitle": "已添加词缀",
     "removeAriaLabel": "移除词缀：{name}",
-    "typePrefix": "前缀",
-    "typeSuffix": "后缀",
-    "typeCorruptedPrefix": "腐化前缀",
-    "typeCorruptedSuffix": "腐化后缀"
+    "typePrefix": "基础前缀",
+    "typeSuffix": "基础后缀",
+    "typeCorruptedPrefix": "腐化的前缀",
+    "typeCorruptedSuffix": "腐化的后缀"
   }
 }

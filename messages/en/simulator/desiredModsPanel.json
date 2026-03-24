@@ -7,9 +7,9 @@
     "slotFull": "Slot full",
     "addedTitle": "Added modifiers",
     "removeAriaLabel": "Remove modifier: {name}",
-    "typePrefix": "Prefix",
-    "typeSuffix": "Suffix",
-    "typeCorruptedPrefix": "Corrupted Prefix",
-    "typeCorruptedSuffix": "Corrupted Suffix"
+    "typePrefix": "Standard prefix",
+    "typeSuffix": "Standard suffix",
+    "typeCorruptedPrefix": "Corrupted prefix",
+    "typeCorruptedSuffix": "Corrupted suffix"
   }
 }

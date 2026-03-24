@@ -174,6 +174,8 @@ export const CRAFTING_LAB_CURRENCY_ICON_URLS = {
     "https://www.poe2wiki.net/images/5/53/Hinekora%27s_Lock_inventory_icon.png",
   orb_mirror:
     "https://www.poe2wiki.net/images/9/9c/Mirror_of_Kalandra_inventory_icon.png",
+  orb_chance:
+    "https://www.poe2wiki.net/images/8/86/Orb_of_Chance_inventory_icon.png",
   /** 징조 샘플 아이콘 — UI 자리 표시용 */
   omen_placeholder:
     "https://www.poe2wiki.net/images/5/5d/Omen_of_Sanctification_inventory_icon.png",

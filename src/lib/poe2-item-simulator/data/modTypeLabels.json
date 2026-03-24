@@ -1,0 +1,30 @@
+{
+  "version": "2026.03.poe2wikiModTypes.v1",
+  "reference": "Modifier slot kinds in this simulator (prefix/suffix vs corrupted prefix/suffix). Wording follows Path of Exile 2 wiki / client style per app locale (en, ko, ja, zh-CN).",
+  "labels": {
+    "prefix": {
+      "en": { "displayName": "Standard prefix" },
+      "ko": { "displayName": "기본 접두사" },
+      "ja": { "displayName": "基本接頭辞" },
+      "zh-CN": { "displayName": "基础前缀" }
+    },
+    "suffix": {
+      "en": { "displayName": "Standard suffix" },
+      "ko": { "displayName": "기본 접미사" },
+      "ja": { "displayName": "基本接尾辞" },
+      "zh-CN": { "displayName": "基础后缀" }
+    },
+    "corruptedPrefix": {
+      "en": { "displayName": "Corrupted prefix" },
+      "ko": { "displayName": "훼손된 접두사" },
+      "ja": { "displayName": "汚染された接頭辞" },
+      "zh-CN": { "displayName": "腐化的前缀" }
+    },
+    "corruptedSuffix": {
+      "en": { "displayName": "Corrupted suffix" },
+      "ko": { "displayName": "훼손된 접미사" },
+      "ja": { "displayName": "汚染された接尾辞" },
+      "zh-CN": { "displayName": "腐化的后缀" }
+    }
+  }
+}

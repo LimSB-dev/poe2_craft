@@ -15,6 +15,7 @@
     "benchmark:decision": "tsx scripts/crafting-decision-benchmark.ts",
     "benchmark:strategies": "tsx scripts/strategy-comparison-benchmark.ts",
     "download:base-item-images": "tsx scripts/download-poe2db-base-item-images.ts",
+    "wiki:track": "tsx scripts/poe2wiki-track-pages.ts",
     "skills:list": "skills list",
     "skills:update": "skills update",
     "skills:add:vercel": "skills add vercel-labs/agent-skills --agent cursor --skill vercel-react-best-practices web-design-guidelines vercel-composition-patterns deploy-to-vercel vercel-cli-with-tokens vercel-react-native-skills -y --copy",

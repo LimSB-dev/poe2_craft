@@ -43,6 +43,7 @@
     "omenPreview_the_blessed": "祝福相关 — 本实验室未连接。",
     "boneRequiresRare": "保存的骸骨仅用于稀有物品。",
     "boneWrongSlotOrFull": "稀有度正确但部位不符或词缀已满。",
+    "boneCorrupted": "本模拟器中，已腐化的物品无法使用保存的骸骨。",
     "boneRequiresRandomMode": "保存的骸骨仅在随机模式下可用。",
     "boneSimulationNote": "骸骨混合强制亵渎行与揭示前步骤，详细预览省略，请用随机模式尝试。",
     "selectBaseHeading": "选择基底",

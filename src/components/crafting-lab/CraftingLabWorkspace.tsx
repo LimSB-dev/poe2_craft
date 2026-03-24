@@ -38,6 +38,7 @@ import {
   buildCraftLabOrbPreview,
   type CraftLabOrbPreviewResultType,
 } from "@/lib/crafting-lab/craftLabOrbPreview";
+import { isCraftLabOrbSlotApplicable } from "@/lib/crafting-lab/isCraftLabOrbFamilyApplicable";
 import type { IModRollBaseFiltersType } from "@/lib/poe2-item-simulator/roller";
 import {
   aggregateUsageCounts,
@@ -74,15 +75,7 @@ import {
   applyOrbOfAugmentation,
   applyOrbOfTransmutation,
   applyRegalOrb,
-  canApplyOrbOfAlchemy,
-  canApplyOrbOfAnnulment,
   canApplyOrbOfAnnulmentDesecratedOnly,
-  canApplyOrbOfAugmentation,
-  canApplyOrbOfTransmutation,
-  canApplyChaosOrb,
-  canApplyExaltedOrb,
-  canApplyFracturingOrb,
-  canApplyRegalOrb,
   enforceAtMostOneFracturedMod,
 } from "@/lib/poe2-item-simulator/currency";
 import {
@@ -223,42 +216,6 @@ const getErrorMessage = (error: unknown): string => {
     return error.message;
   }
   return String(error);
-};
-
-const isCraftLabOrbApplicable = (
-  id: CraftingLabOrbSlotIdType,
-  roll: IItemRoll,
-): boolean => {
-  const family = orbSlotIdToFamilyKind(id);
-  switch (family) {
-    case "orb_transmutation": {
-      return canApplyOrbOfTransmutation(roll);
-    }
-    case "orb_augmentation": {
-      return canApplyOrbOfAugmentation(roll);
-    }
-    case "orb_regal": {
-      return canApplyRegalOrb(roll);
-    }
-    case "orb_alchemy": {
-      return canApplyOrbOfAlchemy(roll);
-    }
-    case "orb_exalted": {
-      return canApplyExaltedOrb(roll);
-    }
-    case "orb_fracturing": {
-      return canApplyFracturingOrb(roll);
-    }
-    case "orb_chaos": {
-      return canApplyChaosOrb(roll);
-    }
-    case "orb_annulment": {
-      return canApplyOrbOfAnnulment(roll);
-    }
-    default: {
-      return false;
-    }
-  }
 };
 
 const getCraftLabDisabledCurrencyRowTooltip = (
@@ -693,7 +650,7 @@ export const CraftingLabWorkspace = (): ReactElement => {
       if (family === "orb_annulment" && hasStagedLightOmen) {
         return canApplyOrbOfAnnulmentDesecratedOnly(roll);
       }
-      return isCraftLabOrbApplicable(id, roll);
+      return isCraftLabOrbSlotApplicable(id, roll);
     },
     [hasStagedLightOmen],
   );
@@ -884,7 +841,9 @@ export const CraftingLabWorkspace = (): ReactElement => {
       ? !boneOk
         ? itemRoll.rarity !== "rare"
           ? t("boneRequiresRare")
-          : t("boneWrongSlotOrFull")
+          : itemRoll.isCorrupted === true
+            ? t("boneCorrupted")
+            : t("boneWrongSlotOrFull")
         : t("boneRequiresRandomMode")
       : undefined;
     return (

@@ -16,6 +16,7 @@ import {
   canApplyRegalOrb,
   enforceAtMostOneFracturedMod,
 } from "@/lib/poe2-item-simulator/currency/basicCurrencyOrbs";
+import { CORRUPTED_ITEM_STANDARD_CRAFTING_ERROR_MESSAGE } from "@/lib/poe2-item-simulator/itemCorruptionCraftingGuard";
 import type { IItemRoll, IModDefinition } from "@/lib/poe2-item-simulator/types";
 
 const baseMod = (overrides: Partial<IModDefinition> = {}): IModDefinition => {
@@ -184,6 +185,23 @@ describe("basicCurrencyOrbs — applicability (canApply*)", () => {
     ).toBe(false);
   });
 
+  test("corrupted: standard canApply* false; Omen of Light annul still allowed", () => {
+    const corruptedRare: IItemRoll = {
+      rarity: "rare",
+      prefixes: [baseMod({ modKey: "p1" })],
+      suffixes: [],
+      isCorrupted: true,
+    };
+    expect(canApplyChaosOrb(corruptedRare)).toBe(false);
+    expect(canApplyOrbOfAnnulment(corruptedRare)).toBe(false);
+    expect(
+      canApplyOrbOfAnnulmentDesecratedOnly({
+        ...corruptedRare,
+        prefixes: [baseMod({ modKey: "p1", isDesecrated: true })],
+      }),
+    ).toBe(true);
+  });
+
   test("canApplyOrbOfAnnulmentDesecratedOnly: requires removable desecrated line", () => {
     expect(
       canApplyOrbOfAnnulmentDesecratedOnly({
@@ -268,6 +286,17 @@ describe("basicCurrencyOrbs — apply* guard errors", () => {
         suffixes: [],
       });
     }).toThrow();
+  });
+
+  test("applyOrbOfTransmutation throws on corrupted item", () => {
+    expect(() => {
+      applyOrbOfTransmutation({
+        rarity: "normal",
+        prefixes: [],
+        suffixes: [],
+        isCorrupted: true,
+      });
+    }).toThrow(CORRUPTED_ITEM_STANDARD_CRAFTING_ERROR_MESSAGE);
   });
 
   test("applyDivineOrb is not implemented", () => {

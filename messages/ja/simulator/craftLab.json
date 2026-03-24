@@ -43,6 +43,7 @@
     "omenPreview_the_blessed": "祝福系 — このラボでは未接続。",
     "boneRequiresRare": "保存された骨はレアアイテム専用です。",
     "boneWrongSlotOrFull": "レアリティは合うがスロットが合わないか、オプションが満杯です。",
+    "boneCorrupted": "このシミュレータでは、汚染されたアイテムに保存された骨は使えません。",
     "boneRequiresRandomMode": "保存された骨はランダムモードでのみ使用できます。",
     "boneSimulationNote": "骨は強制腐敗行と公開前段階が混ざるため詳細プレビューは省略します。ランダムモードで試してください。",
     "selectBaseHeading": "ベース選択",

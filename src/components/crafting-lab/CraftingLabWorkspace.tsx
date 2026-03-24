@@ -60,7 +60,7 @@ import {
   type CraftLabAbyssBoneIdType,
 } from "@/lib/poe2-item-simulator/abyss/abyssCrafting";
 import {
-  toAbyssOmenForBone,
+  resolveStagedAbyssOmenForPreservedBone,
   type CraftLabStagedOmenIdType,
 } from "@/lib/poe2-item-simulator/craftLabStagedOmen";
 import {
@@ -310,14 +310,9 @@ export const CraftingLabWorkspace = (): ReactElement => {
   >([]);
   const hasStagedLightOmen = activeStagedOmenIds.includes("omen_light");
   const hasStagedWhittlingOmen = activeStagedOmenIds.includes("omen_whittling");
-  const stagedAbyssOmenForBone =
-    activeStagedOmenIds
-      .map((id) => {
-        return toAbyssOmenForBone(id);
-      })
-      .find((id) => {
-        return id !== null;
-      }) ?? null;
+  const stagedAbyssOmenForBone = useMemo(() => {
+    return resolveStagedAbyssOmenForPreservedBone(activeStagedOmenIds);
+  }, [activeStagedOmenIds]);
   const [soulWellReveal, setSoulWellReveal] =
     useState<SoulWellRevealStateType | null>(null);
 
@@ -1424,7 +1419,9 @@ export const CraftingLabWorkspace = (): ReactElement => {
                           {CRAFT_LAB_ESSENCE_DEFINITIONS.map((essenceDef) => {
                             const id = essenceDef.essenceKey;
                             const name = t(`currency.${id}`);
-                            const hoverHint = t(`currencyHoverHint.${id}`);
+                            const hoverHint = t(
+                              `currencyHoverHint.${essenceDef.essenceFamilyKey}`,
+                            );
                             const essenceApplicable = canApplyEssence(
                               itemRoll,
                               essenceDef,
@@ -1465,7 +1462,7 @@ export const CraftingLabWorkspace = (): ReactElement => {
                                     setStashValidationMessage(null);
                                     return;
                                   }
-                                  tryApply(id, (roll, filters) => {
+                                  tryApply(id as CraftingCurrencyIdType, (roll, filters) => {
                                     return applyEssence(
                                       roll,
                                       essenceDef,
@@ -1487,7 +1484,7 @@ export const CraftingLabWorkspace = (): ReactElement => {
                                     ),
                                   );
                                 }}
-                                tierRoman={null}
+                                tierRoman={getOrbSlotTierRoman(id)}
                                 ariaLabel={
                                   essenceDisabledInRandom
                                     ? t("orbDisabledAria", { name })

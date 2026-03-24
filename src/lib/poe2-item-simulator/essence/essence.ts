@@ -8,9 +8,11 @@ import {
   assertRollNotCorruptedForStandardCrafting,
   isCorruptedRoll,
 } from "../itemCorruptionCraftingGuard";
+import craftLabEssenceWikiTiers from "../data/craftLabEssenceWikiTiers.json";
 import { getRandomIntInclusive } from "../random";
 import { rollRareModSlots, type IModRollBaseFiltersType } from "../roller";
 import type {
+  EssenceApplicationRarityRequirementType,
   IEssenceDefinitionType,
   IItemRoll,
   IModDefinition,
@@ -184,9 +186,212 @@ const buildForcedMod = (essence: IEssenceDefinitionType): IModDefinition => {
   };
 };
 
+type CraftLabEssenceWikiTierRowType = (typeof craftLabEssenceWikiTiers)[number];
+
+type CraftLabEssenceFamilyKeyType = CraftLabEssenceWikiTierRowType["familyKey"];
+
+type IEssenceFamilyCraftRulesType = {
+  forcedModKey: string;
+  forcedDisplayName: string;
+  guaranteedModType: ModTypeType;
+  requiresItemRarity: EssenceApplicationRarityRequirementType;
+  allowedSubTypes?: ReadonlyArray<string>;
+};
+
+/**
+ * 위키에 명시된 스폰 가중치가 없을 때, `drop_level`이 낮을수록·상위 티어일수록 드롭이 흔하다는 가정의 참고 가중치.
+ */
+export const computeEssenceReferenceSpawnWeight = (
+  wikiDropLevel: number,
+  essenceTierGrade: 1 | 2 | 3,
+): number => {
+  const tierMultiplier = essenceTierGrade === 1 ? 100 : essenceTierGrade === 2 ? 55 : 30;
+  const clampedDrop = Math.min(Math.max(wikiDropLevel, 1), 80);
+  const depthCurve = 120 - clampedDrop;
+  return Math.max(1, Math.round((depthCurve * tierMultiplier) / 100));
+};
+
+const getForcedTierRangeForEssenceTier = (
+  essenceTierGrade: 1 | 2 | 3,
+): { forcedTierMin: number; forcedTierMax: number } => {
+  if (essenceTierGrade === 1) {
+    return { forcedTierMin: 1, forcedTierMax: 2 };
+  }
+  if (essenceTierGrade === 2) {
+    return { forcedTierMin: 2, forcedTierMax: 3 };
+  }
+  return { forcedTierMin: 3, forcedTierMax: 3 };
+};
+
+const CRAFT_LAB_ESSENCE_FAMILY_CRAFT_RULES: Record<
+  CraftLabEssenceFamilyKeyType,
+  IEssenceFamilyCraftRulesType
+> = {
+  attack: {
+    forcedModKey: "essence_forced_attack",
+    forcedDisplayName: "Adds Physical Damage (Essence)",
+    guaranteedModType: "prefix",
+    requiresItemRarity: "magic",
+    allowedSubTypes: [...LESSER_ABRASION_APPLICABLE_SUB_TYPES],
+  },
+  alacrity: {
+    forcedModKey: "essence_forced_alacrity",
+    forcedDisplayName: "Increased Cast Speed (Essence)",
+    guaranteedModType: "prefix",
+    requiresItemRarity: "magic",
+    allowedSubTypes: [...LESSER_SPELL_WEAPON_SUB_TYPES],
+  },
+  battle: {
+    forcedModKey: "essence_forced_battle",
+    forcedDisplayName: "Added Accuracy Rating (Essence)",
+    guaranteedModType: "prefix",
+    requiresItemRarity: "magic",
+    allowedSubTypes: [...LESSER_ABRASION_APPLICABLE_SUB_TYPES],
+  },
+  command: {
+    forcedModKey: "essence_forced_command",
+    forcedDisplayName: "Allies in Presence deal increased Damage (Essence)",
+    guaranteedModType: "prefix",
+    requiresItemRarity: "magic",
+    allowedSubTypes: ["sceptre"],
+  },
+  electricity: {
+    forcedModKey: "essence_forced_electricity",
+    forcedDisplayName: "Adds Lightning Damage (Essence)",
+    guaranteedModType: "prefix",
+    requiresItemRarity: "magic",
+    allowedSubTypes: [...LESSER_ELEMENTAL_WEAPON_SUB_TYPES],
+  },
+  enhancement: {
+    forcedModKey: "essence_forced_enhancement",
+    forcedDisplayName: "Increased Armour, Evasion or Energy Shield (Essence)",
+    guaranteedModType: "prefix",
+    requiresItemRarity: "magic",
+    allowedSubTypes: [...LESSER_ENHANCEMENT_SUB_TYPES],
+  },
+  flames: {
+    forcedModKey: "essence_forced_flames",
+    forcedDisplayName: "Adds Fire Damage (Essence)",
+    guaranteedModType: "prefix",
+    requiresItemRarity: "magic",
+    allowedSubTypes: [...LESSER_ELEMENTAL_WEAPON_SUB_TYPES],
+  },
+  grounding: {
+    forcedModKey: "essence_forced_grounding",
+    forcedDisplayName: "+Lightning Resistance (Essence)",
+    guaranteedModType: "suffix",
+    requiresItemRarity: "magic",
+    allowedSubTypes: [...LESSER_ARMOUR_BELT_JEWELLERY_RES_SUB_TYPES],
+  },
+  haste: {
+    forcedModKey: "essence_forced_haste",
+    forcedDisplayName: "Increased Attack Speed (Essence)",
+    guaranteedModType: "prefix",
+    requiresItemRarity: "magic",
+    allowedSubTypes: [...LESSER_HASTE_WEAPON_SUB_TYPES],
+  },
+  ice: {
+    forcedModKey: "essence_forced_ice",
+    forcedDisplayName: "Adds Cold Damage (Essence)",
+    guaranteedModType: "prefix",
+    requiresItemRarity: "magic",
+    allowedSubTypes: [...LESSER_ELEMENTAL_WEAPON_SUB_TYPES],
+  },
+  insulation: {
+    forcedModKey: "essence_forced_insulation",
+    forcedDisplayName: "+Fire Resistance (Essence)",
+    guaranteedModType: "suffix",
+    requiresItemRarity: "magic",
+    allowedSubTypes: [...LESSER_ARMOUR_BELT_JEWELLERY_RES_SUB_TYPES],
+  },
+  opulence: {
+    forcedModKey: "essence_forced_opulence",
+    forcedDisplayName: "Increased Rarity of Items found (Essence)",
+    guaranteedModType: "prefix",
+    requiresItemRarity: "magic",
+    allowedSubTypes: [...LESSER_OPULENCE_SUB_TYPES],
+  },
+  ruin: {
+    forcedModKey: "essence_forced_ruin",
+    forcedDisplayName: "+Chaos Resistance (Essence)",
+    guaranteedModType: "suffix",
+    requiresItemRarity: "magic",
+    allowedSubTypes: [...LESSER_ARMOUR_BELT_JEWELLERY_RES_SUB_TYPES],
+  },
+  seeking: {
+    forcedModKey: "essence_forced_seeking",
+    forcedDisplayName: "Critical / Spell Critical (Essence)",
+    guaranteedModType: "prefix",
+    requiresItemRarity: "magic",
+    allowedSubTypes: [...LESSER_SEEKING_SUB_TYPES],
+  },
+  sorcery: {
+    forcedModKey: "essence_forced_sorcery",
+    forcedDisplayName: "Increased Spell Damage (Essence)",
+    guaranteedModType: "prefix",
+    requiresItemRarity: "magic",
+    allowedSubTypes: [...LESSER_SPELL_WEAPON_SUB_TYPES],
+  },
+  thawing: {
+    forcedModKey: "essence_forced_thawing",
+    forcedDisplayName: "+Cold Resistance (Essence)",
+    guaranteedModType: "suffix",
+    requiresItemRarity: "magic",
+    allowedSubTypes: [...LESSER_ARMOUR_BELT_JEWELLERY_RES_SUB_TYPES],
+  },
+  life: {
+    forcedModKey: "essence_forced_life",
+    forcedDisplayName: "+Maximum Life (Essence)",
+    guaranteedModType: "suffix",
+    requiresItemRarity: "magic",
+    allowedSubTypes: [...LESSER_BODY_APPLICABLE_SUB_TYPES],
+  },
+  infinite: {
+    forcedModKey: "essence_forced_infinite",
+    forcedDisplayName: "+Attributes (Essence)",
+    guaranteedModType: "suffix",
+    requiresItemRarity: "magic",
+  },
+  mind: {
+    forcedModKey: "essence_forced_mind",
+    forcedDisplayName: "+Maximum Mana (Essence)",
+    guaranteedModType: "suffix",
+    requiresItemRarity: "magic",
+    allowedSubTypes: [...LESSER_MIND_SUB_TYPES],
+  },
+};
+
+const buildCraftLabEssenceDefinitions = (): IEssenceDefinitionType[] => {
+  const rows: CraftLabEssenceWikiTierRowType[] = craftLabEssenceWikiTiers;
+  return rows.map((row) => {
+    const rules = CRAFT_LAB_ESSENCE_FAMILY_CRAFT_RULES[row.familyKey];
+    if (rules === undefined) {
+      throw new Error(`craftLabEssenceWikiTiers: missing family "${row.familyKey}" in CRAFT_LAB_ESSENCE_FAMILY_CRAFT_RULES.`);
+    }
+    const essenceTierGrade = row.tierGrade as 1 | 2 | 3;
+    const { forcedTierMin, forcedTierMax } = getForcedTierRangeForEssenceTier(essenceTierGrade);
+    const essenceFamilyKey = `essence_${row.familyKey}`;
+    return {
+      essenceKey: `${essenceFamilyKey}_t${essenceTierGrade}`,
+      essenceFamilyKey,
+      essenceTierGrade,
+      wikiDropLevel: row.wikiDropLevel,
+      referenceSpawnWeight: computeEssenceReferenceSpawnWeight(row.wikiDropLevel, essenceTierGrade),
+      displayName: row.displayName,
+      forcedModKey: rules.forcedModKey,
+      forcedDisplayName: rules.forcedDisplayName,
+      guaranteedModType: rules.guaranteedModType,
+      forcedTierMin,
+      forcedTierMax,
+      requiresItemRarity: rules.requiresItemRarity,
+      allowedSubTypes: rules.allowedSubTypes,
+    };
+  });
+};
+
 /**
  * 벤치·전략 비교 등 베이스를 고르지 않은 채 `applyEssence`만 호출할 때 쓰는 대표 필터.
- * 키는 {@link CRAFT_LAB_ESSENCE_DEFINITIONS}의 `essenceKey`와 동일.
+ * 키는 {@link IEssenceDefinitionType.essenceFamilyKey} (티어 접미 없음).
  */
 const ESSENCE_BENCH_BASE_SUBTYPE: Readonly<
   Record<string, IBaseItemSubTypeType>
@@ -215,7 +420,7 @@ const ESSENCE_BENCH_BASE_SUBTYPE: Readonly<
 export const getBenchModFiltersForEssence = (
   essence: IEssenceDefinitionType,
 ): IModRollBaseFiltersType => {
-  const sub = ESSENCE_BENCH_BASE_SUBTYPE[essence.essenceKey];
+  const sub = ESSENCE_BENCH_BASE_SUBTYPE[essence.essenceFamilyKey];
   if (sub !== undefined) {
     return { baseItemSubType: sub };
   }
@@ -323,261 +528,42 @@ export const applyEssence = (
   };
 };
 
-export const ATTACK_ESSENCE: IEssenceDefinitionType = {
-  essenceKey: "essence_attack",
-  displayName: "Lesser Essence of Abrasion",
-  forcedModKey: "essence_forced_attack",
-  forcedDisplayName: "Adds Physical Damage (Essence)",
-  guaranteedModType: "prefix",
-  forcedTierMin: 1,
-  forcedTierMax: 3,
-  requiresItemRarity: "magic",
-  allowedSubTypes: [...LESSER_ABRASION_APPLICABLE_SUB_TYPES],
-};
-
-export const ALACRITY_ESSENCE: IEssenceDefinitionType = {
-  essenceKey: "essence_alacrity",
-  displayName: "Lesser Essence of Alacrity",
-  forcedModKey: "essence_forced_alacrity",
-  forcedDisplayName: "Increased Cast Speed (Essence)",
-  guaranteedModType: "prefix",
-  forcedTierMin: 1,
-  forcedTierMax: 3,
-  requiresItemRarity: "magic",
-  allowedSubTypes: [...LESSER_SPELL_WEAPON_SUB_TYPES],
-};
-
-export const BATTLE_ESSENCE: IEssenceDefinitionType = {
-  essenceKey: "essence_battle",
-  displayName: "Lesser Essence of Battle",
-  forcedModKey: "essence_forced_battle",
-  forcedDisplayName: "Added Accuracy Rating (Essence)",
-  guaranteedModType: "prefix",
-  forcedTierMin: 1,
-  forcedTierMax: 3,
-  requiresItemRarity: "magic",
-  allowedSubTypes: [...LESSER_ABRASION_APPLICABLE_SUB_TYPES],
-};
-
-export const COMMAND_ESSENCE: IEssenceDefinitionType = {
-  essenceKey: "essence_command",
-  displayName: "Lesser Essence of Command",
-  forcedModKey: "essence_forced_command",
-  forcedDisplayName: "Allies in Presence deal increased Damage (Essence)",
-  guaranteedModType: "prefix",
-  forcedTierMin: 1,
-  forcedTierMax: 3,
-  requiresItemRarity: "magic",
-  allowedSubTypes: ["sceptre"],
-};
-
-export const ELECTRICITY_ESSENCE: IEssenceDefinitionType = {
-  essenceKey: "essence_electricity",
-  displayName: "Lesser Essence of Electricity",
-  forcedModKey: "essence_forced_electricity",
-  forcedDisplayName: "Adds Lightning Damage (Essence)",
-  guaranteedModType: "prefix",
-  forcedTierMin: 1,
-  forcedTierMax: 3,
-  requiresItemRarity: "magic",
-  allowedSubTypes: [...LESSER_ELEMENTAL_WEAPON_SUB_TYPES],
-};
-
-export const ENHANCEMENT_ESSENCE: IEssenceDefinitionType = {
-  essenceKey: "essence_enhancement",
-  displayName: "Lesser Essence of Enhancement",
-  forcedModKey: "essence_forced_enhancement",
-  forcedDisplayName: "Increased Armour, Evasion or Energy Shield (Essence)",
-  guaranteedModType: "prefix",
-  forcedTierMin: 1,
-  forcedTierMax: 3,
-  requiresItemRarity: "magic",
-  allowedSubTypes: [...LESSER_ENHANCEMENT_SUB_TYPES],
-};
-
-export const FLAMES_ESSENCE: IEssenceDefinitionType = {
-  essenceKey: "essence_flames",
-  displayName: "Lesser Essence of Flames",
-  forcedModKey: "essence_forced_flames",
-  forcedDisplayName: "Adds Fire Damage (Essence)",
-  guaranteedModType: "prefix",
-  forcedTierMin: 1,
-  forcedTierMax: 3,
-  requiresItemRarity: "magic",
-  allowedSubTypes: [...LESSER_ELEMENTAL_WEAPON_SUB_TYPES],
-};
-
-export const GROUNDING_ESSENCE: IEssenceDefinitionType = {
-  essenceKey: "essence_grounding",
-  displayName: "Lesser Essence of Grounding",
-  forcedModKey: "essence_forced_grounding",
-  forcedDisplayName: "+Lightning Resistance (Essence)",
-  guaranteedModType: "suffix",
-  forcedTierMin: 1,
-  forcedTierMax: 3,
-  requiresItemRarity: "magic",
-  allowedSubTypes: [...LESSER_ARMOUR_BELT_JEWELLERY_RES_SUB_TYPES],
-};
-
-export const HASTE_ESSENCE: IEssenceDefinitionType = {
-  essenceKey: "essence_haste",
-  displayName: "Lesser Essence of Haste",
-  forcedModKey: "essence_forced_haste",
-  forcedDisplayName: "Increased Attack Speed (Essence)",
-  guaranteedModType: "prefix",
-  forcedTierMin: 1,
-  forcedTierMax: 3,
-  requiresItemRarity: "magic",
-  allowedSubTypes: [...LESSER_HASTE_WEAPON_SUB_TYPES],
-};
-
-export const ICE_ESSENCE: IEssenceDefinitionType = {
-  essenceKey: "essence_ice",
-  displayName: "Lesser Essence of Ice",
-  forcedModKey: "essence_forced_ice",
-  forcedDisplayName: "Adds Cold Damage (Essence)",
-  guaranteedModType: "prefix",
-  forcedTierMin: 1,
-  forcedTierMax: 3,
-  requiresItemRarity: "magic",
-  allowedSubTypes: [...LESSER_ELEMENTAL_WEAPON_SUB_TYPES],
-};
-
-export const INSULATION_ESSENCE: IEssenceDefinitionType = {
-  essenceKey: "essence_insulation",
-  displayName: "Lesser Essence of Insulation",
-  forcedModKey: "essence_forced_insulation",
-  forcedDisplayName: "+Fire Resistance (Essence)",
-  guaranteedModType: "suffix",
-  forcedTierMin: 1,
-  forcedTierMax: 3,
-  requiresItemRarity: "magic",
-  allowedSubTypes: [...LESSER_ARMOUR_BELT_JEWELLERY_RES_SUB_TYPES],
-};
-
-export const OPULENCE_ESSENCE: IEssenceDefinitionType = {
-  essenceKey: "essence_opulence",
-  displayName: "Lesser Essence of Opulence",
-  forcedModKey: "essence_forced_opulence",
-  forcedDisplayName: "Increased Rarity of Items found (Essence)",
-  guaranteedModType: "prefix",
-  forcedTierMin: 1,
-  forcedTierMax: 3,
-  requiresItemRarity: "magic",
-  allowedSubTypes: [...LESSER_OPULENCE_SUB_TYPES],
-};
-
-export const RUIN_ESSENCE: IEssenceDefinitionType = {
-  essenceKey: "essence_ruin",
-  displayName: "Lesser Essence of Ruin",
-  forcedModKey: "essence_forced_ruin",
-  forcedDisplayName: "+Chaos Resistance (Essence)",
-  guaranteedModType: "suffix",
-  forcedTierMin: 1,
-  forcedTierMax: 3,
-  requiresItemRarity: "magic",
-  allowedSubTypes: [...LESSER_ARMOUR_BELT_JEWELLERY_RES_SUB_TYPES],
-};
-
-export const SEEKING_ESSENCE: IEssenceDefinitionType = {
-  essenceKey: "essence_seeking",
-  displayName: "Lesser Essence of Seeking",
-  forcedModKey: "essence_forced_seeking",
-  forcedDisplayName: "Critical / Spell Critical (Essence)",
-  guaranteedModType: "prefix",
-  forcedTierMin: 1,
-  forcedTierMax: 3,
-  requiresItemRarity: "magic",
-  allowedSubTypes: [...LESSER_SEEKING_SUB_TYPES],
-};
-
-export const SORCERY_ESSENCE: IEssenceDefinitionType = {
-  essenceKey: "essence_sorcery",
-  displayName: "Lesser Essence of Sorcery",
-  forcedModKey: "essence_forced_sorcery",
-  forcedDisplayName: "Increased Spell Damage (Essence)",
-  guaranteedModType: "prefix",
-  forcedTierMin: 1,
-  forcedTierMax: 3,
-  requiresItemRarity: "magic",
-  allowedSubTypes: [...LESSER_SPELL_WEAPON_SUB_TYPES],
-};
-
-export const THAWING_ESSENCE: IEssenceDefinitionType = {
-  essenceKey: "essence_thawing",
-  displayName: "Lesser Essence of Thawing",
-  forcedModKey: "essence_forced_thawing",
-  forcedDisplayName: "+Cold Resistance (Essence)",
-  guaranteedModType: "suffix",
-  forcedTierMin: 1,
-  forcedTierMax: 3,
-  requiresItemRarity: "magic",
-  allowedSubTypes: [...LESSER_ARMOUR_BELT_JEWELLERY_RES_SUB_TYPES],
-};
-
-export const LIFE_ESSENCE: IEssenceDefinitionType = {
-  essenceKey: "essence_life",
-  displayName: "Lesser Essence of the Body",
-  forcedModKey: "essence_forced_life",
-  forcedDisplayName: "+Maximum Life (Essence)",
-  guaranteedModType: "suffix",
-  forcedTierMin: 1,
-  forcedTierMax: 3,
-  requiresItemRarity: "magic",
-  allowedSubTypes: [...LESSER_BODY_APPLICABLE_SUB_TYPES],
-};
-
-export const INFINITE_ESSENCE: IEssenceDefinitionType = {
-  essenceKey: "essence_infinite",
-  displayName: "Lesser Essence of the Infinite",
-  forcedModKey: "essence_forced_infinite",
-  forcedDisplayName: "+Attributes (Essence)",
-  guaranteedModType: "suffix",
-  forcedTierMin: 1,
-  forcedTierMax: 3,
-  requiresItemRarity: "magic",
-};
-
-export const MIND_ESSENCE: IEssenceDefinitionType = {
-  essenceKey: "essence_mind",
-  displayName: "Lesser Essence of the Mind",
-  forcedModKey: "essence_forced_mind",
-  forcedDisplayName: "+Maximum Mana (Essence)",
-  guaranteedModType: "suffix",
-  forcedTierMin: 1,
-  forcedTierMax: 3,
-  requiresItemRarity: "magic",
-  allowedSubTypes: [...LESSER_MIND_SUB_TYPES],
-};
-
 /**
- * 크래프트 랩 창고·히네코라 고정표에 노출하는 에센스 전부 (위키 Lesser 목록과 동일 순서).
- * `essenceKey`는 통화 id(`CraftingCurrencyIdType`)·`currency.{key}` 번역·위키 아이콘 키와 동일해야 한다.
+ * 크래프트 랩 창고·히네코라 고정표에 노출하는 에센스 전부.
+ * `essenceKey`는 `essence_{family}_t{1|2|3}` — 통화 id·`currency.{key}` 번역.
+ * 위키 `drop_level`·표시명은 `craftLabEssenceWikiTiers.json`; 아이콘 파일은 패밀리 키(`essence_attack.png`)를 공유.
  */
-export const CRAFT_LAB_ESSENCE_DEFINITIONS = [
-  ATTACK_ESSENCE,
-  ALACRITY_ESSENCE,
-  BATTLE_ESSENCE,
-  COMMAND_ESSENCE,
-  ELECTRICITY_ESSENCE,
-  ENHANCEMENT_ESSENCE,
-  FLAMES_ESSENCE,
-  GROUNDING_ESSENCE,
-  HASTE_ESSENCE,
-  ICE_ESSENCE,
-  INSULATION_ESSENCE,
-  OPULENCE_ESSENCE,
-  RUIN_ESSENCE,
-  SEEKING_ESSENCE,
-  SORCERY_ESSENCE,
-  THAWING_ESSENCE,
-  LIFE_ESSENCE,
-  INFINITE_ESSENCE,
-  MIND_ESSENCE,
-] as const;
+export const CRAFT_LAB_ESSENCE_DEFINITIONS: readonly IEssenceDefinitionType[] = Object.freeze(
+  buildCraftLabEssenceDefinitions(),
+);
 
-export type CraftLabEssenceCurrencyIdType =
-  (typeof CRAFT_LAB_ESSENCE_DEFINITIONS)[number]["essenceKey"];
+export type CraftLabEssenceCurrencyIdType = `essence_${CraftLabEssenceFamilyKeyType}_t${1 | 2 | 3}`;
+
+const CRAFT_LAB_ESSENCE_BY_KEY: ReadonlyMap<string, IEssenceDefinitionType> = new Map(
+  CRAFT_LAB_ESSENCE_DEFINITIONS.map((definition) => {
+    return [definition.essenceKey, definition];
+  }),
+);
+
+export const getCraftLabEssenceByKey = (essenceKey: string): IEssenceDefinitionType | undefined => {
+  return CRAFT_LAB_ESSENCE_BY_KEY.get(essenceKey);
+};
+
+const requireCraftLabEssenceByKey = (
+  essenceKey: CraftLabEssenceCurrencyIdType,
+): IEssenceDefinitionType => {
+  const found = getCraftLabEssenceByKey(essenceKey);
+  if (found === undefined) {
+    throw new Error(`Unknown craft lab essence: ${essenceKey}`);
+  }
+  return found;
+};
+
+/** 벤치·비교용 — Lesser(티어 1) 대표. */
+export const ATTACK_ESSENCE: IEssenceDefinitionType = requireCraftLabEssenceByKey("essence_attack_t1");
+
+/** 벤치·비교용 — Lesser(티어 1) 대표. */
+export const LIFE_ESSENCE: IEssenceDefinitionType = requireCraftLabEssenceByKey("essence_life_t1");
 
 export const EXAMPLE_ESSENCES: ReadonlyArray<IEssenceDefinitionType> =
   CRAFT_LAB_ESSENCE_DEFINITIONS;

@@ -66,12 +66,28 @@ export interface IDesiredModEntryType {
 /** PoE2: Lesser/Normal/Greater 에센스는 보통 매직에만, Perfect 등은 희귀에만 적용. */
 export type EssenceApplicationRarityRequirementType = "magic" | "rare";
 
+/** 에센스 화폐 키 `essence_{family}_t{1|2|3}` 에서 패밀리 접두(`essence_attack` 등). */
+export type IEssenceFamilyKeyFieldType = string;
+
 /**
- * Crafting essence: guarantees one mod (tier `forcedTierMin`..`forcedTierMax`, typically 1–3).
+ * Crafting essence: guarantees one mod (tier `forcedTierMin`..`forcedTierMax`).
  * `allowedSubTypes`는 `baseItemDb`의 `subType` 값과 동일한 문자열이어야 한다.
  */
 export interface IEssenceDefinitionType {
   essenceKey: string;
+  /** `essence_attack` 형태 — 아이콘·호버(패밀리 공통) 번역 키에 사용. */
+  essenceFamilyKey: IEssenceFamilyKeyFieldType;
+  /** Lesser=1, 일반=2, Greater=3 */
+  essenceTierGrade: 1 | 2 | 3;
+  /**
+   * poe2wiki `Item` 템플릿 `drop_level` (드롭/존 조건; 아이템 ilvl 제한과 동일하지 않을 수 있음).
+   * @see https://www.poe2wiki.net/wiki/Essence
+   */
+  wikiDropLevel: number;
+  /**
+   * 위키에 별도 스폰 가중치 테이블이 없을 때, 드롭 깊이·티어를 반영한 **참고용** 상대 가중치(비율만 의미).
+   */
+  referenceSpawnWeight: number;
   displayName: string;
   forcedModKey: string;
   forcedDisplayName: string;

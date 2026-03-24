@@ -3,10 +3,16 @@ import {
   getBoneDefinition,
 } from "@/lib/poe2-item-simulator/abyss/abyssCrafting";
 import { ATTACK_ESSENCE, canApplyEssence } from "@/lib/poe2-item-simulator/essence/essence";
+import { normalizeCraftingCurrencyEventId } from "@/lib/crafting-lab/craftingLabCurrencyIds";
 import { isCraftLabOrbSlotApplicable } from "@/lib/crafting-lab/isCraftLabOrbFamilyApplicable";
 import type { IItemRoll } from "@/lib/poe2-item-simulator/types";
 
 describe("crafting material applicability (essence, abyss bone, craft-lab orb slot)", () => {
+  test("normalizeCraftingCurrencyEventId: legacy essence id maps to tier 1 slot", () => {
+    expect(normalizeCraftingCurrencyEventId("essence_attack")).toBe("essence_attack_t1");
+    expect(normalizeCraftingCurrencyEventId("essence_attack_t2")).toBe("essence_attack_t2");
+  });
+
   test("canApplyEssence: rejects corrupted magic item", () => {
     const item: IItemRoll = {
       rarity: "magic",

@@ -24,8 +24,7 @@ import {
 } from "@/lib/crafting-lab/buildHinekoraLockedDraftTable";
 import { getCraftingLabCurrencyIconUrl } from "@/lib/crafting-lab/craftingLabCurrencyIconUrls";
 import {
-  CRAFT_LAB_CURRENCY_TAB_BOTTOM_ROW,
-  CRAFT_LAB_ORB_SINGLE_SLOT_ROW,
+  CRAFT_LAB_CURRENCY_MISC_GRID_ROWS,
   getCraftLabOrbSlotIdsGrouped,
   getOrbSlotTierRoman,
   normalizeCraftingCurrencyEventId,
@@ -124,6 +123,7 @@ const HINEKORA_SKIP_CURRENCY_IDS = new Set<CraftingCurrencyIdType>([
   "orb_divine",
   "orb_vaal",
   "orb_mirror",
+  "orb_chance",
   "omen_placeholder",
   ...CRAFT_LAB_ABYSS_BONE_IDS,
   ...CRAFT_LAB_ABYSS_OMEN_IDS,
@@ -231,6 +231,9 @@ const getCraftLabDisabledCurrencyRowTooltip = (
     }
     case "orb_mirror": {
       return tCraft("mirrorDisabledHint");
+    }
+    case "orb_chance": {
+      return tCraft("chanceDisabledHint");
     }
     default: {
       return tCraft("currencyTabDisabledGeneric");
@@ -826,6 +829,95 @@ export const CraftingLabWorkspace = (): ReactElement => {
     );
   };
 
+  const renderCraftLabMiscGridCell = (
+    id: CraftingCurrencyIdType,
+  ): ReactElement => {
+    if (
+      id === "orb_alchemy" ||
+      id === "orb_annulment" ||
+      id === "orb_fracturing"
+    ) {
+      return renderCraftLabOrbSlot(id);
+    }
+
+    const iconSrc = getCraftingLabCurrencyIconUrl(id);
+    const name = t(`currency.${id}`);
+    const hoverHint = t(`currencyHoverHint.${id}`);
+
+    if (id === "orb_hinekoras_lock") {
+      const hinekoraApplicable = canApplyHinekorasLock(itemRoll);
+      const hinekoraBlockedReason = hinekoraApplicable
+        ? undefined
+        : t("hinekoraLockAlreadyActive");
+      return (
+        <CraftingLabOrbSlotButton
+          key={id}
+          iconSrc={iconSrc}
+          applicable={hinekoraApplicable}
+          currencyName={name}
+          hoverHint={hoverHint}
+          disabledReason={hinekoraBlockedReason}
+          onBlockedClick={() => {
+            if (hinekoraBlockedReason !== undefined) {
+              setStashValidationMessage(hinekoraBlockedReason);
+            }
+          }}
+          onUse={() => {
+            if (craftLabMode === "simulation") {
+              setLastError(t("hinekoraLockNoSimPreview"));
+              return;
+            }
+            tryApply("orb_hinekoras_lock", (roll) => {
+              return applyHinekorasLock(roll);
+            });
+          }}
+          onHoverChange={(hovered) => {
+            if (!hovered) {
+              setHinekoraHoverPreview(null);
+              return;
+            }
+            setEssenceHoverPreview(null);
+            setHinekoraHoverPreview(resolveHinekoraHoverDraft(id));
+          }}
+          tierRoman={null}
+          ariaLabel={
+            hinekoraApplicable ? name : t("orbDisabledAria", { name })
+          }
+          showQuantityBadge={hinekoraApplicable}
+          quantityLabel={t("stashOrbQuantityUnlimited")}
+        />
+      );
+    }
+
+    const rowDisabledReason = getCraftLabDisabledCurrencyRowTooltip(id, t);
+    return (
+      <CraftingLabOrbSlotButton
+        key={id}
+        iconSrc={iconSrc}
+        applicable={false}
+        currencyName={name}
+        hoverHint={hoverHint}
+        disabledReason={rowDisabledReason}
+        onBlockedClick={() => {
+          setStashValidationMessage(rowDisabledReason);
+        }}
+        onUse={() => {}}
+        onHoverChange={(hovered) => {
+          if (!hovered) {
+            setHinekoraHoverPreview(null);
+            return;
+          }
+          setEssenceHoverPreview(null);
+          setHinekoraHoverPreview(resolveHinekoraHoverDraft(id));
+        }}
+        tierRoman={null}
+        ariaLabel={name}
+        showQuantityBadge={false}
+        quantityLabel=""
+      />
+    );
+  };
+
   const renderAbyssBoneSlot = (
     boneId: CraftLabAbyssBoneIdType,
   ): ReactElement | null => {
@@ -877,7 +969,7 @@ export const CraftingLabWorkspace = (): ReactElement => {
   };
 
   return (
-    <div className="flex min-h-full flex-col items-center bg-zinc-50 dark:bg-black px-4 py-8 sm:px-6 sm:py-10">
+    <div className="flex w-full flex-col items-center bg-zinc-50 dark:bg-black px-4 py-8 sm:px-6 sm:py-10">
       <div className="w-full max-w-6xl flex flex-col gap-6">
         <header className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
           <div className="flex flex-col gap-2 min-w-0">
@@ -1075,7 +1167,7 @@ export const CraftingLabWorkspace = (): ReactElement => {
           </section>
 
           <section
-            className="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 p-5 shadow-sm flex flex-col gap-5"
+            className="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 p-5 shadow-sm flex flex-col gap-2.5"
             aria-labelledby="craft-lab-stash-heading"
           >
             <div className="flex flex-wrap items-center justify-between gap-2">
@@ -1129,9 +1221,9 @@ export const CraftingLabWorkspace = (): ReactElement => {
               <>
                 <fieldset className="min-w-0 border-0 p-0 m-0">
                   <legend className="sr-only">{t("craftModeLegend")}</legend>
-                  <div className="mb-2 flex items-center justify-between gap-3">
+                  <div className="mb-1 flex items-center justify-between gap-2">
                     <div
-                      className="flex flex-col items-start gap-2"
+                      className="flex flex-col items-start gap-1.5"
                       role="radiogroup"
                       aria-label={t("craftModeLegend")}
                     >
@@ -1174,7 +1266,7 @@ export const CraftingLabWorkspace = (): ReactElement => {
                       </button>
                     </div>
                     <div
-                      className="flex flex-col items-start gap-2"
+                      className="flex flex-col items-start gap-1.5"
                       aria-labelledby="craft-lab-staged-omen-panel-heading"
                     >
                       <h3
@@ -1263,7 +1355,7 @@ export const CraftingLabWorkspace = (): ReactElement => {
                   })}
                 </div>
 
-                <div className="min-h-[200px]">
+                <div className="min-h-0">
                   <div
                     id="craft-stash-panel-currency"
                     role="tabpanel"
@@ -1272,129 +1364,48 @@ export const CraftingLabWorkspace = (): ReactElement => {
                     className={stashTab !== "currency" ? "hidden" : undefined}
                   >
                     <div className="rounded-lg border border-[#3d3429] bg-[#141210] p-2 shadow-[inset_0_2px_8px_rgba(0,0,0,0.45)] dark:bg-[#141210]">
-                      <div className="flex flex-col gap-3 sm:gap-3.5">
-                        <div className="flex w-full min-w-0 flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
-                          <div className="flex min-w-0 flex-1 flex-col gap-3 sm:gap-3.5">
-                            {getCraftLabOrbSlotIdsGrouped().map(
-                              (rowSlotIds, rowIndex) => {
-                                return (
-                                  <div
-                                    key={`${String(rowIndex)}-orb-row`}
-                                    className="w-full min-w-0"
-                                  >
-                                    <div className="grid w-max max-w-full grid-cols-3 gap-1.5 sm:gap-2">
-                                      {rowSlotIds.map((id) => {
-                                        return renderCraftLabOrbSlot(id);
-                                      })}
-                                    </div>
-                                  </div>
-                                );
-                              },
-                            )}
-                          </div>
-                          <div className="flex shrink-0 flex-col gap-1.5 sm:gap-2 sm:pt-0">
-                            {CRAFT_LAB_ORB_SINGLE_SLOT_ROW.map((id) => {
-                              return renderCraftLabOrbSlot(id);
-                            })}
-                          </div>
-                        </div>
-                        <div className="w-full min-w-0">
-                          <div className="mx-auto grid w-max grid-cols-4 gap-1.5 sm:gap-2">
-                            {CRAFT_LAB_CURRENCY_TAB_BOTTOM_ROW.map((id) => {
-                              const iconSrc = getCraftingLabCurrencyIconUrl(id);
-                              const name = t(`currency.${id}`);
-                              const hoverHint = t(`currencyHoverHint.${id}`);
-                              if (id === "orb_hinekoras_lock") {
-                                const hinekoraApplicable =
-                                  canApplyHinekorasLock(itemRoll);
-                                const hinekoraBlockedReason = hinekoraApplicable
-                                  ? undefined
-                                  : t("hinekoraLockAlreadyActive");
-                                return (
-                                  <CraftingLabOrbSlotButton
-                                    key={id}
-                                    iconSrc={iconSrc}
-                                    applicable={hinekoraApplicable}
-                                    currencyName={name}
-                                    hoverHint={hoverHint}
-                                    disabledReason={hinekoraBlockedReason}
-                                    onBlockedClick={() => {
-                                      if (hinekoraBlockedReason !== undefined) {
-                                        setStashValidationMessage(
-                                          hinekoraBlockedReason,
-                                        );
-                                      }
-                                    }}
-                                    onUse={() => {
-                                      if (craftLabMode === "simulation") {
-                                        setLastError(
-                                          t("hinekoraLockNoSimPreview"),
-                                        );
-                                        return;
-                                      }
-                                      tryApply("orb_hinekoras_lock", (roll) => {
-                                        return applyHinekorasLock(roll);
-                                      });
-                                    }}
-                                    onHoverChange={(hovered) => {
-                                      if (!hovered) {
-                                        setHinekoraHoverPreview(null);
-                                        return;
-                                      }
-                                      setEssenceHoverPreview(null);
-                                      setHinekoraHoverPreview(
-                                        resolveHinekoraHoverDraft(
-                                          "orb_hinekoras_lock",
-                                        ),
-                                      );
-                                    }}
-                                    tierRoman={null}
-                                    ariaLabel={
-                                      hinekoraApplicable
-                                        ? name
-                                        : t("orbDisabledAria", { name })
-                                    }
-                                    showQuantityBadge={hinekoraApplicable}
-                                    quantityLabel={t(
-                                      "stashOrbQuantityUnlimited",
-                                    )}
-                                  />
-                                );
-                              }
-                              const rowDisabledReason =
-                                getCraftLabDisabledCurrencyRowTooltip(id, t);
+                      <div className="flex w-full min-w-0 flex-col gap-2 sm:flex-row sm:items-start sm:justify-center sm:gap-5">
+                        <div className="flex min-w-0 flex-1 flex-col gap-2 sm:gap-2.5">
+                          {getCraftLabOrbSlotIdsGrouped().map(
+                            (rowSlotIds, rowIndex) => {
                               return (
-                                <CraftingLabOrbSlotButton
-                                  key={id}
-                                  iconSrc={iconSrc}
-                                  applicable={false}
-                                  currencyName={name}
-                                  hoverHint={hoverHint}
-                                  disabledReason={rowDisabledReason}
-                                  onBlockedClick={() => {
-                                    setStashValidationMessage(
-                                      rowDisabledReason,
-                                    );
-                                  }}
-                                  onUse={() => {}}
-                                  onHoverChange={(hovered) => {
-                                    if (!hovered) {
-                                      setHinekoraHoverPreview(null);
-                                      return;
-                                    }
-                                    setEssenceHoverPreview(null);
-                                    setHinekoraHoverPreview(
-                                      resolveHinekoraHoverDraft(id),
-                                    );
-                                  }}
-                                  tierRoman={null}
-                                  ariaLabel={name}
-                                  showQuantityBadge={false}
-                                  quantityLabel=""
-                                />
+                                <div
+                                  key={`${String(rowIndex)}-orb-row`}
+                                  className="w-full min-w-0 flex justify-center sm:justify-start"
+                                >
+                                  <div className="grid w-max max-w-full grid-cols-3 gap-1.5 sm:gap-2">
+                                    {rowSlotIds.map((slotId) => {
+                                      return renderCraftLabOrbSlot(slotId);
+                                    })}
+                                  </div>
+                                </div>
                               );
-                            })}
-                          </div>
+                            },
+                          )}
+                        </div>
+                        <div
+                          className="flex shrink-0 flex-col items-center gap-2 sm:gap-2.5"
+                          aria-label={t("currencyMiscGridAria")}
+                        >
+                          {CRAFT_LAB_CURRENCY_MISC_GRID_ROWS.map(
+                            (row, rowIndex) => {
+                              const colCount = row.length;
+                              return (
+                                <div
+                                  key={`misc-currency-row-${String(rowIndex)}`}
+                                  className={`grid w-max justify-items-center gap-1.5 sm:gap-2 ${
+                                    colCount === 2
+                                      ? "grid-cols-2"
+                                      : "grid-cols-3"
+                                  }`}
+                                >
+                                  {row.map((miscId) => {
+                                    return renderCraftLabMiscGridCell(miscId);
+                                  })}
+                                </div>
+                              );
+                            },
+                          )}
                         </div>
                       </div>
                     </div>
@@ -1503,13 +1514,13 @@ export const CraftingLabWorkspace = (): ReactElement => {
                     hidden={stashTab !== "abyss"}
                     className={stashTab !== "abyss" ? "hidden" : undefined}
                   >
-                    <p className="mb-2 text-[11px] leading-snug text-zinc-500 dark:text-zinc-400">
+                    <p className="mb-1 text-[11px] leading-snug text-zinc-500 dark:text-zinc-400">
                       {t("abyssTabHint")}
                     </p>
                     <div className="rounded-lg border border-[#3d3429] bg-[#141210] p-2 shadow-[inset_0_2px_8px_rgba(0,0,0,0.45)] dark:bg-[#141210]">
                       <div className="w-full min-w-0">
-                        <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between md:gap-5">
-                          <div className="flex min-w-0 flex-col gap-3 sm:flex-row sm:items-start sm:gap-4">
+                        <div className="flex flex-col gap-2.5 md:flex-row md:items-start md:justify-between md:gap-3.5">
+                          <div className="flex min-w-0 flex-col gap-2 sm:flex-row sm:items-start sm:gap-3">
                             <div className="grid w-max grid-cols-3 gap-1.5 sm:gap-2">
                               {CRAFT_LAB_ABYSS_BONE_GRID.flat().map(
                                 (boneId) => {
@@ -1614,10 +1625,10 @@ export const CraftingLabWorkspace = (): ReactElement => {
                     hidden={stashTab !== "ritual"}
                     className={stashTab !== "ritual" ? "hidden" : undefined}
                   >
-                    <p className="mb-2 text-[11px] leading-snug text-zinc-500 dark:text-zinc-400">
+                    <p className="mb-1 text-[11px] leading-snug text-zinc-500 dark:text-zinc-400">
                       {t("ritualTabHint")}
                     </p>
-                    <p className="mb-2 text-[11px] leading-snug text-zinc-500 dark:text-zinc-400">
+                    <p className="mb-1 text-[11px] leading-snug text-zinc-500 dark:text-zinc-400">
                       {t("ritualOmenSimulationNote")}
                     </p>
                     <div className="rounded-lg border border-[#3d3429] bg-[#141210] p-2 shadow-[inset_0_2px_8px_rgba(0,0,0,0.45)] dark:bg-[#141210]">
@@ -1690,25 +1701,23 @@ export const CraftingLabWorkspace = (): ReactElement => {
                   </div>
                 </div>
 
-                <div className="w-full shrink-0 px-0.5 py-1">
-                  <ReservedStatusRegion
-                    minHeightClass="min-h-[3.5rem]"
-                    isEmpty={stashValidationMessage === null}
-                    placeholderTextClassName="text-xs leading-snug"
+                {stashValidationMessage !== null ? (
+                  <div
+                    className="w-full shrink-0 px-0.5 pt-1"
+                    aria-live="polite"
+                    aria-atomic="true"
                   >
-                    {stashValidationMessage !== null ? (
-                      <p
-                        className="text-xs leading-snug text-amber-900 dark:text-amber-200/95"
-                        role="status"
-                      >
-                        {stashValidationMessage}
-                      </p>
-                    ) : null}
-                  </ReservedStatusRegion>
-                </div>
+                    <p
+                      className="text-xs leading-snug text-amber-900 dark:text-amber-200/95"
+                      role="status"
+                    >
+                      {stashValidationMessage}
+                    </p>
+                  </div>
+                ) : null}
 
                 {simPreview !== null ? (
-                  <div className="mt-3">
+                  <div className="mt-1.5">
                     <CraftingLabOrbPreviewPanel
                       orbLabel={simPreviewLabel}
                       preview={simPreview}

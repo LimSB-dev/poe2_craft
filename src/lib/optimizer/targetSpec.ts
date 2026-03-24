@@ -1,4 +1,4 @@
-import type { IItemRoll } from "@/lib/poe2-item-simulator/types";
+import type { IItemRoll } from "@/types/poe2-item-simulator";
 
 export type IOptimizationTargetSpecType = {
   validModKeys: ReadonlyArray<string>;

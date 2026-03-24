@@ -13,7 +13,7 @@ type CatalogType = {
 
 const ROOT_DIR = process.cwd();
 const OUT_ROOT = path.join(ROOT_DIR, "public/images/items");
-const CATALOG_PATH = path.join(ROOT_DIR, "messages/en/simulator/catalog.json");
+const CATALOG_PATH = path.join(ROOT_DIR, "src/i18n/messages/en/simulator/catalog.json");
 
 const sanitizeSlug = (value: string): string => {
   const slug = value

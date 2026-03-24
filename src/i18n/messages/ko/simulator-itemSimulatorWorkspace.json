@@ -1,0 +1,58 @@
+{
+  "itemSimulatorWorkspace": {
+    "title": "패스 오브 엑자일 2 — 아이템 시뮬레이터",
+    "intro": "베이스와 선택한 목표 속성을 바탕으로, 버튼을 누를 때마다 서버에서 Q-러닝을 처음부터 학습합니다(RL 화면과 동일한 엑잘 비용 모델). 초기 추천 행동과 행동 비율을 보여 줍니다.",
+    "nav": {
+      "strategy": "전략 화면 열기",
+      "rl": "RL 환경",
+      "optimizer": "최적화 화면",
+      "craftingLab": "크래프트 랩",
+      "db": "DB"
+    },
+    "panels": {
+      "baseItem": {
+        "title": "베이스 아이템",
+        "description": "제작할 아이템을 선택합니다."
+      },
+      "desiredMods": {
+        "title": "속성",
+        "description": "아이템에 원하는 속성을 추가하고 굴림 설정을 조정합니다."
+      },
+      "result": {
+        "title": "최적화 탐색",
+        "description": "클릭할 때마다 서버에서 Q-러닝을 다시 학습합니다. 목표 속성 개수(1~6)를 RL의 목표 좋은 옵션 수로 쓰고, 없으면 기본값 3으로 학습합니다."
+      }
+    },
+    "baseFilter": {
+      "type": "타입",
+      "subType": "유형",
+      "all": "전체",
+      "requiredStr": "힘",
+      "requiredDex": "민첩",
+      "requiredInt": "지능",
+      "requiredLevel": "레벨",
+      "baseItem": "베이스 아이템",
+      "noResults": "필터에 맞는 베이스 아이템이 없습니다",
+      "matchCount": "필터 결과 베이스 아이템 수: {count}",
+      "source": "출처: PoE2DB",
+      "quality": "퀄리티",
+      "armour": "방어도",
+      "evasion": "회피",
+      "energyShield": "에너지실드",
+      "filterToggle": "필터",
+      "baseItemSearchPlaceholder": "{label} 검색... ({count})"
+    },
+    "optimizationExplore": {
+      "emptyNeedBase": "먼저 베이스 아이템을 선택하세요.",
+      "emptyPrompt": "버튼을 누르면 서버에서 Q-러닝을 돌려 결과를 표시합니다. 목표 속성 개수(1~6)가 이번 학습의 목표 좋은 옵션 수로 쓰이고, 없으면 기본 3으로 학습합니다.",
+      "paramsSummary": "실행 설정: 목표 좋은 옵션 {desiredGoodMods}개, 카오스 예산 {budget}, 에피소드 {episodes}.",
+      "costsLine": "행동당 엑잘 — 카오스: {chaos}, 에센스: {essence}.",
+      "desiredModsHint": "목표 속성 {count}개가 이번 학습의 목표 좋은 옵션 수로 반영되었습니다.",
+      "defaultDesiredModsHint": "목표 속성이 없어 기본값 3(목표 좋은 옵션)으로 학습했습니다.",
+      "payloadEchoBase": "요청 베이스 키: {baseItemKey}",
+      "payloadEchoModsHeading": "요청에 포함된 목표 속성",
+      "payloadEchoModLine": "{modKey} ({modType})",
+      "runButton": "최적화 탐색"
+    }
+  }
+}

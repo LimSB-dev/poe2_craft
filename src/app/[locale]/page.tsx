@@ -1,6 +1,6 @@
 import { setRequestLocale } from "next-intl/server";
 import type { ReactElement } from "react";
-import { ItemSimulatorWorkspace } from "@/components/item-simulator/ItemSimulatorWorkspace";
+import { ItemSimulatorContainer } from "@/features/crafting/containers/ItemSimulatorContainer";
 
 type HomePagePropsType = {
   params: Promise<{ locale: string }>;
@@ -9,7 +9,7 @@ type HomePagePropsType = {
 const HomePage = async ({ params }: HomePagePropsType): Promise<ReactElement> => {
   const { locale } = await params;
   setRequestLocale(locale);
-  return <ItemSimulatorWorkspace />;
+  return <ItemSimulatorContainer />;
 };
 
 export default HomePage;

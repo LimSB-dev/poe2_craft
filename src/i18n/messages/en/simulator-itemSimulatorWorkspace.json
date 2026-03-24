@@ -1,0 +1,58 @@
+{
+  "itemSimulatorWorkspace": {
+    "title": "Path of Exile 2 — Item simulator",
+    "intro": "Pick a base and optional target modifiers. Each time you press optimization search, the server runs Q-learning from scratch (same exalted cost model as the RL page) and reports a suggested first action and action mix.",
+    "nav": {
+      "strategy": "Open strategy view",
+      "rl": "RL environment",
+      "optimizer": "Open optimizer",
+      "craftingLab": "Crafting lab",
+      "db": "DB"
+    },
+    "panels": {
+      "baseItem": {
+        "title": "Base item",
+        "description": "Select the item you are crafting on."
+      },
+      "desiredMods": {
+        "title": "Modifiers",
+        "description": "Add the modifiers you want on your item and adjust roll settings."
+      },
+      "result": {
+        "title": "Optimization search",
+        "description": "Each click retrains Q-learning on the server. Your modifier count (1–6) sets the RL desired good mods; with none selected, a default of 3 is used."
+      }
+    },
+    "baseFilter": {
+      "type": "Type",
+      "subType": "Subtype",
+      "all": "All",
+      "requiredStr": "STR",
+      "requiredDex": "DEX",
+      "requiredInt": "INT",
+      "requiredLevel": "Lv",
+      "baseItem": "Base item",
+      "noResults": "No base items match filters",
+      "matchCount": "Matched base items: {count}",
+      "source": "Source: PoE2DB",
+      "quality": "Quality",
+      "armour": "ARM",
+      "evasion": "EVA",
+      "energyShield": "ES",
+      "filterToggle": "Filters",
+      "baseItemSearchPlaceholder": "Search {label}… ({count})"
+    },
+    "optimizationExplore": {
+      "emptyNeedBase": "Select a base item first.",
+      "emptyPrompt": "Press the button to train Q-learning and view results. Modifier list length (1–6) maps to desired good mods for this run; with no modifiers, training uses 3 as a default.",
+      "paramsSummary": "Run: desired good mods {desiredGoodMods}, chaos budget {budget}, episodes {episodes}.",
+      "costsLine": "Exalt per action — chaos: {chaos}, essence: {essence}.",
+      "desiredModsHint": "Your modifier list has {count} entries (used as desired good mods for this run).",
+      "defaultDesiredModsHint": "No modifiers selected — training used 3 desired good mods (default).",
+      "payloadEchoBase": "Request base item key: {baseItemKey}",
+      "payloadEchoModsHeading": "Target modifiers sent with this request",
+      "payloadEchoModLine": "{modKey} ({modType})",
+      "runButton": "Run optimization search"
+    }
+  }
+}

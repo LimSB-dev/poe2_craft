@@ -3,7 +3,7 @@ import path from "path";
 
 import type { IModDbRecordType } from "@/lib/poe2-item-simulator/modDb";
 import { MOD_DB } from "@/lib/poe2-item-simulator/modDb";
-import koSimulatorMessages from "@/../messages/ko/simulator.json";
+import koSimulatorMessages from "@/i18n/messages/ko/simulator.json";
 
 type ExtractedModifierRowType = {
   sourcePageSlug: string;

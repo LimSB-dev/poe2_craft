@@ -1,4 +1,4 @@
-import simulatorEn from "../../../messages/en/simulator.json";
+import simulatorEn from "../../i18n/messages/en/simulator.json";
 import { MOD_DB } from "./modDb";
 
 describe("simulator.mods i18n keys", () => {

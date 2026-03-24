@@ -180,7 +180,7 @@ export const CRAFTING_LAB_CURRENCY_ICON_URLS = {
 } as const;
 
 export type CraftingLabCurrencyIconIdType = keyof typeof CRAFTING_LAB_CURRENCY_ICON_URLS;
-const CRAFTING_LAB_LOCAL_ICON_BASE_PATH: string = "/images/crafting-lab/currency";
+const CRAFTING_LAB_LOCAL_ICON_BASE_PATH: string = "/images/craft";
 
 const resolveEssenceIconFileId = (id: string): string => {
   const tiered = id.match(/^(essence_[a-z_]+)_t[123]$/);
@@ -190,13 +190,41 @@ const resolveEssenceIconFileId = (id: string): string => {
   return id;
 };
 
+const RITUAL_OMEN_ICON_IDS = new Set<string>([
+  "omen_whittling",
+  "omen_sanctification",
+  "omen_answered_prayers",
+  "omen_bartering",
+  "omen_chance",
+  "omen_corruption",
+  "omen_the_hunt",
+  "omen_the_blessed",
+]);
+
+const resolveCraftingLabIconCategory = (fileId: string): "currency" | "essence" | "abyss" | "ritual" => {
+  if (fileId.startsWith("essence_")) {
+    return "essence";
+  }
+  if (fileId.startsWith("bone_")) {
+    return "abyss";
+  }
+  if (RITUAL_OMEN_ICON_IDS.has(fileId)) {
+    return "ritual";
+  }
+  if (fileId.startsWith("omen_")) {
+    return "abyss";
+  }
+  return "currency";
+};
+
 export const getCraftingLabCurrencyIconUrl = (
   id: string,
 ): string | undefined => {
   const fileId = resolveEssenceIconFileId(id);
   const lookupKey = fileId !== id ? fileId : id;
   if (lookupKey in CRAFTING_LAB_CURRENCY_ICON_URLS) {
-    return `${CRAFTING_LAB_LOCAL_ICON_BASE_PATH}/${fileId}.png`;
+    const category = resolveCraftingLabIconCategory(fileId);
+    return `${CRAFTING_LAB_LOCAL_ICON_BASE_PATH}/${category}/${fileId}.png`;
   }
   return undefined;
 };

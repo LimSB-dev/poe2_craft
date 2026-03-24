@@ -13,7 +13,7 @@ import {
   listModRollCandidates,
   type IModRollBaseFiltersType,
 } from "@/lib/poe2-item-simulator/roller";
-import type { IItemRoll, IModDefinition } from "@/lib/poe2-item-simulator/types";
+import type { IItemRoll, IModDefinition } from "@/types/poe2-item-simulator";
 
 export type CraftLabPreviewRowType = {
   modKey: string;

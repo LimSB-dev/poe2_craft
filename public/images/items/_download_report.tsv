@@ -1,1 +1,3 @@
 baseItemKey	displayName	reason	detail
+folder:weapon/quarterstaff		fallback-list-fetch	No fallback source for subType="quarterstaff"
+folder:weapon/trap		fallback-list-fetch	No fallback source for subType="trap"

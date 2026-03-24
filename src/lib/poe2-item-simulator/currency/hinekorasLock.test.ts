@@ -3,7 +3,7 @@ import {
   canApplyHinekorasLock,
 } from "@/lib/poe2-item-simulator/currency/hinekorasLock";
 import { CORRUPTED_ITEM_STANDARD_CRAFTING_ERROR_MESSAGE } from "@/lib/poe2-item-simulator/itemCorruptionCraftingGuard";
-import type { IItemRoll } from "@/lib/poe2-item-simulator/types";
+import type { IItemRoll } from "@/types/poe2-item-simulator";
 
 describe("hinekorasLock", () => {
   test("canApplyHinekorasLock: false when corrupted or lock already active", () => {

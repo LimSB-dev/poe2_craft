@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { ReactElement } from "react";
-import { StrategyComparisonView } from "@/components/strategy/StrategyComparisonView";
+import { StrategyComparisonContainer } from "@/features/strategy/containers/StrategyComparisonContainer";
 
 type StrategyPagePropsType = {
   params: Promise<{ locale: string }>;
@@ -23,7 +23,7 @@ export const generateMetadata = async ({
 const StrategyPage = async ({ params }: StrategyPagePropsType): Promise<ReactElement> => {
   const { locale } = await params;
   setRequestLocale(locale);
-  return <StrategyComparisonView />;
+  return <StrategyComparisonContainer />;
 };
 
 export default StrategyPage;

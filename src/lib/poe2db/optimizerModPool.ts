@@ -1,4 +1,4 @@
-import type { IModDefinition } from "@/lib/poe2-item-simulator/types";
+import type { IModDefinition } from "@/types/poe2-item-simulator";
 import type { IPoe2DbImportResultType } from "@/lib/poe2db/schema";
 
 const inferModType = (name: string, url: string): "prefix" | "suffix" => {

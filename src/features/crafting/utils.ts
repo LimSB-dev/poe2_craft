@@ -1,0 +1,1 @@
+export const CRAFTING_FEATURE_PLACEHOLDER = true;

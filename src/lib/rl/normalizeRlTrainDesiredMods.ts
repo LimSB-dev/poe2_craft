@@ -1,4 +1,4 @@
-import type { ModTypeType } from "@/lib/poe2-item-simulator/types";
+import type { ModTypeType } from "@/types/poe2-item-simulator";
 
 import type { IRlTrainDesiredModPayloadType } from "./rlTrainApiTypes";
 

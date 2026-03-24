@@ -4,7 +4,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
-import { HtmlLangSetter } from "@/components/i18n/HtmlLangSetter";
+import { HtmlLangSetter } from "@/components/atoms/HtmlLangSetter";
 import { routing } from "@/lib/i18n/routing";
 
 type LocaleLayoutPropsType = {

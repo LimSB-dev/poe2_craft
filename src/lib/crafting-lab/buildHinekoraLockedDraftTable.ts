@@ -20,7 +20,7 @@ import {
   CRAFT_LAB_ESSENCE_DEFINITIONS,
 } from "@/lib/poe2-item-simulator/essence/essence";
 import type { IModRollBaseFiltersType } from "@/lib/poe2-item-simulator/roller";
-import type { IItemRoll } from "@/lib/poe2-item-simulator/types";
+import type { IItemRoll } from "@/types/poe2-item-simulator";
 
 import { isCraftLabOrbSlotApplicable } from "./isCraftLabOrbFamilyApplicable";
 

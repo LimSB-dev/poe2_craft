@@ -65,9 +65,9 @@ const getEnglishNameByKey = (): Record<string, string | null> => {
   const byKey: Record<string, string | null> = {};
   const itemSimCatalogPath = path.join(
     ROOT,
-    "messages/en/simulator/itemSimulatorCatalog.json",
+    "src/i18n/messages/en/simulator/itemSimulatorCatalog.json",
   );
-  const catalogPath = path.join(ROOT, "messages/en/simulator/catalog.json");
+  const catalogPath = path.join(ROOT, "src/i18n/messages/en/simulator/catalog.json");
   const itemSimJson = readJson<ItemSimulatorCatalogJsonType>(itemSimCatalogPath);
   const catalogJson = readJson<CatalogJsonType>(catalogPath);
   const itemSimRows = itemSimJson.itemSimulatorCatalog?.baseItems ?? {};
@@ -142,10 +142,10 @@ const migrateBaseItemDbTs = (keyMap: Record<string, string>): void => {
 
 const migrateMessageFiles = (keyMap: Record<string, string>): void => {
   for (const locale of LOCALES) {
-    const catalogPath = path.join(ROOT, `messages/${locale}/simulator/catalog.json`);
+    const catalogPath = path.join(ROOT, `src/i18n/messages/${locale}/simulator/catalog.json`);
     const itemSimPath = path.join(
       ROOT,
-      `messages/${locale}/simulator/itemSimulatorCatalog.json`,
+      `src/i18n/messages/${locale}/simulator/itemSimulatorCatalog.json`,
     );
 
     const catalogJson = readJson<CatalogJsonType>(catalogPath);

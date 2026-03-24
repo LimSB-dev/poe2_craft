@@ -1,7 +1,12 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import type { ReactElement } from "react";
+
+import {
+  getAttributeRequirementPrefix,
+  getLevelRequirementLabel,
+} from "@/lib/poe2-item-simulator/coreAttributeLabels";
 
 export type ItemSimulatorBaseItemFilterRangeFieldsPropsType = {
   minimumRequiredLevel: number;
@@ -37,11 +42,13 @@ export type ItemSimulatorBaseItemFilterRangeFieldsPropsType = {
 export const ItemSimulatorBaseItemFilterRangeFields = (
   props: ItemSimulatorBaseItemFilterRangeFieldsPropsType,
 ): ReactElement => {
+  const locale = useLocale();
   const t = useTranslations("simulator.itemSimulatorWorkspace");
 
   const stats = [
     {
-      label: t("baseFilter.requiredLevel"),
+      id: "level",
+      label: getLevelRequirementLabel(locale),
       minValue: props.minimumRequiredLevel,
       maxValue: props.maximumRequiredLevel,
       onMinChange: props.setMinimumRequiredLevel,
@@ -50,6 +57,7 @@ export const ItemSimulatorBaseItemFilterRangeFields = (
       absMax: 100,
     },
     {
+      id: "armour",
       label: t("baseFilter.armour"),
       minValue: props.minimumArmour,
       maxValue: props.maximumArmour,
@@ -59,6 +67,7 @@ export const ItemSimulatorBaseItemFilterRangeFields = (
       absMax: 9999,
     },
     {
+      id: "evasion",
       label: t("baseFilter.evasion"),
       minValue: props.minimumEvasion,
       maxValue: props.maximumEvasion,
@@ -68,6 +77,7 @@ export const ItemSimulatorBaseItemFilterRangeFields = (
       absMax: 9999,
     },
     {
+      id: "energyShield",
       label: t("baseFilter.energyShield"),
       minValue: props.minimumEnergyShield,
       maxValue: props.maximumEnergyShield,
@@ -77,7 +87,8 @@ export const ItemSimulatorBaseItemFilterRangeFields = (
       absMax: 9999,
     },
     {
-      label: t("baseFilter.requiredStr"),
+      id: "str",
+      label: getAttributeRequirementPrefix("str", locale),
       minValue: props.minimumRequiredStrength,
       maxValue: props.maximumRequiredStrength,
       onMinChange: props.setMinimumRequiredStrength,
@@ -86,7 +97,8 @@ export const ItemSimulatorBaseItemFilterRangeFields = (
       absMax: 999,
     },
     {
-      label: t("baseFilter.requiredDex"),
+      id: "dex",
+      label: getAttributeRequirementPrefix("dex", locale),
       minValue: props.minimumRequiredDexterity,
       maxValue: props.maximumRequiredDexterity,
       onMinChange: props.setMinimumRequiredDexterity,
@@ -95,7 +107,8 @@ export const ItemSimulatorBaseItemFilterRangeFields = (
       absMax: 999,
     },
     {
-      label: t("baseFilter.requiredInt"),
+      id: "int",
+      label: getAttributeRequirementPrefix("int", locale),
       minValue: props.minimumRequiredIntelligence,
       maxValue: props.maximumRequiredIntelligence,
       onMinChange: props.setMinimumRequiredIntelligence,
@@ -108,7 +121,7 @@ export const ItemSimulatorBaseItemFilterRangeFields = (
   return (
     <div className="flex flex-col gap-2">
       {stats.map((stat) => (
-        <div key={stat.label} className="flex flex-col gap-1">
+        <div key={stat.id} className="flex flex-col gap-1">
           <span className="text-xs font-medium text-zinc-700 dark:text-zinc-300">
             {stat.label}
           </span>

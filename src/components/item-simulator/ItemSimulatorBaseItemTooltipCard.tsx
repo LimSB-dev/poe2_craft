@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useState, type ReactElement } from "react";
 
 import { ItemSimulatorCatalogBaseName } from "@/components/item-simulator/i18n/ItemSimulatorCatalogBaseName";
@@ -74,11 +74,12 @@ export const ItemSimulatorBaseItemTooltipCard = ({
   onUnrevealedDesecratedModClick,
   soulWellInteractionDisabled = false,
 }: ItemSimulatorBaseItemTooltipCardPropsType): ReactElement => {
+  const locale = useLocale();
   const t = useTranslations("simulator.itemSimulatorWorkspace");
   const tSim = useTranslations("simulator");
   const [imageLoadErrorSrc, setImageLoadErrorSrc] = useState<string | null>(null);
 
-  const requirementParts = buildBaseItemRequirementLineParts(record, t);
+  const requirementParts = buildBaseItemRequirementLineParts(record, locale);
   const implicitKeys = record.implicitMods ?? [];
   const hasImplicits = implicitKeys.length > 0;
   const showExplicitSection = explicitItemRoll !== undefined && explicitItemRoll !== null;

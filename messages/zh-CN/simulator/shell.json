@@ -21,10 +21,10 @@
     "type": "类型",
     "subType": "子类型",
     "all": "全部",
-    "requiredStr": "STR",
-    "requiredDex": "DEX",
-    "requiredInt": "INT",
-    "requiredLevel": "Lv",
+    "requiredStr": "力量",
+    "requiredDex": "敏捷",
+    "requiredInt": "智慧",
+    "requiredLevel": "等级",
     "baseItem": "基础物品",
     "noResults": "没有符合筛选条件的基础物品",
     "matchCount": "筛选匹配基础物品数: {count}",
@@ -54,10 +54,10 @@
     "colWeight": "权重",
     "colApplicable": "适用类型",
     "colStatReq": "属性要求",
-    "prefix": "前缀",
-    "suffix": "后缀",
+    "prefix": "基础前缀",
+    "suffix": "基础后缀",
     "navLabel": "DB",
-    "corruptedPrefix": "腐化前缀",
-    "corruptedSuffix": "腐化后缀"
+    "corruptedPrefix": "腐化的前缀",
+    "corruptedSuffix": "腐化的后缀"
   }
 }

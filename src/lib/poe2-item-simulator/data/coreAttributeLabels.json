@@ -1,0 +1,30 @@
+{
+  "version": "2026.03.poe2wikiLocales.v1",
+  "reference": "Path of Exile 2 core attributes (wiki: Attribute). App locales mirror poe2wiki/MediaWiki uselang coverage used in this project: en, ko, ja, zh-CN.",
+  "levelRequirementLabel": {
+    "en": "Lv",
+    "ko": "레벨",
+    "ja": "Lv",
+    "zh-CN": "等级"
+  },
+  "attributes": {
+    "str": {
+      "en": { "requirementPrefix": "STR", "displayName": "Strength" },
+      "ko": { "requirementPrefix": "힘", "displayName": "힘" },
+      "ja": { "requirementPrefix": "筋力", "displayName": "筋力" },
+      "zh-CN": { "requirementPrefix": "力量", "displayName": "力量" }
+    },
+    "dex": {
+      "en": { "requirementPrefix": "DEX", "displayName": "Dexterity" },
+      "ko": { "requirementPrefix": "민첩", "displayName": "민첩" },
+      "ja": { "requirementPrefix": "敏捷性", "displayName": "敏捷性" },
+      "zh-CN": { "requirementPrefix": "敏捷", "displayName": "敏捷" }
+    },
+    "int": {
+      "en": { "requirementPrefix": "INT", "displayName": "Intelligence" },
+      "ko": { "requirementPrefix": "지능", "displayName": "지능" },
+      "ja": { "requirementPrefix": "知性", "displayName": "知性" },
+      "zh-CN": { "requirementPrefix": "智慧", "displayName": "智慧" }
+    }
+  }
+}

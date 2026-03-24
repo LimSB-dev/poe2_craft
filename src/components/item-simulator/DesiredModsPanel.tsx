@@ -1,11 +1,12 @@
 "use client";
 
-import { useTranslations } from "next-intl";
-import type { ReactElement } from "react";
+import { useLocale, useTranslations } from "next-intl";
+import { useMemo, type ReactElement } from "react";
 
 import { DesiredModsModPickerList } from "@/components/item-simulator/DesiredModsModPickerList";
 import { SimulatorModTemplateText } from "@/components/item-simulator/i18n/SimulatorModTemplateText";
 import { getModPool } from "@/lib/poe2-item-simulator/modPool";
+import { getModTypeDisplayName } from "@/lib/poe2-item-simulator/modTypeLabels";
 import type {
   IBaseItemStatTagType,
   IBaseItemSubTypeType,
@@ -47,7 +48,17 @@ export const DesiredModsPanel = ({
   onAdd,
   onRemove,
 }: DesiredModsPanelPropsType): ReactElement => {
+  const locale = useLocale();
   const t = useTranslations("simulator.desiredModsPanel");
+
+  const typeBadgeLabels = useMemo((): Record<ModTypeType, string> => {
+    return {
+      prefix: getModTypeDisplayName("prefix", locale),
+      suffix: getModTypeDisplayName("suffix", locale),
+      corruptedPrefix: getModTypeDisplayName("corruptedPrefix", locale),
+      corruptedSuffix: getModTypeDisplayName("corruptedSuffix", locale),
+    };
+  }, [locale]);
 
   const itemStatTagSet = new Set<IBaseItemStatTagType>(statTags ?? []);
   const availableMods = getModPool(subType).filter((mod) => {
@@ -85,13 +96,6 @@ export const DesiredModsPanel = ({
       nameTemplateKey,
       modType,
     });
-  };
-
-  const typeBadgeLabels: Record<ModTypeType, string> = {
-    prefix: t("typePrefix"),
-    suffix: t("typeSuffix"),
-    corruptedPrefix: t("typeCorruptedPrefix"),
-    corruptedSuffix: t("typeCorruptedSuffix"),
   };
 
   return (
@@ -158,7 +162,8 @@ export const DesiredModsPanel = ({
               : "text-zinc-500 dark:text-zinc-400"
           }
         >
-          {t("typePrefix")} {prefixSlotsUsed}/{MAX_PREFIX_SLOTS}
+          {getModTypeDisplayName("prefix", locale)} {prefixSlotsUsed}/
+          {MAX_PREFIX_SLOTS}
         </span>
         <span
           className={
@@ -167,7 +172,8 @@ export const DesiredModsPanel = ({
               : "text-zinc-500 dark:text-zinc-400"
           }
         >
-          {t("typeSuffix")} {suffixSlotsUsed}/{MAX_SUFFIX_SLOTS}
+          {getModTypeDisplayName("suffix", locale)} {suffixSlotsUsed}/
+          {MAX_SUFFIX_SLOTS}
         </span>
       </div>
     </div>

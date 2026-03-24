@@ -54,10 +54,10 @@
     "colWeight": "Weight",
     "colApplicable": "Applicable to",
     "colStatReq": "Stat Req.",
-    "prefix": "Prefix",
-    "suffix": "Suffix",
+    "prefix": "Standard prefix",
+    "suffix": "Standard suffix",
     "navLabel": "DB",
-    "corruptedPrefix": "Corrupted Prefix",
-    "corruptedSuffix": "Corrupted Suffix"
+    "corruptedPrefix": "Corrupted prefix",
+    "corruptedSuffix": "Corrupted suffix"
   }
 }

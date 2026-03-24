@@ -7,9 +7,9 @@
     "slotFull": "슬롯 가득",
     "addedTitle": "추가된 속성",
     "removeAriaLabel": "속성 제거: {name}",
-    "typePrefix": "접두",
-    "typeSuffix": "접미",
-    "typeCorruptedPrefix": "훼손 접두",
-    "typeCorruptedSuffix": "훼손 접미"
+    "typePrefix": "기본 접두사",
+    "typeSuffix": "기본 접미사",
+    "typeCorruptedPrefix": "훼손된 접두사",
+    "typeCorruptedSuffix": "훼손된 접미사"
   }
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { useRef, useState } from "react";
+import { useCallback, useMemo, useRef, useState } from "react";
 import type { ReactElement } from "react";
 
 import type { IModDbRecordType } from "@/lib/poe2-item-simulator/modDb";
@@ -35,7 +35,7 @@ type DesiredModsModPickerListPropsType = {
 };
 
 /**
- * 속성 검색·목록 — `simulator.mods` 단일 네임스페이스 (부모는 라벨 문자열만 전달).
+ * 속성 검색·목록 — `simulator.mods.{nameTemplateKey}` (i18n).
  */
 export const DesiredModsModPickerList = ({
   availableMods,
@@ -49,19 +49,33 @@ export const DesiredModsModPickerList = ({
   isSlotFull,
   onAdd,
 }: DesiredModsModPickerListPropsType): ReactElement => {
-  const tMods = useTranslations("simulator.mods");
+  const t = useTranslations("simulator");
   const [query, setQuery] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const trimmedQuery = query.trim().toLowerCase();
 
-  const filteredMods = availableMods.filter((mod) => {
-    if (trimmedQuery.length === 0) {
-      return true;
-    }
-    return tMods(mod.nameTemplateKey).toLowerCase().includes(trimmedQuery);
-  });
+  const modLine = useCallback(
+    (nameTemplateKey: string): string => {
+      try {
+        return t(`mods.${nameTemplateKey}` as never);
+      } catch {
+        return nameTemplateKey;
+      }
+    },
+    [t],
+  );
+
+  const filteredMods = useMemo(() => {
+    return availableMods.filter((mod) => {
+      if (trimmedQuery.length === 0) {
+        return true;
+      }
+      const label = modLine(mod.nameTemplateKey);
+      return label.toLowerCase().includes(trimmedQuery);
+    });
+  }, [availableMods, trimmedQuery, modLine]);
 
   return (
     <div ref={containerRef} className="flex flex-col gap-2">
@@ -121,7 +135,7 @@ export const DesiredModsModPickerList = ({
                       {typeBadgeLabels[mod.modType]}
                     </span>
                     <span className="flex-1 min-w-0 truncate text-zinc-800 dark:text-zinc-200">
-                      {tMods(mod.nameTemplateKey)}
+                      {modLine(mod.nameTemplateKey)}
                     </span>
                     {isAdded && (
                       <span className="shrink-0 text-xs text-zinc-400">✓</span>

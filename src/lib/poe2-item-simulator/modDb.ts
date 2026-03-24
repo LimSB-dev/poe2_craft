@@ -38,7 +38,7 @@ export interface IModDbRecordType {
   maxLevelRequirement: number;
   /** Total spawn weight (sum of all tier weights, or overview weight from PoE2DB). */
   totalWeight: number;
-  /** i18n key → `simulator.mods.{nameTemplateKey}` */
+  /** Display line key → `simulator.mods.{nameTemplateKey}` in i18n */
   nameTemplateKey: string;
   /**
    * Per-tier detail — populated incrementally.

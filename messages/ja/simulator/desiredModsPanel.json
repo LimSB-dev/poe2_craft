@@ -7,9 +7,9 @@
     "slotFull": "スロット満杯",
     "addedTitle": "追加済み属性",
     "removeAriaLabel": "属性を削除: {name}",
-    "typePrefix": "接頭辞",
-    "typeSuffix": "接尾辞",
-    "typeCorruptedPrefix": "汚染接頭辞",
-    "typeCorruptedSuffix": "汚染接尾辞"
+    "typePrefix": "基本接頭辞",
+    "typeSuffix": "基本接尾辞",
+    "typeCorruptedPrefix": "汚染された接頭辞",
+    "typeCorruptedSuffix": "汚染された接尾辞"
   }
 }

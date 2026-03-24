@@ -1,0 +1,44 @@
+---
+description: PoE2 wiki as reference data source; page tracking script and manual verification before runs
+alwaysApply: false
+---
+
+# PoE2 Wiki — reference data and drift tracking
+
+## Policy
+
+- Treat **[poe2wiki.net](https://www.poe2wiki.net)** as the primary **terminology and modifier-line** reference for this project when aligning user-facing strings and domain wording (together with i18n under `messages/*/simulator/`).
+- Wiki structure is not a single published “schema”: it is **templates, tables, and editorial conventions**. When the wiki changes, **update `modDb`, catalog data, and scrapers** (e.g. under `scripts/`) to stay consistent.
+
+## Before running the tracker script
+
+**Do not rely on the script alone.** MediaWiki **API revision metadata** can stay stable while **HTML layout, template fields, or Cargo columns** change and break parsers.
+
+1. Open the tracked pages in a browser and confirm they still render as expected (sections, infoboxes, modifier examples). Current default list (see `TRACKED_PAGE_TITLES` in the script):
+   - https://www.poe2wiki.net/wiki/Modifier
+   - https://www.poe2wiki.net/wiki/Crafting
+   - https://www.poe2wiki.net/wiki/Essence
+   - https://www.poe2wiki.net/wiki/Currency_item
+   - https://www.poe2wiki.net/wiki/Omen
+   - https://www.poe2wiki.net/wiki/Rarity
+2. If you maintain any script that **scrapes HTML** or assumes a fixed DOM, **run a quick manual check** on one sample page that script uses.
+3. Only then run the tracker (see below). If the script reports changes, treat that as a signal to **re-verify pages** and adjust code or data.
+
+## Tracker script
+
+- **Script:** `scripts/poe2wiki-track-pages.ts`
+- **Run (compare to committed baseline):** `yarn wiki:track`
+- **Refresh baseline** after you have verified pages post-patch: `yarn wiki:track --write-baseline`
+
+The script compares each page’s latest **revision id / size / timestamp** (via the wiki API) to `data/poe2wiki-page-baseline.json`. It does **not** prove scrapers still work; it only flags **likely content updates**.
+
+## When drift is detected
+
+1. Re-read the affected wiki pages (and patch notes if relevant).
+2. Sync **`messages/*/simulator/mods.json`** and related keys to wiki-oriented phrasing where intended.
+3. Update **`modDb` / catalog / scripts** if weights, tags, or extraction selectors changed.
+4. Re-run **`yarn wiki:track --write-baseline`** after updates are done.
+
+## Extending tracked pages
+
+Edit the `TRACKED_PAGE_TITLES` array in `scripts/poe2wiki-track-pages.ts` (use exact MediaWiki titles, e.g. `Currency item`, `Rarity`), confirm each page loads on the wiki, then run **`yarn wiki:track --write-baseline`** to commit an updated baseline.

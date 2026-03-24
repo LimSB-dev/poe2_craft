@@ -1,29 +1,36 @@
 import type { IBaseItemDbRecordType } from "@/lib/poe2-item-simulator/baseItemDb";
+import {
+  getAttributeRequirementPrefix,
+  getLevelRequirementLabel,
+} from "@/lib/poe2-item-simulator/coreAttributeLabels";
 
-/** Lv → STR → DEX → INT 순, 값이 0이면 제외 */
+/**
+ * Lv → STR → DEX → INT 순, 값이 0이면 제외.
+ * 문구는 `data/coreAttributeLabels.json` + `coreAttributeLabels.ts`(로케일별)를 따른다.
+ */
 export const buildBaseItemRequirementLineParts = (
   record: IBaseItemDbRecordType,
-  translate: (key: string) => string,
+  locale: string,
 ): string[] => {
   const parts: string[] = [];
   if (record.levelRequirement > 0) {
     parts.push(
-      `${translate("baseFilter.requiredLevel")} ${record.levelRequirement}`,
+      `${getLevelRequirementLabel(locale)} ${record.levelRequirement}`,
     );
   }
   if (record.requiredStrength > 0) {
     parts.push(
-      `${translate("baseFilter.requiredStr")} ${record.requiredStrength}`,
+      `${getAttributeRequirementPrefix("str", locale)} ${record.requiredStrength}`,
     );
   }
   if (record.requiredDexterity > 0) {
     parts.push(
-      `${translate("baseFilter.requiredDex")} ${record.requiredDexterity}`,
+      `${getAttributeRequirementPrefix("dex", locale)} ${record.requiredDexterity}`,
     );
   }
   if (record.requiredIntelligence > 0) {
     parts.push(
-      `${translate("baseFilter.requiredInt")} ${record.requiredIntelligence}`,
+      `${getAttributeRequirementPrefix("int", locale)} ${record.requiredIntelligence}`,
     );
   }
   return parts;

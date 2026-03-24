@@ -58,7 +58,7 @@ export interface IDesiredModEntryType {
   /** Unique ID for list management (modKey + timestamp). */
   id: string;
   modKey: string;
-  /** i18n key → `simulator.mods.{nameTemplateKey}` */
+  /** Display line key → `simulator.mods.{nameTemplateKey}` in i18n */
   nameTemplateKey: string;
   modType: ModTypeType;
 }

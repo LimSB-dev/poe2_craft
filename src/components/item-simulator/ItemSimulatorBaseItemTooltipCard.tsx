@@ -75,8 +75,7 @@ export const ItemSimulatorBaseItemTooltipCard = ({
   soulWellInteractionDisabled = false,
 }: ItemSimulatorBaseItemTooltipCardPropsType): ReactElement => {
   const locale = useLocale();
-  const t = useTranslations("simulator.itemSimulatorWorkspace");
-  const tSim = useTranslations("simulator");
+  const t = useTranslations("simulator");
   const [imageLoadErrorSrc, setImageLoadErrorSrc] = useState<string | null>(null);
 
   const requirementParts = buildBaseItemRequirementLineParts(record, locale);
@@ -141,7 +140,7 @@ export const ItemSimulatorBaseItemTooltipCard = ({
           <ItemSimulatorCatalogBaseName baseItemKey={baseItemKey} />
         </p>
         <p className="text-xs mt-0.5 mb-2 w-full">
-          <span className="text-[#a38d6d]">{t("baseFilter.quality")}</span>
+          <span className="text-[#a38d6d]">{t("itemSimulatorWorkspace.baseFilter.quality")}</span>
           <span className="text-[#c8c8c8]"> 0%</span>
         </p>
 
@@ -154,20 +153,20 @@ export const ItemSimulatorBaseItemTooltipCard = ({
             <div className="flex flex-col gap-1 tabular-nums mb-2 w-full">
               {record.armour !== undefined && (
                 <p className="text-xs">
-                  <span className="text-[#a38d6d]">{t("baseFilter.armour")}</span>
+                  <span className="text-[#a38d6d]">{t("itemSimulatorWorkspace.baseFilter.armour")}</span>
                   <span className="text-[#c8c8c8]"> {record.armour}</span>
                 </p>
               )}
               {record.evasion !== undefined && (
                 <p className="text-xs">
-                  <span className="text-[#a38d6d]">{t("baseFilter.evasion")}</span>
+                  <span className="text-[#a38d6d]">{t("itemSimulatorWorkspace.baseFilter.evasion")}</span>
                   <span className="text-[#c8c8c8]"> {record.evasion}</span>
                 </p>
               )}
               {record.energyShield !== undefined && (
                 <p className="text-xs">
                   <span className="text-[#a38d6d]">
-                    {t("baseFilter.energyShield")}
+                    {t("itemSimulatorWorkspace.baseFilter.energyShield")}
                   </span>
                   <span className="text-[#c8c8c8]"> {record.energyShield}</span>
                 </p>
@@ -190,13 +189,13 @@ export const ItemSimulatorBaseItemTooltipCard = ({
             {hasImplicits ? (
               <div className="w-full">
                 <p className="text-[10px] font-semibold uppercase tracking-wide text-[#9a8a70] mb-1">
-                  {t("tooltipCard.implicitHeading")}
+                  {t("itemSimulatorWorkspace.tooltipCard.implicitHeading")}
                 </p>
                 <ul className="flex flex-col gap-1 list-none m-0 p-0">
                   {implicitKeys.map((implicitKey) => {
                     let implicitLine: string;
                     try {
-                      implicitLine = tSim(`baseItemImplicits.${implicitKey}`);
+                      implicitLine = t(`baseItemImplicits.${implicitKey}`);
                     } catch {
                       implicitLine = implicitKey;
                     }

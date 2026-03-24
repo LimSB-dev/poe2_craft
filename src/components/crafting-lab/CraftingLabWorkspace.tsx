@@ -224,19 +224,19 @@ const getCraftLabDisabledCurrencyRowTooltip = (
 ): string => {
   switch (id) {
     case "orb_divine": {
-      return tCraft("divineDisabledHint");
+      return tCraft("craftLab.divineDisabledHint");
     }
     case "orb_vaal": {
-      return tCraft("vaalOrbDisabledHint");
+      return tCraft("craftLab.vaalOrbDisabledHint");
     }
     case "orb_mirror": {
-      return tCraft("mirrorDisabledHint");
+      return tCraft("craftLab.mirrorDisabledHint");
     }
     case "orb_chance": {
-      return tCraft("chanceDisabledHint");
+      return tCraft("craftLab.chanceDisabledHint");
     }
     default: {
-      return tCraft("currencyTabDisabledGeneric");
+      return tCraft("craftLab.currencyTabDisabledGeneric");
     }
   }
 };
@@ -256,8 +256,7 @@ const CRAFT_LAB_ORB_APPLY: Record<
 };
 
 export const CraftingLabWorkspace = (): ReactElement => {
-  const t = useTranslations("simulator.craftLab");
-  const tWs = useTranslations("simulator.itemSimulatorWorkspace");
+  const t = useTranslations("simulator");
 
   const {
     selectedBaseItemRecord,
@@ -574,7 +573,7 @@ export const CraftingLabWorkspace = (): ReactElement => {
       effectiveSelectedBaseItemKey.length === 0 ||
       selectedBaseItemRecord === undefined
     ) {
-      setLastError(tWs("baseFilter.noResults"));
+      setLastError(t("itemSimulatorWorkspace.baseFilter.noResults"));
       return;
     }
     if (id === "orb_hinekoras_lock") {
@@ -593,7 +592,7 @@ export const CraftingLabWorkspace = (): ReactElement => {
     ) {
       const draft = hinekoraLockedDraftTable?.[id];
       if (draft === undefined) {
-        setLastError(t("hinekoraDraftTableMissing"));
+        setLastError(t("craftLab.hinekoraDraftTableMissing"));
         return;
       }
       commitCraftingResult(draft, id, options);
@@ -613,7 +612,7 @@ export const CraftingLabWorkspace = (): ReactElement => {
       effectiveSelectedBaseItemKey.length === 0 ||
       selectedBaseItemRecord === undefined
     ) {
-      setLastError(tWs("baseFilter.noResults"));
+      setLastError(t("itemSimulatorWorkspace.baseFilter.noResults"));
       return;
     }
     const boneDef = getBoneDefinition(boneId);
@@ -767,7 +766,7 @@ export const CraftingLabWorkspace = (): ReactElement => {
           : undefined;
     const name = t(`currency.${id}`);
     const hoverHint = t(`currencyHoverHint.${id}`);
-    const orbBlockedReason = applicable ? undefined : t("orbDisabledTooltip");
+    const orbBlockedReason = applicable ? undefined : t("craftLab.orbDisabledTooltip");
     const iconSrc = getCraftingLabCurrencyIconUrl(id);
     const tierRoman = getOrbSlotTierRoman(id);
     return (
@@ -813,12 +812,12 @@ export const CraftingLabWorkspace = (): ReactElement => {
         ariaLabel={
           applicable
             ? craftLabMode === "simulation"
-              ? t("orbSimulateAria", { name })
+              ? t("craftLab.orbSimulateAria", { name })
               : name
-            : t("orbDisabledAria", { name })
+            : t("craftLab.orbDisabledAria", { name })
         }
         showQuantityBadge={applicable}
-        quantityLabel={t("stashOrbQuantityUnlimited")}
+        quantityLabel={t("craftLab.stashOrbQuantityUnlimited")}
         strongDisabled={id === "orb_fracturing" && !applicable}
       />
     );
@@ -843,7 +842,7 @@ export const CraftingLabWorkspace = (): ReactElement => {
       const hinekoraApplicable = canApplyHinekorasLock(itemRoll);
       const hinekoraBlockedReason = hinekoraApplicable
         ? undefined
-        : t("hinekoraLockAlreadyActive");
+        : t("craftLab.hinekoraLockAlreadyActive");
       return (
         <CraftingLabOrbSlotButton
           key={id}
@@ -859,7 +858,7 @@ export const CraftingLabWorkspace = (): ReactElement => {
           }}
           onUse={() => {
             if (craftLabMode === "simulation") {
-              setLastError(t("hinekoraLockNoSimPreview"));
+              setLastError(t("craftLab.hinekoraLockNoSimPreview"));
               return;
             }
             tryApply("orb_hinekoras_lock", (roll) => {
@@ -876,10 +875,10 @@ export const CraftingLabWorkspace = (): ReactElement => {
           }}
           tierRoman={null}
           ariaLabel={
-            hinekoraApplicable ? name : t("orbDisabledAria", { name })
+            hinekoraApplicable ? name : t("craftLab.orbDisabledAria", { name })
           }
           showQuantityBadge={hinekoraApplicable}
-          quantityLabel={t("stashOrbQuantityUnlimited")}
+          quantityLabel={t("craftLab.stashOrbQuantityUnlimited")}
         />
       );
     }
@@ -927,11 +926,11 @@ export const CraftingLabWorkspace = (): ReactElement => {
     const boneDisabledTitle = boneDisabledInRandom
       ? !boneOk
         ? itemRoll.rarity !== "rare"
-          ? t("boneRequiresRare")
+          ? t("craftLab.boneRequiresRare")
           : itemRoll.isCorrupted === true
-            ? t("boneCorrupted")
-            : t("boneWrongSlotOrFull")
-        : t("boneRequiresRandomMode")
+            ? t("craftLab.boneCorrupted")
+            : t("craftLab.boneWrongSlotOrFull")
+        : t("craftLab.boneRequiresRandomMode")
       : undefined;
     return (
       <CraftingLabOrbSlotButton
@@ -956,9 +955,9 @@ export const CraftingLabWorkspace = (): ReactElement => {
           }
         }}
         tierRoman={null}
-        ariaLabel={boneDisabledInRandom ? t("orbDisabledAria", { name }) : name}
+        ariaLabel={boneDisabledInRandom ? t("craftLab.orbDisabledAria", { name }) : name}
         showQuantityBadge
-        quantityLabel={t("stashOrbQuantityUnlimited")}
+        quantityLabel={t("craftLab.stashOrbQuantityUnlimited")}
       />
     );
   };
@@ -969,17 +968,17 @@ export const CraftingLabWorkspace = (): ReactElement => {
         <header className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
           <div className="flex flex-col gap-2 min-w-0">
             <h1 className="font-sc text-2xl font-bold text-zinc-950 dark:text-zinc-50">
-              {t("title")}
+              {t("craftLab.title")}
             </h1>
             <p className="text-sm text-zinc-700 dark:text-zinc-300 max-w-3xl">
-              {t("intro")}
+              {t("craftLab.intro")}
             </p>
             <p className="text-sm text-zinc-600 dark:text-zinc-400">
               <Link
                 href="/"
                 className="text-amber-700 dark:text-amber-400 underline-offset-2 hover:underline"
               >
-                {t("navToSimulator")}
+                {t("craftLab.navToSimulator")}
               </Link>
             </p>
           </div>
@@ -996,7 +995,7 @@ export const CraftingLabWorkspace = (): ReactElement => {
               className="text-sm leading-snug text-red-600 dark:text-red-400"
               role="alert"
             >
-              {t("lastActionError", { message: lastError })}
+              {t("craftLab.lastActionError", { message: lastError })}
             </p>
           ) : null}
         </ReservedStatusRegion>
@@ -1013,20 +1012,20 @@ export const CraftingLabWorkspace = (): ReactElement => {
                 onClick={() => {
                   handleResetCraft();
                 }}
-                aria-label={t("resetItem")}
+                aria-label={t("craftLab.resetItem")}
                 className="shrink-0 rounded-lg border border-zinc-300 dark:border-zinc-600 px-2.5 py-1 text-xs font-medium text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 disabled:opacity-40 disabled:pointer-events-none"
               >
-                {t("baseSectionReset")}
+                {t("craftLab.baseSectionReset")}
               </button>
               <div className="min-w-0 flex-1">
                 <h2
                   id="craft-lab-item-heading"
                   className="font-sc text-base font-semibold text-zinc-900 dark:text-zinc-50"
                 >
-                  {tWs("panels.baseItem.title")}
+                  {t("itemSimulatorWorkspace.panels.baseItem.title")}
                 </h2>
                 <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-1">
-                  {tWs("panels.baseItem.description")}
+                  {t("itemSimulatorWorkspace.panels.baseItem.description")}
                 </p>
               </div>
             </div>
@@ -1043,7 +1042,7 @@ export const CraftingLabWorkspace = (): ReactElement => {
                       className="text-xs font-medium text-amber-800 dark:text-amber-300/95"
                       role="status"
                     >
-                      {t("hinekoraLockActiveBanner")}
+                      {t("craftLab.hinekoraLockActiveBanner")}
                     </p>
                   ) : null}
                 </ReservedStatusRegion>
@@ -1069,7 +1068,7 @@ export const CraftingLabWorkspace = (): ReactElement => {
                   />
                 ) : (
                   <p className="text-sm text-zinc-400 dark:text-zinc-500 py-1">
-                    {tWs("baseFilter.noResults")}
+                    {t("itemSimulatorWorkspace.baseFilter.noResults")}
                   </p>
                 )}
               </div>
@@ -1084,10 +1083,10 @@ export const CraftingLabWorkspace = (): ReactElement => {
                     id="craft-lab-soul-well-heading"
                     className="text-xs font-semibold text-emerald-800 dark:text-emerald-200/95"
                   >
-                    {t("soulWellRevealTitle")}
+                    {t("craftLab.soulWellRevealTitle")}
                   </h3>
                   <p className="text-[11px] leading-snug text-zinc-600 dark:text-zinc-400">
-                    {t("soulWellRevealHint")}
+                    {t("craftLab.soulWellRevealHint")}
                   </p>
                   <ul className="m-0 flex list-none flex-col gap-1.5 p-0">
                     {soulWellReveal.candidates.map((cand, idx) => {
@@ -1099,7 +1098,7 @@ export const CraftingLabWorkspace = (): ReactElement => {
                               handleSoulWellConfirmChoice(cand);
                             }}
                             className="w-full rounded-lg border border-zinc-300 dark:border-zinc-600 bg-white/80 dark:bg-zinc-900/80 px-2.5 py-2 text-left text-xs leading-snug text-zinc-900 dark:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800"
-                            aria-label={t("soulWellRevealCandidateAria", {
+                            aria-label={t("craftLab.soulWellRevealCandidateAria", {
                               index: idx + 1,
                             })}
                           >
@@ -1125,7 +1124,7 @@ export const CraftingLabWorkspace = (): ReactElement => {
                     }}
                     className="self-start rounded-lg border border-zinc-300 dark:border-zinc-600 px-2.5 py-1 text-xs font-medium text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800"
                   >
-                    {t("soulWellRevealCancel")}
+                    {t("craftLab.soulWellRevealCancel")}
                   </button>
                 </div>
               ) : null}
@@ -1136,12 +1135,12 @@ export const CraftingLabWorkspace = (): ReactElement => {
                 onSelectBaseItemKey={(key) => {
                   setSelectedBaseItemKey(key);
                 }}
-                searchPlaceholder={tWs("baseFilter.baseItemSearchPlaceholder", {
-                  label: tWs("baseFilter.baseItem"),
+                searchPlaceholder={t("itemSimulatorWorkspace.baseFilter.baseItemSearchPlaceholder", {
+                  label: t("itemSimulatorWorkspace.baseFilter.baseItem"),
                   count: filteredBaseItemRecords.length,
                 })}
-                ariaLabelBaseItem={tWs("baseFilter.baseItem")}
-                noResultsLabel={tWs("baseFilter.noResults")}
+                ariaLabelBaseItem={t("itemSimulatorWorkspace.baseFilter.baseItem")}
+                noResultsLabel={t("itemSimulatorWorkspace.baseFilter.noResults")}
               />
 
               <ItemSimulatorBaseItemFilterCollapsible
@@ -1170,7 +1169,7 @@ export const CraftingLabWorkspace = (): ReactElement => {
                 id="craft-lab-stash-heading"
                 className="font-sc text-base font-semibold text-zinc-900 dark:text-zinc-50"
               >
-                {t("stashColumnTitle")}
+                {t("craftLab.stashColumnTitle")}
               </h2>
               <div className="flex flex-wrap items-center justify-end gap-1.5 shrink-0">
                 <button
@@ -1179,10 +1178,10 @@ export const CraftingLabWorkspace = (): ReactElement => {
                   onClick={() => {
                     handleUndoCraft();
                   }}
-                  aria-label={t("undoCraftAria")}
+                  aria-label={t("craftLab.undoCraftAria")}
                   className="rounded-lg border border-zinc-300 dark:border-zinc-600 px-2.5 py-1.5 text-xs font-medium text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 disabled:opacity-40 disabled:pointer-events-none"
                 >
-                  {t("undoCraft")}
+                  {t("craftLab.undoCraft")}
                 </button>
                 <button
                   type="button"
@@ -1190,10 +1189,10 @@ export const CraftingLabWorkspace = (): ReactElement => {
                   onClick={() => {
                     handleRedoCraft();
                   }}
-                  aria-label={t("redoCraftAria")}
+                  aria-label={t("craftLab.redoCraftAria")}
                   className="rounded-lg border border-zinc-300 dark:border-zinc-600 px-2.5 py-1.5 text-xs font-medium text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 disabled:opacity-40 disabled:pointer-events-none"
                 >
-                  {t("redoCraft")}
+                  {t("craftLab.redoCraft")}
                 </button>
                 <button
                   type="button"
@@ -1203,27 +1202,27 @@ export const CraftingLabWorkspace = (): ReactElement => {
                   }}
                   className="rounded-lg border border-amber-400/60 bg-amber-50 dark:bg-amber-950/40 px-3 py-1.5 text-xs font-medium text-amber-900 dark:text-amber-200 hover:bg-amber-100 dark:hover:bg-amber-900/50 disabled:opacity-40 disabled:pointer-events-none"
                 >
-                  {t("craftCompleteButton")}
+                  {t("craftLab.craftCompleteButton")}
                 </button>
               </div>
             </div>
 
             {!hasBaseForCraft ? (
               <p className="text-sm text-zinc-500 dark:text-zinc-400">
-                {t("stashPickBaseForCurrencies")}
+                {t("craftLab.stashPickBaseForCurrencies")}
               </p>
             ) : (
               <>
                 <fieldset className="min-w-0 border-0 p-0 m-0">
-                  <legend className="sr-only">{t("craftModeLegend")}</legend>
+                  <legend className="sr-only">{t("craftLab.craftModeLegend")}</legend>
                   <div className="mb-1 flex items-center justify-between gap-2">
                     <div
                       className="flex flex-col items-start gap-1.5"
                       role="radiogroup"
-                      aria-label={t("craftModeLegend")}
+                      aria-label={t("craftLab.craftModeLegend")}
                     >
                       <h3 className="text-[11px] font-medium text-zinc-500 dark:text-zinc-400 shrink-0">
-                        {t("craftModeLabel")}
+                        {t("craftLab.craftModeLabel")}
                       </h3>
                       <button
                         type="button"
@@ -1241,7 +1240,7 @@ export const CraftingLabWorkspace = (): ReactElement => {
                             : "border-zinc-600 text-zinc-400 hover:bg-zinc-800"
                         }`}
                       >
-                        {t("craftModeRandom")}
+                        {t("craftLab.craftModeRandom")}
                       </button>
                       <button
                         type="button"
@@ -1257,7 +1256,7 @@ export const CraftingLabWorkspace = (): ReactElement => {
                             : "border-zinc-600 text-zinc-400 hover:bg-zinc-800"
                         }`}
                       >
-                        {t("craftModeSimulation")}
+                        {t("craftLab.craftModeSimulation")}
                       </button>
                     </div>
                     <div
@@ -1268,7 +1267,7 @@ export const CraftingLabWorkspace = (): ReactElement => {
                         id="craft-lab-staged-omen-panel-heading"
                         className="text-[11px] font-semibold uppercase tracking-wide text-zinc-300"
                       >
-                        {t("stagedOmenPanelHeading")}
+                        {t("craftLab.stagedOmenPanelHeading")}
                       </h3>
                       <div
                         className="grid grid-cols-3 gap-1.5 sm:gap-2"
@@ -1294,7 +1293,7 @@ export const CraftingLabWorkspace = (): ReactElement => {
                               iconSrc={getCraftingLabCurrencyIconUrl(omenId)}
                               applicable
                               currencyName={name}
-                              hoverHint={t("stagedOmenPanelSlotHint")}
+                              hoverHint={t("craftLab.stagedOmenPanelSlotHint")}
                               onUse={() => {
                                 toggleStagedOmen(omenId);
                                 setStashValidationMessage(null);
@@ -1307,7 +1306,7 @@ export const CraftingLabWorkspace = (): ReactElement => {
                                 }
                               }}
                               tierRoman={null}
-                              ariaLabel={t("omenSelectedAria", { name })}
+                              ariaLabel={t("craftLab.omenSelectedAria", { name })}
                               showQuantityBadge={false}
                               quantityLabel=""
                               isSelected
@@ -1321,7 +1320,7 @@ export const CraftingLabWorkspace = (): ReactElement => {
 
                 <div
                   role="tablist"
-                  aria-label={t("stashTabListAria")}
+                  aria-label={t("craftLab.stashTabListAria")}
                   className="flex flex-wrap gap-1.5 rounded-lg border border-zinc-200 dark:border-zinc-700 bg-zinc-100/80 p-1 dark:bg-zinc-900/50"
                 >
                   {CRAFT_LAB_STASH_TABS.map((tabId) => {
@@ -1380,7 +1379,7 @@ export const CraftingLabWorkspace = (): ReactElement => {
                         </div>
                         <div
                           className="flex shrink-0 flex-col items-center gap-2 sm:gap-2.5"
-                          aria-label={t("currencyMiscGridAria")}
+                          aria-label={t("craftLab.currencyMiscGridAria")}
                         >
                           {CRAFT_LAB_CURRENCY_MISC_GRID_ROWS.map(
                             (row, rowIndex) => {
@@ -1432,8 +1431,8 @@ export const CraftingLabWorkspace = (): ReactElement => {
                               !essenceApplicable;
                             const essenceDisabledTitle = essenceDisabledInRandom
                               ? itemRoll.rarity !== "magic"
-                                ? t("essenceRequiresMagicItem")
-                                : t("essenceIncompatibleBase")
+                                ? t("craftLab.essenceRequiresMagicItem")
+                                : t("craftLab.essenceIncompatibleBase")
                               : undefined;
                             return (
                               <CraftingLabOrbSlotButton
@@ -1487,15 +1486,15 @@ export const CraftingLabWorkspace = (): ReactElement => {
                                 tierRoman={getOrbSlotTierRoman(id)}
                                 ariaLabel={
                                   essenceDisabledInRandom
-                                    ? t("orbDisabledAria", { name })
+                                    ? t("craftLab.orbDisabledAria", { name })
                                     : craftLabMode === "simulation"
-                                      ? t("orbSimulateAria", {
+                                      ? t("craftLab.orbSimulateAria", {
                                           name,
                                         })
                                       : name
                                 }
                                 showQuantityBadge
-                                quantityLabel={t("stashOrbQuantityUnlimited")}
+                                quantityLabel={t("craftLab.stashOrbQuantityUnlimited")}
                               />
                             );
                           })}
@@ -1512,7 +1511,7 @@ export const CraftingLabWorkspace = (): ReactElement => {
                     className={stashTab !== "abyss" ? "hidden" : undefined}
                   >
                     <p className="mb-1 text-[11px] leading-snug text-zinc-500 dark:text-zinc-400">
-                      {t("abyssTabHint")}
+                      {t("craftLab.abyssTabHint")}
                     </p>
                     <div className="rounded-lg border border-[#3d3429] bg-[#141210] p-2 shadow-[inset_0_2px_8px_rgba(0,0,0,0.45)] dark:bg-[#141210]">
                       <div className="w-full min-w-0">
@@ -1538,7 +1537,7 @@ export const CraftingLabWorkspace = (): ReactElement => {
                           </div>
                           <div className="flex min-w-0 flex-1 flex-col gap-1.5 md:max-w-none lg:max-w-md">
                             <p className="text-[10px] font-semibold uppercase tracking-wide text-zinc-500 dark:text-zinc-400">
-                              {t("abyssTabAbyssOmensHeading")}
+                              {t("craftLab.abyssTabAbyssOmensHeading")}
                             </p>
                             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-1.5 sm:gap-2">
                               {CRAFT_LAB_ABYSS_OMEN_IDS.map((omenId) => {
@@ -1598,10 +1597,10 @@ export const CraftingLabWorkspace = (): ReactElement => {
                                     tierRoman={null}
                                     ariaLabel={
                                       craftLabMode === "simulation"
-                                        ? t("orbSimulateAria", { name })
+                                        ? t("craftLab.orbSimulateAria", { name })
                                         : isSelected
-                                          ? t("omenSelectedAria", { name })
-                                          : t("omenToggleAria", { name })
+                                          ? t("craftLab.omenSelectedAria", { name })
+                                          : t("craftLab.omenToggleAria", { name })
                                     }
                                     showQuantityBadge={false}
                                     quantityLabel=""
@@ -1623,10 +1622,10 @@ export const CraftingLabWorkspace = (): ReactElement => {
                     className={stashTab !== "ritual" ? "hidden" : undefined}
                   >
                     <p className="mb-1 text-[11px] leading-snug text-zinc-500 dark:text-zinc-400">
-                      {t("ritualTabHint")}
+                      {t("craftLab.ritualTabHint")}
                     </p>
                     <p className="mb-1 text-[11px] leading-snug text-zinc-500 dark:text-zinc-400">
-                      {t("ritualOmenSimulationNote")}
+                      {t("craftLab.ritualOmenSimulationNote")}
                     </p>
                     <div className="rounded-lg border border-[#3d3429] bg-[#141210] p-2 shadow-[inset_0_2px_8px_rgba(0,0,0,0.45)] dark:bg-[#141210]">
                       <div className="mx-auto max-h-[min(70vh,28rem)] w-max max-w-full overflow-y-auto overflow-x-hidden pr-0.5">
@@ -1682,10 +1681,10 @@ export const CraftingLabWorkspace = (): ReactElement => {
                                 tierRoman={null}
                                 ariaLabel={
                                   craftLabMode === "simulation"
-                                    ? t("orbSimulateAria", { name })
+                                    ? t("craftLab.orbSimulateAria", { name })
                                     : isSelected
-                                      ? t("omenSelectedAria", { name })
-                                      : t("omenToggleAria", { name })
+                                      ? t("craftLab.omenSelectedAria", { name })
+                                      : t("craftLab.omenToggleAria", { name })
                                 }
                                 showQuantityBadge={false}
                                 quantityLabel=""
@@ -1740,7 +1739,7 @@ export const CraftingLabWorkspace = (): ReactElement => {
                 id="craft-lab-usage-summary-heading"
                 className="font-sc text-base font-semibold text-zinc-900 dark:text-zinc-50"
               >
-                {t("usageSummaryHeading")}
+                {t("craftLab.usageSummaryHeading")}
               </h3>
               <button
                 type="button"
@@ -1749,16 +1748,16 @@ export const CraftingLabWorkspace = (): ReactElement => {
                 }}
                 className="text-sm text-zinc-600 dark:text-zinc-400 underline-offset-2 hover:underline"
               >
-                {t("usageSummaryDismiss")}
+                {t("craftLab.usageSummaryDismiss")}
               </button>
             </div>
             {completionSnapshot.length === 0 ? (
-              <p className="text-sm text-zinc-500">{t("usageSummaryEmpty")}</p>
+              <p className="text-sm text-zinc-500">{t("craftLab.usageSummaryEmpty")}</p>
             ) : (
               <>
                 <div>
                   <p className="text-xs font-semibold uppercase text-zinc-500 dark:text-zinc-400 mb-1">
-                    {t("usageSummaryOrderLabel")}
+                    {t("craftLab.usageSummaryOrderLabel")}
                   </p>
                   <ol className="list-decimal list-inside text-sm text-zinc-800 dark:text-zinc-200 space-y-1">
                     {completionSnapshot.map((id, index) => {
@@ -1771,7 +1770,7 @@ export const CraftingLabWorkspace = (): ReactElement => {
                   </ol>
                 </div>
                 <p className="text-sm text-zinc-600 dark:text-zinc-400">
-                  {t("usageSummaryTotals", { line: usageTotalsLine })}
+                  {t("craftLab.usageSummaryTotals", { line: usageTotalsLine })}
                 </p>
               </>
             )}

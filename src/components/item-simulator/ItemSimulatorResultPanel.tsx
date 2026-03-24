@@ -35,17 +35,16 @@ export const ItemSimulatorResultPanel = ({
   rlError,
   onRunOptimizationExplore,
 }: ItemSimulatorResultPanelPropsType): ReactElement => {
-  const t = useTranslations("simulator.itemSimulatorWorkspace");
-  const tRl = useTranslations("simulator.rlView");
+  const t = useTranslations("simulator");
 
   const actionLabel = (action: "chaos" | "essence" | "stop"): string => {
-    return tRl(`actions.${action}`);
+    return t(`rlView.actions.${action}`);
   };
 
   return (
     <ItemSimulatorPanelShell
-      title={t("panels.result.title")}
-      description={t("panels.result.description")}
+      title={t("itemSimulatorWorkspace.panels.result.title")}
+      description={t("itemSimulatorWorkspace.panels.result.description")}
     >
       <button
         type="button"
@@ -57,13 +56,13 @@ export const ItemSimulatorResultPanel = ({
         className="w-full sm:w-auto rounded-lg bg-amber-600 px-4 py-2 text-sm font-semibold text-white hover:bg-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/60 disabled:pointer-events-none disabled:opacity-50"
       >
         {isRlTraining
-          ? tRl("inputs.training")
-          : t("optimizationExplore.runButton")}
+          ? t("rlView.inputs.training")
+          : t("itemSimulatorWorkspace.optimizationExplore.runButton")}
       </button>
 
       {!selectedBaseItem ? (
         <p className="text-sm text-zinc-600 dark:text-zinc-400">
-          {t("optimizationExplore.emptyNeedBase")}
+          {t("itemSimulatorWorkspace.optimizationExplore.emptyNeedBase")}
         </p>
       ) : (
         <div className="flex flex-col gap-4">
@@ -90,17 +89,19 @@ export const ItemSimulatorResultPanel = ({
                     <div className="flex flex-wrap gap-x-3 gap-y-0.5 tabular-nums">
                       {resultRecord.armour !== undefined && (
                         <span className="text-sm font-medium text-amber-700 dark:text-amber-400">
-                          {t("baseFilter.armour")} {resultRecord.armour}
+                          {t("itemSimulatorWorkspace.baseFilter.armour")}{" "}
+                          {resultRecord.armour}
                         </span>
                       )}
                       {resultRecord.evasion !== undefined && (
                         <span className="text-sm font-medium text-green-700 dark:text-green-400">
-                          {t("baseFilter.evasion")} {resultRecord.evasion}
+                          {t("itemSimulatorWorkspace.baseFilter.evasion")}{" "}
+                          {resultRecord.evasion}
                         </span>
                       )}
                       {resultRecord.energyShield !== undefined && (
                         <span className="text-sm font-medium text-sky-700 dark:text-sky-400">
-                          {t("baseFilter.energyShield")}{" "}
+                          {t("itemSimulatorWorkspace.baseFilter.energyShield")}{" "}
                           {resultRecord.energyShield}
                         </span>
                       )}
@@ -124,7 +125,7 @@ export const ItemSimulatorResultPanel = ({
 
           {!rlTrainResponse ? (
             <p className="text-sm text-zinc-600 dark:text-zinc-400">
-              {t("optimizationExplore.emptyPrompt")}
+              {t("itemSimulatorWorkspace.optimizationExplore.emptyPrompt")}
             </p>
           ) : (
             <section
@@ -135,10 +136,10 @@ export const ItemSimulatorResultPanel = ({
                 id="optimization-explore-heading"
                 className="text-sm font-semibold text-zinc-800 dark:text-zinc-200"
               >
-                {tRl("result.title")}
+                {t("rlView.result.title")}
               </h3>
               <p className="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
-                {t("optimizationExplore.paramsSummary", {
+                {t("itemSimulatorWorkspace.optimizationExplore.paramsSummary", {
                   desiredGoodMods: rlTrainResponse.params.desiredGoodMods,
                   budget: rlTrainResponse.params.budget,
                   episodes: rlTrainResponse.params.episodes,
@@ -146,7 +147,7 @@ export const ItemSimulatorResultPanel = ({
               </p>
               {rlTrainResponse.params.baseItemKey !== null ? (
                 <p className="mt-1 text-xs text-zinc-600 dark:text-zinc-400 break-all">
-                  {t("optimizationExplore.payloadEchoBase", {
+                  {t("itemSimulatorWorkspace.optimizationExplore.payloadEchoBase", {
                     baseItemKey: rlTrainResponse.params.baseItemKey,
                   })}
                 </p>
@@ -154,13 +155,13 @@ export const ItemSimulatorResultPanel = ({
               {rlTrainResponse.params.desiredMods.length > 0 ? (
                 <div className="mt-2">
                   <p className="text-xs font-medium text-zinc-700 dark:text-zinc-300">
-                    {t("optimizationExplore.payloadEchoModsHeading")}
+                    {t("itemSimulatorWorkspace.optimizationExplore.payloadEchoModsHeading")}
                   </p>
                   <ul className="mt-1 list-disc list-inside space-y-0.5 text-xs text-zinc-600 dark:text-zinc-400 break-all">
                     {rlTrainResponse.params.desiredMods.map((row) => {
                       return (
                         <li key={row.id}>
-                          {t("optimizationExplore.payloadEchoModLine", {
+                          {t("itemSimulatorWorkspace.optimizationExplore.payloadEchoModLine", {
                             modKey: row.modKey,
                             modType: row.modType,
                           })}
@@ -172,17 +173,17 @@ export const ItemSimulatorResultPanel = ({
               ) : null}
               {desiredMods.length > 0 ? (
                 <p className="mt-1 text-xs text-zinc-500 dark:text-zinc-500">
-                  {t("optimizationExplore.desiredModsHint", {
+                  {t("itemSimulatorWorkspace.optimizationExplore.desiredModsHint", {
                     count: desiredMods.length,
                   })}
                 </p>
               ) : (
                 <p className="mt-1 text-xs text-zinc-500 dark:text-zinc-500">
-                  {t("optimizationExplore.defaultDesiredModsHint")}
+                  {t("itemSimulatorWorkspace.optimizationExplore.defaultDesiredModsHint")}
                 </p>
               )}
               <p className="mt-2 text-xs text-zinc-500 dark:text-zinc-500 tabular-nums">
-                {t("optimizationExplore.costsLine", {
+                {t("itemSimulatorWorkspace.optimizationExplore.costsLine", {
                   chaos:
                     rlTrainResponse.summary.costsExaltPerAction.chaosOrb.toFixed(
                       4,
@@ -197,7 +198,7 @@ export const ItemSimulatorResultPanel = ({
               <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-3">
                 <div className="rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white/70 dark:bg-zinc-900/40 p-3">
                   <p className="text-xs text-zinc-500 dark:text-zinc-400">
-                    {tRl("result.meanReward")}
+                    {t("rlView.result.meanReward")}
                   </p>
                   <p className="text-lg font-semibold text-zinc-900 dark:text-zinc-50 tabular-nums">
                     {rlTrainResponse.summary.meanReward.toFixed(4)}
@@ -205,7 +206,7 @@ export const ItemSimulatorResultPanel = ({
                 </div>
                 <div className="rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white/70 dark:bg-zinc-900/40 p-3">
                   <p className="text-xs text-zinc-500 dark:text-zinc-400">
-                    {tRl("result.last10Reward")}
+                    {t("rlView.result.last10Reward")}
                   </p>
                   <p className="text-lg font-semibold text-zinc-900 dark:text-zinc-50 tabular-nums">
                     {rlTrainResponse.summary.last10AverageReward.toFixed(4)}
@@ -213,7 +214,7 @@ export const ItemSimulatorResultPanel = ({
                 </div>
                 <div className="rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white/70 dark:bg-zinc-900/40 p-3">
                   <p className="text-xs text-zinc-500 dark:text-zinc-400">
-                    {tRl("result.bestInitialAction")}
+                    {t("rlView.result.bestInitialAction")}
                   </p>
                   <p className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
                     {actionLabel(rlTrainResponse.summary.bestInitialAction)}
@@ -222,7 +223,7 @@ export const ItemSimulatorResultPanel = ({
               </div>
 
               <h4 className="mt-4 text-xs font-semibold text-zinc-800 dark:text-zinc-200">
-                {tRl("result.actionRatio")}
+                {t("rlView.result.actionRatio")}
               </h4>
               <div className="mt-2 space-y-3">
                 {(
@@ -243,7 +244,7 @@ export const ItemSimulatorResultPanel = ({
                 ).map((row) => (
                   <div key={row.key}>
                     <div className="flex justify-between text-xs text-zinc-600 dark:text-zinc-400 mb-1">
-                      <span>{tRl(`actions.${row.key}`)}</span>
+                      <span>{t(`rlView.actions.${row.key}`)}</span>
                       <span className="tabular-nums">
                         {toPercent(row.value)}
                       </span>

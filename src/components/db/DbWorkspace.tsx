@@ -1,8 +1,9 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { ReactElement } from "react";
+import { DbModsTable } from "@/components/db/DbModsTable";
 import { LocaleSwitcher } from "@/components/i18n/LocaleSwitcher";
 import { Link } from "@/lib/i18n/navigation";
 import {
@@ -16,11 +17,192 @@ import {
   getAttributeRequirementPrefix,
 } from "@/lib/poe2-item-simulator/coreAttributeLabels";
 import { getModTypeDisplayName } from "@/lib/poe2-item-simulator/modTypeLabels";
-import { MOD_DB } from "@/lib/poe2-item-simulator/modDb";
+import { MOD_DB, type IModDbRecordType } from "@/lib/poe2-item-simulator/modDb";
+import type { IBaseItemStatTagType } from "@/lib/poe2-item-simulator/baseItemDb";
+import type { Poe2DbModifierApiResponseType } from "@/lib/poe2-item-simulator/poe2dbModifiersApiTypes";
 
 type TabType = "items" | "mods";
 type EquipmentFilterType = "all" | IBaseItemEquipmentTypeType;
 type SubTypeFilterType = "all" | IBaseItemSubTypeType;
+type ModSectionFilterType =
+  | "all"
+  | "normal"
+  | "corrupted"
+  | "desecrated"
+  | "essence"
+  | "perfect_essence"
+  | "socketable"
+  | "bonded"
+  | "legacy";
+
+const MOD_PAGE_SIZE = 100;
+
+const parseRequiredTags = (rawTags: string | null): IBaseItemStatTagType[] => {
+  if (rawTags === null) {
+    return [];
+  }
+  const tags = rawTags.toLowerCase();
+  const out: IBaseItemStatTagType[] = [];
+  if (tags.includes("str")) {
+    out.push("str");
+  }
+  if (tags.includes("dex")) {
+    out.push("dex");
+  }
+  if (tags.includes("int")) {
+    out.push("int");
+  }
+  return out;
+};
+
+const toModType = (
+  section: string,
+  modGenerationTypeId: number | null,
+): IModDbRecordType["modType"] => {
+  if (section === "corrupted" || section === "desecrated") {
+    return modGenerationTypeId === 1 ? "corruptedPrefix" : "corruptedSuffix";
+  }
+  return modGenerationTypeId === 1 ? "prefix" : "suffix";
+};
+
+const toViewRecordsFromPoe2Db = (
+  payload: Poe2DbModifierApiResponseType,
+): IModDbRecordType[] => {
+  const toTemplateAndRanges = (
+    statLineText: string,
+  ): { template: string; ranges: Array<{ min: number; max: number }> } => {
+    const ranges: Array<{ min: number; max: number }> = [];
+    let working = statLineText;
+
+    working = working.replace(
+      /(-?\d+(?:\.\d+)?)\s*[—~\-]\s*(-?\d+(?:\.\d+)?)/g,
+      (_match, minRaw: string, maxRaw: string) => {
+        const min = Number.parseFloat(minRaw);
+        const max = Number.parseFloat(maxRaw);
+        if (Number.isFinite(min) && Number.isFinite(max)) {
+          ranges.push({ min, max });
+          return `__POE2DB_RANGE_${String(ranges.length - 1)}__`;
+        }
+        return _match;
+      },
+    );
+
+    working = working.replace(/-?\d+(?:\.\d+)?/g, (numberRaw) => {
+      const value = Number.parseFloat(numberRaw);
+      if (!Number.isFinite(value)) {
+        return numberRaw;
+      }
+      ranges.push({ min: value, max: value });
+      return `__POE2DB_RANGE_${String(ranges.length - 1)}__`;
+    });
+
+    const template = working.replace(/__POE2DB_RANGE_\d+__/g, "#");
+    return { template, ranges };
+  };
+
+  type GroupedType = {
+    key: string;
+    modType: IModDbRecordType["modType"];
+    section: string;
+    template: string;
+    modTags: Set<string>;
+    applicableSubTypes: Set<IBaseItemSubTypeType>;
+    requiredItemTags: Set<IBaseItemStatTagType>;
+    members: Array<{
+      requiredLevel: number;
+      weight: number;
+      ranges: Array<{ min: number; max: number }>;
+    }>;
+  };
+
+  const groups = new Map<string, GroupedType>();
+
+  for (const row of payload.rows) {
+    const statLine = row.statLineText.length > 0 ? row.statLineText : row.modifierName;
+    const parsed = toTemplateAndRanges(statLine);
+    const modType = toModType(row.section, row.modGenerationTypeId);
+    const modFamiliesKey = [...row.modFamilies].sort().join("|");
+    const requiredTags = parseRequiredTags(row.itemClassTags);
+    const requiredTagsKey = [...requiredTags].sort().join("|");
+    const groupKey = [
+      row.section,
+      String(modType),
+      modFamiliesKey,
+      requiredTagsKey,
+      parsed.template,
+    ].join("::");
+
+    const current = groups.get(groupKey) ?? {
+      key: groupKey,
+      modType,
+      section: row.section,
+      template: parsed.template,
+      modTags: new Set<string>(),
+      applicableSubTypes: new Set<IBaseItemSubTypeType>(),
+      requiredItemTags: new Set<IBaseItemStatTagType>(),
+      members: [],
+    };
+
+    for (const family of row.modFamilies) {
+      current.modTags.add(family);
+    }
+    if (row.itemClassCode !== null) {
+      current.applicableSubTypes.add(row.itemClassCode as IBaseItemSubTypeType);
+    }
+    for (const requiredTag of requiredTags) {
+      current.requiredItemTags.add(requiredTag);
+    }
+    current.members.push({
+      requiredLevel: row.requiredLevel ?? 1,
+      weight: row.dropChanceValue ?? 0,
+      ranges: parsed.ranges,
+    });
+
+    groups.set(groupKey, current);
+  }
+
+  const records: IModDbRecordType[] = [];
+  let index = 0;
+
+  for (const grouped of groups.values()) {
+    const sortedMembers = [...grouped.members].sort((a, b) => {
+      if (b.requiredLevel !== a.requiredLevel) {
+        return b.requiredLevel - a.requiredLevel;
+      }
+      return b.weight - a.weight;
+    });
+    const tiers = sortedMembers.map((member, tierIndex) => {
+      return {
+        tier: tierIndex + 1,
+        levelRequirement: member.requiredLevel,
+        weight: member.weight,
+        statRanges: member.ranges,
+      };
+    });
+
+    const tierCount = Math.max(1, tiers.length);
+    const maxLevelRequirement = tiers[0]?.levelRequirement ?? 1;
+    const totalWeight = tiers.reduce((sum, tier) => {
+      return sum + tier.weight;
+    }, 0);
+
+    records.push({
+      modKey: `poe2db__${grouped.section}__${String(index)}`,
+      modType: grouped.modType,
+      applicableSubTypes: [...grouped.applicableSubTypes],
+      requiredItemTags: [...grouped.requiredItemTags],
+      modTags: [...grouped.modTags].slice(0, 4),
+      tierCount,
+      maxLevelRequirement,
+      totalWeight,
+      nameTemplateKey: grouped.template,
+      tiers,
+    });
+    index += 1;
+  }
+
+  return records;
+};
 
 // ---------------------------------------------------------------------------
 // Sub-components
@@ -41,7 +223,56 @@ export const DbWorkspace = (): ReactElement => {
   const [modSubTypeFilter, setModSubTypeFilter] =
     useState<SubTypeFilterType>("all");
   const [modTypeFilter, setModTypeFilter] = useState<"all" | "prefix" | "suffix" | "corruptedPrefix" | "corruptedSuffix">("all");
+  const [modSectionFilter, setModSectionFilter] = useState<ModSectionFilterType>("all");
+  const [modPage, setModPage] = useState<number>(1);
   const [search, setSearch] = useState<string>("");
+  const [remoteModRecords, setRemoteModRecords] = useState<IModDbRecordType[] | null>(null);
+
+  useEffect(() => {
+    let mounted = true;
+
+    const load = async (): Promise<void> => {
+      try {
+        const response = await fetch("/api/db/poe2db-modifiers", { cache: "no-store" });
+        if (!response.ok) {
+          return;
+        }
+        const payload = (await response.json()) as Poe2DbModifierApiResponseType;
+        if (!mounted) {
+          return;
+        }
+        setRemoteModRecords(toViewRecordsFromPoe2Db(payload));
+      } catch {
+        // Keep local MOD_DB fallback when API or generated file is unavailable.
+      }
+    };
+
+    void load();
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  const modRecords = remoteModRecords ?? MOD_DB.records;
+
+  const getRecordSection = (record: IModDbRecordType): ModSectionFilterType => {
+    if (record.modKey.startsWith("poe2db__")) {
+      const section = record.modKey.split("__")[1];
+      switch (section) {
+        case "normal":
+        case "corrupted":
+        case "desecrated":
+        case "essence":
+        case "perfect_essence":
+        case "socketable":
+        case "bonded":
+          return section;
+        default:
+          return "legacy";
+      }
+    }
+    return "legacy";
+  };
 
   const availableSubTypes = useMemo(() => {
     if (equipmentFilter === "all") {
@@ -72,19 +303,28 @@ export const DbWorkspace = (): ReactElement => {
     });
   }, [equipmentFilter, normalizedSubType, search, t]);
 
+  const availableModSections = useMemo(() => {
+    const set = new Set<ModSectionFilterType>();
+    for (const record of modRecords) {
+      set.add(getRecordSection(record));
+    }
+    return Array.from(set).sort();
+  }, [modRecords]);
+
   const allModSubTypes = useMemo(() => {
     const set = new Set<IBaseItemSubTypeType>();
-    for (const record of MOD_DB.records) {
+    for (const record of modRecords) {
       for (const s of record.applicableSubTypes) { set.add(s); }
     }
     return Array.from(set).sort();
-  }, []);
+  }, [modRecords]);
 
   const filteredMods = useMemo(() => {
     const q = search.trim().toLowerCase();
-    return MOD_DB.records.filter((r) => {
+    return modRecords.filter((r) => {
       if (modTypeFilter !== "all" && r.modType !== modTypeFilter) { return false; }
       if (modSubTypeFilter !== "all" && !r.applicableSubTypes.includes(modSubTypeFilter)) { return false; }
+      if (modSectionFilter !== "all" && getRecordSection(r) !== modSectionFilter) { return false; }
       if (q) {
         const name = (() => {
           try {
@@ -97,17 +337,21 @@ export const DbWorkspace = (): ReactElement => {
       }
       return true;
     });
-  }, [modTypeFilter, modSubTypeFilter, search, t]);
+  }, [modRecords, modTypeFilter, modSubTypeFilter, modSectionFilter, search, t]);
+
+  useEffect(() => {
+    setModPage(1);
+  }, [modTypeFilter, modSubTypeFilter, modSectionFilter, search]);
+
+  const modTotalPages = Math.max(1, Math.ceil(filteredMods.length / MOD_PAGE_SIZE));
+  const normalizedModPage = Math.min(modPage, modTotalPages);
+  const pagedMods = useMemo(() => {
+    const start = (normalizedModPage - 1) * MOD_PAGE_SIZE;
+    return filteredMods.slice(start, start + MOD_PAGE_SIZE);
+  }, [filteredMods, normalizedModPage]);
 
   const itemName = (key: string): string => {
     try { return t(`baseItems.${key}.name`); } catch { return key; }
-  };
-  const modName = (key: string): string => {
-    try {
-      return t(`mods.${key}` as never);
-    } catch {
-      return key;
-    }
   };
   const subTypeLabel = (s: string): string => {
     try { return t(`itemClass.${s}`); } catch { return s; }
@@ -150,7 +394,7 @@ export const DbWorkspace = (): ReactElement => {
           </button>
           <button type="button" onClick={() => { setActiveTab("mods"); setSearch(""); }} className={TAB_CLS(activeTab === "mods")}>
             {t("dbView.tabMods")}
-            <span className="ml-1.5 text-xs font-normal text-zinc-400">({MOD_DB.records.length})</span>
+            <span className="ml-1.5 text-xs font-normal text-zinc-400">({modRecords.length})</span>
           </button>
         </div>
 
@@ -225,11 +469,49 @@ export const DbWorkspace = (): ReactElement => {
                   <option key={s} value={s}>{subTypeLabel(s)}</option>
                 ))}
               </select>
+              <select
+                value={modSectionFilter}
+                onChange={(e) => { setModSectionFilter(e.target.value as ModSectionFilterType); }}
+                className="rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-3 py-1.5 text-sm"
+              >
+                <option value="all">{t("dbView.modSectionAll")}</option>
+                {availableModSections.map((section) => (
+                  <option key={section} value={section}>
+                    {t(`dbView.modSection.${section}` as never)}
+                  </option>
+                ))}
+              </select>
+              <div className="ml-1 flex items-center gap-1.5">
+                <button
+                  type="button"
+                  onClick={() => { setModPage((prev) => Math.max(1, prev - 1)); }}
+                  disabled={normalizedModPage <= 1}
+                  className="rounded-md border border-zinc-300 px-2 py-1 text-xs text-zinc-600 disabled:opacity-40 dark:border-zinc-700 dark:text-zinc-300"
+                >
+                  {t("dbView.paginationPrev")}
+                </button>
+                <span className="text-xs text-zinc-500 dark:text-zinc-400">
+                  {t("dbView.paginationPage", { page: normalizedModPage, total: modTotalPages })}
+                </span>
+                <button
+                  type="button"
+                  onClick={() => { setModPage((prev) => Math.min(modTotalPages, prev + 1)); }}
+                  disabled={normalizedModPage >= modTotalPages}
+                  className="rounded-md border border-zinc-300 px-2 py-1 text-xs text-zinc-600 disabled:opacity-40 dark:border-zinc-700 dark:text-zinc-300"
+                >
+                  {t("dbView.paginationNext")}
+                </button>
+              </div>
             </>
           )}
 
           <span className="text-xs text-zinc-400 ml-auto">
-            {activeTab === "items" ? filteredItems.length : filteredMods.length}건
+            {activeTab === "items"
+              ? filteredItems.length
+              : t("dbView.paginationCount", {
+                  shown: pagedMods.length,
+                  total: filteredMods.length,
+                })}
           </span>
         </div>
 
@@ -311,95 +593,7 @@ export const DbWorkspace = (): ReactElement => {
               </tbody>
             </table>
           ) : (
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="border-b border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900">
-                  <th className="px-4 py-3 text-left text-xs font-semibold text-zinc-500 font-sc uppercase tracking-wide">{t("dbView.colName")}</th>
-                  <th className="px-4 py-3 text-left text-xs font-semibold text-zinc-500 font-sc uppercase tracking-wide">{t("dbView.colModType")}</th>
-                  <th className="px-4 py-3 text-left text-xs font-semibold text-zinc-500 font-sc uppercase tracking-wide">{t("dbView.colTags")}</th>
-                  <th className="px-4 py-3 text-left text-xs font-semibold text-zinc-500 font-sc uppercase tracking-wide">{t("dbView.colStatReq")}</th>
-                  <th className="px-4 py-3 text-right text-xs font-semibold text-zinc-500 font-sc uppercase tracking-wide">{t("dbView.colTiers")}</th>
-                  <th className="px-4 py-3 text-right text-xs font-semibold text-zinc-500 font-sc uppercase tracking-wide">{t("dbView.colWeight")}</th>
-                  <th className="px-4 py-3 text-left text-xs font-semibold text-zinc-500 font-sc uppercase tracking-wide">{t("dbView.colApplicable")}</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredMods.map((r, i) => (
-                  <tr
-                    key={r.modKey}
-                    className={`border-b border-zinc-100 dark:border-zinc-800 last:border-0 ${
-                      i % 2 === 0 ? "" : "bg-zinc-50/50 dark:bg-zinc-900/30"
-                    }`}
-                  >
-                    <td className="px-4 py-2.5 font-medium text-zinc-900 dark:text-zinc-100">
-                      {modName(r.nameTemplateKey)}
-                    </td>
-                    <td className="px-4 py-2.5">
-                      <span className={`inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium ${
-                        r.modType === "prefix"
-                          ? "bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300"
-                          : r.modType === "suffix"
-                          ? "bg-purple-100 text-purple-700 dark:bg-purple-900/40 dark:text-purple-300"
-                          : r.modType === "corruptedPrefix"
-                          ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300"
-                          : "bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300"
-                      }`}>
-                        {getModTypeDisplayName(r.modType, locale)}
-                      </span>
-                    </td>
-                    <td className="px-4 py-2.5">
-                      <div className="flex flex-wrap gap-1">
-                        {r.modTags.map((tag) => (
-                          <span key={tag} className="inline-flex items-center rounded px-1.5 py-0.5 text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    </td>
-                    <td className="px-4 py-2.5">
-                      <div className="flex gap-1">
-                        {r.requiredItemTags.length === 0 ? (
-                          <span className="text-zinc-300 dark:text-zinc-700 text-xs">–</span>
-                        ) : r.requiredItemTags.map((tag) => (
-                          <span
-                            key={tag}
-                            className={`inline-flex items-center rounded px-1.5 py-0.5 text-xs font-semibold ${
-                              tag === "str"
-                                ? "bg-orange-100 text-orange-700 dark:bg-orange-900/40 dark:text-orange-300"
-                                : tag === "dex"
-                                ? "bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300"
-                                : "bg-sky-100 text-sky-700 dark:bg-sky-900/40 dark:text-sky-300"
-                            }`}
-                          >
-                            {tag.toUpperCase()}
-                          </span>
-                        ))}
-                      </div>
-                    </td>
-                    <td className="px-4 py-2.5 text-right tabular-nums text-zinc-700 dark:text-zinc-300 font-medium">
-                      {r.tierCount}
-                    </td>
-                    <td className="px-4 py-2.5 text-right tabular-nums text-zinc-500 dark:text-zinc-400">
-                      {r.totalWeight.toLocaleString()}
-                    </td>
-                    <td className="px-4 py-2.5">
-                      <div className="flex flex-wrap gap-1">
-                        {r.applicableSubTypes.map((s) => (
-                          <span key={s} className="inline-flex items-center rounded px-1.5 py-0.5 text-xs bg-amber-50 dark:bg-amber-900/20 text-amber-700 dark:text-amber-400">
-                            {subTypeLabel(s)}
-                          </span>
-                        ))}
-                      </div>
-                    </td>
-                  </tr>
-                ))}
-                {filteredMods.length === 0 && (
-                  <tr>
-                    <td colSpan={7} className="px-4 py-8 text-center text-zinc-400">{t("baseFilter.noResults")}</td>
-                  </tr>
-                )}
-              </tbody>
-            </table>
+            <DbModsTable records={pagedMods} locale={locale} />
           )}
         </div>
 

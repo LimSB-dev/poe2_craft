@@ -1,6 +1,4 @@
 import type { AppLocaleType } from "./routing";
-import { loadSimulatorFragmentModule } from "./simulatorFragmentModules";
-import { SIMULATOR_MESSAGE_FRAGMENT_BASENAMES } from "./simulatorMessageFragments";
 
 const isPlainObject = (value: unknown): value is Record<string, unknown> => {
   return Boolean(value) && typeof value === "object" && !Array.isArray(value);
@@ -24,31 +22,19 @@ const deepMergeRecords = (
   return result;
 };
 
-const loadSimulatorFragments = async (locale: AppLocaleType) => {
-  const modules = await Promise.all(
-    SIMULATOR_MESSAGE_FRAGMENT_BASENAMES.map((basename) => {
-      return loadSimulatorFragmentModule(locale, basename);
-    })
-  );
-
-  return modules.reduce<Record<string, unknown>>((accumulator, mod) => {
-    return deepMergeRecords(accumulator, mod.default as Record<string, unknown>);
-  }, {});
-};
-
 export const loadLocaleMessages = async (locale: AppLocaleType) => {
   const [metadataMod, simulatorLocale] = await Promise.all([
     import(`../../../messages/${locale}/metadata.json`),
-    loadSimulatorFragments(locale),
+    import(`../../../messages/${locale}/simulator.json`),
   ]);
 
   /** 비영어 로케일에서 새 키가 아직 없으면 `en` 시뮬레이터 조각을 베이스로 깊게 합쳐 누락을 방지한다. */
-  let simulator: Record<string, unknown> = simulatorLocale;
+  let simulator: Record<string, unknown> = simulatorLocale.default as Record<string, unknown>;
   if (locale !== "en") {
-    const simulatorEn = await loadSimulatorFragments("en");
+    const simulatorEn = await import("../../../messages/en/simulator.json");
     simulator = deepMergeRecords(
-      simulatorEn as Record<string, unknown>,
-      simulatorLocale as Record<string, unknown>,
+      simulatorEn.default as Record<string, unknown>,
+      simulatorLocale.default as Record<string, unknown>,
     );
   }
 

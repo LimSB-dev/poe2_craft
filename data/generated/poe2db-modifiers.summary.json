@@ -1,0 +1,17 @@
+{
+  "source": "poe2db_modifiers_page",
+  "fetchedAtIso": "2026-03-24T08:36:12.361Z",
+  "pageCount": 60,
+  "rowCount": 11811,
+  "sectionKeys": [
+    "bonded",
+    "corrupted",
+    "desecrated",
+    "essence",
+    "normal",
+    "perfect_essence",
+    "socketable"
+  ],
+  "failed": [],
+  "note": "Full rows are stored in poe2db-modifiers.full.json"
+}

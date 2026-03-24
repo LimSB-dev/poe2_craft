@@ -69,7 +69,7 @@ export const buildHinekoraLockedDraftTable = (
       continue;
     }
     try {
-      out[essenceDef.essenceKey] = applyEssence(
+      out[essenceDef.essenceKey as CraftingCurrencyIdType] = applyEssence(
         cloneItemRoll(strippedBase),
         essenceDef,
         filters,

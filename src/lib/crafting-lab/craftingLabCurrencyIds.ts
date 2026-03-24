@@ -164,9 +164,9 @@ export const orbSlotIdToFamilyKind = (
   return id as CraftingOrbFamilyIdType;
 };
 
-/** 슬롯 우하단 로마 숫자 표기용. 단일 오브는 null. */
+/** 슬롯 우하단 로마 숫자 표기용 (`*_t1` …). 오브·에센스 티어 공통. */
 export const getOrbSlotTierRoman = (
-  id: CraftingLabOrbSlotIdType,
+  id: string,
 ): "I" | "II" | "III" | null => {
   if (id.endsWith("_t1")) {
     return "I";
@@ -202,6 +202,9 @@ export const normalizeCraftingCurrencyEventId = (id: string): string => {
   const mapped = LEGACY_ORB_ID_TO_TIER1[id];
   if (mapped !== undefined) {
     return mapped;
+  }
+  if (/^essence_[a-z_]+$/.test(id) && !/_t[123]$/.test(id)) {
+    return `${id}_t1`;
   }
   return id;
 };

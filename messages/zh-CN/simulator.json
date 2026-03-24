@@ -1,0 +1,2311 @@
+{
+  "title": "流放之路2 — 物品模拟器",
+  "intro": "选择基底物品，设定要roll的前缀与后缀数量，然后预览一次结果。这是用于布局与迭代的简化模型。",
+  "localeSwitcher": {
+    "label": "语言",
+    "localeNames": {
+      "en": "English",
+      "ko": "한국어",
+      "ja": "日本語",
+      "zh-CN": "简体中文"
+    }
+  },
+  "baseItemLevel": "需求等级 {level}",
+  "equipmentType": {
+    "weapon": "武器",
+    "offhand": "副手装备",
+    "armour": "防具",
+    "jewellery": "首饰"
+  },
+  "baseFilter": {
+    "type": "类型",
+    "subType": "子类型",
+    "all": "全部",
+    "requiredStr": "力量",
+    "requiredDex": "敏捷",
+    "requiredInt": "智慧",
+    "requiredLevel": "等级",
+    "baseItem": "基础物品",
+    "noResults": "没有符合筛选条件的基础物品",
+    "matchCount": "筛选匹配基础物品数: {count}",
+    "source": "来源：PoE2DB",
+    "quality": "品质",
+    "armour": "护甲",
+    "evasion": "闪避",
+    "energyShield": "能量护盾",
+    "filterToggle": "筛选"
+  },
+  "dbView": {
+    "title": "数据库",
+    "description": "浏览基础物品和词缀。",
+    "tabItems": "基础物品",
+    "tabMods": "词缀",
+    "colName": "名称",
+    "colType": "类型",
+    "colSubType": "子类型",
+    "colStatTags": "属性",
+    "colArmour": "护甲",
+    "colEvasion": "闪避",
+    "colES": "能量护盾",
+    "colReq": "需求",
+    "colModType": "类型",
+    "colTags": "标签",
+    "colTiers": "层数",
+    "colWeight": "权重",
+    "colApplicable": "适用类型",
+    "colStatReq": "属性要求",
+    "prefix": "基础前缀",
+    "suffix": "基础后缀",
+    "navLabel": "DB",
+    "corruptedPrefix": "腐化的前缀",
+    "corruptedSuffix": "腐化的后缀",
+    "modTierExpandAria": "展开 {name} 的阶层详情",
+    "modTierCollapseAria": "收起 {name} 的阶层详情",
+    "tierColTier": "阶层",
+    "tierColAffix": "词缀",
+    "tierColItemLevel": "需求等级",
+    "tierColModifier": "属性",
+    "tierColWeight": "权重",
+    "tierColValues": "数值区间",
+    "tierAffixPlaceholder": "—",
+    "tierStatsPending": "尚未关联每阶层具体数值；数据库包含每阶层区间后将在此显示。",
+    "tierInfoAria": "更多阶层信息（当前版本未提供）。",
+    "tierSyntheticDisclaimer": "各阶层的等级与权重由数据库中的最大等级、总权重与阶层数插值估算；每阶层精确数值将在补齐数据后显示。",
+    "modSectionAll": "全部分区",
+    "modSection": {
+      "all": "全部分区",
+      "normal": "普通",
+      "corrupted": "腐化",
+      "desecrated": "亵渎",
+      "essence": "精华",
+      "perfect_essence": "完美精华",
+      "socketable": "可镶嵌",
+      "bonded": "绑定",
+      "legacy": "旧版"
+    },
+    "paginationPrev": "上一页",
+    "paginationNext": "下一页",
+    "paginationPage": "第 {page}/{total} 页",
+    "paginationCount": "显示 {shown} 条 / 共 {total} 条"
+  },
+  "panels": {
+    "baseItem": {
+      "title": "基底物品",
+      "description": "选择你要制作的物品。"
+    },
+    "options": {
+      "title": "词缀",
+      "description": "添加你想要的词缀并调整roll设置。"
+    },
+    "result": {
+      "title": "预期结果",
+      "description": "从当前词缀池与权重中随机抽取的一次结果。"
+    }
+  },
+  "options": {
+    "targetRarity": "目标稀有度",
+    "prefixes": "前缀",
+    "suffixes": "后缀",
+    "effectiveRoll": "实际roll：前缀 {prefixCount}，后缀 {suffixCount}。{hint}",
+    "effectiveRollHint": "魔法各最多1条；稀有各最多3条。",
+    "rollPreview": "Roll预览",
+    "rollSettings": "Roll设置"
+  },
+  "rarity": {
+    "magic": "魔法",
+    "rare": "稀有"
+  },
+  "result": {
+    "empty": "选择基底与选项后，点击「Roll预览」。"
+  },
+  "mods": {
+    "corrupted_ailment_intensity": "你施加的异常状态强度提高(10–20)%",
+    "corrupted_arcane_shadow_on_crit": "暴击命中时(10–15)%概率获得奥术暗影",
+    "corrupted_bleed_chance": "流血附加概率提高(20–30)%",
+    "corrupted_cast_speed_at_full_life": "满生命值时施法速度提高(8–15)%",
+    "corrupted_cold_chaos_res": "冰冷和混沌抗性+(13–17)%",
+    "corrupted_curse_effect_area": "诅咒效果范围扩大(12–20)%",
+    "corrupted_damage_as_mana_cost": "受到伤害的(10–20)%由魔力承担而非生命",
+    "corrupted_damage_to_mana_recoup": "将受到伤害的(10–20)%转化为魔力恢复",
+    "corrupted_dex_int": "敏捷和智慧+(9–15)",
+    "corrupted_fire_chaos_res": "火焰和混沌抗性+(13–17)%",
+    "corrupted_immobilize_buildup": "固定积累(10–20)%增加",
+    "corrupted_instant_leech": "偷取效果的(8–15)%立即生效",
+    "corrupted_lacerate_on_hit": "攻击命中时(15–25)%概率施加割裂",
+    "corrupted_lightning_chaos_res": "闪电和混沌抗性+(13–17)%",
+    "corrupted_mana_cost_efficiency": "魔力消耗效率提高(6–10)%",
+    "corrupted_poison_chance": "中毒命中概率提高(20–30)%",
+    "corrupted_reduced_crit_chance_vs_player": "对你命中的暴击率降低(17–25)%",
+    "corrupted_reduced_curse_effect": "施加在你身上的诅咒效果降低(25–35)%",
+    "corrupted_skill_speed_consume_frenzy": "消耗激怒充能后技能速度提高(8–12)%",
+    "corrupted_spirit_retention": "技能精神力占用效率提高(6–12)%",
+    "corrupted_str_dex": "力量和敏捷+#",
+    "corrupted_str_int": "力量和智慧+#",
+    "corrupted_stun_on_hit": "命中时(10–20)%概率造成晕眩",
+    "desecratedUnrevealedLine": "未公开的亵渎词缀",
+    "prefix_accuracy": "命中率+#",
+    "prefix_added_cold_damage_attack": "攻击附加#~#冰冷伤害",
+    "prefix_added_fire_damage_attack": "攻击附加#~#火焰伤害",
+    "prefix_added_lightning_damage_attack": "攻击附加#~#闪电伤害",
+    "prefix_added_phys_damage_attack": "攻击附加#~#物理伤害",
+    "prefix_armour_es_flat": "护甲与能量护盾上限+#",
+    "prefix_armour_evasion_flat": "护甲与闪避+#",
+    "prefix_evasion_es_flat": "闪避与能量护盾上限+#",
+    "prefix_inc_armour": "护甲提高#%",
+    "prefix_inc_armour_es": "护甲与能量护盾提高#%",
+    "prefix_inc_armour_es_max_life": "护甲与能量护盾提高#%，生命值上限+#",
+    "prefix_inc_armour_evasion": "护甲与闪避提高#%",
+    "prefix_inc_armour_evasion_max_life": "护甲与闪避提高#%，生命值上限+#",
+    "prefix_inc_armour_max_life": "护甲提高#%，生命值上限+#",
+    "prefix_inc_es": "能量护盾提高#%",
+    "prefix_inc_es_max_life": "能量护盾提高#%，生命值上限+#",
+    "prefix_inc_evasion": "闪避提高#%",
+    "prefix_inc_evasion_es": "闪避与能量护盾提高#%",
+    "prefix_inc_evasion_es_max_life": "闪避与能量护盾提高#%，生命值上限+#",
+    "prefix_inc_evasion_max_life": "闪避提高#%，生命值上限+#",
+    "prefix_max_armour": "护甲+#",
+    "prefix_max_es": "能量护盾上限+#",
+    "prefix_max_es_inc_es": "能量护盾上限+#，能量护盾提高#%",
+    "prefix_max_evasion": "闪避+#",
+    "prefix_max_life": "生命值上限+#",
+    "prefix_max_mana": "魔力上限+#",
+    "prefix_phys_thorns": "反射#~#物理伤害",
+    "prefix_spirit": "精神力+#",
+    "suffix_armour_to_elemental": "护甲的#%同样适用于承受的元素伤害",
+    "suffix_attack_speed": "攻击速度提高#%",
+    "suffix_chaos_res": "混沌抗性+#%",
+    "suffix_cold_res": "冰冷抗性+#%",
+    "suffix_crit_damage_bonus": "暴击伤害加成提高#%",
+    "suffix_dexterity": "敏捷+#",
+    "suffix_es_recharge_rate": "能量护盾充能开始速度加快#%",
+    "suffix_fire_res": "火焰抗性+#%",
+    "suffix_fortify_from_evasion": "获得等同于闪避值#%的强化评分",
+    "suffix_intelligence": "智慧+#",
+    "suffix_item_rarity": "物品稀有度提高#%",
+    "suffix_life_leech_from_phys": "物理攻击伤害的#%转化为生命偷取",
+    "suffix_life_on_hit": "攻击命中每个敌人获得生命#",
+    "suffix_life_on_kill": "击杀获得生命#",
+    "suffix_life_regen": "每秒回复#%生命",
+    "suffix_lightning_res": "闪电抗性+#%",
+    "suffix_mana_leech_from_phys": "物理攻击伤害的#%转化为魔力偷取",
+    "suffix_mana_on_kill": "击杀获得魔力#",
+    "suffix_melee_skill_levels": "所有近战技能等级+#",
+    "suffix_reduced_attr_req": "属性需求降低#%",
+    "suffix_reduced_bleed_duration": "流血持续时间降低#%",
+    "suffix_reduced_ignite_duration": "点燃持续时间降低#%",
+    "suffix_reduced_poison_duration": "中毒持续时间降低#%",
+    "suffix_strength": "力量+#",
+    "suffix_stun_threshold": "晕眩阈值+#"
+  },
+  "itemClass": {
+    "dagger": "匕首",
+    "oneHandSword": "单手剑",
+    "oneHandAxe": "单手斧",
+    "oneHandMace": "单手锤",
+    "sceptre": "权杖",
+    "spear": "长枪",
+    "flail": "连枷",
+    "staff": "法杖",
+    "wand": "魔杖",
+    "bow": "弓",
+    "claw": "爪",
+    "twoHandSword": "双手剑",
+    "twoHandAxe": "双手斧",
+    "twoHandMace": "双手锤",
+    "quarterstaff": "长棍",
+    "fishingRod": "钓竿",
+    "crossbow": "弩",
+    "trap": "陷阱",
+    "talisman": "护符",
+    "quiver": "箭袋",
+    "shield": "盾牌",
+    "buckler": "圆盾",
+    "helmet": "头盔",
+    "focus": "聚焦器",
+    "gloves": "手套",
+    "bodyArmour": "胸甲",
+    "boots": "靴子",
+    "amulet": "护身符",
+    "ring": "戒指",
+    "belt": "腰带"
+  },
+  "baseItems": {
+    "base_oak_staff": {
+      "name": "灰烬法杖"
+    },
+    "base_ember_wand": {
+      "name": "枯萎魔杖"
+    },
+    "base_hunter_bow": {
+      "name": "短弓"
+    },
+    "base_twin_fang_claw": {
+      "name": "皮克特爪"
+    },
+    "base_iron_helmet": {
+      "name": "士兵巨盔"
+    },
+    "base_etched_focus": {
+      "name": "编织聚焦器"
+    },
+    "base_leather_gloves": {
+      "name": "铆钉手套"
+    },
+    "base_chain_vest": {
+      "name": "毛皮板甲"
+    },
+    "base_hardsole_boots": {
+      "name": "铁胫甲靴"
+    },
+    "base_lapis_amulet": {
+      "name": "青金石护身符"
+    },
+    "base_gold_ring": {
+      "name": "金戒指"
+    },
+    "base_heavy_belt": {
+      "name": "重型腰带"
+    },
+    "gloves_variant_a": {
+      "name": "다부진 미트"
+    },
+    "gloves_variant_b": {
+      "name": "고정못 미트"
+    },
+    "gloves_variant_c": {
+      "name": "단조한 미트"
+    },
+    "gloves_variant_d": {
+      "name": "발전된 미트"
+    },
+    "gloves_variant_e": {
+      "name": "주조한 미트"
+    },
+    "gloves_variant_f": {
+      "name": "정교한 미트"
+    },
+    "gloves_variant_g": {
+      "name": "거신 미트"
+    },
+    "gloves_variant_h": {
+      "name": "우수한 미트"
+    },
+    "gloves_variant_i": {
+      "name": "스웨드 팔보호구"
+    },
+    "gloves_variant_j": {
+      "name": "굳건한 팔보호구"
+    },
+    "gloves_variant_k": {
+      "name": "속박된 팔보호구"
+    },
+    "gloves_variant_l": {
+      "name": "절개된 팔보호구"
+    },
+    "gloves_variant_m": {
+      "name": "가시 팔보호구"
+    },
+    "gloves_variant_n": {
+      "name": "섬세한 팔보호구"
+    },
+    "gloves_variant_o": {
+      "name": "굳어진 팔보호구"
+    },
+    "gloves_variant_p": {
+      "name": "아로새긴 팔보호구"
+    },
+    "gloves_variant_q": {
+      "name": "찢긴 장갑"
+    },
+    "gloves_variant_r": {
+      "name": "암울한 장갑"
+    },
+    "gloves_variant_s": {
+      "name": "꿰맨 장갑"
+    },
+    "gloves_variant_t": {
+      "name": "보석 박힌 장갑"
+    },
+    "gloves_variant_u": {
+      "name": "복잡한 장갑"
+    },
+    "gloves_variant_v": {
+      "name": "파우아비늘 장갑"
+    },
+    "gloves_variant_w": {
+      "name": "수놓은 장갑"
+    },
+    "gloves_variant_x": {
+      "name": "치장된 장갑"
+    },
+    "gloves_variant_y": {
+      "name": "고리 갑옷 건틀릿"
+    },
+    "gloves_variant_z": {
+      "name": "겹겹의 건틀릿"
+    },
+    "gloves_variant_aa": {
+      "name": "이중 건틀릿"
+    },
+    "gloves_variant_ab": {
+      "name": "판금 건틀릿"
+    },
+    "gloves_variant_ac": {
+      "name": "윤이 나는 건틀릿"
+    },
+    "gloves_variant_ad": {
+      "name": "화려한 건틀릿"
+    },
+    "gloves_variant_ae": {
+      "name": "밧줄 수갑"
+    },
+    "gloves_variant_af": {
+      "name": "오래된 수갑"
+    },
+    "gloves_variant_ag": {
+      "name": "금주물 수갑"
+    },
+    "gloves_variant_ah": {
+      "name": "베리시움 수갑"
+    },
+    "gloves_variant_ai": {
+      "name": "정의로운 수갑"
+    },
+    "gloves_variant_aj": {
+      "name": "인장 수갑"
+    },
+    "gloves_variant_ak": {
+      "name": "거즈 싸개"
+    },
+    "gloves_variant_al": {
+      "name": "리넨 싸개"
+    },
+    "gloves_variant_am": {
+      "name": "나선 싸개"
+    },
+    "gloves_variant_an": {
+      "name": "버클 싸개"
+    },
+    "gloves_variant_ao": {
+      "name": "은밀한 싸개"
+    },
+    "gloves_variant_ap": {
+      "name": "특수 싸개"
+    },
+    "gloves_variant_aq": {
+      "name": "우수한 소맷부리"
+    },
+    "gloves_variant_ar": {
+      "name": "판금 미트"
+    },
+    "gloves_variant_as": {
+      "name": "우아한 미트"
+    },
+    "gloves_variant_at": {
+      "name": "고대 미트"
+    },
+    "gloves_variant_au": {
+      "name": "깃털 미트"
+    },
+    "gloves_variant_av": {
+      "name": "사냥 팔보호구"
+    },
+    "gloves_variant_aw": {
+      "name": "재빠른 팔보호구"
+    },
+    "gloves_variant_ax": {
+      "name": "제련된 팔보호구"
+    },
+    "gloves_variant_ay": {
+      "name": "가시 팔보호구"
+    },
+    "gloves_variant_az": {
+      "name": "불길한 장갑"
+    },
+    "gloves_variant_ba": {
+      "name": "장식된 장갑"
+    },
+    "gloves_variant_bb": {
+      "name": "바로크 장갑"
+    },
+    "gloves_variant_bc": {
+      "name": "금 장갑"
+    },
+    "gloves_variant_bd": {
+      "name": "철사슬 건틀릿"
+    },
+    "gloves_variant_be": {
+      "name": "대장 건틀릿"
+    },
+    "gloves_variant_bf": {
+      "name": "맹신자 건틀릿"
+    },
+    "gloves_variant_bg": {
+      "name": "땋은 수갑"
+    },
+    "gloves_variant_bh": {
+      "name": "가보 수갑"
+    },
+    "gloves_variant_bi": {
+      "name": "화려한 수갑"
+    },
+    "gloves_variant_bj": {
+      "name": "붕대 싸개"
+    },
+    "gloves_variant_bk": {
+      "name": "캠브릭 싸개"
+    },
+    "gloves_variant_bl": {
+      "name": "치장된 싸개"
+    },
+    "gloves_variant_bm": {
+      "name": "기사의 미트"
+    },
+    "gloves_variant_bn": {
+      "name": "화려한 미트"
+    },
+    "gloves_variant_bo": {
+      "name": "바알 미트"
+    },
+    "gloves_variant_bp": {
+      "name": "거대한 미트"
+    },
+    "gloves_variant_bq": {
+      "name": "뒤를 쫓는 팔보호구"
+    },
+    "gloves_variant_br": {
+      "name": "우수한 팔보호구"
+    },
+    "gloves_variant_bs": {
+      "name": "가시 돋친 팔보호구"
+    },
+    "gloves_variant_bt": {
+      "name": "광택 나는 팔보호구"
+    },
+    "gloves_variant_bu": {
+      "name": "으스스한 장갑"
+    },
+    "gloves_variant_bv": {
+      "name": "호화로운 장갑"
+    },
+    "gloves_variant_bw": {
+      "name": "바알 장갑"
+    },
+    "gloves_variant_bx": {
+      "name": "사이렌비늘 장갑"
+    },
+    "gloves_variant_by": {
+      "name": "강철사슬 건틀릿"
+    },
+    "gloves_variant_bz": {
+      "name": "지휘관 건틀릿"
+    },
+    "gloves_variant_ca": {
+      "name": "광신자 건틀릿"
+    },
+    "gloves_variant_cb": {
+      "name": "검은강철 건틀릿"
+    },
+    "gloves_variant_cc": {
+      "name": "속박된 수갑"
+    },
+    "gloves_variant_cd": {
+      "name": "고대의 수갑"
+    },
+    "gloves_variant_ce": {
+      "name": "번뜩이는 수갑"
+    },
+    "gloves_variant_cf": {
+      "name": "지지자 수갑"
+    },
+    "gloves_variant_cg": {
+      "name": "전쟁 싸개"
+    },
+    "gloves_variant_ch": {
+      "name": "우아한 싸개"
+    },
+    "gloves_variant_ci": {
+      "name": "바알 싸개"
+    },
+    "gloves_variant_cj": {
+      "name": "고정된 싸개"
+    },
+    "body_armour_variant_a": {
+      "name": "녹슨 흉갑"
+    },
+    "body_armour_variant_b": {
+      "name": "모피 판금 갑옷"
+    },
+    "body_armour_variant_c": {
+      "name": "철 흉갑"
+    },
+    "body_armour_variant_d": {
+      "name": "레이더 판금 갑옷"
+    },
+    "body_armour_variant_e": {
+      "name": "마라케스 흉갑"
+    },
+    "body_armour_variant_f": {
+      "name": "강철 판금 갑옷"
+    },
+    "body_armour_variant_g": {
+      "name": "전신 판금 갑옷"
+    },
+    "body_armour_variant_h": {
+      "name": "바알 흉갑"
+    },
+    "body_armour_variant_i": {
+      "name": "거수 판금 갑옷"
+    },
+    "body_armour_variant_j": {
+      "name": "치프틴 흉갑"
+    },
+    "body_armour_variant_k": {
+      "name": "원형 경기장 판금 갑옷"
+    },
+    "body_armour_variant_l": {
+      "name": "챔피언 흉갑"
+    },
+    "body_armour_variant_m": {
+      "name": "영광의 판금 갑옷"
+    },
+    "body_armour_variant_n": {
+      "name": "정복자 판금 갑옷"
+    },
+    "body_armour_variant_o": {
+      "name": "심연의 흉갑"
+    },
+    "body_armour_variant_p": {
+      "name": "가죽 조끼"
+    },
+    "body_armour_variant_q": {
+      "name": "누비 조끼"
+    },
+    "body_armour_variant_r": {
+      "name": "패스파인더 외투"
+    },
+    "body_armour_variant_s": {
+      "name": "연막의 조끼"
+    },
+    "body_armour_variant_t": {
+      "name": "로아가죽 외투"
+    },
+    "body_armour_variant_u": {
+      "name": "징 박힌 조끼"
+    },
+    "body_armour_variant_v": {
+      "name": "정찰병의 조끼"
+    },
+    "body_armour_variant_w": {
+      "name": "뱀 비늘 외투"
+    },
+    "body_armour_variant_x": {
+      "name": "해적 조끼"
+    },
+    "body_armour_variant_y": {
+      "name": "밀수범 외투"
+    },
+    "body_armour_variant_z": {
+      "name": "질주자 조끼"
+    },
+    "body_armour_variant_aa": {
+      "name": "경화가죽 외투"
+    },
+    "body_armour_variant_ab": {
+      "name": "정교한 조끼"
+    },
+    "body_armour_variant_ac": {
+      "name": "사슬 외투"
+    },
+    "body_armour_variant_ad": {
+      "name": "장갑을 두른 조끼"
+    },
+    "body_armour_variant_ae": {
+      "name": "조각난 로브"
+    },
+    "body_armour_variant_af": {
+      "name": "깃털 로브"
+    },
+    "body_armour_variant_ag": {
+      "name": "사술사의 로브"
+    },
+    "body_armour_variant_ah": {
+      "name": "뼈 의복"
+    },
+    "body_armour_variant_ai": {
+      "name": "실크 로브"
+    },
+    "body_armour_variant_aj": {
+      "name": "케스 의복"
+    },
+    "body_armour_variant_ak": {
+      "name": "봉헌된 의복"
+    },
+    "body_armour_variant_al": {
+      "name": "제단 로브"
+    },
+    "body_armour_variant_am": {
+      "name": "엘리멘탈리스트 로브"
+    },
+    "body_armour_variant_an": {
+      "name": "신비한 의복"
+    },
+    "body_armour_variant_ao": {
+      "name": "제국 로브"
+    },
+    "body_armour_variant_ap": {
+      "name": "판금 의복"
+    },
+    "body_armour_variant_aq": {
+      "name": "혼란의 의복"
+    },
+    "body_armour_variant_ar": {
+      "name": "계몽의 로브"
+    },
+    "body_armour_variant_as": {
+      "name": "비전 의복"
+    },
+    "body_armour_variant_at": {
+      "name": "사슬 갑옷"
+    },
+    "body_armour_variant_au": {
+      "name": "악한 방어구"
+    },
+    "body_armour_variant_av": {
+      "name": "방랑자 방어구"
+    },
+    "body_armour_variant_aw": {
+      "name": "은폐 사슬옷"
+    },
+    "body_armour_variant_ax": {
+      "name": "탐험가 방어구"
+    },
+    "body_armour_variant_ay": {
+      "name": "미늘 갑옷"
+    },
+    "body_armour_variant_az": {
+      "name": "기사 방어구"
+    },
+    "body_armour_variant_ba": {
+      "name": "선대의 사슬옷"
+    },
+    "body_armour_variant_bb": {
+      "name": "라멜라 사슬옷"
+    },
+    "body_armour_variant_bc": {
+      "name": "검투사 방어구"
+    },
+    "body_armour_variant_bd": {
+      "name": "영웅의 방어구"
+    },
+    "body_armour_variant_be": {
+      "name": "토너먼트 사슬옷"
+    },
+    "body_armour_variant_bf": {
+      "name": "토너먼트 사슬옷"
+    },
+    "body_armour_variant_bg": {
+      "name": "토너먼트 사슬옷"
+    },
+    "body_armour_variant_bh": {
+      "name": "처형자 방어구"
+    },
+    "body_armour_variant_bi": {
+      "name": "순례자 법의"
+    },
+    "body_armour_variant_bj": {
+      "name": "털가죽 외투"
+    },
+    "body_armour_variant_bk": {
+      "name": "사슬 법의"
+    },
+    "body_armour_variant_bl": {
+      "name": "주술사 외투"
+    },
+    "body_armour_variant_bm": {
+      "name": "철갑 법의"
+    },
+    "body_armour_variant_bn": {
+      "name": "희생의 외투"
+    },
+    "body_armour_variant_bo": {
+      "name": "성직자 법의"
+    },
+    "body_armour_variant_bp": {
+      "name": "파도예견자 외투"
+    },
+    "body_armour_variant_bq": {
+      "name": "도금된 법의"
+    },
+    "body_armour_variant_br": {
+      "name": "공경받는 외투"
+    },
+    "body_armour_variant_bs": {
+      "name": "존경받는 법의"
+    },
+    "body_armour_variant_bt": {
+      "name": "까마귀 외투"
+    },
+    "body_armour_variant_bu": {
+      "name": "북극성 법의"
+    },
+    "body_armour_variant_bv": {
+      "name": "은자 의복"
+    },
+    "body_armour_variant_bw": {
+      "name": "밀랍재질 재킷"
+    },
+    "body_armour_variant_bx": {
+      "name": "도사 의복"
+    },
+    "body_armour_variant_by": {
+      "name": "나그네 재킷"
+    },
+    "body_armour_variant_bz": {
+      "name": "은둔자 의복"
+    },
+    "body_armour_variant_ca": {
+      "name": "두피수집가의 재킷"
+    },
+    "body_armour_variant_cb": {
+      "name": "불한당 재킷"
+    },
+    "body_armour_variant_cc": {
+      "name": "고행자 의복"
+    },
+    "body_armour_variant_cd": {
+      "name": "은밀한 재킷"
+    },
+    "body_armour_variant_ce": {
+      "name": "수도원 의복"
+    },
+    "body_armour_variant_cf": {
+      "name": "고통 재킷"
+    },
+    "body_armour_variant_cg": {
+      "name": "헌신자 의복"
+    },
+    "body_armour_variant_ch": {
+      "name": "암살자 의복"
+    },
+    "body_armour_variant_ci": {
+      "name": "우수한 예복"
+    },
+    "body_armour_variant_cj": {
+      "name": "희생의 예복"
+    },
+    "body_armour_variant_ck": {
+      "name": "야만인의 판금 갑옷"
+    },
+    "body_armour_variant_cl": {
+      "name": "투박한 흉갑"
+    },
+    "body_armour_variant_cm": {
+      "name": "모래맹세 흉갑"
+    },
+    "body_armour_variant_cn": {
+      "name": "우아한 판금 갑옷"
+    },
+    "body_armour_variant_co": {
+      "name": "무거운 판금 갑옷"
+    },
+    "body_armour_variant_cp": {
+      "name": "돌 흉갑"
+    },
+    "body_armour_variant_cq": {
+      "name": "쪽모이 조끼"
+    },
+    "body_armour_variant_cr": {
+      "name": "사냥 외투"
+    },
+    "body_armour_variant_cs": {
+      "name": "승마 외투"
+    },
+    "body_armour_variant_ct": {
+      "name": "겹겹의 조끼"
+    },
+    "body_armour_variant_cu": {
+      "name": "주자 조끼"
+    },
+    "body_armour_variant_cv": {
+      "name": "도마뱀비늘 외투"
+    },
+    "body_armour_variant_cw": {
+      "name": "새의 로브"
+    },
+    "body_armour_variant_cx": {
+      "name": "저주발화자의 로브"
+    },
+    "body_armour_variant_cy": {
+      "name": "호화로운 로브"
+    },
+    "body_armour_variant_cz": {
+      "name": "강 의복"
+    },
+    "body_armour_variant_da": {
+      "name": "지지자의 의복"
+    },
+    "body_armour_variant_db": {
+      "name": "의식용 로브"
+    },
+    "body_armour_variant_dc": {
+      "name": "고리 사슬옷"
+    },
+    "body_armour_variant_dd": {
+      "name": "불한당 방어구"
+    },
+    "body_armour_variant_de": {
+      "name": "방랑자 방어구"
+    },
+    "body_armour_variant_df": {
+      "name": "덮개 덮은 사슬옷"
+    },
+    "body_armour_variant_dg": {
+      "name": "창시자 방어구"
+    },
+    "body_armour_variant_dh": {
+      "name": "황금 사슬옷"
+    },
+    "body_armour_variant_di": {
+      "name": "템플러 법의"
+    },
+    "body_armour_variant_dj": {
+      "name": "곰가죽 외투"
+    },
+    "body_armour_variant_dk": {
+      "name": "쇠사슬 법의"
+    },
+    "body_armour_variant_dl": {
+      "name": "비술사 외투"
+    },
+    "body_armour_variant_dm": {
+      "name": "판금 법의"
+    },
+    "body_armour_variant_dn": {
+      "name": "심장도륙자 외투"
+    },
+    "body_armour_variant_do": {
+      "name": "고행자 의복"
+    },
+    "body_armour_variant_dp": {
+      "name": "기름칠된 재킷"
+    },
+    "body_armour_variant_dq": {
+      "name": "선교사 의복"
+    },
+    "body_armour_variant_dr": {
+      "name": "순회자 재킷"
+    },
+    "body_armour_variant_ds": {
+      "name": "하툰고 의복"
+    },
+    "body_armour_variant_dt": {
+      "name": "행상 재킷"
+    },
+    "body_armour_variant_du": {
+      "name": "병사 흉갑"
+    },
+    "body_armour_variant_dv": {
+      "name": "화려한 판금 갑옷"
+    },
+    "body_armour_variant_dw": {
+      "name": "웃자알 흉갑"
+    },
+    "body_armour_variant_dx": {
+      "name": "전쟁군주 흉갑"
+    },
+    "body_armour_variant_dy": {
+      "name": "재빠른 추적자 외투"
+    },
+    "body_armour_variant_dz": {
+      "name": "미끄러진 타격 조끼"
+    },
+    "body_armour_variant_ea": {
+      "name": "아룡 비늘 외투"
+    },
+    "body_armour_variant_eb": {
+      "name": "해적 외투"
+    },
+    "body_armour_variant_ec": {
+      "name": "끔찍한 로브"
+    },
+    "body_armour_variant_ed": {
+      "name": "흐르는 의복"
+    },
+    "body_armour_variant_ee": {
+      "name": "성찬의 로브"
+    },
+    "body_armour_variant_ef": {
+      "name": "깃털 의복"
+    },
+    "body_armour_variant_eg": {
+      "name": "비겁자 방어구"
+    },
+    "body_armour_variant_eh": {
+      "name": "연막의 사슬옷"
+    },
+    "body_armour_variant_ei": {
+      "name": "연막의 사슬옷"
+    },
+    "body_armour_variant_ej": {
+      "name": "연막의 사슬옷"
+    },
+    "body_armour_variant_ek": {
+      "name": "죽음의 사슬옷"
+    },
+    "body_armour_variant_el": {
+      "name": "테인 사슬옷"
+    },
+    "body_armour_variant_em": {
+      "name": "늑대가죽 외투"
+    },
+    "body_armour_variant_en": {
+      "name": "요술사 외투"
+    },
+    "body_armour_variant_eo": {
+      "name": "죽음의 외투"
+    },
+    "body_armour_variant_ep": {
+      "name": "바다폭풍 외투"
+    },
+    "body_armour_variant_eq": {
+      "name": "매끈한 재킷"
+    },
+    "body_armour_variant_er": {
+      "name": "뚜벅이 재킷"
+    },
+    "body_armour_variant_es": {
+      "name": "매 조련사의 재킷"
+    },
+    "body_armour_variant_et": {
+      "name": "금욕적인 의복"
+    }
+  },
+  "baseItemImplicits": {
+    "stun_threshold_inc": "击晕阈值提高 (30–40)%",
+    "life_regen_per_sec": "每秒回复 (1.5–2.5)% 生命值",
+    "debuff_slow_reduced": "减速减益对你的效果降低 (20–30)%",
+    "elemental_ailment_threshold_inc": "元素异常阈值提高 (30–40)%",
+    "mana_regen_rate_inc": "魔力回复速度提高 (40–50)%",
+    "es_recharge_faster": "能量护盾充能开始速度加快 (40–50)%",
+    "max_life_plus": "最大生命值 +(60–80)",
+    "fire_resist_plus": "火焰抗性 +(20–25)%",
+    "cold_resist_plus": "冰冷抗性 +(20–25)%",
+    "lightning_resist_plus": "闪电抗性 +(20–25)%",
+    "max_elem_resist_plus": "所有元素抗性上限 +1%",
+    "spirit_plus": "精魂 +(20–30)",
+    "corrupted_skill_gem_level": "所有腐化技能宝石等级 +1",
+    "chaos_resist_plus": "混沌抗性 +(7–13)%",
+    "move_speed_inc": "移动速度提高 5%",
+    "crit_damage_bonus_reduced": "受到命中的暴击伤害加成降低 (15–25)%",
+    "armour_applies_to_elem_damage": "护甲的 +(15–25)% 同样适用于元素伤害",
+    "damage_to_mana": "受到命中伤害的 (5–10)% 由魔力承担",
+    "damage_to_life_leech": "受到伤害的 (8–14)% 转化为生命值",
+    "elemental_ailment_duration_reduced": "对你生效的元素异常持续时间降低 (10–15)%"
+  },
+  "craftLab": {
+    "metaTitle": "工艺实验室 — 手动通货测试",
+    "metaDescription": "选择基底，从仓库使用通货与精华。遵循本项目的模拟器规则，与游戏客户端并非一一对应。",
+    "title": "工艺实验室",
+    "intro": "左侧选择基底，右侧从仓库使用货币。行为遵循 basicCurrencyOrbs、essence、abyssCrafting。精华为魔法专用。深渊标签合并了保存的骸骨与深渊预兆；仪式标签为仪式奖励预兆（如 Whittling）。同时只能激活一个预兆，作用于骸骨、消灭（光）、混沌（Whittling）等。希妮克拉之锁可预见下一次通货。神圣石数值 roll 未建模。",
+    "navToSimulator": "返回物品模拟器",
+    "itemColumnTitle": "物品",
+    "stashColumnTitle": "仓库",
+    "stashTabListAria": "仓库标签页",
+    "stashTabCurrency": "通货",
+    "stashTabEssence": "精华",
+    "stashTabAbyss": "深渊",
+    "stashTabRitual": "仪式",
+    "abyssTabHint": "深渊标签内同时选择保存的骸骨与深渊预兆。骸骨为稀有物品附加未公开的亵渎行；点击卡片上的未公开行可从三个候选中选择一个（权重为近似，精确数值未公开）。",
+    "abyssTabAbyssOmensHeading": "深渊预兆",
+    "stagedOmenBanner": "已选预兆：{name} — 将作用于下一次骸骨、消灭（光）或混沌（Whittling）。",
+    "stagedOmenPanelHeading": "已激活预兆",
+    "stagedOmenPanelEmpty": "未选择 — 请在深渊或仪式标签页点击预兆以激活。",
+    "stagedOmenPanelHint": "将作用于下一次深渊骸骨、消灭（光）或混沌（Whittling）。",
+    "abyssSlotDisabledTooltip": "尚未接入手动工艺。",
+    "ritualTabHint": "通常来自仪式玩法的预兆。最多可同时激活 3 个。Whittling：下一次混沌宝珠会移除 tier 最高（最弱近似）的词缀后再随机一条。",
+    "ritualOmenSimulationNote": "仪式预兆不会从仓库消耗，只保留选中状态。模拟模式下可查看效果摘要。",
+    "omenSimulationNote": "预兆不会从仓库消耗，只保留选中状态。模拟模式下点击预兆可查看本实验室中的效果摘要。",
+    "omenToggleAria": "{name}，开启或关闭预兆",
+    "omenSelectedAria": "{name}，当前预兆",
+    "omenPreview_cleared": "已取消预兆选择。物品未改变。",
+    "omenPreview_abyssal_echoes": "本模拟未实现灵魂之井重掷；该预兆在此仅作占位，无额外效果。",
+    "omenPreview_dextral_necromancy": "下一次保存的骸骨所附未公开亵渎行，在后缀有空位时固定为后缀。",
+    "omenPreview_sinistral_necromancy": "下一次保存的骸骨所附未公开亵渎行，在前缀有空位时固定为前缀。",
+    "omenPreview_light": "下一次消灭宝珠只移除亵渎词缀。使用后清除预兆。",
+    "omenPreview_putrefaction": "将稀有物品词缀替换为多条未公开亵渎行并腐化物品；在本实验室中 placement 可能简化。",
+    "omenPreview_blackblooded": "在武器与首饰（腰带/项链/戒指）上，下一次骸骨保证库尔加尔家族亵渎行。",
+    "omenPreview_liege": "在武器与首饰（腰带/项链/戒指）上，下一次骸骨保证阿玛纳姆家族亵渎行。",
+    "omenPreview_sovereign": "在武器与首饰（腰带/项链/戒指）上，下一次骸骨保证乌拉曼家族亵渎行。",
+    "omenPreview_whittling": "下一次混沌宝珠移除 tier 最高的词缀（最弱近似），再添加一条。使用后清除预兆。",
+    "omenPreview_sanctification": "下一次神圣石会圣化稀有物品；本应用未实现神圣数值 roll。",
+    "omenPreview_answered_prayers": "神龛额外效果 — 非战斗实例未建模。",
+    "omenPreview_bartering": "交易相关 — 本实验室未连接。",
+    "omenPreview_chance": "几率相关 — 本实验室未连接。",
+    "omenPreview_corruption": "腐化相关 — 本实验室未连接。",
+    "omenPreview_the_hunt": "狩猎/地图相关 — 本实验室未连接。",
+    "omenPreview_the_blessed": "祝福相关 — 本实验室未连接。",
+    "boneRequiresRare": "保存的骸骨仅用于稀有物品。",
+    "boneWrongSlotOrFull": "稀有度正确但部位不符或词缀已满。",
+    "boneCorrupted": "本模拟器中，已腐化的物品无法使用保存的骸骨。",
+    "boneRequiresRandomMode": "保存的骸骨仅在随机模式下可用。",
+    "boneSimulationNote": "骸骨混合强制亵渎行与揭示前步骤，详细预览省略，请用随机模式尝试。",
+    "selectBaseHeading": "选择基底",
+    "searchBaseLabel": "搜索基底",
+    "searchBasePlaceholder": "按键名或子类型筛选…",
+    "pickBaseHint": "点击一行以加载该基底的普通（无词缀）物品。",
+    "noBaseMatches": "没有匹配的基底。",
+    "currentBase": "基底",
+    "rarityLabel": "稀有度",
+    "prefixesHeading": "前缀",
+    "suffixesHeading": "后缀",
+    "emptyMods": "无",
+    "resetItem": "重置为普通（空词缀）",
+    "baseSectionReset": "重置",
+    "lastActionError": "无法应用: {message}",
+    "stashDepleted": "仓库中该通货不足。",
+    "stashPickBaseForCurrencies": "选择基底后会显示当前可用的货币。",
+    "noApplicableOrbs": "以该物品当前状态没有可用的通货。",
+    "orbDisabledTooltip": "当前稀有度或词缀条件下无法使用该通货。",
+    "essenceRequiresMagicItem": "Lesser Body / Abrasion 精华仅适用于魔法物品。",
+    "essenceIncompatibleBase": "该精华与当前基底类型不匹配（胸甲·腰带·戒指·项链 vs 物理武器等）。",
+    "orbDisabledAria": "{name}，当前物品状态下不可用",
+    "orbSimulateAria": "{name}，概率预览",
+    "craftModeLegend": "制作应用模式",
+    "craftModeLabel": "模式",
+    "craftModeRandom": "随机",
+    "craftModeSimulation": "模拟",
+    "craftModeSimulationHint": "模拟：点击通货不会改变物品，仅按本应用的词缀池显示可能出现的结果与概率。精华、深渊与仪式预兆同理；预兆会打开简短效果说明。",
+    "previewTitle": "{orb} — 概率摘要",
+    "previewClose": "关闭",
+    "previewUnavailable": "无法预览",
+    "previewUnavailableDetail": "当前状态下无法使用该通货。",
+    "previewModCol": "词缀",
+    "previewTierCol": "阶",
+    "previewProbCol": "概率",
+    "previewWeightCol": "权重",
+    "previewSectionPrefix50": "前缀 50%",
+    "previewSectionSuffix50": "后缀 50%",
+    "previewAugmentOneLine": "新增一行（魔法池）",
+    "previewRegalAddRare": "新增一行（稀有池）",
+    "previewAlchemyNote": "点金会丢弃现有词缀并按顺序掷出 2 前缀 + 2 后缀（稀有）。以下为稀有前缀/后缀池内的相对权重（以第一槽为参考，后续会排除已出现词缀）。",
+    "previewAlchemyPrefixPool": "稀有前缀池",
+    "previewAlchemySuffixPool": "稀有后缀池",
+    "previewExaltAddRare": "新增一行（稀有池）",
+    "previewFracturePick": "分裂目标（均匀）",
+    "previewChaosRemoval": "可移除候选（均匀）",
+    "previewChaosAddCombined": "移除后新增一行（合并）",
+    "previewAnnulRemove": "可移除候选（均匀）",
+    "previewEmptySection": "没有可列出的条目。",
+    "essenceSimulationNote": "精华将魔法升为稀有，附加一条保证词缀后随机填满其余。暂无详细概率表。请使用随机模式应用。",
+    "undoCraft": "撤销",
+    "redoCraft": "重做",
+    "undoCraftAria": "撤销上一次通货使用（同时恢复物品与使用记录）",
+    "redoCraftAria": "撤销后再次应用",
+    "craftCompleteButton": "完成制作（查看记录）",
+    "usageSummaryHeading": "本次制作使用的通货",
+    "usageSummaryDismiss": "关闭",
+    "usageSummaryEmpty": "没有可显示的使用记录。",
+    "usageSummaryOrderLabel": "使用顺序",
+    "usageSummaryTotals": "按种类: {line}",
+    "orbsHeading": "通货",
+    "essencesHeading": "精华",
+    "omensHeading": "预兆等",
+    "stashCount": "×{count}",
+    "stashOrbQuantityUnlimited": "∞",
+    "divineDisabledHint": "神圣石：本应用未建模数值 roll。",
+    "vaalOrbDisabledHint": "瓦尔宝珠（腐化）：尚未接入手动工艺。",
+    "mirrorDisabledHint": "卡兰德的魔镜：尚未接入手动工艺。",
+    "chanceDisabledHint": "机会石：尚未接入手动工艺。",
+    "currencyMiscGridAria": "其他通货石",
+    "hinekoraLockActiveBanner": "希妮克拉之锁：将鼠标悬停在仓库通货上可在物品栏预览结果，点击即可直接应用该结果（随机模式）。",
+    "hinekoraLockAlreadyActive": "已存在希妮克拉之锁。使用其他工艺球或重置可解除。",
+    "hinekoraLockNoSimPreview": "请在随机模式下使用希妮克拉之锁。",
+    "hinekoraDraftTableMissing": "无法加载预见结果。请重新选择基底或重置工艺。",
+    "soulWellRevealTitle": "灵魂之井 — 选择词缀",
+    "soulWellRevealHint": "三个候选从本实验室的稀有前缀/后缀池中掷出（与未公开行同槽位）。游戏中亵渎与普通词缀混合的确切概率几乎没有公开资料。",
+    "soulWellRevealCancel": "取消",
+    "soulWellRevealCandidateAria": "灵魂之井候选 {index}",
+    "currencyTabDisabledGeneric": "尚未接入手动工艺。",
+    "omenDisabledHint": "预兆尚未接入手动工艺。",
+    "currency": {
+      "orb_transmutation_t1": "蜕变石",
+      "orb_transmutation_t2": "高级蜕变石",
+      "orb_transmutation_t3": "完美蜕变石",
+      "orb_augmentation_t1": "增幅石",
+      "orb_augmentation_t2": "高级增幅石",
+      "orb_augmentation_t3": "完美增幅石",
+      "orb_regal_t1": "富豪石",
+      "orb_regal_t2": "高级富豪石",
+      "orb_regal_t3": "完美富豪石",
+      "orb_alchemy": "点金石",
+      "orb_exalted_t1": "崇高石",
+      "orb_exalted_t2": "高级崇高石",
+      "orb_exalted_t3": "完美崇高石",
+      "orb_fracturing": "分裂石",
+      "orb_chaos_t1": "混沌石",
+      "orb_chaos_t2": "高级混沌石",
+      "orb_chaos_t3": "完美混沌石",
+      "orb_annulment": "剥离石",
+      "orb_divine": "神圣石",
+      "orb_vaal": "瓦尔宝珠",
+      "orb_hinekoras_lock": "希妮克拉之锁",
+      "orb_mirror": "卡兰德的魔镜",
+      "orb_chance": "机会石",
+      "soul_well_reveal": "灵魂之井揭示",
+      "essence_attack_t1": "Lesser Essence of Abrasion",
+      "essence_attack_t2": "Essence of Abrasion",
+      "essence_attack_t3": "Greater Essence of Abrasion",
+      "essence_alacrity_t1": "Lesser Essence of Alacrity",
+      "essence_alacrity_t2": "Essence of Alacrity",
+      "essence_alacrity_t3": "Greater Essence of Alacrity",
+      "essence_battle_t1": "Lesser Essence of Battle",
+      "essence_battle_t2": "Essence of Battle",
+      "essence_battle_t3": "Greater Essence of Battle",
+      "essence_command_t1": "Lesser Essence of Command",
+      "essence_command_t2": "Essence of Command",
+      "essence_command_t3": "Greater Essence of Command",
+      "essence_electricity_t1": "Lesser Essence of Electricity",
+      "essence_electricity_t2": "Essence of Electricity",
+      "essence_electricity_t3": "Greater Essence of Electricity",
+      "essence_enhancement_t1": "Lesser Essence of Enhancement",
+      "essence_enhancement_t2": "Essence of Enhancement",
+      "essence_enhancement_t3": "Greater Essence of Enhancement",
+      "essence_flames_t1": "Lesser Essence of Flames",
+      "essence_flames_t2": "Essence of Flames",
+      "essence_flames_t3": "Greater Essence of Flames",
+      "essence_grounding_t1": "Lesser Essence of Grounding",
+      "essence_grounding_t2": "Essence of Grounding",
+      "essence_grounding_t3": "Greater Essence of Grounding",
+      "essence_haste_t1": "Lesser Essence of Haste",
+      "essence_haste_t2": "Essence of Haste",
+      "essence_haste_t3": "Greater Essence of Haste",
+      "essence_ice_t1": "Lesser Essence of Ice",
+      "essence_ice_t2": "Essence of Ice",
+      "essence_ice_t3": "Greater Essence of Ice",
+      "essence_insulation_t1": "Lesser Essence of Insulation",
+      "essence_insulation_t2": "Essence of Insulation",
+      "essence_insulation_t3": "Greater Essence of Insulation",
+      "essence_opulence_t1": "Lesser Essence of Opulence",
+      "essence_opulence_t2": "Essence of Opulence",
+      "essence_opulence_t3": "Greater Essence of Opulence",
+      "essence_ruin_t1": "Lesser Essence of Ruin",
+      "essence_ruin_t2": "Essence of Ruin",
+      "essence_ruin_t3": "Greater Essence of Ruin",
+      "essence_seeking_t1": "Lesser Essence of Seeking",
+      "essence_seeking_t2": "Essence of Seeking",
+      "essence_seeking_t3": "Greater Essence of Seeking",
+      "essence_sorcery_t1": "Lesser Essence of Sorcery",
+      "essence_sorcery_t2": "Essence of Sorcery",
+      "essence_sorcery_t3": "Greater Essence of Sorcery",
+      "essence_thawing_t1": "Lesser Essence of Thawing",
+      "essence_thawing_t2": "Essence of Thawing",
+      "essence_thawing_t3": "Greater Essence of Thawing",
+      "essence_life_t1": "Lesser Essence of the Body",
+      "essence_life_t2": "Essence of the Body",
+      "essence_life_t3": "Greater Essence of the Body",
+      "essence_infinite_t1": "Lesser Essence of the Infinite",
+      "essence_infinite_t2": "Essence of the Infinite",
+      "essence_infinite_t3": "Greater Essence of the Infinite",
+      "essence_mind_t1": "Lesser Essence of the Mind",
+      "essence_mind_t2": "Essence of the Mind",
+      "essence_mind_t3": "Greater Essence of the Mind",
+      "bone_gnawed_collarbone": "啃噬锁骨",
+      "bone_gnawed_jawbone": "啃噬颚骨",
+      "bone_gnawed_rib": "啃噬肋骨",
+      "bone_preserved_collarbone": "遗存锁骨",
+      "bone_preserved_jawbone": "遗存颚骨",
+      "bone_preserved_rib": "遗存肋骨",
+      "bone_preserved_cranium": "遗存头骨",
+      "bone_ancient_collarbone": "远古锁骨",
+      "bone_ancient_jawbone": "远古颚骨",
+      "bone_ancient_rib": "远古肋骨",
+      "omen_abyssal_echoes": "深渊回响预兆",
+      "omen_dextral_necromancy": "右旋死灵预兆",
+      "omen_sinistral_necromancy": "左旋死灵预兆",
+      "omen_light": "光明预兆",
+      "omen_putrefaction": "腐烂预兆",
+      "omen_blackblooded": "黑血预兆",
+      "omen_liege": "领主预兆",
+      "omen_sovereign": "至高预兆",
+      "omen_whittling": "消减预兆",
+      "omen_sanctification": "神圣预兆",
+      "omen_answered_prayers": "有求必应预兆",
+      "omen_bartering": "互换预兆",
+      "omen_chance": "机遇预兆",
+      "omen_corruption": "腐化预兆",
+      "omen_the_hunt": "狩猎预兆",
+      "omen_the_blessed": "祝福预兆",
+      "omen_placeholder": "预兆（占位）"
+    },
+    "currencyHoverHint": {
+      "orb_transmutation_t1": "将普通物品变为魔法。",
+      "orb_transmutation_t2": "将普通物品变为魔法。",
+      "orb_transmutation_t3": "将普通物品变为魔法。",
+      "orb_augmentation_t1": "为魔法物品随机新增一行（需空位）。",
+      "orb_augmentation_t2": "为魔法物品随机新增一行（需空位）。",
+      "orb_augmentation_t3": "为魔法物品随机新增一行（需空位）。",
+      "orb_alchemy": "普通→稀有并整套重掷。",
+      "orb_chaos_t1": "稀有物品全部词缀重掷。",
+      "orb_chaos_t2": "稀有物品全部词缀重掷。",
+      "orb_chaos_t3": "稀有物品全部词缀重掷。",
+      "orb_exalted_t1": "为稀有物品随机新增一行。",
+      "orb_exalted_t2": "为稀有物品随机新增一行。",
+      "orb_exalted_t3": "为稀有物品随机新增一行。",
+      "orb_regal_t1": "魔法→稀有并新增一行。",
+      "orb_regal_t2": "魔法→稀有并新增一行。",
+      "orb_regal_t3": "魔法→稀有并新增一行。",
+      "orb_fracturing": "标记一条词缀为分裂（本实验室规则）。",
+      "orb_annulment": "随机移除一条词缀。",
+      "orb_divine": "重掷数值 — 本应用未实现。",
+      "orb_vaal": "腐化 — 未接入手动工艺。",
+      "orb_hinekoras_lock": "预见下一次通货结果；点击该球应用预见结果。",
+      "orb_mirror": "复制物品 — 本实验室未连接。",
+      "orb_chance": "普通升魔法等 — 本实验室未连接。",
+      "soul_well_reveal": "在物品卡上确认灵魂之井候选时记录（不消耗仓库）。",
+      "essence_attack": "魔法→稀有，保证物理伤害（近战弓等匹配基底）。",
+      "essence_alacrity": "魔法→稀有，保证施法速度（法杖权杖焦点）。",
+      "essence_battle": "魔法→稀有，保证命中（近战武器）。",
+      "essence_command": "魔法→稀有，保证友伤（权杖）。",
+      "essence_electricity": "魔法→稀有，保证闪电伤害（近战武器）。",
+      "essence_enhancement": "魔法→稀有，保证防御向（护甲部位）。",
+      "essence_flames": "魔法→稀有，保证火焰伤害（近战武器）。",
+      "essence_grounding": "魔法→稀有，保证闪电抗（护甲腰带首饰）。",
+      "essence_haste": "魔法→稀有，保证攻击速度（近战弓弩）。",
+      "essence_ice": "魔法→稀有，保证冰霜伤害（近战武器）。",
+      "essence_insulation": "魔法→稀有，保证火焰抗（护甲腰带首饰）。",
+      "essence_opulence": "魔法→稀有，保证物品稀有度（鞋手套头盔首饰）。",
+      "essence_ruin": "魔法→稀有，保证混沌抗（护甲腰带首饰）。",
+      "essence_seeking": "魔法→稀有，保证暴击相关（近战+法术武器）。",
+      "essence_sorcery": "魔法→稀有，保证法术伤害（法杖权杖焦点）。",
+      "essence_thawing": "魔法→稀有，保证冰霜抗（护甲腰带首饰）。",
+      "essence_life": "魔法→稀有，保证生命（胸甲腰带首饰）。",
+      "essence_infinite": "魔法→稀有，保证属性（可用基底）。",
+      "essence_mind": "魔法→稀有，保证魔力（腰带鞋手套头盔首饰）。",
+      "bone_gnawed_collarbone": "为稀有添加未公开亵渎行（啃噬骨）。",
+      "bone_gnawed_jawbone": "为稀有添加未公开亵渎行（啃噬骨）。",
+      "bone_gnawed_rib": "为稀有添加未公开亵渎行（啃噬骨）。",
+      "bone_preserved_collarbone": "为稀有添加未公开亵渎行（遗存骨）。",
+      "bone_preserved_jawbone": "为稀有添加未公开亵渎行（遗存骨）。",
+      "bone_preserved_rib": "为稀有添加未公开亵渎行（遗存骨）。",
+      "bone_preserved_cranium": "为稀有添加未公开亵渎行（遗存骨）。",
+      "bone_ancient_collarbone": "为稀有添加未公开亵渎行（远古骨）。",
+      "bone_ancient_jawbone": "为稀有添加未公开亵渎行（远古骨）。",
+      "bone_ancient_rib": "为稀有添加未公开亵渎行（远古骨）。",
+      "omen_abyssal_echoes": "灵魂之井重掷未建模；此处仅保留选择。",
+      "omen_dextral_necromancy": "下一次骸骨：有后缀空位则固定为后缀。",
+      "omen_sinistral_necromancy": "下一次骸骨：有前缀空位则固定为前缀。",
+      "omen_light": "下一次剥离只移除亵渎词缀；用后清除预兆。",
+      "omen_putrefaction": "将词缀换为多条未公开亵渎行（简化）。",
+      "omen_blackblooded": "武器首饰下一次骸骨：库尔加尔系亵渎行。",
+      "omen_liege": "武器首饰下一次骸骨：阿玛纳姆系亵渎行。",
+      "omen_sovereign": "武器首饰下一次骸骨：乌拉曼系亵渎行。",
+      "omen_whittling": "下一次混沌：移除最弱词缀（最高阶）再添加一条。",
+      "omen_sanctification": "下一次神圣石会圣化 — 数值未建模。",
+      "omen_answered_prayers": "神龛加成 — 战斗外未建模。",
+      "omen_bartering": "交易相关 — 本实验室未连接。",
+      "omen_chance": "几率相关 — 本实验室未连接。",
+      "omen_corruption": "腐化相关 — 本实验室未连接。",
+      "omen_the_hunt": "狩猎/地图 — 本实验室未连接。",
+      "omen_the_blessed": "祝福相关 — 本实验室未连接。",
+      "omen_placeholder": "占位预兆。"
+    },
+    "stagedOmenPanelCount": "已激活 {count}/{max}",
+    "stagedOmenPanelSlotHint": "点击可从激活列表移除。"
+  },
+  "desiredModsPanel": {
+    "sectionTitle": "目标词缀",
+    "searchPlaceholder": "搜索词缀...",
+    "noResults": "没有找到结果",
+    "emptyState": "添加你想要的词缀",
+    "slotFull": "槽位已满",
+    "addedTitle": "已添加词缀",
+    "removeAriaLabel": "移除词缀：{name}",
+    "typePrefix": "基础前缀",
+    "typeSuffix": "基础后缀",
+    "typeCorruptedPrefix": "腐化的前缀",
+    "typeCorruptedSuffix": "腐化的后缀"
+  },
+  "itemSimulatorCatalog": {
+    "baseItems": {
+      "base_oak_staff": {
+        "name": "灰烬法杖"
+      },
+      "base_ember_wand": {
+        "name": "枯萎魔杖"
+      },
+      "base_hunter_bow": {
+        "name": "短弓"
+      },
+      "base_twin_fang_claw": {
+        "name": "皮克特爪"
+      },
+      "base_iron_helmet": {
+        "name": "士兵巨盔"
+      },
+      "base_etched_focus": {
+        "name": "编织聚焦器"
+      },
+      "base_leather_gloves": {
+        "name": "铆钉手套"
+      },
+      "base_chain_vest": {
+        "name": "毛皮板甲"
+      },
+      "base_hardsole_boots": {
+        "name": "铁胫甲靴"
+      },
+      "base_lapis_amulet": {
+        "name": "青金石护身符"
+      },
+      "base_gold_ring": {
+        "name": "金戒指"
+      },
+      "base_heavy_belt": {
+        "name": "重型腰带"
+      },
+      "gloves_variant_a": {
+        "name": "다부진 미트"
+      },
+      "gloves_variant_b": {
+        "name": "고정못 미트"
+      },
+      "gloves_variant_c": {
+        "name": "단조한 미트"
+      },
+      "gloves_variant_d": {
+        "name": "발전된 미트"
+      },
+      "gloves_variant_e": {
+        "name": "주조한 미트"
+      },
+      "gloves_variant_f": {
+        "name": "정교한 미트"
+      },
+      "gloves_variant_g": {
+        "name": "거신 미트"
+      },
+      "gloves_variant_h": {
+        "name": "우수한 미트"
+      },
+      "gloves_variant_i": {
+        "name": "스웨드 팔보호구"
+      },
+      "gloves_variant_j": {
+        "name": "굳건한 팔보호구"
+      },
+      "gloves_variant_k": {
+        "name": "속박된 팔보호구"
+      },
+      "gloves_variant_l": {
+        "name": "절개된 팔보호구"
+      },
+      "gloves_variant_m": {
+        "name": "가시 팔보호구"
+      },
+      "gloves_variant_n": {
+        "name": "섬세한 팔보호구"
+      },
+      "gloves_variant_o": {
+        "name": "굳어진 팔보호구"
+      },
+      "gloves_variant_p": {
+        "name": "아로새긴 팔보호구"
+      },
+      "gloves_variant_q": {
+        "name": "찢긴 장갑"
+      },
+      "gloves_variant_r": {
+        "name": "암울한 장갑"
+      },
+      "gloves_variant_s": {
+        "name": "꿰맨 장갑"
+      },
+      "gloves_variant_t": {
+        "name": "보석 박힌 장갑"
+      },
+      "gloves_variant_u": {
+        "name": "복잡한 장갑"
+      },
+      "gloves_variant_v": {
+        "name": "파우아비늘 장갑"
+      },
+      "gloves_variant_w": {
+        "name": "수놓은 장갑"
+      },
+      "gloves_variant_x": {
+        "name": "치장된 장갑"
+      },
+      "gloves_variant_y": {
+        "name": "고리 갑옷 건틀릿"
+      },
+      "gloves_variant_z": {
+        "name": "겹겹의 건틀릿"
+      },
+      "gloves_variant_aa": {
+        "name": "이중 건틀릿"
+      },
+      "gloves_variant_ab": {
+        "name": "판금 건틀릿"
+      },
+      "gloves_variant_ac": {
+        "name": "윤이 나는 건틀릿"
+      },
+      "gloves_variant_ad": {
+        "name": "화려한 건틀릿"
+      },
+      "gloves_variant_ae": {
+        "name": "밧줄 수갑"
+      },
+      "gloves_variant_af": {
+        "name": "오래된 수갑"
+      },
+      "gloves_variant_ag": {
+        "name": "금주물 수갑"
+      },
+      "gloves_variant_ah": {
+        "name": "베리시움 수갑"
+      },
+      "gloves_variant_ai": {
+        "name": "정의로운 수갑"
+      },
+      "gloves_variant_aj": {
+        "name": "인장 수갑"
+      },
+      "gloves_variant_ak": {
+        "name": "거즈 싸개"
+      },
+      "gloves_variant_al": {
+        "name": "리넨 싸개"
+      },
+      "gloves_variant_am": {
+        "name": "나선 싸개"
+      },
+      "gloves_variant_an": {
+        "name": "버클 싸개"
+      },
+      "gloves_variant_ao": {
+        "name": "은밀한 싸개"
+      },
+      "gloves_variant_ap": {
+        "name": "특수 싸개"
+      },
+      "gloves_variant_aq": {
+        "name": "우수한 소맷부리"
+      },
+      "gloves_variant_ar": {
+        "name": "판금 미트"
+      },
+      "gloves_variant_as": {
+        "name": "우아한 미트"
+      },
+      "gloves_variant_at": {
+        "name": "고대 미트"
+      },
+      "gloves_variant_au": {
+        "name": "깃털 미트"
+      },
+      "gloves_variant_av": {
+        "name": "사냥 팔보호구"
+      },
+      "gloves_variant_aw": {
+        "name": "재빠른 팔보호구"
+      },
+      "gloves_variant_ax": {
+        "name": "제련된 팔보호구"
+      },
+      "gloves_variant_ay": {
+        "name": "가시 팔보호구"
+      },
+      "gloves_variant_az": {
+        "name": "불길한 장갑"
+      },
+      "gloves_variant_ba": {
+        "name": "장식된 장갑"
+      },
+      "gloves_variant_bb": {
+        "name": "바로크 장갑"
+      },
+      "gloves_variant_bc": {
+        "name": "금 장갑"
+      },
+      "gloves_variant_bd": {
+        "name": "철사슬 건틀릿"
+      },
+      "gloves_variant_be": {
+        "name": "대장 건틀릿"
+      },
+      "gloves_variant_bf": {
+        "name": "맹신자 건틀릿"
+      },
+      "gloves_variant_bg": {
+        "name": "땋은 수갑"
+      },
+      "gloves_variant_bh": {
+        "name": "가보 수갑"
+      },
+      "gloves_variant_bi": {
+        "name": "화려한 수갑"
+      },
+      "gloves_variant_bj": {
+        "name": "붕대 싸개"
+      },
+      "gloves_variant_bk": {
+        "name": "캠브릭 싸개"
+      },
+      "gloves_variant_bl": {
+        "name": "치장된 싸개"
+      },
+      "gloves_variant_bm": {
+        "name": "기사의 미트"
+      },
+      "gloves_variant_bn": {
+        "name": "화려한 미트"
+      },
+      "gloves_variant_bo": {
+        "name": "바알 미트"
+      },
+      "gloves_variant_bp": {
+        "name": "거대한 미트"
+      },
+      "gloves_variant_bq": {
+        "name": "뒤를 쫓는 팔보호구"
+      },
+      "gloves_variant_br": {
+        "name": "우수한 팔보호구"
+      },
+      "gloves_variant_bs": {
+        "name": "가시 돋친 팔보호구"
+      },
+      "gloves_variant_bt": {
+        "name": "광택 나는 팔보호구"
+      },
+      "gloves_variant_bu": {
+        "name": "으스스한 장갑"
+      },
+      "gloves_variant_bv": {
+        "name": "호화로운 장갑"
+      },
+      "gloves_variant_bw": {
+        "name": "바알 장갑"
+      },
+      "gloves_variant_bx": {
+        "name": "사이렌비늘 장갑"
+      },
+      "gloves_variant_by": {
+        "name": "강철사슬 건틀릿"
+      },
+      "gloves_variant_bz": {
+        "name": "지휘관 건틀릿"
+      },
+      "gloves_variant_ca": {
+        "name": "광신자 건틀릿"
+      },
+      "gloves_variant_cb": {
+        "name": "검은강철 건틀릿"
+      },
+      "gloves_variant_cc": {
+        "name": "속박된 수갑"
+      },
+      "gloves_variant_cd": {
+        "name": "고대의 수갑"
+      },
+      "gloves_variant_ce": {
+        "name": "번뜩이는 수갑"
+      },
+      "gloves_variant_cf": {
+        "name": "지지자 수갑"
+      },
+      "gloves_variant_cg": {
+        "name": "전쟁 싸개"
+      },
+      "gloves_variant_ch": {
+        "name": "우아한 싸개"
+      },
+      "gloves_variant_ci": {
+        "name": "바알 싸개"
+      },
+      "gloves_variant_cj": {
+        "name": "고정된 싸개"
+      },
+      "body_armour_variant_a": {
+        "name": "녹슨 흉갑"
+      },
+      "body_armour_variant_b": {
+        "name": "모피 판금 갑옷"
+      },
+      "body_armour_variant_c": {
+        "name": "철 흉갑"
+      },
+      "body_armour_variant_d": {
+        "name": "레이더 판금 갑옷"
+      },
+      "body_armour_variant_e": {
+        "name": "마라케스 흉갑"
+      },
+      "body_armour_variant_f": {
+        "name": "강철 판금 갑옷"
+      },
+      "body_armour_variant_g": {
+        "name": "전신 판금 갑옷"
+      },
+      "body_armour_variant_h": {
+        "name": "바알 흉갑"
+      },
+      "body_armour_variant_i": {
+        "name": "거수 판금 갑옷"
+      },
+      "body_armour_variant_j": {
+        "name": "치프틴 흉갑"
+      },
+      "body_armour_variant_k": {
+        "name": "원형 경기장 판금 갑옷"
+      },
+      "body_armour_variant_l": {
+        "name": "챔피언 흉갑"
+      },
+      "body_armour_variant_m": {
+        "name": "영광의 판금 갑옷"
+      },
+      "body_armour_variant_n": {
+        "name": "정복자 판금 갑옷"
+      },
+      "body_armour_variant_o": {
+        "name": "심연의 흉갑"
+      },
+      "body_armour_variant_p": {
+        "name": "가죽 조끼"
+      },
+      "body_armour_variant_q": {
+        "name": "누비 조끼"
+      },
+      "body_armour_variant_r": {
+        "name": "패스파인더 외투"
+      },
+      "body_armour_variant_s": {
+        "name": "연막의 조끼"
+      },
+      "body_armour_variant_t": {
+        "name": "로아가죽 외투"
+      },
+      "body_armour_variant_u": {
+        "name": "징 박힌 조끼"
+      },
+      "body_armour_variant_v": {
+        "name": "정찰병의 조끼"
+      },
+      "body_armour_variant_w": {
+        "name": "뱀 비늘 외투"
+      },
+      "body_armour_variant_x": {
+        "name": "해적 조끼"
+      },
+      "body_armour_variant_y": {
+        "name": "밀수범 외투"
+      },
+      "body_armour_variant_z": {
+        "name": "질주자 조끼"
+      },
+      "body_armour_variant_aa": {
+        "name": "경화가죽 외투"
+      },
+      "body_armour_variant_ab": {
+        "name": "정교한 조끼"
+      },
+      "body_armour_variant_ac": {
+        "name": "사슬 외투"
+      },
+      "body_armour_variant_ad": {
+        "name": "장갑을 두른 조끼"
+      },
+      "body_armour_variant_ae": {
+        "name": "조각난 로브"
+      },
+      "body_armour_variant_af": {
+        "name": "깃털 로브"
+      },
+      "body_armour_variant_ag": {
+        "name": "사술사의 로브"
+      },
+      "body_armour_variant_ah": {
+        "name": "뼈 의복"
+      },
+      "body_armour_variant_ai": {
+        "name": "실크 로브"
+      },
+      "body_armour_variant_aj": {
+        "name": "케스 의복"
+      },
+      "body_armour_variant_ak": {
+        "name": "봉헌된 의복"
+      },
+      "body_armour_variant_al": {
+        "name": "제단 로브"
+      },
+      "body_armour_variant_am": {
+        "name": "엘리멘탈리스트 로브"
+      },
+      "body_armour_variant_an": {
+        "name": "신비한 의복"
+      },
+      "body_armour_variant_ao": {
+        "name": "제국 로브"
+      },
+      "body_armour_variant_ap": {
+        "name": "판금 의복"
+      },
+      "body_armour_variant_aq": {
+        "name": "혼란의 의복"
+      },
+      "body_armour_variant_ar": {
+        "name": "계몽의 로브"
+      },
+      "body_armour_variant_as": {
+        "name": "비전 의복"
+      },
+      "body_armour_variant_at": {
+        "name": "사슬 갑옷"
+      },
+      "body_armour_variant_au": {
+        "name": "악한 방어구"
+      },
+      "body_armour_variant_av": {
+        "name": "방랑자 방어구"
+      },
+      "body_armour_variant_aw": {
+        "name": "은폐 사슬옷"
+      },
+      "body_armour_variant_ax": {
+        "name": "탐험가 방어구"
+      },
+      "body_armour_variant_ay": {
+        "name": "미늘 갑옷"
+      },
+      "body_armour_variant_az": {
+        "name": "기사 방어구"
+      },
+      "body_armour_variant_ba": {
+        "name": "선대의 사슬옷"
+      },
+      "body_armour_variant_bb": {
+        "name": "라멜라 사슬옷"
+      },
+      "body_armour_variant_bc": {
+        "name": "검투사 방어구"
+      },
+      "body_armour_variant_bd": {
+        "name": "영웅의 방어구"
+      },
+      "body_armour_variant_be": {
+        "name": "토너먼트 사슬옷"
+      },
+      "body_armour_variant_bf": {
+        "name": "토너먼트 사슬옷"
+      },
+      "body_armour_variant_bg": {
+        "name": "토너먼트 사슬옷"
+      },
+      "body_armour_variant_bh": {
+        "name": "처형자 방어구"
+      },
+      "body_armour_variant_bi": {
+        "name": "순례자 법의"
+      },
+      "body_armour_variant_bj": {
+        "name": "털가죽 외투"
+      },
+      "body_armour_variant_bk": {
+        "name": "사슬 법의"
+      },
+      "body_armour_variant_bl": {
+        "name": "주술사 외투"
+      },
+      "body_armour_variant_bm": {
+        "name": "철갑 법의"
+      },
+      "body_armour_variant_bn": {
+        "name": "희생의 외투"
+      },
+      "body_armour_variant_bo": {
+        "name": "성직자 법의"
+      },
+      "body_armour_variant_bp": {
+        "name": "파도예견자 외투"
+      },
+      "body_armour_variant_bq": {
+        "name": "도금된 법의"
+      },
+      "body_armour_variant_br": {
+        "name": "공경받는 외투"
+      },
+      "body_armour_variant_bs": {
+        "name": "존경받는 법의"
+      },
+      "body_armour_variant_bt": {
+        "name": "까마귀 외투"
+      },
+      "body_armour_variant_bu": {
+        "name": "북극성 법의"
+      },
+      "body_armour_variant_bv": {
+        "name": "은자 의복"
+      },
+      "body_armour_variant_bw": {
+        "name": "밀랍재질 재킷"
+      },
+      "body_armour_variant_bx": {
+        "name": "도사 의복"
+      },
+      "body_armour_variant_by": {
+        "name": "나그네 재킷"
+      },
+      "body_armour_variant_bz": {
+        "name": "은둔자 의복"
+      },
+      "body_armour_variant_ca": {
+        "name": "두피수집가의 재킷"
+      },
+      "body_armour_variant_cb": {
+        "name": "불한당 재킷"
+      },
+      "body_armour_variant_cc": {
+        "name": "고행자 의복"
+      },
+      "body_armour_variant_cd": {
+        "name": "은밀한 재킷"
+      },
+      "body_armour_variant_ce": {
+        "name": "수도원 의복"
+      },
+      "body_armour_variant_cf": {
+        "name": "고통 재킷"
+      },
+      "body_armour_variant_cg": {
+        "name": "헌신자 의복"
+      },
+      "body_armour_variant_ch": {
+        "name": "암살자 의복"
+      },
+      "body_armour_variant_ci": {
+        "name": "우수한 예복"
+      },
+      "body_armour_variant_cj": {
+        "name": "희생의 예복"
+      },
+      "body_armour_variant_ck": {
+        "name": "야만인의 판금 갑옷"
+      },
+      "body_armour_variant_cl": {
+        "name": "투박한 흉갑"
+      },
+      "body_armour_variant_cm": {
+        "name": "모래맹세 흉갑"
+      },
+      "body_armour_variant_cn": {
+        "name": "우아한 판금 갑옷"
+      },
+      "body_armour_variant_co": {
+        "name": "무거운 판금 갑옷"
+      },
+      "body_armour_variant_cp": {
+        "name": "돌 흉갑"
+      },
+      "body_armour_variant_cq": {
+        "name": "쪽모이 조끼"
+      },
+      "body_armour_variant_cr": {
+        "name": "사냥 외투"
+      },
+      "body_armour_variant_cs": {
+        "name": "승마 외투"
+      },
+      "body_armour_variant_ct": {
+        "name": "겹겹의 조끼"
+      },
+      "body_armour_variant_cu": {
+        "name": "주자 조끼"
+      },
+      "body_armour_variant_cv": {
+        "name": "도마뱀비늘 외투"
+      },
+      "body_armour_variant_cw": {
+        "name": "새의 로브"
+      },
+      "body_armour_variant_cx": {
+        "name": "저주발화자의 로브"
+      },
+      "body_armour_variant_cy": {
+        "name": "호화로운 로브"
+      },
+      "body_armour_variant_cz": {
+        "name": "강 의복"
+      },
+      "body_armour_variant_da": {
+        "name": "지지자의 의복"
+      },
+      "body_armour_variant_db": {
+        "name": "의식용 로브"
+      },
+      "body_armour_variant_dc": {
+        "name": "고리 사슬옷"
+      },
+      "body_armour_variant_dd": {
+        "name": "불한당 방어구"
+      },
+      "body_armour_variant_de": {
+        "name": "방랑자 방어구"
+      },
+      "body_armour_variant_df": {
+        "name": "덮개 덮은 사슬옷"
+      },
+      "body_armour_variant_dg": {
+        "name": "창시자 방어구"
+      },
+      "body_armour_variant_dh": {
+        "name": "황금 사슬옷"
+      },
+      "body_armour_variant_di": {
+        "name": "템플러 법의"
+      },
+      "body_armour_variant_dj": {
+        "name": "곰가죽 외투"
+      },
+      "body_armour_variant_dk": {
+        "name": "쇠사슬 법의"
+      },
+      "body_armour_variant_dl": {
+        "name": "비술사 외투"
+      },
+      "body_armour_variant_dm": {
+        "name": "판금 법의"
+      },
+      "body_armour_variant_dn": {
+        "name": "심장도륙자 외투"
+      },
+      "body_armour_variant_do": {
+        "name": "고행자 의복"
+      },
+      "body_armour_variant_dp": {
+        "name": "기름칠된 재킷"
+      },
+      "body_armour_variant_dq": {
+        "name": "선교사 의복"
+      },
+      "body_armour_variant_dr": {
+        "name": "순회자 재킷"
+      },
+      "body_armour_variant_ds": {
+        "name": "하툰고 의복"
+      },
+      "body_armour_variant_dt": {
+        "name": "행상 재킷"
+      },
+      "body_armour_variant_du": {
+        "name": "병사 흉갑"
+      },
+      "body_armour_variant_dv": {
+        "name": "화려한 판금 갑옷"
+      },
+      "body_armour_variant_dw": {
+        "name": "웃자알 흉갑"
+      },
+      "body_armour_variant_dx": {
+        "name": "전쟁군주 흉갑"
+      },
+      "body_armour_variant_dy": {
+        "name": "재빠른 추적자 외투"
+      },
+      "body_armour_variant_dz": {
+        "name": "미끄러진 타격 조끼"
+      },
+      "body_armour_variant_ea": {
+        "name": "아룡 비늘 외투"
+      },
+      "body_armour_variant_eb": {
+        "name": "해적 외투"
+      },
+      "body_armour_variant_ec": {
+        "name": "끔찍한 로브"
+      },
+      "body_armour_variant_ed": {
+        "name": "흐르는 의복"
+      },
+      "body_armour_variant_ee": {
+        "name": "성찬의 로브"
+      },
+      "body_armour_variant_ef": {
+        "name": "깃털 의복"
+      },
+      "body_armour_variant_eg": {
+        "name": "비겁자 방어구"
+      },
+      "body_armour_variant_eh": {
+        "name": "연막의 사슬옷"
+      },
+      "body_armour_variant_ei": {
+        "name": "연막의 사슬옷"
+      },
+      "body_armour_variant_ej": {
+        "name": "연막의 사슬옷"
+      },
+      "body_armour_variant_ek": {
+        "name": "죽음의 사슬옷"
+      },
+      "body_armour_variant_el": {
+        "name": "테인 사슬옷"
+      },
+      "body_armour_variant_em": {
+        "name": "늑대가죽 외투"
+      },
+      "body_armour_variant_en": {
+        "name": "요술사 외투"
+      },
+      "body_armour_variant_eo": {
+        "name": "죽음의 외투"
+      },
+      "body_armour_variant_ep": {
+        "name": "바다폭풍 외투"
+      },
+      "body_armour_variant_eq": {
+        "name": "매끈한 재킷"
+      },
+      "body_armour_variant_er": {
+        "name": "뚜벅이 재킷"
+      },
+      "body_armour_variant_es": {
+        "name": "매 조련사의 재킷"
+      },
+      "body_armour_variant_et": {
+        "name": "금욕적인 의복"
+      }
+    },
+    "itemClass": {
+      "dagger": "匕首",
+      "oneHandSword": "单手剑",
+      "oneHandAxe": "单手斧",
+      "oneHandMace": "单手锤",
+      "sceptre": "权杖",
+      "spear": "长枪",
+      "flail": "连枷",
+      "staff": "法杖",
+      "wand": "魔杖",
+      "bow": "弓",
+      "claw": "爪",
+      "twoHandSword": "双手剑",
+      "twoHandAxe": "双手斧",
+      "twoHandMace": "双手锤",
+      "quarterstaff": "长棍",
+      "fishingRod": "钓竿",
+      "crossbow": "弩",
+      "trap": "陷阱",
+      "talisman": "护符",
+      "quiver": "箭袋",
+      "shield": "盾牌",
+      "buckler": "圆盾",
+      "helmet": "头盔",
+      "focus": "聚焦器",
+      "gloves": "手套",
+      "bodyArmour": "胸甲",
+      "boots": "靴子",
+      "amulet": "护身符",
+      "ring": "戒指",
+      "belt": "腰带"
+    }
+  },
+  "itemSimulatorWorkspace": {
+    "title": "流放之路2 — 物品模拟器",
+    "intro": "选择基底与可选目标词缀；每次点击都会在服务器上从头运行 Q 学习（与 RL 页相同的崇高换算成本），并给出推荐起手与行为占比。",
+    "nav": {
+      "strategy": "打开策略页",
+      "rl": "RL环境",
+      "optimizer": "打开优化页",
+      "craftingLab": "工艺实验室",
+      "db": "DB"
+    },
+    "panels": {
+      "baseItem": {
+        "title": "基底物品",
+        "description": "选择你要制作的物品。"
+      },
+      "desiredMods": {
+        "title": "词缀",
+        "description": "添加你想要的词缀并调整roll设置。"
+      },
+      "result": {
+        "title": "高效制作路径",
+        "description": "从所选基底走向你列出目标词缀的推荐顺序，货币按崇高石换算比较。"
+      }
+    },
+    "baseFilter": {
+      "type": "类型",
+      "subType": "子类型",
+      "all": "全部",
+      "requiredStr": "力量",
+      "requiredDex": "敏捷",
+      "requiredInt": "智慧",
+      "requiredLevel": "等级",
+      "baseItem": "基础物品",
+      "noResults": "没有符合筛选条件的基础物品",
+      "matchCount": "筛选匹配基础物品数: {count}",
+      "source": "来源：PoE2DB",
+      "quality": "品质",
+      "armour": "护甲",
+      "evasion": "闪避",
+      "energyShield": "能量护盾",
+      "filterToggle": "筛选",
+      "baseItemSearchPlaceholder": "搜索{label}… ({count})"
+    },
+    "equipmentType": {
+      "weapon": "武器",
+      "offhand": "副手装备",
+      "armour": "防具",
+      "jewellery": "首饰"
+    },
+    "rarity": {
+      "normal": "普通",
+      "magic": "魔法",
+      "rare": "稀有"
+    },
+    "optimizationExplore": {
+      "emptyNeedBase": "请先选择基底物品。",
+      "emptyPrompt": "点击按钮在服务器上训练 Q 学习并查看结果。目标词缀数量（1–6）作为本次“期望好词缀数”；未选择时默认按 3 训练。",
+      "paramsSummary": "运行参数：期望好词缀 {desiredGoodMods}，混沌预算 {budget}，回合数 {episodes}。",
+      "costsLine": "每次行为崇高消耗 — 混沌: {chaos}，精华: {essence}。",
+      "desiredModsHint": "你的目标词缀共 {count} 条，已映射为本次期望好词缀数。",
+      "defaultDesiredModsHint": "未选择目标词缀，已使用默认期望好词缀数 3 进行训练。",
+      "payloadEchoBase": "请求基底键: {baseItemKey}",
+      "payloadEchoModsHeading": "请求中包含的目标词缀",
+      "payloadEchoModLine": "{modKey} ({modType})",
+      "runButton": "优化探索"
+    },
+    "resultModList": {
+      "prefixes": "前缀",
+      "suffixes": "后缀",
+      "empty": "无",
+      "matchedDesiredRow": "与所选目标词缀一致，阶 {tier}"
+    },
+    "tooltipCard": {
+      "implicitHeading": "基底词缀"
+    },
+    "explicitMod": {
+      "desecratedUnrevealed": "········",
+      "desecratedUnrevealedAria": "未公开的亵渎词缀",
+      "desecratedFamilyKurgal": "库尔加尔深渊修饰（模拟）",
+      "desecratedFamilyAmanamu": "阿玛纳姆深渊修饰（模拟）",
+      "desecratedFamilyUlaman": "乌拉曼深渊修饰（模拟）"
+    }
+  },
+  "strategyView": {
+    "title": "制作模拟器",
+    "intro": "设置目标好词缀数量与预算，比较策略。成功条件包括最少词缀数、好词缀数（按 tier），以及每次尝试最多使用混沌石的数量。单位费用：默认 Chaos=1、Essence=3（可在代码中修改）。",
+    "loading": "正在运行模拟…",
+    "error": "无法加载结果，请重试。",
+    "retry": "重新运行",
+    "strategyNames": {
+      "chaos_spam": "混沌连点",
+      "essence_then_chaos": "精华 → 混沌",
+      "smart_stop": "智能止损"
+    },
+    "form": {
+      "sectionTitle": "输入",
+      "desiredGoodMods": "目标好词缀数量",
+      "budget": "预算（每次尝试最多混沌石数）",
+      "budgetHint": "达到该次数后停止本次尝试；精华+混沌费用按策略计入。",
+      "run": "运行模拟"
+    },
+    "best": {
+      "title": "最佳策略",
+      "name": "策略",
+      "cost": "费用",
+      "costValue": "平均 {avg} / 次 · 成功 {perSuccess} / 次",
+      "successRate": "成功率"
+    },
+    "chart": {
+      "title": "成功率对比"
+    },
+    "criteriaLine": "成功：至少 {minAffixes} 条词缀，且至少 {minGood} 条好词缀（tier ≤ {tier}）。",
+    "metaLine": "次数：{trials} · 每次最多混沌：{maxChaos} · 引擎 v{version}",
+    "costLine": "单位费用 — 混沌：{chaos} · 精华：{essence} · 精华策略使用：{essenceKey}",
+    "simulatedAt": "模拟时间：{iso}",
+    "table": {
+      "strategy": "策略",
+      "averageCost": "平均成本",
+      "successRate": "成功率",
+      "costPerSuccess": "单次成功成本",
+      "successes": "成功 / 次数"
+    },
+    "navToSimulator": "物品模拟器",
+    "navLabel": "打开策略页"
+  },
+  "rlView": {
+    "title": "强化学习制作环境",
+    "intro": "将物品状态视为状态(state)，将制作选择视为动作(action)，训练一个简单的Q-learning智能体。",
+    "navToSimulator": "返回物品模拟器",
+    "navLabel": "RL环境",
+    "inputs": {
+      "title": "训练输入",
+      "desiredGoodMods": "目标好词缀数量",
+      "budget": "预算（最大混沌使用次数）",
+      "episodes": "训练回合数",
+      "run": "开始训练",
+      "training": "训练中..."
+    },
+    "definition": {
+      "title": "环境定义",
+      "state": "state = 物品状态（好词缀数量、总词缀数量、平均tier桶、剩余预算、是否使用精华）",
+      "action": "action = 制作动作（Chaos, Essence, Stop）",
+      "reward": "reward = 物品质量 - 成本"
+    },
+    "result": {
+      "title": "训练结果",
+      "meanReward": "平均奖励",
+      "last10Reward": "最近10回合平均奖励",
+      "bestInitialAction": "初始状态最佳动作",
+      "actionRatio": "动作占比"
+    },
+    "actions": {
+      "chaos": "混沌",
+      "essence": "精华",
+      "stop": "停止"
+    },
+    "error": "无法加载训练结果，请重试。"
+  },
+  "optimizerView": {
+    "title": "制作优化",
+    "intro": "寻找达到目标时“单次成功期望成本”最低的策略。目标条件是“所有词缀都在有效列表中”，并可选“所有词缀都为T1”。当前使用项目内样例数据，下一阶段将扩展为PoE2DB数据源。",
+    "navToSimulator": "返回物品模拟器",
+    "navLabel": "打开优化页",
+    "inputs": {
+      "title": "优化输入",
+      "budgetChaos": "混沌预算（每次尝试最大）",
+      "trials": "蒙特卡洛次数",
+      "minTotalAffixes": "最少词缀数",
+      "requireTierOne": "要求所有词缀为T1",
+      "prefixMods": "有效前缀",
+      "suffixMods": "有效后缀",
+      "selectedModCount": "已选词缀: {count}",
+      "selectAllMods": "全选词缀",
+      "clearAllMods": "清空选择",
+      "run": "开始优化",
+      "optimizing": "优化中...",
+      "dataSource": "数据来源",
+      "dataSourceLocal": "本地样例词缀池",
+      "dataSourcePoe2db": "PoE2DB导入目录"
+    },
+    "result": {
+      "title": "优化结果",
+      "bestStrategy": "推荐策略: {name}",
+      "note": "排序基于单次成功期望成本。若策略成功率为0，则按成功率排序。",
+      "fallbackDataSource": "PoE2DB 数据不可用，已回退到本地样例数据。",
+      "activeDataSource": "当前数据来源: {source}"
+    },
+    "table": {
+      "strategy": "策略",
+      "successRate": "成功率",
+      "averageCost": "平均成本",
+      "costOnSuccess": "成功时平均成本",
+      "expectedCostPerSuccess": "单次成功期望成本"
+    },
+    "error": "无法加载优化结果，请重试。"
+  }
+}

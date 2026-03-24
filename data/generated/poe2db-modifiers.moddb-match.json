@@ -1,0 +1,7524 @@
+{
+  "rowCount": 76,
+  "rows": [
+    {
+      "modKey": "prefix_max_life",
+      "modType": "prefix",
+      "templateKo": "생명력 최대치 +#",
+      "candidates": [
+        {
+          "family": "IncreasedLife",
+          "score": 1,
+          "sampleStatLine": "생명력 최대치 +(10—19)",
+          "itemClasses": [
+            "Amulets",
+            "Belts",
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Rings",
+            "Shields"
+          ],
+          "rows": 410
+        },
+        {
+          "family": "IncreasedMana",
+          "score": 0.5,
+          "sampleStatLine": "마나 최대치 +(10—14)",
+          "itemClasses": [
+            "Amulets",
+            "Belts",
+            "Boots",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Rings",
+            "Sceptres",
+            "Staves",
+            "Traps",
+            "Wands"
+          ],
+          "rows": 320
+        },
+        {
+          "family": "FlaskHealsOthers",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "소환수의 생명력 회복 (51—56) %",
+          "itemClasses": [],
+          "rows": 10
+        },
+        {
+          "family": "IncreasedEnergyShield",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "에너지 보호막 최대치 +(8—14)",
+          "itemClasses": [
+            "Amulets"
+          ],
+          "rows": 10
+        },
+        {
+          "family": "MaximumLifeIncreasePercent",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "최대 생명력 (3—4) % 증가",
+          "itemClasses": [
+            "Amulets",
+            "Body_Armours"
+          ],
+          "rows": 9
+        },
+        {
+          "family": "BaseLocalDefencesAndLife",
+          "score": 0.2857142857142857,
+          "sampleStatLine": "방어도 (6—13) % 증가 생명력 최대치 +(7—10)",
+          "itemClasses": [
+            "Body_Armours",
+            "Gloves",
+            "Helmets"
+          ],
+          "rows": 108
+        },
+        {
+          "family": "LocalIncreasedSpiritAndMana",
+          "score": 0.25,
+          "sampleStatLine": "정신력 (10—14) % 증가 마나 최대치 +(17—20)",
+          "itemClasses": [
+            "Sceptres"
+          ],
+          "rows": 7
+        },
+        {
+          "family": "TrapDamageAndMana",
+          "score": 0.25,
+          "sampleStatLine": "덫 피해 (15—19) % 증가 마나 최대치 +(17—20)",
+          "itemClasses": [
+            "Traps"
+          ],
+          "rows": 7
+        }
+      ]
+    },
+    {
+      "modKey": "prefix_max_es",
+      "modType": "prefix",
+      "templateKo": "에너지 보호막 +#",
+      "candidates": [
+        {
+          "family": "IncreasedEnergyShield",
+          "score": 0.6666666666666666,
+          "sampleStatLine": "에너지 보호막 최대치 +(8—14)",
+          "itemClasses": [
+            "Amulets"
+          ],
+          "rows": 10
+        },
+        {
+          "family": "BaseLocalDefences",
+          "score": 0.4,
+          "sampleStatLine": "방어도 +(16—27)",
+          "itemClasses": [
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Shields"
+          ],
+          "rows": 206
+        },
+        {
+          "family": "DefencesPercent",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "방어도 (15—26) % 증가",
+          "itemClasses": [
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Shields"
+          ],
+          "rows": 735
+        },
+        {
+          "family": "BaseLocalDefencesAndDefencePercent",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "방어도 +(7—11) 방어도 (6—13) % 증가",
+          "itemClasses": [
+            "Body_Armours"
+          ],
+          "rows": 36
+        },
+        {
+          "family": "IncreasedSpellDamageOnFullEnergyShield",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "에너지 보호막 이 최대일 때 주문 피해 (15—25) % 증가",
+          "itemClasses": [
+            "Amulets",
+            "Rings"
+          ],
+          "rows": 2
+        },
+        {
+          "family": "MaximumEnergyShieldFromBodyArmour",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "장착한 갑옷으로 얻는 에너지 보호막 (35—50) % 증가",
+          "itemClasses": [
+            "Amulets"
+          ],
+          "rows": 1
+        },
+        {
+          "family": "BaseLocalDefencesAndLife",
+          "score": 0.2857142857142857,
+          "sampleStatLine": "방어도 (6—13) % 증가 생명력 최대치 +(7—10)",
+          "itemClasses": [
+            "Body_Armours",
+            "Gloves",
+            "Helmets"
+          ],
+          "rows": 108
+        },
+        {
+          "family": "DefencesPercentAndStunThreshold",
+          "score": 0.2857142857142857,
+          "sampleStatLine": "방어도 (6—13) % 증가 기절 한계치 +(8—13)",
+          "itemClasses": [
+            "Boots",
+            "Bucklers",
+            "Shields"
+          ],
+          "rows": 60
+        }
+      ]
+    },
+    {
+      "modKey": "prefix_inc_es",
+      "modType": "prefix",
+      "templateKo": "에너지 보호막 #% 증가",
+      "candidates": [
+        {
+          "family": "IncreasedEnergyShield",
+          "score": 0.6666666666666666,
+          "sampleStatLine": "에너지 보호막 최대치 +(8—14)",
+          "itemClasses": [
+            "Amulets"
+          ],
+          "rows": 10
+        },
+        {
+          "family": "DefencesPercent",
+          "score": 0.5,
+          "sampleStatLine": "방어도 (15—26) % 증가",
+          "itemClasses": [
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Shields"
+          ],
+          "rows": 735
+        },
+        {
+          "family": "BaseLocalDefencesAndDefencePercent",
+          "score": 0.5,
+          "sampleStatLine": "방어도 +(7—11) 방어도 (6—13) % 증가",
+          "itemClasses": [
+            "Body_Armours"
+          ],
+          "rows": 36
+        },
+        {
+          "family": "IncreasedSpellDamageOnFullEnergyShield",
+          "score": 0.5,
+          "sampleStatLine": "에너지 보호막 이 최대일 때 주문 피해 (15—25) % 증가",
+          "itemClasses": [
+            "Amulets",
+            "Rings"
+          ],
+          "rows": 2
+        },
+        {
+          "family": "MaximumEnergyShieldFromBodyArmour",
+          "score": 0.5,
+          "sampleStatLine": "장착한 갑옷으로 얻는 에너지 보호막 (35—50) % 증가",
+          "itemClasses": [
+            "Amulets"
+          ],
+          "rows": 1
+        },
+        {
+          "family": "BaseLocalDefencesAndLife",
+          "score": 0.42857142857142855,
+          "sampleStatLine": "방어도 (6—13) % 증가 생명력 최대치 +(7—10)",
+          "itemClasses": [
+            "Body_Armours",
+            "Gloves",
+            "Helmets"
+          ],
+          "rows": 108
+        },
+        {
+          "family": "DefencesPercentAndStunThreshold",
+          "score": 0.42857142857142855,
+          "sampleStatLine": "방어도 (6—13) % 증가 기절 한계치 +(8—13)",
+          "itemClasses": [
+            "Boots",
+            "Bucklers",
+            "Shields"
+          ],
+          "rows": 60
+        },
+        {
+          "family": "BaseLocalDefencesAndMana",
+          "score": 0.42857142857142855,
+          "sampleStatLine": "방어도 (6—13) % 증가 마나 최대치 +(6—8)",
+          "itemClasses": [
+            "Foci",
+            "Helmets"
+          ],
+          "rows": 42
+        }
+      ]
+    },
+    {
+      "modKey": "prefix_inc_es_max_life",
+      "modType": "prefix",
+      "templateKo": "에너지 보호막 #% 증가, 생명력 최대치 +#",
+      "candidates": [
+        {
+          "family": "BaseLocalDefencesAndLife",
+          "score": 0.7142857142857143,
+          "sampleStatLine": "방어도 (6—13) % 증가 생명력 최대치 +(7—10)",
+          "itemClasses": [
+            "Body_Armours",
+            "Gloves",
+            "Helmets"
+          ],
+          "rows": 108
+        },
+        {
+          "family": "BaseLocalDefencesAndDefencePercent",
+          "score": 0.6666666666666666,
+          "sampleStatLine": "방어도 +(7—11) 방어도 (6—13) % 증가",
+          "itemClasses": [
+            "Body_Armours"
+          ],
+          "rows": 36
+        },
+        {
+          "family": "BaseLocalDefences",
+          "score": 0.6,
+          "sampleStatLine": "방어도 +(16—27)",
+          "itemClasses": [
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Shields"
+          ],
+          "rows": 206
+        },
+        {
+          "family": "IncreasedEnergyShield",
+          "score": 0.6,
+          "sampleStatLine": "에너지 보호막 최대치 +(8—14)",
+          "itemClasses": [
+            "Amulets"
+          ],
+          "rows": 10
+        },
+        {
+          "family": "BaseLocalDefencesAndMana",
+          "score": 0.5714285714285714,
+          "sampleStatLine": "방어도 (6—13) % 증가 마나 최대치 +(6—8)",
+          "itemClasses": [
+            "Foci",
+            "Helmets"
+          ],
+          "rows": 42
+        },
+        {
+          "family": "DefencesPercent",
+          "score": 0.5,
+          "sampleStatLine": "방어도 (15—26) % 증가",
+          "itemClasses": [
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Shields"
+          ],
+          "rows": 735
+        },
+        {
+          "family": "IncreasedSpellDamageOnFullEnergyShield",
+          "score": 0.5,
+          "sampleStatLine": "에너지 보호막 이 최대일 때 주문 피해 (15—25) % 증가",
+          "itemClasses": [
+            "Amulets",
+            "Rings"
+          ],
+          "rows": 2
+        },
+        {
+          "family": "MaximumEnergyShieldFromBodyArmour",
+          "score": 0.5,
+          "sampleStatLine": "장착한 갑옷으로 얻는 에너지 보호막 (35—50) % 증가",
+          "itemClasses": [
+            "Amulets"
+          ],
+          "rows": 1
+        }
+      ]
+    },
+    {
+      "modKey": "prefix_max_es_inc_es",
+      "modType": "prefix",
+      "templateKo": "에너지 보호막 최대치 +#, 에너지 보호막 #% 증가",
+      "candidates": [
+        {
+          "family": "IncreasedEnergyShield",
+          "score": 0.75,
+          "sampleStatLine": "에너지 보호막 최대치 +(8—14)",
+          "itemClasses": [
+            "Amulets"
+          ],
+          "rows": 10
+        },
+        {
+          "family": "BaseLocalDefencesAndDefencePercent",
+          "score": 0.6666666666666666,
+          "sampleStatLine": "방어도 +(7—11) 방어도 (6—13) % 증가",
+          "itemClasses": [
+            "Body_Armours"
+          ],
+          "rows": 36
+        },
+        {
+          "family": "BaseLocalDefences",
+          "score": 0.6,
+          "sampleStatLine": "방어도 +(16—27)",
+          "itemClasses": [
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Shields"
+          ],
+          "rows": 206
+        },
+        {
+          "family": "BaseLocalDefencesAndLife",
+          "score": 0.5714285714285714,
+          "sampleStatLine": "방어도 (6—13) % 증가 생명력 최대치 +(7—10)",
+          "itemClasses": [
+            "Body_Armours",
+            "Gloves",
+            "Helmets"
+          ],
+          "rows": 108
+        },
+        {
+          "family": "BaseLocalDefencesAndMana",
+          "score": 0.5714285714285714,
+          "sampleStatLine": "방어도 (6—13) % 증가 마나 최대치 +(6—8)",
+          "itemClasses": [
+            "Foci",
+            "Helmets"
+          ],
+          "rows": 42
+        },
+        {
+          "family": "DefencesPercent",
+          "score": 0.5,
+          "sampleStatLine": "방어도 (15—26) % 증가",
+          "itemClasses": [
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Shields"
+          ],
+          "rows": 735
+        },
+        {
+          "family": "LocalIncreasedSpiritAndMana",
+          "score": 0.5,
+          "sampleStatLine": "정신력 (10—14) % 증가 마나 최대치 +(17—20)",
+          "itemClasses": [
+            "Sceptres"
+          ],
+          "rows": 7
+        },
+        {
+          "family": "TrapDamageAndMana",
+          "score": 0.5,
+          "sampleStatLine": "덫 피해 (15—19) % 증가 마나 최대치 +(17—20)",
+          "itemClasses": [
+            "Traps"
+          ],
+          "rows": 7
+        }
+      ]
+    },
+    {
+      "modKey": "prefix_phys_thorns",
+      "modType": "prefix",
+      "templateKo": "물리 가시 피해 #~#",
+      "candidates": [
+        {
+          "family": "LocalIncreasedPhysicalDamagePercentAndAccuracyRating",
+          "score": 0.5,
+          "sampleStatLine": "물리 피해 (15—19) % 증가 정확도 +(16—20)",
+          "itemClasses": [
+            "Bows",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords"
+          ],
+          "rows": 112
+        },
+        {
+          "family": "LocalPhysicalDamagePercent",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "물리 피해 (40—49) % 증가",
+          "itemClasses": [
+            "Bows",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords"
+          ],
+          "rows": 114
+        },
+        {
+          "family": "PhysicalDamage",
+          "score": 0.25,
+          "sampleStatLine": "물리 피해 (1—2) ~ (4—5) 추가",
+          "itemClasses": [
+            "Bows",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "Gloves",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Quivers",
+            "Rings",
+            "Sceptres",
+            "Spears",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords"
+          ],
+          "rows": 246
+        },
+        {
+          "family": "DamageWithWeaponTypeSkill",
+          "score": 0.25,
+          "sampleStatLine": "활 스킬로 주는 피해 (11—20) % 증가",
+          "itemClasses": [
+            "Quivers"
+          ],
+          "rows": 7
+        },
+        {
+          "family": "TrapDamageAndMana",
+          "score": 0.25,
+          "sampleStatLine": "덫 피해 (15—19) % 증가 마나 최대치 +(17—20)",
+          "itemClasses": [
+            "Traps"
+          ],
+          "rows": 7
+        },
+        {
+          "family": "GrenadeDamage",
+          "score": 0.25,
+          "sampleStatLine": "유탄 피해 (101—121) % 증가 유탄 지속시간 (20—30) % 증가",
+          "itemClasses": [
+            "Crossbows"
+          ],
+          "rows": 1
+        },
+        {
+          "family": "GrenadeDuration",
+          "score": 0.25,
+          "sampleStatLine": "유탄 피해 (101—121) % 증가 유탄 지속시간 (20—30) % 증가",
+          "itemClasses": [
+            "Crossbows"
+          ],
+          "rows": 1
+        },
+        {
+          "family": "Thorns",
+          "score": 0.23076923076923078,
+          "sampleStatLine": "(1—2) ~ (3—4) 물리 가시 피해",
+          "itemClasses": [
+            "Belts",
+            "Body_Armours",
+            "Bucklers",
+            "Shields"
+          ],
+          "rows": 86
+        }
+      ]
+    },
+    {
+      "modKey": "prefix_spirit",
+      "modType": "prefix",
+      "templateKo": "정신력 +#",
+      "candidates": [
+        {
+          "family": "BaseSpirit",
+          "score": 1,
+          "sampleStatLine": "정신력 +(35—50)",
+          "itemClasses": [
+            "Amulets",
+            "Body_Armours",
+            "Staves"
+          ],
+          "rows": 54
+        },
+        {
+          "family": "LocalIncreasedSpiritPercent",
+          "score": 0.5,
+          "sampleStatLine": "정신력 (30—36) % 증가",
+          "itemClasses": [
+            "Sceptres"
+          ],
+          "rows": 8
+        },
+        {
+          "family": "LocalIncreasedSpiritAndMana",
+          "score": 0.25,
+          "sampleStatLine": "정신력 (10—14) % 증가 마나 최대치 +(17—20)",
+          "itemClasses": [
+            "Sceptres"
+          ],
+          "rows": 7
+        }
+      ]
+    },
+    {
+      "modKey": "suffix_intelligence",
+      "modType": "suffix",
+      "templateKo": "지능 +#",
+      "candidates": [
+        {
+          "family": "Dexterity",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "힘 , 민첩 또는 지능 +(9—12)",
+          "itemClasses": [
+            "Amulets",
+            "Belts",
+            "Body_Armours",
+            "Boots",
+            "Bows",
+            "Bucklers",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Quivers",
+            "Rings",
+            "Sceptres",
+            "Shields",
+            "Spears",
+            "Staves",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords",
+            "Wands"
+          ],
+          "rows": 147
+        },
+        {
+          "family": "Intelligence",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "힘 , 민첩 또는 지능 +(9—12)",
+          "itemClasses": [
+            "Amulets",
+            "Belts",
+            "Body_Armours",
+            "Boots",
+            "Bows",
+            "Bucklers",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Quivers",
+            "Rings",
+            "Sceptres",
+            "Shields",
+            "Spears",
+            "Staves",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords",
+            "Wands"
+          ],
+          "rows": 147
+        },
+        {
+          "family": "Strength",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "힘 , 민첩 또는 지능 +(9—12)",
+          "itemClasses": [
+            "Amulets",
+            "Belts",
+            "Body_Armours",
+            "Boots",
+            "Bows",
+            "Bucklers",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Quivers",
+            "Rings",
+            "Sceptres",
+            "Shields",
+            "Spears",
+            "Staves",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords",
+            "Wands"
+          ],
+          "rows": 147
+        },
+        {
+          "family": "PercentageDexterity",
+          "score": 0.25,
+          "sampleStatLine": "힘 , 민첩 또는 지능 (7—10) % 증가",
+          "itemClasses": [
+            "Amulets"
+          ],
+          "rows": 1
+        },
+        {
+          "family": "PercentageIntelligence",
+          "score": 0.25,
+          "sampleStatLine": "힘 , 민첩 또는 지능 (7—10) % 증가",
+          "itemClasses": [
+            "Amulets"
+          ],
+          "rows": 1
+        },
+        {
+          "family": "PercentageStrength",
+          "score": 0.25,
+          "sampleStatLine": "힘 , 민첩 또는 지능 (7—10) % 증가",
+          "itemClasses": [
+            "Amulets"
+          ],
+          "rows": 1
+        }
+      ]
+    },
+    {
+      "modKey": "suffix_fire_res",
+      "modType": "suffix",
+      "templateKo": "화염 저항 +#%",
+      "candidates": [
+        {
+          "family": "FireResistance",
+          "score": 1,
+          "sampleStatLine": "화염 저항 +(11—15) %",
+          "itemClasses": [
+            "Amulets",
+            "Belts",
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Rings",
+            "Shields"
+          ],
+          "rows": 96
+        },
+        {
+          "family": "ChaosResistance",
+          "score": 0.5,
+          "sampleStatLine": "카오스 저항 +(4—7) %",
+          "itemClasses": [
+            "Amulets",
+            "Belts",
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Rings",
+            "Shields"
+          ],
+          "rows": 96
+        },
+        {
+          "family": "ColdResistance",
+          "score": 0.5,
+          "sampleStatLine": "냉기 저항 +(11—15) %",
+          "itemClasses": [
+            "Amulets",
+            "Belts",
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Rings",
+            "Shields"
+          ],
+          "rows": 96
+        },
+        {
+          "family": "LightningResistance",
+          "score": 0.5,
+          "sampleStatLine": "번개 저항 +(11—15) %",
+          "itemClasses": [
+            "Amulets",
+            "Belts",
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Rings",
+            "Shields"
+          ],
+          "rows": 96
+        },
+        {
+          "family": "FireDamageTakenRecoupedAsLife",
+          "score": 0.2,
+          "sampleStatLine": "받은 화염 피해의 (26—30) %를 생명력으로 회생",
+          "itemClasses": [
+            "Belts"
+          ],
+          "rows": 1
+        },
+        {
+          "family": "IncreaseSocketedGemLevel",
+          "score": 0.08333333333333333,
+          "sampleStatLine": "모든 공격 스킬 레벨 +3",
+          "itemClasses": [
+            "Bows",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "Helmets",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears",
+            "Staves",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords",
+            "Wands"
+          ],
+          "rows": 21
+        }
+      ]
+    },
+    {
+      "modKey": "suffix_cold_res",
+      "modType": "suffix",
+      "templateKo": "냉기 저항 +#%",
+      "candidates": [
+        {
+          "family": "ColdResistance",
+          "score": 1,
+          "sampleStatLine": "냉기 저항 +(11—15) %",
+          "itemClasses": [
+            "Amulets",
+            "Belts",
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Rings",
+            "Shields"
+          ],
+          "rows": 96
+        },
+        {
+          "family": "ChaosResistance",
+          "score": 0.5,
+          "sampleStatLine": "카오스 저항 +(4—7) %",
+          "itemClasses": [
+            "Amulets",
+            "Belts",
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Rings",
+            "Shields"
+          ],
+          "rows": 96
+        },
+        {
+          "family": "FireResistance",
+          "score": 0.5,
+          "sampleStatLine": "화염 저항 +(11—15) %",
+          "itemClasses": [
+            "Amulets",
+            "Belts",
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Rings",
+            "Shields"
+          ],
+          "rows": 96
+        },
+        {
+          "family": "LightningResistance",
+          "score": 0.5,
+          "sampleStatLine": "번개 저항 +(11—15) %",
+          "itemClasses": [
+            "Amulets",
+            "Belts",
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Rings",
+            "Shields"
+          ],
+          "rows": 96
+        },
+        {
+          "family": "ColdDamageTakenRecoupedAsLife",
+          "score": 0.25,
+          "sampleStatLine": "냉기 피해의 (26—30) %를 생명력으로 회생",
+          "itemClasses": [
+            "Helmets"
+          ],
+          "rows": 6
+        },
+        {
+          "family": "IncreaseSocketedGemLevel",
+          "score": 0.08333333333333333,
+          "sampleStatLine": "모든 공격 스킬 레벨 +3",
+          "itemClasses": [
+            "Bows",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "Helmets",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears",
+            "Staves",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords",
+            "Wands"
+          ],
+          "rows": 21
+        }
+      ]
+    },
+    {
+      "modKey": "suffix_lightning_res",
+      "modType": "suffix",
+      "templateKo": "번개 저항 +#%",
+      "candidates": [
+        {
+          "family": "LightningResistance",
+          "score": 1,
+          "sampleStatLine": "번개 저항 +(11—15) %",
+          "itemClasses": [
+            "Amulets",
+            "Belts",
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Rings",
+            "Shields"
+          ],
+          "rows": 96
+        },
+        {
+          "family": "ChaosResistance",
+          "score": 0.5,
+          "sampleStatLine": "카오스 저항 +(4—7) %",
+          "itemClasses": [
+            "Amulets",
+            "Belts",
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Rings",
+            "Shields"
+          ],
+          "rows": 96
+        },
+        {
+          "family": "ColdResistance",
+          "score": 0.5,
+          "sampleStatLine": "냉기 저항 +(11—15) %",
+          "itemClasses": [
+            "Amulets",
+            "Belts",
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Rings",
+            "Shields"
+          ],
+          "rows": 96
+        },
+        {
+          "family": "FireResistance",
+          "score": 0.5,
+          "sampleStatLine": "화염 저항 +(11—15) %",
+          "itemClasses": [
+            "Amulets",
+            "Belts",
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Rings",
+            "Shields"
+          ],
+          "rows": 96
+        },
+        {
+          "family": "LightningDamageTakenRecoupedAsLife",
+          "score": 0.2,
+          "sampleStatLine": "받은 번개 피해의 (26—30) %를 생명력으로 회생",
+          "itemClasses": [
+            "Gloves"
+          ],
+          "rows": 6
+        },
+        {
+          "family": "IncreaseSocketedGemLevel",
+          "score": 0.08333333333333333,
+          "sampleStatLine": "모든 공격 스킬 레벨 +3",
+          "itemClasses": [
+            "Bows",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "Helmets",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears",
+            "Staves",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords",
+            "Wands"
+          ],
+          "rows": 21
+        }
+      ]
+    },
+    {
+      "modKey": "suffix_chaos_res",
+      "modType": "suffix",
+      "templateKo": "카오스 저항 +#%",
+      "candidates": [
+        {
+          "family": "ChaosResistance",
+          "score": 1,
+          "sampleStatLine": "카오스 저항 +(4—7) %",
+          "itemClasses": [
+            "Amulets",
+            "Belts",
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Rings",
+            "Shields"
+          ],
+          "rows": 96
+        },
+        {
+          "family": "ColdResistance",
+          "score": 0.5,
+          "sampleStatLine": "냉기 저항 +(11—15) %",
+          "itemClasses": [
+            "Amulets",
+            "Belts",
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Rings",
+            "Shields"
+          ],
+          "rows": 96
+        },
+        {
+          "family": "FireResistance",
+          "score": 0.5,
+          "sampleStatLine": "화염 저항 +(11—15) %",
+          "itemClasses": [
+            "Amulets",
+            "Belts",
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Rings",
+            "Shields"
+          ],
+          "rows": 96
+        },
+        {
+          "family": "LightningResistance",
+          "score": 0.5,
+          "sampleStatLine": "번개 저항 +(11—15) %",
+          "itemClasses": [
+            "Amulets",
+            "Belts",
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Rings",
+            "Shields"
+          ],
+          "rows": 96
+        },
+        {
+          "family": "IncreaseSocketedGemLevel",
+          "score": 0.08333333333333333,
+          "sampleStatLine": "모든 공격 스킬 레벨 +3",
+          "itemClasses": [
+            "Bows",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "Helmets",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears",
+            "Staves",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords",
+            "Wands"
+          ],
+          "rows": 21
+        }
+      ]
+    },
+    {
+      "modKey": "suffix_reduced_attr_req",
+      "modType": "suffix",
+      "templateKo": "능력치 요구사항 #% 감소",
+      "candidates": [
+        {
+          "family": "ReducedCriticalStrikeDamageTaken",
+          "score": 0.14285714285714285,
+          "sampleStatLine": "플레이어에 대한 명중의 치명타 피해 보너스 (40—50) % 감소",
+          "itemClasses": [
+            "Body_Armours"
+          ],
+          "rows": 6
+        }
+      ]
+    },
+    {
+      "modKey": "suffix_stun_threshold",
+      "modType": "suffix",
+      "templateKo": "기절 한계치 +#",
+      "candidates": [
+        {
+          "family": "StunThreshold",
+          "score": 1,
+          "sampleStatLine": "기절 한계치 +(254—304)",
+          "itemClasses": [
+            "Belts"
+          ],
+          "rows": 1
+        }
+      ]
+    },
+    {
+      "modKey": "suffix_life_regen",
+      "modType": "suffix",
+      "templateKo": "초당 생명력 #% 재생",
+      "candidates": [
+        {
+          "family": "ManaRegeneration",
+          "score": 0.25,
+          "sampleStatLine": "마나 재생 속도 (50—59) % 증가",
+          "itemClasses": [
+            "Rings"
+          ],
+          "rows": 1
+        },
+        {
+          "family": "AbyssRadiusJewelMod",
+          "score": 0.029411764705882353,
+          "sampleStatLine": "반경 내 주요 패시브 스킬이 호신부 가 1초마다 충전 0.1 획득도 부여",
+          "itemClasses": [],
+          "rows": 18
+        }
+      ]
+    },
+    {
+      "modKey": "suffix_reduced_bleed_duration",
+      "modType": "suffix",
+      "templateKo": "출혈 지속시간 #% 감소",
+      "candidates": [
+        {
+          "family": "ReducedCriticalStrikeDamageTaken",
+          "score": 0.14285714285714285,
+          "sampleStatLine": "플레이어에 대한 명중의 치명타 피해 보너스 (40—50) % 감소",
+          "itemClasses": [
+            "Body_Armours"
+          ],
+          "rows": 6
+        },
+        {
+          "family": "ArmourBreakDuration",
+          "score": 0.1,
+          "sampleStatLine": "방어구 파괴 지속시간 (10—20) % 증가",
+          "itemClasses": [],
+          "rows": 2
+        }
+      ]
+    },
+    {
+      "modKey": "suffix_reduced_poison_duration",
+      "modType": "suffix",
+      "templateKo": "중독 지속시간 #% 감소",
+      "candidates": [
+        {
+          "family": "ReducedCriticalStrikeDamageTaken",
+          "score": 0.14285714285714285,
+          "sampleStatLine": "플레이어에 대한 명중의 치명타 피해 보너스 (40—50) % 감소",
+          "itemClasses": [
+            "Body_Armours"
+          ],
+          "rows": 6
+        },
+        {
+          "family": "ArmourBreakDuration",
+          "score": 0.1,
+          "sampleStatLine": "방어구 파괴 지속시간 (10—20) % 증가",
+          "itemClasses": [],
+          "rows": 2
+        }
+      ]
+    },
+    {
+      "modKey": "suffix_reduced_ignite_duration",
+      "modType": "suffix",
+      "templateKo": "점화 지속시간 #% 감소",
+      "candidates": [
+        {
+          "family": "ReducedCriticalStrikeDamageTaken",
+          "score": 0.14285714285714285,
+          "sampleStatLine": "플레이어에 대한 명중의 치명타 피해 보너스 (40—50) % 감소",
+          "itemClasses": [
+            "Body_Armours"
+          ],
+          "rows": 6
+        },
+        {
+          "family": "ArmourBreakDuration",
+          "score": 0.1,
+          "sampleStatLine": "방어구 파괴 지속시간 (10—20) % 증가",
+          "itemClasses": [],
+          "rows": 2
+        }
+      ]
+    },
+    {
+      "modKey": "suffix_es_recharge_rate",
+      "modType": "suffix",
+      "templateKo": "에너지 보호막 재충전 시작 속도 #% 가속",
+      "candidates": [
+        {
+          "family": "EnergyShieldRegeneration",
+          "score": 0.36363636363636365,
+          "sampleStatLine": "에너지 보호막 재충전 속도 (41—45) % 증가",
+          "itemClasses": [
+            "Foci"
+          ],
+          "rows": 1
+        },
+        {
+          "family": "IncreasedAttackSpeed",
+          "score": 0.16666666666666666,
+          "sampleStatLine": "공격 속도 (11—13) % 증가",
+          "itemClasses": [
+            "Bows",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords"
+          ],
+          "rows": 39
+        },
+        {
+          "family": "IncreasedCastSpeed",
+          "score": 0.16666666666666666,
+          "sampleStatLine": "시전 속도 (13—16) % 증가",
+          "itemClasses": [
+            "Foci",
+            "Staves",
+            "Wands"
+          ],
+          "rows": 9
+        },
+        {
+          "family": "ManaRegeneration",
+          "score": 0.16666666666666666,
+          "sampleStatLine": "마나 재생 속도 (50—59) % 증가",
+          "itemClasses": [
+            "Rings"
+          ],
+          "rows": 1
+        }
+      ]
+    },
+    {
+      "modKey": "prefix_max_mana",
+      "modType": "prefix",
+      "templateKo": "마나 최대치 +#",
+      "candidates": [
+        {
+          "family": "IncreasedMana",
+          "score": 1,
+          "sampleStatLine": "마나 최대치 +(10—14)",
+          "itemClasses": [
+            "Amulets",
+            "Belts",
+            "Boots",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Rings",
+            "Sceptres",
+            "Staves",
+            "Traps",
+            "Wands"
+          ],
+          "rows": 320
+        },
+        {
+          "family": "IncreasedLife",
+          "score": 0.5,
+          "sampleStatLine": "생명력 최대치 +(10—19)",
+          "itemClasses": [
+            "Amulets",
+            "Belts",
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Rings",
+            "Shields"
+          ],
+          "rows": 410
+        },
+        {
+          "family": "LocalIncreasedSpiritAndMana",
+          "score": 0.5,
+          "sampleStatLine": "정신력 (10—14) % 증가 마나 최대치 +(17—20)",
+          "itemClasses": [
+            "Sceptres"
+          ],
+          "rows": 7
+        },
+        {
+          "family": "TrapDamageAndMana",
+          "score": 0.5,
+          "sampleStatLine": "덫 피해 (15—19) % 증가 마나 최대치 +(17—20)",
+          "itemClasses": [
+            "Traps"
+          ],
+          "rows": 7
+        },
+        {
+          "family": "SpellDamageAndMana",
+          "score": 0.4,
+          "sampleStatLine": "주문 피해 (15—19) % 증가 마나 최대치 +(17—20)",
+          "itemClasses": [
+            "Staves",
+            "Wands"
+          ],
+          "rows": 14
+        },
+        {
+          "family": "IncreasedEnergyShield",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "에너지 보호막 최대치 +(8—14)",
+          "itemClasses": [
+            "Amulets"
+          ],
+          "rows": 10
+        },
+        {
+          "family": "MaximumManaIncreasePercent",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "최대 마나 (3—4) % 증가",
+          "itemClasses": [
+            "Amulets",
+            "Rings"
+          ],
+          "rows": 4
+        },
+        {
+          "family": "BaseLocalDefencesAndMana",
+          "score": 0.2857142857142857,
+          "sampleStatLine": "방어도 (6—13) % 증가 마나 최대치 +(6—8)",
+          "itemClasses": [
+            "Foci",
+            "Helmets"
+          ],
+          "rows": 42
+        }
+      ]
+    },
+    {
+      "modKey": "prefix_max_armour",
+      "modType": "prefix",
+      "templateKo": "방어도 +#",
+      "candidates": [
+        {
+          "family": "IncreasedPhysicalDamageReductionRating",
+          "score": 0.25,
+          "sampleStatLine": "방어도 +(12—22)",
+          "itemClasses": [
+            "Belts"
+          ],
+          "rows": 11
+        },
+        {
+          "family": "BaseLocalDefences",
+          "score": 0.2,
+          "sampleStatLine": "방어도 +(16—27)",
+          "itemClasses": [
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Shields"
+          ],
+          "rows": 206
+        },
+        {
+          "family": "BodyArmourFromBodyArmour",
+          "score": 0.2,
+          "sampleStatLine": "장착한 갑옷으로 얻는 방어도 (35—50) % 증가",
+          "itemClasses": [
+            "Amulets"
+          ],
+          "rows": 1
+        },
+        {
+          "family": "DefencesPercent",
+          "score": 0.16666666666666666,
+          "sampleStatLine": "방어도 (15—26) % 증가",
+          "itemClasses": [
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Shields"
+          ],
+          "rows": 735
+        },
+        {
+          "family": "BaseLocalDefencesAndDefencePercent",
+          "score": 0.16666666666666666,
+          "sampleStatLine": "방어도 +(7—11) 방어도 (6—13) % 증가",
+          "itemClasses": [
+            "Body_Armours"
+          ],
+          "rows": 36
+        },
+        {
+          "family": "BaseLocalDefencesAndLife",
+          "score": 0.14285714285714285,
+          "sampleStatLine": "방어도 (6—13) % 증가 생명력 최대치 +(7—10)",
+          "itemClasses": [
+            "Body_Armours",
+            "Gloves",
+            "Helmets"
+          ],
+          "rows": 108
+        },
+        {
+          "family": "DefencesPercentAndStunThreshold",
+          "score": 0.14285714285714285,
+          "sampleStatLine": "방어도 (6—13) % 증가 기절 한계치 +(8—13)",
+          "itemClasses": [
+            "Boots",
+            "Bucklers",
+            "Shields"
+          ],
+          "rows": 60
+        },
+        {
+          "family": "BaseLocalDefencesAndMana",
+          "score": 0.14285714285714285,
+          "sampleStatLine": "방어도 (6—13) % 증가 마나 최대치 +(6—8)",
+          "itemClasses": [
+            "Foci",
+            "Helmets"
+          ],
+          "rows": 42
+        }
+      ]
+    },
+    {
+      "modKey": "prefix_inc_armour",
+      "modType": "prefix",
+      "templateKo": "방어도 #% 증가",
+      "candidates": [
+        {
+          "family": "LocalIncreasedSpiritPercent",
+          "score": 0.5,
+          "sampleStatLine": "정신력 (30—36) % 증가",
+          "itemClasses": [
+            "Sceptres"
+          ],
+          "rows": 8
+        },
+        {
+          "family": "BodyArmourFromBodyArmour",
+          "score": 0.4,
+          "sampleStatLine": "장착한 갑옷으로 얻는 방어도 (35—50) % 증가",
+          "itemClasses": [
+            "Amulets"
+          ],
+          "rows": 1
+        },
+        {
+          "family": "DefencesPercent",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "방어도 (15—26) % 증가",
+          "itemClasses": [
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Shields"
+          ],
+          "rows": 735
+        },
+        {
+          "family": "MovementVelocity",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "이동 속도 10 % 증가",
+          "itemClasses": [
+            "Boots"
+          ],
+          "rows": 42
+        },
+        {
+          "family": "BaseLocalDefencesAndDefencePercent",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "방어도 +(7—11) 방어도 (6—13) % 증가",
+          "itemClasses": [
+            "Body_Armours"
+          ],
+          "rows": 36
+        },
+        {
+          "family": "IncreasedShieldBlockPercentage",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "막기 확률 (15—19) % 증가",
+          "itemClasses": [
+            "Bucklers",
+            "Shields"
+          ],
+          "rows": 16
+        },
+        {
+          "family": "MaximumLifeIncreasePercent",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "최대 생명력 (3—4) % 증가",
+          "itemClasses": [
+            "Amulets",
+            "Body_Armours"
+          ],
+          "rows": 9
+        },
+        {
+          "family": "MaximumManaIncreasePercent",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "최대 마나 (3—4) % 증가",
+          "itemClasses": [
+            "Amulets",
+            "Rings"
+          ],
+          "rows": 4
+        }
+      ]
+    },
+    {
+      "modKey": "prefix_inc_armour_max_life",
+      "modType": "prefix",
+      "templateKo": "방어도 #% 증가, 생명력 최대치 +#",
+      "candidates": [
+        {
+          "family": "BaseLocalDefencesAndLife",
+          "score": 0.5714285714285714,
+          "sampleStatLine": "방어도 (6—13) % 증가 생명력 최대치 +(7—10)",
+          "itemClasses": [
+            "Body_Armours",
+            "Gloves",
+            "Helmets"
+          ],
+          "rows": 108
+        },
+        {
+          "family": "IncreasedLife",
+          "score": 0.5,
+          "sampleStatLine": "생명력 최대치 +(10—19)",
+          "itemClasses": [
+            "Amulets",
+            "Belts",
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Rings",
+            "Shields"
+          ],
+          "rows": 410
+        },
+        {
+          "family": "BaseLocalDefencesAndDefencePercent",
+          "score": 0.5,
+          "sampleStatLine": "방어도 +(7—11) 방어도 (6—13) % 증가",
+          "itemClasses": [
+            "Body_Armours"
+          ],
+          "rows": 36
+        },
+        {
+          "family": "MaximumLifeIncreasePercent",
+          "score": 0.5,
+          "sampleStatLine": "최대 생명력 (3—4) % 증가",
+          "itemClasses": [
+            "Amulets",
+            "Body_Armours"
+          ],
+          "rows": 9
+        },
+        {
+          "family": "LocalIncreasedSpiritAndMana",
+          "score": 0.5,
+          "sampleStatLine": "정신력 (10—14) % 증가 마나 최대치 +(17—20)",
+          "itemClasses": [
+            "Sceptres"
+          ],
+          "rows": 7
+        },
+        {
+          "family": "TrapDamageAndMana",
+          "score": 0.5,
+          "sampleStatLine": "덫 피해 (15—19) % 증가 마나 최대치 +(17—20)",
+          "itemClasses": [
+            "Traps"
+          ],
+          "rows": 7
+        },
+        {
+          "family": "BaseLocalDefencesAndMana",
+          "score": 0.42857142857142855,
+          "sampleStatLine": "방어도 (6—13) % 증가 마나 최대치 +(6—8)",
+          "itemClasses": [
+            "Foci",
+            "Helmets"
+          ],
+          "rows": 42
+        },
+        {
+          "family": "BaseLocalDefences",
+          "score": 0.4,
+          "sampleStatLine": "방어도 +(16—27)",
+          "itemClasses": [
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Shields"
+          ],
+          "rows": 206
+        }
+      ]
+    },
+    {
+      "modKey": "prefix_max_evasion",
+      "modType": "prefix",
+      "templateKo": "회피 +#",
+      "candidates": [
+        {
+          "family": "IncreasedEvasionRating",
+          "score": 1,
+          "sampleStatLine": "회피 +(8—15)",
+          "itemClasses": [
+            "Rings"
+          ],
+          "rows": 9
+        },
+        {
+          "family": "EvasionRatingFromBodyArmour",
+          "score": 0.25,
+          "sampleStatLine": "갑옷이 제공하는 회피 (35—50) % 증가",
+          "itemClasses": [
+            "Amulets"
+          ],
+          "rows": 1
+        },
+        {
+          "family": "BaseLocalDefences",
+          "score": 0.2,
+          "sampleStatLine": "방어도 +(16—27)",
+          "itemClasses": [
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Shields"
+          ],
+          "rows": 206
+        },
+        {
+          "family": "DefencesPercent",
+          "score": 0.16666666666666666,
+          "sampleStatLine": "방어도 (15—26) % 증가",
+          "itemClasses": [
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Shields"
+          ],
+          "rows": 735
+        },
+        {
+          "family": "BaseLocalDefencesAndDefencePercent",
+          "score": 0.16666666666666666,
+          "sampleStatLine": "방어도 +(7—11) 방어도 (6—13) % 증가",
+          "itemClasses": [
+            "Body_Armours"
+          ],
+          "rows": 36
+        },
+        {
+          "family": "BaseLocalDefencesAndLife",
+          "score": 0.14285714285714285,
+          "sampleStatLine": "방어도 (6—13) % 증가 생명력 최대치 +(7—10)",
+          "itemClasses": [
+            "Body_Armours",
+            "Gloves",
+            "Helmets"
+          ],
+          "rows": 108
+        },
+        {
+          "family": "DefencesPercentAndStunThreshold",
+          "score": 0.14285714285714285,
+          "sampleStatLine": "방어도 (6—13) % 증가 기절 한계치 +(8—13)",
+          "itemClasses": [
+            "Boots",
+            "Bucklers",
+            "Shields"
+          ],
+          "rows": 60
+        },
+        {
+          "family": "BaseLocalDefencesAndMana",
+          "score": 0.14285714285714285,
+          "sampleStatLine": "방어도 (6—13) % 증가 마나 최대치 +(6—8)",
+          "itemClasses": [
+            "Foci",
+            "Helmets"
+          ],
+          "rows": 42
+        }
+      ]
+    },
+    {
+      "modKey": "prefix_inc_evasion",
+      "modType": "prefix",
+      "templateKo": "회피 #% 증가",
+      "candidates": [
+        {
+          "family": "IncreasedEvasionRating",
+          "score": 0.5,
+          "sampleStatLine": "회피 +(8—15)",
+          "itemClasses": [
+            "Rings"
+          ],
+          "rows": 9
+        },
+        {
+          "family": "LocalIncreasedSpiritPercent",
+          "score": 0.5,
+          "sampleStatLine": "정신력 (30—36) % 증가",
+          "itemClasses": [
+            "Sceptres"
+          ],
+          "rows": 8
+        },
+        {
+          "family": "EvasionRatingFromBodyArmour",
+          "score": 0.5,
+          "sampleStatLine": "갑옷이 제공하는 회피 (35—50) % 증가",
+          "itemClasses": [
+            "Amulets"
+          ],
+          "rows": 1
+        },
+        {
+          "family": "DefencesPercent",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "방어도 (15—26) % 증가",
+          "itemClasses": [
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Shields"
+          ],
+          "rows": 735
+        },
+        {
+          "family": "MovementVelocity",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "이동 속도 10 % 증가",
+          "itemClasses": [
+            "Boots"
+          ],
+          "rows": 42
+        },
+        {
+          "family": "BaseLocalDefencesAndDefencePercent",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "방어도 +(7—11) 방어도 (6—13) % 증가",
+          "itemClasses": [
+            "Body_Armours"
+          ],
+          "rows": 36
+        },
+        {
+          "family": "IncreasedShieldBlockPercentage",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "막기 확률 (15—19) % 증가",
+          "itemClasses": [
+            "Bucklers",
+            "Shields"
+          ],
+          "rows": 16
+        },
+        {
+          "family": "MaximumLifeIncreasePercent",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "최대 생명력 (3—4) % 증가",
+          "itemClasses": [
+            "Amulets",
+            "Body_Armours"
+          ],
+          "rows": 9
+        }
+      ]
+    },
+    {
+      "modKey": "prefix_inc_evasion_max_life",
+      "modType": "prefix",
+      "templateKo": "회피 #% 증가, 생명력 최대치 +#",
+      "candidates": [
+        {
+          "family": "BaseLocalDefencesAndLife",
+          "score": 0.5714285714285714,
+          "sampleStatLine": "방어도 (6—13) % 증가 생명력 최대치 +(7—10)",
+          "itemClasses": [
+            "Body_Armours",
+            "Gloves",
+            "Helmets"
+          ],
+          "rows": 108
+        },
+        {
+          "family": "IncreasedLife",
+          "score": 0.5,
+          "sampleStatLine": "생명력 최대치 +(10—19)",
+          "itemClasses": [
+            "Amulets",
+            "Belts",
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Rings",
+            "Shields"
+          ],
+          "rows": 410
+        },
+        {
+          "family": "BaseLocalDefencesAndDefencePercent",
+          "score": 0.5,
+          "sampleStatLine": "방어도 +(7—11) 방어도 (6—13) % 증가",
+          "itemClasses": [
+            "Body_Armours"
+          ],
+          "rows": 36
+        },
+        {
+          "family": "MaximumLifeIncreasePercent",
+          "score": 0.5,
+          "sampleStatLine": "최대 생명력 (3—4) % 증가",
+          "itemClasses": [
+            "Amulets",
+            "Body_Armours"
+          ],
+          "rows": 9
+        },
+        {
+          "family": "LocalIncreasedSpiritAndMana",
+          "score": 0.5,
+          "sampleStatLine": "정신력 (10—14) % 증가 마나 최대치 +(17—20)",
+          "itemClasses": [
+            "Sceptres"
+          ],
+          "rows": 7
+        },
+        {
+          "family": "TrapDamageAndMana",
+          "score": 0.5,
+          "sampleStatLine": "덫 피해 (15—19) % 증가 마나 최대치 +(17—20)",
+          "itemClasses": [
+            "Traps"
+          ],
+          "rows": 7
+        },
+        {
+          "family": "EvasionRatingFromBodyArmour",
+          "score": 0.5,
+          "sampleStatLine": "갑옷이 제공하는 회피 (35—50) % 증가",
+          "itemClasses": [
+            "Amulets"
+          ],
+          "rows": 1
+        },
+        {
+          "family": "BaseLocalDefencesAndMana",
+          "score": 0.42857142857142855,
+          "sampleStatLine": "방어도 (6—13) % 증가 마나 최대치 +(6—8)",
+          "itemClasses": [
+            "Foci",
+            "Helmets"
+          ],
+          "rows": 42
+        }
+      ]
+    },
+    {
+      "modKey": "prefix_armour_evasion_flat",
+      "modType": "prefix",
+      "templateKo": "방어도 및 회피 +#",
+      "candidates": [
+        {
+          "family": "IncreasedEvasionRating",
+          "score": 0.5,
+          "sampleStatLine": "회피 +(8—15)",
+          "itemClasses": [
+            "Rings"
+          ],
+          "rows": 9
+        },
+        {
+          "family": "BaseLocalDefences",
+          "score": 0.4,
+          "sampleStatLine": "방어도 +(16—27)",
+          "itemClasses": [
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Shields"
+          ],
+          "rows": 206
+        },
+        {
+          "family": "DefencesPercent",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "방어도 (15—26) % 증가",
+          "itemClasses": [
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Shields"
+          ],
+          "rows": 735
+        },
+        {
+          "family": "BaseLocalDefencesAndDefencePercent",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "방어도 +(7—11) 방어도 (6—13) % 증가",
+          "itemClasses": [
+            "Body_Armours"
+          ],
+          "rows": 36
+        },
+        {
+          "family": "BaseLocalDefencesAndLife",
+          "score": 0.2857142857142857,
+          "sampleStatLine": "방어도 (6—13) % 증가 생명력 최대치 +(7—10)",
+          "itemClasses": [
+            "Body_Armours",
+            "Gloves",
+            "Helmets"
+          ],
+          "rows": 108
+        },
+        {
+          "family": "DefencesPercentAndStunThreshold",
+          "score": 0.2857142857142857,
+          "sampleStatLine": "방어도 (6—13) % 증가 기절 한계치 +(8—13)",
+          "itemClasses": [
+            "Boots",
+            "Bucklers",
+            "Shields"
+          ],
+          "rows": 60
+        },
+        {
+          "family": "BaseLocalDefencesAndMana",
+          "score": 0.2857142857142857,
+          "sampleStatLine": "방어도 (6—13) % 증가 마나 최대치 +(6—8)",
+          "itemClasses": [
+            "Foci",
+            "Helmets"
+          ],
+          "rows": 42
+        },
+        {
+          "family": "IncreasedPhysicalDamageReductionRating",
+          "score": 0.25,
+          "sampleStatLine": "방어도 +(12—22)",
+          "itemClasses": [
+            "Belts"
+          ],
+          "rows": 11
+        }
+      ]
+    },
+    {
+      "modKey": "prefix_inc_armour_evasion",
+      "modType": "prefix",
+      "templateKo": "방어도 및 회피 #% 증가",
+      "candidates": [
+        {
+          "family": "DefencesPercent",
+          "score": 0.5,
+          "sampleStatLine": "방어도 (15—26) % 증가",
+          "itemClasses": [
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Shields"
+          ],
+          "rows": 735
+        },
+        {
+          "family": "BaseLocalDefencesAndDefencePercent",
+          "score": 0.5,
+          "sampleStatLine": "방어도 +(7—11) 방어도 (6—13) % 증가",
+          "itemClasses": [
+            "Body_Armours"
+          ],
+          "rows": 36
+        },
+        {
+          "family": "EvasionRatingFromBodyArmour",
+          "score": 0.5,
+          "sampleStatLine": "갑옷이 제공하는 회피 (35—50) % 증가",
+          "itemClasses": [
+            "Amulets"
+          ],
+          "rows": 1
+        },
+        {
+          "family": "BaseLocalDefencesAndLife",
+          "score": 0.42857142857142855,
+          "sampleStatLine": "방어도 (6—13) % 증가 생명력 최대치 +(7—10)",
+          "itemClasses": [
+            "Body_Armours",
+            "Gloves",
+            "Helmets"
+          ],
+          "rows": 108
+        },
+        {
+          "family": "DefencesPercentAndStunThreshold",
+          "score": 0.42857142857142855,
+          "sampleStatLine": "방어도 (6—13) % 증가 기절 한계치 +(8—13)",
+          "itemClasses": [
+            "Boots",
+            "Bucklers",
+            "Shields"
+          ],
+          "rows": 60
+        },
+        {
+          "family": "BaseLocalDefencesAndMana",
+          "score": 0.42857142857142855,
+          "sampleStatLine": "방어도 (6—13) % 증가 마나 최대치 +(6—8)",
+          "itemClasses": [
+            "Foci",
+            "Helmets"
+          ],
+          "rows": 42
+        },
+        {
+          "family": "BaseLocalDefences",
+          "score": 0.4,
+          "sampleStatLine": "방어도 +(16—27)",
+          "itemClasses": [
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Shields"
+          ],
+          "rows": 206
+        },
+        {
+          "family": "BodyArmourFromBodyArmour",
+          "score": 0.4,
+          "sampleStatLine": "장착한 갑옷으로 얻는 방어도 (35—50) % 증가",
+          "itemClasses": [
+            "Amulets"
+          ],
+          "rows": 1
+        }
+      ]
+    },
+    {
+      "modKey": "prefix_inc_armour_evasion_max_life",
+      "modType": "prefix",
+      "templateKo": "방어도 및 회피 #% 증가, 생명력 최대치 +#",
+      "candidates": [
+        {
+          "family": "BaseLocalDefencesAndLife",
+          "score": 0.7142857142857143,
+          "sampleStatLine": "방어도 (6—13) % 증가 생명력 최대치 +(7—10)",
+          "itemClasses": [
+            "Body_Armours",
+            "Gloves",
+            "Helmets"
+          ],
+          "rows": 108
+        },
+        {
+          "family": "BaseLocalDefencesAndDefencePercent",
+          "score": 0.6666666666666666,
+          "sampleStatLine": "방어도 +(7—11) 방어도 (6—13) % 증가",
+          "itemClasses": [
+            "Body_Armours"
+          ],
+          "rows": 36
+        },
+        {
+          "family": "BaseLocalDefences",
+          "score": 0.6,
+          "sampleStatLine": "방어도 +(16—27)",
+          "itemClasses": [
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Shields"
+          ],
+          "rows": 206
+        },
+        {
+          "family": "BaseLocalDefencesAndMana",
+          "score": 0.5714285714285714,
+          "sampleStatLine": "방어도 (6—13) % 증가 마나 최대치 +(6—8)",
+          "itemClasses": [
+            "Foci",
+            "Helmets"
+          ],
+          "rows": 42
+        },
+        {
+          "family": "DefencesPercent",
+          "score": 0.5,
+          "sampleStatLine": "방어도 (15—26) % 증가",
+          "itemClasses": [
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Shields"
+          ],
+          "rows": 735
+        },
+        {
+          "family": "DefencesPercentAndStunThreshold",
+          "score": 0.42857142857142855,
+          "sampleStatLine": "방어도 (6—13) % 증가 기절 한계치 +(8—13)",
+          "itemClasses": [
+            "Boots",
+            "Bucklers",
+            "Shields"
+          ],
+          "rows": 60
+        },
+        {
+          "family": "IncreasedLife",
+          "score": 0.4,
+          "sampleStatLine": "생명력 최대치 +(10—19)",
+          "itemClasses": [
+            "Amulets",
+            "Belts",
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Rings",
+            "Shields"
+          ],
+          "rows": 410
+        },
+        {
+          "family": "SpellDamageAndMana",
+          "score": 0.4,
+          "sampleStatLine": "주문 피해 (15—19) % 증가 마나 최대치 +(17—20)",
+          "itemClasses": [
+            "Staves",
+            "Wands"
+          ],
+          "rows": 14
+        }
+      ]
+    },
+    {
+      "modKey": "prefix_armour_es_flat",
+      "modType": "prefix",
+      "templateKo": "방어도 및 에너지 보호막 최대치 +#",
+      "candidates": [
+        {
+          "family": "BaseLocalDefences",
+          "score": 0.8,
+          "sampleStatLine": "방어도 +(16—27)",
+          "itemClasses": [
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Shields"
+          ],
+          "rows": 206
+        },
+        {
+          "family": "IncreasedEnergyShield",
+          "score": 0.75,
+          "sampleStatLine": "에너지 보호막 최대치 +(8—14)",
+          "itemClasses": [
+            "Amulets"
+          ],
+          "rows": 10
+        },
+        {
+          "family": "BaseLocalDefencesAndDefencePercent",
+          "score": 0.6666666666666666,
+          "sampleStatLine": "방어도 +(7—11) 방어도 (6—13) % 증가",
+          "itemClasses": [
+            "Body_Armours"
+          ],
+          "rows": 36
+        },
+        {
+          "family": "BaseLocalDefencesAndLife",
+          "score": 0.5714285714285714,
+          "sampleStatLine": "방어도 (6—13) % 증가 생명력 최대치 +(7—10)",
+          "itemClasses": [
+            "Body_Armours",
+            "Gloves",
+            "Helmets"
+          ],
+          "rows": 108
+        },
+        {
+          "family": "BaseLocalDefencesAndMana",
+          "score": 0.5714285714285714,
+          "sampleStatLine": "방어도 (6—13) % 증가 마나 최대치 +(6—8)",
+          "itemClasses": [
+            "Foci",
+            "Helmets"
+          ],
+          "rows": 42
+        },
+        {
+          "family": "DefencesPercent",
+          "score": 0.5,
+          "sampleStatLine": "방어도 (15—26) % 증가",
+          "itemClasses": [
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Shields"
+          ],
+          "rows": 735
+        },
+        {
+          "family": "DefencesPercentAndStunThreshold",
+          "score": 0.42857142857142855,
+          "sampleStatLine": "방어도 (6—13) % 증가 기절 한계치 +(8—13)",
+          "itemClasses": [
+            "Boots",
+            "Bucklers",
+            "Shields"
+          ],
+          "rows": 60
+        },
+        {
+          "family": "IncreasedSpellDamageOnFullEnergyShield",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "에너지 보호막 이 최대일 때 주문 피해 (15—25) % 증가",
+          "itemClasses": [
+            "Amulets",
+            "Rings"
+          ],
+          "rows": 2
+        }
+      ]
+    },
+    {
+      "modKey": "prefix_inc_armour_es",
+      "modType": "prefix",
+      "templateKo": "방어도 및 에너지 보호막 #% 증가",
+      "candidates": [
+        {
+          "family": "DefencesPercent",
+          "score": 0.6666666666666666,
+          "sampleStatLine": "방어도 (15—26) % 증가",
+          "itemClasses": [
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Shields"
+          ],
+          "rows": 735
+        },
+        {
+          "family": "BaseLocalDefencesAndDefencePercent",
+          "score": 0.6666666666666666,
+          "sampleStatLine": "방어도 +(7—11) 방어도 (6—13) % 증가",
+          "itemClasses": [
+            "Body_Armours"
+          ],
+          "rows": 36
+        },
+        {
+          "family": "BaseLocalDefences",
+          "score": 0.6,
+          "sampleStatLine": "방어도 +(16—27)",
+          "itemClasses": [
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Shields"
+          ],
+          "rows": 206
+        },
+        {
+          "family": "BaseLocalDefencesAndLife",
+          "score": 0.5714285714285714,
+          "sampleStatLine": "방어도 (6—13) % 증가 생명력 최대치 +(7—10)",
+          "itemClasses": [
+            "Body_Armours",
+            "Gloves",
+            "Helmets"
+          ],
+          "rows": 108
+        },
+        {
+          "family": "DefencesPercentAndStunThreshold",
+          "score": 0.5714285714285714,
+          "sampleStatLine": "방어도 (6—13) % 증가 기절 한계치 +(8—13)",
+          "itemClasses": [
+            "Boots",
+            "Bucklers",
+            "Shields"
+          ],
+          "rows": 60
+        },
+        {
+          "family": "BaseLocalDefencesAndMana",
+          "score": 0.5714285714285714,
+          "sampleStatLine": "방어도 (6—13) % 증가 마나 최대치 +(6—8)",
+          "itemClasses": [
+            "Foci",
+            "Helmets"
+          ],
+          "rows": 42
+        },
+        {
+          "family": "IncreasedEnergyShield",
+          "score": 0.5,
+          "sampleStatLine": "에너지 보호막 최대치 +(8—14)",
+          "itemClasses": [
+            "Amulets"
+          ],
+          "rows": 10
+        },
+        {
+          "family": "IncreasedSpellDamageOnFullEnergyShield",
+          "score": 0.5,
+          "sampleStatLine": "에너지 보호막 이 최대일 때 주문 피해 (15—25) % 증가",
+          "itemClasses": [
+            "Amulets",
+            "Rings"
+          ],
+          "rows": 2
+        }
+      ]
+    },
+    {
+      "modKey": "prefix_inc_armour_es_max_life",
+      "modType": "prefix",
+      "templateKo": "방어도 및 에너지 보호막 #% 증가, 생명력 최대치 +#",
+      "candidates": [
+        {
+          "family": "BaseLocalDefencesAndLife",
+          "score": 0.8571428571428571,
+          "sampleStatLine": "방어도 (6—13) % 증가 생명력 최대치 +(7—10)",
+          "itemClasses": [
+            "Body_Armours",
+            "Gloves",
+            "Helmets"
+          ],
+          "rows": 108
+        },
+        {
+          "family": "BaseLocalDefencesAndDefencePercent",
+          "score": 0.8333333333333334,
+          "sampleStatLine": "방어도 +(7—11) 방어도 (6—13) % 증가",
+          "itemClasses": [
+            "Body_Armours"
+          ],
+          "rows": 36
+        },
+        {
+          "family": "BaseLocalDefencesAndMana",
+          "score": 0.7142857142857143,
+          "sampleStatLine": "방어도 (6—13) % 증가 마나 최대치 +(6—8)",
+          "itemClasses": [
+            "Foci",
+            "Helmets"
+          ],
+          "rows": 42
+        },
+        {
+          "family": "DefencesPercent",
+          "score": 0.6666666666666666,
+          "sampleStatLine": "방어도 (15—26) % 증가",
+          "itemClasses": [
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Shields"
+          ],
+          "rows": 735
+        },
+        {
+          "family": "BaseLocalDefences",
+          "score": 0.6666666666666666,
+          "sampleStatLine": "방어도 +(16—27)",
+          "itemClasses": [
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Shields"
+          ],
+          "rows": 206
+        },
+        {
+          "family": "DefencesPercentAndStunThreshold",
+          "score": 0.5714285714285714,
+          "sampleStatLine": "방어도 (6—13) % 증가 기절 한계치 +(8—13)",
+          "itemClasses": [
+            "Boots",
+            "Bucklers",
+            "Shields"
+          ],
+          "rows": 60
+        },
+        {
+          "family": "IncreasedEnergyShield",
+          "score": 0.5,
+          "sampleStatLine": "에너지 보호막 최대치 +(8—14)",
+          "itemClasses": [
+            "Amulets"
+          ],
+          "rows": 10
+        },
+        {
+          "family": "IncreasedSpellDamageOnFullEnergyShield",
+          "score": 0.5,
+          "sampleStatLine": "에너지 보호막 이 최대일 때 주문 피해 (15—25) % 증가",
+          "itemClasses": [
+            "Amulets",
+            "Rings"
+          ],
+          "rows": 2
+        }
+      ]
+    },
+    {
+      "modKey": "prefix_evasion_es_flat",
+      "modType": "prefix",
+      "templateKo": "회피 및 에너지 보호막 최대치 +#",
+      "candidates": [
+        {
+          "family": "BaseLocalDefences",
+          "score": 0.8,
+          "sampleStatLine": "방어도 +(16—27)",
+          "itemClasses": [
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Shields"
+          ],
+          "rows": 206
+        },
+        {
+          "family": "IncreasedEnergyShield",
+          "score": 0.75,
+          "sampleStatLine": "에너지 보호막 최대치 +(8—14)",
+          "itemClasses": [
+            "Amulets"
+          ],
+          "rows": 10
+        },
+        {
+          "family": "BaseLocalDefencesAndDefencePercent",
+          "score": 0.6666666666666666,
+          "sampleStatLine": "방어도 +(7—11) 방어도 (6—13) % 증가",
+          "itemClasses": [
+            "Body_Armours"
+          ],
+          "rows": 36
+        },
+        {
+          "family": "BaseLocalDefencesAndLife",
+          "score": 0.5714285714285714,
+          "sampleStatLine": "방어도 (6—13) % 증가 생명력 최대치 +(7—10)",
+          "itemClasses": [
+            "Body_Armours",
+            "Gloves",
+            "Helmets"
+          ],
+          "rows": 108
+        },
+        {
+          "family": "BaseLocalDefencesAndMana",
+          "score": 0.5714285714285714,
+          "sampleStatLine": "방어도 (6—13) % 증가 마나 최대치 +(6—8)",
+          "itemClasses": [
+            "Foci",
+            "Helmets"
+          ],
+          "rows": 42
+        },
+        {
+          "family": "DefencesPercent",
+          "score": 0.5,
+          "sampleStatLine": "방어도 (15—26) % 증가",
+          "itemClasses": [
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Shields"
+          ],
+          "rows": 735
+        },
+        {
+          "family": "DefencesPercentAndStunThreshold",
+          "score": 0.42857142857142855,
+          "sampleStatLine": "방어도 (6—13) % 증가 기절 한계치 +(8—13)",
+          "itemClasses": [
+            "Boots",
+            "Bucklers",
+            "Shields"
+          ],
+          "rows": 60
+        },
+        {
+          "family": "IncreasedSpellDamageOnFullEnergyShield",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "에너지 보호막 이 최대일 때 주문 피해 (15—25) % 증가",
+          "itemClasses": [
+            "Amulets",
+            "Rings"
+          ],
+          "rows": 2
+        }
+      ]
+    },
+    {
+      "modKey": "prefix_inc_evasion_es",
+      "modType": "prefix",
+      "templateKo": "회피 및 에너지 보호막 #% 증가",
+      "candidates": [
+        {
+          "family": "DefencesPercent",
+          "score": 0.6666666666666666,
+          "sampleStatLine": "방어도 (15—26) % 증가",
+          "itemClasses": [
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Shields"
+          ],
+          "rows": 735
+        },
+        {
+          "family": "BaseLocalDefencesAndDefencePercent",
+          "score": 0.6666666666666666,
+          "sampleStatLine": "방어도 +(7—11) 방어도 (6—13) % 증가",
+          "itemClasses": [
+            "Body_Armours"
+          ],
+          "rows": 36
+        },
+        {
+          "family": "BaseLocalDefences",
+          "score": 0.6,
+          "sampleStatLine": "방어도 +(16—27)",
+          "itemClasses": [
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Shields"
+          ],
+          "rows": 206
+        },
+        {
+          "family": "BaseLocalDefencesAndLife",
+          "score": 0.5714285714285714,
+          "sampleStatLine": "방어도 (6—13) % 증가 생명력 최대치 +(7—10)",
+          "itemClasses": [
+            "Body_Armours",
+            "Gloves",
+            "Helmets"
+          ],
+          "rows": 108
+        },
+        {
+          "family": "DefencesPercentAndStunThreshold",
+          "score": 0.5714285714285714,
+          "sampleStatLine": "방어도 (6—13) % 증가 기절 한계치 +(8—13)",
+          "itemClasses": [
+            "Boots",
+            "Bucklers",
+            "Shields"
+          ],
+          "rows": 60
+        },
+        {
+          "family": "BaseLocalDefencesAndMana",
+          "score": 0.5714285714285714,
+          "sampleStatLine": "방어도 (6—13) % 증가 마나 최대치 +(6—8)",
+          "itemClasses": [
+            "Foci",
+            "Helmets"
+          ],
+          "rows": 42
+        },
+        {
+          "family": "IncreasedEnergyShield",
+          "score": 0.5,
+          "sampleStatLine": "에너지 보호막 최대치 +(8—14)",
+          "itemClasses": [
+            "Amulets"
+          ],
+          "rows": 10
+        },
+        {
+          "family": "IncreasedSpellDamageOnFullEnergyShield",
+          "score": 0.5,
+          "sampleStatLine": "에너지 보호막 이 최대일 때 주문 피해 (15—25) % 증가",
+          "itemClasses": [
+            "Amulets",
+            "Rings"
+          ],
+          "rows": 2
+        }
+      ]
+    },
+    {
+      "modKey": "prefix_inc_evasion_es_max_life",
+      "modType": "prefix",
+      "templateKo": "회피 및 에너지 보호막 #% 증가, 생명력 최대치 +#",
+      "candidates": [
+        {
+          "family": "BaseLocalDefencesAndLife",
+          "score": 0.8571428571428571,
+          "sampleStatLine": "방어도 (6—13) % 증가 생명력 최대치 +(7—10)",
+          "itemClasses": [
+            "Body_Armours",
+            "Gloves",
+            "Helmets"
+          ],
+          "rows": 108
+        },
+        {
+          "family": "BaseLocalDefencesAndDefencePercent",
+          "score": 0.8333333333333334,
+          "sampleStatLine": "방어도 +(7—11) 방어도 (6—13) % 증가",
+          "itemClasses": [
+            "Body_Armours"
+          ],
+          "rows": 36
+        },
+        {
+          "family": "BaseLocalDefencesAndMana",
+          "score": 0.7142857142857143,
+          "sampleStatLine": "방어도 (6—13) % 증가 마나 최대치 +(6—8)",
+          "itemClasses": [
+            "Foci",
+            "Helmets"
+          ],
+          "rows": 42
+        },
+        {
+          "family": "DefencesPercent",
+          "score": 0.6666666666666666,
+          "sampleStatLine": "방어도 (15—26) % 증가",
+          "itemClasses": [
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Shields"
+          ],
+          "rows": 735
+        },
+        {
+          "family": "BaseLocalDefences",
+          "score": 0.6666666666666666,
+          "sampleStatLine": "방어도 +(16—27)",
+          "itemClasses": [
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Shields"
+          ],
+          "rows": 206
+        },
+        {
+          "family": "DefencesPercentAndStunThreshold",
+          "score": 0.5714285714285714,
+          "sampleStatLine": "방어도 (6—13) % 증가 기절 한계치 +(8—13)",
+          "itemClasses": [
+            "Boots",
+            "Bucklers",
+            "Shields"
+          ],
+          "rows": 60
+        },
+        {
+          "family": "IncreasedEnergyShield",
+          "score": 0.5,
+          "sampleStatLine": "에너지 보호막 최대치 +(8—14)",
+          "itemClasses": [
+            "Amulets"
+          ],
+          "rows": 10
+        },
+        {
+          "family": "IncreasedSpellDamageOnFullEnergyShield",
+          "score": 0.5,
+          "sampleStatLine": "에너지 보호막 이 최대일 때 주문 피해 (15—25) % 증가",
+          "itemClasses": [
+            "Amulets",
+            "Rings"
+          ],
+          "rows": 2
+        }
+      ]
+    },
+    {
+      "modKey": "prefix_added_phys_damage_attack",
+      "modType": "prefix",
+      "templateKo": "공격 시 물리 피해 #~# 추가",
+      "candidates": [
+        {
+          "family": "PhysicalDamage",
+          "score": 0.5,
+          "sampleStatLine": "물리 피해 (1—2) ~ (4—5) 추가",
+          "itemClasses": [
+            "Bows",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "Gloves",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Quivers",
+            "Rings",
+            "Sceptres",
+            "Spears",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords"
+          ],
+          "rows": 246
+        },
+        {
+          "family": "LocalPhysicalDamagePercent",
+          "score": 0.5,
+          "sampleStatLine": "물리 피해 (40—49) % 증가",
+          "itemClasses": [
+            "Bows",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords"
+          ],
+          "rows": 114
+        },
+        {
+          "family": "LocalIncreasedPhysicalDamagePercentAndAccuracyRating",
+          "score": 0.5,
+          "sampleStatLine": "물리 피해 (15—19) % 증가 정확도 +(16—20)",
+          "itemClasses": [
+            "Bows",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords"
+          ],
+          "rows": 112
+        },
+        {
+          "family": "IncreasedWeaponElementalDamagePercent",
+          "score": 0.4,
+          "sampleStatLine": "공격 스킬의 원소 피해 (19—35) % 증가",
+          "itemClasses": [
+            "Bows",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords"
+          ],
+          "rows": 84
+        },
+        {
+          "family": "ColdDamage",
+          "score": 0.2727272727272727,
+          "sampleStatLine": "냉기 피해 (1—2) ~ (3—4) 추가",
+          "itemClasses": [
+            "Bows",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "Gloves",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Quivers",
+            "Rings",
+            "Sceptres",
+            "Spears",
+            "Staves",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords",
+            "Wands"
+          ],
+          "rows": 272
+        },
+        {
+          "family": "FireDamage",
+          "score": 0.2727272727272727,
+          "sampleStatLine": "화염 피해 (1—2) ~ (3—5) 추가",
+          "itemClasses": [
+            "Bows",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "Gloves",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Quivers",
+            "Rings",
+            "Sceptres",
+            "Spears",
+            "Staves",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords",
+            "Wands"
+          ],
+          "rows": 272
+        },
+        {
+          "family": "LightningDamage",
+          "score": 0.2727272727272727,
+          "sampleStatLine": "번개 피해 1 ~ (4—6) 추가",
+          "itemClasses": [
+            "Bows",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "Gloves",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Quivers",
+            "Rings",
+            "Sceptres",
+            "Spears",
+            "Staves",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords",
+            "Wands"
+          ],
+          "rows": 272
+        },
+        {
+          "family": "MartialWeaponGainedDamage",
+          "score": 0.25,
+          "sampleStatLine": "피해의 (15—20) %를 추가 물리 피해로 획득",
+          "itemClasses": [
+            "Bows",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords",
+            "Wands"
+          ],
+          "rows": 53
+        }
+      ]
+    },
+    {
+      "modKey": "prefix_added_fire_damage_attack",
+      "modType": "prefix",
+      "templateKo": "공격 시 화염 피해 #~# 추가",
+      "candidates": [
+        {
+          "family": "IncreasedWeaponElementalDamagePercent",
+          "score": 0.4,
+          "sampleStatLine": "공격 스킬의 원소 피해 (19—35) % 증가",
+          "itemClasses": [
+            "Bows",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords"
+          ],
+          "rows": 84
+        },
+        {
+          "family": "FireDamagePercentagePrefix",
+          "score": 0.4,
+          "sampleStatLine": "화염 피해 (86—99) % 증가 점화 강도 (14—23) % 증가",
+          "itemClasses": [
+            "Quarterstaves"
+          ],
+          "rows": 1
+        },
+        {
+          "family": "PhysicalDamage",
+          "score": 0.375,
+          "sampleStatLine": "물리 피해 (1—2) ~ (4—5) 추가",
+          "itemClasses": [
+            "Bows",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "Gloves",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Quivers",
+            "Rings",
+            "Sceptres",
+            "Spears",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords"
+          ],
+          "rows": 246
+        },
+        {
+          "family": "FireDamage",
+          "score": 0.36363636363636365,
+          "sampleStatLine": "화염 피해 (1—2) ~ (3—5) 추가",
+          "itemClasses": [
+            "Bows",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "Gloves",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Quivers",
+            "Rings",
+            "Sceptres",
+            "Spears",
+            "Staves",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords",
+            "Wands"
+          ],
+          "rows": 272
+        },
+        {
+          "family": "LocalPhysicalDamagePercent",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "물리 피해 (40—49) % 증가",
+          "itemClasses": [
+            "Bows",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords"
+          ],
+          "rows": 114
+        },
+        {
+          "family": "ColdDamage",
+          "score": 0.2727272727272727,
+          "sampleStatLine": "냉기 피해 (1—2) ~ (3—4) 추가",
+          "itemClasses": [
+            "Bows",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "Gloves",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Quivers",
+            "Rings",
+            "Sceptres",
+            "Spears",
+            "Staves",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords",
+            "Wands"
+          ],
+          "rows": 272
+        },
+        {
+          "family": "LightningDamage",
+          "score": 0.2727272727272727,
+          "sampleStatLine": "번개 피해 1 ~ (4—6) 추가",
+          "itemClasses": [
+            "Bows",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "Gloves",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Quivers",
+            "Rings",
+            "Sceptres",
+            "Spears",
+            "Staves",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords",
+            "Wands"
+          ],
+          "rows": 272
+        },
+        {
+          "family": "LocalIncreasedPhysicalDamagePercentAndAccuracyRating",
+          "score": 0.25,
+          "sampleStatLine": "물리 피해 (15—19) % 증가 정확도 +(16—20)",
+          "itemClasses": [
+            "Bows",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords"
+          ],
+          "rows": 112
+        }
+      ]
+    },
+    {
+      "modKey": "prefix_added_cold_damage_attack",
+      "modType": "prefix",
+      "templateKo": "공격 시 냉기 피해 #~# 추가",
+      "candidates": [
+        {
+          "family": "IncreasedWeaponElementalDamagePercent",
+          "score": 0.4,
+          "sampleStatLine": "공격 스킬의 원소 피해 (19—35) % 증가",
+          "itemClasses": [
+            "Bows",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords"
+          ],
+          "rows": 84
+        },
+        {
+          "family": "ColdDamagePercentagePrefix",
+          "score": 0.4,
+          "sampleStatLine": "냉기 피해 (86—99) % 증가 동결 축적 (14—23) % 증가",
+          "itemClasses": [
+            "Quarterstaves"
+          ],
+          "rows": 1
+        },
+        {
+          "family": "FreezeDamageIncrease",
+          "score": 0.4,
+          "sampleStatLine": "냉기 피해 (86—99) % 증가 동결 축적 (14—23) % 증가",
+          "itemClasses": [
+            "Quarterstaves"
+          ],
+          "rows": 1
+        },
+        {
+          "family": "PhysicalDamage",
+          "score": 0.375,
+          "sampleStatLine": "물리 피해 (1—2) ~ (4—5) 추가",
+          "itemClasses": [
+            "Bows",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "Gloves",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Quivers",
+            "Rings",
+            "Sceptres",
+            "Spears",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords"
+          ],
+          "rows": 246
+        },
+        {
+          "family": "ColdDamage",
+          "score": 0.36363636363636365,
+          "sampleStatLine": "냉기 피해 (1—2) ~ (3—4) 추가",
+          "itemClasses": [
+            "Bows",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "Gloves",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Quivers",
+            "Rings",
+            "Sceptres",
+            "Spears",
+            "Staves",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords",
+            "Wands"
+          ],
+          "rows": 272
+        },
+        {
+          "family": "LocalPhysicalDamagePercent",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "물리 피해 (40—49) % 증가",
+          "itemClasses": [
+            "Bows",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords"
+          ],
+          "rows": 114
+        },
+        {
+          "family": "FireDamage",
+          "score": 0.2727272727272727,
+          "sampleStatLine": "화염 피해 (1—2) ~ (3—5) 추가",
+          "itemClasses": [
+            "Bows",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "Gloves",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Quivers",
+            "Rings",
+            "Sceptres",
+            "Spears",
+            "Staves",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords",
+            "Wands"
+          ],
+          "rows": 272
+        },
+        {
+          "family": "LightningDamage",
+          "score": 0.2727272727272727,
+          "sampleStatLine": "번개 피해 1 ~ (4—6) 추가",
+          "itemClasses": [
+            "Bows",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "Gloves",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Quivers",
+            "Rings",
+            "Sceptres",
+            "Spears",
+            "Staves",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords",
+            "Wands"
+          ],
+          "rows": 272
+        }
+      ]
+    },
+    {
+      "modKey": "prefix_added_lightning_damage_attack",
+      "modType": "prefix",
+      "templateKo": "공격 시 번개 피해 #~# 추가",
+      "candidates": [
+        {
+          "family": "IncreasedWeaponElementalDamagePercent",
+          "score": 0.4,
+          "sampleStatLine": "공격 스킬의 원소 피해 (19—35) % 증가",
+          "itemClasses": [
+            "Bows",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords"
+          ],
+          "rows": 84
+        },
+        {
+          "family": "PhysicalDamage",
+          "score": 0.375,
+          "sampleStatLine": "물리 피해 (1—2) ~ (4—5) 추가",
+          "itemClasses": [
+            "Bows",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "Gloves",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Quivers",
+            "Rings",
+            "Sceptres",
+            "Spears",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords"
+          ],
+          "rows": 246
+        },
+        {
+          "family": "LightningDamage",
+          "score": 0.36363636363636365,
+          "sampleStatLine": "번개 피해 1 ~ (4—6) 추가",
+          "itemClasses": [
+            "Bows",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "Gloves",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Quivers",
+            "Rings",
+            "Sceptres",
+            "Spears",
+            "Staves",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords",
+            "Wands"
+          ],
+          "rows": 272
+        },
+        {
+          "family": "LocalPhysicalDamagePercent",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "물리 피해 (40—49) % 증가",
+          "itemClasses": [
+            "Bows",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords"
+          ],
+          "rows": 114
+        },
+        {
+          "family": "LightningDamagePercentagePrefix",
+          "score": 0.2857142857142857,
+          "sampleStatLine": "번개 피해 (86—99) % 증가 플레이어가 유발하는 감전 의 강도 (14—23) % 증가",
+          "itemClasses": [
+            "Quarterstaves"
+          ],
+          "rows": 1
+        },
+        {
+          "family": "ColdDamage",
+          "score": 0.2727272727272727,
+          "sampleStatLine": "냉기 피해 (1—2) ~ (3—4) 추가",
+          "itemClasses": [
+            "Bows",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "Gloves",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Quivers",
+            "Rings",
+            "Sceptres",
+            "Spears",
+            "Staves",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords",
+            "Wands"
+          ],
+          "rows": 272
+        },
+        {
+          "family": "FireDamage",
+          "score": 0.2727272727272727,
+          "sampleStatLine": "화염 피해 (1—2) ~ (3—5) 추가",
+          "itemClasses": [
+            "Bows",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "Gloves",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Quivers",
+            "Rings",
+            "Sceptres",
+            "Spears",
+            "Staves",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords",
+            "Wands"
+          ],
+          "rows": 272
+        },
+        {
+          "family": "LocalIncreasedPhysicalDamagePercentAndAccuracyRating",
+          "score": 0.25,
+          "sampleStatLine": "물리 피해 (15—19) % 증가 정확도 +(16—20)",
+          "itemClasses": [
+            "Bows",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords"
+          ],
+          "rows": 112
+        }
+      ]
+    },
+    {
+      "modKey": "prefix_accuracy",
+      "modType": "prefix",
+      "templateKo": "정확도 +#",
+      "candidates": [
+        {
+          "family": "IncreasedAccuracy",
+          "score": 1,
+          "sampleStatLine": "정확도 +(11—32)",
+          "itemClasses": [
+            "Amulets",
+            "Bows",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "Gloves",
+            "Helmets",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Quivers",
+            "Rings",
+            "Spears",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords"
+          ],
+          "rows": 327
+        },
+        {
+          "family": "LocalIncreasedPhysicalDamagePercentAndAccuracyRating",
+          "score": 0.25,
+          "sampleStatLine": "물리 피해 (15—19) % 증가 정확도 +(16—20)",
+          "itemClasses": [
+            "Bows",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords"
+          ],
+          "rows": 112
+        },
+        {
+          "family": "IncreasedAccuracyPercent",
+          "score": 0.1111111111111111,
+          "sampleStatLine": "일반 정확도 (5—10) % 증가",
+          "itemClasses": [],
+          "rows": 2
+        },
+        {
+          "family": "SpecificWeaponAccuracy",
+          "score": 0.1111111111111111,
+          "sampleStatLine": "활 사용 시 정확도 (5—15) % 증가",
+          "itemClasses": [],
+          "rows": 2
+        }
+      ]
+    },
+    {
+      "modKey": "suffix_strength",
+      "modType": "suffix",
+      "templateKo": "힘 +#",
+      "candidates": []
+    },
+    {
+      "modKey": "suffix_dexterity",
+      "modType": "suffix",
+      "templateKo": "민첩 +#",
+      "candidates": [
+        {
+          "family": "Dexterity",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "힘 , 민첩 또는 지능 +(9—12)",
+          "itemClasses": [
+            "Amulets",
+            "Belts",
+            "Body_Armours",
+            "Boots",
+            "Bows",
+            "Bucklers",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Quivers",
+            "Rings",
+            "Sceptres",
+            "Shields",
+            "Spears",
+            "Staves",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords",
+            "Wands"
+          ],
+          "rows": 147
+        },
+        {
+          "family": "Intelligence",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "힘 , 민첩 또는 지능 +(9—12)",
+          "itemClasses": [
+            "Amulets",
+            "Belts",
+            "Body_Armours",
+            "Boots",
+            "Bows",
+            "Bucklers",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Quivers",
+            "Rings",
+            "Sceptres",
+            "Shields",
+            "Spears",
+            "Staves",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords",
+            "Wands"
+          ],
+          "rows": 147
+        },
+        {
+          "family": "Strength",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "힘 , 민첩 또는 지능 +(9—12)",
+          "itemClasses": [
+            "Amulets",
+            "Belts",
+            "Body_Armours",
+            "Boots",
+            "Bows",
+            "Bucklers",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Quivers",
+            "Rings",
+            "Sceptres",
+            "Shields",
+            "Spears",
+            "Staves",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords",
+            "Wands"
+          ],
+          "rows": 147
+        },
+        {
+          "family": "PercentageDexterity",
+          "score": 0.25,
+          "sampleStatLine": "힘 , 민첩 또는 지능 (7—10) % 증가",
+          "itemClasses": [
+            "Amulets"
+          ],
+          "rows": 1
+        },
+        {
+          "family": "PercentageIntelligence",
+          "score": 0.25,
+          "sampleStatLine": "힘 , 민첩 또는 지능 (7—10) % 증가",
+          "itemClasses": [
+            "Amulets"
+          ],
+          "rows": 1
+        },
+        {
+          "family": "PercentageStrength",
+          "score": 0.25,
+          "sampleStatLine": "힘 , 민첩 또는 지능 (7—10) % 증가",
+          "itemClasses": [
+            "Amulets"
+          ],
+          "rows": 1
+        }
+      ]
+    },
+    {
+      "modKey": "suffix_melee_skill_levels",
+      "modType": "suffix",
+      "templateKo": "모든 근접 스킬 레벨 +#",
+      "candidates": [
+        {
+          "family": "IncreaseSocketedGemLevel",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "모든 공격 스킬 레벨 +3",
+          "itemClasses": [
+            "Bows",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "Helmets",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears",
+            "Staves",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords",
+            "Wands"
+          ],
+          "rows": 21
+        }
+      ]
+    },
+    {
+      "modKey": "suffix_life_leech_from_phys",
+      "modType": "suffix",
+      "templateKo": "물리 공격 피해의 #%를 생명력으로 흡수",
+      "candidates": [
+        {
+          "family": "ColdDamageTakenRecoupedAsLife",
+          "score": 0.4,
+          "sampleStatLine": "냉기 피해의 (26—30) %를 생명력으로 회생",
+          "itemClasses": [
+            "Helmets"
+          ],
+          "rows": 6
+        },
+        {
+          "family": "LightningDamageTakenRecoupedAsLife",
+          "score": 0.4,
+          "sampleStatLine": "받은 번개 피해의 (26—30) %를 생명력으로 회생",
+          "itemClasses": [
+            "Gloves"
+          ],
+          "rows": 6
+        },
+        {
+          "family": "DamageTakenGainedAsLife",
+          "score": 0.4,
+          "sampleStatLine": "받은 피해의 (19—21) %를 생명력으로 회생",
+          "itemClasses": [
+            "Amulets"
+          ],
+          "rows": 1
+        },
+        {
+          "family": "FireDamageTakenRecoupedAsLife",
+          "score": 0.4,
+          "sampleStatLine": "받은 화염 피해의 (26—30) %를 생명력으로 회생",
+          "itemClasses": [
+            "Belts"
+          ],
+          "rows": 1
+        },
+        {
+          "family": "IncreasedAttackSpeed",
+          "score": 0.16666666666666666,
+          "sampleStatLine": "공격 속도 (11—13) % 증가",
+          "itemClasses": [
+            "Bows",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords"
+          ],
+          "rows": 39
+        },
+        {
+          "family": "IncreaseSocketedGemLevel",
+          "score": 0.16666666666666666,
+          "sampleStatLine": "모든 공격 스킬 레벨 +3",
+          "itemClasses": [
+            "Bows",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "Helmets",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears",
+            "Staves",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords",
+            "Wands"
+          ],
+          "rows": 21
+        },
+        {
+          "family": "AbyssRadiusJewelMod",
+          "score": 0.058823529411764705,
+          "sampleStatLine": "반경 내 주요 패시브 스킬이 호신부 가 1초마다 충전 0.1 획득도 부여",
+          "itemClasses": [],
+          "rows": 18
+        }
+      ]
+    },
+    {
+      "modKey": "suffix_mana_leech_from_phys",
+      "modType": "suffix",
+      "templateKo": "물리 공격 피해의 #%를 마나로 흡수",
+      "candidates": [
+        {
+          "family": "ColdDamageTakenRecoupedAsLife",
+          "score": 0.2,
+          "sampleStatLine": "냉기 피해의 (26—30) %를 생명력으로 회생",
+          "itemClasses": [
+            "Helmets"
+          ],
+          "rows": 6
+        },
+        {
+          "family": "LightningDamageTakenRecoupedAsLife",
+          "score": 0.2,
+          "sampleStatLine": "받은 번개 피해의 (26—30) %를 생명력으로 회생",
+          "itemClasses": [
+            "Gloves"
+          ],
+          "rows": 6
+        },
+        {
+          "family": "DamageTakenGainedAsLife",
+          "score": 0.2,
+          "sampleStatLine": "받은 피해의 (19—21) %를 생명력으로 회생",
+          "itemClasses": [
+            "Amulets"
+          ],
+          "rows": 1
+        },
+        {
+          "family": "FireDamageTakenRecoupedAsLife",
+          "score": 0.2,
+          "sampleStatLine": "받은 화염 피해의 (26—30) %를 생명력으로 회생",
+          "itemClasses": [
+            "Belts"
+          ],
+          "rows": 1
+        },
+        {
+          "family": "IncreasedAttackSpeed",
+          "score": 0.16666666666666666,
+          "sampleStatLine": "공격 속도 (11—13) % 증가",
+          "itemClasses": [
+            "Bows",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords"
+          ],
+          "rows": 39
+        },
+        {
+          "family": "IncreaseSocketedGemLevel",
+          "score": 0.16666666666666666,
+          "sampleStatLine": "모든 공격 스킬 레벨 +3",
+          "itemClasses": [
+            "Bows",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "Helmets",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears",
+            "Staves",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords",
+            "Wands"
+          ],
+          "rows": 21
+        },
+        {
+          "family": "AbyssRadiusJewelMod",
+          "score": 0.058823529411764705,
+          "sampleStatLine": "반경 내 주요 패시브 스킬이 호신부 가 1초마다 충전 0.1 획득도 부여",
+          "itemClasses": [],
+          "rows": 18
+        }
+      ]
+    },
+    {
+      "modKey": "suffix_life_on_kill",
+      "modType": "suffix",
+      "templateKo": "처치한 적 하나당 생명력 # 획득",
+      "candidates": [
+        {
+          "family": "CorruptionIntertactions",
+          "score": 0.25,
+          "sampleStatLine": "타락 시 아이템이 인챈트 2개 획득",
+          "itemClasses": [
+            "Belts"
+          ],
+          "rows": 1
+        },
+        {
+          "family": "EssenceGoldDropped",
+          "score": 0.16666666666666666,
+          "sampleStatLine": "처치한 적이 떨어뜨리는 골드 수량 (10—15) % 증가",
+          "itemClasses": [
+            "Gloves"
+          ],
+          "rows": 6
+        },
+        {
+          "family": "Onslaught",
+          "score": 0.14285714285714285,
+          "sampleStatLine": "이 무기로 명중 시켜 처치 시 (20—25) %의 확률로 맹공 획득",
+          "itemClasses": [
+            "Bows",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords"
+          ],
+          "rows": 13
+        },
+        {
+          "family": "ItemFoundRarityIncrease",
+          "score": 0.1111111111111111,
+          "sampleStatLine": "발견하는 아이템 희귀도 (6—10) % 증가",
+          "itemClasses": [
+            "Amulets",
+            "Boots",
+            "Gloves",
+            "Helmets",
+            "Rings"
+          ],
+          "rows": 60
+        },
+        {
+          "family": "AbyssRadiusJewelMod",
+          "score": 0.029411764705882353,
+          "sampleStatLine": "반경 내 주요 패시브 스킬이 호신부 가 1초마다 충전 0.1 획득도 부여",
+          "itemClasses": [],
+          "rows": 18
+        }
+      ]
+    },
+    {
+      "modKey": "suffix_mana_on_kill",
+      "modType": "suffix",
+      "templateKo": "처치한 적 하나당 마나 # 획득",
+      "candidates": [
+        {
+          "family": "ManaCostEfficiency",
+          "score": 0.25,
+          "sampleStatLine": "마나 소모 효율 (18—20) % 증가",
+          "itemClasses": [
+            "Foci",
+            "Staves",
+            "Wands"
+          ],
+          "rows": 3
+        },
+        {
+          "family": "CorruptionIntertactions",
+          "score": 0.25,
+          "sampleStatLine": "타락 시 아이템이 인챈트 2개 획득",
+          "itemClasses": [
+            "Belts"
+          ],
+          "rows": 1
+        },
+        {
+          "family": "ManaRegeneration",
+          "score": 0.25,
+          "sampleStatLine": "마나 재생 속도 (50—59) % 증가",
+          "itemClasses": [
+            "Rings"
+          ],
+          "rows": 1
+        },
+        {
+          "family": "EssenceGoldDropped",
+          "score": 0.16666666666666666,
+          "sampleStatLine": "처치한 적이 떨어뜨리는 골드 수량 (10—15) % 증가",
+          "itemClasses": [
+            "Gloves"
+          ],
+          "rows": 6
+        },
+        {
+          "family": "Onslaught",
+          "score": 0.14285714285714285,
+          "sampleStatLine": "이 무기로 명중 시켜 처치 시 (20—25) %의 확률로 맹공 획득",
+          "itemClasses": [
+            "Bows",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords"
+          ],
+          "rows": 13
+        },
+        {
+          "family": "ItemFoundRarityIncrease",
+          "score": 0.1111111111111111,
+          "sampleStatLine": "발견하는 아이템 희귀도 (6—10) % 증가",
+          "itemClasses": [
+            "Amulets",
+            "Boots",
+            "Gloves",
+            "Helmets",
+            "Rings"
+          ],
+          "rows": 60
+        },
+        {
+          "family": "AbyssRadiusJewelMod",
+          "score": 0.029411764705882353,
+          "sampleStatLine": "반경 내 주요 패시브 스킬이 호신부 가 1초마다 충전 0.1 획득도 부여",
+          "itemClasses": [],
+          "rows": 18
+        }
+      ]
+    },
+    {
+      "modKey": "suffix_life_on_hit",
+      "modType": "suffix",
+      "templateKo": "명중하는 적 하나당 생명력 # 획득",
+      "candidates": [
+        {
+          "family": "CorruptionIntertactions",
+          "score": 0.25,
+          "sampleStatLine": "타락 시 아이템이 인챈트 2개 획득",
+          "itemClasses": [
+            "Belts"
+          ],
+          "rows": 1
+        },
+        {
+          "family": "Onslaught",
+          "score": 0.14285714285714285,
+          "sampleStatLine": "이 무기로 명중 시켜 처치 시 (20—25) %의 확률로 맹공 획득",
+          "itemClasses": [
+            "Bows",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords"
+          ],
+          "rows": 13
+        },
+        {
+          "family": "AbyssRadiusJewelMod",
+          "score": 0.029411764705882353,
+          "sampleStatLine": "반경 내 주요 패시브 스킬이 호신부 가 1초마다 충전 0.1 획득도 부여",
+          "itemClasses": [],
+          "rows": 18
+        }
+      ]
+    },
+    {
+      "modKey": "suffix_attack_speed",
+      "modType": "suffix",
+      "templateKo": "공격 속도 #% 증가",
+      "candidates": [
+        {
+          "family": "IncreasedAttackSpeed",
+          "score": 0.5,
+          "sampleStatLine": "공격 속도 (11—13) % 증가",
+          "itemClasses": [
+            "Bows",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords"
+          ],
+          "rows": 39
+        },
+        {
+          "family": "ManaRegeneration",
+          "score": 0.5,
+          "sampleStatLine": "마나 재생 속도 (50—59) % 증가",
+          "itemClasses": [
+            "Rings"
+          ],
+          "rows": 1
+        },
+        {
+          "family": "IncreasedCastSpeed",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "시전 속도 (13—16) % 증가",
+          "itemClasses": [
+            "Foci",
+            "Staves",
+            "Wands"
+          ],
+          "rows": 9
+        },
+        {
+          "family": "SoulCore",
+          "score": 0.25,
+          "sampleStatLine": "장착된 아이템의 효과 60 % 증가",
+          "itemClasses": [
+            "Boots",
+            "Gloves"
+          ],
+          "rows": 12
+        },
+        {
+          "family": "ManaCostEfficiency",
+          "score": 0.25,
+          "sampleStatLine": "마나 소모 효율 (18—20) % 증가",
+          "itemClasses": [
+            "Foci",
+            "Staves",
+            "Wands"
+          ],
+          "rows": 3
+        },
+        {
+          "family": "AuraEffect",
+          "score": 0.25,
+          "sampleStatLine": "오라 스킬의 강도 (15—20) % 증가",
+          "itemClasses": [
+            "Sceptres"
+          ],
+          "rows": 1
+        },
+        {
+          "family": "PercentageDexterity",
+          "score": 0.25,
+          "sampleStatLine": "힘 , 민첩 또는 지능 (7—10) % 증가",
+          "itemClasses": [
+            "Amulets"
+          ],
+          "rows": 1
+        },
+        {
+          "family": "PercentageIntelligence",
+          "score": 0.25,
+          "sampleStatLine": "힘 , 민첩 또는 지능 (7—10) % 증가",
+          "itemClasses": [
+            "Amulets"
+          ],
+          "rows": 1
+        }
+      ]
+    },
+    {
+      "modKey": "suffix_crit_damage_bonus",
+      "modType": "suffix",
+      "templateKo": "치명타 피해 보너스 #% 증가",
+      "candidates": [
+        {
+          "family": "CriticalStrikeMultiplier",
+          "score": 0.5714285714285714,
+          "sampleStatLine": "치명타 피해 보너스 (25—29) % 증가",
+          "itemClasses": [
+            "Gloves"
+          ],
+          "rows": 6
+        },
+        {
+          "family": "ReducedCriticalStrikeDamageTaken",
+          "score": 0.42857142857142855,
+          "sampleStatLine": "플레이어에 대한 명중의 치명타 피해 보너스 (40—50) % 감소",
+          "itemClasses": [
+            "Body_Armours"
+          ],
+          "rows": 6
+        },
+        {
+          "family": "SpellCriticalStrikeChanceIncrease",
+          "score": 0.4,
+          "sampleStatLine": "주문 치명타 명중 확률 (34—39) % 증가",
+          "itemClasses": [
+            "Foci",
+            "Staves",
+            "Wands"
+          ],
+          "rows": 9
+        },
+        {
+          "family": "CriticalStrikeChanceIncrease",
+          "score": 0.25,
+          "sampleStatLine": "치명타 확률 +(1.51—2.1) %",
+          "itemClasses": [
+            "Bows",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords"
+          ],
+          "rows": 39
+        },
+        {
+          "family": "SoulCore",
+          "score": 0.25,
+          "sampleStatLine": "장착된 아이템의 효과 60 % 증가",
+          "itemClasses": [
+            "Boots",
+            "Gloves"
+          ],
+          "rows": 12
+        },
+        {
+          "family": "ManaCostEfficiency",
+          "score": 0.25,
+          "sampleStatLine": "마나 소모 효율 (18—20) % 증가",
+          "itemClasses": [
+            "Foci",
+            "Staves",
+            "Wands"
+          ],
+          "rows": 3
+        },
+        {
+          "family": "AuraEffect",
+          "score": 0.25,
+          "sampleStatLine": "오라 스킬의 강도 (15—20) % 증가",
+          "itemClasses": [
+            "Sceptres"
+          ],
+          "rows": 1
+        },
+        {
+          "family": "ManaRegeneration",
+          "score": 0.25,
+          "sampleStatLine": "마나 재생 속도 (50—59) % 증가",
+          "itemClasses": [
+            "Rings"
+          ],
+          "rows": 1
+        }
+      ]
+    },
+    {
+      "modKey": "suffix_item_rarity",
+      "modType": "suffix",
+      "templateKo": "발견하는 아이템 희귀도 #% 증가",
+      "candidates": [
+        {
+          "family": "ItemFoundRarityIncrease",
+          "score": 0.4444444444444444,
+          "sampleStatLine": "발견하는 아이템 희귀도 (6—10) % 증가",
+          "itemClasses": [
+            "Amulets",
+            "Boots",
+            "Gloves",
+            "Helmets",
+            "Rings"
+          ],
+          "rows": 60
+        },
+        {
+          "family": "SoulCore",
+          "score": 0.25,
+          "sampleStatLine": "장착된 아이템의 효과 60 % 증가",
+          "itemClasses": [
+            "Boots",
+            "Gloves"
+          ],
+          "rows": 12
+        },
+        {
+          "family": "ManaCostEfficiency",
+          "score": 0.25,
+          "sampleStatLine": "마나 소모 효율 (18—20) % 증가",
+          "itemClasses": [
+            "Foci",
+            "Staves",
+            "Wands"
+          ],
+          "rows": 3
+        },
+        {
+          "family": "AuraEffect",
+          "score": 0.25,
+          "sampleStatLine": "오라 스킬의 강도 (15—20) % 증가",
+          "itemClasses": [
+            "Sceptres"
+          ],
+          "rows": 1
+        },
+        {
+          "family": "ManaRegeneration",
+          "score": 0.25,
+          "sampleStatLine": "마나 재생 속도 (50—59) % 증가",
+          "itemClasses": [
+            "Rings"
+          ],
+          "rows": 1
+        },
+        {
+          "family": "PercentageDexterity",
+          "score": 0.25,
+          "sampleStatLine": "힘 , 민첩 또는 지능 (7—10) % 증가",
+          "itemClasses": [
+            "Amulets"
+          ],
+          "rows": 1
+        },
+        {
+          "family": "PercentageIntelligence",
+          "score": 0.25,
+          "sampleStatLine": "힘 , 민첩 또는 지능 (7—10) % 증가",
+          "itemClasses": [
+            "Amulets"
+          ],
+          "rows": 1
+        },
+        {
+          "family": "PercentageStrength",
+          "score": 0.25,
+          "sampleStatLine": "힘 , 민첩 또는 지능 (7—10) % 증가",
+          "itemClasses": [
+            "Amulets"
+          ],
+          "rows": 1
+        }
+      ]
+    },
+    {
+      "modKey": "suffix_armour_to_elemental",
+      "modType": "suffix",
+      "templateKo": "방어도의 #%가 원소 피해에도 적용",
+      "candidates": []
+    },
+    {
+      "modKey": "suffix_fortify_from_evasion",
+      "modType": "suffix",
+      "templateKo": "회피의 #%와 동일한 뒤거내기 평점 획득",
+      "candidates": [
+        {
+          "family": "CorruptionIntertactions",
+          "score": 0.2,
+          "sampleStatLine": "타락 시 아이템이 인챈트 2개 획득",
+          "itemClasses": [
+            "Belts"
+          ],
+          "rows": 1
+        },
+        {
+          "family": "Onslaught",
+          "score": 0.14285714285714285,
+          "sampleStatLine": "이 무기로 명중 시켜 처치 시 (20—25) %의 확률로 맹공 획득",
+          "itemClasses": [
+            "Bows",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords"
+          ],
+          "rows": 13
+        }
+      ]
+    },
+    {
+      "modKey": "corrupted_fire_chaos_res",
+      "modType": "corruptedSuffix",
+      "templateKo": "화염 및 카오스 저항 +(13–17)%",
+      "candidates": [
+        {
+          "family": "ChaosResistance",
+          "score": 0.6666666666666666,
+          "sampleStatLine": "카오스 저항 +(4—7) %",
+          "itemClasses": [
+            "Amulets",
+            "Belts",
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Rings",
+            "Shields"
+          ],
+          "rows": 109
+        },
+        {
+          "family": "FireResistance",
+          "score": 0.6666666666666666,
+          "sampleStatLine": "화염 저항 +(11—15) %",
+          "itemClasses": [
+            "Amulets",
+            "Belts",
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Rings",
+            "Shields"
+          ],
+          "rows": 109
+        },
+        {
+          "family": "MaximumFireResist",
+          "score": 0.6666666666666666,
+          "sampleStatLine": "화염 저항 최대치 +(1—3) %",
+          "itemClasses": [
+            "Belts"
+          ],
+          "rows": 1
+        },
+        {
+          "family": "TacatisSoulCoreofAffliction",
+          "score": 0.5,
+          "sampleStatLine": "저주 를 건 적의 카오스 저항 -5 %",
+          "itemClasses": [
+            "Helmets"
+          ],
+          "rows": 6
+        },
+        {
+          "family": "ThaneMyrksRuneofSummer",
+          "score": 0.4,
+          "sampleStatLine": "화염 피해 23 ~ 34 추가",
+          "itemClasses": [
+            "Bows",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords"
+          ],
+          "rows": 28
+        },
+        {
+          "family": "FenumusRuneofDraining",
+          "score": 0.4,
+          "sampleStatLine": "위축 강도 20 % 증가",
+          "itemClasses": [
+            "Gloves"
+          ],
+          "rows": 12
+        },
+        {
+          "family": "ColdResistance",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "냉기 저항 +(11—15) %",
+          "itemClasses": [
+            "Amulets",
+            "Belts",
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Rings",
+            "Shields"
+          ],
+          "rows": 109
+        },
+        {
+          "family": "LightningResistance",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "번개 저항 +(11—15) %",
+          "itemClasses": [
+            "Amulets",
+            "Belts",
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Rings",
+            "Shields"
+          ],
+          "rows": 109
+        }
+      ]
+    },
+    {
+      "modKey": "corrupted_str_int",
+      "modType": "corruptedSuffix",
+      "templateKo": "힘 및 지능 +#",
+      "candidates": [
+        {
+          "family": "Dexterity",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "힘 , 민첩 또는 지능 +(9—12)",
+          "itemClasses": [
+            "Amulets",
+            "Belts",
+            "Body_Armours",
+            "Boots",
+            "Bows",
+            "Bucklers",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Quivers",
+            "Rings",
+            "Sceptres",
+            "Shields",
+            "Spears",
+            "Staves",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords",
+            "Wands"
+          ],
+          "rows": 156
+        },
+        {
+          "family": "Intelligence",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "힘 , 민첩 또는 지능 +(9—12)",
+          "itemClasses": [
+            "Amulets",
+            "Belts",
+            "Body_Armours",
+            "Boots",
+            "Bows",
+            "Bucklers",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Quivers",
+            "Rings",
+            "Sceptres",
+            "Shields",
+            "Spears",
+            "Staves",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords",
+            "Wands"
+          ],
+          "rows": 156
+        },
+        {
+          "family": "Strength",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "힘 , 민첩 또는 지능 +(9—12)",
+          "itemClasses": [
+            "Amulets",
+            "Belts",
+            "Body_Armours",
+            "Boots",
+            "Bows",
+            "Bucklers",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Quivers",
+            "Rings",
+            "Sceptres",
+            "Shields",
+            "Spears",
+            "Staves",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords",
+            "Wands"
+          ],
+          "rows": 156
+        },
+        {
+          "family": "SoulCoreofZantipi",
+          "score": 0.25,
+          "sampleStatLine": "요구사항의 20 %를 지능 으로 전환",
+          "itemClasses": [
+            "Body_Armours",
+            "Boots",
+            "Bows",
+            "Bucklers",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Shields",
+            "Spears",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords"
+          ],
+          "rows": 43
+        },
+        {
+          "family": "PercentageDexterity",
+          "score": 0.25,
+          "sampleStatLine": "힘 , 민첩 또는 지능 (7—10) % 증가",
+          "itemClasses": [
+            "Amulets"
+          ],
+          "rows": 1
+        },
+        {
+          "family": "PercentageIntelligence",
+          "score": 0.25,
+          "sampleStatLine": "힘 , 민첩 또는 지능 (7—10) % 증가",
+          "itemClasses": [
+            "Amulets"
+          ],
+          "rows": 1
+        },
+        {
+          "family": "PercentageStrength",
+          "score": 0.25,
+          "sampleStatLine": "힘 , 민첩 또는 지능 (7—10) % 증가",
+          "itemClasses": [
+            "Amulets"
+          ],
+          "rows": 1
+        },
+        {
+          "family": "ResolveRune",
+          "score": 0.09090909090909091,
+          "sampleStatLine": "지능 +6",
+          "itemClasses": [
+            "Body_Armours",
+            "Boots",
+            "Bows",
+            "Bucklers",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Sceptres",
+            "Shields",
+            "Spears",
+            "Staves",
+            "Talismans",
+            "Traps",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords",
+            "Wands"
+          ],
+          "rows": 279
+        }
+      ]
+    },
+    {
+      "modKey": "corrupted_str_dex",
+      "modType": "corruptedSuffix",
+      "templateKo": "힘 및 민첩 +#",
+      "candidates": [
+        {
+          "family": "Dexterity",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "힘 , 민첩 또는 지능 +(9—12)",
+          "itemClasses": [
+            "Amulets",
+            "Belts",
+            "Body_Armours",
+            "Boots",
+            "Bows",
+            "Bucklers",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Quivers",
+            "Rings",
+            "Sceptres",
+            "Shields",
+            "Spears",
+            "Staves",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords",
+            "Wands"
+          ],
+          "rows": 156
+        },
+        {
+          "family": "Intelligence",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "힘 , 민첩 또는 지능 +(9—12)",
+          "itemClasses": [
+            "Amulets",
+            "Belts",
+            "Body_Armours",
+            "Boots",
+            "Bows",
+            "Bucklers",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Quivers",
+            "Rings",
+            "Sceptres",
+            "Shields",
+            "Spears",
+            "Staves",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords",
+            "Wands"
+          ],
+          "rows": 156
+        },
+        {
+          "family": "Strength",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "힘 , 민첩 또는 지능 +(9—12)",
+          "itemClasses": [
+            "Amulets",
+            "Belts",
+            "Body_Armours",
+            "Boots",
+            "Bows",
+            "Bucklers",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Quivers",
+            "Rings",
+            "Sceptres",
+            "Shields",
+            "Spears",
+            "Staves",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords",
+            "Wands"
+          ],
+          "rows": 156
+        },
+        {
+          "family": "SoulCoreofCholotl",
+          "score": 0.25,
+          "sampleStatLine": "요구사항의 20 %를 민첩 으로 전환",
+          "itemClasses": [
+            "Body_Armours",
+            "Boots",
+            "Bows",
+            "Bucklers",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Shields",
+            "Spears",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords"
+          ],
+          "rows": 43
+        },
+        {
+          "family": "PercentageDexterity",
+          "score": 0.25,
+          "sampleStatLine": "힘 , 민첩 또는 지능 (7—10) % 증가",
+          "itemClasses": [
+            "Amulets"
+          ],
+          "rows": 1
+        },
+        {
+          "family": "PercentageIntelligence",
+          "score": 0.25,
+          "sampleStatLine": "힘 , 민첩 또는 지능 (7—10) % 증가",
+          "itemClasses": [
+            "Amulets"
+          ],
+          "rows": 1
+        },
+        {
+          "family": "PercentageStrength",
+          "score": 0.25,
+          "sampleStatLine": "힘 , 민첩 또는 지능 (7—10) % 증가",
+          "itemClasses": [
+            "Amulets"
+          ],
+          "rows": 1
+        },
+        {
+          "family": "AdeptRune",
+          "score": 0.1,
+          "sampleStatLine": "민첩 +6",
+          "itemClasses": [
+            "Body_Armours",
+            "Boots",
+            "Bows",
+            "Bucklers",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Sceptres",
+            "Shields",
+            "Spears",
+            "Staves",
+            "Talismans",
+            "Traps",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords",
+            "Wands"
+          ],
+          "rows": 279
+        }
+      ]
+    },
+    {
+      "modKey": "corrupted_spirit_retention",
+      "modType": "corruptedSuffix",
+      "templateKo": "스킬의 정신력 점유 효율 (6–12)% 증가",
+      "candidates": [
+        {
+          "family": "IdolofEeshta",
+          "score": 0.6666666666666666,
+          "sampleStatLine": "소모 효율 12 % 증가",
+          "itemClasses": [
+            "Helmets"
+          ],
+          "rows": 12
+        },
+        {
+          "family": "IdolofRalakesh",
+          "score": 0.5,
+          "sampleStatLine": "소환수 스킬의 점유 효율 8 % 증가",
+          "itemClasses": [
+            "Helmets"
+          ],
+          "rows": 12
+        },
+        {
+          "family": "IncreasedWeaponElementalDamagePercent",
+          "score": 0.4,
+          "sampleStatLine": "공격 스킬의 원소 피해 (19—35) % 증가",
+          "itemClasses": [
+            "Bows",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords"
+          ],
+          "rows": 96
+        },
+        {
+          "family": "LocalIncreasedSpiritPercent",
+          "score": 0.4,
+          "sampleStatLine": "정신력 (30—36) % 증가",
+          "itemClasses": [
+            "Sceptres"
+          ],
+          "rows": 9
+        },
+        {
+          "family": "LocalIncreasedSpiritAndMana",
+          "score": 0.4,
+          "sampleStatLine": "정신력 (10—14) % 증가 마나 최대치 +(17—20)",
+          "itemClasses": [
+            "Sceptres"
+          ],
+          "rows": 7
+        },
+        {
+          "family": "ManaCostEfficiency",
+          "score": 0.4,
+          "sampleStatLine": "마나 소모 효율 (18—20) % 증가",
+          "itemClasses": [
+            "Foci",
+            "Staves",
+            "Wands"
+          ],
+          "rows": 3
+        },
+        {
+          "family": "AuraEffect",
+          "score": 0.4,
+          "sampleStatLine": "오라 스킬의 강도 (15—20) % 증가",
+          "itemClasses": [
+            "Sceptres"
+          ],
+          "rows": 1
+        },
+        {
+          "family": "OfferingEffect",
+          "score": 0.4,
+          "sampleStatLine": "공물 스킬의 버프 효과 (12—20) % 증가",
+          "itemClasses": [
+            "Foci"
+          ],
+          "rows": 1
+        }
+      ]
+    },
+    {
+      "modKey": "corrupted_reduced_curse_effect",
+      "modType": "corruptedSuffix",
+      "templateKo": "플레이어에게 적용되는 저주 효과 (25–35)% 감소",
+      "candidates": [
+        {
+          "family": "CraiceannsRuneofWarding",
+          "score": 0.7142857142857143,
+          "sampleStatLine": "플레이어에게 적용되는 저주 효과 50 % 감소",
+          "itemClasses": [
+            "Body_Armours"
+          ],
+          "rows": 12
+        },
+        {
+          "family": "RuneofNobility",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "이 무기로 공격 시 10 %의 확률로 노출 유발",
+          "itemClasses": [
+            "Body_Armours",
+            "Boots",
+            "Bows",
+            "Bucklers",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Shields",
+            "Spears",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords"
+          ],
+          "rows": 86
+        },
+        {
+          "family": "IdolofEgrin",
+          "score": 0.2857142857142857,
+          "sampleStatLine": "저주 를 건 적이 받는 피해 6 % 증가",
+          "itemClasses": [
+            "Helmets"
+          ],
+          "rows": 12
+        },
+        {
+          "family": "LocalAttributeRequirements",
+          "score": 0.2,
+          "sampleStatLine": "능력치 요구사항 (10—20) % 감소",
+          "itemClasses": [
+            "Body_Armours",
+            "Boots",
+            "Bows",
+            "Bucklers",
+            "Claws",
+            "Crossbows",
+            "Flails",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Sceptres",
+            "Shields",
+            "Spears",
+            "Staves",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Wands"
+          ],
+          "rows": 44
+        },
+        {
+          "family": "SoulCore",
+          "score": 0.2,
+          "sampleStatLine": "장착된 아이템의 효과 60 % 증가",
+          "itemClasses": [
+            "Boots",
+            "Gloves"
+          ],
+          "rows": 12
+        },
+        {
+          "family": "CorruptedBlood",
+          "score": 0.2,
+          "sampleStatLine": "타락한 피 가 플레이어에게 유발될 수 없음",
+          "itemClasses": [],
+          "rows": 6
+        },
+        {
+          "family": "ReducedPhysicalDamageTaken",
+          "score": 0.2,
+          "sampleStatLine": "받는 물리 피해 (3—5) % 추가 감소",
+          "itemClasses": [
+            "Body_Armours"
+          ],
+          "rows": 6
+        },
+        {
+          "family": "SlowPotency",
+          "score": 0.2,
+          "sampleStatLine": "디버프 의 감속 효력 (20—30) % 감소",
+          "itemClasses": [
+            "Boots"
+          ],
+          "rows": 6
+        }
+      ]
+    },
+    {
+      "modKey": "corrupted_cold_chaos_res",
+      "modType": "corruptedSuffix",
+      "templateKo": "냉기 및 카오스 저항 +(13–17)%",
+      "candidates": [
+        {
+          "family": "ChaosResistance",
+          "score": 0.6666666666666666,
+          "sampleStatLine": "카오스 저항 +(4—7) %",
+          "itemClasses": [
+            "Amulets",
+            "Belts",
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Rings",
+            "Shields"
+          ],
+          "rows": 109
+        },
+        {
+          "family": "ColdResistance",
+          "score": 0.6666666666666666,
+          "sampleStatLine": "냉기 저항 +(11—15) %",
+          "itemClasses": [
+            "Amulets",
+            "Belts",
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Rings",
+            "Shields"
+          ],
+          "rows": 109
+        },
+        {
+          "family": "MaximumColdResist",
+          "score": 0.6666666666666666,
+          "sampleStatLine": "냉기 저항 최대치 +(1—3) %",
+          "itemClasses": [
+            "Helmets"
+          ],
+          "rows": 6
+        },
+        {
+          "family": "TacatisSoulCoreofAffliction",
+          "score": 0.5,
+          "sampleStatLine": "저주 를 건 적의 카오스 저항 -5 %",
+          "itemClasses": [
+            "Helmets"
+          ],
+          "rows": 6
+        },
+        {
+          "family": "LadyHestrasRuneofWinter",
+          "score": 0.4,
+          "sampleStatLine": "냉기 피해 19 ~ 28 추가",
+          "itemClasses": [
+            "Bows",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords"
+          ],
+          "rows": 28
+        },
+        {
+          "family": "FenumusRuneofDraining",
+          "score": 0.4,
+          "sampleStatLine": "위축 강도 20 % 증가",
+          "itemClasses": [
+            "Gloves"
+          ],
+          "rows": 12
+        },
+        {
+          "family": "FireResistance",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "화염 저항 +(11—15) %",
+          "itemClasses": [
+            "Amulets",
+            "Belts",
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Rings",
+            "Shields"
+          ],
+          "rows": 109
+        },
+        {
+          "family": "LightningResistance",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "번개 저항 +(11—15) %",
+          "itemClasses": [
+            "Amulets",
+            "Belts",
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Rings",
+            "Shields"
+          ],
+          "rows": 109
+        }
+      ]
+    },
+    {
+      "modKey": "corrupted_dex_int",
+      "modType": "corruptedSuffix",
+      "templateKo": "민첩 및 지능 +(9–15)",
+      "candidates": [
+        {
+          "family": "Dexterity",
+          "score": 0.6666666666666666,
+          "sampleStatLine": "힘 , 민첩 또는 지능 +(9—12)",
+          "itemClasses": [
+            "Amulets",
+            "Belts",
+            "Body_Armours",
+            "Boots",
+            "Bows",
+            "Bucklers",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Quivers",
+            "Rings",
+            "Sceptres",
+            "Shields",
+            "Spears",
+            "Staves",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords",
+            "Wands"
+          ],
+          "rows": 156
+        },
+        {
+          "family": "Intelligence",
+          "score": 0.6666666666666666,
+          "sampleStatLine": "힘 , 민첩 또는 지능 +(9—12)",
+          "itemClasses": [
+            "Amulets",
+            "Belts",
+            "Body_Armours",
+            "Boots",
+            "Bows",
+            "Bucklers",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Quivers",
+            "Rings",
+            "Sceptres",
+            "Shields",
+            "Spears",
+            "Staves",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords",
+            "Wands"
+          ],
+          "rows": 156
+        },
+        {
+          "family": "Strength",
+          "score": 0.6666666666666666,
+          "sampleStatLine": "힘 , 민첩 또는 지능 +(9—12)",
+          "itemClasses": [
+            "Amulets",
+            "Belts",
+            "Body_Armours",
+            "Boots",
+            "Bows",
+            "Bucklers",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Quivers",
+            "Rings",
+            "Sceptres",
+            "Shields",
+            "Spears",
+            "Staves",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords",
+            "Wands"
+          ],
+          "rows": 156
+        },
+        {
+          "family": "PercentageDexterity",
+          "score": 0.5,
+          "sampleStatLine": "힘 , 민첩 또는 지능 (7—10) % 증가",
+          "itemClasses": [
+            "Amulets"
+          ],
+          "rows": 1
+        },
+        {
+          "family": "PercentageIntelligence",
+          "score": 0.5,
+          "sampleStatLine": "힘 , 민첩 또는 지능 (7—10) % 증가",
+          "itemClasses": [
+            "Amulets"
+          ],
+          "rows": 1
+        },
+        {
+          "family": "PercentageStrength",
+          "score": 0.5,
+          "sampleStatLine": "힘 , 민첩 또는 지능 (7—10) % 증가",
+          "itemClasses": [
+            "Amulets"
+          ],
+          "rows": 1
+        },
+        {
+          "family": "SoulCoreofCholotl",
+          "score": 0.25,
+          "sampleStatLine": "요구사항의 20 %를 민첩 으로 전환",
+          "itemClasses": [
+            "Body_Armours",
+            "Boots",
+            "Bows",
+            "Bucklers",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Shields",
+            "Spears",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords"
+          ],
+          "rows": 43
+        },
+        {
+          "family": "SoulCoreofZantipi",
+          "score": 0.25,
+          "sampleStatLine": "요구사항의 20 %를 지능 으로 전환",
+          "itemClasses": [
+            "Body_Armours",
+            "Boots",
+            "Bows",
+            "Bucklers",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Shields",
+            "Spears",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords"
+          ],
+          "rows": 43
+        }
+      ]
+    },
+    {
+      "modKey": "corrupted_damage_as_mana_cost",
+      "modType": "corruptedSuffix",
+      "templateKo": "받는 피해의 (10–20)%를 생명력 대신 마나로 소모",
+      "candidates": [
+        {
+          "family": "TheGreatwolfsRuneofWillpower",
+          "score": 0.5,
+          "sampleStatLine": "받는 피해의 15 %를 생명력 대신 마나로 소모",
+          "itemClasses": [
+            "Body_Armours"
+          ],
+          "rows": 12
+        },
+        {
+          "family": "PercentDamageGoesToMana",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "받은 피해의 (10—20) %를 마나로 회생",
+          "itemClasses": [
+            "Body_Armours"
+          ],
+          "rows": 6
+        },
+        {
+          "family": "ManaLeech",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "물리 공격 피해의 2 %를 마나로 흡수",
+          "itemClasses": [
+            "Amulets"
+          ],
+          "rows": 1
+        },
+        {
+          "family": "MindRune",
+          "score": 0.3,
+          "sampleStatLine": "물리 공격 피해의 1.5 %를 마나로 흡수",
+          "itemClasses": [
+            "Body_Armours",
+            "Boots",
+            "Bows",
+            "Bucklers",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Shields",
+            "Spears",
+            "Staves",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords",
+            "Wands"
+          ],
+          "rows": 276
+        },
+        {
+          "family": "FlaskExtraLifeRegeneration",
+          "score": 0.2222222222222222,
+          "sampleStatLine": "아무 생명력 플라스크 나 효과를 받는 동안 생명력 재생 속도 (20—30) % 증가",
+          "itemClasses": [
+            "Belts"
+          ],
+          "rows": 1
+        },
+        {
+          "family": "TecrodsGaze",
+          "score": 0.18181818181818182,
+          "sampleStatLine": "생명력 소모 효율 25 % 증가",
+          "itemClasses": [
+            "Body_Armours",
+            "Boots",
+            "Gloves"
+          ],
+          "rows": 18
+        },
+        {
+          "family": "AbyssRadiusJewelMod",
+          "score": 0.17647058823529413,
+          "sampleStatLine": "반경 내 주요 패시브 스킬이 호신부 가 1초마다 충전 0.1 획득도 부여",
+          "itemClasses": [],
+          "rows": 36
+        },
+        {
+          "family": "IncreasedLife",
+          "score": 0.16666666666666666,
+          "sampleStatLine": "생명력 최대치 +(10—19)",
+          "itemClasses": [
+            "Amulets",
+            "Belts",
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Rings",
+            "Shields"
+          ],
+          "rows": 417
+        }
+      ]
+    },
+    {
+      "modKey": "corrupted_damage_to_mana_recoup",
+      "modType": "corruptedSuffix",
+      "templateKo": "받은 피해의 (10–20)%를 마나로 회생",
+      "candidates": [
+        {
+          "family": "PercentDamageGoesToMana",
+          "score": 1,
+          "sampleStatLine": "받은 피해의 (10—20) %를 마나로 회생",
+          "itemClasses": [
+            "Body_Armours"
+          ],
+          "rows": 6
+        },
+        {
+          "family": "DamageTakenGainedAsLife",
+          "score": 0.75,
+          "sampleStatLine": "받은 피해의 (19—21) %를 생명력으로 회생",
+          "itemClasses": [
+            "Amulets",
+            "Body_Armours"
+          ],
+          "rows": 7
+        },
+        {
+          "family": "LightningDamageTakenRecoupedAsLife",
+          "score": 0.6,
+          "sampleStatLine": "받은 번개 피해의 (26—30) %를 생명력으로 회생",
+          "itemClasses": [
+            "Gloves"
+          ],
+          "rows": 6
+        },
+        {
+          "family": "FireDamageTakenRecoupedAsLife",
+          "score": 0.6,
+          "sampleStatLine": "받은 화염 피해의 (26—30) %를 생명력으로 회생",
+          "itemClasses": [
+            "Belts"
+          ],
+          "rows": 1
+        },
+        {
+          "family": "ColdDamageTakenRecoupedAsLife",
+          "score": 0.5,
+          "sampleStatLine": "냉기 피해의 (26—30) %를 생명력으로 회생",
+          "itemClasses": [
+            "Helmets"
+          ],
+          "rows": 6
+        },
+        {
+          "family": "EstazuntisSoulCoreofConvalescence",
+          "score": 0.42857142857142855,
+          "sampleStatLine": "회생 효과의 속도 12 % 증가",
+          "itemClasses": [
+            "Boots",
+            "Helmets"
+          ],
+          "rows": 12
+        },
+        {
+          "family": "ManaLeech",
+          "score": 0.4,
+          "sampleStatLine": "물리 공격 피해의 2 %를 마나로 흡수",
+          "itemClasses": [
+            "Amulets"
+          ],
+          "rows": 1
+        },
+        {
+          "family": "MindRune",
+          "score": 0.2,
+          "sampleStatLine": "물리 공격 피해의 1.5 %를 마나로 흡수",
+          "itemClasses": [
+            "Body_Armours",
+            "Boots",
+            "Bows",
+            "Bucklers",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Shields",
+            "Spears",
+            "Staves",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords",
+            "Wands"
+          ],
+          "rows": 276
+        }
+      ]
+    },
+    {
+      "modKey": "corrupted_lightning_chaos_res",
+      "modType": "corruptedSuffix",
+      "templateKo": "번개 및 카오스 저항 +(13–17)%",
+      "candidates": [
+        {
+          "family": "ChaosResistance",
+          "score": 0.6666666666666666,
+          "sampleStatLine": "카오스 저항 +(4—7) %",
+          "itemClasses": [
+            "Amulets",
+            "Belts",
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Rings",
+            "Shields"
+          ],
+          "rows": 109
+        },
+        {
+          "family": "LightningResistance",
+          "score": 0.6666666666666666,
+          "sampleStatLine": "번개 저항 +(11—15) %",
+          "itemClasses": [
+            "Amulets",
+            "Belts",
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Rings",
+            "Shields"
+          ],
+          "rows": 109
+        },
+        {
+          "family": "MaximumLightningResistance",
+          "score": 0.6666666666666666,
+          "sampleStatLine": "번개 저항 최대치 +(1—3) %",
+          "itemClasses": [
+            "Boots"
+          ],
+          "rows": 6
+        },
+        {
+          "family": "TacatisSoulCoreofAffliction",
+          "score": 0.5,
+          "sampleStatLine": "저주 를 건 적의 카오스 저항 -5 %",
+          "itemClasses": [
+            "Helmets"
+          ],
+          "rows": 6
+        },
+        {
+          "family": "ThaneLeldsRuneofSpring",
+          "score": 0.4,
+          "sampleStatLine": "번개 피해 1 ~ 60 추가",
+          "itemClasses": [
+            "Bows",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords"
+          ],
+          "rows": 28
+        },
+        {
+          "family": "FenumusRuneofDraining",
+          "score": 0.4,
+          "sampleStatLine": "위축 강도 20 % 증가",
+          "itemClasses": [
+            "Gloves"
+          ],
+          "rows": 12
+        },
+        {
+          "family": "ColdResistance",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "냉기 저항 +(11—15) %",
+          "itemClasses": [
+            "Amulets",
+            "Belts",
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Rings",
+            "Shields"
+          ],
+          "rows": 109
+        },
+        {
+          "family": "FireResistance",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "화염 저항 +(11—15) %",
+          "itemClasses": [
+            "Amulets",
+            "Belts",
+            "Body_Armours",
+            "Boots",
+            "Bucklers",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "Rings",
+            "Shields"
+          ],
+          "rows": 109
+        }
+      ]
+    },
+    {
+      "modKey": "corrupted_reduced_crit_chance_vs_player",
+      "modType": "corruptedSuffix",
+      "templateKo": "플레이어에 대한 명중의 치명타 명중 확률 (17–25)% 감소",
+      "candidates": [
+        {
+          "family": "SoulCoreofTicaba",
+          "score": 0.7142857142857143,
+          "sampleStatLine": "치명타 피해 보너스 +5 %",
+          "itemClasses": [
+            "Body_Armours",
+            "Bows",
+            "Bucklers",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Shields",
+            "Spears",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords"
+          ],
+          "rows": 24
+        },
+        {
+          "family": "ReducedCriticalStrikeDamageTaken",
+          "score": 0.7142857142857143,
+          "sampleStatLine": "플레이어에 대한 명중의 치명타 피해 보너스 (40—50) % 감소",
+          "itemClasses": [
+            "Body_Armours"
+          ],
+          "rows": 6
+        },
+        {
+          "family": "SpellCriticalStrikeChanceIncrease",
+          "score": 0.42857142857142855,
+          "sampleStatLine": "주문 치명타 명중 확률 (20—30) % 증가",
+          "itemClasses": [
+            "Foci",
+            "Staves",
+            "Wands"
+          ],
+          "rows": 11
+        },
+        {
+          "family": "CriticalStrikeChanceIncrease",
+          "score": 0.2857142857142857,
+          "sampleStatLine": "치명타 확률 +(1.51—2.1) %",
+          "itemClasses": [
+            "Bows",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords"
+          ],
+          "rows": 39
+        },
+        {
+          "family": "CatIdol",
+          "score": 0.21428571428571427,
+          "sampleStatLine": "접근 해 있는 동료들 의 치명타 확률 14 % 증가",
+          "itemClasses": [
+            "Gloves",
+            "Sceptres"
+          ],
+          "rows": 14
+        },
+        {
+          "family": "WolfIdol",
+          "score": 0.21052631578947367,
+          "sampleStatLine": "접근해 있는 동료들의 치명타 피해 보너스 14 % 증가",
+          "itemClasses": [
+            "Gloves",
+            "Sceptres"
+          ],
+          "rows": 14
+        },
+        {
+          "family": "VisionRune",
+          "score": 0.1875,
+          "sampleStatLine": "정확도 +50",
+          "itemClasses": [
+            "Body_Armours",
+            "Boots",
+            "Bows",
+            "Bucklers",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Shields",
+            "Spears",
+            "Staves",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords",
+            "Wands"
+          ],
+          "rows": 276
+        },
+        {
+          "family": "UlamansGaze",
+          "score": 0.1875,
+          "sampleStatLine": "흘려보낸 적에 대한 치명타 명중 확률에 행운 적용",
+          "itemClasses": [
+            "Body_Armours",
+            "Gloves",
+            "Helmets"
+          ],
+          "rows": 18
+        }
+      ]
+    },
+    {
+      "modKey": "corrupted_stun_on_hit",
+      "modType": "corruptedSuffix",
+      "templateKo": "명중 시 (10–20)% 확률로 혼미",
+      "candidates": [
+        {
+          "family": "LocalChanceToBleed",
+          "score": 0.5,
+          "sampleStatLine": "명중 시 (10—15) %의 확률로 출혈 유발",
+          "itemClasses": [
+            "Flails",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces"
+          ],
+          "rows": 6
+        },
+        {
+          "family": "BlindingHit",
+          "score": 0.5,
+          "sampleStatLine": "명중 시 (5—10) %의 확률로 적 실명 유발",
+          "itemClasses": [
+            "Bows",
+            "Crossbows"
+          ],
+          "rows": 2
+        },
+        {
+          "family": "LocalMaimOnHit",
+          "score": 0.5,
+          "sampleStatLine": "명중 시 (10—15) %의 확률로 힘줄 절단",
+          "itemClasses": [
+            "Bows",
+            "Crossbows"
+          ],
+          "rows": 2
+        },
+        {
+          "family": "LocalChanceToPoisonOnHit",
+          "score": 0.4,
+          "sampleStatLine": "이 무기로 명중 시 (10—15) %의 확률로 중독 유발",
+          "itemClasses": [
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears"
+          ],
+          "rows": 3
+        },
+        {
+          "family": "RageOnHit",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "명중 시 격노 1 획득",
+          "itemClasses": [
+            "Flails",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces"
+          ],
+          "rows": 8
+        },
+        {
+          "family": "ChanceToPierce",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "(20—30) %의 확률로 적 관통",
+          "itemClasses": [
+            "Quivers"
+          ],
+          "rows": 1
+        },
+        {
+          "family": "SoulCoreofTacati",
+          "score": 0.2857142857142857,
+          "sampleStatLine": "이 무기로 명중 시 15 %의 확률로 중독 유발",
+          "itemClasses": [
+            "Body_Armours",
+            "Boots",
+            "Bows",
+            "Bucklers",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Shields",
+            "Spears",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords"
+          ],
+          "rows": 43
+        },
+        {
+          "family": "SoulCoreofOpiloti",
+          "score": 0.2857142857142857,
+          "sampleStatLine": "명중 시 15 %의 확률로 출혈 유발",
+          "itemClasses": [
+            "Bows",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "Helmets",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords"
+          ],
+          "rows": 20
+        }
+      ]
+    },
+    {
+      "modKey": "corrupted_instant_leech",
+      "modType": "corruptedSuffix",
+      "templateKo": "흡수의 (8–15)%가 즉시 적용",
+      "candidates": [
+        {
+          "family": "TopotantesSoulCoreofDampening",
+          "score": 0.25,
+          "sampleStatLine": "방어도 의 +40 %가 화염 피해에도 적용",
+          "itemClasses": [
+            "Gloves"
+          ],
+          "rows": 6
+        },
+        {
+          "family": "FlaskBuffWhileHealing",
+          "score": 0.25,
+          "sampleStatLine": "회복량 50 % 감소 즉시 회복",
+          "itemClasses": [],
+          "rows": 2
+        },
+        {
+          "family": "HayoxisSoulCoreofHeatproofing",
+          "score": 0.2,
+          "sampleStatLine": "방어도 의 +40 %가 냉기 피해 에도 적용",
+          "itemClasses": [
+            "Helmets"
+          ],
+          "rows": 6
+        },
+        {
+          "family": "ZalatlsSoulCoreofInsulation",
+          "score": 0.2,
+          "sampleStatLine": "방어도 의 +40 %가 번개 피해 에도 적용",
+          "itemClasses": [
+            "Boots"
+          ],
+          "rows": 6
+        },
+        {
+          "family": "FlaskRecoverySpeed",
+          "score": 0.16666666666666666,
+          "sampleStatLine": "회복 속도 (41—45) % 증가",
+          "itemClasses": [],
+          "rows": 23
+        },
+        {
+          "family": "IncisionChance",
+          "score": 0.09090909090909091,
+          "sampleStatLine": "공격 명중 시 (15—25) %의 확률로 절개 적용",
+          "itemClasses": [],
+          "rows": 2
+        },
+        {
+          "family": "UlamansGaze",
+          "score": 0.0625,
+          "sampleStatLine": "흘려보낸 적에 대한 치명타 명중 확률에 행운 적용",
+          "itemClasses": [
+            "Body_Armours",
+            "Gloves",
+            "Helmets"
+          ],
+          "rows": 18
+        },
+        {
+          "family": "JiquanisThesis",
+          "score": 0.05,
+          "sampleStatLine": "에너지 보호막 재충전 이 마나 총 2000 소모 후 시작 2초에 한 번씩만 발동",
+          "itemClasses": [
+            "Boots",
+            "Gloves",
+            "Helmets"
+          ],
+          "rows": 18
+        }
+      ]
+    },
+    {
+      "modKey": "corrupted_mana_cost_efficiency",
+      "modType": "corruptedSuffix",
+      "templateKo": "마나 소모 효율 (6–10)% 증가",
+      "candidates": [
+        {
+          "family": "ManaCostEfficiency",
+          "score": 1,
+          "sampleStatLine": "마나 소모 효율 (18—20) % 증가",
+          "itemClasses": [
+            "Foci",
+            "Staves",
+            "Wands"
+          ],
+          "rows": 3
+        },
+        {
+          "family": "FenumusRuneofSpinning",
+          "score": 0.5,
+          "sampleStatLine": "시전 속도 8 % 증가",
+          "itemClasses": [
+            "Gloves"
+          ],
+          "rows": 12
+        },
+        {
+          "family": "IdolofEeshta",
+          "score": 0.5,
+          "sampleStatLine": "소모 효율 12 % 증가",
+          "itemClasses": [
+            "Helmets"
+          ],
+          "rows": 12
+        },
+        {
+          "family": "ManaRegeneration",
+          "score": 0.5,
+          "sampleStatLine": "마나 재생 속도 (20—30) % 증가",
+          "itemClasses": [
+            "Helmets",
+            "Rings"
+          ],
+          "rows": 8
+        },
+        {
+          "family": "LocalIncreasedSpiritAndMana",
+          "score": 0.5,
+          "sampleStatLine": "정신력 (10—14) % 증가 마나 최대치 +(17—20)",
+          "itemClasses": [
+            "Sceptres"
+          ],
+          "rows": 7
+        },
+        {
+          "family": "TrapDamageAndMana",
+          "score": 0.5,
+          "sampleStatLine": "덫 피해 (15—19) % 증가 마나 최대치 +(17—20)",
+          "itemClasses": [
+            "Traps"
+          ],
+          "rows": 7
+        },
+        {
+          "family": "MaximumManaIncreasePercent",
+          "score": 0.5,
+          "sampleStatLine": "최대 마나 (3—4) % 증가",
+          "itemClasses": [
+            "Amulets",
+            "Rings"
+          ],
+          "rows": 4
+        },
+        {
+          "family": "SpellDamageAndMana",
+          "score": 0.4,
+          "sampleStatLine": "주문 피해 (15—19) % 증가 마나 최대치 +(17—20)",
+          "itemClasses": [
+            "Staves",
+            "Wands"
+          ],
+          "rows": 14
+        }
+      ]
+    },
+    {
+      "modKey": "corrupted_ailment_intensity",
+      "modType": "corruptedSuffix",
+      "templateKo": "플레이어가 유발하는 상태 이상의 강도 (10–20)% 증가",
+      "candidates": [
+        {
+          "family": "LightningDamagePercentagePrefix",
+          "score": 0.5714285714285714,
+          "sampleStatLine": "번개 피해 (86—99) % 증가 플레이어가 유발하는 감전 의 강도 (14—23) % 증가",
+          "itemClasses": [
+            "Quarterstaves"
+          ],
+          "rows": 1
+        },
+        {
+          "family": "SaqawalsRuneofErosion",
+          "score": 0.5555555555555556,
+          "sampleStatLine": "노출 효과 25 % 증가",
+          "itemClasses": [
+            "Helmets"
+          ],
+          "rows": 12
+        },
+        {
+          "family": "CourtesanMannansRuneofCruelty",
+          "score": 0.45454545454545453,
+          "sampleStatLine": "플레이어가 유발하는 피해를 주는 상태 이상 의 강도 20 % 증가",
+          "itemClasses": [
+            "Gloves"
+          ],
+          "rows": 12
+        },
+        {
+          "family": "ThaneGrannellsRuneofMastery",
+          "score": 0.45454545454545453,
+          "sampleStatLine": "플레이어가 유발하는 비-피해 상태 이상 의 강도 30 % 증가",
+          "itemClasses": [
+            "Gloves"
+          ],
+          "rows": 12
+        },
+        {
+          "family": "BleedingDamage",
+          "score": 0.36363636363636365,
+          "sampleStatLine": "플레이어가 유발하는 출혈 의 강도 (27—38) % 증가",
+          "itemClasses": [
+            "Wands"
+          ],
+          "rows": 3
+        },
+        {
+          "family": "PoisonEffect",
+          "score": 0.36363636363636365,
+          "sampleStatLine": "플레이어가 유발하는 중독 의 강도 (5—15) % 증가",
+          "itemClasses": [],
+          "rows": 2
+        },
+        {
+          "family": "AilmentEffect",
+          "score": 0.35714285714285715,
+          "sampleStatLine": "플레이어가 유발하는 피해를 주는 상태 이상 의 강도 (40—64) % 증가",
+          "itemClasses": [
+            "Staves"
+          ],
+          "rows": 5
+        },
+        {
+          "family": "SoulCoreofPuhuarte",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "인화성 강도 30 % 증가",
+          "itemClasses": [
+            "Bows",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "Gloves",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords"
+          ],
+          "rows": 20
+        }
+      ]
+    },
+    {
+      "modKey": "corrupted_bleed_chance",
+      "modType": "corruptedSuffix",
+      "templateKo": "출혈 유발 확률 (20–30)% 증가",
+      "candidates": [
+        {
+          "family": "IncreasedShieldBlockPercentage",
+          "score": 0.5,
+          "sampleStatLine": "막기 확률 (15—19) % 증가",
+          "itemClasses": [
+            "Bucklers",
+            "Shields"
+          ],
+          "rows": 20
+        },
+        {
+          "family": "LocalChanceToBleed",
+          "score": 0.5,
+          "sampleStatLine": "명중 시 (10—15) %의 확률로 출혈 유발",
+          "itemClasses": [
+            "Flails",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces"
+          ],
+          "rows": 6
+        },
+        {
+          "family": "ShockChanceIncrease",
+          "score": 0.5,
+          "sampleStatLine": "감전 확률 (20—30) % 증가",
+          "itemClasses": [
+            "Staves",
+            "Wands"
+          ],
+          "rows": 2
+        },
+        {
+          "family": "SoulCoreofOpiloti",
+          "score": 0.42857142857142855,
+          "sampleStatLine": "명중 시 15 %의 확률로 출혈 유발",
+          "itemClasses": [
+            "Bows",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "Helmets",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords"
+          ],
+          "rows": 20
+        },
+        {
+          "family": "SpellCriticalStrikeChanceIncrease",
+          "score": 0.4,
+          "sampleStatLine": "주문 치명타 명중 확률 (20—30) % 증가",
+          "itemClasses": [
+            "Foci",
+            "Staves",
+            "Wands"
+          ],
+          "rows": 11
+        },
+        {
+          "family": "SoulCoreofXopec",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "감전 확률 30 % 증가",
+          "itemClasses": [
+            "Boots",
+            "Bows",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords"
+          ],
+          "rows": 20
+        },
+        {
+          "family": "LocalIncreasedPhysicalDamagePercentAndAccuracyRating",
+          "score": 0.25,
+          "sampleStatLine": "물리 피해 (15—19) % 증가 정확도 +(16—20)",
+          "itemClasses": [
+            "Bows",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords"
+          ],
+          "rows": 112
+        },
+        {
+          "family": "MovementVelocity",
+          "score": 0.25,
+          "sampleStatLine": "이동 속도 10 % 증가",
+          "itemClasses": [
+            "Boots"
+          ],
+          "rows": 48
+        }
+      ]
+    },
+    {
+      "modKey": "corrupted_poison_chance",
+      "modType": "corruptedSuffix",
+      "templateKo": "중독 확률 (20–30)% 증가",
+      "candidates": [
+        {
+          "family": "IncreasedShieldBlockPercentage",
+          "score": 0.6666666666666666,
+          "sampleStatLine": "막기 확률 (15—19) % 증가",
+          "itemClasses": [
+            "Bucklers",
+            "Shields"
+          ],
+          "rows": 20
+        },
+        {
+          "family": "ShockChanceIncrease",
+          "score": 0.6666666666666666,
+          "sampleStatLine": "감전 확률 (20—30) % 증가",
+          "itemClasses": [
+            "Staves",
+            "Wands"
+          ],
+          "rows": 2
+        },
+        {
+          "family": "UromotisSoulCoreofAttenuation",
+          "score": 0.5,
+          "sampleStatLine": "저주 지속시간 15 % 증가 중독 지속시간 15 % 증가",
+          "itemClasses": [
+            "Boots"
+          ],
+          "rows": 6
+        },
+        {
+          "family": "SpellCriticalStrikeChanceIncrease",
+          "score": 0.4,
+          "sampleStatLine": "주문 치명타 명중 확률 (20—30) % 증가",
+          "itemClasses": [
+            "Foci",
+            "Staves",
+            "Wands"
+          ],
+          "rows": 11
+        },
+        {
+          "family": "MovementVelocity",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "이동 속도 10 % 증가",
+          "itemClasses": [
+            "Boots"
+          ],
+          "rows": 48
+        },
+        {
+          "family": "CriticalStrikeChanceIncrease",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "치명타 확률 +(1.51—2.1) %",
+          "itemClasses": [
+            "Bows",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords"
+          ],
+          "rows": 39
+        },
+        {
+          "family": "SoulCoreofXopec",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "감전 확률 30 % 증가",
+          "itemClasses": [
+            "Boots",
+            "Bows",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords"
+          ],
+          "rows": 20
+        },
+        {
+          "family": "LocalIncreasedSpiritPercent",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "정신력 (30—36) % 증가",
+          "itemClasses": [
+            "Sceptres"
+          ],
+          "rows": 9
+        }
+      ]
+    },
+    {
+      "modKey": "corrupted_curse_effect_area",
+      "modType": "corruptedSuffix",
+      "templateKo": "저주의 효과 범위 (12–20)% 증가",
+      "candidates": [
+        {
+          "family": "IncreasedAttackAreaOfEffect",
+          "score": 0.75,
+          "sampleStatLine": "공격 효과 범위 (12—23) % 증가",
+          "itemClasses": [
+            "Bows",
+            "Spears"
+          ],
+          "rows": 2
+        },
+        {
+          "family": "SpellAreaOfEffect",
+          "score": 0.6,
+          "sampleStatLine": "주문 스킬의 효과 범위 (10—20) % 증가",
+          "itemClasses": [
+            "Foci"
+          ],
+          "rows": 1
+        },
+        {
+          "family": "SoulCore",
+          "score": 0.5,
+          "sampleStatLine": "장착된 아이템의 효과 60 % 증가",
+          "itemClasses": [
+            "Boots",
+            "Gloves"
+          ],
+          "rows": 12
+        },
+        {
+          "family": "BeltCharmDuration",
+          "score": 0.5,
+          "sampleStatLine": "호신부 효과 지속시간 (4—9) % 증가",
+          "itemClasses": [
+            "Belts"
+          ],
+          "rows": 5
+        },
+        {
+          "family": "RemnantEffect",
+          "score": 0.5,
+          "sampleStatLine": "잔류물 의 효과 (8—15) % 증가",
+          "itemClasses": [
+            "Amulets",
+            "Rings"
+          ],
+          "rows": 2
+        },
+        {
+          "family": "IdolofEgrin",
+          "score": 0.42857142857142855,
+          "sampleStatLine": "저주 를 건 적이 받는 피해 6 % 증가",
+          "itemClasses": [
+            "Helmets"
+          ],
+          "rows": 12
+        },
+        {
+          "family": "OfferingEffect",
+          "score": 0.4,
+          "sampleStatLine": "공물 스킬의 버프 효과 (12—20) % 증가",
+          "itemClasses": [
+            "Foci"
+          ],
+          "rows": 1
+        },
+        {
+          "family": "FoxIdol",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "접근 효과 범위 30 % 증가",
+          "itemClasses": [
+            "Body_Armours",
+            "Sceptres"
+          ],
+          "rows": 14
+        }
+      ]
+    },
+    {
+      "modKey": "corrupted_immobilize_buildup",
+      "modType": "corruptedSuffix",
+      "templateKo": "이동 불가 축적 (10–20)% 증가",
+      "candidates": [
+        {
+          "family": "MovementVelocity",
+          "score": 0.5,
+          "sampleStatLine": "이동 속도 10 % 증가",
+          "itemClasses": [
+            "Boots"
+          ],
+          "rows": 48
+        },
+        {
+          "family": "StunDamageIncrease",
+          "score": 0.5,
+          "sampleStatLine": "유발하는 기절 축적 (20—30) % 증가",
+          "itemClasses": [
+            "Flails",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces"
+          ],
+          "rows": 8
+        },
+        {
+          "family": "FreezeDamageIncrease",
+          "score": 0.4,
+          "sampleStatLine": "동결 축적 (20—30) % 증가",
+          "itemClasses": [
+            "Quarterstaves",
+            "Staves",
+            "Wands"
+          ],
+          "rows": 3
+        },
+        {
+          "family": "ColdDamagePercentagePrefix",
+          "score": 0.4,
+          "sampleStatLine": "냉기 피해 (86—99) % 증가 동결 축적 (14—23) % 증가",
+          "itemClasses": [
+            "Quarterstaves"
+          ],
+          "rows": 1
+        },
+        {
+          "family": "SoulCoreofTzamoto",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "동결 축적 30 % 증가",
+          "itemClasses": [
+            "Bows",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "Helmets",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords"
+          ],
+          "rows": 20
+        },
+        {
+          "family": "FarrulsRuneoftheChase",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "이동 속도 5 % 증가",
+          "itemClasses": [
+            "Boots"
+          ],
+          "rows": 12
+        },
+        {
+          "family": "LocalIncreasedPhysicalDamagePercentAndAccuracyRating",
+          "score": 0.25,
+          "sampleStatLine": "물리 피해 (15—19) % 증가 정확도 +(16—20)",
+          "itemClasses": [
+            "Bows",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords"
+          ],
+          "rows": 112
+        },
+        {
+          "family": "ItemFoundRarityIncreasePrefix",
+          "score": 0.25,
+          "sampleStatLine": "발견하는 아이템 희귀도 (8—11) % 증가",
+          "itemClasses": [
+            "Amulets",
+            "Helmets",
+            "Rings"
+          ],
+          "rows": 24
+        }
+      ]
+    },
+    {
+      "modKey": "corrupted_arcane_shadow_on_crit",
+      "modType": "corruptedSuffix",
+      "templateKo": "치명타 명중 시 (10–15)% 확률로 비전 쉐도 획득",
+      "candidates": [
+        {
+          "family": "Onslaught",
+          "score": 0.42857142857142855,
+          "sampleStatLine": "이 무기로 명중 시켜 처치 시 (20—25) %의 확률로 맹공 획득",
+          "itemClasses": [
+            "Bows",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords"
+          ],
+          "rows": 13
+        },
+        {
+          "family": "GuatelitzisSoulCoreofEndurance",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "인내 충전 획득 시 50 % 확률로 인내 충전 1개 추가 획득",
+          "itemClasses": [
+            "Bows",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears",
+            "Staves",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords",
+            "Wands"
+          ],
+          "rows": 17
+        },
+        {
+          "family": "OpilotisSoulCoreofAssault",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "격분 충전 획득 시 50 % 확률로 격분 충전 1개 추가 획득",
+          "itemClasses": [
+            "Bows",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears",
+            "Staves",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords",
+            "Wands"
+          ],
+          "rows": 17
+        },
+        {
+          "family": "XopecsSoulCoreofPower",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "권능 충전 획득 시 50 % 확률로 권능 충전 1개 추가 획득",
+          "itemClasses": [
+            "Bows",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears",
+            "Staves",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords",
+            "Wands"
+          ],
+          "rows": 17
+        },
+        {
+          "family": "SpellCriticalStrikeChanceIncrease",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "주문 치명타 명중 확률 (20—30) % 증가",
+          "itemClasses": [
+            "Foci",
+            "Staves",
+            "Wands"
+          ],
+          "rows": 11
+        },
+        {
+          "family": "RageOnHit",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "명중 시 격노 1 획득",
+          "itemClasses": [
+            "Flails",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces"
+          ],
+          "rows": 8
+        },
+        {
+          "family": "LocalChanceToBleed",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "명중 시 (10—15) %의 확률로 출혈 유발",
+          "itemClasses": [
+            "Flails",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces"
+          ],
+          "rows": 6
+        },
+        {
+          "family": "LocalChanceToPoisonOnHit",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "이 무기로 명중 시 (10—15) %의 확률로 중독 유발",
+          "itemClasses": [
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears"
+          ],
+          "rows": 3
+        }
+      ]
+    },
+    {
+      "modKey": "corrupted_cast_speed_at_full_life",
+      "modType": "corruptedSuffix",
+      "templateKo": "생명력이 최대일 때 시전 속도 (8–15)% 증가",
+      "candidates": [
+        {
+          "family": "IncreasedCastSpeed",
+          "score": 0.5,
+          "sampleStatLine": "시전 속도 (10—15) % 증가",
+          "itemClasses": [
+            "Foci",
+            "Sceptres",
+            "Staves",
+            "Wands"
+          ],
+          "rows": 12
+        },
+        {
+          "family": "MovementVelocity",
+          "score": 0.4,
+          "sampleStatLine": "이동 속도 10 % 증가",
+          "itemClasses": [
+            "Boots"
+          ],
+          "rows": 48
+        },
+        {
+          "family": "ManaRegeneration",
+          "score": 0.4,
+          "sampleStatLine": "마나 재생 속도 (20—30) % 증가",
+          "itemClasses": [
+            "Helmets",
+            "Rings"
+          ],
+          "rows": 8
+        },
+        {
+          "family": "LifeRegenerationRate",
+          "score": 0.4,
+          "sampleStatLine": "생명력 재생 속도 (15—25) % 증가",
+          "itemClasses": [
+            "Helmets",
+            "Rings"
+          ],
+          "rows": 7
+        },
+        {
+          "family": "IncreasedSpeed",
+          "score": 0.4,
+          "sampleStatLine": "스킬 속도 (4—6) % 증가",
+          "itemClasses": [
+            "Quivers",
+            "Rings"
+          ],
+          "rows": 2
+        },
+        {
+          "family": "CholotlsSoulCoreofWar",
+          "score": 0.4,
+          "sampleStatLine": "투사체 속도 20 % 증가",
+          "itemClasses": [
+            "Bows"
+          ],
+          "rows": 1
+        },
+        {
+          "family": "FenumusRuneofSpinning",
+          "score": 0.375,
+          "sampleStatLine": "시전 속도 8 % 증가",
+          "itemClasses": [
+            "Gloves"
+          ],
+          "rows": 12
+        },
+        {
+          "family": "LocalPhysicalDamagePercent",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "물리 피해 (40—49) % 증가",
+          "itemClasses": [
+            "Bows",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords"
+          ],
+          "rows": 126
+        }
+      ]
+    },
+    {
+      "modKey": "corrupted_skill_speed_consume_frenzy",
+      "modType": "corruptedSuffix",
+      "templateKo": "격분 충전 소모 시 스킬 속도 (8–12)% 증가",
+      "candidates": [
+        {
+          "family": "IncreasedSpeed",
+          "score": 0.5,
+          "sampleStatLine": "스킬 속도 (4—6) % 증가",
+          "itemClasses": [
+            "Quivers",
+            "Rings"
+          ],
+          "rows": 2
+        },
+        {
+          "family": "FenumusRuneofSpinning",
+          "score": 0.375,
+          "sampleStatLine": "시전 속도 8 % 증가",
+          "itemClasses": [
+            "Gloves"
+          ],
+          "rows": 12
+        },
+        {
+          "family": "QuipolatlsSoulCoreofFlow",
+          "score": 0.375,
+          "sampleStatLine": "스킬 효과 지속시간 8 % 증가 재사용 대기시간 회복 속도 8 % 증가",
+          "itemClasses": [
+            "Helmets"
+          ],
+          "rows": 6
+        },
+        {
+          "family": "LocalPhysicalDamagePercent",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "물리 피해 (40—49) % 증가",
+          "itemClasses": [
+            "Bows",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords"
+          ],
+          "rows": 126
+        },
+        {
+          "family": "IncreasedAttackSpeed",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "공격 속도 (6—8) % 증가",
+          "itemClasses": [
+            "Bows",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Sceptres",
+            "Spears",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords"
+          ],
+          "rows": 52
+        },
+        {
+          "family": "MovementVelocity",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "이동 속도 10 % 증가",
+          "itemClasses": [
+            "Boots"
+          ],
+          "rows": 48
+        },
+        {
+          "family": "FlaskRecoverySpeed",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "회복 속도 (41—45) % 증가",
+          "itemClasses": [],
+          "rows": 23
+        },
+        {
+          "family": "OpilotisSoulCoreofAssault",
+          "score": 0.3333333333333333,
+          "sampleStatLine": "격분 충전 획득 시 50 % 확률로 격분 충전 1개 추가 획득",
+          "itemClasses": [
+            "Bows",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears",
+            "Staves",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords",
+            "Wands"
+          ],
+          "rows": 17
+        }
+      ]
+    },
+    {
+      "modKey": "corrupted_lacerate_on_hit",
+      "modType": "corruptedSuffix",
+      "templateKo": "공격 명중 시 (15–25)%의 확률로 절개 적용",
+      "candidates": [
+        {
+          "family": "IncisionChance",
+          "score": 0.45454545454545453,
+          "sampleStatLine": "공격 명중 시 (15—25) %의 확률로 절개 적용",
+          "itemClasses": [],
+          "rows": 2
+        },
+        {
+          "family": "LocalChanceToBleed",
+          "score": 0.4,
+          "sampleStatLine": "명중 시 (10—15) %의 확률로 출혈 유발",
+          "itemClasses": [
+            "Flails",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces"
+          ],
+          "rows": 6
+        },
+        {
+          "family": "LocalChanceToPoisonOnHit",
+          "score": 0.4,
+          "sampleStatLine": "이 무기로 명중 시 (10—15) %의 확률로 중독 유발",
+          "itemClasses": [
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears"
+          ],
+          "rows": 3
+        },
+        {
+          "family": "BlindingHit",
+          "score": 0.4,
+          "sampleStatLine": "명중 시 (5—10) %의 확률로 적 실명 유발",
+          "itemClasses": [
+            "Bows",
+            "Crossbows"
+          ],
+          "rows": 2
+        },
+        {
+          "family": "LocalMaimOnHit",
+          "score": 0.4,
+          "sampleStatLine": "명중 시 (10—15) %의 확률로 힘줄 절단",
+          "itemClasses": [
+            "Bows",
+            "Crossbows"
+          ],
+          "rows": 2
+        },
+        {
+          "family": "SoulCoreofTacati",
+          "score": 0.2857142857142857,
+          "sampleStatLine": "이 무기로 명중 시 15 %의 확률로 중독 유발",
+          "itemClasses": [
+            "Body_Armours",
+            "Boots",
+            "Bows",
+            "Bucklers",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "Foci",
+            "Gloves",
+            "Helmets",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Shields",
+            "Spears",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords"
+          ],
+          "rows": 43
+        },
+        {
+          "family": "SoulCoreofOpiloti",
+          "score": 0.2857142857142857,
+          "sampleStatLine": "명중 시 15 %의 확률로 출혈 유발",
+          "itemClasses": [
+            "Bows",
+            "Claws",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "Helmets",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords"
+          ],
+          "rows": 20
+        },
+        {
+          "family": "Onslaught",
+          "score": 0.2857142857142857,
+          "sampleStatLine": "이 무기로 명중 시켜 처치 시 (20—25) %의 확률로 맹공 획득",
+          "itemClasses": [
+            "Bows",
+            "Crossbows",
+            "Daggers",
+            "Flails",
+            "One_Hand_Axes",
+            "One_Hand_Maces",
+            "One_Hand_Swords",
+            "Quarterstaves",
+            "Spears",
+            "Talismans",
+            "Two_Hand_Axes",
+            "Two_Hand_Maces",
+            "Two_Hand_Swords"
+          ],
+          "rows": 13
+        }
+      ]
+    }
+  ]
+}

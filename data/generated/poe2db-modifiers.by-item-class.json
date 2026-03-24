@@ -1,0 +1,2650 @@
+{
+  "count": 29,
+  "rows": [
+    {
+      "code": "Gloves",
+      "nameKo": "Gloves",
+      "rows": 1629,
+      "sections": [
+        {
+          "section": "normal",
+          "count": 489
+        },
+        {
+          "section": "socketable",
+          "count": 426
+        },
+        {
+          "section": "bonded",
+          "count": 324
+        },
+        {
+          "section": "essence",
+          "count": 324
+        },
+        {
+          "section": "corrupted",
+          "count": 54
+        },
+        {
+          "section": "perfect_essence",
+          "count": 12
+        }
+      ],
+      "topFamilies": [
+        {
+          "family": "DefencesPercent",
+          "count": 156
+        },
+        {
+          "family": "IncreasedLife",
+          "count": 72
+        },
+        {
+          "family": "IncreasedMana",
+          "count": 72
+        },
+        {
+          "family": "IncreasedAccuracy",
+          "count": 66
+        },
+        {
+          "family": "ColdDamage",
+          "count": 54
+        },
+        {
+          "family": "FireDamage",
+          "count": 54
+        },
+        {
+          "family": "LightningDamage",
+          "count": 54
+        },
+        {
+          "family": "PhysicalDamage",
+          "count": 54
+        },
+        {
+          "family": "AdeptRune",
+          "count": 36
+        },
+        {
+          "family": "BaseLocalDefencesAndLife",
+          "count": 36
+        },
+        {
+          "family": "BodyRune",
+          "count": 36
+        },
+        {
+          "family": "DesertRune",
+          "count": 36
+        },
+        {
+          "family": "GlacialRune",
+          "count": 36
+        },
+        {
+          "family": "InspirationRune",
+          "count": 36
+        },
+        {
+          "family": "IronRune",
+          "count": 36
+        }
+      ]
+    },
+    {
+      "code": "Helmets",
+      "nameKo": "Helmet",
+      "rows": 1455,
+      "sections": [
+        {
+          "section": "socketable",
+          "count": 438
+        },
+        {
+          "section": "normal",
+          "count": 345
+        },
+        {
+          "section": "bonded",
+          "count": 306
+        },
+        {
+          "section": "essence",
+          "count": 306
+        },
+        {
+          "section": "corrupted",
+          "count": 54
+        },
+        {
+          "section": "perfect_essence",
+          "count": 6
+        }
+      ],
+      "topFamilies": [
+        {
+          "family": "DefencesPercent",
+          "count": 156
+        },
+        {
+          "family": "IncreasedLife",
+          "count": 78
+        },
+        {
+          "family": "IncreasedMana",
+          "count": 78
+        },
+        {
+          "family": "IncreasedAccuracy",
+          "count": 60
+        },
+        {
+          "family": "BaseLocalDefences",
+          "count": 39
+        },
+        {
+          "family": "AdeptRune",
+          "count": 36
+        },
+        {
+          "family": "BaseLocalDefencesAndLife",
+          "count": 36
+        },
+        {
+          "family": "BaseLocalDefencesAndMana",
+          "count": 36
+        },
+        {
+          "family": "BodyRune",
+          "count": 36
+        },
+        {
+          "family": "DesertRune",
+          "count": 36
+        },
+        {
+          "family": "GlacialRune",
+          "count": 36
+        },
+        {
+          "family": "InspirationRune",
+          "count": 36
+        },
+        {
+          "family": "IronRune",
+          "count": 36
+        },
+        {
+          "family": "MindRune",
+          "count": 36
+        },
+        {
+          "family": "RebirthRune",
+          "count": 36
+        }
+      ]
+    },
+    {
+      "code": "Body_Armours",
+      "nameKo": "Body Armour",
+      "rows": 1383,
+      "sections": [
+        {
+          "section": "socketable",
+          "count": 396
+        },
+        {
+          "section": "normal",
+          "count": 345
+        },
+        {
+          "section": "bonded",
+          "count": 294
+        },
+        {
+          "section": "essence",
+          "count": 276
+        },
+        {
+          "section": "corrupted",
+          "count": 54
+        },
+        {
+          "section": "perfect_essence",
+          "count": 18
+        }
+      ],
+      "topFamilies": [
+        {
+          "family": "DefencesPercent",
+          "count": 162
+        },
+        {
+          "family": "IncreasedLife",
+          "count": 102
+        },
+        {
+          "family": "BaseLocalDefences",
+          "count": 57
+        },
+        {
+          "family": "Thorns",
+          "count": 54
+        },
+        {
+          "family": "BaseSpirit",
+          "count": 48
+        },
+        {
+          "family": "AdeptRune",
+          "count": 36
+        },
+        {
+          "family": "BaseLocalDefencesAndDefencePercent",
+          "count": 36
+        },
+        {
+          "family": "BaseLocalDefencesAndLife",
+          "count": 36
+        },
+        {
+          "family": "BodyRune",
+          "count": 36
+        },
+        {
+          "family": "DesertRune",
+          "count": 36
+        },
+        {
+          "family": "GlacialRune",
+          "count": 36
+        },
+        {
+          "family": "InspirationRune",
+          "count": 36
+        },
+        {
+          "family": "IronRune",
+          "count": 36
+        },
+        {
+          "family": "MindRune",
+          "count": 36
+        },
+        {
+          "family": "RebirthRune",
+          "count": 36
+        }
+      ]
+    },
+    {
+      "code": "Boots",
+      "nameKo": "Boots",
+      "rows": 1287,
+      "sections": [
+        {
+          "section": "socketable",
+          "count": 390
+        },
+        {
+          "section": "essence",
+          "count": 312
+        },
+        {
+          "section": "bonded",
+          "count": 270
+        },
+        {
+          "section": "normal",
+          "count": 255
+        },
+        {
+          "section": "corrupted",
+          "count": 60
+        }
+      ],
+      "topFamilies": [
+        {
+          "family": "DefencesPercent",
+          "count": 156
+        },
+        {
+          "family": "IncreasedLife",
+          "count": 72
+        },
+        {
+          "family": "IncreasedMana",
+          "count": 72
+        },
+        {
+          "family": "MovementVelocity",
+          "count": 48
+        },
+        {
+          "family": "AdeptRune",
+          "count": 36
+        },
+        {
+          "family": "BodyRune",
+          "count": 36
+        },
+        {
+          "family": "DefencesPercentAndStunThreshold",
+          "count": 36
+        },
+        {
+          "family": "DesertRune",
+          "count": 36
+        },
+        {
+          "family": "GlacialRune",
+          "count": 36
+        },
+        {
+          "family": "InspirationRune",
+          "count": 36
+        },
+        {
+          "family": "IronRune",
+          "count": 36
+        },
+        {
+          "family": "MindRune",
+          "count": 36
+        },
+        {
+          "family": "RebirthRune",
+          "count": 36
+        },
+        {
+          "family": "ResolveRune",
+          "count": 36
+        },
+        {
+          "family": "RobustRune",
+          "count": 36
+        }
+      ]
+    },
+    {
+      "code": "Shields",
+      "nameKo": "Shield",
+      "rows": 576,
+      "sections": [
+        {
+          "section": "socketable",
+          "count": 159
+        },
+        {
+          "section": "essence",
+          "count": 135
+        },
+        {
+          "section": "bonded",
+          "count": 132
+        },
+        {
+          "section": "normal",
+          "count": 129
+        },
+        {
+          "section": "corrupted",
+          "count": 21
+        }
+      ],
+      "topFamilies": [
+        {
+          "family": "DefencesPercent",
+          "count": 81
+        },
+        {
+          "family": "IncreasedLife",
+          "count": 42
+        },
+        {
+          "family": "BaseLocalDefences",
+          "count": 24
+        },
+        {
+          "family": "Thorns",
+          "count": 24
+        },
+        {
+          "family": "AdeptRune",
+          "count": 18
+        },
+        {
+          "family": "BodyRune",
+          "count": 18
+        },
+        {
+          "family": "DefencesPercentAndStunThreshold",
+          "count": 18
+        },
+        {
+          "family": "DesertRune",
+          "count": 18
+        },
+        {
+          "family": "GlacialRune",
+          "count": 18
+        },
+        {
+          "family": "InspirationRune",
+          "count": 18
+        },
+        {
+          "family": "IronRune",
+          "count": 18
+        },
+        {
+          "family": "MindRune",
+          "count": 18
+        },
+        {
+          "family": "RebirthRune",
+          "count": 18
+        },
+        {
+          "family": "ResolveRune",
+          "count": 18
+        },
+        {
+          "family": "RobustRune",
+          "count": 18
+        }
+      ]
+    },
+    {
+      "code": "Quarterstaves",
+      "nameKo": "Warstaff",
+      "rows": 331,
+      "sections": [
+        {
+          "section": "socketable",
+          "count": 110
+        },
+        {
+          "section": "bonded",
+          "count": 93
+        },
+        {
+          "section": "normal",
+          "count": 70
+        },
+        {
+          "section": "essence",
+          "count": 33
+        },
+        {
+          "section": "corrupted",
+          "count": 13
+        },
+        {
+          "section": "desecrated",
+          "count": 6
+        },
+        {
+          "section": "perfect_essence",
+          "count": 6
+        }
+      ],
+      "topFamilies": [
+        {
+          "family": "ColdDamage",
+          "count": 14
+        },
+        {
+          "family": "FireDamage",
+          "count": 14
+        },
+        {
+          "family": "LightningDamage",
+          "count": 14
+        },
+        {
+          "family": "IncreasedAccuracy",
+          "count": 13
+        },
+        {
+          "family": "BodyRune",
+          "count": 12
+        },
+        {
+          "family": "DesertRune",
+          "count": 12
+        },
+        {
+          "family": "GlacialRune",
+          "count": 12
+        },
+        {
+          "family": "InspirationRune",
+          "count": 12
+        },
+        {
+          "family": "IronRune",
+          "count": 12
+        },
+        {
+          "family": "MindRune",
+          "count": 12
+        },
+        {
+          "family": "PhysicalDamage",
+          "count": 12
+        },
+        {
+          "family": "RebirthRune",
+          "count": 12
+        },
+        {
+          "family": "StoneRune",
+          "count": 12
+        },
+        {
+          "family": "StormRune",
+          "count": 12
+        },
+        {
+          "family": "VisionRune",
+          "count": 12
+        }
+      ]
+    },
+    {
+      "code": "Bows",
+      "nameKo": "Bow",
+      "rows": 255,
+      "sections": [
+        {
+          "section": "socketable",
+          "count": 74
+        },
+        {
+          "section": "normal",
+          "count": 71
+        },
+        {
+          "section": "bonded",
+          "count": 51
+        },
+        {
+          "section": "essence",
+          "count": 33
+        },
+        {
+          "section": "corrupted",
+          "count": 12
+        },
+        {
+          "section": "desecrated",
+          "count": 8
+        },
+        {
+          "section": "perfect_essence",
+          "count": 6
+        }
+      ],
+      "topFamilies": [
+        {
+          "family": "ColdDamage",
+          "count": 14
+        },
+        {
+          "family": "FireDamage",
+          "count": 14
+        },
+        {
+          "family": "IncreasedAccuracy",
+          "count": 14
+        },
+        {
+          "family": "LightningDamage",
+          "count": 14
+        },
+        {
+          "family": "PhysicalDamage",
+          "count": 12
+        },
+        {
+          "family": "LocalPhysicalDamagePercent",
+          "count": 9
+        },
+        {
+          "family": "LocalIncreasedPhysicalDamagePercentAndAccuracyRating",
+          "count": 8
+        },
+        {
+          "family": "IncreasedWeaponElementalDamagePercent",
+          "count": 7
+        },
+        {
+          "family": "AdeptRune",
+          "count": 6
+        },
+        {
+          "family": "BodyRune",
+          "count": 6
+        },
+        {
+          "family": "DesertRune",
+          "count": 6
+        },
+        {
+          "family": "GlacialRune",
+          "count": 6
+        },
+        {
+          "family": "InspirationRune",
+          "count": 6
+        },
+        {
+          "family": "IronRune",
+          "count": 6
+        },
+        {
+          "family": "MindRune",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "code": "One_Hand_Maces",
+      "nameKo": "One Hand Mace",
+      "rows": 252,
+      "sections": [
+        {
+          "section": "socketable",
+          "count": 72
+        },
+        {
+          "section": "normal",
+          "count": 70
+        },
+        {
+          "section": "bonded",
+          "count": 50
+        },
+        {
+          "section": "essence",
+          "count": 33
+        },
+        {
+          "section": "corrupted",
+          "count": 13
+        },
+        {
+          "section": "desecrated",
+          "count": 8
+        },
+        {
+          "section": "perfect_essence",
+          "count": 6
+        }
+      ],
+      "topFamilies": [
+        {
+          "family": "ColdDamage",
+          "count": 14
+        },
+        {
+          "family": "FireDamage",
+          "count": 14
+        },
+        {
+          "family": "LightningDamage",
+          "count": 14
+        },
+        {
+          "family": "IncreasedAccuracy",
+          "count": 13
+        },
+        {
+          "family": "PhysicalDamage",
+          "count": 12
+        },
+        {
+          "family": "LocalPhysicalDamagePercent",
+          "count": 10
+        },
+        {
+          "family": "LocalIncreasedPhysicalDamagePercentAndAccuracyRating",
+          "count": 8
+        },
+        {
+          "family": "IncreasedWeaponElementalDamagePercent",
+          "count": 7
+        },
+        {
+          "family": "AdeptRune",
+          "count": 6
+        },
+        {
+          "family": "BodyRune",
+          "count": 6
+        },
+        {
+          "family": "DesertRune",
+          "count": 6
+        },
+        {
+          "family": "GlacialRune",
+          "count": 6
+        },
+        {
+          "family": "InspirationRune",
+          "count": 6
+        },
+        {
+          "family": "IronRune",
+          "count": 6
+        },
+        {
+          "family": "MindRune",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "code": "Spears",
+      "nameKo": "Spear",
+      "rows": 252,
+      "sections": [
+        {
+          "section": "socketable",
+          "count": 72
+        },
+        {
+          "section": "normal",
+          "count": 70
+        },
+        {
+          "section": "bonded",
+          "count": 50
+        },
+        {
+          "section": "essence",
+          "count": 33
+        },
+        {
+          "section": "corrupted",
+          "count": 13
+        },
+        {
+          "section": "desecrated",
+          "count": 8
+        },
+        {
+          "section": "perfect_essence",
+          "count": 6
+        }
+      ],
+      "topFamilies": [
+        {
+          "family": "ColdDamage",
+          "count": 14
+        },
+        {
+          "family": "FireDamage",
+          "count": 14
+        },
+        {
+          "family": "LightningDamage",
+          "count": 14
+        },
+        {
+          "family": "IncreasedAccuracy",
+          "count": 13
+        },
+        {
+          "family": "PhysicalDamage",
+          "count": 12
+        },
+        {
+          "family": "LocalPhysicalDamagePercent",
+          "count": 9
+        },
+        {
+          "family": "LocalIncreasedPhysicalDamagePercentAndAccuracyRating",
+          "count": 8
+        },
+        {
+          "family": "IncreasedWeaponElementalDamagePercent",
+          "count": 7
+        },
+        {
+          "family": "AdeptRune",
+          "count": 6
+        },
+        {
+          "family": "BodyRune",
+          "count": 6
+        },
+        {
+          "family": "DesertRune",
+          "count": 6
+        },
+        {
+          "family": "GlacialRune",
+          "count": 6
+        },
+        {
+          "family": "InspirationRune",
+          "count": 6
+        },
+        {
+          "family": "IronRune",
+          "count": 6
+        },
+        {
+          "family": "MindRune",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "code": "Two_Hand_Maces",
+      "nameKo": "Two Hand Mace",
+      "rows": 252,
+      "sections": [
+        {
+          "section": "socketable",
+          "count": 72
+        },
+        {
+          "section": "normal",
+          "count": 70
+        },
+        {
+          "section": "bonded",
+          "count": 50
+        },
+        {
+          "section": "essence",
+          "count": 33
+        },
+        {
+          "section": "corrupted",
+          "count": 13
+        },
+        {
+          "section": "desecrated",
+          "count": 8
+        },
+        {
+          "section": "perfect_essence",
+          "count": 6
+        }
+      ],
+      "topFamilies": [
+        {
+          "family": "ColdDamage",
+          "count": 14
+        },
+        {
+          "family": "FireDamage",
+          "count": 14
+        },
+        {
+          "family": "LightningDamage",
+          "count": 14
+        },
+        {
+          "family": "IncreasedAccuracy",
+          "count": 13
+        },
+        {
+          "family": "PhysicalDamage",
+          "count": 12
+        },
+        {
+          "family": "LocalPhysicalDamagePercent",
+          "count": 10
+        },
+        {
+          "family": "LocalIncreasedPhysicalDamagePercentAndAccuracyRating",
+          "count": 8
+        },
+        {
+          "family": "IncreasedWeaponElementalDamagePercent",
+          "count": 7
+        },
+        {
+          "family": "AdeptRune",
+          "count": 6
+        },
+        {
+          "family": "BodyRune",
+          "count": 6
+        },
+        {
+          "family": "DesertRune",
+          "count": 6
+        },
+        {
+          "family": "GlacialRune",
+          "count": 6
+        },
+        {
+          "family": "InspirationRune",
+          "count": 6
+        },
+        {
+          "family": "IronRune",
+          "count": 6
+        },
+        {
+          "family": "MindRune",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "code": "Crossbows",
+      "nameKo": "Crossbow",
+      "rows": 251,
+      "sections": [
+        {
+          "section": "socketable",
+          "count": 72
+        },
+        {
+          "section": "normal",
+          "count": 71
+        },
+        {
+          "section": "bonded",
+          "count": 50
+        },
+        {
+          "section": "essence",
+          "count": 33
+        },
+        {
+          "section": "corrupted",
+          "count": 12
+        },
+        {
+          "section": "desecrated",
+          "count": 7
+        },
+        {
+          "section": "perfect_essence",
+          "count": 6
+        }
+      ],
+      "topFamilies": [
+        {
+          "family": "ColdDamage",
+          "count": 14
+        },
+        {
+          "family": "FireDamage",
+          "count": 14
+        },
+        {
+          "family": "IncreasedAccuracy",
+          "count": 14
+        },
+        {
+          "family": "LightningDamage",
+          "count": 14
+        },
+        {
+          "family": "PhysicalDamage",
+          "count": 12
+        },
+        {
+          "family": "LocalPhysicalDamagePercent",
+          "count": 9
+        },
+        {
+          "family": "LocalIncreasedPhysicalDamagePercentAndAccuracyRating",
+          "count": 8
+        },
+        {
+          "family": "IncreasedWeaponElementalDamagePercent",
+          "count": 7
+        },
+        {
+          "family": "AdeptRune",
+          "count": 6
+        },
+        {
+          "family": "BodyRune",
+          "count": 6
+        },
+        {
+          "family": "DesertRune",
+          "count": 6
+        },
+        {
+          "family": "GlacialRune",
+          "count": 6
+        },
+        {
+          "family": "InspirationRune",
+          "count": 6
+        },
+        {
+          "family": "IronRune",
+          "count": 6
+        },
+        {
+          "family": "MindRune",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "code": "Talismans",
+      "nameKo": "Talisman",
+      "rows": 249,
+      "sections": [
+        {
+          "section": "socketable",
+          "count": 72
+        },
+        {
+          "section": "normal",
+          "count": 70
+        },
+        {
+          "section": "bonded",
+          "count": 50
+        },
+        {
+          "section": "essence",
+          "count": 33
+        },
+        {
+          "section": "corrupted",
+          "count": 9
+        },
+        {
+          "section": "desecrated",
+          "count": 9
+        },
+        {
+          "section": "perfect_essence",
+          "count": 6
+        }
+      ],
+      "topFamilies": [
+        {
+          "family": "ColdDamage",
+          "count": 14
+        },
+        {
+          "family": "FireDamage",
+          "count": 14
+        },
+        {
+          "family": "LightningDamage",
+          "count": 14
+        },
+        {
+          "family": "IncreasedAccuracy",
+          "count": 13
+        },
+        {
+          "family": "PhysicalDamage",
+          "count": 12
+        },
+        {
+          "family": "LocalPhysicalDamagePercent",
+          "count": 9
+        },
+        {
+          "family": "LocalIncreasedPhysicalDamagePercentAndAccuracyRating",
+          "count": 8
+        },
+        {
+          "family": "IncreasedWeaponElementalDamagePercent",
+          "count": 7
+        },
+        {
+          "family": "AdeptRune",
+          "count": 6
+        },
+        {
+          "family": "BodyRune",
+          "count": 6
+        },
+        {
+          "family": "DesertRune",
+          "count": 6
+        },
+        {
+          "family": "GlacialRune",
+          "count": 6
+        },
+        {
+          "family": "InspirationRune",
+          "count": 6
+        },
+        {
+          "family": "IronRune",
+          "count": 6
+        },
+        {
+          "family": "MindRune",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "code": "One_Hand_Swords",
+      "nameKo": "One Hand Sword",
+      "rows": 245,
+      "sections": [
+        {
+          "section": "socketable",
+          "count": 72
+        },
+        {
+          "section": "normal",
+          "count": 70
+        },
+        {
+          "section": "bonded",
+          "count": 50
+        },
+        {
+          "section": "essence",
+          "count": 33
+        },
+        {
+          "section": "corrupted",
+          "count": 14
+        },
+        {
+          "section": "perfect_essence",
+          "count": 6
+        }
+      ],
+      "topFamilies": [
+        {
+          "family": "ColdDamage",
+          "count": 14
+        },
+        {
+          "family": "FireDamage",
+          "count": 14
+        },
+        {
+          "family": "LightningDamage",
+          "count": 14
+        },
+        {
+          "family": "IncreasedAccuracy",
+          "count": 13
+        },
+        {
+          "family": "PhysicalDamage",
+          "count": 12
+        },
+        {
+          "family": "LocalPhysicalDamagePercent",
+          "count": 9
+        },
+        {
+          "family": "LocalIncreasedPhysicalDamagePercentAndAccuracyRating",
+          "count": 8
+        },
+        {
+          "family": "IncreasedWeaponElementalDamagePercent",
+          "count": 7
+        },
+        {
+          "family": "AdeptRune",
+          "count": 6
+        },
+        {
+          "family": "BodyRune",
+          "count": 6
+        },
+        {
+          "family": "DesertRune",
+          "count": 6
+        },
+        {
+          "family": "GlacialRune",
+          "count": 6
+        },
+        {
+          "family": "InspirationRune",
+          "count": 6
+        },
+        {
+          "family": "IronRune",
+          "count": 6
+        },
+        {
+          "family": "MindRune",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "code": "Flails",
+      "nameKo": "Flail",
+      "rows": 244,
+      "sections": [
+        {
+          "section": "socketable",
+          "count": 72
+        },
+        {
+          "section": "normal",
+          "count": 70
+        },
+        {
+          "section": "bonded",
+          "count": 50
+        },
+        {
+          "section": "essence",
+          "count": 33
+        },
+        {
+          "section": "corrupted",
+          "count": 13
+        },
+        {
+          "section": "perfect_essence",
+          "count": 6
+        }
+      ],
+      "topFamilies": [
+        {
+          "family": "ColdDamage",
+          "count": 14
+        },
+        {
+          "family": "FireDamage",
+          "count": 14
+        },
+        {
+          "family": "LightningDamage",
+          "count": 14
+        },
+        {
+          "family": "IncreasedAccuracy",
+          "count": 13
+        },
+        {
+          "family": "PhysicalDamage",
+          "count": 12
+        },
+        {
+          "family": "LocalPhysicalDamagePercent",
+          "count": 9
+        },
+        {
+          "family": "LocalIncreasedPhysicalDamagePercentAndAccuracyRating",
+          "count": 8
+        },
+        {
+          "family": "IncreasedWeaponElementalDamagePercent",
+          "count": 7
+        },
+        {
+          "family": "AdeptRune",
+          "count": 6
+        },
+        {
+          "family": "BodyRune",
+          "count": 6
+        },
+        {
+          "family": "DesertRune",
+          "count": 6
+        },
+        {
+          "family": "GlacialRune",
+          "count": 6
+        },
+        {
+          "family": "InspirationRune",
+          "count": 6
+        },
+        {
+          "family": "IronRune",
+          "count": 6
+        },
+        {
+          "family": "MindRune",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "code": "One_Hand_Axes",
+      "nameKo": "One Hand Axe",
+      "rows": 244,
+      "sections": [
+        {
+          "section": "socketable",
+          "count": 72
+        },
+        {
+          "section": "normal",
+          "count": 70
+        },
+        {
+          "section": "bonded",
+          "count": 50
+        },
+        {
+          "section": "essence",
+          "count": 33
+        },
+        {
+          "section": "corrupted",
+          "count": 13
+        },
+        {
+          "section": "perfect_essence",
+          "count": 6
+        }
+      ],
+      "topFamilies": [
+        {
+          "family": "ColdDamage",
+          "count": 14
+        },
+        {
+          "family": "FireDamage",
+          "count": 14
+        },
+        {
+          "family": "LightningDamage",
+          "count": 14
+        },
+        {
+          "family": "IncreasedAccuracy",
+          "count": 13
+        },
+        {
+          "family": "PhysicalDamage",
+          "count": 12
+        },
+        {
+          "family": "LocalPhysicalDamagePercent",
+          "count": 9
+        },
+        {
+          "family": "LocalIncreasedPhysicalDamagePercentAndAccuracyRating",
+          "count": 8
+        },
+        {
+          "family": "IncreasedWeaponElementalDamagePercent",
+          "count": 7
+        },
+        {
+          "family": "AdeptRune",
+          "count": 6
+        },
+        {
+          "family": "BodyRune",
+          "count": 6
+        },
+        {
+          "family": "DesertRune",
+          "count": 6
+        },
+        {
+          "family": "GlacialRune",
+          "count": 6
+        },
+        {
+          "family": "InspirationRune",
+          "count": 6
+        },
+        {
+          "family": "IronRune",
+          "count": 6
+        },
+        {
+          "family": "MindRune",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "code": "Two_Hand_Axes",
+      "nameKo": "Two Hand Axe",
+      "rows": 244,
+      "sections": [
+        {
+          "section": "socketable",
+          "count": 72
+        },
+        {
+          "section": "normal",
+          "count": 70
+        },
+        {
+          "section": "bonded",
+          "count": 50
+        },
+        {
+          "section": "essence",
+          "count": 33
+        },
+        {
+          "section": "corrupted",
+          "count": 13
+        },
+        {
+          "section": "perfect_essence",
+          "count": 6
+        }
+      ],
+      "topFamilies": [
+        {
+          "family": "ColdDamage",
+          "count": 14
+        },
+        {
+          "family": "FireDamage",
+          "count": 14
+        },
+        {
+          "family": "LightningDamage",
+          "count": 14
+        },
+        {
+          "family": "IncreasedAccuracy",
+          "count": 13
+        },
+        {
+          "family": "PhysicalDamage",
+          "count": 12
+        },
+        {
+          "family": "LocalPhysicalDamagePercent",
+          "count": 9
+        },
+        {
+          "family": "LocalIncreasedPhysicalDamagePercentAndAccuracyRating",
+          "count": 8
+        },
+        {
+          "family": "IncreasedWeaponElementalDamagePercent",
+          "count": 7
+        },
+        {
+          "family": "AdeptRune",
+          "count": 6
+        },
+        {
+          "family": "BodyRune",
+          "count": 6
+        },
+        {
+          "family": "DesertRune",
+          "count": 6
+        },
+        {
+          "family": "GlacialRune",
+          "count": 6
+        },
+        {
+          "family": "InspirationRune",
+          "count": 6
+        },
+        {
+          "family": "IronRune",
+          "count": 6
+        },
+        {
+          "family": "MindRune",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "code": "Daggers",
+      "nameKo": "Dagger",
+      "rows": 231,
+      "sections": [
+        {
+          "section": "socketable",
+          "count": 72
+        },
+        {
+          "section": "normal",
+          "count": 70
+        },
+        {
+          "section": "bonded",
+          "count": 50
+        },
+        {
+          "section": "essence",
+          "count": 33
+        },
+        {
+          "section": "perfect_essence",
+          "count": 6
+        }
+      ],
+      "topFamilies": [
+        {
+          "family": "ColdDamage",
+          "count": 13
+        },
+        {
+          "family": "FireDamage",
+          "count": 13
+        },
+        {
+          "family": "IncreasedAccuracy",
+          "count": 13
+        },
+        {
+          "family": "LightningDamage",
+          "count": 13
+        },
+        {
+          "family": "PhysicalDamage",
+          "count": 12
+        },
+        {
+          "family": "LocalIncreasedPhysicalDamagePercentAndAccuracyRating",
+          "count": 8
+        },
+        {
+          "family": "LocalPhysicalDamagePercent",
+          "count": 8
+        },
+        {
+          "family": "AdeptRune",
+          "count": 6
+        },
+        {
+          "family": "BodyRune",
+          "count": 6
+        },
+        {
+          "family": "DesertRune",
+          "count": 6
+        },
+        {
+          "family": "GlacialRune",
+          "count": 6
+        },
+        {
+          "family": "IncreasedWeaponElementalDamagePercent",
+          "count": 6
+        },
+        {
+          "family": "InspirationRune",
+          "count": 6
+        },
+        {
+          "family": "IronRune",
+          "count": 6
+        },
+        {
+          "family": "MindRune",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "code": "Foci",
+      "nameKo": "Focus",
+      "rows": 231,
+      "sections": [
+        {
+          "section": "normal",
+          "count": 70
+        },
+        {
+          "section": "socketable",
+          "count": 53
+        },
+        {
+          "section": "essence",
+          "count": 52
+        },
+        {
+          "section": "bonded",
+          "count": 44
+        },
+        {
+          "section": "desecrated",
+          "count": 6
+        },
+        {
+          "section": "corrupted",
+          "count": 5
+        },
+        {
+          "section": "perfect_essence",
+          "count": 1
+        }
+      ],
+      "topFamilies": [
+        {
+          "family": "WeaponDamageTypePrefix",
+          "count": 30
+        },
+        {
+          "family": "DefencesPercent",
+          "count": 26
+        },
+        {
+          "family": "IncreasedMana",
+          "count": 12
+        },
+        {
+          "family": "WeaponCasterDamagePrefix",
+          "count": 11
+        },
+        {
+          "family": "BaseLocalDefences",
+          "count": 10
+        },
+        {
+          "family": "AdeptRune",
+          "count": 6
+        },
+        {
+          "family": "BaseLocalDefencesAndMana",
+          "count": 6
+        },
+        {
+          "family": "BodyRune",
+          "count": 6
+        },
+        {
+          "family": "DesertRune",
+          "count": 6
+        },
+        {
+          "family": "GlacialRune",
+          "count": 6
+        },
+        {
+          "family": "InspirationRune",
+          "count": 6
+        },
+        {
+          "family": "IronRune",
+          "count": 6
+        },
+        {
+          "family": "MindRune",
+          "count": 6
+        },
+        {
+          "family": "RebirthRune",
+          "count": 6
+        },
+        {
+          "family": "ResolveRune",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "code": "Two_Hand_Swords",
+      "nameKo": "Two Hand Sword",
+      "rows": 231,
+      "sections": [
+        {
+          "section": "socketable",
+          "count": 72
+        },
+        {
+          "section": "normal",
+          "count": 70
+        },
+        {
+          "section": "bonded",
+          "count": 50
+        },
+        {
+          "section": "essence",
+          "count": 33
+        },
+        {
+          "section": "perfect_essence",
+          "count": 6
+        }
+      ],
+      "topFamilies": [
+        {
+          "family": "ColdDamage",
+          "count": 13
+        },
+        {
+          "family": "FireDamage",
+          "count": 13
+        },
+        {
+          "family": "IncreasedAccuracy",
+          "count": 13
+        },
+        {
+          "family": "LightningDamage",
+          "count": 13
+        },
+        {
+          "family": "PhysicalDamage",
+          "count": 12
+        },
+        {
+          "family": "LocalIncreasedPhysicalDamagePercentAndAccuracyRating",
+          "count": 8
+        },
+        {
+          "family": "LocalPhysicalDamagePercent",
+          "count": 8
+        },
+        {
+          "family": "AdeptRune",
+          "count": 6
+        },
+        {
+          "family": "BodyRune",
+          "count": 6
+        },
+        {
+          "family": "DesertRune",
+          "count": 6
+        },
+        {
+          "family": "GlacialRune",
+          "count": 6
+        },
+        {
+          "family": "IncreasedWeaponElementalDamagePercent",
+          "count": 6
+        },
+        {
+          "family": "InspirationRune",
+          "count": 6
+        },
+        {
+          "family": "IronRune",
+          "count": 6
+        },
+        {
+          "family": "MindRune",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "code": "Staves",
+      "nameKo": "Staff",
+      "rows": 216,
+      "sections": [
+        {
+          "section": "normal",
+          "count": 84
+        },
+        {
+          "section": "socketable",
+          "count": 47
+        },
+        {
+          "section": "bonded",
+          "count": 43
+        },
+        {
+          "section": "essence",
+          "count": 20
+        },
+        {
+          "section": "corrupted",
+          "count": 14
+        },
+        {
+          "section": "desecrated",
+          "count": 6
+        },
+        {
+          "section": "perfect_essence",
+          "count": 2
+        }
+      ],
+      "topFamilies": [
+        {
+          "family": "WeaponDamageTypePrefix",
+          "count": 40
+        },
+        {
+          "family": "WeaponCasterDamagePrefix",
+          "count": 15
+        },
+        {
+          "family": "IncreasedMana",
+          "count": 11
+        },
+        {
+          "family": "SpellDamageAndMana",
+          "count": 7
+        },
+        {
+          "family": "AdeptRune",
+          "count": 6
+        },
+        {
+          "family": "BodyRune",
+          "count": 6
+        },
+        {
+          "family": "ColdDamage",
+          "count": 6
+        },
+        {
+          "family": "DesertRune",
+          "count": 6
+        },
+        {
+          "family": "FireDamage",
+          "count": 6
+        },
+        {
+          "family": "GlacialRune",
+          "count": 6
+        },
+        {
+          "family": "IncreaseSocketedGemLevel",
+          "count": 6
+        },
+        {
+          "family": "InspirationRune",
+          "count": 6
+        },
+        {
+          "family": "IronRune",
+          "count": 6
+        },
+        {
+          "family": "LightningDamage",
+          "count": 6
+        },
+        {
+          "family": "MindRune",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "code": "Wands",
+      "nameKo": "Wand",
+      "rows": 216,
+      "sections": [
+        {
+          "section": "normal",
+          "count": 84
+        },
+        {
+          "section": "socketable",
+          "count": 47
+        },
+        {
+          "section": "bonded",
+          "count": 43
+        },
+        {
+          "section": "essence",
+          "count": 20
+        },
+        {
+          "section": "corrupted",
+          "count": 14
+        },
+        {
+          "section": "desecrated",
+          "count": 6
+        },
+        {
+          "section": "perfect_essence",
+          "count": 2
+        }
+      ],
+      "topFamilies": [
+        {
+          "family": "WeaponDamageTypePrefix",
+          "count": 41
+        },
+        {
+          "family": "WeaponCasterDamagePrefix",
+          "count": 15
+        },
+        {
+          "family": "IncreasedMana",
+          "count": 11
+        },
+        {
+          "family": "SpellDamageAndMana",
+          "count": 7
+        },
+        {
+          "family": "AdeptRune",
+          "count": 6
+        },
+        {
+          "family": "BodyRune",
+          "count": 6
+        },
+        {
+          "family": "ColdDamage",
+          "count": 6
+        },
+        {
+          "family": "DesertRune",
+          "count": 6
+        },
+        {
+          "family": "FireDamage",
+          "count": 6
+        },
+        {
+          "family": "GlacialRune",
+          "count": 6
+        },
+        {
+          "family": "IncreaseSocketedGemLevel",
+          "count": 6
+        },
+        {
+          "family": "InspirationRune",
+          "count": 6
+        },
+        {
+          "family": "IronRune",
+          "count": 6
+        },
+        {
+          "family": "LightningDamage",
+          "count": 6
+        },
+        {
+          "family": "MindRune",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "code": "Claws",
+      "nameKo": "Claw",
+      "rows": 201,
+      "sections": [
+        {
+          "section": "socketable",
+          "count": 72
+        },
+        {
+          "section": "normal",
+          "count": 70
+        },
+        {
+          "section": "bonded",
+          "count": 50
+        },
+        {
+          "section": "corrupted",
+          "count": 9
+        }
+      ],
+      "topFamilies": [
+        {
+          "family": "ColdDamage",
+          "count": 11
+        },
+        {
+          "family": "FireDamage",
+          "count": 11
+        },
+        {
+          "family": "LightningDamage",
+          "count": 11
+        },
+        {
+          "family": "IncreasedAccuracy",
+          "count": 9
+        },
+        {
+          "family": "LocalPhysicalDamagePercent",
+          "count": 9
+        },
+        {
+          "family": "PhysicalDamage",
+          "count": 9
+        },
+        {
+          "family": "LocalIncreasedPhysicalDamagePercentAndAccuracyRating",
+          "count": 8
+        },
+        {
+          "family": "IncreasedWeaponElementalDamagePercent",
+          "count": 7
+        },
+        {
+          "family": "AdeptRune",
+          "count": 6
+        },
+        {
+          "family": "BodyRune",
+          "count": 6
+        },
+        {
+          "family": "DesertRune",
+          "count": 6
+        },
+        {
+          "family": "GlacialRune",
+          "count": 6
+        },
+        {
+          "family": "InspirationRune",
+          "count": 6
+        },
+        {
+          "family": "IronRune",
+          "count": 6
+        },
+        {
+          "family": "MindRune",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "code": "Bucklers",
+      "nameKo": "Buckler",
+      "rows": 194,
+      "sections": [
+        {
+          "section": "socketable",
+          "count": 53
+        },
+        {
+          "section": "essence",
+          "count": 45
+        },
+        {
+          "section": "normal",
+          "count": 45
+        },
+        {
+          "section": "bonded",
+          "count": 44
+        },
+        {
+          "section": "corrupted",
+          "count": 7
+        }
+      ],
+      "topFamilies": [
+        {
+          "family": "DefencesPercent",
+          "count": 27
+        },
+        {
+          "family": "IncreasedLife",
+          "count": 14
+        },
+        {
+          "family": "BaseLocalDefences",
+          "count": 10
+        },
+        {
+          "family": "Thorns",
+          "count": 8
+        },
+        {
+          "family": "AdeptRune",
+          "count": 6
+        },
+        {
+          "family": "BodyRune",
+          "count": 6
+        },
+        {
+          "family": "DefencesPercentAndStunThreshold",
+          "count": 6
+        },
+        {
+          "family": "DesertRune",
+          "count": 6
+        },
+        {
+          "family": "GlacialRune",
+          "count": 6
+        },
+        {
+          "family": "InspirationRune",
+          "count": 6
+        },
+        {
+          "family": "IronRune",
+          "count": 6
+        },
+        {
+          "family": "MindRune",
+          "count": 6
+        },
+        {
+          "family": "RebirthRune",
+          "count": 6
+        },
+        {
+          "family": "ResolveRune",
+          "count": 6
+        },
+        {
+          "family": "RobustRune",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "code": "Rings",
+      "nameKo": "Ring",
+      "rows": 152,
+      "sections": [
+        {
+          "section": "normal",
+          "count": 100
+        },
+        {
+          "section": "essence",
+          "count": 32
+        },
+        {
+          "section": "corrupted",
+          "count": 12
+        },
+        {
+          "section": "desecrated",
+          "count": 7
+        },
+        {
+          "section": "perfect_essence",
+          "count": 1
+        }
+      ],
+      "topFamilies": [
+        {
+          "family": "IncreasedMana",
+          "count": 16
+        },
+        {
+          "family": "IncreasedLife",
+          "count": 10
+        },
+        {
+          "family": "ColdDamage",
+          "count": 9
+        },
+        {
+          "family": "FireDamage",
+          "count": 9
+        },
+        {
+          "family": "IncreasedEvasionRating",
+          "count": 9
+        },
+        {
+          "family": "LightningDamage",
+          "count": 9
+        },
+        {
+          "family": "PhysicalDamage",
+          "count": 9
+        },
+        {
+          "family": "IncreasedAccuracy",
+          "count": 8
+        },
+        {
+          "family": "ColdDamagePercentage",
+          "count": 6
+        },
+        {
+          "family": "FireDamagePercentage",
+          "count": 6
+        },
+        {
+          "family": "IncreasedChaosDamage",
+          "count": 6
+        },
+        {
+          "family": "LightningDamagePercentage",
+          "count": 6
+        },
+        {
+          "family": "ChaosResistance",
+          "count": 4
+        },
+        {
+          "family": "Dexterity",
+          "count": 4
+        },
+        {
+          "family": "Intelligence",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "code": "Amulets",
+      "nameKo": "Amulet",
+      "rows": 141,
+      "sections": [
+        {
+          "section": "normal",
+          "count": 81
+        },
+        {
+          "section": "essence",
+          "count": 33
+        },
+        {
+          "section": "corrupted",
+          "count": 12
+        },
+        {
+          "section": "desecrated",
+          "count": 11
+        },
+        {
+          "section": "perfect_essence",
+          "count": 4
+        }
+      ],
+      "topFamilies": [
+        {
+          "family": "IncreasedMana",
+          "count": 16
+        },
+        {
+          "family": "IncreasedLife",
+          "count": 12
+        },
+        {
+          "family": "IncreasedEnergyShield",
+          "count": 10
+        },
+        {
+          "family": "IncreasedAccuracy",
+          "count": 8
+        },
+        {
+          "family": "EnergyShieldPercent",
+          "count": 7
+        },
+        {
+          "family": "EvasionRatingPercent",
+          "count": 7
+        },
+        {
+          "family": "IncreasedPhysicalDamageReductionRatingPercent",
+          "count": 7
+        },
+        {
+          "family": "SpellDamage",
+          "count": 6
+        },
+        {
+          "family": "BaseSpirit",
+          "count": 5
+        },
+        {
+          "family": "Dexterity",
+          "count": 4
+        },
+        {
+          "family": "Intelligence",
+          "count": 4
+        },
+        {
+          "family": "ItemFoundRarityIncrease",
+          "count": 4
+        },
+        {
+          "family": "Strength",
+          "count": 4
+        },
+        {
+          "family": "ChaosResistance",
+          "count": 3
+        },
+        {
+          "family": "ColdResistance",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "code": "Sceptres",
+      "nameKo": "Sceptre",
+      "rows": 123,
+      "sections": [
+        {
+          "section": "normal",
+          "count": 70
+        },
+        {
+          "section": "socketable",
+          "count": 21
+        },
+        {
+          "section": "essence",
+          "count": 14
+        },
+        {
+          "section": "bonded",
+          "count": 11
+        },
+        {
+          "section": "corrupted",
+          "count": 6
+        },
+        {
+          "section": "perfect_essence",
+          "count": 1
+        }
+      ],
+      "topFamilies": [
+        {
+          "family": "AllDamage",
+          "count": 12
+        },
+        {
+          "family": "IncreasedMana",
+          "count": 11
+        },
+        {
+          "family": "ColdDamage",
+          "count": 9
+        },
+        {
+          "family": "FireDamage",
+          "count": 9
+        },
+        {
+          "family": "LightningDamage",
+          "count": 9
+        },
+        {
+          "family": "LocalIncreasedSpiritPercent",
+          "count": 9
+        },
+        {
+          "family": "PhysicalDamage",
+          "count": 9
+        },
+        {
+          "family": "LocalIncreasedSpiritAndMana",
+          "count": 7
+        },
+        {
+          "family": "AdeptRune",
+          "count": 3
+        },
+        {
+          "family": "Dexterity",
+          "count": 3
+        },
+        {
+          "family": "Intelligence",
+          "count": 3
+        },
+        {
+          "family": "ResolveRune",
+          "count": 3
+        },
+        {
+          "family": "RobustRune",
+          "count": 3
+        },
+        {
+          "family": "Strength",
+          "count": 3
+        },
+        {
+          "family": "BearIdol",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "code": "Belts",
+      "nameKo": "Belt",
+      "rows": 106,
+      "sections": [
+        {
+          "section": "normal",
+          "count": 53
+        },
+        {
+          "section": "essence",
+          "count": 31
+        },
+        {
+          "section": "corrupted",
+          "count": 12
+        },
+        {
+          "section": "desecrated",
+          "count": 9
+        },
+        {
+          "section": "perfect_essence",
+          "count": 1
+        }
+      ],
+      "topFamilies": [
+        {
+          "family": "IncreasedLife",
+          "count": 14
+        },
+        {
+          "family": "BeltFlaskRecoveryRate",
+          "count": 12
+        },
+        {
+          "family": "IncreasedMana",
+          "count": 12
+        },
+        {
+          "family": "IncreasedPhysicalDamageReductionRating",
+          "count": 11
+        },
+        {
+          "family": "Thorns",
+          "count": 8
+        },
+        {
+          "family": "BeltCharmDuration",
+          "count": 5
+        },
+        {
+          "family": "ColdResistance",
+          "count": 4
+        },
+        {
+          "family": "Dexterity",
+          "count": 4
+        },
+        {
+          "family": "FireResistance",
+          "count": 4
+        },
+        {
+          "family": "Intelligence",
+          "count": 4
+        },
+        {
+          "family": "LightningResistance",
+          "count": 4
+        },
+        {
+          "family": "Strength",
+          "count": 4
+        },
+        {
+          "family": "ChaosResistance",
+          "count": 3
+        },
+        {
+          "family": "FlaskChargeGeneration",
+          "count": 3
+        },
+        {
+          "family": "EssenceAbyss",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "code": "Quivers",
+      "nameKo": "Quiver",
+      "rows": 82,
+      "sections": [
+        {
+          "section": "normal",
+          "count": 56
+        },
+        {
+          "section": "essence",
+          "count": 14
+        },
+        {
+          "section": "corrupted",
+          "count": 9
+        },
+        {
+          "section": "desecrated",
+          "count": 3
+        }
+      ],
+      "topFamilies": [
+        {
+          "family": "IncreasedAccuracy",
+          "count": 12
+        },
+        {
+          "family": "ColdDamage",
+          "count": 9
+        },
+        {
+          "family": "FireDamage",
+          "count": 9
+        },
+        {
+          "family": "LightningDamage",
+          "count": 9
+        },
+        {
+          "family": "PhysicalDamage",
+          "count": 9
+        },
+        {
+          "family": "DamageWithWeaponTypeSkill",
+          "count": 7
+        },
+        {
+          "family": "ProjectileSpeed",
+          "count": 5
+        },
+        {
+          "family": "Dexterity",
+          "count": 3
+        },
+        {
+          "family": "Intelligence",
+          "count": 3
+        },
+        {
+          "family": "ProjectileDamage",
+          "count": 3
+        },
+        {
+          "family": "Strength",
+          "count": 3
+        },
+        {
+          "family": "EssenceAbyss",
+          "count": 2
+        },
+        {
+          "family": "AllDamage",
+          "count": 1
+        },
+        {
+          "family": "ChainFromTerrain",
+          "count": 1
+        },
+        {
+          "family": "ChanceToPierce",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "code": "Traps",
+      "nameKo": "TrapTool",
+      "rows": 82,
+      "sections": [
+        {
+          "section": "normal",
+          "count": 73
+        },
+        {
+          "section": "socketable",
+          "count": 9
+        }
+      ],
+      "topFamilies": [
+        {
+          "family": "WeaponDamageTypePrefix",
+          "count": 40
+        },
+        {
+          "family": "IncreasedMana",
+          "count": 11
+        },
+        {
+          "family": "WeaponCasterDamagePrefix",
+          "count": 8
+        },
+        {
+          "family": "TrapAndMineThrowSpeed",
+          "count": 7
+        },
+        {
+          "family": "TrapDamageAndMana",
+          "count": 7
+        },
+        {
+          "family": "AdeptRune",
+          "count": 3
+        },
+        {
+          "family": "ResolveRune",
+          "count": 3
+        },
+        {
+          "family": "RobustRune",
+          "count": 3
+        }
+      ]
+    }
+  ]
+}

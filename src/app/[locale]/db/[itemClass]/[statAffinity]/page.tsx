@@ -2,7 +2,7 @@ import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import type { ReactElement } from "react";
 
-import { DbItemClassPageContainer } from "@/features/db/containers/DbItemClassPageContainer";
+import { DbItemClassWorkspace } from "@/components/organisms/views/DbItemClassWorkspace";
 import { parseDbItemClassRouteParam } from "@/lib/poe2db/dbItemClassRoute";
 import {
   parseDbStatAffinityRouteParam,
@@ -27,7 +27,13 @@ const DbItemClassStatPage = async ({
   ) {
     notFound();
   }
-  return <DbItemClassPageContainer itemClass={itemClass} statAffinity={statAffinity} />;
+  return (
+    <DbItemClassWorkspace
+      key={`${itemClass}-${statAffinity}`}
+      itemClass={itemClass}
+      statAffinity={statAffinity}
+    />
+  );
 };
 
 export default DbItemClassStatPage;

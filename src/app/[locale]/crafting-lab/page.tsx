@@ -1,7 +1,7 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { Metadata } from "next";
 import type { ReactElement } from "react";
-import { CraftingLabContainer } from "@/features/crafting/containers/CraftingLabContainer";
+import { CraftingLabWorkspace } from "@/components/organisms/views/CraftingLabWorkspace";
 
 type CraftingLabPagePropsType = {
   params: Promise<{ locale: string }>;
@@ -24,7 +24,7 @@ const CraftingLabPage = async ({
 }: CraftingLabPagePropsType): Promise<ReactElement> => {
   const { locale } = await params;
   setRequestLocale(locale);
-  return <CraftingLabContainer />;
+  return <CraftingLabWorkspace />;
 };
 
 export { generateMetadata };

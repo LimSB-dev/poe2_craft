@@ -1,6 +1,6 @@
 /**
- * Armour slots on PoE2DB use separate Modifiers Calc pages per stat **and** hybrid
- * (e.g. {@link https://poe2db.tw/kr/Gloves_str_dex#ModifiersCalc Gloves_str_dex}).
+ * Armour slots on PoE2DB use separate list pages per stat **and** hybrid
+ * (e.g. `Gloves_str_dex`).
  */
 export const ARMOUR_SUB_TYPES_WITH_POE2DB_STAT_PAGE: ReadonlyArray<IBaseItemSubTypeType> = [
   "gloves",

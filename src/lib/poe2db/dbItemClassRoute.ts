@@ -1,5 +1,4 @@
 import { BASE_ITEM_SUB_TYPES_BY_EQUIPMENT } from "@/lib/poe2-item-simulator/baseItemDb";
-import { POE2DB_ITEM_CLASS_WIKI_SLUG_BY_SUB_TYPE } from "@/lib/poe2db/poe2dbItemClassPageUrl";
 
 /** Stable order: weapon → offhand → armour → jewellery (same as base item DB grouping). */
 export const DB_ITEM_CLASS_ROUTE_ORDER: readonly IBaseItemSubTypeType[] = Object.values(
@@ -18,7 +17,7 @@ const compactKey = (value: string): string => {
 
 /**
  * Resolves dynamic `/db/[itemClass]` segment to our internal subtype.
- * Accepts internal keys (`claw`) and PoE2DB wiki slugs (`Claws`, `One_Hand_Swords`).
+ * Accepts internal keys only (e.g. `claw`, `oneHandSword`).
  */
 export const parseDbItemClassRouteParam = (raw: string): IBaseItemSubTypeType | null => {
   const key = normalizeRouteKey(raw);
@@ -32,11 +31,6 @@ export const parseDbItemClassRouteParam = (raw: string): IBaseItemSubTypeType | 
   for (const subType of SUB_TYPE_SET) {
     if (compactKey(subType) === compact) {
       return subType;
-    }
-  }
-  for (const [subType, wikiSlug] of Object.entries(POE2DB_ITEM_CLASS_WIKI_SLUG_BY_SUB_TYPE)) {
-    if (compactKey(wikiSlug) === compact || wikiSlug === key) {
-      return subType as IBaseItemSubTypeType;
     }
   }
   return null;

@@ -1,0 +1,5236 @@
+{
+  "title": "Path of Exile 2 — Item simulator",
+  "intro": "Pick a base item, choose how many prefixes and suffixes you want to roll, then preview one outcome. This is a simplified model for layout and iteration.",
+  "localeSwitcher": {
+    "label": "Language",
+    "localeNames": {
+      "en": "English",
+      "ko": "한국어",
+      "ja": "日本語",
+      "zh-CN": "简体中文"
+    }
+  },
+  "baseItemLevel": "Required level {level}",
+  "equipmentType": {
+    "weapon": "Weapon",
+    "offhand": "Off-hand",
+    "armour": "Armour",
+    "jewellery": "Jewellery"
+  },
+  "baseFilter": {
+    "type": "Type",
+    "subType": "Subtype",
+    "all": "All",
+    "requiredStr": "STR",
+    "requiredDex": "DEX",
+    "requiredInt": "INT",
+    "requiredLevel": "Lv",
+    "baseItem": "Base item",
+    "noResults": "No base items match filters",
+    "matchCount": "Matched base items: {count}",
+    "source": "Source: PoE2DB",
+    "quality": "Quality",
+    "armour": "ARM",
+    "evasion": "EVA",
+    "energyShield": "ES",
+    "filterToggle": "Filters"
+  },
+  "dbView": {
+    "title": "Database",
+    "description": "Pick an item class to see only its bases and modifiers.",
+    "hubTitle": "Item classes",
+    "hubDescription": "Choose a class to view bases and affix tiers for that type only.",
+    "hubRouteHint": "URLs: /db/claw; armour: /db/gloves/str, str_dex, … (PoE2DB Gloves_str, Gloves_str_dex, …)",
+    "statAffinityHubTitle": "{label} — stat category",
+    "statAffinityHubDescription": "Same as PoE2DB: pure STR/DEX/INT and hybrids (str_dex, str_int, dex_int) split bases and modifiers.",
+    "statAffinity": {
+      "str": "Strength (STR)",
+      "dex": "Dexterity (DEX)",
+      "int": "Intelligence (INT)",
+      "str_dex": "STR + DEX",
+      "str_int": "STR + INT",
+      "dex_int": "DEX + INT"
+    },
+    "statAffinityNavAria": "Switch stat page",
+    "itemClassStatPageHeading": "{label} · {stat}",
+    "itemClassPageHeading": "{label}",
+    "itemClassNavAria": "On-page section navigation",
+    "sectionBaseItems": "Base items",
+    "sectionModifiersCalc": "Modifiers (Modifiers Calc)",
+    "itemClassCounts": "Bases {bases} · Mods {mods}",
+    "tabItems": "Base Items",
+    "tabMods": "Mods",
+    "colName": "Name",
+    "colType": "Type",
+    "colSubType": "Sub-type",
+    "colStatTags": "Stats",
+    "colArmour": "Armour",
+    "colEvasion": "Evasion",
+    "colES": "ES",
+    "colReq": "Requirements",
+    "colModType": "Type",
+    "colTags": "Tags",
+    "colTiers": "Tiers",
+    "colWeight": "Weight",
+    "colApplicable": "Applicable to",
+    "colStatReq": "Stat Req.",
+    "prefix": "Standard prefix",
+    "suffix": "Standard suffix",
+    "navLabel": "DB",
+    "corruptedPrefix": "Corrupted prefix",
+    "corruptedSuffix": "Corrupted suffix",
+    "modTierExpandAria": "Show tier breakdown for {name}",
+    "modTierCollapseAria": "Hide tier breakdown for {name}",
+    "tierColTier": "Tier",
+    "tierColAffix": "Affix",
+    "tierColItemLevel": "Req. level",
+    "tierColModifier": "Modifiers",
+    "tierColWeight": "Weight",
+    "tierColValues": "Roll values",
+    "tierAffixPlaceholder": "—",
+    "tierStatsPending": "Per-tier roll values are not linked yet. They will appear here after the database includes stat ranges for each tier.",
+    "tierInfoAria": "Extra tier metadata (not available in this build).",
+    "tierSyntheticDisclaimer": "Per-tier level and weight are interpolated from overview fields (max level, total weight, tier count) until per-tier rows exist in the database. Roll ranges appear when stat data is available per tier.",
+    "modSectionAll": "All sections",
+    "modSection": {
+      "all": "All sections",
+      "normal": "Normal",
+      "corrupted": "Corrupted",
+      "desecrated": "Desecrated",
+      "essence": "Essence",
+      "perfect_essence": "Perfect essence",
+      "socketable": "Socketable",
+      "bonded": "Bonded",
+      "legacy": "Legacy"
+    },
+    "paginationPrev": "Prev",
+    "paginationNext": "Next",
+    "paginationPage": "Page {page}/{total}",
+    "paginationCount": "{shown} shown / {total} total",
+    "searchPlaceholder": "Search…",
+    "modsTotalCount": "{total} mods (filtered)",
+    "modItemCategory": {
+      "oneHandWeapon": "One-handed weapons",
+      "twoHandWeapon": "Two-handed weapons",
+      "jewellery": "Jewellery",
+      "gloves": "Gloves",
+      "boots": "Boots",
+      "bodyArmour": "Body armour",
+      "helmet": "Helmets",
+      "offhand": "Off-hand"
+    },
+    "maxTierStepsShort": "Max {count} tiers",
+    "applicableMaxTierHint": "For this item class this affix has up to {count} tiers (T1 is best).",
+    "poe2dbItemClassShort": "PoE2DB",
+    "poe2dbItemClassAria": "{label}: Open the same item class page on PoE2DB (new tab)"
+  },
+  "panels": {
+    "baseItem": {
+      "title": "Base item",
+      "description": "Select the item you are crafting on."
+    },
+    "options": {
+      "title": "Modifiers",
+      "description": "Add the modifiers you want on your item and adjust roll settings."
+    },
+    "result": {
+      "title": "Expected result",
+      "description": "One random outcome from the current mod pool and weights."
+    }
+  },
+  "options": {
+    "targetRarity": "Target rarity",
+    "prefixes": "Prefixes",
+    "suffixes": "Suffixes",
+    "effectiveRoll": "Effective roll: {prefixCount} prefix(es), {suffixCount} suffix(es). {hint}",
+    "effectiveRollHint": "Magic max 1 each; rare max 3 each.",
+    "rollPreview": "Roll preview",
+    "rollSettings": "Roll settings"
+  },
+  "rarity": {
+    "magic": "Magic",
+    "rare": "Rare"
+  },
+  "result": {
+    "empty": "Choose a base item and options, then press \"Roll preview\"."
+  },
+  "mods": {
+    "corrupted_ailment_intensity": "(10–20)% increased Magnitude of Ailments you inflict",
+    "corrupted_arcane_shadow_on_crit": "(10–15)% chance to gain Arcane Surge on Critical Hit",
+    "corrupted_bleed_chance": "(20–30)% chance to inflict Bleeding",
+    "corrupted_cast_speed_at_full_life": "(8–15)% increased Cast Speed while on Full Life",
+    "corrupted_cold_chaos_res": "+(13–17)% to Cold and Chaos Resistances",
+    "corrupted_curse_effect_area": "(12–20)% increased Area of Effect of Curses",
+    "corrupted_damage_as_mana_cost": "(10–20)% of Damage taken from Mana before Life",
+    "corrupted_damage_to_mana_recoup": "Recoup (10–20)% of Damage taken as Mana",
+    "corrupted_dex_int": "+(9–15) to Dexterity and Intelligence",
+    "corrupted_fire_chaos_res": "+(13–17)% to Fire and Chaos Resistances",
+    "corrupted_immobilize_buildup": "(10–20)% increased Immobilisation Buildup",
+    "corrupted_instant_leech": "(8–15)% of Leech applies Instantly",
+    "corrupted_lacerate_on_hit": "(15–25)% chance to Lacerate on Hit",
+    "corrupted_lightning_chaos_res": "+(13–17)% to Lightning and Chaos Resistances",
+    "corrupted_mana_cost_efficiency": "(6–10)% increased Mana Cost Efficiency",
+    "corrupted_poison_chance": "(20–30)% chance to Poison on Hit",
+    "corrupted_reduced_crit_chance_vs_player": "(17–25)% reduced Critical Hit Chance with Hits against you",
+    "corrupted_reduced_curse_effect": "(25–35)% reduced Effect of Curses on you",
+    "corrupted_skill_speed_consume_frenzy": "(8–12)% increased Skill Speed if you have consumed a Frenzy Charge recently",
+    "corrupted_spirit_retention": "(6–12)% increased Spirit Reservation Efficiency of Skills",
+    "corrupted_str_dex": "+# to Strength and Dexterity",
+    "corrupted_str_int": "+# to Strength and Intelligence",
+    "corrupted_stun_on_hit": "(10–20)% chance to Stun on Hit",
+    "desecratedUnrevealedLine": "Unrevealed Desecrated modifier",
+    "prefix_accuracy": "+# to Accuracy Rating",
+    "prefix_added_cold_damage_attack": "Adds #–# Cold Damage to Attacks",
+    "prefix_added_fire_damage_attack": "Adds #–# Fire Damage to Attacks",
+    "prefix_added_lightning_damage_attack": "Adds #–# Lightning Damage to Attacks",
+    "prefix_added_phys_damage_attack": "Adds #–# Physical Damage to Attacks",
+    "prefix_armour_es_flat": "+# to Armour and Energy Shield",
+    "prefix_armour_evasion_flat": "+# to Armour and Evasion Rating",
+    "prefix_evasion_es_flat": "+# to Evasion Rating and Energy Shield",
+    "prefix_inc_armour": "#% increased Armour",
+    "prefix_inc_armour_es": "#% increased Armour and Energy Shield",
+    "prefix_inc_armour_es_max_life": "#% increased Armour and Energy Shield, +# to maximum Life",
+    "prefix_inc_armour_evasion": "#% increased Armour and Evasion Rating",
+    "prefix_inc_armour_evasion_max_life": "#% increased Armour and Evasion Rating, +# to maximum Life",
+    "prefix_inc_armour_max_life": "#% increased Armour, +# to maximum Life",
+    "prefix_inc_es": "#% increased Energy Shield",
+    "prefix_inc_es_max_life": "#% increased Energy Shield, +# to maximum Life",
+    "prefix_inc_evasion": "#% increased Evasion Rating",
+    "prefix_inc_evasion_es": "#% increased Evasion Rating and Energy Shield",
+    "prefix_inc_evasion_es_max_life": "#% increased Evasion Rating and Energy Shield, +# to maximum Life",
+    "prefix_inc_evasion_max_life": "#% increased Evasion Rating, +# to maximum Life",
+    "prefix_max_armour": "+# to Armour",
+    "prefix_max_es": "+# to Energy Shield",
+    "prefix_max_es_inc_es": "+# to Energy Shield, #% increased Energy Shield",
+    "prefix_max_evasion": "+# to Evasion Rating",
+    "prefix_max_life": "+# to maximum Life",
+    "prefix_max_mana": "+# to maximum Mana",
+    "prefix_phys_thorns": "Reflects #–# Physical Damage to Melee Attackers",
+    "prefix_spirit": "# Spirit",
+    "suffix_armour_to_elemental": "#% of Armour also applies to Elemental Damage taken",
+    "suffix_attack_speed": "#% increased Attack Speed",
+    "suffix_chaos_res": "+#% to Chaos Resistance",
+    "suffix_cold_res": "+#% to Cold Resistance",
+    "suffix_crit_damage_bonus": "+#% to Critical Damage Bonus",
+    "suffix_dexterity": "+# to Dexterity",
+    "suffix_es_recharge_rate": "#% faster start of Energy Shield Recharge",
+    "suffix_fire_res": "+#% to Fire Resistance",
+    "suffix_fortify_from_evasion": "Gain Fortify equal to #% of Evasion Rating",
+    "suffix_intelligence": "+# to Intelligence",
+    "suffix_item_rarity": "#% increased Rarity of Items found",
+    "suffix_life_leech_from_phys": "#% of Physical Attack Damage Leeched as Life",
+    "suffix_life_on_hit": "Gain # Life per Enemy Hit with Attacks",
+    "suffix_life_on_kill": "Gain # Life on Kill",
+    "suffix_life_regen": "Regenerate #% of Life per second",
+    "suffix_lightning_res": "+#% to Lightning Resistance",
+    "suffix_mana_leech_from_phys": "#% of Physical Attack Damage Leeched as Mana",
+    "suffix_mana_on_kill": "Gain # Mana on Kill",
+    "suffix_melee_skill_levels": "+# to Level of all Melee Skills",
+    "suffix_reduced_attr_req": "#% reduced Attribute Requirements",
+    "suffix_reduced_bleed_duration": "#% reduced Bleed Duration on you",
+    "suffix_reduced_ignite_duration": "#% reduced Ignite Duration on you",
+    "suffix_reduced_poison_duration": "#% reduced Poison Duration on you",
+    "suffix_strength": "+# to Strength",
+    "suffix_stun_threshold": "+# to Stun Threshold"
+  },
+  "itemClass": {
+    "dagger": "Dagger",
+    "oneHandSword": "One Hand Sword",
+    "oneHandAxe": "One Hand Axe",
+    "oneHandMace": "One Hand Mace",
+    "sceptre": "Sceptre",
+    "spear": "Spear",
+    "flail": "Flail",
+    "staff": "Staff",
+    "wand": "Wand",
+    "bow": "Bow",
+    "claw": "Claw",
+    "twoHandSword": "Two Hand Sword",
+    "twoHandAxe": "Two Hand Axe",
+    "twoHandMace": "Two Hand Mace",
+    "quarterstaff": "Quarterstaff",
+    "fishingRod": "Fishing Rod",
+    "crossbow": "Crossbow",
+    "trap": "Trap",
+    "talisman": "Talisman",
+    "quiver": "Quiver",
+    "shield": "Shield",
+    "buckler": "Buckler",
+    "helmet": "Helmet",
+    "focus": "Focus",
+    "gloves": "Gloves",
+    "bodyArmour": "Body Armour",
+    "boots": "Boots",
+    "amulet": "Amulet",
+    "ring": "Ring",
+    "belt": "Belt"
+  },
+  "baseItems": {
+    "base_oak_staff": {
+      "name": "Ashen Staff"
+    },
+    "base_ember_wand": {
+      "name": "Withered Wand"
+    },
+    "base_hunter_bow": {
+      "name": "Shortbow"
+    },
+    "base_twin_fang_claw": {
+      "name": "Pict Claw"
+    },
+    "base_iron_helmet": {
+      "name": "Soldier Greathelm"
+    },
+    "base_etched_focus": {
+      "name": "Woven Focus"
+    },
+    "base_leather_gloves": {
+      "name": "Riveted Mitts"
+    },
+    "base_chain_vest": {
+      "name": "Fur Plate"
+    },
+    "base_hardsole_boots": {
+      "name": "Iron Greaves"
+    },
+    "base_lapis_amulet": {
+      "name": "Lapis Amulet"
+    },
+    "base_gold_ring": {
+      "name": "Gold Ring"
+    },
+    "base_heavy_belt": {
+      "name": "Heavy Belt"
+    },
+    "gloves_variant_a": {
+      "name": "다부진 미트"
+    },
+    "gloves_variant_b": {
+      "name": "고정못 미트"
+    },
+    "gloves_variant_c": {
+      "name": "단조한 미트"
+    },
+    "gloves_variant_d": {
+      "name": "발전된 미트"
+    },
+    "gloves_variant_e": {
+      "name": "주조한 미트"
+    },
+    "gloves_variant_f": {
+      "name": "정교한 미트"
+    },
+    "gloves_variant_g": {
+      "name": "거신 미트"
+    },
+    "gloves_variant_h": {
+      "name": "우수한 미트"
+    },
+    "gloves_variant_i": {
+      "name": "스웨드 팔보호구"
+    },
+    "gloves_variant_j": {
+      "name": "굳건한 팔보호구"
+    },
+    "gloves_variant_k": {
+      "name": "속박된 팔보호구"
+    },
+    "gloves_variant_l": {
+      "name": "절개된 팔보호구"
+    },
+    "gloves_variant_m": {
+      "name": "가시 팔보호구"
+    },
+    "gloves_variant_n": {
+      "name": "섬세한 팔보호구"
+    },
+    "gloves_variant_o": {
+      "name": "굳어진 팔보호구"
+    },
+    "gloves_variant_p": {
+      "name": "아로새긴 팔보호구"
+    },
+    "gloves_variant_q": {
+      "name": "찢긴 장갑"
+    },
+    "gloves_variant_r": {
+      "name": "암울한 장갑"
+    },
+    "gloves_variant_s": {
+      "name": "꿰맨 장갑"
+    },
+    "gloves_variant_t": {
+      "name": "보석 박힌 장갑"
+    },
+    "gloves_variant_u": {
+      "name": "복잡한 장갑"
+    },
+    "gloves_variant_v": {
+      "name": "파우아비늘 장갑"
+    },
+    "gloves_variant_w": {
+      "name": "수놓은 장갑"
+    },
+    "gloves_variant_x": {
+      "name": "치장된 장갑"
+    },
+    "gloves_variant_y": {
+      "name": "고리 갑옷 건틀릿"
+    },
+    "gloves_variant_z": {
+      "name": "겹겹의 건틀릿"
+    },
+    "gloves_variant_aa": {
+      "name": "이중 건틀릿"
+    },
+    "gloves_variant_ab": {
+      "name": "판금 건틀릿"
+    },
+    "gloves_variant_ac": {
+      "name": "윤이 나는 건틀릿"
+    },
+    "gloves_variant_ad": {
+      "name": "화려한 건틀릿"
+    },
+    "gloves_variant_ae": {
+      "name": "밧줄 수갑"
+    },
+    "gloves_variant_af": {
+      "name": "오래된 수갑"
+    },
+    "gloves_variant_ag": {
+      "name": "금주물 수갑"
+    },
+    "gloves_variant_ah": {
+      "name": "베리시움 수갑"
+    },
+    "gloves_variant_ai": {
+      "name": "정의로운 수갑"
+    },
+    "gloves_variant_aj": {
+      "name": "인장 수갑"
+    },
+    "gloves_variant_ak": {
+      "name": "거즈 싸개"
+    },
+    "gloves_variant_al": {
+      "name": "리넨 싸개"
+    },
+    "gloves_variant_am": {
+      "name": "나선 싸개"
+    },
+    "gloves_variant_an": {
+      "name": "버클 싸개"
+    },
+    "gloves_variant_ao": {
+      "name": "은밀한 싸개"
+    },
+    "gloves_variant_ap": {
+      "name": "특수 싸개"
+    },
+    "gloves_variant_aq": {
+      "name": "우수한 소맷부리"
+    },
+    "gloves_variant_ar": {
+      "name": "판금 미트"
+    },
+    "gloves_variant_as": {
+      "name": "우아한 미트"
+    },
+    "gloves_variant_at": {
+      "name": "고대 미트"
+    },
+    "gloves_variant_au": {
+      "name": "깃털 미트"
+    },
+    "gloves_variant_av": {
+      "name": "사냥 팔보호구"
+    },
+    "gloves_variant_aw": {
+      "name": "재빠른 팔보호구"
+    },
+    "gloves_variant_ax": {
+      "name": "제련된 팔보호구"
+    },
+    "gloves_variant_ay": {
+      "name": "가시 팔보호구"
+    },
+    "gloves_variant_az": {
+      "name": "불길한 장갑"
+    },
+    "gloves_variant_ba": {
+      "name": "장식된 장갑"
+    },
+    "gloves_variant_bb": {
+      "name": "바로크 장갑"
+    },
+    "gloves_variant_bc": {
+      "name": "금 장갑"
+    },
+    "gloves_variant_bd": {
+      "name": "철사슬 건틀릿"
+    },
+    "gloves_variant_be": {
+      "name": "대장 건틀릿"
+    },
+    "gloves_variant_bf": {
+      "name": "맹신자 건틀릿"
+    },
+    "gloves_variant_bg": {
+      "name": "땋은 수갑"
+    },
+    "gloves_variant_bh": {
+      "name": "가보 수갑"
+    },
+    "gloves_variant_bi": {
+      "name": "화려한 수갑"
+    },
+    "gloves_variant_bj": {
+      "name": "붕대 싸개"
+    },
+    "gloves_variant_bk": {
+      "name": "캠브릭 싸개"
+    },
+    "gloves_variant_bl": {
+      "name": "치장된 싸개"
+    },
+    "gloves_variant_bm": {
+      "name": "기사의 미트"
+    },
+    "gloves_variant_bn": {
+      "name": "화려한 미트"
+    },
+    "gloves_variant_bo": {
+      "name": "바알 미트"
+    },
+    "gloves_variant_bp": {
+      "name": "거대한 미트"
+    },
+    "gloves_variant_bq": {
+      "name": "뒤를 쫓는 팔보호구"
+    },
+    "gloves_variant_br": {
+      "name": "우수한 팔보호구"
+    },
+    "gloves_variant_bs": {
+      "name": "가시 돋친 팔보호구"
+    },
+    "gloves_variant_bt": {
+      "name": "광택 나는 팔보호구"
+    },
+    "gloves_variant_bu": {
+      "name": "으스스한 장갑"
+    },
+    "gloves_variant_bv": {
+      "name": "호화로운 장갑"
+    },
+    "gloves_variant_bw": {
+      "name": "바알 장갑"
+    },
+    "gloves_variant_bx": {
+      "name": "사이렌비늘 장갑"
+    },
+    "gloves_variant_by": {
+      "name": "강철사슬 건틀릿"
+    },
+    "gloves_variant_bz": {
+      "name": "지휘관 건틀릿"
+    },
+    "gloves_variant_ca": {
+      "name": "광신자 건틀릿"
+    },
+    "gloves_variant_cb": {
+      "name": "검은강철 건틀릿"
+    },
+    "gloves_variant_cc": {
+      "name": "속박된 수갑"
+    },
+    "gloves_variant_cd": {
+      "name": "고대의 수갑"
+    },
+    "gloves_variant_ce": {
+      "name": "번뜩이는 수갑"
+    },
+    "gloves_variant_cf": {
+      "name": "지지자 수갑"
+    },
+    "gloves_variant_cg": {
+      "name": "전쟁 싸개"
+    },
+    "gloves_variant_ch": {
+      "name": "우아한 싸개"
+    },
+    "gloves_variant_ci": {
+      "name": "바알 싸개"
+    },
+    "gloves_variant_cj": {
+      "name": "고정된 싸개"
+    },
+    "body_armour_variant_a": {
+      "name": "녹슨 흉갑"
+    },
+    "body_armour_variant_b": {
+      "name": "모피 판금 갑옷"
+    },
+    "body_armour_variant_c": {
+      "name": "철 흉갑"
+    },
+    "body_armour_variant_d": {
+      "name": "레이더 판금 갑옷"
+    },
+    "body_armour_variant_e": {
+      "name": "마라케스 흉갑"
+    },
+    "body_armour_variant_f": {
+      "name": "강철 판금 갑옷"
+    },
+    "body_armour_variant_g": {
+      "name": "전신 판금 갑옷"
+    },
+    "body_armour_variant_h": {
+      "name": "바알 흉갑"
+    },
+    "body_armour_variant_i": {
+      "name": "거수 판금 갑옷"
+    },
+    "body_armour_variant_j": {
+      "name": "치프틴 흉갑"
+    },
+    "body_armour_variant_k": {
+      "name": "원형 경기장 판금 갑옷"
+    },
+    "body_armour_variant_l": {
+      "name": "챔피언 흉갑"
+    },
+    "body_armour_variant_m": {
+      "name": "영광의 판금 갑옷"
+    },
+    "body_armour_variant_n": {
+      "name": "정복자 판금 갑옷"
+    },
+    "body_armour_variant_o": {
+      "name": "심연의 흉갑"
+    },
+    "body_armour_variant_p": {
+      "name": "가죽 조끼"
+    },
+    "body_armour_variant_q": {
+      "name": "누비 조끼"
+    },
+    "body_armour_variant_r": {
+      "name": "패스파인더 외투"
+    },
+    "body_armour_variant_s": {
+      "name": "연막의 조끼"
+    },
+    "body_armour_variant_t": {
+      "name": "로아가죽 외투"
+    },
+    "body_armour_variant_u": {
+      "name": "징 박힌 조끼"
+    },
+    "body_armour_variant_v": {
+      "name": "정찰병의 조끼"
+    },
+    "body_armour_variant_w": {
+      "name": "뱀 비늘 외투"
+    },
+    "body_armour_variant_x": {
+      "name": "해적 조끼"
+    },
+    "body_armour_variant_y": {
+      "name": "밀수범 외투"
+    },
+    "body_armour_variant_z": {
+      "name": "질주자 조끼"
+    },
+    "body_armour_variant_aa": {
+      "name": "경화가죽 외투"
+    },
+    "body_armour_variant_ab": {
+      "name": "정교한 조끼"
+    },
+    "body_armour_variant_ac": {
+      "name": "사슬 외투"
+    },
+    "body_armour_variant_ad": {
+      "name": "장갑을 두른 조끼"
+    },
+    "body_armour_variant_ae": {
+      "name": "조각난 로브"
+    },
+    "body_armour_variant_af": {
+      "name": "깃털 로브"
+    },
+    "body_armour_variant_ag": {
+      "name": "사술사의 로브"
+    },
+    "body_armour_variant_ah": {
+      "name": "뼈 의복"
+    },
+    "body_armour_variant_ai": {
+      "name": "실크 로브"
+    },
+    "body_armour_variant_aj": {
+      "name": "케스 의복"
+    },
+    "body_armour_variant_ak": {
+      "name": "봉헌된 의복"
+    },
+    "body_armour_variant_al": {
+      "name": "제단 로브"
+    },
+    "body_armour_variant_am": {
+      "name": "엘리멘탈리스트 로브"
+    },
+    "body_armour_variant_an": {
+      "name": "신비한 의복"
+    },
+    "body_armour_variant_ao": {
+      "name": "제국 로브"
+    },
+    "body_armour_variant_ap": {
+      "name": "판금 의복"
+    },
+    "body_armour_variant_aq": {
+      "name": "혼란의 의복"
+    },
+    "body_armour_variant_ar": {
+      "name": "계몽의 로브"
+    },
+    "body_armour_variant_as": {
+      "name": "비전 의복"
+    },
+    "body_armour_variant_at": {
+      "name": "사슬 갑옷"
+    },
+    "body_armour_variant_au": {
+      "name": "악한 방어구"
+    },
+    "body_armour_variant_av": {
+      "name": "방랑자 방어구"
+    },
+    "body_armour_variant_aw": {
+      "name": "은폐 사슬옷"
+    },
+    "body_armour_variant_ax": {
+      "name": "탐험가 방어구"
+    },
+    "body_armour_variant_ay": {
+      "name": "미늘 갑옷"
+    },
+    "body_armour_variant_az": {
+      "name": "기사 방어구"
+    },
+    "body_armour_variant_ba": {
+      "name": "선대의 사슬옷"
+    },
+    "body_armour_variant_bb": {
+      "name": "라멜라 사슬옷"
+    },
+    "body_armour_variant_bc": {
+      "name": "검투사 방어구"
+    },
+    "body_armour_variant_bd": {
+      "name": "영웅의 방어구"
+    },
+    "body_armour_variant_be": {
+      "name": "토너먼트 사슬옷"
+    },
+    "body_armour_variant_bf": {
+      "name": "토너먼트 사슬옷"
+    },
+    "body_armour_variant_bg": {
+      "name": "토너먼트 사슬옷"
+    },
+    "body_armour_variant_bh": {
+      "name": "처형자 방어구"
+    },
+    "body_armour_variant_bi": {
+      "name": "순례자 법의"
+    },
+    "body_armour_variant_bj": {
+      "name": "털가죽 외투"
+    },
+    "body_armour_variant_bk": {
+      "name": "사슬 법의"
+    },
+    "body_armour_variant_bl": {
+      "name": "주술사 외투"
+    },
+    "body_armour_variant_bm": {
+      "name": "철갑 법의"
+    },
+    "body_armour_variant_bn": {
+      "name": "희생의 외투"
+    },
+    "body_armour_variant_bo": {
+      "name": "성직자 법의"
+    },
+    "body_armour_variant_bp": {
+      "name": "파도예견자 외투"
+    },
+    "body_armour_variant_bq": {
+      "name": "도금된 법의"
+    },
+    "body_armour_variant_br": {
+      "name": "공경받는 외투"
+    },
+    "body_armour_variant_bs": {
+      "name": "존경받는 법의"
+    },
+    "body_armour_variant_bt": {
+      "name": "까마귀 외투"
+    },
+    "body_armour_variant_bu": {
+      "name": "북극성 법의"
+    },
+    "body_armour_variant_bv": {
+      "name": "은자 의복"
+    },
+    "body_armour_variant_bw": {
+      "name": "밀랍재질 재킷"
+    },
+    "body_armour_variant_bx": {
+      "name": "도사 의복"
+    },
+    "body_armour_variant_by": {
+      "name": "나그네 재킷"
+    },
+    "body_armour_variant_bz": {
+      "name": "은둔자 의복"
+    },
+    "body_armour_variant_ca": {
+      "name": "두피수집가의 재킷"
+    },
+    "body_armour_variant_cb": {
+      "name": "불한당 재킷"
+    },
+    "body_armour_variant_cc": {
+      "name": "고행자 의복"
+    },
+    "body_armour_variant_cd": {
+      "name": "은밀한 재킷"
+    },
+    "body_armour_variant_ce": {
+      "name": "수도원 의복"
+    },
+    "body_armour_variant_cf": {
+      "name": "고통 재킷"
+    },
+    "body_armour_variant_cg": {
+      "name": "헌신자 의복"
+    },
+    "body_armour_variant_ch": {
+      "name": "암살자 의복"
+    },
+    "body_armour_variant_ci": {
+      "name": "우수한 예복"
+    },
+    "body_armour_variant_cj": {
+      "name": "희생의 예복"
+    },
+    "body_armour_variant_ck": {
+      "name": "야만인의 판금 갑옷"
+    },
+    "body_armour_variant_cl": {
+      "name": "투박한 흉갑"
+    },
+    "body_armour_variant_cm": {
+      "name": "모래맹세 흉갑"
+    },
+    "body_armour_variant_cn": {
+      "name": "우아한 판금 갑옷"
+    },
+    "body_armour_variant_co": {
+      "name": "무거운 판금 갑옷"
+    },
+    "body_armour_variant_cp": {
+      "name": "돌 흉갑"
+    },
+    "body_armour_variant_cq": {
+      "name": "쪽모이 조끼"
+    },
+    "body_armour_variant_cr": {
+      "name": "사냥 외투"
+    },
+    "body_armour_variant_cs": {
+      "name": "승마 외투"
+    },
+    "body_armour_variant_ct": {
+      "name": "겹겹의 조끼"
+    },
+    "body_armour_variant_cu": {
+      "name": "주자 조끼"
+    },
+    "body_armour_variant_cv": {
+      "name": "도마뱀비늘 외투"
+    },
+    "body_armour_variant_cw": {
+      "name": "새의 로브"
+    },
+    "body_armour_variant_cx": {
+      "name": "저주발화자의 로브"
+    },
+    "body_armour_variant_cy": {
+      "name": "호화로운 로브"
+    },
+    "body_armour_variant_cz": {
+      "name": "강 의복"
+    },
+    "body_armour_variant_da": {
+      "name": "지지자의 의복"
+    },
+    "body_armour_variant_db": {
+      "name": "의식용 로브"
+    },
+    "body_armour_variant_dc": {
+      "name": "고리 사슬옷"
+    },
+    "body_armour_variant_dd": {
+      "name": "불한당 방어구"
+    },
+    "body_armour_variant_de": {
+      "name": "방랑자 방어구"
+    },
+    "body_armour_variant_df": {
+      "name": "덮개 덮은 사슬옷"
+    },
+    "body_armour_variant_dg": {
+      "name": "창시자 방어구"
+    },
+    "body_armour_variant_dh": {
+      "name": "황금 사슬옷"
+    },
+    "body_armour_variant_di": {
+      "name": "템플러 법의"
+    },
+    "body_armour_variant_dj": {
+      "name": "곰가죽 외투"
+    },
+    "body_armour_variant_dk": {
+      "name": "쇠사슬 법의"
+    },
+    "body_armour_variant_dl": {
+      "name": "비술사 외투"
+    },
+    "body_armour_variant_dm": {
+      "name": "판금 법의"
+    },
+    "body_armour_variant_dn": {
+      "name": "심장도륙자 외투"
+    },
+    "body_armour_variant_do": {
+      "name": "고행자 의복"
+    },
+    "body_armour_variant_dp": {
+      "name": "기름칠된 재킷"
+    },
+    "body_armour_variant_dq": {
+      "name": "선교사 의복"
+    },
+    "body_armour_variant_dr": {
+      "name": "순회자 재킷"
+    },
+    "body_armour_variant_ds": {
+      "name": "하툰고 의복"
+    },
+    "body_armour_variant_dt": {
+      "name": "행상 재킷"
+    },
+    "body_armour_variant_du": {
+      "name": "병사 흉갑"
+    },
+    "body_armour_variant_dv": {
+      "name": "화려한 판금 갑옷"
+    },
+    "body_armour_variant_dw": {
+      "name": "웃자알 흉갑"
+    },
+    "body_armour_variant_dx": {
+      "name": "전쟁군주 흉갑"
+    },
+    "body_armour_variant_dy": {
+      "name": "재빠른 추적자 외투"
+    },
+    "body_armour_variant_dz": {
+      "name": "미끄러진 타격 조끼"
+    },
+    "body_armour_variant_ea": {
+      "name": "아룡 비늘 외투"
+    },
+    "body_armour_variant_eb": {
+      "name": "해적 외투"
+    },
+    "body_armour_variant_ec": {
+      "name": "끔찍한 로브"
+    },
+    "body_armour_variant_ed": {
+      "name": "흐르는 의복"
+    },
+    "body_armour_variant_ee": {
+      "name": "성찬의 로브"
+    },
+    "body_armour_variant_ef": {
+      "name": "깃털 의복"
+    },
+    "body_armour_variant_eg": {
+      "name": "비겁자 방어구"
+    },
+    "body_armour_variant_eh": {
+      "name": "연막의 사슬옷"
+    },
+    "body_armour_variant_ei": {
+      "name": "연막의 사슬옷"
+    },
+    "body_armour_variant_ej": {
+      "name": "연막의 사슬옷"
+    },
+    "body_armour_variant_ek": {
+      "name": "죽음의 사슬옷"
+    },
+    "body_armour_variant_el": {
+      "name": "테인 사슬옷"
+    },
+    "body_armour_variant_em": {
+      "name": "늑대가죽 외투"
+    },
+    "body_armour_variant_en": {
+      "name": "요술사 외투"
+    },
+    "body_armour_variant_eo": {
+      "name": "죽음의 외투"
+    },
+    "body_armour_variant_ep": {
+      "name": "바다폭풍 외투"
+    },
+    "body_armour_variant_eq": {
+      "name": "매끈한 재킷"
+    },
+    "body_armour_variant_er": {
+      "name": "뚜벅이 재킷"
+    },
+    "body_armour_variant_es": {
+      "name": "매 조련사의 재킷"
+    },
+    "body_armour_variant_et": {
+      "name": "금욕적인 의복"
+    },
+    "base_steel_ring": {
+      "name": "Iron Ring"
+    },
+    "claw_crude_claw": {
+      "name": "Crude Claw"
+    },
+    "claw_pict_claw": {
+      "name": "Pict Claw"
+    },
+    "claw_wolfbone_claw": {
+      "name": "Wolfbone Claw"
+    },
+    "claw_forked_claw": {
+      "name": "Forked Claw"
+    },
+    "claw_plated_claw": {
+      "name": "Plated Claw"
+    },
+    "claw_edged_claw": {
+      "name": "Edged Claw"
+    },
+    "claw_arced_claw": {
+      "name": "Arced Claw"
+    },
+    "claw_hooked_claw": {
+      "name": "Hooked Claw"
+    },
+    "claw_razorglass_claw": {
+      "name": "Razorglass Claw"
+    },
+    "claw_sharktooth_claw": {
+      "name": "Sharktooth Claw"
+    },
+    "claw_armoured_claw": {
+      "name": "Armoured Claw"
+    },
+    "claw_piercing_claw": {
+      "name": "Piercing Claw"
+    },
+    "claw_talon_claw": {
+      "name": "Talon Claw"
+    },
+    "dagger_ethereal_blade": {
+      "name": "Ethereal Blade"
+    },
+    "dagger_glass_shank": {
+      "name": "Glass Shank"
+    },
+    "dagger_crone_knife": {
+      "name": "Crone Knife"
+    },
+    "dagger_simple_dagger": {
+      "name": "Simple Dagger"
+    },
+    "dagger_skinning_knife": {
+      "name": "Skinning Knife"
+    },
+    "dagger_moon_dagger": {
+      "name": "Moon Dagger"
+    },
+    "dagger_engraved_knife": {
+      "name": "Engraved Knife"
+    },
+    "dagger_obsidian_dagger": {
+      "name": "Obsidian Dagger"
+    },
+    "dagger_bloodletting_dagger": {
+      "name": "Bloodletting Dagger"
+    },
+    "dagger_mail_breaker": {
+      "name": "Mail Breaker"
+    },
+    "dagger_kris_knife": {
+      "name": "Kris Knife"
+    },
+    "dagger_parrying_dagger": {
+      "name": "Parrying Dagger"
+    },
+    "dagger_arcane_dirk": {
+      "name": "Arcane Dirk"
+    },
+    "dagger_cinquedea": {
+      "name": "Cinquedea"
+    },
+    "wand_withered_wand": {
+      "name": "Withered Wand"
+    },
+    "wand_bone_wand": {
+      "name": "Bone Wand"
+    },
+    "wand_attuned_wand": {
+      "name": "Attuned Wand"
+    },
+    "wand_siphoning_wand": {
+      "name": "Siphoning Wand"
+    },
+    "wand_volatile_wand": {
+      "name": "Volatile Wand"
+    },
+    "wand_galvanic_wand": {
+      "name": "Galvanic Wand"
+    },
+    "wand_acrid_wand": {
+      "name": "Acrid Wand"
+    },
+    "wand_offering_wand": {
+      "name": "Offering Wand"
+    },
+    "wand_frigid_wand": {
+      "name": "Frigid Wand"
+    },
+    "wand_torture_wand": {
+      "name": "Torture Wand"
+    },
+    "wand_critical_wand": {
+      "name": "Critical Wand"
+    },
+    "wand_primordial_wand": {
+      "name": "Primordial Wand"
+    },
+    "wand_dueling_wand": {
+      "name": "Dueling Wand"
+    },
+    "one_hand_sword_golden_blade": {
+      "name": "Golden Blade"
+    },
+    "one_hand_sword_energy_blade": {
+      "name": "Energy Blade"
+    },
+    "one_hand_sword_shortsword": {
+      "name": "Shortsword"
+    },
+    "one_hand_sword_broadsword": {
+      "name": "Broadsword"
+    },
+    "one_hand_sword_vampiric_blade": {
+      "name": "Vampiric Blade"
+    },
+    "one_hand_sword_scimitar": {
+      "name": "Scimitar"
+    },
+    "one_hand_sword_charred_shortsword": {
+      "name": "Charred Shortsword"
+    },
+    "one_hand_sword_sickle_sword": {
+      "name": "Sickle Sword"
+    },
+    "one_hand_sword_falchion": {
+      "name": "Falchion"
+    },
+    "one_hand_sword_treasured_blade": {
+      "name": "Treasured Blade"
+    },
+    "one_hand_sword_cutlass": {
+      "name": "Cutlass"
+    },
+    "one_hand_sword_runic_shortsword": {
+      "name": "Runic Shortsword"
+    },
+    "one_hand_sword_messer": {
+      "name": "Messer"
+    },
+    "one_hand_sword_commander_sword": {
+      "name": "Commander Sword"
+    },
+    "one_hand_sword_dark_blade": {
+      "name": "Dark Blade"
+    },
+    "one_hand_sword_golden_blade_2": {
+      "name": "Golden Blade"
+    },
+    "one_hand_axe_dull_hatchet": {
+      "name": "Dull Hatchet"
+    },
+    "one_hand_axe_hook_axe": {
+      "name": "Hook Axe"
+    },
+    "one_hand_axe_bearded_axe": {
+      "name": "Bearded Axe"
+    },
+    "one_hand_axe_extended_cleaver": {
+      "name": "Extended Cleaver"
+    },
+    "one_hand_axe_bandit_hatchet": {
+      "name": "Bandit Hatchet"
+    },
+    "one_hand_axe_crescent_axe": {
+      "name": "Crescent Axe"
+    },
+    "one_hand_axe_carving_hatchet": {
+      "name": "Carving Hatchet"
+    },
+    "one_hand_axe_sacrificial_axe": {
+      "name": "Sacrificial Axe"
+    },
+    "one_hand_axe_boarding_hatchet": {
+      "name": "Boarding Hatchet"
+    },
+    "one_hand_axe_fury_cleaver": {
+      "name": "Fury Cleaver"
+    },
+    "one_hand_axe_battle_axe": {
+      "name": "Battle Axe"
+    },
+    "one_hand_axe_profane_cleaver": {
+      "name": "Profane Cleaver"
+    },
+    "one_hand_axe_dread_hatchet": {
+      "name": "Dread Hatchet"
+    },
+    "one_hand_mace_wooden_club": {
+      "name": "Wooden Club"
+    },
+    "one_hand_mace_smithing_hammer": {
+      "name": "Smithing Hammer"
+    },
+    "one_hand_mace_slim_mace": {
+      "name": "Slim Mace"
+    },
+    "one_hand_mace_spiked_club": {
+      "name": "Spiked Club"
+    },
+    "one_hand_mace_warpick": {
+      "name": "Warpick"
+    },
+    "one_hand_mace_plated_mace": {
+      "name": "Plated Mace"
+    },
+    "one_hand_mace_brigand_mace": {
+      "name": "Brigand Mace"
+    },
+    "one_hand_mace_construct_hammer": {
+      "name": "Construct Hammer"
+    },
+    "one_hand_mace_morning_star": {
+      "name": "Morning Star"
+    },
+    "one_hand_mace_jade_club": {
+      "name": "Jade Club"
+    },
+    "one_hand_mace_lumen_mace": {
+      "name": "Lumen Mace"
+    },
+    "one_hand_mace_execratus_hammer": {
+      "name": "Execratus Hammer"
+    },
+    "one_hand_mace_torment_club": {
+      "name": "Torment Club"
+    },
+    "one_hand_mace_kalguuran_forgehammer": {
+      "name": "Kalguuran Forgehammer"
+    },
+    "one_hand_mace_calescent_hammer": {
+      "name": "Calescent Hammer"
+    },
+    "one_hand_mace_flared_mace": {
+      "name": "Flared Mace"
+    },
+    "one_hand_mace_battle_pick": {
+      "name": "Battle Pick"
+    },
+    "one_hand_mace_marching_mace": {
+      "name": "Marching Mace"
+    },
+    "one_hand_mace_bandit_mace": {
+      "name": "Bandit Mace"
+    },
+    "one_hand_mace_structured_hammer": {
+      "name": "Structured Hammer"
+    },
+    "one_hand_mace_flanged_mace": {
+      "name": "Flanged Mace"
+    },
+    "one_hand_mace_crown_mace": {
+      "name": "Crown Mace"
+    },
+    "one_hand_mace_molten_hammer": {
+      "name": "Molten Hammer"
+    },
+    "one_hand_mace_strife_pick": {
+      "name": "Strife Pick"
+    },
+    "one_hand_mace_fortified_hammer": {
+      "name": "Fortified Hammer"
+    },
+    "one_hand_mace_marauding_mace": {
+      "name": "Marauding Mace"
+    },
+    "one_hand_mace_akoyan_club": {
+      "name": "Akoyan Club"
+    },
+    "sceptre_rattling_sceptre": {
+      "name": "Rattling Sceptre"
+    },
+    "sceptre_stoic_sceptre": {
+      "name": "Stoic Sceptre"
+    },
+    "sceptre_lupine_sceptre": {
+      "name": "Lupine Sceptre"
+    },
+    "sceptre_omen_sceptre": {
+      "name": "Omen Sceptre"
+    },
+    "sceptre_ochre_sceptre": {
+      "name": "Ochre Sceptre"
+    },
+    "sceptre_shrine_sceptre": {
+      "name": "Shrine Sceptre"
+    },
+    "sceptre_shrine_sceptre_2": {
+      "name": "Shrine Sceptre"
+    },
+    "sceptre_shrine_sceptre_3": {
+      "name": "Shrine Sceptre"
+    },
+    "sceptre_devouring_sceptre": {
+      "name": "Devouring Sceptre"
+    },
+    "sceptre_clasped_sceptre": {
+      "name": "Clasped Sceptre"
+    },
+    "sceptre_devotional_sceptre": {
+      "name": "Devotional Sceptre"
+    },
+    "sceptre_wrath_sceptre": {
+      "name": "Wrath Sceptre"
+    },
+    "sceptre_aromatic_sceptre": {
+      "name": "Aromatic Sceptre"
+    },
+    "sceptre_pious_sceptre": {
+      "name": "Pious Sceptre"
+    },
+    "sceptre_hallowed_sceptre": {
+      "name": "Hallowed Sceptre"
+    },
+    "sceptre_shrine_sceptre_4": {
+      "name": "Shrine Sceptre"
+    },
+    "spear_hardwood_spear": {
+      "name": "Hardwood Spear"
+    },
+    "spear_ironhead_spear": {
+      "name": "Ironhead Spear"
+    },
+    "spear_hunting_spear": {
+      "name": "Hunting Spear"
+    },
+    "spear_winged_spear": {
+      "name": "Winged Spear"
+    },
+    "spear_war_spear": {
+      "name": "War Spear"
+    },
+    "spear_forked_spear": {
+      "name": "Forked Spear"
+    },
+    "spear_barbed_spear": {
+      "name": "Barbed Spear"
+    },
+    "spear_broad_spear": {
+      "name": "Broad Spear"
+    },
+    "spear_crossblade_spear": {
+      "name": "Crossblade Spear"
+    },
+    "spear_seaglass_spear": {
+      "name": "Seaglass Spear"
+    },
+    "spear_sword_spear": {
+      "name": "Sword Spear"
+    },
+    "spear_striking_spear": {
+      "name": "Striking Spear"
+    },
+    "spear_helix_spear": {
+      "name": "Helix Spear"
+    },
+    "spear_steelhead_spear": {
+      "name": "Steelhead Spear"
+    },
+    "spear_coursing_spear": {
+      "name": "Coursing Spear"
+    },
+    "spear_swift_spear": {
+      "name": "Swift Spear"
+    },
+    "spear_branched_spear": {
+      "name": "Branched Spear"
+    },
+    "spear_jagged_spear": {
+      "name": "Jagged Spear"
+    },
+    "spear_massive_spear": {
+      "name": "Massive Spear"
+    },
+    "spear_orichalcum_spear": {
+      "name": "Orichalcum Spear"
+    },
+    "spear_soaring_spear": {
+      "name": "Soaring Spear"
+    },
+    "spear_pronged_spear": {
+      "name": "Pronged Spear"
+    },
+    "spear_stalking_spear": {
+      "name": "Stalking Spear"
+    },
+    "spear_flying_spear": {
+      "name": "Flying Spear"
+    },
+    "spear_grand_spear": {
+      "name": "Grand Spear"
+    },
+    "spear_spiked_spear": {
+      "name": "Spiked Spear"
+    },
+    "spear_guardian_spear": {
+      "name": "Guardian Spear"
+    },
+    "spear_akoyan_spear": {
+      "name": "Akoyan Spear"
+    },
+    "flail_splintered_flail": {
+      "name": "Splintered Flail"
+    },
+    "flail_chain_flail": {
+      "name": "Chain Flail"
+    },
+    "flail_holy_flail": {
+      "name": "Holy Flail"
+    },
+    "flail_iron_flail": {
+      "name": "Iron Flail"
+    },
+    "flail_twin_flail": {
+      "name": "Twin Flail"
+    },
+    "flail_slender_flail": {
+      "name": "Slender Flail"
+    },
+    "flail_stone_flail": {
+      "name": "Stone Flail"
+    },
+    "flail_ring_flail": {
+      "name": "Ring Flail"
+    },
+    "flail_guarded_flail": {
+      "name": "Guarded Flail"
+    },
+    "flail_icicle_flail": {
+      "name": "Icicle Flail"
+    },
+    "flail_tearing_flail": {
+      "name": "Tearing Flail"
+    },
+    "flail_great_flail": {
+      "name": "Great Flail"
+    },
+    "flail_abyssal_flail": {
+      "name": "Abyssal Flail"
+    },
+    "bow_crude_bow": {
+      "name": "Crude Bow"
+    },
+    "bow_shortbow": {
+      "name": "Shortbow"
+    },
+    "bow_warden_bow": {
+      "name": "Warden Bow"
+    },
+    "bow_recurve_bow": {
+      "name": "Recurve Bow"
+    },
+    "bow_composite_bow": {
+      "name": "Composite Bow"
+    },
+    "bow_dualstring_bow": {
+      "name": "Dualstring Bow"
+    },
+    "bow_cultist_bow": {
+      "name": "Cultist Bow"
+    },
+    "bow_zealot_bow": {
+      "name": "Zealot Bow"
+    },
+    "bow_artillery_bow": {
+      "name": "Artillery Bow"
+    },
+    "bow_tribal_bow": {
+      "name": "Tribal Bow"
+    },
+    "bow_greatbow": {
+      "name": "Greatbow"
+    },
+    "bow_double_limb_bow": {
+      "name": "Double Limb Bow"
+    },
+    "bow_heavy_bow": {
+      "name": "Heavy Bow"
+    },
+    "bow_snakewood_shortbow": {
+      "name": "Snakewood Shortbow"
+    },
+    "bow_protector_bow": {
+      "name": "Protector Bow"
+    },
+    "bow_rider_bow": {
+      "name": "Rider Bow"
+    },
+    "bow_twin_bow": {
+      "name": "Twin Bow"
+    },
+    "bow_adherent_bow": {
+      "name": "Adherent Bow"
+    },
+    "bow_militant_bow": {
+      "name": "Militant Bow"
+    },
+    "bow_ironwood_shortbow": {
+      "name": "Ironwood Shortbow"
+    },
+    "bow_cavalry_bow": {
+      "name": "Cavalry Bow"
+    },
+    "bow_guardian_bow": {
+      "name": "Guardian Bow"
+    },
+    "bow_gemini_bow": {
+      "name": "Gemini Bow"
+    },
+    "bow_fanatic_bow": {
+      "name": "Fanatic Bow"
+    },
+    "bow_warmonger_bow": {
+      "name": "Warmonger Bow"
+    },
+    "bow_obliterator_bow": {
+      "name": "Obliterator Bow"
+    },
+    "staff_ashen_staff": {
+      "name": "Ashen Staff"
+    },
+    "staff_gelid_staff": {
+      "name": "Gelid Staff"
+    },
+    "staff_voltaic_staff": {
+      "name": "Voltaic Staff"
+    },
+    "staff_spriggan_staff": {
+      "name": "Spriggan Staff"
+    },
+    "staff_pyrophyte_staff": {
+      "name": "Pyrophyte Staff"
+    },
+    "staff_chiming_staff": {
+      "name": "Chiming Staff"
+    },
+    "staff_rending_staff": {
+      "name": "Rending Staff"
+    },
+    "staff_reaping_staff": {
+      "name": "Reaping Staff"
+    },
+    "staff_icicle_staff": {
+      "name": "Icicle Staff"
+    },
+    "staff_roaring_staff": {
+      "name": "Roaring Staff"
+    },
+    "staff_paralysing_staff": {
+      "name": "Paralysing Staff"
+    },
+    "staff_sanctified_staff": {
+      "name": "Sanctified Staff"
+    },
+    "staff_dark_staff": {
+      "name": "Dark Staff"
+    },
+    "staff_ravenous_staff": {
+      "name": "Ravenous Staff"
+    },
+    "staff_permafrost_staff": {
+      "name": "Permafrost Staff"
+    },
+    "staff_reflecting_staff": {
+      "name": "Reflecting Staff"
+    },
+    "two_hand_sword_corroded_longsword": {
+      "name": "Corroded Longsword"
+    },
+    "two_hand_sword_iron_greatsword": {
+      "name": "Iron Greatsword"
+    },
+    "two_hand_sword_blessed_claymore": {
+      "name": "Blessed Claymore"
+    },
+    "two_hand_sword_broad_greatsword": {
+      "name": "Broad Greatsword"
+    },
+    "two_hand_sword_rippled_greatsword": {
+      "name": "Rippled Greatsword"
+    },
+    "two_hand_sword_arced_longsword": {
+      "name": "Arced Longsword"
+    },
+    "two_hand_sword_stone_greatsword": {
+      "name": "Stone Greatsword"
+    },
+    "two_hand_sword_obsidian_greatsword": {
+      "name": "Obsidian Greatsword"
+    },
+    "two_hand_sword_keen_greatsword": {
+      "name": "Keen Greatsword"
+    },
+    "two_hand_sword_ancient_greatblade": {
+      "name": "Ancient Greatblade"
+    },
+    "two_hand_sword_flanged_greatblade": {
+      "name": "Flanged Greatblade"
+    },
+    "two_hand_sword_regalia_longsword": {
+      "name": "Regalia Longsword"
+    },
+    "two_hand_sword_ultra_greatsword": {
+      "name": "Ultra Greatsword"
+    },
+    "two_hand_axe_splitting_greataxe": {
+      "name": "Splitting Greataxe"
+    },
+    "two_hand_axe_light_halberd": {
+      "name": "Light Halberd"
+    },
+    "two_hand_axe_executioner_greataxe": {
+      "name": "Executioner Greataxe"
+    },
+    "two_hand_axe_arched_greataxe": {
+      "name": "Arched Greataxe"
+    },
+    "two_hand_axe_elegant_glaive": {
+      "name": "Elegant Glaive"
+    },
+    "two_hand_axe_savage_greataxe": {
+      "name": "Savage Greataxe"
+    },
+    "two_hand_axe_rending_halberd": {
+      "name": "Rending Halberd"
+    },
+    "two_hand_axe_jagged_greataxe": {
+      "name": "Jagged Greataxe"
+    },
+    "two_hand_axe_reaver_glaive": {
+      "name": "Reaver Glaive"
+    },
+    "two_hand_axe_ember_greataxe": {
+      "name": "Ember Greataxe"
+    },
+    "two_hand_axe_ceremonial_halberd": {
+      "name": "Ceremonial Halberd"
+    },
+    "two_hand_axe_monument_greataxe": {
+      "name": "Monument Greataxe"
+    },
+    "two_hand_axe_vile_greataxe": {
+      "name": "Vile Greataxe"
+    },
+    "two_hand_mace_felled_greatclub": {
+      "name": "Felled Greatclub"
+    },
+    "two_hand_mace_oak_greathammer": {
+      "name": "Oak Greathammer"
+    },
+    "two_hand_mace_forge_maul": {
+      "name": "Forge Maul"
+    },
+    "two_hand_mace_studded_greatclub": {
+      "name": "Studded Greatclub"
+    },
+    "two_hand_mace_cultist_greathammer": {
+      "name": "Cultist Greathammer"
+    },
+    "two_hand_mace_temple_maul": {
+      "name": "Temple Maul"
+    },
+    "two_hand_mace_leaden_greathammer": {
+      "name": "Leaden Greathammer"
+    },
+    "two_hand_mace_crumbling_maul": {
+      "name": "Crumbling Maul"
+    },
+    "two_hand_mace_pointed_maul": {
+      "name": "Pointed Maul"
+    },
+    "two_hand_mace_totemic_greatclub": {
+      "name": "Totemic Greatclub"
+    },
+    "two_hand_mace_greatmace": {
+      "name": "Greatmace"
+    },
+    "two_hand_mace_precise_greathammer": {
+      "name": "Precise Greathammer"
+    },
+    "two_hand_mace_giant_maul": {
+      "name": "Giant Maul"
+    },
+    "two_hand_mace_snakewood_greathammer": {
+      "name": "Snakewood Greathammer"
+    },
+    "two_hand_mace_blacksmith_maul": {
+      "name": "Blacksmith Maul"
+    },
+    "two_hand_mace_zealot_greathammer": {
+      "name": "Zealot Greathammer"
+    },
+    "two_hand_mace_solemn_maul": {
+      "name": "Solemn Maul"
+    },
+    "two_hand_mace_heavy_greathammer": {
+      "name": "Heavy Greathammer"
+    },
+    "two_hand_mace_disintegrating_maul": {
+      "name": "Disintegrating Maul"
+    },
+    "two_hand_mace_anvil_maul": {
+      "name": "Anvil Maul"
+    },
+    "two_hand_mace_sacred_maul": {
+      "name": "Sacred Maul"
+    },
+    "two_hand_mace_ironwood_greathammer": {
+      "name": "Ironwood Greathammer"
+    },
+    "two_hand_mace_fanatic_greathammer": {
+      "name": "Fanatic Greathammer"
+    },
+    "two_hand_mace_ruination_maul": {
+      "name": "Ruination Maul"
+    },
+    "two_hand_mace_massive_greathammer": {
+      "name": "Massive Greathammer"
+    },
+    "two_hand_mace_tawhoan_greatclub": {
+      "name": "Tawhoan Greatclub"
+    },
+    "quarterstaff_wrapped_quarterstaff": {
+      "name": "Wrapped Quarterstaff"
+    },
+    "quarterstaff_long_quarterstaff": {
+      "name": "Long Quarterstaff"
+    },
+    "quarterstaff_gothic_quarterstaff": {
+      "name": "Gothic Quarterstaff"
+    },
+    "quarterstaff_crackling_quarterstaff": {
+      "name": "Crackling Quarterstaff"
+    },
+    "quarterstaff_crescent_quarterstaff": {
+      "name": "Crescent Quarterstaff"
+    },
+    "quarterstaff_steelpoint_quarterstaff": {
+      "name": "Steelpoint Quarterstaff"
+    },
+    "quarterstaff_slicing_quarterstaff": {
+      "name": "Slicing Quarterstaff"
+    },
+    "quarterstaff_barrier_quarterstaff": {
+      "name": "Barrier Quarterstaff"
+    },
+    "quarterstaff_hefty_quarterstaff": {
+      "name": "Hefty Quarterstaff"
+    },
+    "quarterstaff_smooth_quarterstaff": {
+      "name": "Smooth Quarterstaff"
+    },
+    "quarterstaff_anima_quarterstaff": {
+      "name": "Anima Quarterstaff"
+    },
+    "quarterstaff_graceful_quarterstaff": {
+      "name": "Graceful Quarterstaff"
+    },
+    "quarterstaff_wyrm_quarterstaff": {
+      "name": "Wyrm Quarterstaff"
+    },
+    "quarterstaff_reaching_quarterstaff": {
+      "name": "Reaching Quarterstaff"
+    },
+    "quarterstaff_barbarous_quarterstaff": {
+      "name": "Barbarous Quarterstaff"
+    },
+    "quarterstaff_arcing_quarterstaff": {
+      "name": "Arcing Quarterstaff"
+    },
+    "quarterstaff_waxing_quarterstaff": {
+      "name": "Waxing Quarterstaff"
+    },
+    "quarterstaff_bladed_quarterstaff": {
+      "name": "Bladed Quarterstaff"
+    },
+    "quarterstaff_guardian_quarterstaff": {
+      "name": "Guardian Quarterstaff"
+    },
+    "quarterstaff_sinister_quarterstaff": {
+      "name": "Sinister Quarterstaff"
+    },
+    "quarterstaff_lunar_quarterstaff": {
+      "name": "Lunar Quarterstaff"
+    },
+    "quarterstaff_striking_quarterstaff": {
+      "name": "Striking Quarterstaff"
+    },
+    "quarterstaff_bolting_quarterstaff": {
+      "name": "Bolting Quarterstaff"
+    },
+    "quarterstaff_aegis_quarterstaff": {
+      "name": "Aegis Quarterstaff"
+    },
+    "quarterstaff_razor_quarterstaff": {
+      "name": "Razor Quarterstaff"
+    },
+    "quarterstaff_skullcrusher_quarterstaff": {
+      "name": "Skullcrusher Quarterstaff"
+    },
+    "quarterstaff_dreaming_quarterstaff": {
+      "name": "Dreaming Quarterstaff"
+    },
+    "fishing_rod_fishing_rod": {
+      "name": "Fishing Rod"
+    },
+    "crossbow_makeshift_crossbow": {
+      "name": "Makeshift Crossbow"
+    },
+    "crossbow_tense_crossbow": {
+      "name": "Tense Crossbow"
+    },
+    "crossbow_sturdy_crossbow": {
+      "name": "Sturdy Crossbow"
+    },
+    "crossbow_varnished_crossbow": {
+      "name": "Varnished Crossbow"
+    },
+    "crossbow_dyad_crossbow": {
+      "name": "Dyad Crossbow"
+    },
+    "crossbow_alloy_crossbow": {
+      "name": "Alloy Crossbow"
+    },
+    "crossbow_bombard_crossbow": {
+      "name": "Bombard Crossbow"
+    },
+    "crossbow_construct_crossbow": {
+      "name": "Construct Crossbow"
+    },
+    "crossbow_blackfire_crossbow": {
+      "name": "Blackfire Crossbow"
+    },
+    "crossbow_piercing_crossbow": {
+      "name": "Piercing Crossbow"
+    },
+    "crossbow_cumbrous_crossbow": {
+      "name": "Cumbrous Crossbow"
+    },
+    "crossbow_dedalian_crossbow": {
+      "name": "Dedalian Crossbow"
+    },
+    "crossbow_esoteric_crossbow": {
+      "name": "Esoteric Crossbow"
+    },
+    "crossbow_taut_crossbow": {
+      "name": "Taut Crossbow"
+    },
+    "crossbow_robust_crossbow": {
+      "name": "Robust Crossbow"
+    },
+    "crossbow_painted_crossbow": {
+      "name": "Painted Crossbow"
+    },
+    "crossbow_twin_crossbow": {
+      "name": "Twin Crossbow"
+    },
+    "crossbow_cannonade_crossbow": {
+      "name": "Cannonade Crossbow"
+    },
+    "crossbow_bleak_crossbow": {
+      "name": "Bleak Crossbow"
+    },
+    "crossbow_stout_crossbow": {
+      "name": "Stout Crossbow"
+    },
+    "crossbow_engraved_crossbow": {
+      "name": "Engraved Crossbow"
+    },
+    "crossbow_flexed_crossbow": {
+      "name": "Flexed Crossbow"
+    },
+    "crossbow_gemini_crossbow": {
+      "name": "Gemini Crossbow"
+    },
+    "crossbow_siege_crossbow": {
+      "name": "Siege Crossbow"
+    },
+    "crossbow_desolate_crossbow": {
+      "name": "Desolate Crossbow"
+    },
+    "crossbow_elegant_crossbow": {
+      "name": "Elegant Crossbow"
+    },
+    "trap_clay_trap": {
+      "name": "Clay Trap"
+    },
+    "trap_clamping_trap": {
+      "name": "Clamping Trap"
+    },
+    "trap_shrapnel_trap": {
+      "name": "Shrapnel Trap"
+    },
+    "trap_urn_trap": {
+      "name": "Urn Trap"
+    },
+    "trap_incense_trap": {
+      "name": "Incense Trap"
+    },
+    "trap_bladed_trap": {
+      "name": "Bladed Trap"
+    },
+    "trap_dart_trap": {
+      "name": "Dart Trap"
+    },
+    "trap_spike_trap": {
+      "name": "Spike Trap"
+    },
+    "trap_coiled_trap": {
+      "name": "Coiled Trap"
+    },
+    "trap_lead_trap": {
+      "name": "Lead Trap"
+    },
+    "trap_medallion_trap": {
+      "name": "Medallion Trap"
+    },
+    "trap_intricate_trap": {
+      "name": "Intricate Trap"
+    },
+    "trap_refined_trap": {
+      "name": "Refined Trap"
+    },
+    "trap_incense_trap_2": {
+      "name": "Incense Trap"
+    },
+    "talisman_changeling_talisman": {
+      "name": "Changeling Talisman"
+    },
+    "talisman_nettle_talisman": {
+      "name": "Nettle Talisman"
+    },
+    "talisman_cinderbark_talisman": {
+      "name": "Cinderbark Talisman"
+    },
+    "talisman_familial_talisman": {
+      "name": "Familial Talisman"
+    },
+    "talisman_frenzied_talisman": {
+      "name": "Frenzied Talisman"
+    },
+    "talisman_primal_talisman": {
+      "name": "Primal Talisman"
+    },
+    "talisman_rabid_talisman": {
+      "name": "Rabid Talisman"
+    },
+    "talisman_vicious_talisman": {
+      "name": "Vicious Talisman"
+    },
+    "talisman_voltfang_talisman": {
+      "name": "Voltfang Talisman"
+    },
+    "talisman_lumbering_talisman": {
+      "name": "Lumbering Talisman"
+    },
+    "talisman_roaring_talisman": {
+      "name": "Roaring Talisman"
+    },
+    "talisman_wingbeat_talisman": {
+      "name": "Wingbeat Talisman"
+    },
+    "talisman_condemned_talisman": {
+      "name": "Condemned Talisman"
+    },
+    "talisman_howling_talisman": {
+      "name": "Howling Talisman"
+    },
+    "talisman_fury_talisman": {
+      "name": "Fury Talisman"
+    },
+    "talisman_cruel_talisman": {
+      "name": "Cruel Talisman"
+    },
+    "talisman_spiny_talisman": {
+      "name": "Spiny Talisman"
+    },
+    "talisman_ashbark_talisman": {
+      "name": "Ashbark Talisman"
+    },
+    "talisman_fang_talisman": {
+      "name": "Fang Talisman"
+    },
+    "talisman_fungal_talisman": {
+      "name": "Fungal Talisman"
+    },
+    "talisman_alpha_talisman": {
+      "name": "Alpha Talisman"
+    },
+    "talisman_maji_talisman": {
+      "name": "Maji Talisman"
+    },
+    "talisman_wildwood_talisman": {
+      "name": "Wildwood Talisman"
+    },
+    "talisman_thunder_talisman": {
+      "name": "Thunder Talisman"
+    },
+    "talisman_jade_talisman": {
+      "name": "Jade Talisman"
+    },
+    "quiver_broadhead_quiver": {
+      "name": "Broadhead Quiver"
+    },
+    "quiver_fire_quiver": {
+      "name": "Fire Quiver"
+    },
+    "quiver_sacral_quiver": {
+      "name": "Sacral Quiver"
+    },
+    "quiver_two_point_quiver": {
+      "name": "Two-Point Quiver"
+    },
+    "quiver_blunt_quiver": {
+      "name": "Blunt Quiver"
+    },
+    "quiver_toxic_quiver": {
+      "name": "Toxic Quiver"
+    },
+    "quiver_serrated_quiver": {
+      "name": "Serrated Quiver"
+    },
+    "quiver_primed_quiver": {
+      "name": "Primed Quiver"
+    },
+    "quiver_penetrating_quiver": {
+      "name": "Penetrating Quiver"
+    },
+    "quiver_volant_quiver": {
+      "name": "Volant Quiver"
+    },
+    "quiver_visceral_quiver": {
+      "name": "Visceral Quiver"
+    },
+    "shield_golden_flame": {
+      "name": "Golden Flame"
+    },
+    "shield_splintered_tower_shield": {
+      "name": "Splintered Tower Shield"
+    },
+    "shield_painted_tower_shield": {
+      "name": "Painted Tower Shield"
+    },
+    "shield_braced_tower_shield": {
+      "name": "Braced Tower Shield"
+    },
+    "shield_barricade_tower_shield": {
+      "name": "Barricade Tower Shield"
+    },
+    "shield_effigial_tower_shield": {
+      "name": "Effigial Tower Shield"
+    },
+    "shield_rampart_tower_shield": {
+      "name": "Rampart Tower Shield"
+    },
+    "shield_heraldric_tower_shield": {
+      "name": "Heraldric Tower Shield"
+    },
+    "shield_stone_tower_shield": {
+      "name": "Stone Tower Shield"
+    },
+    "shield_crucible_tower_shield": {
+      "name": "Crucible Tower Shield"
+    },
+    "shield_ancestor_tower_shield": {
+      "name": "Ancestor Tower Shield"
+    },
+    "shield_phalanx_tower_shield": {
+      "name": "Phalanx Tower Shield"
+    },
+    "shield_defiant_tower_shield": {
+      "name": "Defiant Tower Shield"
+    },
+    "shield_blacksteel_tower_shield": {
+      "name": "Blacksteel Tower Shield"
+    },
+    "shield_hardwood_targe": {
+      "name": "Hardwood Targe"
+    },
+    "shield_pelage_targe": {
+      "name": "Pelage Targe"
+    },
+    "shield_studded_targe": {
+      "name": "Studded Targe"
+    },
+    "shield_crescent_targe": {
+      "name": "Crescent Targe"
+    },
+    "shield_chiseled_targe": {
+      "name": "Chiseled Targe"
+    },
+    "shield_feathered_targe": {
+      "name": "Feathered Targe"
+    },
+    "shield_stratified_targe": {
+      "name": "Stratified Targe"
+    },
+    "shield_carved_targe": {
+      "name": "Carved Targe"
+    },
+    "shield_mosaic_targe": {
+      "name": "Mosaic Targe"
+    },
+    "shield_aureate_targe": {
+      "name": "Aureate Targe"
+    },
+    "shield_grand_targe": {
+      "name": "Grand Targe"
+    },
+    "shield_blazon_crest_shield": {
+      "name": "Blazon Crest Shield"
+    },
+    "shield_sigil_crest_shield": {
+      "name": "Sigil Crest Shield"
+    },
+    "shield_emblem_crest_shield": {
+      "name": "Emblem Crest Shield"
+    },
+    "shield_jingling_crest_shield": {
+      "name": "Jingling Crest Shield"
+    },
+    "shield_sectarian_crest_shield": {
+      "name": "Sectarian Crest Shield"
+    },
+    "shield_omen_crest_shield": {
+      "name": "Omen Crest Shield"
+    },
+    "shield_wayward_crest_shield": {
+      "name": "Wayward Crest Shield"
+    },
+    "shield_seer_crest_shield": {
+      "name": "Seer Crest Shield"
+    },
+    "shield_stoic_crest_shield": {
+      "name": "Stoic Crest Shield"
+    },
+    "shield_empyreal_crest_shield": {
+      "name": "Empyreal Crest Shield"
+    },
+    "shield_deified_crest_shield": {
+      "name": "Deified Crest Shield"
+    },
+    "shield_golden_shield": {
+      "name": "Golden Shield"
+    },
+    "shield_aged_tower_shield": {
+      "name": "Aged Tower Shield"
+    },
+    "shield_metalworked_tower_shield": {
+      "name": "Metalworked Tower Shield"
+    },
+    "shield_cultist_tower_shield": {
+      "name": "Cultist Tower Shield"
+    },
+    "shield_bulwark_tower_shield": {
+      "name": "Bulwark Tower Shield"
+    },
+    "shield_noble_tower_shield": {
+      "name": "Noble Tower Shield"
+    },
+    "shield_goldworked_tower_shield": {
+      "name": "Goldworked Tower Shield"
+    },
+    "shield_ironwood_targe": {
+      "name": "Ironwood Targe"
+    },
+    "shield_fur_lined_targe": {
+      "name": "Fur-lined Targe"
+    },
+    "shield_mercenary_targe": {
+      "name": "Mercenary Targe"
+    },
+    "shield_polished_targe": {
+      "name": "Polished Targe"
+    },
+    "shield_stone_targe": {
+      "name": "Stone Targe"
+    },
+    "shield_avian_targe": {
+      "name": "Avian Targe"
+    },
+    "shield_painted_crest_shield": {
+      "name": "Painted Crest Shield"
+    },
+    "shield_engraved_crest_shield": {
+      "name": "Engraved Crest Shield"
+    },
+    "shield_descry_crest_shield": {
+      "name": "Descry Crest Shield"
+    },
+    "shield_dekharan_crest_shield": {
+      "name": "Dekharan Crest Shield"
+    },
+    "shield_quartered_crest_shield": {
+      "name": "Quartered Crest Shield"
+    },
+    "shield_glowering_crest_shield": {
+      "name": "Glowering Crest Shield"
+    },
+    "shield_royal_tower_shield": {
+      "name": "Royal Tower Shield"
+    },
+    "shield_fortress_tower_shield": {
+      "name": "Fortress Tower Shield"
+    },
+    "shield_vaal_tower_shield": {
+      "name": "Vaal Tower Shield"
+    },
+    "shield_tawhoan_tower_shield": {
+      "name": "Tawhoan Tower Shield"
+    },
+    "shield_mammoth_targe": {
+      "name": "Mammoth Targe"
+    },
+    "shield_baroque_targe": {
+      "name": "Baroque Targe"
+    },
+    "shield_soaring_targe": {
+      "name": "Soaring Targe"
+    },
+    "shield_golden_targe": {
+      "name": "Golden Targe"
+    },
+    "shield_intricate_crest_shield": {
+      "name": "Intricate Crest Shield"
+    },
+    "shield_sekheman_crest_shield": {
+      "name": "Sekheman Crest Shield"
+    },
+    "shield_vaal_crest_shield": {
+      "name": "Vaal Crest Shield"
+    },
+    "shield_blacksteel_crest_shield": {
+      "name": "Blacksteel Crest Shield"
+    },
+    "buckler_leather_buckler": {
+      "name": "Leather Buckler"
+    },
+    "buckler_wooden_buckler": {
+      "name": "Wooden Buckler"
+    },
+    "buckler_plated_buckler": {
+      "name": "Plated Buckler"
+    },
+    "buckler_iron_buckler": {
+      "name": "Iron Buckler"
+    },
+    "buckler_ridged_buckler": {
+      "name": "Ridged Buckler"
+    },
+    "buckler_spiked_buckler": {
+      "name": "Spiked Buckler"
+    },
+    "buckler_ringed_buckler": {
+      "name": "Ringed Buckler"
+    },
+    "buckler_edged_buckler": {
+      "name": "Edged Buckler"
+    },
+    "buckler_laminate_buckler": {
+      "name": "Laminate Buckler"
+    },
+    "buckler_pearl_buckler": {
+      "name": "Pearl Buckler"
+    },
+    "buckler_ornate_buckler": {
+      "name": "Ornate Buckler"
+    },
+    "buckler_array_buckler": {
+      "name": "Array Buckler"
+    },
+    "buckler_aegis_buckler": {
+      "name": "Aegis Buckler"
+    },
+    "buckler_oak_buckler": {
+      "name": "Oak Buckler"
+    },
+    "buckler_painted_buckler": {
+      "name": "Painted Buckler"
+    },
+    "buckler_coiled_buckler": {
+      "name": "Coiled Buckler"
+    },
+    "buckler_spikeward_buckler": {
+      "name": "Spikeward Buckler"
+    },
+    "buckler_jingling_buckler": {
+      "name": "Jingling Buckler"
+    },
+    "buckler_bladeguard_buckler": {
+      "name": "Bladeguard Buckler"
+    },
+    "buckler_ornate_buckler_2": {
+      "name": "Ornate Buckler"
+    },
+    "buckler_gutspike_buckler": {
+      "name": "Gutspike Buckler"
+    },
+    "buckler_ancient_buckler": {
+      "name": "Ancient Buckler"
+    },
+    "buckler_desert_buckler": {
+      "name": "Desert Buckler"
+    },
+    "focus_twig_focus": {
+      "name": "Twig Focus"
+    },
+    "focus_woven_focus": {
+      "name": "Woven Focus"
+    },
+    "focus_antler_focus": {
+      "name": "Antler Focus"
+    },
+    "focus_engraved_focus": {
+      "name": "Engraved Focus"
+    },
+    "focus_tonal_focus": {
+      "name": "Tonal Focus"
+    },
+    "focus_crystal_focus": {
+      "name": "Crystal Focus"
+    },
+    "focus_voodoo_focus": {
+      "name": "Voodoo Focus"
+    },
+    "focus_plumed_focus": {
+      "name": "Plumed Focus"
+    },
+    "focus_runed_focus": {
+      "name": "Runed Focus"
+    },
+    "focus_whorl_focus": {
+      "name": "Whorl Focus"
+    },
+    "focus_elegant_focus": {
+      "name": "Elegant Focus"
+    },
+    "focus_attuned_focus": {
+      "name": "Attuned Focus"
+    },
+    "focus_magus_focus": {
+      "name": "Magus Focus"
+    },
+    "focus_wreath_focus": {
+      "name": "Wreath Focus"
+    },
+    "focus_staghorn_focus": {
+      "name": "Staghorn Focus"
+    },
+    "focus_jingling_focus": {
+      "name": "Jingling Focus"
+    },
+    "focus_arrayed_focus": {
+      "name": "Arrayed Focus"
+    },
+    "focus_cultist_focus": {
+      "name": "Cultist Focus"
+    },
+    "focus_hallowed_focus": {
+      "name": "Hallowed Focus"
+    },
+    "focus_druidic_focus": {
+      "name": "Druidic Focus"
+    },
+    "focus_leyline_focus": {
+      "name": "Leyline Focus"
+    },
+    "focus_sacred_focus": {
+      "name": "Sacred Focus"
+    },
+    "focus_tasalian_focus": {
+      "name": "Tasalian Focus"
+    },
+    "gloves_golden_bracers": {
+      "name": "Golden Bracers"
+    },
+    "gloves_stocky_mitts": {
+      "name": "Stocky Mitts"
+    },
+    "gloves_riveted_mitts": {
+      "name": "Riveted Mitts"
+    },
+    "gloves_tempered_mitts": {
+      "name": "Tempered Mitts"
+    },
+    "gloves_bolstered_mitts": {
+      "name": "Bolstered Mitts"
+    },
+    "gloves_moulded_mitts": {
+      "name": "Moulded Mitts"
+    },
+    "gloves_detailed_mitts": {
+      "name": "Detailed Mitts"
+    },
+    "gloves_titan_mitts": {
+      "name": "Titan Mitts"
+    },
+    "gloves_grand_mitts": {
+      "name": "Grand Mitts"
+    },
+    "gloves_suede_bracers": {
+      "name": "Suede Bracers"
+    },
+    "gloves_firm_bracers": {
+      "name": "Firm Bracers"
+    },
+    "gloves_bound_bracers": {
+      "name": "Bound Bracers"
+    },
+    "gloves_sectioned_bracers": {
+      "name": "Sectioned Bracers"
+    },
+    "gloves_spined_bracers": {
+      "name": "Spined Bracers"
+    },
+    "gloves_fine_bracers": {
+      "name": "Fine Bracers"
+    },
+    "gloves_hardened_bracers": {
+      "name": "Hardened Bracers"
+    },
+    "gloves_engraved_bracers": {
+      "name": "Engraved Bracers"
+    },
+    "gloves_torn_gloves": {
+      "name": "Torn Gloves"
+    },
+    "gloves_sombre_gloves": {
+      "name": "Sombre Gloves"
+    },
+    "gloves_stitched_gloves": {
+      "name": "Stitched Gloves"
+    },
+    "gloves_jewelled_gloves": {
+      "name": "Jewelled Gloves"
+    },
+    "gloves_intricate_gloves": {
+      "name": "Intricate Gloves"
+    },
+    "gloves_pauascale_gloves": {
+      "name": "Pauascale Gloves"
+    },
+    "gloves_embroidered_gloves": {
+      "name": "Embroidered Gloves"
+    },
+    "gloves_adorned_gloves": {
+      "name": "Adorned Gloves"
+    },
+    "gloves_ringmail_gauntlets": {
+      "name": "Ringmail Gauntlets"
+    },
+    "gloves_layered_gauntlets": {
+      "name": "Layered Gauntlets"
+    },
+    "gloves_doubled_gauntlets": {
+      "name": "Doubled Gauntlets"
+    },
+    "gloves_plate_gauntlets": {
+      "name": "Plate Gauntlets"
+    },
+    "gloves_burnished_gauntlets": {
+      "name": "Burnished Gauntlets"
+    },
+    "gloves_ornate_gauntlets": {
+      "name": "Ornate Gauntlets"
+    },
+    "gloves_rope_cuffs": {
+      "name": "Rope Cuffs"
+    },
+    "gloves_aged_cuffs": {
+      "name": "Aged Cuffs"
+    },
+    "gloves_goldcast_cuffs": {
+      "name": "Goldcast Cuffs"
+    },
+    "gloves_verisium_cuffs": {
+      "name": "Verisium Cuffs"
+    },
+    "gloves_righteous_cuffs": {
+      "name": "Righteous Cuffs"
+    },
+    "gloves_signet_cuffs": {
+      "name": "Signet Cuffs"
+    },
+    "gloves_gauze_wraps": {
+      "name": "Gauze Wraps"
+    },
+    "gloves_linen_wraps": {
+      "name": "Linen Wraps"
+    },
+    "gloves_spiral_wraps": {
+      "name": "Spiral Wraps"
+    },
+    "gloves_buckled_wraps": {
+      "name": "Buckled Wraps"
+    },
+    "gloves_furtive_wraps": {
+      "name": "Furtive Wraps"
+    },
+    "gloves_utility_wraps": {
+      "name": "Utility Wraps"
+    },
+    "gloves_grand_manchettes": {
+      "name": "Grand Manchettes"
+    },
+    "gloves_golden_bracers_2": {
+      "name": "Golden Bracers"
+    },
+    "gloves_plated_mitts": {
+      "name": "Plated Mitts"
+    },
+    "gloves_elegant_mitts": {
+      "name": "Elegant Mitts"
+    },
+    "gloves_ancient_mitts": {
+      "name": "Ancient Mitts"
+    },
+    "gloves_feathered_mitts": {
+      "name": "Feathered Mitts"
+    },
+    "gloves_hunting_bracers": {
+      "name": "Hunting Bracers"
+    },
+    "gloves_swift_bracers": {
+      "name": "Swift Bracers"
+    },
+    "gloves_refined_bracers": {
+      "name": "Refined Bracers"
+    },
+    "gloves_spiked_bracers": {
+      "name": "Spiked Bracers"
+    },
+    "gloves_ominous_gloves": {
+      "name": "Ominous Gloves"
+    },
+    "gloves_embellished_gloves": {
+      "name": "Embellished Gloves"
+    },
+    "gloves_baroque_gloves": {
+      "name": "Baroque Gloves"
+    },
+    "gloves_gold_gloves": {
+      "name": "Gold Gloves"
+    },
+    "gloves_ironmail_gauntlets": {
+      "name": "Ironmail Gauntlets"
+    },
+    "gloves_captain_gauntlets": {
+      "name": "Captain Gauntlets"
+    },
+    "gloves_zealot_gauntlets": {
+      "name": "Zealot Gauntlets"
+    },
+    "gloves_braided_cuffs": {
+      "name": "Braided Cuffs"
+    },
+    "gloves_heirloom_cuffs": {
+      "name": "Heirloom Cuffs"
+    },
+    "gloves_ornate_cuffs": {
+      "name": "Ornate Cuffs"
+    },
+    "gloves_bandage_wraps": {
+      "name": "Bandage Wraps"
+    },
+    "gloves_cambric_wraps": {
+      "name": "Cambric Wraps"
+    },
+    "gloves_adorned_wraps": {
+      "name": "Adorned Wraps"
+    },
+    "gloves_knightly_mitts": {
+      "name": "Knightly Mitts"
+    },
+    "gloves_ornate_mitts": {
+      "name": "Ornate Mitts"
+    },
+    "gloves_vaal_mitts": {
+      "name": "Vaal Mitts"
+    },
+    "gloves_massive_mitts": {
+      "name": "Massive Mitts"
+    },
+    "gloves_stalking_bracers": {
+      "name": "Stalking Bracers"
+    },
+    "gloves_grand_bracers": {
+      "name": "Grand Bracers"
+    },
+    "gloves_barbed_bracers": {
+      "name": "Barbed Bracers"
+    },
+    "gloves_polished_bracers": {
+      "name": "Polished Bracers"
+    },
+    "gloves_grim_gloves": {
+      "name": "Grim Gloves"
+    },
+    "gloves_opulent_gloves": {
+      "name": "Opulent Gloves"
+    },
+    "gloves_vaal_gloves": {
+      "name": "Vaal Gloves"
+    },
+    "gloves_sirenscale_gloves": {
+      "name": "Sirenscale Gloves"
+    },
+    "gloves_steelmail_gauntlets": {
+      "name": "Steelmail Gauntlets"
+    },
+    "gloves_commander_gauntlets": {
+      "name": "Commander Gauntlets"
+    },
+    "gloves_cultist_gauntlets": {
+      "name": "Cultist Gauntlets"
+    },
+    "gloves_blacksteel_gauntlets": {
+      "name": "Blacksteel Gauntlets"
+    },
+    "gloves_bound_cuffs": {
+      "name": "Bound Cuffs"
+    },
+    "gloves_ancient_cuffs": {
+      "name": "Ancient Cuffs"
+    },
+    "gloves_gleaming_cuffs": {
+      "name": "Gleaming Cuffs"
+    },
+    "gloves_adherent_cuffs": {
+      "name": "Adherent Cuffs"
+    },
+    "gloves_war_wraps": {
+      "name": "War Wraps"
+    },
+    "gloves_elegant_wraps": {
+      "name": "Elegant Wraps"
+    },
+    "gloves_vaal_wraps": {
+      "name": "Vaal Wraps"
+    },
+    "gloves_secured_wraps": {
+      "name": "Secured Wraps"
+    },
+    "gloves_dnt_unused_hand_wraps": {
+      "name": "[DNT-UNUSED] Hand Wraps"
+    },
+    "boots_golden_caligae": {
+      "name": "Golden Caligae"
+    },
+    "boots_rough_greaves": {
+      "name": "Rough Greaves"
+    },
+    "boots_iron_greaves": {
+      "name": "Iron Greaves"
+    },
+    "boots_bronze_greaves": {
+      "name": "Bronze Greaves"
+    },
+    "boots_trimmed_greaves": {
+      "name": "Trimmed Greaves"
+    },
+    "boots_stone_greaves": {
+      "name": "Stone Greaves"
+    },
+    "boots_reefsteel_greaves": {
+      "name": "Reefsteel Greaves"
+    },
+    "boots_monument_greaves": {
+      "name": "Monument Greaves"
+    },
+    "boots_totemic_greaves": {
+      "name": "Totemic Greaves"
+    },
+    "boots_rawhide_boots": {
+      "name": "Rawhide Boots"
+    },
+    "boots_laced_boots": {
+      "name": "Laced Boots"
+    },
+    "boots_embossed_boots": {
+      "name": "Embossed Boots"
+    },
+    "boots_steeltoe_boots": {
+      "name": "Steeltoe Boots"
+    },
+    "boots_lizardscale_boots": {
+      "name": "Lizardscale Boots"
+    },
+    "boots_flared_boots": {
+      "name": "Flared Boots"
+    },
+    "boots_leatherplate_boots": {
+      "name": "Leatherplate Boots"
+    },
+    "boots_embroidered_boots": {
+      "name": "Embroidered Boots"
+    },
+    "boots_straw_sandals": {
+      "name": "Straw Sandals"
+    },
+    "boots_wrapped_sandals": {
+      "name": "Wrapped Sandals"
+    },
+    "boots_lattice_sandals": {
+      "name": "Lattice Sandals"
+    },
+    "boots_silk_slippers": {
+      "name": "Silk Slippers"
+    },
+    "boots_feathered_sandals": {
+      "name": "Feathered Sandals"
+    },
+    "boots_flax_sandals": {
+      "name": "Flax Sandals"
+    },
+    "boots_studded_sandals": {
+      "name": "Studded Sandals"
+    },
+    "boots_elaborate_sandals": {
+      "name": "Elaborate Sandals"
+    },
+    "boots_mail_sabatons": {
+      "name": "Mail Sabatons"
+    },
+    "boots_braced_sabatons": {
+      "name": "Braced Sabatons"
+    },
+    "boots_stacked_sabatons": {
+      "name": "Stacked Sabatons"
+    },
+    "boots_covered_sabatons": {
+      "name": "Covered Sabatons"
+    },
+    "boots_flexile_sabatons": {
+      "name": "Flexile Sabatons"
+    },
+    "boots_bold_sabatons": {
+      "name": "Bold Sabatons"
+    },
+    "boots_padded_leggings": {
+      "name": "Padded Leggings"
+    },
+    "boots_secured_leggings": {
+      "name": "Secured Leggings"
+    },
+    "boots_pelt_leggings": {
+      "name": "Pelt Leggings"
+    },
+    "boots_weaver_leggings": {
+      "name": "Weaver Leggings"
+    },
+    "boots_gilt_leggings": {
+      "name": "Gilt Leggings"
+    },
+    "boots_pious_leggings": {
+      "name": "Pious Leggings"
+    },
+    "boots_frayed_shoes": {
+      "name": "Frayed Shoes"
+    },
+    "boots_threaded_shoes": {
+      "name": "Threaded Shoes"
+    },
+    "boots_hunting_shoes": {
+      "name": "Hunting Shoes"
+    },
+    "boots_steelpoint_shoes": {
+      "name": "Steelpoint Shoes"
+    },
+    "boots_velour_shoes": {
+      "name": "Velour Shoes"
+    },
+    "boots_bladed_shoes": {
+      "name": "Bladed Shoes"
+    },
+    "boots_grand_cuisses": {
+      "name": "Grand Cuisses"
+    },
+    "boots_golden_greaves": {
+      "name": "Golden Greaves"
+    },
+    "boots_plated_greaves": {
+      "name": "Plated Greaves"
+    },
+    "boots_lionheart_greaves": {
+      "name": "Lionheart Greaves"
+    },
+    "boots_elegant_greaves": {
+      "name": "Elegant Greaves"
+    },
+    "boots_carved_greaves": {
+      "name": "Carved Greaves"
+    },
+    "boots_bound_boots": {
+      "name": "Bound Boots"
+    },
+    "boots_sleek_boots": {
+      "name": "Sleek Boots"
+    },
+    "boots_studded_boots": {
+      "name": "Studded Boots"
+    },
+    "boots_serpentscale_boots": {
+      "name": "Serpentscale Boots"
+    },
+    "boots_laced_sandals": {
+      "name": "Laced Sandals"
+    },
+    "boots_bangled_sandals": {
+      "name": "Bangled Sandals"
+    },
+    "boots_elegant_slippers": {
+      "name": "Elegant Slippers"
+    },
+    "boots_dunerunner_sandals": {
+      "name": "Dunerunner Sandals"
+    },
+    "boots_soldiering_sabatons": {
+      "name": "Soldiering Sabatons"
+    },
+    "boots_goldwork_sabatons": {
+      "name": "Goldwork Sabatons"
+    },
+    "boots_bastion_sabatons": {
+      "name": "Bastion Sabatons"
+    },
+    "boots_adherent_leggings": {
+      "name": "Adherent Leggings"
+    },
+    "boots_bound_leggings": {
+      "name": "Bound Leggings"
+    },
+    "boots_shamanistic_leggings": {
+      "name": "Shamanistic Leggings"
+    },
+    "boots_wayfarer_shoes": {
+      "name": "Wayfarer Shoes"
+    },
+    "boots_silverbuckled_shoes": {
+      "name": "Silverbuckled Shoes"
+    },
+    "boots_treerunner_shoes": {
+      "name": "Treerunner Shoes"
+    },
+    "boots_bulwark_greaves": {
+      "name": "Bulwark Greaves"
+    },
+    "boots_ornate_greaves": {
+      "name": "Ornate Greaves"
+    },
+    "boots_vaal_greaves": {
+      "name": "Vaal Greaves"
+    },
+    "boots_tasalian_greaves": {
+      "name": "Tasalian Greaves"
+    },
+    "boots_cinched_boots": {
+      "name": "Cinched Boots"
+    },
+    "boots_cavalry_boots": {
+      "name": "Cavalry Boots"
+    },
+    "boots_dragonscale_boots": {
+      "name": "Dragonscale Boots"
+    },
+    "boots_drakeskin_boots": {
+      "name": "Drakeskin Boots"
+    },
+    "boots_bound_sandals": {
+      "name": "Bound Sandals"
+    },
+    "boots_luxurious_slippers": {
+      "name": "Luxurious Slippers"
+    },
+    "boots_sandsworn_sandals": {
+      "name": "Sandsworn Sandals"
+    },
+    "boots_sekhema_sandals": {
+      "name": "Sekhema Sandals"
+    },
+    "boots_veteran_sabatons": {
+      "name": "Veteran Sabatons"
+    },
+    "boots_noble_sabatons": {
+      "name": "Noble Sabatons"
+    },
+    "boots_fortress_sabatons": {
+      "name": "Fortress Sabatons"
+    },
+    "boots_blacksteel_sabatons": {
+      "name": "Blacksteel Sabatons"
+    },
+    "boots_faithful_leggings": {
+      "name": "Faithful Leggings"
+    },
+    "boots_apostle_leggings": {
+      "name": "Apostle Leggings"
+    },
+    "boots_warlock_leggings": {
+      "name": "Warlock Leggings"
+    },
+    "boots_cryptic_leggings": {
+      "name": "Cryptic Leggings"
+    },
+    "boots_wanderer_shoes": {
+      "name": "Wanderer Shoes"
+    },
+    "boots_charmed_shoes": {
+      "name": "Charmed Shoes"
+    },
+    "boots_quickslip_shoes": {
+      "name": "Quickslip Shoes"
+    },
+    "boots_daggerfoot_shoes": {
+      "name": "Daggerfoot Shoes"
+    },
+    "body_armour_golden_mantle": {
+      "name": "Golden Mantle"
+    },
+    "body_armour_rusted_cuirass": {
+      "name": "Rusted Cuirass"
+    },
+    "body_armour_fur_plate": {
+      "name": "Fur Plate"
+    },
+    "body_armour_iron_cuirass": {
+      "name": "Iron Cuirass"
+    },
+    "body_armour_raider_plate": {
+      "name": "Raider Plate"
+    },
+    "body_armour_maraketh_cuirass": {
+      "name": "Maraketh Cuirass"
+    },
+    "body_armour_steel_plate": {
+      "name": "Steel Plate"
+    },
+    "body_armour_full_plate": {
+      "name": "Full Plate"
+    },
+    "body_armour_vaal_cuirass": {
+      "name": "Vaal Cuirass"
+    },
+    "body_armour_juggernaut_plate": {
+      "name": "Juggernaut Plate"
+    },
+    "body_armour_chieftain_cuirass": {
+      "name": "Chieftain Cuirass"
+    },
+    "body_armour_colosseum_plate": {
+      "name": "Colosseum Plate"
+    },
+    "body_armour_champion_cuirass": {
+      "name": "Champion Cuirass"
+    },
+    "body_armour_glorious_plate": {
+      "name": "Glorious Plate"
+    },
+    "body_armour_conqueror_plate": {
+      "name": "Conqueror Plate"
+    },
+    "body_armour_abyssal_cuirass": {
+      "name": "Abyssal Cuirass"
+    },
+    "body_armour_leather_vest": {
+      "name": "Leather Vest"
+    },
+    "body_armour_quilted_vest": {
+      "name": "Quilted Vest"
+    },
+    "body_armour_pathfinder_coat": {
+      "name": "Pathfinder Coat"
+    },
+    "body_armour_shrouded_vest": {
+      "name": "Shrouded Vest"
+    },
+    "body_armour_rhoahide_coat": {
+      "name": "Rhoahide Coat"
+    },
+    "body_armour_studded_vest": {
+      "name": "Studded Vest"
+    },
+    "body_armour_scouts_vest": {
+      "name": "Scout's Vest"
+    },
+    "body_armour_serpentscale_coat": {
+      "name": "Serpentscale Coat"
+    },
+    "body_armour_corsair_vest": {
+      "name": "Corsair Vest"
+    },
+    "body_armour_smuggler_coat": {
+      "name": "Smuggler Coat"
+    },
+    "body_armour_strider_vest": {
+      "name": "Strider Vest"
+    },
+    "body_armour_hardleather_coat": {
+      "name": "Hardleather Coat"
+    },
+    "body_armour_exquisite_vest": {
+      "name": "Exquisite Vest"
+    },
+    "body_armour_mail_coat": {
+      "name": "Mail Coat"
+    },
+    "body_armour_armoured_vest": {
+      "name": "Armoured Vest"
+    },
+    "body_armour_tattered_robe": {
+      "name": "Tattered Robe"
+    },
+    "body_armour_feathered_robe": {
+      "name": "Feathered Robe"
+    },
+    "body_armour_hexers_robe": {
+      "name": "Hexer's Robe"
+    },
+    "body_armour_bone_raiment": {
+      "name": "Bone Raiment"
+    },
+    "body_armour_silk_robe": {
+      "name": "Silk Robe"
+    },
+    "body_armour_keth_raiment": {
+      "name": "Keth Raiment"
+    },
+    "body_armour_votive_raiment": {
+      "name": "Votive Raiment"
+    },
+    "body_armour_altar_robe": {
+      "name": "Altar Robe"
+    },
+    "body_armour_elementalist_robe": {
+      "name": "Elementalist Robe"
+    },
+    "body_armour_mystic_raiment": {
+      "name": "Mystic Raiment"
+    },
+    "body_armour_imperial_robe": {
+      "name": "Imperial Robe"
+    },
+    "body_armour_plated_raiment": {
+      "name": "Plated Raiment"
+    },
+    "body_armour_havoc_raiment": {
+      "name": "Havoc Raiment"
+    },
+    "body_armour_enlightened_robe": {
+      "name": "Enlightened Robe"
+    },
+    "body_armour_arcane_raiment": {
+      "name": "Arcane Raiment"
+    },
+    "body_armour_chain_mail": {
+      "name": "Chain Mail"
+    },
+    "body_armour_rogue_armour": {
+      "name": "Rogue Armour"
+    },
+    "body_armour_vagabond_armour": {
+      "name": "Vagabond Armour"
+    },
+    "body_armour_cloaked_mail": {
+      "name": "Cloaked Mail"
+    },
+    "body_armour_explorer_armour": {
+      "name": "Explorer Armour"
+    },
+    "body_armour_scale_mail": {
+      "name": "Scale Mail"
+    },
+    "body_armour_knight_armour": {
+      "name": "Knight Armour"
+    },
+    "body_armour_ancestral_mail": {
+      "name": "Ancestral Mail"
+    },
+    "body_armour_lamellar_mail": {
+      "name": "Lamellar Mail"
+    },
+    "body_armour_gladiator_armour": {
+      "name": "Gladiator Armour"
+    },
+    "body_armour_heroic_armour": {
+      "name": "Heroic Armour"
+    },
+    "body_armour_tournament_mail": {
+      "name": "Tournament Mail"
+    },
+    "body_armour_tournament_mail_2": {
+      "name": "Tournament Mail"
+    },
+    "body_armour_tournament_mail_3": {
+      "name": "Tournament Mail"
+    },
+    "body_armour_slayer_armour": {
+      "name": "Slayer Armour"
+    },
+    "body_armour_pilgrim_vestments": {
+      "name": "Pilgrim Vestments"
+    },
+    "body_armour_pelt_mantle": {
+      "name": "Pelt Mantle"
+    },
+    "body_armour_mail_vestments": {
+      "name": "Mail Vestments"
+    },
+    "body_armour_shaman_mantle": {
+      "name": "Shaman Mantle"
+    },
+    "body_armour_ironclad_vestments": {
+      "name": "Ironclad Vestments"
+    },
+    "body_armour_sacrificial_mantle": {
+      "name": "Sacrificial Mantle"
+    },
+    "body_armour_cleric_vestments": {
+      "name": "Cleric Vestments"
+    },
+    "body_armour_tideseer_mantle": {
+      "name": "Tideseer Mantle"
+    },
+    "body_armour_gilded_vestments": {
+      "name": "Gilded Vestments"
+    },
+    "body_armour_venerated_mantle": {
+      "name": "Venerated Mantle"
+    },
+    "body_armour_revered_vestments": {
+      "name": "Revered Vestments"
+    },
+    "body_armour_corvus_mantle": {
+      "name": "Corvus Mantle"
+    },
+    "body_armour_zenith_vestments": {
+      "name": "Zenith Vestments"
+    },
+    "body_armour_hermit_garb": {
+      "name": "Hermit Garb"
+    },
+    "body_armour_waxed_jacket": {
+      "name": "Waxed Jacket"
+    },
+    "body_armour_marabout_garb": {
+      "name": "Marabout Garb"
+    },
+    "body_armour_wayfarer_jacket": {
+      "name": "Wayfarer Jacket"
+    },
+    "body_armour_anchorite_garb": {
+      "name": "Anchorite Garb"
+    },
+    "body_armour_scalpers_jacket": {
+      "name": "Scalper's Jacket"
+    },
+    "body_armour_scoundrel_jacket": {
+      "name": "Scoundrel Jacket"
+    },
+    "body_armour_ascetic_garb": {
+      "name": "Ascetic Garb"
+    },
+    "body_armour_clandestine_jacket": {
+      "name": "Clandestine Jacket"
+    },
+    "body_armour_monastic_garb": {
+      "name": "Monastic Garb"
+    },
+    "body_armour_torment_jacket": {
+      "name": "Torment Jacket"
+    },
+    "body_armour_devout_garb": {
+      "name": "Devout Garb"
+    },
+    "body_armour_assassin_garb": {
+      "name": "Assassin Garb"
+    },
+    "body_armour_garment": {
+      "name": "Garment"
+    },
+    "body_armour_grand_regalia": {
+      "name": "Grand Regalia"
+    },
+    "body_armour_sacrificial_regalia": {
+      "name": "Sacrificial Regalia"
+    },
+    "body_armour_golden_plate": {
+      "name": "Golden Plate"
+    },
+    "body_armour_barbarian_plate": {
+      "name": "Barbarian Plate"
+    },
+    "body_armour_rugged_cuirass": {
+      "name": "Rugged Cuirass"
+    },
+    "body_armour_sandsworn_cuirass": {
+      "name": "Sandsworn Cuirass"
+    },
+    "body_armour_elegant_plate": {
+      "name": "Elegant Plate"
+    },
+    "body_armour_heavy_plate": {
+      "name": "Heavy Plate"
+    },
+    "body_armour_stone_cuirass": {
+      "name": "Stone Cuirass"
+    },
+    "body_armour_patchwork_vest": {
+      "name": "Patchwork Vest"
+    },
+    "body_armour_hunting_coat": {
+      "name": "Hunting Coat"
+    },
+    "body_armour_riding_coat": {
+      "name": "Riding Coat"
+    },
+    "body_armour_layered_vest": {
+      "name": "Layered Vest"
+    },
+    "body_armour_runner_vest": {
+      "name": "Runner Vest"
+    },
+    "body_armour_lizardscale_coat": {
+      "name": "Lizardscale Coat"
+    },
+    "body_armour_avian_robe": {
+      "name": "Avian Robe"
+    },
+    "body_armour_cursespeakers_robe": {
+      "name": "Cursespeaker's Robe"
+    },
+    "body_armour_luxurious_robe": {
+      "name": "Luxurious Robe"
+    },
+    "body_armour_river_raiment": {
+      "name": "River Raiment"
+    },
+    "body_armour_adherents_raiment": {
+      "name": "Adherent's Raiment"
+    },
+    "body_armour_ceremonial_robe": {
+      "name": "Ceremonial Robe"
+    },
+    "body_armour_ring_mail": {
+      "name": "Ring Mail"
+    },
+    "body_armour_scoundrel_armour": {
+      "name": "Scoundrel Armour"
+    },
+    "body_armour_wanderer_armour": {
+      "name": "Wanderer Armour"
+    },
+    "body_armour_mantled_mail": {
+      "name": "Mantled Mail"
+    },
+    "body_armour_trailblazer_armour": {
+      "name": "Trailblazer Armour"
+    },
+    "body_armour_golden_mail": {
+      "name": "Golden Mail"
+    },
+    "body_armour_templar_vestments": {
+      "name": "Templar Vestments"
+    },
+    "body_armour_bearskin_mantle": {
+      "name": "Bearskin Mantle"
+    },
+    "body_armour_chain_vestments": {
+      "name": "Chain Vestments"
+    },
+    "body_armour_occultist_mantle": {
+      "name": "Occultist Mantle"
+    },
+    "body_armour_plated_vestments": {
+      "name": "Plated Vestments"
+    },
+    "body_armour_heartcarver_mantle": {
+      "name": "Heartcarver Mantle"
+    },
+    "body_armour_ascetic_garb_2": {
+      "name": "Ascetic Garb"
+    },
+    "body_armour_oiled_jacket": {
+      "name": "Oiled Jacket"
+    },
+    "body_armour_evangelist_garb": {
+      "name": "Evangelist Garb"
+    },
+    "body_armour_itinerant_jacket": {
+      "name": "Itinerant Jacket"
+    },
+    "body_armour_hatungo_garb": {
+      "name": "Hatungo Garb"
+    },
+    "body_armour_hawkers_jacket": {
+      "name": "Hawker's Jacket"
+    },
+    "body_armour_soldier_cuirass": {
+      "name": "Soldier Cuirass"
+    },
+    "body_armour_ornate_plate": {
+      "name": "Ornate Plate"
+    },
+    "body_armour_utzaal_cuirass": {
+      "name": "Utzaal Cuirass"
+    },
+    "body_armour_warlord_cuirass": {
+      "name": "Warlord Cuirass"
+    },
+    "body_armour_swiftstalker_coat": {
+      "name": "Swiftstalker Coat"
+    },
+    "body_armour_slipstrike_vest": {
+      "name": "Slipstrike Vest"
+    },
+    "body_armour_wyrmscale_coat": {
+      "name": "Wyrmscale Coat"
+    },
+    "body_armour_corsair_coat": {
+      "name": "Corsair Coat"
+    },
+    "body_armour_vile_robe": {
+      "name": "Vile Robe"
+    },
+    "body_armour_flowing_raiment": {
+      "name": "Flowing Raiment"
+    },
+    "body_armour_sacramental_robe": {
+      "name": "Sacramental Robe"
+    },
+    "body_armour_feathered_raiment": {
+      "name": "Feathered Raiment"
+    },
+    "body_armour_dastard_armour": {
+      "name": "Dastard Armour"
+    },
+    "body_armour_shrouded_mail": {
+      "name": "Shrouded Mail"
+    },
+    "body_armour_shrouded_mail_2": {
+      "name": "Shrouded Mail"
+    },
+    "body_armour_shrouded_mail_3": {
+      "name": "Shrouded Mail"
+    },
+    "body_armour_death_mail": {
+      "name": "Death Mail"
+    },
+    "body_armour_thane_mail": {
+      "name": "Thane Mail"
+    },
+    "body_armour_wolfskin_mantle": {
+      "name": "Wolfskin Mantle"
+    },
+    "body_armour_conjurer_mantle": {
+      "name": "Conjurer Mantle"
+    },
+    "body_armour_death_mantle": {
+      "name": "Death Mantle"
+    },
+    "body_armour_seastorm_mantle": {
+      "name": "Seastorm Mantle"
+    },
+    "body_armour_sleek_jacket": {
+      "name": "Sleek Jacket"
+    },
+    "body_armour_rambler_jacket": {
+      "name": "Rambler Jacket"
+    },
+    "body_armour_falconers_jacket": {
+      "name": "Falconer's Jacket"
+    },
+    "body_armour_austere_garb": {
+      "name": "Austere Garb"
+    },
+    "helmet_golden_wreath": {
+      "name": "Golden Wreath"
+    },
+    "helmet_golden_visage": {
+      "name": "Golden Visage"
+    },
+    "helmet_rusted_greathelm": {
+      "name": "Rusted Greathelm"
+    },
+    "helmet_soldier_greathelm": {
+      "name": "Soldier Greathelm"
+    },
+    "helmet_wrapped_greathelm": {
+      "name": "Wrapped Greathelm"
+    },
+    "helmet_spired_greathelm": {
+      "name": "Spired Greathelm"
+    },
+    "helmet_elite_greathelm": {
+      "name": "Elite Greathelm"
+    },
+    "helmet_warrior_greathelm": {
+      "name": "Warrior Greathelm"
+    },
+    "helmet_commander_greathelm": {
+      "name": "Commander Greathelm"
+    },
+    "helmet_fierce_greathelm": {
+      "name": "Fierce Greathelm"
+    },
+    "helmet_sentinel_greathelm": {
+      "name": "Sentinel Greathelm"
+    },
+    "helmet_goliath_greathelm": {
+      "name": "Goliath Greathelm"
+    },
+    "helmet_guardian_greathelm": {
+      "name": "Guardian Greathelm"
+    },
+    "helmet_shabby_hood": {
+      "name": "Shabby Hood"
+    },
+    "helmet_felt_cap": {
+      "name": "Felt Cap"
+    },
+    "helmet_lace_hood": {
+      "name": "Lace Hood"
+    },
+    "helmet_swathed_cap": {
+      "name": "Swathed Cap"
+    },
+    "helmet_hunter_hood": {
+      "name": "Hunter Hood"
+    },
+    "helmet_viper_cap": {
+      "name": "Viper Cap"
+    },
+    "helmet_corsair_cap": {
+      "name": "Corsair Cap"
+    },
+    "helmet_leatherbound_hood": {
+      "name": "Leatherbound Hood"
+    },
+    "helmet_velvet_cap": {
+      "name": "Velvet Cap"
+    },
+    "helmet_covert_hood": {
+      "name": "Covert Hood"
+    },
+    "helmet_armoured_cap": {
+      "name": "Armoured Cap"
+    },
+    "helmet_twig_circlet": {
+      "name": "Twig Circlet"
+    },
+    "helmet_wicker_tiara": {
+      "name": "Wicker Tiara"
+    },
+    "helmet_beaded_circlet": {
+      "name": "Beaded Circlet"
+    },
+    "helmet_chain_tiara": {
+      "name": "Chain Tiara"
+    },
+    "helmet_feathered_tiara": {
+      "name": "Feathered Tiara"
+    },
+    "helmet_gold_circlet": {
+      "name": "Gold Circlet"
+    },
+    "helmet_vermeil_circlet": {
+      "name": "Vermeil Circlet"
+    },
+    "helmet_jade_tiara": {
+      "name": "Jade Tiara"
+    },
+    "helmet_noble_circlet": {
+      "name": "Noble Circlet"
+    },
+    "helmet_twilight_tiara": {
+      "name": "Twilight Tiara"
+    },
+    "helmet_magus_tiara": {
+      "name": "Magus Tiara"
+    },
+    "helmet_brimmed_helm": {
+      "name": "Brimmed Helm"
+    },
+    "helmet_guarded_helm": {
+      "name": "Guarded Helm"
+    },
+    "helmet_visored_helm": {
+      "name": "Visored Helm"
+    },
+    "helmet_cowled_helm": {
+      "name": "Cowled Helm"
+    },
+    "helmet_shielded_helm": {
+      "name": "Shielded Helm"
+    },
+    "helmet_closed_helm": {
+      "name": "Closed Helm"
+    },
+    "helmet_decorated_helm": {
+      "name": "Decorated Helm"
+    },
+    "helmet_gallant_helm": {
+      "name": "Gallant Helm"
+    },
+    "helmet_iron_crown": {
+      "name": "Iron Crown"
+    },
+    "helmet_horned_crown": {
+      "name": "Horned Crown"
+    },
+    "helmet_cultist_crown": {
+      "name": "Cultist Crown"
+    },
+    "helmet_martyr_crown": {
+      "name": "Martyr Crown"
+    },
+    "helmet_heavy_crown": {
+      "name": "Heavy Crown"
+    },
+    "helmet_spiritbone_crown": {
+      "name": "Spiritbone Crown"
+    },
+    "helmet_lavish_crown": {
+      "name": "Lavish Crown"
+    },
+    "helmet_archon_crown": {
+      "name": "Archon Crown"
+    },
+    "helmet_hewn_mask": {
+      "name": "Hewn Mask"
+    },
+    "helmet_face_mask": {
+      "name": "Face Mask"
+    },
+    "helmet_hooded_mask": {
+      "name": "Hooded Mask"
+    },
+    "helmet_veiled_mask": {
+      "name": "Veiled Mask"
+    },
+    "helmet_tribal_mask": {
+      "name": "Tribal Mask"
+    },
+    "helmet_solid_mask": {
+      "name": "Solid Mask"
+    },
+    "helmet_shaded_mask": {
+      "name": "Shaded Mask"
+    },
+    "helmet_death_mask": {
+      "name": "Death Mask"
+    },
+    "helmet_grand_visage": {
+      "name": "Grand Visage"
+    },
+    "helmet_golden_visage_2": {
+      "name": "Golden Visage"
+    },
+    "helmet_corroded_greathelm": {
+      "name": "Corroded Greathelm"
+    },
+    "helmet_mercenary_greathelm": {
+      "name": "Mercenary Greathelm"
+    },
+    "helmet_homeguard_greathelm": {
+      "name": "Homeguard Greathelm"
+    },
+    "helmet_elegant_greathelm": {
+      "name": "Elegant Greathelm"
+    },
+    "helmet_noble_greathelm": {
+      "name": "Noble Greathelm"
+    },
+    "helmet_rotted_hood": {
+      "name": "Rotted Hood"
+    },
+    "helmet_wool_cap": {
+      "name": "Wool Cap"
+    },
+    "helmet_narrow_hood": {
+      "name": "Narrow Hood"
+    },
+    "helmet_wrapped_cap": {
+      "name": "Wrapped Cap"
+    },
+    "helmet_deerstalker_hood": {
+      "name": "Deerstalker Hood"
+    },
+    "helmet_druidic_circlet": {
+      "name": "Druidic Circlet"
+    },
+    "helmet_avian_tiara": {
+      "name": "Avian Tiara"
+    },
+    "helmet_desert_circlet": {
+      "name": "Desert Circlet"
+    },
+    "helmet_sandsworn_tiara": {
+      "name": "Sandsworn Tiara"
+    },
+    "helmet_jungle_tiara": {
+      "name": "Jungle Tiara"
+    },
+    "helmet_domed_helm": {
+      "name": "Domed Helm"
+    },
+    "helmet_engraved_helm": {
+      "name": "Engraved Helm"
+    },
+    "helmet_soldier_helm": {
+      "name": "Soldier Helm"
+    },
+    "helmet_cabalist_helm": {
+      "name": "Cabalist Helm"
+    },
+    "helmet_gladiatoral_helm": {
+      "name": "Gladiatoral Helm"
+    },
+    "helmet_mailed_crown": {
+      "name": "Mailed Crown"
+    },
+    "helmet_forest_crown": {
+      "name": "Forest Crown"
+    },
+    "helmet_zealot_crown": {
+      "name": "Zealot Crown"
+    },
+    "helmet_hallowed_crown": {
+      "name": "Hallowed Crown"
+    },
+    "helmet_inquisitor_crown": {
+      "name": "Inquisitor Crown"
+    },
+    "helmet_oak_mask": {
+      "name": "Oak Mask"
+    },
+    "helmet_bandit_mask": {
+      "name": "Bandit Mask"
+    },
+    "helmet_skulking_mask": {
+      "name": "Skulking Mask"
+    },
+    "helmet_pariah_mask": {
+      "name": "Pariah Mask"
+    },
+    "helmet_avian_mask": {
+      "name": "Avian Mask"
+    },
+    "helmet_warmonger_greathelm": {
+      "name": "Warmonger Greathelm"
+    },
+    "helmet_masked_greathelm": {
+      "name": "Masked Greathelm"
+    },
+    "helmet_paragon_greathelm": {
+      "name": "Paragon Greathelm"
+    },
+    "helmet_imperial_greathelm": {
+      "name": "Imperial Greathelm"
+    },
+    "helmet_woven_cap": {
+      "name": "Woven Cap"
+    },
+    "helmet_desert_cap": {
+      "name": "Desert Cap"
+    },
+    "helmet_trapper_hood": {
+      "name": "Trapper Hood"
+    },
+    "helmet_freebooter_cap": {
+      "name": "Freebooter Cap"
+    },
+    "helmet_skycrown_tiara": {
+      "name": "Skycrown Tiara"
+    },
+    "helmet_sorcerous_tiara": {
+      "name": "Sorcerous Tiara"
+    },
+    "helmet_kamasan_tiara": {
+      "name": "Kamasan Tiara"
+    },
+    "helmet_ancestral_tiara": {
+      "name": "Ancestral Tiara"
+    },
+    "helmet_warded_helm": {
+      "name": "Warded Helm"
+    },
+    "helmet_cryptic_helm": {
+      "name": "Cryptic Helm"
+    },
+    "helmet_champion_helm": {
+      "name": "Champion Helm"
+    },
+    "helmet_gladiatorial_helm": {
+      "name": "Gladiatorial Helm"
+    },
+    "helmet_druidic_crown": {
+      "name": "Druidic Crown"
+    },
+    "helmet_saintly_crown": {
+      "name": "Saintly Crown"
+    },
+    "helmet_divine_crown": {
+      "name": "Divine Crown"
+    },
+    "helmet_cryptic_crown": {
+      "name": "Cryptic Crown"
+    },
+    "helmet_brigand_mask": {
+      "name": "Brigand Mask"
+    },
+    "helmet_faridun_mask": {
+      "name": "Faridun Mask"
+    },
+    "helmet_soaring_mask": {
+      "name": "Soaring Mask"
+    },
+    "helmet_grinning_mask": {
+      "name": "Grinning Mask"
+    },
+    "amulet_crimson_amulet": {
+      "name": "Crimson Amulet"
+    },
+    "amulet_azure_amulet": {
+      "name": "Azure Amulet"
+    },
+    "amulet_amber_amulet": {
+      "name": "Amber Amulet"
+    },
+    "amulet_jade_amulet": {
+      "name": "Jade Amulet"
+    },
+    "amulet_lapis_amulet": {
+      "name": "Lapis Amulet"
+    },
+    "amulet_lunar_amulet": {
+      "name": "Lunar Amulet"
+    },
+    "amulet_bloodstone_amulet": {
+      "name": "Bloodstone Amulet"
+    },
+    "amulet_stellar_amulet": {
+      "name": "Stellar Amulet"
+    },
+    "amulet_solar_amulet": {
+      "name": "Solar Amulet"
+    },
+    "amulet_gold_amulet": {
+      "name": "Gold Amulet"
+    },
+    "amulet_pearlescent_amulet": {
+      "name": "Pearlescent Amulet"
+    },
+    "amulet_dusk_amulet": {
+      "name": "Dusk Amulet"
+    },
+    "amulet_gloam_amulet": {
+      "name": "Gloam Amulet"
+    },
+    "amulet_penumbra_amulet": {
+      "name": "Penumbra Amulet"
+    },
+    "amulet_tenebrous_amulet": {
+      "name": "Tenebrous Amulet"
+    },
+    "amulet_distorted_amulet": {
+      "name": "Distorted Amulet"
+    },
+    "ring_golden_hoop": {
+      "name": "Golden Hoop"
+    },
+    "ring_iron_ring": {
+      "name": "Iron Ring"
+    },
+    "ring_lazuli_ring": {
+      "name": "Lazuli Ring"
+    },
+    "ring_ruby_ring": {
+      "name": "Ruby Ring"
+    },
+    "ring_sapphire_ring": {
+      "name": "Sapphire Ring"
+    },
+    "ring_topaz_ring": {
+      "name": "Topaz Ring"
+    },
+    "ring_amethyst_ring": {
+      "name": "Amethyst Ring"
+    },
+    "ring_emerald_ring": {
+      "name": "Emerald Ring"
+    },
+    "ring_pearl_ring": {
+      "name": "Pearl Ring"
+    },
+    "ring_prismatic_ring": {
+      "name": "Prismatic Ring"
+    },
+    "ring_gold_ring": {
+      "name": "Gold Ring"
+    },
+    "ring_unset_ring": {
+      "name": "Unset Ring"
+    },
+    "ring_abyssal_signet": {
+      "name": "Abyssal Signet"
+    },
+    "ring_ring": {
+      "name": "Ring"
+    },
+    "ring_dusk_ring": {
+      "name": "Dusk Ring"
+    },
+    "ring_gloam_ring": {
+      "name": "Gloam Ring"
+    },
+    "ring_penumbra_ring": {
+      "name": "Penumbra Ring"
+    },
+    "ring_tenebrous_ring": {
+      "name": "Tenebrous Ring"
+    },
+    "ring_breach_ring": {
+      "name": "Breach Ring"
+    },
+    "belt_golden_obi": {
+      "name": "Golden Obi"
+    },
+    "belt_rawhide_belt": {
+      "name": "Rawhide Belt"
+    },
+    "belt_linen_belt": {
+      "name": "Linen Belt"
+    },
+    "belt_wide_belt": {
+      "name": "Wide Belt"
+    },
+    "belt_long_belt": {
+      "name": "Long Belt"
+    },
+    "belt_plate_belt": {
+      "name": "Plate Belt"
+    },
+    "belt_ornate_belt": {
+      "name": "Ornate Belt"
+    },
+    "belt_mail_belt": {
+      "name": "Mail Belt"
+    },
+    "belt_double_belt": {
+      "name": "Double Belt"
+    },
+    "belt_heavy_belt": {
+      "name": "Heavy Belt"
+    },
+    "belt_utility_belt": {
+      "name": "Utility Belt"
+    },
+    "belt_fine_belt": {
+      "name": "Fine Belt"
+    },
+    "two_hand_sword_energy_blade": {
+      "name": "Energy Blade"
+    }
+  },
+  "baseItemImplicits": {
+    "stun_threshold_inc": "(30–40)% increased Stun Threshold",
+    "life_regen_per_sec": "Regenerate (1.5–2.5)% of Life per second",
+    "debuff_slow_reduced": "(20–30)% reduced Effect of Slowing Debuffs on you",
+    "elemental_ailment_threshold_inc": "(30–40)% increased Elemental Ailment Threshold",
+    "mana_regen_rate_inc": "(40–50)% increased Mana Regeneration Rate",
+    "es_recharge_faster": "(40–50)% faster start of Energy Shield Recharge",
+    "max_life_plus": "+(60–80) to maximum Life",
+    "fire_resist_plus": "+(20–25)% to Fire Resistance",
+    "cold_resist_plus": "+(20–25)% to Cold Resistance",
+    "lightning_resist_plus": "+(20–25)% to Lightning Resistance",
+    "max_elem_resist_plus": "+1% to all maximum Elemental Resistances",
+    "spirit_plus": "+(20–30) to Spirit",
+    "corrupted_skill_gem_level": "+1 to Level of all Corrupted Skill Gems",
+    "chaos_resist_plus": "+(7–13)% to Chaos Resistance",
+    "move_speed_inc": "5% increased Movement Speed",
+    "crit_damage_bonus_reduced": "(15–25)% reduced Critical Damage Bonus taken from Hits",
+    "armour_applies_to_elem_damage": "+(15–25)% of Armour also applies to Elemental Damage",
+    "damage_to_mana": "(5–10)% of Damage taken from Hits is Recovered as Mana",
+    "damage_to_life_leech": "(8–14)% of Damage taken Recouped as Life",
+    "elemental_ailment_duration_reduced": "(10–15)% reduced Duration of Elemental Ailments on you"
+  },
+  "craftLab": {
+    "metaTitle": "Crafting lab — manual currency test",
+    "metaDescription": "Pick a base item, use orbs and essences from a stash, and compare outcomes with Path of Exile 2. Simulator rules; not a 1:1 game client.",
+    "title": "Crafting lab",
+    "intro": "Select a base on the left, then spend currency from the stash on the right. Behaviour follows basicCurrencyOrbs, essence, and abyssCrafting. Essences are magic-only. The Abyss tab combines Preserved bones and Abyss omens; the Ritual tab lists Ritual reward omens (e.g. Omen of Whittling). Only one omen can be active at a time; it affects bones, annulment (Light), Chaos (Whittling), etc. Hinekora's Lock foresees the next currency use. Divine Orb numeric rolls are not modeled.",
+    "navToSimulator": "Back to item simulator",
+    "itemColumnTitle": "Item",
+    "stashColumnTitle": "Stash",
+    "stashTabListAria": "Stash tabs",
+    "stashTabCurrency": "Currency",
+    "stashTabEssence": "Essence",
+    "stashTabAbyss": "Abyss",
+    "stashTabRitual": "Ritual",
+    "abyssTabHint": "Preserved bones and Abyss omens are in one tab. Bones add an unrevealed Desecrated mod to rare items. Click an unrevealed line to pick one of three rolled candidates (weights are approximate; not datamined).",
+    "abyssTabAbyssOmensHeading": "Abyss omens",
+    "stagedOmenBanner": "Staged omen: {name} — applies to the next Abyss bone, annulment (Light), or Chaos (Whittling) use.",
+    "stagedOmenPanelHeading": "Active omen",
+    "stagedOmenPanelEmpty": "None selected — tap an omen in the Abyss or Ritual tab to stage it.",
+    "stagedOmenPanelHint": "Applies to your next Abyss bone, annulment (Light), or Chaos (Whittling) use.",
+    "abyssSlotDisabledTooltip": "Not connected to manual crafting yet.",
+    "ritualTabHint": "Omens typically obtained from Ritual rewards. You can keep up to 3 active at once. Omen of Whittling: your next Chaos Orb removes the weakest rolled mod (highest tier number in this lab) then re-rolls one mod.",
+    "ritualOmenSimulationNote": "Ritual omens are not consumed from stash—only selection state is kept. In Simulation mode, click an omen for a short effect summary.",
+    "omenSimulationNote": "Omens are not consumed from stash—only selection state is kept. In Simulation mode, click an omen to read how this lab applies it.",
+    "omenToggleAria": "{name}, activate or deactivate omen",
+    "omenSelectedAria": "{name}, active omen",
+    "omenPreview_cleared": "Omen selection cleared. The item was not changed.",
+    "omenPreview_abyssal_echoes": "Soul Well re-rolls are not modeled here; the omen is treated as a no-op beyond staging for this simulator.",
+    "omenPreview_dextral_necromancy": "The next Preserved bone’s unrevealed Desecrated line is forced to a suffix when a suffix slot is free.",
+    "omenPreview_sinistral_necromancy": "The next Preserved bone’s unrevealed Desecrated line is forced to a prefix when a prefix slot is free.",
+    "omenPreview_light": "The next Orb of Annulment removes only Desecrated mods. The omen clears after use.",
+    "omenPreview_putrefaction": "Replaces a rare item’s mods with several unrevealed Desecrated lines and corrupts the item; placement is simplified in this lab.",
+    "omenPreview_blackblooded": "On weapons and jewellery (belt/amulet/ring), the next bone guarantees a Kurgal-family Desecrated line.",
+    "omenPreview_liege": "On weapons and jewellery (belt/amulet/ring), the next bone guarantees an Amanamu-family Desecrated line.",
+    "omenPreview_sovereign": "On weapons and jewellery (belt/amulet/ring), the next bone guarantees an Ulaman-family Desecrated line.",
+    "omenPreview_whittling": "Your next Chaos Orb removes the mod with the highest tier number (weakest roll approximation), then adds one mod. The omen clears after use.",
+    "omenPreview_sanctification": "Your next Divine would Sanctify a rare item; Divine numeric rolls are not modeled in this app.",
+    "omenPreview_answered_prayers": "Extra shrine effect — not modeled outside combat instances.",
+    "omenPreview_bartering": "Trading-related — not wired in this lab.",
+    "omenPreview_chance": "Chance-related — not wired in this lab.",
+    "omenPreview_corruption": "Corruption-related — not wired in this lab.",
+    "omenPreview_the_hunt": "Hunt / mapping-related — not wired in this lab.",
+    "omenPreview_the_blessed": "Blessing-related — not wired in this lab.",
+    "boneRequiresRare": "Preserved bones can only be used on rare items.",
+    "boneWrongSlotOrFull": "Rarity is correct but the slot does not match or affixes are full.",
+    "boneCorrupted": "Corrupted items cannot use preserved bones in this simulator.",
+    "boneRequiresRandomMode": "Preserved bones can only be used in Random mode.",
+    "boneSimulationNote": "Bones mix forced Desecrated lines with pre-reveal steps; detailed preview is skipped — use random mode.",
+    "selectBaseHeading": "Choose base",
+    "searchBaseLabel": "Search bases",
+    "searchBasePlaceholder": "Filter by key or subtype…",
+    "pickBaseHint": "Pick a row to load a normal item on that base.",
+    "noBaseMatches": "No bases match your filter.",
+    "currentBase": "Base",
+    "rarityLabel": "Rarity",
+    "prefixesHeading": "Prefixes",
+    "suffixesHeading": "Suffixes",
+    "emptyMods": "None",
+    "resetItem": "Reset to normal (empty)",
+    "baseSectionReset": "Reset",
+    "lastActionError": "Could not apply: {message}",
+    "stashDepleted": "Not enough of that currency in the stash.",
+    "stashPickBaseForCurrencies": "Select a base to see which currency can be used.",
+    "noApplicableOrbs": "No orbs can be used on this item in its current state.",
+    "orbDisabledTooltip": "Cannot be used on this item in its current state (rarity / modifiers).",
+    "essenceRequiresMagicItem": "Lesser Body / Abrasion essences require a magic item.",
+    "essenceIncompatibleBase": "This essence does not match this base slot (body/belt/jewellery vs physical weapons).",
+    "orbDisabledAria": "{name}, unavailable on this item in its current state",
+    "orbSimulateAria": "{name}, probability preview",
+    "craftModeLegend": "Craft application mode",
+    "craftModeLabel": "Mode",
+    "craftModeRandom": "Random",
+    "craftModeSimulation": "Simulation",
+    "craftModeSimulationHint": "Simulation: using an orb does not change the item; it only shows which modifiers can appear and with what probability (per this app’s MOD pool). Essences, Abyss, and Ritual omens behave the same; omens open a short effect summary.",
+    "previewTitle": "{orb} — probability summary",
+    "previewClose": "Close",
+    "previewUnavailable": "Preview unavailable",
+    "previewUnavailableDetail": "This orb cannot be used on the item in its current state.",
+    "previewModCol": "Modifier",
+    "previewTierCol": "T",
+    "previewProbCol": "Chance",
+    "previewWeightCol": "Weight",
+    "previewSectionPrefix50": "Prefix 50%",
+    "previewSectionSuffix50": "Suffix 50%",
+    "previewAugmentOneLine": "One added line (magic pool)",
+    "previewRegalAddRare": "One added line (rare pool)",
+    "previewAlchemyNote": "Alchemy discards current mods and rolls 2 rare prefixes and 2 rare suffixes in sequence. Below are relative weights within the rare prefix/suffix pools (first-slot view; later rolls exclude already rolled mod keys).",
+    "previewAlchemyPrefixPool": "Rare prefix pool",
+    "previewAlchemySuffixPool": "Rare suffix pool",
+    "previewExaltAddRare": "One added line (rare pool)",
+    "previewFracturePick": "Fracture target (uniform)",
+    "previewChaosRemoval": "Removal candidates (uniform)",
+    "previewChaosAddCombined": "One line added after removal (combined)",
+    "previewAnnulRemove": "Removal candidates (uniform)",
+    "previewEmptySection": "Nothing to list here.",
+    "essenceSimulationNote": "Essence promotes magic to rare, adds one guaranteed mod, then fills the rest at random. A detailed probability table is not available yet. Use Random mode to apply.",
+    "undoCraft": "Undo",
+    "redoCraft": "Redo",
+    "undoCraftAria": "Undo last currency use (restores item and usage log)",
+    "redoCraftAria": "Re-apply after undo",
+    "craftCompleteButton": "Finish (view log)",
+    "usageSummaryHeading": "Currency used this craft",
+    "usageSummaryDismiss": "Close",
+    "usageSummaryEmpty": "No usage to show.",
+    "usageSummaryOrderLabel": "Order of use",
+    "usageSummaryTotals": "By type: {line}",
+    "orbsHeading": "Orbs",
+    "essencesHeading": "Essences",
+    "omensHeading": "Omens & other",
+    "stashCount": "×{count}",
+    "stashOrbQuantityUnlimited": "∞",
+    "divineDisabledHint": "Divine Orb: numeric rolls are not modeled in this app.",
+    "vaalOrbDisabledHint": "Vaal Orb (corruption): not wired to manual crafting yet.",
+    "mirrorDisabledHint": "Mirror of Kalandra: not wired to manual crafting yet.",
+    "chanceDisabledHint": "Orb of Chance: not wired to manual crafting yet.",
+    "currencyMiscGridAria": "Other currency orbs",
+    "hinekoraLockActiveBanner": "Hinekora's Lock: hover a currency to preview the outcome on the item card; click to apply that result (Random mode).",
+    "hinekoraLockAlreadyActive": "Hinekora's Lock is already on this item. Use another orb or reset to clear it.",
+    "hinekoraLockNoSimPreview": "Use Hinekora's Lock in Random mode.",
+    "hinekoraDraftTableMissing": "Foreseen outcomes are not ready. Try selecting a base item again or reset the craft.",
+    "soulWellRevealTitle": "Soul Well — choose a modifier",
+    "soulWellRevealHint": "Three candidates are rolled from this lab’s rare prefix/suffix pool (same slot as the unrevealed line). Exact in-game odds for Desecrated vs normal lines are not public.",
+    "soulWellRevealCancel": "Cancel",
+    "soulWellRevealCandidateAria": "Soul Well candidate {index}",
+    "currencyTabDisabledGeneric": "Not wired to manual crafting yet.",
+    "omenDisabledHint": "Omens are not wired to manual crafting yet.",
+    "currency": {
+      "orb_transmutation_t1": "Orb of Transmutation",
+      "orb_transmutation_t2": "Greater Orb of Transmutation",
+      "orb_transmutation_t3": "Perfect Orb of Transmutation",
+      "orb_augmentation_t1": "Orb of Augmentation",
+      "orb_augmentation_t2": "Greater Orb of Augmentation",
+      "orb_augmentation_t3": "Perfect Orb of Augmentation",
+      "orb_alchemy": "Orb of Alchemy",
+      "orb_chaos_t1": "Chaos Orb",
+      "orb_chaos_t2": "Greater Chaos Orb",
+      "orb_chaos_t3": "Perfect Chaos Orb",
+      "orb_exalted_t1": "Exalted Orb",
+      "orb_exalted_t2": "Greater Exalted Orb",
+      "orb_exalted_t3": "Perfect Exalted Orb",
+      "orb_regal_t1": "Regal Orb",
+      "orb_regal_t2": "Greater Regal Orb",
+      "orb_regal_t3": "Perfect Regal Orb",
+      "orb_fracturing": "Fracturing Orb",
+      "orb_annulment": "Orb of Annulment",
+      "orb_divine": "Divine Orb",
+      "orb_vaal": "Vaal Orb",
+      "orb_hinekoras_lock": "Hinekora's Lock",
+      "orb_mirror": "Mirror of Kalandra",
+      "orb_chance": "Orb of Chance",
+      "soul_well_reveal": "Soul Well reveal",
+      "essence_attack_t1": "Lesser Essence of Abrasion",
+      "essence_attack_t2": "Essence of Abrasion",
+      "essence_attack_t3": "Greater Essence of Abrasion",
+      "essence_alacrity_t1": "Lesser Essence of Alacrity",
+      "essence_alacrity_t2": "Essence of Alacrity",
+      "essence_alacrity_t3": "Greater Essence of Alacrity",
+      "essence_battle_t1": "Lesser Essence of Battle",
+      "essence_battle_t2": "Essence of Battle",
+      "essence_battle_t3": "Greater Essence of Battle",
+      "essence_command_t1": "Lesser Essence of Command",
+      "essence_command_t2": "Essence of Command",
+      "essence_command_t3": "Greater Essence of Command",
+      "essence_electricity_t1": "Lesser Essence of Electricity",
+      "essence_electricity_t2": "Essence of Electricity",
+      "essence_electricity_t3": "Greater Essence of Electricity",
+      "essence_enhancement_t1": "Lesser Essence of Enhancement",
+      "essence_enhancement_t2": "Essence of Enhancement",
+      "essence_enhancement_t3": "Greater Essence of Enhancement",
+      "essence_flames_t1": "Lesser Essence of Flames",
+      "essence_flames_t2": "Essence of Flames",
+      "essence_flames_t3": "Greater Essence of Flames",
+      "essence_grounding_t1": "Lesser Essence of Grounding",
+      "essence_grounding_t2": "Essence of Grounding",
+      "essence_grounding_t3": "Greater Essence of Grounding",
+      "essence_haste_t1": "Lesser Essence of Haste",
+      "essence_haste_t2": "Essence of Haste",
+      "essence_haste_t3": "Greater Essence of Haste",
+      "essence_ice_t1": "Lesser Essence of Ice",
+      "essence_ice_t2": "Essence of Ice",
+      "essence_ice_t3": "Greater Essence of Ice",
+      "essence_insulation_t1": "Lesser Essence of Insulation",
+      "essence_insulation_t2": "Essence of Insulation",
+      "essence_insulation_t3": "Greater Essence of Insulation",
+      "essence_opulence_t1": "Lesser Essence of Opulence",
+      "essence_opulence_t2": "Essence of Opulence",
+      "essence_opulence_t3": "Greater Essence of Opulence",
+      "essence_ruin_t1": "Lesser Essence of Ruin",
+      "essence_ruin_t2": "Essence of Ruin",
+      "essence_ruin_t3": "Greater Essence of Ruin",
+      "essence_seeking_t1": "Lesser Essence of Seeking",
+      "essence_seeking_t2": "Essence of Seeking",
+      "essence_seeking_t3": "Greater Essence of Seeking",
+      "essence_sorcery_t1": "Lesser Essence of Sorcery",
+      "essence_sorcery_t2": "Essence of Sorcery",
+      "essence_sorcery_t3": "Greater Essence of Sorcery",
+      "essence_thawing_t1": "Lesser Essence of Thawing",
+      "essence_thawing_t2": "Essence of Thawing",
+      "essence_thawing_t3": "Greater Essence of Thawing",
+      "essence_life_t1": "Lesser Essence of the Body",
+      "essence_life_t2": "Essence of the Body",
+      "essence_life_t3": "Greater Essence of the Body",
+      "essence_infinite_t1": "Lesser Essence of the Infinite",
+      "essence_infinite_t2": "Essence of the Infinite",
+      "essence_infinite_t3": "Greater Essence of the Infinite",
+      "essence_mind_t1": "Lesser Essence of the Mind",
+      "essence_mind_t2": "Essence of the Mind",
+      "essence_mind_t3": "Greater Essence of the Mind",
+      "bone_gnawed_collarbone": "Gnawed Collarbone",
+      "bone_gnawed_jawbone": "Gnawed Jawbone",
+      "bone_gnawed_rib": "Gnawed Rib",
+      "bone_preserved_collarbone": "Preserved Collarbone",
+      "bone_preserved_jawbone": "Preserved Jawbone",
+      "bone_preserved_rib": "Preserved Rib",
+      "bone_preserved_cranium": "Preserved Cranium",
+      "bone_ancient_collarbone": "Ancient Collarbone",
+      "bone_ancient_jawbone": "Ancient Jawbone",
+      "bone_ancient_rib": "Ancient Rib",
+      "omen_abyssal_echoes": "Omen of Abyssal Echoes",
+      "omen_dextral_necromancy": "Omen of Dextral Necromancy",
+      "omen_sinistral_necromancy": "Omen of Sinistral Necromancy",
+      "omen_light": "Omen of Light",
+      "omen_putrefaction": "Omen of Putrefaction",
+      "omen_blackblooded": "Omen of the Blackblooded",
+      "omen_liege": "Omen of the Liege",
+      "omen_sovereign": "Omen of the Sovereign",
+      "omen_whittling": "Omen of Whittling",
+      "omen_sanctification": "Omen of Sanctification",
+      "omen_answered_prayers": "Omen of Answered Prayers",
+      "omen_bartering": "Omen of Bartering",
+      "omen_chance": "Omen of Chance",
+      "omen_corruption": "Omen of Corruption",
+      "omen_the_hunt": "Omen of the Hunt",
+      "omen_the_blessed": "Omen of the Blessed",
+      "omen_placeholder": "Omen (placeholder)"
+    },
+    "currencyHoverHint": {
+      "orb_transmutation_t1": "Normal → magic with random mods.",
+      "orb_transmutation_t2": "Normal → magic with random mods.",
+      "orb_transmutation_t3": "Normal → magic with random mods.",
+      "orb_augmentation_t1": "Adds one random mod to a magic item (open slot required).",
+      "orb_augmentation_t2": "Adds one random mod to a magic item (open slot required).",
+      "orb_augmentation_t3": "Adds one random mod to a magic item (open slot required).",
+      "orb_alchemy": "Normal → rare (full rare roll).",
+      "orb_chaos_t1": "Full rare reroll — all affixes replaced.",
+      "orb_chaos_t2": "Full rare reroll — all affixes replaced.",
+      "orb_chaos_t3": "Full rare reroll — all affixes replaced.",
+      "orb_exalted_t1": "Adds one random mod to a rare item.",
+      "orb_exalted_t2": "Adds one random mod to a rare item.",
+      "orb_exalted_t3": "Adds one random mod to a rare item.",
+      "orb_regal_t1": "Magic → rare and adds one mod.",
+      "orb_regal_t2": "Magic → rare and adds one mod.",
+      "orb_regal_t3": "Magic → rare and adds one mod.",
+      "orb_fracturing": "Marks one explicit mod as fractured (per this lab).",
+      "orb_annulment": "Removes one random mod.",
+      "orb_divine": "Rerolls numeric values on mods — not modeled in this app.",
+      "orb_vaal": "Corrupts the item — not wired to manual craft here.",
+      "orb_hinekoras_lock": "Foresees the next currency result; click that orb to apply the foreseen roll.",
+      "orb_mirror": "Duplicates an item — not wired in this lab.",
+      "orb_chance": "Upgrades normal to magic or rerolls — not wired in this lab.",
+      "soul_well_reveal": "Recorded when you confirm a Soul Well choice on the item card (no stash cost).",
+      "essence_attack": "Magic → rare; guaranteed added physical damage (martial weapons / bows).",
+      "essence_alacrity": "Magic → rare; guaranteed cast speed (wand / staff / focus).",
+      "essence_battle": "Magic → rare; guaranteed accuracy (martial weapons).",
+      "essence_command": "Magic → rare; guaranteed allies damage (sceptre).",
+      "essence_electricity": "Magic → rare; guaranteed lightning damage (martial weapons).",
+      "essence_enhancement": "Magic → rare; guaranteed defence scaling (armour pieces).",
+      "essence_flames": "Magic → rare; guaranteed fire damage (martial weapons).",
+      "essence_grounding": "Magic → rare; guaranteed lightning res (armour / belt / jewellery).",
+      "essence_haste": "Magic → rare; guaranteed attack speed (melee / bow / crossbow).",
+      "essence_ice": "Magic → rare; guaranteed cold damage (martial weapons).",
+      "essence_insulation": "Magic → rare; guaranteed fire res (armour / belt / jewellery).",
+      "essence_opulence": "Magic → rare; guaranteed item rarity (boots / gloves / helmet / jewellery).",
+      "essence_ruin": "Magic → rare; guaranteed chaos res (armour / belt / jewellery).",
+      "essence_seeking": "Magic → rare; guaranteed crit stats (martial + spell weapons).",
+      "essence_sorcery": "Magic → rare; guaranteed spell damage (wand / staff / focus).",
+      "essence_thawing": "Magic → rare; guaranteed cold res (armour / belt / jewellery).",
+      "essence_life": "Magic → rare; guaranteed life (body / belt / jewellery).",
+      "essence_infinite": "Magic → rare; guaranteed attributes (valid bases).",
+      "essence_mind": "Magic → rare; guaranteed mana (belt / boots / gloves / helmet / jewellery).",
+      "bone_gnawed_collarbone": "Adds an unrevealed Desecrated line to a rare item (Gnawed bone).",
+      "bone_gnawed_jawbone": "Adds an unrevealed Desecrated line to a rare item (Gnawed bone).",
+      "bone_gnawed_rib": "Adds an unrevealed Desecrated line to a rare item (Gnawed bone).",
+      "bone_preserved_collarbone": "Adds an unrevealed Desecrated line to a rare item (Preserved bone).",
+      "bone_preserved_jawbone": "Adds an unrevealed Desecrated line to a rare item (Preserved bone).",
+      "bone_preserved_rib": "Adds an unrevealed Desecrated line to a rare item (Preserved bone).",
+      "bone_preserved_cranium": "Adds an unrevealed Desecrated line to a rare item (Preserved bone).",
+      "bone_ancient_collarbone": "Adds an unrevealed Desecrated line to a rare item (Ancient bone).",
+      "bone_ancient_jawbone": "Adds an unrevealed Desecrated line to a rare item (Ancient bone).",
+      "bone_ancient_rib": "Adds an unrevealed Desecrated line to a rare item (Ancient bone).",
+      "omen_abyssal_echoes": "Soul Well rerolls are not modeled; stages only in this lab.",
+      "omen_dextral_necromancy": "Next bone: unrevealed Desecrated line forced to suffix if a slot is free.",
+      "omen_sinistral_necromancy": "Next bone: unrevealed Desecrated line forced to prefix if a slot is free.",
+      "omen_light": "Next annul removes only Desecrated mods; omen clears after use.",
+      "omen_putrefaction": "Replaces mods with unrevealed Desecrated lines; simplified placement.",
+      "omen_blackblooded": "Next bone on weapon / jewellery: guarantees a Kurgal-family Desecrated line.",
+      "omen_liege": "Next bone on weapon / jewellery: guarantees an Amanamu-family Desecrated line.",
+      "omen_sovereign": "Next bone on weapon / jewellery: guarantees an Ulaman-family Desecrated line.",
+      "omen_whittling": "Next Chaos removes the weakest mod (highest tier #), then adds one mod.",
+      "omen_sanctification": "Next Divine would Sanctify a rare — Divine rolls not modeled here.",
+      "omen_answered_prayers": "Shrine bonus — not modeled outside combat here.",
+      "omen_bartering": "Trading-related — not wired in this lab (staging only).",
+      "omen_chance": "Chance-related — not wired in this lab (staging only).",
+      "omen_corruption": "Corruption-related — not wired in this lab (staging only).",
+      "omen_the_hunt": "Hunt / mapping — not wired in this lab (staging only).",
+      "omen_the_blessed": "Blessing-related — not wired in this lab (staging only).",
+      "omen_placeholder": "Placeholder omen entry."
+    },
+    "stagedOmenPanelCount": "Active {count}/{max}",
+    "stagedOmenPanelSlotHint": "Click to remove from active omens."
+  },
+  "desiredModsPanel": {
+    "sectionTitle": "Desired modifiers",
+    "searchPlaceholder": "Search modifiers...",
+    "noResults": "No results found",
+    "emptyState": "Add the modifiers you want",
+    "slotFull": "Slot full",
+    "addedTitle": "Added modifiers",
+    "removeAriaLabel": "Remove modifier: {name}",
+    "typePrefix": "Standard prefix",
+    "typeSuffix": "Standard suffix",
+    "typeCorruptedPrefix": "Corrupted prefix",
+    "typeCorruptedSuffix": "Corrupted suffix"
+  },
+  "itemSimulatorCatalog": {
+    "baseItems": {
+      "base_oak_staff": {
+        "name": "Ashen Staff"
+      },
+      "base_ember_wand": {
+        "name": "Withered Wand"
+      },
+      "base_hunter_bow": {
+        "name": "Shortbow"
+      },
+      "base_twin_fang_claw": {
+        "name": "Pict Claw"
+      },
+      "base_iron_helmet": {
+        "name": "Soldier Greathelm"
+      },
+      "base_etched_focus": {
+        "name": "Woven Focus"
+      },
+      "base_leather_gloves": {
+        "name": "Riveted Mitts"
+      },
+      "base_chain_vest": {
+        "name": "Fur Plate"
+      },
+      "base_hardsole_boots": {
+        "name": "Iron Greaves"
+      },
+      "base_lapis_amulet": {
+        "name": "Lapis Amulet"
+      },
+      "base_gold_ring": {
+        "name": "Gold Ring"
+      },
+      "base_heavy_belt": {
+        "name": "Heavy Belt"
+      },
+      "gloves_variant_a": {
+        "name": "다부진 미트"
+      },
+      "gloves_variant_b": {
+        "name": "고정못 미트"
+      },
+      "gloves_variant_c": {
+        "name": "단조한 미트"
+      },
+      "gloves_variant_d": {
+        "name": "발전된 미트"
+      },
+      "gloves_variant_e": {
+        "name": "주조한 미트"
+      },
+      "gloves_variant_f": {
+        "name": "정교한 미트"
+      },
+      "gloves_variant_g": {
+        "name": "거신 미트"
+      },
+      "gloves_variant_h": {
+        "name": "우수한 미트"
+      },
+      "gloves_variant_i": {
+        "name": "스웨드 팔보호구"
+      },
+      "gloves_variant_j": {
+        "name": "굳건한 팔보호구"
+      },
+      "gloves_variant_k": {
+        "name": "속박된 팔보호구"
+      },
+      "gloves_variant_l": {
+        "name": "절개된 팔보호구"
+      },
+      "gloves_variant_m": {
+        "name": "가시 팔보호구"
+      },
+      "gloves_variant_n": {
+        "name": "섬세한 팔보호구"
+      },
+      "gloves_variant_o": {
+        "name": "굳어진 팔보호구"
+      },
+      "gloves_variant_p": {
+        "name": "아로새긴 팔보호구"
+      },
+      "gloves_variant_q": {
+        "name": "찢긴 장갑"
+      },
+      "gloves_variant_r": {
+        "name": "암울한 장갑"
+      },
+      "gloves_variant_s": {
+        "name": "꿰맨 장갑"
+      },
+      "gloves_variant_t": {
+        "name": "보석 박힌 장갑"
+      },
+      "gloves_variant_u": {
+        "name": "복잡한 장갑"
+      },
+      "gloves_variant_v": {
+        "name": "파우아비늘 장갑"
+      },
+      "gloves_variant_w": {
+        "name": "수놓은 장갑"
+      },
+      "gloves_variant_x": {
+        "name": "치장된 장갑"
+      },
+      "gloves_variant_y": {
+        "name": "고리 갑옷 건틀릿"
+      },
+      "gloves_variant_z": {
+        "name": "겹겹의 건틀릿"
+      },
+      "gloves_variant_aa": {
+        "name": "이중 건틀릿"
+      },
+      "gloves_variant_ab": {
+        "name": "판금 건틀릿"
+      },
+      "gloves_variant_ac": {
+        "name": "윤이 나는 건틀릿"
+      },
+      "gloves_variant_ad": {
+        "name": "화려한 건틀릿"
+      },
+      "gloves_variant_ae": {
+        "name": "밧줄 수갑"
+      },
+      "gloves_variant_af": {
+        "name": "오래된 수갑"
+      },
+      "gloves_variant_ag": {
+        "name": "금주물 수갑"
+      },
+      "gloves_variant_ah": {
+        "name": "베리시움 수갑"
+      },
+      "gloves_variant_ai": {
+        "name": "정의로운 수갑"
+      },
+      "gloves_variant_aj": {
+        "name": "인장 수갑"
+      },
+      "gloves_variant_ak": {
+        "name": "거즈 싸개"
+      },
+      "gloves_variant_al": {
+        "name": "리넨 싸개"
+      },
+      "gloves_variant_am": {
+        "name": "나선 싸개"
+      },
+      "gloves_variant_an": {
+        "name": "버클 싸개"
+      },
+      "gloves_variant_ao": {
+        "name": "은밀한 싸개"
+      },
+      "gloves_variant_ap": {
+        "name": "특수 싸개"
+      },
+      "gloves_variant_aq": {
+        "name": "우수한 소맷부리"
+      },
+      "gloves_variant_ar": {
+        "name": "판금 미트"
+      },
+      "gloves_variant_as": {
+        "name": "우아한 미트"
+      },
+      "gloves_variant_at": {
+        "name": "고대 미트"
+      },
+      "gloves_variant_au": {
+        "name": "깃털 미트"
+      },
+      "gloves_variant_av": {
+        "name": "사냥 팔보호구"
+      },
+      "gloves_variant_aw": {
+        "name": "재빠른 팔보호구"
+      },
+      "gloves_variant_ax": {
+        "name": "제련된 팔보호구"
+      },
+      "gloves_variant_ay": {
+        "name": "가시 팔보호구"
+      },
+      "gloves_variant_az": {
+        "name": "불길한 장갑"
+      },
+      "gloves_variant_ba": {
+        "name": "장식된 장갑"
+      },
+      "gloves_variant_bb": {
+        "name": "바로크 장갑"
+      },
+      "gloves_variant_bc": {
+        "name": "금 장갑"
+      },
+      "gloves_variant_bd": {
+        "name": "철사슬 건틀릿"
+      },
+      "gloves_variant_be": {
+        "name": "대장 건틀릿"
+      },
+      "gloves_variant_bf": {
+        "name": "맹신자 건틀릿"
+      },
+      "gloves_variant_bg": {
+        "name": "땋은 수갑"
+      },
+      "gloves_variant_bh": {
+        "name": "가보 수갑"
+      },
+      "gloves_variant_bi": {
+        "name": "화려한 수갑"
+      },
+      "gloves_variant_bj": {
+        "name": "붕대 싸개"
+      },
+      "gloves_variant_bk": {
+        "name": "캠브릭 싸개"
+      },
+      "gloves_variant_bl": {
+        "name": "치장된 싸개"
+      },
+      "gloves_variant_bm": {
+        "name": "기사의 미트"
+      },
+      "gloves_variant_bn": {
+        "name": "화려한 미트"
+      },
+      "gloves_variant_bo": {
+        "name": "바알 미트"
+      },
+      "gloves_variant_bp": {
+        "name": "거대한 미트"
+      },
+      "gloves_variant_bq": {
+        "name": "뒤를 쫓는 팔보호구"
+      },
+      "gloves_variant_br": {
+        "name": "우수한 팔보호구"
+      },
+      "gloves_variant_bs": {
+        "name": "가시 돋친 팔보호구"
+      },
+      "gloves_variant_bt": {
+        "name": "광택 나는 팔보호구"
+      },
+      "gloves_variant_bu": {
+        "name": "으스스한 장갑"
+      },
+      "gloves_variant_bv": {
+        "name": "호화로운 장갑"
+      },
+      "gloves_variant_bw": {
+        "name": "바알 장갑"
+      },
+      "gloves_variant_bx": {
+        "name": "사이렌비늘 장갑"
+      },
+      "gloves_variant_by": {
+        "name": "강철사슬 건틀릿"
+      },
+      "gloves_variant_bz": {
+        "name": "지휘관 건틀릿"
+      },
+      "gloves_variant_ca": {
+        "name": "광신자 건틀릿"
+      },
+      "gloves_variant_cb": {
+        "name": "검은강철 건틀릿"
+      },
+      "gloves_variant_cc": {
+        "name": "속박된 수갑"
+      },
+      "gloves_variant_cd": {
+        "name": "고대의 수갑"
+      },
+      "gloves_variant_ce": {
+        "name": "번뜩이는 수갑"
+      },
+      "gloves_variant_cf": {
+        "name": "지지자 수갑"
+      },
+      "gloves_variant_cg": {
+        "name": "전쟁 싸개"
+      },
+      "gloves_variant_ch": {
+        "name": "우아한 싸개"
+      },
+      "gloves_variant_ci": {
+        "name": "바알 싸개"
+      },
+      "gloves_variant_cj": {
+        "name": "고정된 싸개"
+      },
+      "body_armour_variant_a": {
+        "name": "녹슨 흉갑"
+      },
+      "body_armour_variant_b": {
+        "name": "모피 판금 갑옷"
+      },
+      "body_armour_variant_c": {
+        "name": "철 흉갑"
+      },
+      "body_armour_variant_d": {
+        "name": "레이더 판금 갑옷"
+      },
+      "body_armour_variant_e": {
+        "name": "마라케스 흉갑"
+      },
+      "body_armour_variant_f": {
+        "name": "강철 판금 갑옷"
+      },
+      "body_armour_variant_g": {
+        "name": "전신 판금 갑옷"
+      },
+      "body_armour_variant_h": {
+        "name": "바알 흉갑"
+      },
+      "body_armour_variant_i": {
+        "name": "거수 판금 갑옷"
+      },
+      "body_armour_variant_j": {
+        "name": "치프틴 흉갑"
+      },
+      "body_armour_variant_k": {
+        "name": "원형 경기장 판금 갑옷"
+      },
+      "body_armour_variant_l": {
+        "name": "챔피언 흉갑"
+      },
+      "body_armour_variant_m": {
+        "name": "영광의 판금 갑옷"
+      },
+      "body_armour_variant_n": {
+        "name": "정복자 판금 갑옷"
+      },
+      "body_armour_variant_o": {
+        "name": "심연의 흉갑"
+      },
+      "body_armour_variant_p": {
+        "name": "가죽 조끼"
+      },
+      "body_armour_variant_q": {
+        "name": "누비 조끼"
+      },
+      "body_armour_variant_r": {
+        "name": "패스파인더 외투"
+      },
+      "body_armour_variant_s": {
+        "name": "연막의 조끼"
+      },
+      "body_armour_variant_t": {
+        "name": "로아가죽 외투"
+      },
+      "body_armour_variant_u": {
+        "name": "징 박힌 조끼"
+      },
+      "body_armour_variant_v": {
+        "name": "정찰병의 조끼"
+      },
+      "body_armour_variant_w": {
+        "name": "뱀 비늘 외투"
+      },
+      "body_armour_variant_x": {
+        "name": "해적 조끼"
+      },
+      "body_armour_variant_y": {
+        "name": "밀수범 외투"
+      },
+      "body_armour_variant_z": {
+        "name": "질주자 조끼"
+      },
+      "body_armour_variant_aa": {
+        "name": "경화가죽 외투"
+      },
+      "body_armour_variant_ab": {
+        "name": "정교한 조끼"
+      },
+      "body_armour_variant_ac": {
+        "name": "사슬 외투"
+      },
+      "body_armour_variant_ad": {
+        "name": "장갑을 두른 조끼"
+      },
+      "body_armour_variant_ae": {
+        "name": "조각난 로브"
+      },
+      "body_armour_variant_af": {
+        "name": "깃털 로브"
+      },
+      "body_armour_variant_ag": {
+        "name": "사술사의 로브"
+      },
+      "body_armour_variant_ah": {
+        "name": "뼈 의복"
+      },
+      "body_armour_variant_ai": {
+        "name": "실크 로브"
+      },
+      "body_armour_variant_aj": {
+        "name": "케스 의복"
+      },
+      "body_armour_variant_ak": {
+        "name": "봉헌된 의복"
+      },
+      "body_armour_variant_al": {
+        "name": "제단 로브"
+      },
+      "body_armour_variant_am": {
+        "name": "엘리멘탈리스트 로브"
+      },
+      "body_armour_variant_an": {
+        "name": "신비한 의복"
+      },
+      "body_armour_variant_ao": {
+        "name": "제국 로브"
+      },
+      "body_armour_variant_ap": {
+        "name": "판금 의복"
+      },
+      "body_armour_variant_aq": {
+        "name": "혼란의 의복"
+      },
+      "body_armour_variant_ar": {
+        "name": "계몽의 로브"
+      },
+      "body_armour_variant_as": {
+        "name": "비전 의복"
+      },
+      "body_armour_variant_at": {
+        "name": "사슬 갑옷"
+      },
+      "body_armour_variant_au": {
+        "name": "악한 방어구"
+      },
+      "body_armour_variant_av": {
+        "name": "방랑자 방어구"
+      },
+      "body_armour_variant_aw": {
+        "name": "은폐 사슬옷"
+      },
+      "body_armour_variant_ax": {
+        "name": "탐험가 방어구"
+      },
+      "body_armour_variant_ay": {
+        "name": "미늘 갑옷"
+      },
+      "body_armour_variant_az": {
+        "name": "기사 방어구"
+      },
+      "body_armour_variant_ba": {
+        "name": "선대의 사슬옷"
+      },
+      "body_armour_variant_bb": {
+        "name": "라멜라 사슬옷"
+      },
+      "body_armour_variant_bc": {
+        "name": "검투사 방어구"
+      },
+      "body_armour_variant_bd": {
+        "name": "영웅의 방어구"
+      },
+      "body_armour_variant_be": {
+        "name": "토너먼트 사슬옷"
+      },
+      "body_armour_variant_bf": {
+        "name": "토너먼트 사슬옷"
+      },
+      "body_armour_variant_bg": {
+        "name": "토너먼트 사슬옷"
+      },
+      "body_armour_variant_bh": {
+        "name": "처형자 방어구"
+      },
+      "body_armour_variant_bi": {
+        "name": "순례자 법의"
+      },
+      "body_armour_variant_bj": {
+        "name": "털가죽 외투"
+      },
+      "body_armour_variant_bk": {
+        "name": "사슬 법의"
+      },
+      "body_armour_variant_bl": {
+        "name": "주술사 외투"
+      },
+      "body_armour_variant_bm": {
+        "name": "철갑 법의"
+      },
+      "body_armour_variant_bn": {
+        "name": "희생의 외투"
+      },
+      "body_armour_variant_bo": {
+        "name": "성직자 법의"
+      },
+      "body_armour_variant_bp": {
+        "name": "파도예견자 외투"
+      },
+      "body_armour_variant_bq": {
+        "name": "도금된 법의"
+      },
+      "body_armour_variant_br": {
+        "name": "공경받는 외투"
+      },
+      "body_armour_variant_bs": {
+        "name": "존경받는 법의"
+      },
+      "body_armour_variant_bt": {
+        "name": "까마귀 외투"
+      },
+      "body_armour_variant_bu": {
+        "name": "북극성 법의"
+      },
+      "body_armour_variant_bv": {
+        "name": "은자 의복"
+      },
+      "body_armour_variant_bw": {
+        "name": "밀랍재질 재킷"
+      },
+      "body_armour_variant_bx": {
+        "name": "도사 의복"
+      },
+      "body_armour_variant_by": {
+        "name": "나그네 재킷"
+      },
+      "body_armour_variant_bz": {
+        "name": "은둔자 의복"
+      },
+      "body_armour_variant_ca": {
+        "name": "두피수집가의 재킷"
+      },
+      "body_armour_variant_cb": {
+        "name": "불한당 재킷"
+      },
+      "body_armour_variant_cc": {
+        "name": "고행자 의복"
+      },
+      "body_armour_variant_cd": {
+        "name": "은밀한 재킷"
+      },
+      "body_armour_variant_ce": {
+        "name": "수도원 의복"
+      },
+      "body_armour_variant_cf": {
+        "name": "고통 재킷"
+      },
+      "body_armour_variant_cg": {
+        "name": "헌신자 의복"
+      },
+      "body_armour_variant_ch": {
+        "name": "암살자 의복"
+      },
+      "body_armour_variant_ci": {
+        "name": "우수한 예복"
+      },
+      "body_armour_variant_cj": {
+        "name": "희생의 예복"
+      },
+      "body_armour_variant_ck": {
+        "name": "야만인의 판금 갑옷"
+      },
+      "body_armour_variant_cl": {
+        "name": "투박한 흉갑"
+      },
+      "body_armour_variant_cm": {
+        "name": "모래맹세 흉갑"
+      },
+      "body_armour_variant_cn": {
+        "name": "우아한 판금 갑옷"
+      },
+      "body_armour_variant_co": {
+        "name": "무거운 판금 갑옷"
+      },
+      "body_armour_variant_cp": {
+        "name": "돌 흉갑"
+      },
+      "body_armour_variant_cq": {
+        "name": "쪽모이 조끼"
+      },
+      "body_armour_variant_cr": {
+        "name": "사냥 외투"
+      },
+      "body_armour_variant_cs": {
+        "name": "승마 외투"
+      },
+      "body_armour_variant_ct": {
+        "name": "겹겹의 조끼"
+      },
+      "body_armour_variant_cu": {
+        "name": "주자 조끼"
+      },
+      "body_armour_variant_cv": {
+        "name": "도마뱀비늘 외투"
+      },
+      "body_armour_variant_cw": {
+        "name": "새의 로브"
+      },
+      "body_armour_variant_cx": {
+        "name": "저주발화자의 로브"
+      },
+      "body_armour_variant_cy": {
+        "name": "호화로운 로브"
+      },
+      "body_armour_variant_cz": {
+        "name": "강 의복"
+      },
+      "body_armour_variant_da": {
+        "name": "지지자의 의복"
+      },
+      "body_armour_variant_db": {
+        "name": "의식용 로브"
+      },
+      "body_armour_variant_dc": {
+        "name": "고리 사슬옷"
+      },
+      "body_armour_variant_dd": {
+        "name": "불한당 방어구"
+      },
+      "body_armour_variant_de": {
+        "name": "방랑자 방어구"
+      },
+      "body_armour_variant_df": {
+        "name": "덮개 덮은 사슬옷"
+      },
+      "body_armour_variant_dg": {
+        "name": "창시자 방어구"
+      },
+      "body_armour_variant_dh": {
+        "name": "황금 사슬옷"
+      },
+      "body_armour_variant_di": {
+        "name": "템플러 법의"
+      },
+      "body_armour_variant_dj": {
+        "name": "곰가죽 외투"
+      },
+      "body_armour_variant_dk": {
+        "name": "쇠사슬 법의"
+      },
+      "body_armour_variant_dl": {
+        "name": "비술사 외투"
+      },
+      "body_armour_variant_dm": {
+        "name": "판금 법의"
+      },
+      "body_armour_variant_dn": {
+        "name": "심장도륙자 외투"
+      },
+      "body_armour_variant_do": {
+        "name": "고행자 의복"
+      },
+      "body_armour_variant_dp": {
+        "name": "기름칠된 재킷"
+      },
+      "body_armour_variant_dq": {
+        "name": "선교사 의복"
+      },
+      "body_armour_variant_dr": {
+        "name": "순회자 재킷"
+      },
+      "body_armour_variant_ds": {
+        "name": "하툰고 의복"
+      },
+      "body_armour_variant_dt": {
+        "name": "행상 재킷"
+      },
+      "body_armour_variant_du": {
+        "name": "병사 흉갑"
+      },
+      "body_armour_variant_dv": {
+        "name": "화려한 판금 갑옷"
+      },
+      "body_armour_variant_dw": {
+        "name": "웃자알 흉갑"
+      },
+      "body_armour_variant_dx": {
+        "name": "전쟁군주 흉갑"
+      },
+      "body_armour_variant_dy": {
+        "name": "재빠른 추적자 외투"
+      },
+      "body_armour_variant_dz": {
+        "name": "미끄러진 타격 조끼"
+      },
+      "body_armour_variant_ea": {
+        "name": "아룡 비늘 외투"
+      },
+      "body_armour_variant_eb": {
+        "name": "해적 외투"
+      },
+      "body_armour_variant_ec": {
+        "name": "끔찍한 로브"
+      },
+      "body_armour_variant_ed": {
+        "name": "흐르는 의복"
+      },
+      "body_armour_variant_ee": {
+        "name": "성찬의 로브"
+      },
+      "body_armour_variant_ef": {
+        "name": "깃털 의복"
+      },
+      "body_armour_variant_eg": {
+        "name": "비겁자 방어구"
+      },
+      "body_armour_variant_eh": {
+        "name": "연막의 사슬옷"
+      },
+      "body_armour_variant_ei": {
+        "name": "연막의 사슬옷"
+      },
+      "body_armour_variant_ej": {
+        "name": "연막의 사슬옷"
+      },
+      "body_armour_variant_ek": {
+        "name": "죽음의 사슬옷"
+      },
+      "body_armour_variant_el": {
+        "name": "테인 사슬옷"
+      },
+      "body_armour_variant_em": {
+        "name": "늑대가죽 외투"
+      },
+      "body_armour_variant_en": {
+        "name": "요술사 외투"
+      },
+      "body_armour_variant_eo": {
+        "name": "죽음의 외투"
+      },
+      "body_armour_variant_ep": {
+        "name": "바다폭풍 외투"
+      },
+      "body_armour_variant_eq": {
+        "name": "매끈한 재킷"
+      },
+      "body_armour_variant_er": {
+        "name": "뚜벅이 재킷"
+      },
+      "body_armour_variant_es": {
+        "name": "매 조련사의 재킷"
+      },
+      "body_armour_variant_et": {
+        "name": "금욕적인 의복"
+      },
+      "base_steel_ring": {
+        "name": "Iron Ring"
+      }
+    },
+    "itemClass": {
+      "dagger": "Dagger",
+      "oneHandSword": "One Hand Sword",
+      "oneHandAxe": "One Hand Axe",
+      "oneHandMace": "One Hand Mace",
+      "sceptre": "Sceptre",
+      "spear": "Spear",
+      "flail": "Flail",
+      "staff": "Staff",
+      "wand": "Wand",
+      "bow": "Bow",
+      "claw": "Claw",
+      "twoHandSword": "Two Hand Sword",
+      "twoHandAxe": "Two Hand Axe",
+      "twoHandMace": "Two Hand Mace",
+      "quarterstaff": "Quarterstaff",
+      "fishingRod": "Fishing Rod",
+      "crossbow": "Crossbow",
+      "trap": "Trap",
+      "talisman": "Talisman",
+      "quiver": "Quiver",
+      "shield": "Shield",
+      "buckler": "Buckler",
+      "helmet": "Helmet",
+      "focus": "Focus",
+      "gloves": "Gloves",
+      "bodyArmour": "Body Armour",
+      "boots": "Boots",
+      "amulet": "Amulet",
+      "ring": "Ring",
+      "belt": "Belt"
+    }
+  },
+  "itemSimulatorWorkspace": {
+    "title": "Path of Exile 2 — Item simulator",
+    "intro": "Pick a base and optional target modifiers. Each time you press optimization search, the server runs Q-learning from scratch (same exalted cost model as the RL page) and reports a suggested first action and action mix.",
+    "nav": {
+      "strategy": "Open strategy view",
+      "rl": "RL environment",
+      "optimizer": "Open optimizer",
+      "craftingLab": "Crafting lab",
+      "db": "DB"
+    },
+    "panels": {
+      "baseItem": {
+        "title": "Base item",
+        "description": "Select the item you are crafting on."
+      },
+      "desiredMods": {
+        "title": "Modifiers",
+        "description": "Add the modifiers you want on your item and adjust roll settings."
+      },
+      "result": {
+        "title": "Optimization search",
+        "description": "Each click retrains Q-learning on the server. Your modifier count (1–6) sets the RL “desired good mods”; with none selected, a default of 3 is used."
+      }
+    },
+    "baseFilter": {
+      "type": "Type",
+      "subType": "Subtype",
+      "all": "All",
+      "requiredStr": "STR",
+      "requiredDex": "DEX",
+      "requiredInt": "INT",
+      "requiredLevel": "Lv",
+      "baseItem": "Base item",
+      "noResults": "No base items match filters",
+      "matchCount": "Matched base items: {count}",
+      "source": "Source: PoE2DB",
+      "quality": "Quality",
+      "armour": "ARM",
+      "evasion": "EVA",
+      "energyShield": "ES",
+      "filterToggle": "Filters",
+      "baseItemSearchPlaceholder": "Search {label}… ({count})"
+    },
+    "equipmentType": {
+      "weapon": "Weapon",
+      "offhand": "Off-hand",
+      "armour": "Armour",
+      "jewellery": "Jewellery"
+    },
+    "rarity": {
+      "normal": "Normal",
+      "magic": "Magic",
+      "rare": "Rare"
+    },
+    "optimizationExplore": {
+      "emptyNeedBase": "Select a base item first.",
+      "emptyPrompt": "Press the button to train Q-learning and view results. Modifier list length (1–6) maps to desired good mods for this run; with no modifiers, training uses 3 as a default.",
+      "paramsSummary": "Run: desired good mods {desiredGoodMods}, chaos budget {budget}, episodes {episodes}.",
+      "costsLine": "Exalt per action — chaos: {chaos}, essence: {essence}.",
+      "desiredModsHint": "Your modifier list has {count} entries (used as desired good mods for this run).",
+      "defaultDesiredModsHint": "No modifiers selected — training used 3 desired good mods (default).",
+      "payloadEchoBase": "Request base item key: {baseItemKey}",
+      "payloadEchoModsHeading": "Target modifiers sent with this request",
+      "payloadEchoModLine": "{modKey} ({modType})",
+      "runButton": "Run optimization search"
+    },
+    "resultModList": {
+      "prefixes": "Prefixes",
+      "suffixes": "Suffixes",
+      "empty": "None",
+      "matchedDesiredRow": "Matches a target modifier, tier {tier}"
+    },
+    "tooltipCard": {
+      "implicitHeading": "Implicit"
+    },
+    "explicitMod": {
+      "desecratedUnrevealed": "········",
+      "desecratedUnrevealedAria": "Unrevealed Desecrated modifier",
+      "desecratedFamilyKurgal": "Kurgal Abyss modifier (sim)",
+      "desecratedFamilyAmanamu": "Amanamu Abyss modifier (sim)",
+      "desecratedFamilyUlaman": "Ulaman Abyss modifier (sim)"
+    }
+  },
+  "strategyView": {
+    "title": "Crafting simulator",
+    "intro": "Set your target good mods and budget, then compare strategies. Success rule: minimum affix count, minimum “good” mods (by tier), and a cap on Chaos Orb uses per attempt. Unit costs: Chaos = 1, Essence = 3 unless changed in code.",
+    "loading": "Running simulation…",
+    "error": "Could not load results. Try again.",
+    "retry": "Run again",
+    "strategyNames": {
+      "chaos_spam": "Chaos spam",
+      "essence_then_chaos": "Essence → Chaos",
+      "smart_stop": "Smart stop"
+    },
+    "form": {
+      "sectionTitle": "Inputs",
+      "desiredGoodMods": "Desired good mods",
+      "budget": "Budget (max Chaos Orbs per attempt)",
+      "budgetHint": "Stops each trial after this many Chaos rolls; Essence + Chaos costs are included where applicable.",
+      "run": "Run simulation"
+    },
+    "best": {
+      "title": "Best strategy",
+      "name": "Strategy",
+      "cost": "Cost",
+      "costValue": "{avg} avg per trial · {perSuccess} per success",
+      "successRate": "Success rate"
+    },
+    "chart": {
+      "title": "Success rate comparison"
+    },
+    "criteriaLine": "Success: at least {minAffixes} affixes and at least {minGood} good mods (tier ≤ {tier}).",
+    "metaLine": "Trials: {trials} · Max chaos per attempt: {maxChaos} · Engine v{version}",
+    "costLine": "Unit costs — Chaos: {chaos} · Essence: {essence} · Essence strategy uses: {essenceKey}",
+    "simulatedAt": "Simulated at: {iso}",
+    "table": {
+      "strategy": "Strategy",
+      "averageCost": "Average cost",
+      "successRate": "Success rate",
+      "costPerSuccess": "Cost per success",
+      "successes": "Successes / trials"
+    },
+    "navToSimulator": "Item simulator",
+    "navLabel": "Open strategy view"
+  },
+  "rlView": {
+    "title": "Reinforcement learning crafting environment",
+    "intro": "Treat item status as state, crafting choices as actions, and train a simple Q-learning agent to maximize reward.",
+    "navToSimulator": "Back to item simulator",
+    "navLabel": "RL environment",
+    "inputs": {
+      "title": "Training inputs",
+      "desiredGoodMods": "Desired good mods",
+      "budget": "Budget (max Chaos uses)",
+      "episodes": "Training episodes",
+      "run": "Train agent",
+      "training": "Training..."
+    },
+    "definition": {
+      "title": "Environment definition",
+      "state": "state = item state (good mods, total affixes, average tier bucket, remaining budget, essence usage)",
+      "action": "action = crafting action (Chaos, Essence, Stop)",
+      "reward": "reward = item quality - cost"
+    },
+    "result": {
+      "title": "Training result",
+      "meanReward": "Mean reward",
+      "last10Reward": "Last 10 episodes avg reward",
+      "bestInitialAction": "Best initial action",
+      "actionRatio": "Action ratio"
+    },
+    "actions": {
+      "chaos": "Chaos",
+      "essence": "Essence",
+      "stop": "Stop"
+    },
+    "error": "Could not load training result. Please try again."
+  },
+  "optimizerView": {
+    "title": "Crafting optimizer",
+    "intro": "Find the strategy with the lowest expected cost to reach your target: all rolled affixes must be valid, and optionally every affix must be tier 1. Current dataset uses the local sample pool; PoE2DB-backed expansion is the next step.",
+    "navToSimulator": "Back to item simulator",
+    "navLabel": "Open optimizer",
+    "inputs": {
+      "title": "Optimization inputs",
+      "budgetChaos": "Chaos budget (max per attempt)",
+      "trials": "Monte Carlo trials",
+      "minTotalAffixes": "Minimum total affixes",
+      "requireTierOne": "Require all affixes to be tier 1",
+      "prefixMods": "Valid prefix mods",
+      "suffixMods": "Valid suffix mods",
+      "selectedModCount": "Selected mods: {count}",
+      "selectAllMods": "Select all mods",
+      "clearAllMods": "Clear mod selection",
+      "run": "Run optimization",
+      "optimizing": "Optimizing...",
+      "dataSource": "Data source",
+      "dataSourceLocal": "Local sample mod pool",
+      "dataSourcePoe2db": "PoE2DB imported catalog"
+    },
+    "result": {
+      "title": "Optimization result",
+      "bestStrategy": "Recommended strategy: {name}",
+      "note": "Strategies are ranked by expected cost per success. If a strategy has zero success, it is ranked by success rate.",
+      "fallbackDataSource": "PoE2DB data was unavailable, so local sample data was used.",
+      "activeDataSource": "Active data source: {source}"
+    },
+    "table": {
+      "strategy": "Strategy",
+      "successRate": "Success rate",
+      "averageCost": "Average cost",
+      "costOnSuccess": "Average cost on success",
+      "expectedCostPerSuccess": "Expected cost per success"
+    },
+    "error": "Could not load optimization result. Please try again."
+  }
+}

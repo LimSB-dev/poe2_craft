@@ -2,8 +2,8 @@ import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import type { ReactElement } from "react";
 
-import { DbStatAffinityHub } from "@/features/db/components/DbStatAffinityHub";
-import { DbItemClassPageContainer } from "@/features/db/containers/DbItemClassPageContainer";
+import { DbStatAffinityHub } from "@/components/organisms/views/DbStatAffinityHub";
+import { DbItemClassWorkspace } from "@/components/organisms/views/DbItemClassWorkspace";
 import { parseDbItemClassRouteParam } from "@/lib/poe2db/dbItemClassRoute";
 import { subTypeUsesPoe2DbStatAffinityPages } from "@/lib/poe2db/poe2dbStatAffinityPages";
 
@@ -21,7 +21,7 @@ const DbItemClassPage = async ({ params }: DbItemClassPagePropsType): Promise<Re
   if (subTypeUsesPoe2DbStatAffinityPages(itemClass)) {
     return <DbStatAffinityHub itemClass={itemClass} />;
   }
-  return <DbItemClassPageContainer itemClass={itemClass} />;
+  return <DbItemClassWorkspace key={`${itemClass}-all`} itemClass={itemClass} />;
 };
 
 export default DbItemClassPage;

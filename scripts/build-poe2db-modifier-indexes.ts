@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 
 import { MOD_DB } from "@/lib/poe2-item-simulator/modDb";
-import koSimulatorMessages from "@/i18n/messages/ko/simulator.json";
+import koSimulatorMessages from "@/i18n/ko/simulator.json";
 
 type ExtractedModifierRowType = {
   sourcePageSlug: string;

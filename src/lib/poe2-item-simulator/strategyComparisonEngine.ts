@@ -10,6 +10,12 @@ import {
   getBenchModFiltersForEssence,
   LIFE_ESSENCE,
 } from "./essence/essence";
+import {
+  STRATEGY_COMPARISON_DEFAULT_BUDGET_MAX_CHAOS,
+  STRATEGY_COMPARISON_DEFAULT_MIN_GOOD_MODS,
+  STRATEGY_COMPARISON_DEFAULT_MIN_TOTAL_AFFIXES,
+  STRATEGY_COMPARISON_DEFAULT_TRIALS,
+} from "@/constants/strategyComparison";
 
 const ENGINE_VERSION: string = "1.0.0";
 
@@ -26,10 +32,6 @@ export type IStrategyComparisonEngineOptionsType = {
   shouldContinueOptions?: IShouldContinueOptionsType;
 };
 
-const DEFAULT_TRIALS: number = 10000;
-const DEFAULT_MAX_CHAOS: number = 80;
-const DEFAULT_MIN_TOTAL_AFFIXES: number = 4;
-const DEFAULT_MIN_GOOD_MODS: number = 3;
 const DEFAULT_CHAOS_COST: number = 1;
 const DEFAULT_ESSENCE_COST: number = 3;
 
@@ -143,11 +145,13 @@ const buildMetrics = (
 export const runStrategyComparisonEngine = (
   options: IStrategyComparisonEngineOptionsType = {}
 ): IStrategyComparisonEngineResultType => {
-  const trials = options.trials ?? DEFAULT_TRIALS;
-  const maxChaosPerAttempt = options.maxChaosPerAttempt ?? DEFAULT_MAX_CHAOS;
+  const trials = options.trials ?? STRATEGY_COMPARISON_DEFAULT_TRIALS;
+  const maxChaosPerAttempt =
+    options.maxChaosPerAttempt ?? STRATEGY_COMPARISON_DEFAULT_BUDGET_MAX_CHAOS;
   const successCriteria: ISuccessCriteriaType = {
-    minTotalAffixes: options.successCriteria?.minTotalAffixes ?? DEFAULT_MIN_TOTAL_AFFIXES,
-    minGoodMods: options.successCriteria?.minGoodMods ?? DEFAULT_MIN_GOOD_MODS,
+    minTotalAffixes:
+      options.successCriteria?.minTotalAffixes ?? STRATEGY_COMPARISON_DEFAULT_MIN_TOTAL_AFFIXES,
+    minGoodMods: options.successCriteria?.minGoodMods ?? STRATEGY_COMPARISON_DEFAULT_MIN_GOOD_MODS,
     goodTierMaxInclusive: options.successCriteria?.goodTierMaxInclusive ?? GOOD_MOD_MAX_TIER,
   };
   const unitCosts: ICurrencyUnitCostsType = {

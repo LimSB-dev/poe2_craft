@@ -6,11 +6,6 @@ describe("parseDbItemClassRouteParam", () => {
     expect(parseDbItemClassRouteParam("oneHandSword")).toBe("oneHandSword");
   });
 
-  it("accepts PoE2DB wiki slugs", () => {
-    expect(parseDbItemClassRouteParam("Claws")).toBe("claw");
-    expect(parseDbItemClassRouteParam("One_Hand_Swords")).toBe("oneHandSword");
-  });
-
   it("returns null for unknown segments", () => {
     expect(parseDbItemClassRouteParam("NotAClass")).toBe(null);
     expect(parseDbItemClassRouteParam("")).toBe(null);

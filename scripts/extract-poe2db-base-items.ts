@@ -4,7 +4,7 @@ import path from "path";
 import {
   BASE_ITEM_SUB_TYPES_BY_EQUIPMENT,
 } from "@/lib/poe2-item-simulator/baseItemDb";
-import { POE2DB_ITEM_CLASS_WIKI_SLUG_BY_SUB_TYPE } from "@/lib/poe2db/poe2dbItemClassPageUrl";
+import { POE2DB_ITEM_CLASS_WIKI_SLUG_BY_SUB_TYPE } from "@/lib/poe2db/poe2dbItemClassSlugs";
 import {
   ARMOUR_SUB_TYPES_WITH_POE2DB_STAT_PAGE,
   buildPoe2DbStatAffinitySourceSlug,

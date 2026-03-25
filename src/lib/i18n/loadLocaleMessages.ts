@@ -24,14 +24,14 @@ const deepMergeRecords = (
 
 export const loadLocaleMessages = async (locale: AppLocaleType) => {
   const [metadataMod, simulatorLocale] = await Promise.all([
-    import(`../../i18n/messages/${locale}/metadata.json`),
-    import(`../../i18n/messages/${locale}/simulator.json`),
+    import(`../../i18n/${locale}/metadata.json`),
+    import(`../../i18n/${locale}/simulator.json`),
   ]);
 
   /** 비영어 로케일에서 새 키가 아직 없으면 `en` 시뮬레이터 조각을 베이스로 깊게 합쳐 누락을 방지한다. */
   let simulator: Record<string, unknown> = simulatorLocale.default as Record<string, unknown>;
   if (locale !== "en") {
-    const simulatorEn = await import("../../i18n/messages/en/simulator.json");
+    const simulatorEn = await import("../../i18n/en/simulator.json");
     simulator = deepMergeRecords(
       simulatorEn.default as Record<string, unknown>,
       simulatorLocale.default as Record<string, unknown>,
@@ -39,8 +39,8 @@ export const loadLocaleMessages = async (locale: AppLocaleType) => {
   }
 
   const simulatorFragmentImporters = [
-    () => import(`../../i18n/messages/${locale}/simulator-itemSimulatorWorkspace.json`),
-    () => import(`../../i18n/messages/${locale}/simulator-desiredModsPanel.json`),
+    () => import(`../../i18n/${locale}/simulator-itemSimulatorWorkspace.json`),
+    () => import(`../../i18n/${locale}/simulator-desiredModsPanel.json`),
   ];
   for (const importFragment of simulatorFragmentImporters) {
     try {

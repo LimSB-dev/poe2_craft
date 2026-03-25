@@ -3,7 +3,6 @@ import {
   RARE_FULL_REROLL_AFFIX_MIN,
   type IPrefixSuffixSplitType,
 } from "../currency/chaosOrb";
-import type { IBaseItemSubTypeType } from "../baseItemDb";
 import {
   assertRollNotCorruptedForStandardCrafting,
   isCorruptedRoll,
@@ -11,13 +10,6 @@ import {
 import craftLabEssenceWikiTiers from "../data/craftLabEssenceWikiTiers.json";
 import { getRandomIntInclusive } from "../random";
 import { rollRareModSlots, type IModRollBaseFiltersType } from "../roller";
-import type {
-  EssenceApplicationRarityRequirementType,
-  IEssenceDefinitionType,
-  IItemRoll,
-  IModDefinition,
-  ModTypeType,
-} from "../types";
 
 const RARE_MAX_PREFIX_SLOTS: number = 3;
 const RARE_MAX_SUFFIX_SLOTS: number = 3;

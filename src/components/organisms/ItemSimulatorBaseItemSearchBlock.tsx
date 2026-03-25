@@ -5,7 +5,6 @@ import { useRef, useState } from "react";
 import type { ReactElement } from "react";
 
 import { BASE_ITEMS } from "@/lib/poe2-item-simulator/baseItems";
-import type { IBaseItemDbRecordType } from "@/lib/poe2-item-simulator/baseItemDb";
 
 type ItemSimulatorBaseItemSearchBlockPropsType = {
   filteredBaseItemRecords: ReadonlyArray<IBaseItemDbRecordType>;

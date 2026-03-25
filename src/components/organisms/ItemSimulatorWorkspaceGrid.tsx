@@ -6,8 +6,6 @@ import { ItemSimulatorBaseItemPanel } from "@/components/organisms/ItemSimulator
 import { ItemSimulatorDesiredModsPanelSection } from "@/components/organisms/ItemSimulatorDesiredModsPanelSection";
 import { ItemSimulatorResultPanel } from "@/components/organisms/ItemSimulatorResultPanel";
 import type { UseItemSimulatorBaseItemPanelStateReturnType } from "@/components/organisms/useItemSimulatorBaseItemPanelState";
-import type { IDesiredModEntryType } from "@/types/poe2-item-simulator";
-import type { IRlTrainResponseType } from "@/types/rl-train";
 
 type ItemSimulatorWorkspaceGridPropsType = {
   baseItemPanelState: UseItemSimulatorBaseItemPanelStateReturnType;

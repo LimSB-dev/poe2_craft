@@ -2,8 +2,8 @@
 
 import type { ReactElement } from "react";
 
-import { DbWorkspace } from "@/components/organisms/DbWorkspace";
+import { DbItemClassHub } from "@/features/db/components/DbItemClassHub";
 
 export const DbContainer = (): ReactElement => {
-  return <DbWorkspace />;
+  return <DbItemClassHub />;
 };

@@ -5,7 +5,6 @@ import {
 import { ATTACK_ESSENCE, canApplyEssence } from "@/lib/poe2-item-simulator/essence/essence";
 import { normalizeCraftingCurrencyEventId } from "@/lib/crafting-lab/craftingLabCurrencyIds";
 import { isCraftLabOrbSlotApplicable } from "@/lib/crafting-lab/isCraftLabOrbFamilyApplicable";
-import type { IItemRoll } from "@/types/poe2-item-simulator";
 
 describe("crafting material applicability (essence, abyss bone, craft-lab orb slot)", () => {
   test("normalizeCraftingCurrencyEventId: legacy essence id maps to tier 1 slot", () => {

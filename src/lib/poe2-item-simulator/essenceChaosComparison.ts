@@ -5,7 +5,6 @@ import {
   getBenchModFiltersForEssence,
   LIFE_ESSENCE,
 } from "./essence/essence";
-import type { IEssenceDefinitionType, IItemRoll } from "./types";
 
 const EMPTY_MAGIC: IItemRoll = { rarity: "magic", prefixes: [], suffixes: [] };
 const EMPTY_RARE: IItemRoll = { rarity: "rare", prefixes: [], suffixes: [] };

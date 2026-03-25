@@ -6,7 +6,6 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import type { ReactElement } from "react";
 import { LocaleSwitcher } from "@/components/organisms/LocaleSwitcher";
 import { ReservedStatusRegion } from "@/components/atoms/ReservedStatusRegion";
-import type { IStrategyComparisonEngineResultType } from "@/lib/poe2-item-simulator/strategyComparisonEngine";
 import {
   StrategySuccessRateChart,
   type IStrategyRateRowType,

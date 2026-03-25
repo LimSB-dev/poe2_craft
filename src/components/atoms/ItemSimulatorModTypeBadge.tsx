@@ -2,8 +2,6 @@
 
 import type { ReactElement } from "react";
 
-import type { ModTypeType } from "@/types/poe2-item-simulator";
-
 type ItemSimulatorModTypeBadgePropsType = {
   modType: ModTypeType;
   label: string;

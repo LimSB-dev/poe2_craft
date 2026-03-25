@@ -5,12 +5,7 @@ import type { ReactElement } from "react";
 
 import { ItemSimulatorBaseItemFilterEquipmentFields } from "@/components/organisms/ItemSimulatorBaseItemFilterEquipmentFields";
 import { ItemSimulatorBaseItemFilterRangeFields } from "@/components/organisms/ItemSimulatorBaseItemFilterRangeFields";
-import type {
-  ItemSimulatorEquipmentFilterType,
-  ItemSimulatorSubTypeFilterType,
-} from "@/types/item-simulator-filters";
 import type { ItemSimulatorBaseItemFilterRangeFieldsPropsType } from "@/components/organisms/ItemSimulatorBaseItemFilterRangeFields";
-import type { IBaseItemSubTypeType } from "@/lib/poe2-item-simulator/baseItemDb";
 
 type ItemSimulatorBaseItemFilterCollapsiblePropsType = {
   isOpen: boolean;

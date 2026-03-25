@@ -4,11 +4,6 @@ import { useTranslations } from "next-intl";
 import type { ReactElement } from "react";
 
 import { ItemSimulatorBaseItemSubtypeOptions } from "@/components/organisms/ItemSimulatorBaseItemSubtypeOptions";
-import type {
-  ItemSimulatorEquipmentFilterType,
-  ItemSimulatorSubTypeFilterType,
-} from "@/types/item-simulator-filters";
-import type { IBaseItemSubTypeType } from "@/lib/poe2-item-simulator/baseItemDb";
 
 type ItemSimulatorBaseItemFilterEquipmentFieldsPropsType = {
   equipmentTypeFilter: ItemSimulatorEquipmentFilterType;

@@ -8,15 +8,7 @@ import { ItemSimulatorBaseItemFilterCollapsible } from "@/components/organisms/I
 import { ItemSimulatorBaseItemTooltipCard } from "@/components/organisms/ItemSimulatorBaseItemTooltipCard";
 import { ItemSimulatorBaseItemSearchBlock } from "@/components/organisms/ItemSimulatorBaseItemSearchBlock";
 import type { ItemSimulatorBaseItemFilterRangeFieldsPropsType } from "@/components/organisms/ItemSimulatorBaseItemFilterRangeFields";
-import type {
-  ItemSimulatorEquipmentFilterType,
-  ItemSimulatorSubTypeFilterType,
-} from "@/types/item-simulator-filters";
 import { ItemSimulatorPanelShell } from "@/components/organisms/ItemSimulatorPanelShell";
-import type {
-  IBaseItemDbRecordType,
-  IBaseItemSubTypeType,
-} from "@/lib/poe2-item-simulator/baseItemDb";
 
 type ItemSimulatorBaseItemPanelPropsType = {
   selectedBaseItemRecord: IBaseItemDbRecordType | undefined;

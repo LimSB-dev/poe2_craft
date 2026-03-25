@@ -15,6 +15,7 @@
     "benchmark:decision": "tsx scripts/crafting-decision-benchmark.ts",
     "benchmark:strategies": "tsx scripts/strategy-comparison-benchmark.ts",
     "download:base-item-images": "tsx scripts/download-poe2db-base-item-images.ts",
+    "extract:poe2db-base-items": "tsx scripts/extract-poe2db-base-items.ts",
     "wiki:track": "tsx scripts/poe2wiki-track-pages.ts",
     "i18n:merge-simulator": "tsx scripts/merge-simulator-message-fragments.ts",
     "extract:poe2db-modifiers": "tsx scripts/extract-poe2db-modifiers.ts",

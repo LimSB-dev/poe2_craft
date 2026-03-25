@@ -10,7 +10,6 @@ import {
 } from "../itemCorruptionCraftingGuard";
 import { getRandomIntInclusive } from "../random";
 import { rollRandomMod, rollRareItemRoll, type IModRollBaseFiltersType } from "../roller";
-import type { IItemRoll, IModDefinition, ModTypeType } from "../types";
 
 const MAGIC_MAX_PREFIX_SLOTS: number = 1;
 const MAGIC_MAX_SUFFIX_SLOTS: number = 1;

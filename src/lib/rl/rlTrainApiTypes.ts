@@ -1,5 +1,3 @@
-import type { ModTypeType } from "@/lib/poe2-item-simulator/types";
-
 /** 시뮬레이터에서 `/api/rl-train`으로 보내는 목표 속성 한 줄. */
 export type IRlTrainDesiredModPayloadType = {
   id: string;

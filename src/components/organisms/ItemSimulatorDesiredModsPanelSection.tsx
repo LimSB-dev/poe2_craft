@@ -5,11 +5,6 @@ import type { ReactElement } from "react";
 
 import { DesiredModsPanel } from "@/components/organisms/DesiredModsPanel";
 import { ItemSimulatorPanelShell } from "@/components/organisms/ItemSimulatorPanelShell";
-import type {
-  IBaseItemStatTagType,
-  IBaseItemSubTypeType,
-} from "@/lib/poe2-item-simulator/baseItemDb";
-import type { IDesiredModEntryType } from "@/types/poe2-item-simulator";
 
 type ItemSimulatorDesiredModsPanelSectionPropsType = {
   subType: IBaseItemSubTypeType | undefined;

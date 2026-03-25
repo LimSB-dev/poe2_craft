@@ -91,10 +91,6 @@ import {
   canApplyEssence,
   CRAFT_LAB_ESSENCE_DEFINITIONS,
 } from "@/lib/poe2-item-simulator/essence/essence";
-import type {
-  IItemRoll,
-  IModDefinition,
-} from "@/types/poe2-item-simulator";
 
 type CraftLabModeType = "random" | "simulation";
 

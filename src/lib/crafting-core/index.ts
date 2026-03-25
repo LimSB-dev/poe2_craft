@@ -9,4 +9,3 @@ export * from "@/lib/poe2-item-simulator/random";
 export * from "@/lib/poe2-item-simulator/ritual/ritualCrafting";
 export * from "@/lib/poe2-item-simulator/roller";
 export * from "@/lib/poe2-item-simulator/strategyComparisonEngine";
-export * from "@/types/poe2-item-simulator";

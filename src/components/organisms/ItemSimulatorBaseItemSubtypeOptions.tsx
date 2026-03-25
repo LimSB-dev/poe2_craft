@@ -3,8 +3,6 @@
 import { useTranslations } from "next-intl";
 import type { ReactElement } from "react";
 
-import type { IBaseItemSubTypeType } from "@/lib/poe2-item-simulator/baseItemDb";
-
 type ItemSimulatorBaseItemSubtypeOptionsPropsType = {
   allLabel: string;
   subTypes: readonly IBaseItemSubTypeType[];

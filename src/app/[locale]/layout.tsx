@@ -6,6 +6,7 @@ import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import { HtmlLangSetter } from "@/components/atoms/HtmlLangSetter";
 import { routing } from "@/lib/i18n/routing";
+import { StoreProvider } from "@/lib/store/StoreProvider";
 
 type LocaleLayoutPropsType = {
   children: ReactNode;
@@ -40,7 +41,9 @@ const LocaleLayout = async ({ children, params }: LocaleLayoutPropsType) => {
   return (
     <>
       <HtmlLangSetter locale={locale} />
-      <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
+      <StoreProvider key={locale} initialLocale={locale} initialMessages={messages}>
+        <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
+      </StoreProvider>
     </>
   );
 };

@@ -8,7 +8,6 @@ import {
   canApplyOrbOfTransmutation,
   canApplyRegalOrb,
 } from "@/lib/poe2-item-simulator/currency";
-import type { IItemRoll } from "@/types/poe2-item-simulator";
 
 import {
   type CraftingLabOrbSlotIdType,

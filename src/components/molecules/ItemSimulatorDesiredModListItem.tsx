@@ -4,7 +4,6 @@ import type { ReactElement } from "react";
 
 import { ItemSimulatorModTypeBadge } from "@/components/atoms/ItemSimulatorModTypeBadge";
 import { SimulatorModTemplateText } from "@/components/organisms/SimulatorModTemplateText";
-import type { IDesiredModEntryType, ModTypeType } from "@/types/poe2-item-simulator";
 
 type ItemSimulatorDesiredModListItemPropsType = {
   mod: IDesiredModEntryType;

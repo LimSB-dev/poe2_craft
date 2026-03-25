@@ -8,14 +8,6 @@ import { ItemSimulatorDesiredModListItem } from "@/components/molecules/ItemSimu
 import { DesiredModsModPickerList } from "@/components/organisms/DesiredModsModPickerList";
 import { getModPool } from "@/lib/poe2-item-simulator/modPool";
 import { getModTypeDisplayName } from "@/lib/poe2-item-simulator/modTypeLabels";
-import type {
-  IBaseItemStatTagType,
-  IBaseItemSubTypeType,
-} from "@/lib/poe2-item-simulator/baseItemDb";
-import type {
-  IDesiredModEntryType,
-  ModTypeType,
-} from "@/types/poe2-item-simulator";
 
 interface DesiredModsPanelPropsType {
   subType?: IBaseItemSubTypeType;

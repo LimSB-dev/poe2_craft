@@ -17,7 +17,6 @@ import {
   enforceAtMostOneFracturedMod,
 } from "@/lib/poe2-item-simulator/currency/basicCurrencyOrbs";
 import { CORRUPTED_ITEM_STANDARD_CRAFTING_ERROR_MESSAGE } from "@/lib/poe2-item-simulator/itemCorruptionCraftingGuard";
-import type { IItemRoll, IModDefinition } from "@/types/poe2-item-simulator";
 
 const baseMod = (overrides: Partial<IModDefinition> = {}): IModDefinition => {
   return {

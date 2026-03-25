@@ -8,11 +8,6 @@ import { ItemSimulatorActionRatioRow } from "@/components/molecules/ItemSimulato
 import { ItemSimulatorResultBaseItemCard } from "@/components/molecules/ItemSimulatorResultBaseItemCard";
 import { ItemSimulatorResultStatCard } from "@/components/molecules/ItemSimulatorResultStatCard";
 import { ReservedStatusRegion } from "@/components/atoms/ReservedStatusRegion";
-import type { IRlTrainResponseType } from "@/types/rl-train";
-import type {
-  IDesiredModEntryType,
-  IBaseItemDefinition,
-} from "@/types/poe2-item-simulator";
 
 type ItemSimulatorResultPanelPropsType = {
   selectedBaseItem: IBaseItemDefinition | null;

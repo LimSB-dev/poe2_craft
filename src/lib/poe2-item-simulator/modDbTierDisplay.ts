@@ -1,4 +1,3 @@
-import type { IModDbRecordType } from "./modDb";
 import { tryGetWikiModTiers } from "./wikiModTierMerge";
 
 /**

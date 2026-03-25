@@ -1,4 +1,3 @@
-import type { IItemRoll, IModDefinition } from "@/types/poe2-item-simulator";
 import {
   estimateQualityScore,
   isRollSuccessfulForTarget,

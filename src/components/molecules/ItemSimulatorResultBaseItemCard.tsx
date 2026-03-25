@@ -6,7 +6,6 @@ import type { ReactElement } from "react";
 import { ItemSimulatorCatalogBaseName } from "@/components/organisms/ItemSimulatorCatalogBaseName";
 import { ItemSimulatorCatalogItemClassLabel } from "@/components/organisms/ItemSimulatorCatalogItemClassLabel";
 import { BASE_ITEM_DB } from "@/lib/poe2-item-simulator/baseItemDb";
-import type { IBaseItemDefinition } from "@/types/poe2-item-simulator";
 
 type ItemSimulatorResultBaseItemCardPropsType = {
   selectedBaseItem: IBaseItemDefinition;

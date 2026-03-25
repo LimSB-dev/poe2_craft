@@ -7,8 +7,6 @@ import type { ReactElement } from "react";
 import { ItemSimulatorHeader } from "@/components/organisms/ItemSimulatorHeader";
 import { ItemSimulatorWorkspaceGrid } from "@/components/organisms/ItemSimulatorWorkspaceGrid";
 import { useItemSimulatorBaseItemPanelState } from "@/components/organisms/useItemSimulatorBaseItemPanelState";
-import type { IDesiredModEntryType } from "@/types/poe2-item-simulator";
-import type { IRlTrainResponseType } from "@/types/rl-train";
 
 const SIMULATOR_RL_BUDGET: number = 80;
 const SIMULATOR_RL_EPISODES: number = 3500;

@@ -7,10 +7,8 @@ import { useState, type ReactElement } from "react";
 import { ItemSimulatorCatalogBaseName } from "@/components/organisms/ItemSimulatorCatalogBaseName";
 import { ItemSimulatorExplicitModLine } from "@/components/organisms/ItemSimulatorExplicitModLine";
 import { buildHinekoraExplicitSlotHighlights } from "@/lib/crafting-lab/hinekoraHoverPreviewDiff";
-import type { IBaseItemDbRecordType } from "@/lib/poe2-item-simulator/baseItemDb";
 import { getBaseItemImageUrl } from "@/lib/poe2-item-simulator/baseItemImagePaths";
 import { buildBaseItemRequirementLineParts } from "@/lib/poe2-item-simulator/buildBaseItemRequirementLineParts";
-import type { IItemRoll, ItemRarityType } from "@/types/poe2-item-simulator";
 
 type TooltipRarityStyleType = {
   outerBorder: string;

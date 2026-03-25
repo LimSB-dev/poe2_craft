@@ -4,9 +4,6 @@ import { useTranslations } from "next-intl";
 import { useCallback, useMemo, useRef, useState } from "react";
 import type { ReactElement } from "react";
 
-import type { IModDbRecordType } from "@/lib/poe2-item-simulator/modDb";
-import type { ModTypeType } from "@/types/poe2-item-simulator";
-
 const MOD_TYPE_BADGE_CLASSES: Record<ModTypeType, string> = {
   prefix: "bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300",
   suffix:

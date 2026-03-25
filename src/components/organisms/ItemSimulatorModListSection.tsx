@@ -4,7 +4,6 @@ import { useTranslations } from "next-intl";
 import type { ReactElement } from "react";
 
 import { SimulatorModTemplateText } from "@/components/organisms/SimulatorModTemplateText";
-import type { IModDefinition } from "@/types/poe2-item-simulator";
 
 type ItemSimulatorModListSectionPropsType = {
   title: string;

@@ -5,7 +5,6 @@ import { useState } from "react";
 import type { ReactElement } from "react";
 import { LocaleSwitcher } from "@/components/organisms/LocaleSwitcher";
 import { Link } from "@/lib/i18n/navigation";
-import type { IRlTrainResponseType } from "@/types/rl-train";
 
 const toPercent = (value: number): string => {
   return `${(value * 100).toFixed(2)}%`;

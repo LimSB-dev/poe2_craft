@@ -1,4 +1,3 @@
-import type { IBaseItemDbRecordType } from "@/lib/poe2-item-simulator/baseItemDb";
 import {
   getAttributeRequirementPrefix,
   getLevelRequirementLabel,

@@ -37,7 +37,28 @@
   },
   "dbView": {
     "title": "数据库",
-    "description": "浏览基础物品和词缀。",
+    "description": "先选择物品类别，仅查看该类别的基础物品与词缀。",
+    "hubTitle": "物品类别",
+    "hubDescription": "选择类别后，仅在此站显示该类型的基础列表与词缀阶层。",
+    "hubRouteHint": "示例：/db/claw；护甲：/db/gloves/str、str_dex…（对应 Gloves_str、Gloves_str_dex 等）",
+    "statAffinityHubTitle": "{label} — 属性分类",
+    "statAffinityHubDescription": "与 PoE2DB 相同：单属性与混合（str_dex 等）分页显示护甲与词缀。",
+    "statAffinity": {
+      "str": "力量 (STR)",
+      "dex": "敏捷 (DEX)",
+      "int": "智慧 (INT)",
+      "str_dex": "力量 + 敏捷",
+      "str_int": "力量 + 智慧",
+      "dex_int": "敏捷 + 智慧"
+    },
+    "statAffinityNavAria": "按属性切换页面",
+    "itemClassStatPageHeading": "{label} · {stat}",
+    "itemClassPageHeading": "{label}",
+    "openPoe2dbModifiersCalc": "在 PoE2DB 打开 Modifiers Calc（新标签页）",
+    "itemClassNavAria": "页面分区导航",
+    "sectionBaseItems": "基础物品",
+    "sectionModifiersCalc": "词缀（Modifiers Calc）",
+    "itemClassCounts": "基础 {bases} · 词缀 {mods}",
     "tabItems": "基础物品",
     "tabMods": "词缀",
     "colName": "名称",
@@ -86,7 +107,23 @@
     "paginationPrev": "上一页",
     "paginationNext": "下一页",
     "paginationPage": "第 {page}/{total} 页",
-    "paginationCount": "显示 {shown} 条 / 共 {total} 条"
+    "paginationCount": "显示 {shown} 条 / 共 {total} 条",
+    "searchPlaceholder": "搜索…",
+    "modsTotalCount": "过滤后词缀 {total} 条",
+    "modItemCategory": {
+      "oneHandWeapon": "单手武器",
+      "twoHandWeapon": "双手武器",
+      "jewellery": "饰品",
+      "gloves": "手套",
+      "boots": "靴子",
+      "bodyArmour": "护甲",
+      "helmet": "头盔",
+      "offhand": "副手"
+    },
+    "maxTierStepsShort": "最多 {count} 阶",
+    "applicableMaxTierHint": "该物品类别下此词缀最多 {count} 阶（T1 为最高）。",
+    "poe2dbItemClassShort": "PoE2DB",
+    "poe2dbItemClassAria": "{label}：在 PoE2DB 打开相同物品类别页面（新标签页）"
   },
   "panels": {
     "baseItem": {
@@ -979,6 +1016,2889 @@
     },
     "body_armour_variant_et": {
       "name": "금욕적인 의복"
+    },
+    "claw_crude_claw": {
+      "name": "Crude Claw"
+    },
+    "claw_pict_claw": {
+      "name": "Pict Claw"
+    },
+    "claw_wolfbone_claw": {
+      "name": "Wolfbone Claw"
+    },
+    "claw_forked_claw": {
+      "name": "Forked Claw"
+    },
+    "claw_plated_claw": {
+      "name": "Plated Claw"
+    },
+    "claw_edged_claw": {
+      "name": "Edged Claw"
+    },
+    "claw_arced_claw": {
+      "name": "Arced Claw"
+    },
+    "claw_hooked_claw": {
+      "name": "Hooked Claw"
+    },
+    "claw_razorglass_claw": {
+      "name": "Razorglass Claw"
+    },
+    "claw_sharktooth_claw": {
+      "name": "Sharktooth Claw"
+    },
+    "claw_armoured_claw": {
+      "name": "Armoured Claw"
+    },
+    "claw_piercing_claw": {
+      "name": "Piercing Claw"
+    },
+    "claw_talon_claw": {
+      "name": "Talon Claw"
+    },
+    "dagger_ethereal_blade": {
+      "name": "Ethereal Blade"
+    },
+    "dagger_glass_shank": {
+      "name": "Glass Shank"
+    },
+    "dagger_crone_knife": {
+      "name": "Crone Knife"
+    },
+    "dagger_simple_dagger": {
+      "name": "Simple Dagger"
+    },
+    "dagger_skinning_knife": {
+      "name": "Skinning Knife"
+    },
+    "dagger_moon_dagger": {
+      "name": "Moon Dagger"
+    },
+    "dagger_engraved_knife": {
+      "name": "Engraved Knife"
+    },
+    "dagger_obsidian_dagger": {
+      "name": "Obsidian Dagger"
+    },
+    "dagger_bloodletting_dagger": {
+      "name": "Bloodletting Dagger"
+    },
+    "dagger_mail_breaker": {
+      "name": "Mail Breaker"
+    },
+    "dagger_kris_knife": {
+      "name": "Kris Knife"
+    },
+    "dagger_parrying_dagger": {
+      "name": "Parrying Dagger"
+    },
+    "dagger_arcane_dirk": {
+      "name": "Arcane Dirk"
+    },
+    "dagger_cinquedea": {
+      "name": "Cinquedea"
+    },
+    "wand_withered_wand": {
+      "name": "Withered Wand"
+    },
+    "wand_bone_wand": {
+      "name": "Bone Wand"
+    },
+    "wand_attuned_wand": {
+      "name": "Attuned Wand"
+    },
+    "wand_siphoning_wand": {
+      "name": "Siphoning Wand"
+    },
+    "wand_volatile_wand": {
+      "name": "Volatile Wand"
+    },
+    "wand_galvanic_wand": {
+      "name": "Galvanic Wand"
+    },
+    "wand_acrid_wand": {
+      "name": "Acrid Wand"
+    },
+    "wand_offering_wand": {
+      "name": "Offering Wand"
+    },
+    "wand_frigid_wand": {
+      "name": "Frigid Wand"
+    },
+    "wand_torture_wand": {
+      "name": "Torture Wand"
+    },
+    "wand_critical_wand": {
+      "name": "Critical Wand"
+    },
+    "wand_primordial_wand": {
+      "name": "Primordial Wand"
+    },
+    "wand_dueling_wand": {
+      "name": "Dueling Wand"
+    },
+    "one_hand_sword_golden_blade": {
+      "name": "Golden Blade"
+    },
+    "one_hand_sword_energy_blade": {
+      "name": "Energy Blade"
+    },
+    "one_hand_sword_shortsword": {
+      "name": "Shortsword"
+    },
+    "one_hand_sword_broadsword": {
+      "name": "Broadsword"
+    },
+    "one_hand_sword_vampiric_blade": {
+      "name": "Vampiric Blade"
+    },
+    "one_hand_sword_scimitar": {
+      "name": "Scimitar"
+    },
+    "one_hand_sword_charred_shortsword": {
+      "name": "Charred Shortsword"
+    },
+    "one_hand_sword_sickle_sword": {
+      "name": "Sickle Sword"
+    },
+    "one_hand_sword_falchion": {
+      "name": "Falchion"
+    },
+    "one_hand_sword_treasured_blade": {
+      "name": "Treasured Blade"
+    },
+    "one_hand_sword_cutlass": {
+      "name": "Cutlass"
+    },
+    "one_hand_sword_runic_shortsword": {
+      "name": "Runic Shortsword"
+    },
+    "one_hand_sword_messer": {
+      "name": "Messer"
+    },
+    "one_hand_sword_commander_sword": {
+      "name": "Commander Sword"
+    },
+    "one_hand_sword_dark_blade": {
+      "name": "Dark Blade"
+    },
+    "one_hand_sword_golden_blade_2": {
+      "name": "Golden Blade"
+    },
+    "one_hand_axe_dull_hatchet": {
+      "name": "Dull Hatchet"
+    },
+    "one_hand_axe_hook_axe": {
+      "name": "Hook Axe"
+    },
+    "one_hand_axe_bearded_axe": {
+      "name": "Bearded Axe"
+    },
+    "one_hand_axe_extended_cleaver": {
+      "name": "Extended Cleaver"
+    },
+    "one_hand_axe_bandit_hatchet": {
+      "name": "Bandit Hatchet"
+    },
+    "one_hand_axe_crescent_axe": {
+      "name": "Crescent Axe"
+    },
+    "one_hand_axe_carving_hatchet": {
+      "name": "Carving Hatchet"
+    },
+    "one_hand_axe_sacrificial_axe": {
+      "name": "Sacrificial Axe"
+    },
+    "one_hand_axe_boarding_hatchet": {
+      "name": "Boarding Hatchet"
+    },
+    "one_hand_axe_fury_cleaver": {
+      "name": "Fury Cleaver"
+    },
+    "one_hand_axe_battle_axe": {
+      "name": "Battle Axe"
+    },
+    "one_hand_axe_profane_cleaver": {
+      "name": "Profane Cleaver"
+    },
+    "one_hand_axe_dread_hatchet": {
+      "name": "Dread Hatchet"
+    },
+    "one_hand_mace_wooden_club": {
+      "name": "Wooden Club"
+    },
+    "one_hand_mace_smithing_hammer": {
+      "name": "Smithing Hammer"
+    },
+    "one_hand_mace_slim_mace": {
+      "name": "Slim Mace"
+    },
+    "one_hand_mace_spiked_club": {
+      "name": "Spiked Club"
+    },
+    "one_hand_mace_warpick": {
+      "name": "Warpick"
+    },
+    "one_hand_mace_plated_mace": {
+      "name": "Plated Mace"
+    },
+    "one_hand_mace_brigand_mace": {
+      "name": "Brigand Mace"
+    },
+    "one_hand_mace_construct_hammer": {
+      "name": "Construct Hammer"
+    },
+    "one_hand_mace_morning_star": {
+      "name": "Morning Star"
+    },
+    "one_hand_mace_jade_club": {
+      "name": "Jade Club"
+    },
+    "one_hand_mace_lumen_mace": {
+      "name": "Lumen Mace"
+    },
+    "one_hand_mace_execratus_hammer": {
+      "name": "Execratus Hammer"
+    },
+    "one_hand_mace_torment_club": {
+      "name": "Torment Club"
+    },
+    "one_hand_mace_kalguuran_forgehammer": {
+      "name": "Kalguuran Forgehammer"
+    },
+    "one_hand_mace_calescent_hammer": {
+      "name": "Calescent Hammer"
+    },
+    "one_hand_mace_flared_mace": {
+      "name": "Flared Mace"
+    },
+    "one_hand_mace_battle_pick": {
+      "name": "Battle Pick"
+    },
+    "one_hand_mace_marching_mace": {
+      "name": "Marching Mace"
+    },
+    "one_hand_mace_bandit_mace": {
+      "name": "Bandit Mace"
+    },
+    "one_hand_mace_structured_hammer": {
+      "name": "Structured Hammer"
+    },
+    "one_hand_mace_flanged_mace": {
+      "name": "Flanged Mace"
+    },
+    "one_hand_mace_crown_mace": {
+      "name": "Crown Mace"
+    },
+    "one_hand_mace_molten_hammer": {
+      "name": "Molten Hammer"
+    },
+    "one_hand_mace_strife_pick": {
+      "name": "Strife Pick"
+    },
+    "one_hand_mace_fortified_hammer": {
+      "name": "Fortified Hammer"
+    },
+    "one_hand_mace_marauding_mace": {
+      "name": "Marauding Mace"
+    },
+    "one_hand_mace_akoyan_club": {
+      "name": "Akoyan Club"
+    },
+    "sceptre_rattling_sceptre": {
+      "name": "Rattling Sceptre"
+    },
+    "sceptre_stoic_sceptre": {
+      "name": "Stoic Sceptre"
+    },
+    "sceptre_lupine_sceptre": {
+      "name": "Lupine Sceptre"
+    },
+    "sceptre_omen_sceptre": {
+      "name": "Omen Sceptre"
+    },
+    "sceptre_ochre_sceptre": {
+      "name": "Ochre Sceptre"
+    },
+    "sceptre_shrine_sceptre": {
+      "name": "Shrine Sceptre"
+    },
+    "sceptre_shrine_sceptre_2": {
+      "name": "Shrine Sceptre"
+    },
+    "sceptre_shrine_sceptre_3": {
+      "name": "Shrine Sceptre"
+    },
+    "sceptre_devouring_sceptre": {
+      "name": "Devouring Sceptre"
+    },
+    "sceptre_clasped_sceptre": {
+      "name": "Clasped Sceptre"
+    },
+    "sceptre_devotional_sceptre": {
+      "name": "Devotional Sceptre"
+    },
+    "sceptre_wrath_sceptre": {
+      "name": "Wrath Sceptre"
+    },
+    "sceptre_aromatic_sceptre": {
+      "name": "Aromatic Sceptre"
+    },
+    "sceptre_pious_sceptre": {
+      "name": "Pious Sceptre"
+    },
+    "sceptre_hallowed_sceptre": {
+      "name": "Hallowed Sceptre"
+    },
+    "sceptre_shrine_sceptre_4": {
+      "name": "Shrine Sceptre"
+    },
+    "spear_hardwood_spear": {
+      "name": "Hardwood Spear"
+    },
+    "spear_ironhead_spear": {
+      "name": "Ironhead Spear"
+    },
+    "spear_hunting_spear": {
+      "name": "Hunting Spear"
+    },
+    "spear_winged_spear": {
+      "name": "Winged Spear"
+    },
+    "spear_war_spear": {
+      "name": "War Spear"
+    },
+    "spear_forked_spear": {
+      "name": "Forked Spear"
+    },
+    "spear_barbed_spear": {
+      "name": "Barbed Spear"
+    },
+    "spear_broad_spear": {
+      "name": "Broad Spear"
+    },
+    "spear_crossblade_spear": {
+      "name": "Crossblade Spear"
+    },
+    "spear_seaglass_spear": {
+      "name": "Seaglass Spear"
+    },
+    "spear_sword_spear": {
+      "name": "Sword Spear"
+    },
+    "spear_striking_spear": {
+      "name": "Striking Spear"
+    },
+    "spear_helix_spear": {
+      "name": "Helix Spear"
+    },
+    "spear_steelhead_spear": {
+      "name": "Steelhead Spear"
+    },
+    "spear_coursing_spear": {
+      "name": "Coursing Spear"
+    },
+    "spear_swift_spear": {
+      "name": "Swift Spear"
+    },
+    "spear_branched_spear": {
+      "name": "Branched Spear"
+    },
+    "spear_jagged_spear": {
+      "name": "Jagged Spear"
+    },
+    "spear_massive_spear": {
+      "name": "Massive Spear"
+    },
+    "spear_orichalcum_spear": {
+      "name": "Orichalcum Spear"
+    },
+    "spear_soaring_spear": {
+      "name": "Soaring Spear"
+    },
+    "spear_pronged_spear": {
+      "name": "Pronged Spear"
+    },
+    "spear_stalking_spear": {
+      "name": "Stalking Spear"
+    },
+    "spear_flying_spear": {
+      "name": "Flying Spear"
+    },
+    "spear_grand_spear": {
+      "name": "Grand Spear"
+    },
+    "spear_spiked_spear": {
+      "name": "Spiked Spear"
+    },
+    "spear_guardian_spear": {
+      "name": "Guardian Spear"
+    },
+    "spear_akoyan_spear": {
+      "name": "Akoyan Spear"
+    },
+    "flail_splintered_flail": {
+      "name": "Splintered Flail"
+    },
+    "flail_chain_flail": {
+      "name": "Chain Flail"
+    },
+    "flail_holy_flail": {
+      "name": "Holy Flail"
+    },
+    "flail_iron_flail": {
+      "name": "Iron Flail"
+    },
+    "flail_twin_flail": {
+      "name": "Twin Flail"
+    },
+    "flail_slender_flail": {
+      "name": "Slender Flail"
+    },
+    "flail_stone_flail": {
+      "name": "Stone Flail"
+    },
+    "flail_ring_flail": {
+      "name": "Ring Flail"
+    },
+    "flail_guarded_flail": {
+      "name": "Guarded Flail"
+    },
+    "flail_icicle_flail": {
+      "name": "Icicle Flail"
+    },
+    "flail_tearing_flail": {
+      "name": "Tearing Flail"
+    },
+    "flail_great_flail": {
+      "name": "Great Flail"
+    },
+    "flail_abyssal_flail": {
+      "name": "Abyssal Flail"
+    },
+    "bow_crude_bow": {
+      "name": "Crude Bow"
+    },
+    "bow_shortbow": {
+      "name": "Shortbow"
+    },
+    "bow_warden_bow": {
+      "name": "Warden Bow"
+    },
+    "bow_recurve_bow": {
+      "name": "Recurve Bow"
+    },
+    "bow_composite_bow": {
+      "name": "Composite Bow"
+    },
+    "bow_dualstring_bow": {
+      "name": "Dualstring Bow"
+    },
+    "bow_cultist_bow": {
+      "name": "Cultist Bow"
+    },
+    "bow_zealot_bow": {
+      "name": "Zealot Bow"
+    },
+    "bow_artillery_bow": {
+      "name": "Artillery Bow"
+    },
+    "bow_tribal_bow": {
+      "name": "Tribal Bow"
+    },
+    "bow_greatbow": {
+      "name": "Greatbow"
+    },
+    "bow_double_limb_bow": {
+      "name": "Double Limb Bow"
+    },
+    "bow_heavy_bow": {
+      "name": "Heavy Bow"
+    },
+    "bow_snakewood_shortbow": {
+      "name": "Snakewood Shortbow"
+    },
+    "bow_protector_bow": {
+      "name": "Protector Bow"
+    },
+    "bow_rider_bow": {
+      "name": "Rider Bow"
+    },
+    "bow_twin_bow": {
+      "name": "Twin Bow"
+    },
+    "bow_adherent_bow": {
+      "name": "Adherent Bow"
+    },
+    "bow_militant_bow": {
+      "name": "Militant Bow"
+    },
+    "bow_ironwood_shortbow": {
+      "name": "Ironwood Shortbow"
+    },
+    "bow_cavalry_bow": {
+      "name": "Cavalry Bow"
+    },
+    "bow_guardian_bow": {
+      "name": "Guardian Bow"
+    },
+    "bow_gemini_bow": {
+      "name": "Gemini Bow"
+    },
+    "bow_fanatic_bow": {
+      "name": "Fanatic Bow"
+    },
+    "bow_warmonger_bow": {
+      "name": "Warmonger Bow"
+    },
+    "bow_obliterator_bow": {
+      "name": "Obliterator Bow"
+    },
+    "staff_ashen_staff": {
+      "name": "Ashen Staff"
+    },
+    "staff_gelid_staff": {
+      "name": "Gelid Staff"
+    },
+    "staff_voltaic_staff": {
+      "name": "Voltaic Staff"
+    },
+    "staff_spriggan_staff": {
+      "name": "Spriggan Staff"
+    },
+    "staff_pyrophyte_staff": {
+      "name": "Pyrophyte Staff"
+    },
+    "staff_chiming_staff": {
+      "name": "Chiming Staff"
+    },
+    "staff_rending_staff": {
+      "name": "Rending Staff"
+    },
+    "staff_reaping_staff": {
+      "name": "Reaping Staff"
+    },
+    "staff_icicle_staff": {
+      "name": "Icicle Staff"
+    },
+    "staff_roaring_staff": {
+      "name": "Roaring Staff"
+    },
+    "staff_paralysing_staff": {
+      "name": "Paralysing Staff"
+    },
+    "staff_sanctified_staff": {
+      "name": "Sanctified Staff"
+    },
+    "staff_dark_staff": {
+      "name": "Dark Staff"
+    },
+    "staff_ravenous_staff": {
+      "name": "Ravenous Staff"
+    },
+    "staff_permafrost_staff": {
+      "name": "Permafrost Staff"
+    },
+    "staff_reflecting_staff": {
+      "name": "Reflecting Staff"
+    },
+    "two_hand_sword_corroded_longsword": {
+      "name": "Corroded Longsword"
+    },
+    "two_hand_sword_iron_greatsword": {
+      "name": "Iron Greatsword"
+    },
+    "two_hand_sword_blessed_claymore": {
+      "name": "Blessed Claymore"
+    },
+    "two_hand_sword_broad_greatsword": {
+      "name": "Broad Greatsword"
+    },
+    "two_hand_sword_rippled_greatsword": {
+      "name": "Rippled Greatsword"
+    },
+    "two_hand_sword_arced_longsword": {
+      "name": "Arced Longsword"
+    },
+    "two_hand_sword_stone_greatsword": {
+      "name": "Stone Greatsword"
+    },
+    "two_hand_sword_obsidian_greatsword": {
+      "name": "Obsidian Greatsword"
+    },
+    "two_hand_sword_keen_greatsword": {
+      "name": "Keen Greatsword"
+    },
+    "two_hand_sword_ancient_greatblade": {
+      "name": "Ancient Greatblade"
+    },
+    "two_hand_sword_flanged_greatblade": {
+      "name": "Flanged Greatblade"
+    },
+    "two_hand_sword_regalia_longsword": {
+      "name": "Regalia Longsword"
+    },
+    "two_hand_sword_ultra_greatsword": {
+      "name": "Ultra Greatsword"
+    },
+    "two_hand_axe_splitting_greataxe": {
+      "name": "Splitting Greataxe"
+    },
+    "two_hand_axe_light_halberd": {
+      "name": "Light Halberd"
+    },
+    "two_hand_axe_executioner_greataxe": {
+      "name": "Executioner Greataxe"
+    },
+    "two_hand_axe_arched_greataxe": {
+      "name": "Arched Greataxe"
+    },
+    "two_hand_axe_elegant_glaive": {
+      "name": "Elegant Glaive"
+    },
+    "two_hand_axe_savage_greataxe": {
+      "name": "Savage Greataxe"
+    },
+    "two_hand_axe_rending_halberd": {
+      "name": "Rending Halberd"
+    },
+    "two_hand_axe_jagged_greataxe": {
+      "name": "Jagged Greataxe"
+    },
+    "two_hand_axe_reaver_glaive": {
+      "name": "Reaver Glaive"
+    },
+    "two_hand_axe_ember_greataxe": {
+      "name": "Ember Greataxe"
+    },
+    "two_hand_axe_ceremonial_halberd": {
+      "name": "Ceremonial Halberd"
+    },
+    "two_hand_axe_monument_greataxe": {
+      "name": "Monument Greataxe"
+    },
+    "two_hand_axe_vile_greataxe": {
+      "name": "Vile Greataxe"
+    },
+    "two_hand_mace_felled_greatclub": {
+      "name": "Felled Greatclub"
+    },
+    "two_hand_mace_oak_greathammer": {
+      "name": "Oak Greathammer"
+    },
+    "two_hand_mace_forge_maul": {
+      "name": "Forge Maul"
+    },
+    "two_hand_mace_studded_greatclub": {
+      "name": "Studded Greatclub"
+    },
+    "two_hand_mace_cultist_greathammer": {
+      "name": "Cultist Greathammer"
+    },
+    "two_hand_mace_temple_maul": {
+      "name": "Temple Maul"
+    },
+    "two_hand_mace_leaden_greathammer": {
+      "name": "Leaden Greathammer"
+    },
+    "two_hand_mace_crumbling_maul": {
+      "name": "Crumbling Maul"
+    },
+    "two_hand_mace_pointed_maul": {
+      "name": "Pointed Maul"
+    },
+    "two_hand_mace_totemic_greatclub": {
+      "name": "Totemic Greatclub"
+    },
+    "two_hand_mace_greatmace": {
+      "name": "Greatmace"
+    },
+    "two_hand_mace_precise_greathammer": {
+      "name": "Precise Greathammer"
+    },
+    "two_hand_mace_giant_maul": {
+      "name": "Giant Maul"
+    },
+    "two_hand_mace_snakewood_greathammer": {
+      "name": "Snakewood Greathammer"
+    },
+    "two_hand_mace_blacksmith_maul": {
+      "name": "Blacksmith Maul"
+    },
+    "two_hand_mace_zealot_greathammer": {
+      "name": "Zealot Greathammer"
+    },
+    "two_hand_mace_solemn_maul": {
+      "name": "Solemn Maul"
+    },
+    "two_hand_mace_heavy_greathammer": {
+      "name": "Heavy Greathammer"
+    },
+    "two_hand_mace_disintegrating_maul": {
+      "name": "Disintegrating Maul"
+    },
+    "two_hand_mace_anvil_maul": {
+      "name": "Anvil Maul"
+    },
+    "two_hand_mace_sacred_maul": {
+      "name": "Sacred Maul"
+    },
+    "two_hand_mace_ironwood_greathammer": {
+      "name": "Ironwood Greathammer"
+    },
+    "two_hand_mace_fanatic_greathammer": {
+      "name": "Fanatic Greathammer"
+    },
+    "two_hand_mace_ruination_maul": {
+      "name": "Ruination Maul"
+    },
+    "two_hand_mace_massive_greathammer": {
+      "name": "Massive Greathammer"
+    },
+    "two_hand_mace_tawhoan_greatclub": {
+      "name": "Tawhoan Greatclub"
+    },
+    "quarterstaff_wrapped_quarterstaff": {
+      "name": "Wrapped Quarterstaff"
+    },
+    "quarterstaff_long_quarterstaff": {
+      "name": "Long Quarterstaff"
+    },
+    "quarterstaff_gothic_quarterstaff": {
+      "name": "Gothic Quarterstaff"
+    },
+    "quarterstaff_crackling_quarterstaff": {
+      "name": "Crackling Quarterstaff"
+    },
+    "quarterstaff_crescent_quarterstaff": {
+      "name": "Crescent Quarterstaff"
+    },
+    "quarterstaff_steelpoint_quarterstaff": {
+      "name": "Steelpoint Quarterstaff"
+    },
+    "quarterstaff_slicing_quarterstaff": {
+      "name": "Slicing Quarterstaff"
+    },
+    "quarterstaff_barrier_quarterstaff": {
+      "name": "Barrier Quarterstaff"
+    },
+    "quarterstaff_hefty_quarterstaff": {
+      "name": "Hefty Quarterstaff"
+    },
+    "quarterstaff_smooth_quarterstaff": {
+      "name": "Smooth Quarterstaff"
+    },
+    "quarterstaff_anima_quarterstaff": {
+      "name": "Anima Quarterstaff"
+    },
+    "quarterstaff_graceful_quarterstaff": {
+      "name": "Graceful Quarterstaff"
+    },
+    "quarterstaff_wyrm_quarterstaff": {
+      "name": "Wyrm Quarterstaff"
+    },
+    "quarterstaff_reaching_quarterstaff": {
+      "name": "Reaching Quarterstaff"
+    },
+    "quarterstaff_barbarous_quarterstaff": {
+      "name": "Barbarous Quarterstaff"
+    },
+    "quarterstaff_arcing_quarterstaff": {
+      "name": "Arcing Quarterstaff"
+    },
+    "quarterstaff_waxing_quarterstaff": {
+      "name": "Waxing Quarterstaff"
+    },
+    "quarterstaff_bladed_quarterstaff": {
+      "name": "Bladed Quarterstaff"
+    },
+    "quarterstaff_guardian_quarterstaff": {
+      "name": "Guardian Quarterstaff"
+    },
+    "quarterstaff_sinister_quarterstaff": {
+      "name": "Sinister Quarterstaff"
+    },
+    "quarterstaff_lunar_quarterstaff": {
+      "name": "Lunar Quarterstaff"
+    },
+    "quarterstaff_striking_quarterstaff": {
+      "name": "Striking Quarterstaff"
+    },
+    "quarterstaff_bolting_quarterstaff": {
+      "name": "Bolting Quarterstaff"
+    },
+    "quarterstaff_aegis_quarterstaff": {
+      "name": "Aegis Quarterstaff"
+    },
+    "quarterstaff_razor_quarterstaff": {
+      "name": "Razor Quarterstaff"
+    },
+    "quarterstaff_skullcrusher_quarterstaff": {
+      "name": "Skullcrusher Quarterstaff"
+    },
+    "quarterstaff_dreaming_quarterstaff": {
+      "name": "Dreaming Quarterstaff"
+    },
+    "fishing_rod_fishing_rod": {
+      "name": "Fishing Rod"
+    },
+    "crossbow_makeshift_crossbow": {
+      "name": "Makeshift Crossbow"
+    },
+    "crossbow_tense_crossbow": {
+      "name": "Tense Crossbow"
+    },
+    "crossbow_sturdy_crossbow": {
+      "name": "Sturdy Crossbow"
+    },
+    "crossbow_varnished_crossbow": {
+      "name": "Varnished Crossbow"
+    },
+    "crossbow_dyad_crossbow": {
+      "name": "Dyad Crossbow"
+    },
+    "crossbow_alloy_crossbow": {
+      "name": "Alloy Crossbow"
+    },
+    "crossbow_bombard_crossbow": {
+      "name": "Bombard Crossbow"
+    },
+    "crossbow_construct_crossbow": {
+      "name": "Construct Crossbow"
+    },
+    "crossbow_blackfire_crossbow": {
+      "name": "Blackfire Crossbow"
+    },
+    "crossbow_piercing_crossbow": {
+      "name": "Piercing Crossbow"
+    },
+    "crossbow_cumbrous_crossbow": {
+      "name": "Cumbrous Crossbow"
+    },
+    "crossbow_dedalian_crossbow": {
+      "name": "Dedalian Crossbow"
+    },
+    "crossbow_esoteric_crossbow": {
+      "name": "Esoteric Crossbow"
+    },
+    "crossbow_taut_crossbow": {
+      "name": "Taut Crossbow"
+    },
+    "crossbow_robust_crossbow": {
+      "name": "Robust Crossbow"
+    },
+    "crossbow_painted_crossbow": {
+      "name": "Painted Crossbow"
+    },
+    "crossbow_twin_crossbow": {
+      "name": "Twin Crossbow"
+    },
+    "crossbow_cannonade_crossbow": {
+      "name": "Cannonade Crossbow"
+    },
+    "crossbow_bleak_crossbow": {
+      "name": "Bleak Crossbow"
+    },
+    "crossbow_stout_crossbow": {
+      "name": "Stout Crossbow"
+    },
+    "crossbow_engraved_crossbow": {
+      "name": "Engraved Crossbow"
+    },
+    "crossbow_flexed_crossbow": {
+      "name": "Flexed Crossbow"
+    },
+    "crossbow_gemini_crossbow": {
+      "name": "Gemini Crossbow"
+    },
+    "crossbow_siege_crossbow": {
+      "name": "Siege Crossbow"
+    },
+    "crossbow_desolate_crossbow": {
+      "name": "Desolate Crossbow"
+    },
+    "crossbow_elegant_crossbow": {
+      "name": "Elegant Crossbow"
+    },
+    "trap_clay_trap": {
+      "name": "Clay Trap"
+    },
+    "trap_clamping_trap": {
+      "name": "Clamping Trap"
+    },
+    "trap_shrapnel_trap": {
+      "name": "Shrapnel Trap"
+    },
+    "trap_urn_trap": {
+      "name": "Urn Trap"
+    },
+    "trap_incense_trap": {
+      "name": "Incense Trap"
+    },
+    "trap_bladed_trap": {
+      "name": "Bladed Trap"
+    },
+    "trap_dart_trap": {
+      "name": "Dart Trap"
+    },
+    "trap_spike_trap": {
+      "name": "Spike Trap"
+    },
+    "trap_coiled_trap": {
+      "name": "Coiled Trap"
+    },
+    "trap_lead_trap": {
+      "name": "Lead Trap"
+    },
+    "trap_medallion_trap": {
+      "name": "Medallion Trap"
+    },
+    "trap_intricate_trap": {
+      "name": "Intricate Trap"
+    },
+    "trap_refined_trap": {
+      "name": "Refined Trap"
+    },
+    "trap_incense_trap_2": {
+      "name": "Incense Trap"
+    },
+    "talisman_changeling_talisman": {
+      "name": "Changeling Talisman"
+    },
+    "talisman_nettle_talisman": {
+      "name": "Nettle Talisman"
+    },
+    "talisman_cinderbark_talisman": {
+      "name": "Cinderbark Talisman"
+    },
+    "talisman_familial_talisman": {
+      "name": "Familial Talisman"
+    },
+    "talisman_frenzied_talisman": {
+      "name": "Frenzied Talisman"
+    },
+    "talisman_primal_talisman": {
+      "name": "Primal Talisman"
+    },
+    "talisman_rabid_talisman": {
+      "name": "Rabid Talisman"
+    },
+    "talisman_vicious_talisman": {
+      "name": "Vicious Talisman"
+    },
+    "talisman_voltfang_talisman": {
+      "name": "Voltfang Talisman"
+    },
+    "talisman_lumbering_talisman": {
+      "name": "Lumbering Talisman"
+    },
+    "talisman_roaring_talisman": {
+      "name": "Roaring Talisman"
+    },
+    "talisman_wingbeat_talisman": {
+      "name": "Wingbeat Talisman"
+    },
+    "talisman_condemned_talisman": {
+      "name": "Condemned Talisman"
+    },
+    "talisman_howling_talisman": {
+      "name": "Howling Talisman"
+    },
+    "talisman_fury_talisman": {
+      "name": "Fury Talisman"
+    },
+    "talisman_cruel_talisman": {
+      "name": "Cruel Talisman"
+    },
+    "talisman_spiny_talisman": {
+      "name": "Spiny Talisman"
+    },
+    "talisman_ashbark_talisman": {
+      "name": "Ashbark Talisman"
+    },
+    "talisman_fang_talisman": {
+      "name": "Fang Talisman"
+    },
+    "talisman_fungal_talisman": {
+      "name": "Fungal Talisman"
+    },
+    "talisman_alpha_talisman": {
+      "name": "Alpha Talisman"
+    },
+    "talisman_maji_talisman": {
+      "name": "Maji Talisman"
+    },
+    "talisman_wildwood_talisman": {
+      "name": "Wildwood Talisman"
+    },
+    "talisman_thunder_talisman": {
+      "name": "Thunder Talisman"
+    },
+    "talisman_jade_talisman": {
+      "name": "Jade Talisman"
+    },
+    "quiver_broadhead_quiver": {
+      "name": "Broadhead Quiver"
+    },
+    "quiver_fire_quiver": {
+      "name": "Fire Quiver"
+    },
+    "quiver_sacral_quiver": {
+      "name": "Sacral Quiver"
+    },
+    "quiver_two_point_quiver": {
+      "name": "Two-Point Quiver"
+    },
+    "quiver_blunt_quiver": {
+      "name": "Blunt Quiver"
+    },
+    "quiver_toxic_quiver": {
+      "name": "Toxic Quiver"
+    },
+    "quiver_serrated_quiver": {
+      "name": "Serrated Quiver"
+    },
+    "quiver_primed_quiver": {
+      "name": "Primed Quiver"
+    },
+    "quiver_penetrating_quiver": {
+      "name": "Penetrating Quiver"
+    },
+    "quiver_volant_quiver": {
+      "name": "Volant Quiver"
+    },
+    "quiver_visceral_quiver": {
+      "name": "Visceral Quiver"
+    },
+    "shield_golden_flame": {
+      "name": "Golden Flame"
+    },
+    "shield_splintered_tower_shield": {
+      "name": "Splintered Tower Shield"
+    },
+    "shield_painted_tower_shield": {
+      "name": "Painted Tower Shield"
+    },
+    "shield_braced_tower_shield": {
+      "name": "Braced Tower Shield"
+    },
+    "shield_barricade_tower_shield": {
+      "name": "Barricade Tower Shield"
+    },
+    "shield_effigial_tower_shield": {
+      "name": "Effigial Tower Shield"
+    },
+    "shield_rampart_tower_shield": {
+      "name": "Rampart Tower Shield"
+    },
+    "shield_heraldric_tower_shield": {
+      "name": "Heraldric Tower Shield"
+    },
+    "shield_stone_tower_shield": {
+      "name": "Stone Tower Shield"
+    },
+    "shield_crucible_tower_shield": {
+      "name": "Crucible Tower Shield"
+    },
+    "shield_ancestor_tower_shield": {
+      "name": "Ancestor Tower Shield"
+    },
+    "shield_phalanx_tower_shield": {
+      "name": "Phalanx Tower Shield"
+    },
+    "shield_defiant_tower_shield": {
+      "name": "Defiant Tower Shield"
+    },
+    "shield_blacksteel_tower_shield": {
+      "name": "Blacksteel Tower Shield"
+    },
+    "shield_hardwood_targe": {
+      "name": "Hardwood Targe"
+    },
+    "shield_pelage_targe": {
+      "name": "Pelage Targe"
+    },
+    "shield_studded_targe": {
+      "name": "Studded Targe"
+    },
+    "shield_crescent_targe": {
+      "name": "Crescent Targe"
+    },
+    "shield_chiseled_targe": {
+      "name": "Chiseled Targe"
+    },
+    "shield_feathered_targe": {
+      "name": "Feathered Targe"
+    },
+    "shield_stratified_targe": {
+      "name": "Stratified Targe"
+    },
+    "shield_carved_targe": {
+      "name": "Carved Targe"
+    },
+    "shield_mosaic_targe": {
+      "name": "Mosaic Targe"
+    },
+    "shield_aureate_targe": {
+      "name": "Aureate Targe"
+    },
+    "shield_grand_targe": {
+      "name": "Grand Targe"
+    },
+    "shield_blazon_crest_shield": {
+      "name": "Blazon Crest Shield"
+    },
+    "shield_sigil_crest_shield": {
+      "name": "Sigil Crest Shield"
+    },
+    "shield_emblem_crest_shield": {
+      "name": "Emblem Crest Shield"
+    },
+    "shield_jingling_crest_shield": {
+      "name": "Jingling Crest Shield"
+    },
+    "shield_sectarian_crest_shield": {
+      "name": "Sectarian Crest Shield"
+    },
+    "shield_omen_crest_shield": {
+      "name": "Omen Crest Shield"
+    },
+    "shield_wayward_crest_shield": {
+      "name": "Wayward Crest Shield"
+    },
+    "shield_seer_crest_shield": {
+      "name": "Seer Crest Shield"
+    },
+    "shield_stoic_crest_shield": {
+      "name": "Stoic Crest Shield"
+    },
+    "shield_empyreal_crest_shield": {
+      "name": "Empyreal Crest Shield"
+    },
+    "shield_deified_crest_shield": {
+      "name": "Deified Crest Shield"
+    },
+    "shield_golden_shield": {
+      "name": "Golden Shield"
+    },
+    "shield_aged_tower_shield": {
+      "name": "Aged Tower Shield"
+    },
+    "shield_metalworked_tower_shield": {
+      "name": "Metalworked Tower Shield"
+    },
+    "shield_cultist_tower_shield": {
+      "name": "Cultist Tower Shield"
+    },
+    "shield_bulwark_tower_shield": {
+      "name": "Bulwark Tower Shield"
+    },
+    "shield_noble_tower_shield": {
+      "name": "Noble Tower Shield"
+    },
+    "shield_goldworked_tower_shield": {
+      "name": "Goldworked Tower Shield"
+    },
+    "shield_ironwood_targe": {
+      "name": "Ironwood Targe"
+    },
+    "shield_fur_lined_targe": {
+      "name": "Fur-lined Targe"
+    },
+    "shield_mercenary_targe": {
+      "name": "Mercenary Targe"
+    },
+    "shield_polished_targe": {
+      "name": "Polished Targe"
+    },
+    "shield_stone_targe": {
+      "name": "Stone Targe"
+    },
+    "shield_avian_targe": {
+      "name": "Avian Targe"
+    },
+    "shield_painted_crest_shield": {
+      "name": "Painted Crest Shield"
+    },
+    "shield_engraved_crest_shield": {
+      "name": "Engraved Crest Shield"
+    },
+    "shield_descry_crest_shield": {
+      "name": "Descry Crest Shield"
+    },
+    "shield_dekharan_crest_shield": {
+      "name": "Dekharan Crest Shield"
+    },
+    "shield_quartered_crest_shield": {
+      "name": "Quartered Crest Shield"
+    },
+    "shield_glowering_crest_shield": {
+      "name": "Glowering Crest Shield"
+    },
+    "shield_royal_tower_shield": {
+      "name": "Royal Tower Shield"
+    },
+    "shield_fortress_tower_shield": {
+      "name": "Fortress Tower Shield"
+    },
+    "shield_vaal_tower_shield": {
+      "name": "Vaal Tower Shield"
+    },
+    "shield_tawhoan_tower_shield": {
+      "name": "Tawhoan Tower Shield"
+    },
+    "shield_mammoth_targe": {
+      "name": "Mammoth Targe"
+    },
+    "shield_baroque_targe": {
+      "name": "Baroque Targe"
+    },
+    "shield_soaring_targe": {
+      "name": "Soaring Targe"
+    },
+    "shield_golden_targe": {
+      "name": "Golden Targe"
+    },
+    "shield_intricate_crest_shield": {
+      "name": "Intricate Crest Shield"
+    },
+    "shield_sekheman_crest_shield": {
+      "name": "Sekheman Crest Shield"
+    },
+    "shield_vaal_crest_shield": {
+      "name": "Vaal Crest Shield"
+    },
+    "shield_blacksteel_crest_shield": {
+      "name": "Blacksteel Crest Shield"
+    },
+    "buckler_leather_buckler": {
+      "name": "Leather Buckler"
+    },
+    "buckler_wooden_buckler": {
+      "name": "Wooden Buckler"
+    },
+    "buckler_plated_buckler": {
+      "name": "Plated Buckler"
+    },
+    "buckler_iron_buckler": {
+      "name": "Iron Buckler"
+    },
+    "buckler_ridged_buckler": {
+      "name": "Ridged Buckler"
+    },
+    "buckler_spiked_buckler": {
+      "name": "Spiked Buckler"
+    },
+    "buckler_ringed_buckler": {
+      "name": "Ringed Buckler"
+    },
+    "buckler_edged_buckler": {
+      "name": "Edged Buckler"
+    },
+    "buckler_laminate_buckler": {
+      "name": "Laminate Buckler"
+    },
+    "buckler_pearl_buckler": {
+      "name": "Pearl Buckler"
+    },
+    "buckler_ornate_buckler": {
+      "name": "Ornate Buckler"
+    },
+    "buckler_array_buckler": {
+      "name": "Array Buckler"
+    },
+    "buckler_aegis_buckler": {
+      "name": "Aegis Buckler"
+    },
+    "buckler_oak_buckler": {
+      "name": "Oak Buckler"
+    },
+    "buckler_painted_buckler": {
+      "name": "Painted Buckler"
+    },
+    "buckler_coiled_buckler": {
+      "name": "Coiled Buckler"
+    },
+    "buckler_spikeward_buckler": {
+      "name": "Spikeward Buckler"
+    },
+    "buckler_jingling_buckler": {
+      "name": "Jingling Buckler"
+    },
+    "buckler_bladeguard_buckler": {
+      "name": "Bladeguard Buckler"
+    },
+    "buckler_ornate_buckler_2": {
+      "name": "Ornate Buckler"
+    },
+    "buckler_gutspike_buckler": {
+      "name": "Gutspike Buckler"
+    },
+    "buckler_ancient_buckler": {
+      "name": "Ancient Buckler"
+    },
+    "buckler_desert_buckler": {
+      "name": "Desert Buckler"
+    },
+    "focus_twig_focus": {
+      "name": "Twig Focus"
+    },
+    "focus_woven_focus": {
+      "name": "Woven Focus"
+    },
+    "focus_antler_focus": {
+      "name": "Antler Focus"
+    },
+    "focus_engraved_focus": {
+      "name": "Engraved Focus"
+    },
+    "focus_tonal_focus": {
+      "name": "Tonal Focus"
+    },
+    "focus_crystal_focus": {
+      "name": "Crystal Focus"
+    },
+    "focus_voodoo_focus": {
+      "name": "Voodoo Focus"
+    },
+    "focus_plumed_focus": {
+      "name": "Plumed Focus"
+    },
+    "focus_runed_focus": {
+      "name": "Runed Focus"
+    },
+    "focus_whorl_focus": {
+      "name": "Whorl Focus"
+    },
+    "focus_elegant_focus": {
+      "name": "Elegant Focus"
+    },
+    "focus_attuned_focus": {
+      "name": "Attuned Focus"
+    },
+    "focus_magus_focus": {
+      "name": "Magus Focus"
+    },
+    "focus_wreath_focus": {
+      "name": "Wreath Focus"
+    },
+    "focus_staghorn_focus": {
+      "name": "Staghorn Focus"
+    },
+    "focus_jingling_focus": {
+      "name": "Jingling Focus"
+    },
+    "focus_arrayed_focus": {
+      "name": "Arrayed Focus"
+    },
+    "focus_cultist_focus": {
+      "name": "Cultist Focus"
+    },
+    "focus_hallowed_focus": {
+      "name": "Hallowed Focus"
+    },
+    "focus_druidic_focus": {
+      "name": "Druidic Focus"
+    },
+    "focus_leyline_focus": {
+      "name": "Leyline Focus"
+    },
+    "focus_sacred_focus": {
+      "name": "Sacred Focus"
+    },
+    "focus_tasalian_focus": {
+      "name": "Tasalian Focus"
+    },
+    "gloves_golden_bracers": {
+      "name": "Golden Bracers"
+    },
+    "gloves_stocky_mitts": {
+      "name": "Stocky Mitts"
+    },
+    "gloves_riveted_mitts": {
+      "name": "Riveted Mitts"
+    },
+    "gloves_tempered_mitts": {
+      "name": "Tempered Mitts"
+    },
+    "gloves_bolstered_mitts": {
+      "name": "Bolstered Mitts"
+    },
+    "gloves_moulded_mitts": {
+      "name": "Moulded Mitts"
+    },
+    "gloves_detailed_mitts": {
+      "name": "Detailed Mitts"
+    },
+    "gloves_titan_mitts": {
+      "name": "Titan Mitts"
+    },
+    "gloves_grand_mitts": {
+      "name": "Grand Mitts"
+    },
+    "gloves_suede_bracers": {
+      "name": "Suede Bracers"
+    },
+    "gloves_firm_bracers": {
+      "name": "Firm Bracers"
+    },
+    "gloves_bound_bracers": {
+      "name": "Bound Bracers"
+    },
+    "gloves_sectioned_bracers": {
+      "name": "Sectioned Bracers"
+    },
+    "gloves_spined_bracers": {
+      "name": "Spined Bracers"
+    },
+    "gloves_fine_bracers": {
+      "name": "Fine Bracers"
+    },
+    "gloves_hardened_bracers": {
+      "name": "Hardened Bracers"
+    },
+    "gloves_engraved_bracers": {
+      "name": "Engraved Bracers"
+    },
+    "gloves_torn_gloves": {
+      "name": "Torn Gloves"
+    },
+    "gloves_sombre_gloves": {
+      "name": "Sombre Gloves"
+    },
+    "gloves_stitched_gloves": {
+      "name": "Stitched Gloves"
+    },
+    "gloves_jewelled_gloves": {
+      "name": "Jewelled Gloves"
+    },
+    "gloves_intricate_gloves": {
+      "name": "Intricate Gloves"
+    },
+    "gloves_pauascale_gloves": {
+      "name": "Pauascale Gloves"
+    },
+    "gloves_embroidered_gloves": {
+      "name": "Embroidered Gloves"
+    },
+    "gloves_adorned_gloves": {
+      "name": "Adorned Gloves"
+    },
+    "gloves_ringmail_gauntlets": {
+      "name": "Ringmail Gauntlets"
+    },
+    "gloves_layered_gauntlets": {
+      "name": "Layered Gauntlets"
+    },
+    "gloves_doubled_gauntlets": {
+      "name": "Doubled Gauntlets"
+    },
+    "gloves_plate_gauntlets": {
+      "name": "Plate Gauntlets"
+    },
+    "gloves_burnished_gauntlets": {
+      "name": "Burnished Gauntlets"
+    },
+    "gloves_ornate_gauntlets": {
+      "name": "Ornate Gauntlets"
+    },
+    "gloves_rope_cuffs": {
+      "name": "Rope Cuffs"
+    },
+    "gloves_aged_cuffs": {
+      "name": "Aged Cuffs"
+    },
+    "gloves_goldcast_cuffs": {
+      "name": "Goldcast Cuffs"
+    },
+    "gloves_verisium_cuffs": {
+      "name": "Verisium Cuffs"
+    },
+    "gloves_righteous_cuffs": {
+      "name": "Righteous Cuffs"
+    },
+    "gloves_signet_cuffs": {
+      "name": "Signet Cuffs"
+    },
+    "gloves_gauze_wraps": {
+      "name": "Gauze Wraps"
+    },
+    "gloves_linen_wraps": {
+      "name": "Linen Wraps"
+    },
+    "gloves_spiral_wraps": {
+      "name": "Spiral Wraps"
+    },
+    "gloves_buckled_wraps": {
+      "name": "Buckled Wraps"
+    },
+    "gloves_furtive_wraps": {
+      "name": "Furtive Wraps"
+    },
+    "gloves_utility_wraps": {
+      "name": "Utility Wraps"
+    },
+    "gloves_grand_manchettes": {
+      "name": "Grand Manchettes"
+    },
+    "gloves_golden_bracers_2": {
+      "name": "Golden Bracers"
+    },
+    "gloves_plated_mitts": {
+      "name": "Plated Mitts"
+    },
+    "gloves_elegant_mitts": {
+      "name": "Elegant Mitts"
+    },
+    "gloves_ancient_mitts": {
+      "name": "Ancient Mitts"
+    },
+    "gloves_feathered_mitts": {
+      "name": "Feathered Mitts"
+    },
+    "gloves_hunting_bracers": {
+      "name": "Hunting Bracers"
+    },
+    "gloves_swift_bracers": {
+      "name": "Swift Bracers"
+    },
+    "gloves_refined_bracers": {
+      "name": "Refined Bracers"
+    },
+    "gloves_spiked_bracers": {
+      "name": "Spiked Bracers"
+    },
+    "gloves_ominous_gloves": {
+      "name": "Ominous Gloves"
+    },
+    "gloves_embellished_gloves": {
+      "name": "Embellished Gloves"
+    },
+    "gloves_baroque_gloves": {
+      "name": "Baroque Gloves"
+    },
+    "gloves_gold_gloves": {
+      "name": "Gold Gloves"
+    },
+    "gloves_ironmail_gauntlets": {
+      "name": "Ironmail Gauntlets"
+    },
+    "gloves_captain_gauntlets": {
+      "name": "Captain Gauntlets"
+    },
+    "gloves_zealot_gauntlets": {
+      "name": "Zealot Gauntlets"
+    },
+    "gloves_braided_cuffs": {
+      "name": "Braided Cuffs"
+    },
+    "gloves_heirloom_cuffs": {
+      "name": "Heirloom Cuffs"
+    },
+    "gloves_ornate_cuffs": {
+      "name": "Ornate Cuffs"
+    },
+    "gloves_bandage_wraps": {
+      "name": "Bandage Wraps"
+    },
+    "gloves_cambric_wraps": {
+      "name": "Cambric Wraps"
+    },
+    "gloves_adorned_wraps": {
+      "name": "Adorned Wraps"
+    },
+    "gloves_knightly_mitts": {
+      "name": "Knightly Mitts"
+    },
+    "gloves_ornate_mitts": {
+      "name": "Ornate Mitts"
+    },
+    "gloves_vaal_mitts": {
+      "name": "Vaal Mitts"
+    },
+    "gloves_massive_mitts": {
+      "name": "Massive Mitts"
+    },
+    "gloves_stalking_bracers": {
+      "name": "Stalking Bracers"
+    },
+    "gloves_grand_bracers": {
+      "name": "Grand Bracers"
+    },
+    "gloves_barbed_bracers": {
+      "name": "Barbed Bracers"
+    },
+    "gloves_polished_bracers": {
+      "name": "Polished Bracers"
+    },
+    "gloves_grim_gloves": {
+      "name": "Grim Gloves"
+    },
+    "gloves_opulent_gloves": {
+      "name": "Opulent Gloves"
+    },
+    "gloves_vaal_gloves": {
+      "name": "Vaal Gloves"
+    },
+    "gloves_sirenscale_gloves": {
+      "name": "Sirenscale Gloves"
+    },
+    "gloves_steelmail_gauntlets": {
+      "name": "Steelmail Gauntlets"
+    },
+    "gloves_commander_gauntlets": {
+      "name": "Commander Gauntlets"
+    },
+    "gloves_cultist_gauntlets": {
+      "name": "Cultist Gauntlets"
+    },
+    "gloves_blacksteel_gauntlets": {
+      "name": "Blacksteel Gauntlets"
+    },
+    "gloves_bound_cuffs": {
+      "name": "Bound Cuffs"
+    },
+    "gloves_ancient_cuffs": {
+      "name": "Ancient Cuffs"
+    },
+    "gloves_gleaming_cuffs": {
+      "name": "Gleaming Cuffs"
+    },
+    "gloves_adherent_cuffs": {
+      "name": "Adherent Cuffs"
+    },
+    "gloves_war_wraps": {
+      "name": "War Wraps"
+    },
+    "gloves_elegant_wraps": {
+      "name": "Elegant Wraps"
+    },
+    "gloves_vaal_wraps": {
+      "name": "Vaal Wraps"
+    },
+    "gloves_secured_wraps": {
+      "name": "Secured Wraps"
+    },
+    "gloves_dnt_unused_hand_wraps": {
+      "name": "[DNT-UNUSED] Hand Wraps"
+    },
+    "boots_golden_caligae": {
+      "name": "Golden Caligae"
+    },
+    "boots_rough_greaves": {
+      "name": "Rough Greaves"
+    },
+    "boots_iron_greaves": {
+      "name": "Iron Greaves"
+    },
+    "boots_bronze_greaves": {
+      "name": "Bronze Greaves"
+    },
+    "boots_trimmed_greaves": {
+      "name": "Trimmed Greaves"
+    },
+    "boots_stone_greaves": {
+      "name": "Stone Greaves"
+    },
+    "boots_reefsteel_greaves": {
+      "name": "Reefsteel Greaves"
+    },
+    "boots_monument_greaves": {
+      "name": "Monument Greaves"
+    },
+    "boots_totemic_greaves": {
+      "name": "Totemic Greaves"
+    },
+    "boots_rawhide_boots": {
+      "name": "Rawhide Boots"
+    },
+    "boots_laced_boots": {
+      "name": "Laced Boots"
+    },
+    "boots_embossed_boots": {
+      "name": "Embossed Boots"
+    },
+    "boots_steeltoe_boots": {
+      "name": "Steeltoe Boots"
+    },
+    "boots_lizardscale_boots": {
+      "name": "Lizardscale Boots"
+    },
+    "boots_flared_boots": {
+      "name": "Flared Boots"
+    },
+    "boots_leatherplate_boots": {
+      "name": "Leatherplate Boots"
+    },
+    "boots_embroidered_boots": {
+      "name": "Embroidered Boots"
+    },
+    "boots_straw_sandals": {
+      "name": "Straw Sandals"
+    },
+    "boots_wrapped_sandals": {
+      "name": "Wrapped Sandals"
+    },
+    "boots_lattice_sandals": {
+      "name": "Lattice Sandals"
+    },
+    "boots_silk_slippers": {
+      "name": "Silk Slippers"
+    },
+    "boots_feathered_sandals": {
+      "name": "Feathered Sandals"
+    },
+    "boots_flax_sandals": {
+      "name": "Flax Sandals"
+    },
+    "boots_studded_sandals": {
+      "name": "Studded Sandals"
+    },
+    "boots_elaborate_sandals": {
+      "name": "Elaborate Sandals"
+    },
+    "boots_mail_sabatons": {
+      "name": "Mail Sabatons"
+    },
+    "boots_braced_sabatons": {
+      "name": "Braced Sabatons"
+    },
+    "boots_stacked_sabatons": {
+      "name": "Stacked Sabatons"
+    },
+    "boots_covered_sabatons": {
+      "name": "Covered Sabatons"
+    },
+    "boots_flexile_sabatons": {
+      "name": "Flexile Sabatons"
+    },
+    "boots_bold_sabatons": {
+      "name": "Bold Sabatons"
+    },
+    "boots_padded_leggings": {
+      "name": "Padded Leggings"
+    },
+    "boots_secured_leggings": {
+      "name": "Secured Leggings"
+    },
+    "boots_pelt_leggings": {
+      "name": "Pelt Leggings"
+    },
+    "boots_weaver_leggings": {
+      "name": "Weaver Leggings"
+    },
+    "boots_gilt_leggings": {
+      "name": "Gilt Leggings"
+    },
+    "boots_pious_leggings": {
+      "name": "Pious Leggings"
+    },
+    "boots_frayed_shoes": {
+      "name": "Frayed Shoes"
+    },
+    "boots_threaded_shoes": {
+      "name": "Threaded Shoes"
+    },
+    "boots_hunting_shoes": {
+      "name": "Hunting Shoes"
+    },
+    "boots_steelpoint_shoes": {
+      "name": "Steelpoint Shoes"
+    },
+    "boots_velour_shoes": {
+      "name": "Velour Shoes"
+    },
+    "boots_bladed_shoes": {
+      "name": "Bladed Shoes"
+    },
+    "boots_grand_cuisses": {
+      "name": "Grand Cuisses"
+    },
+    "boots_golden_greaves": {
+      "name": "Golden Greaves"
+    },
+    "boots_plated_greaves": {
+      "name": "Plated Greaves"
+    },
+    "boots_lionheart_greaves": {
+      "name": "Lionheart Greaves"
+    },
+    "boots_elegant_greaves": {
+      "name": "Elegant Greaves"
+    },
+    "boots_carved_greaves": {
+      "name": "Carved Greaves"
+    },
+    "boots_bound_boots": {
+      "name": "Bound Boots"
+    },
+    "boots_sleek_boots": {
+      "name": "Sleek Boots"
+    },
+    "boots_studded_boots": {
+      "name": "Studded Boots"
+    },
+    "boots_serpentscale_boots": {
+      "name": "Serpentscale Boots"
+    },
+    "boots_laced_sandals": {
+      "name": "Laced Sandals"
+    },
+    "boots_bangled_sandals": {
+      "name": "Bangled Sandals"
+    },
+    "boots_elegant_slippers": {
+      "name": "Elegant Slippers"
+    },
+    "boots_dunerunner_sandals": {
+      "name": "Dunerunner Sandals"
+    },
+    "boots_soldiering_sabatons": {
+      "name": "Soldiering Sabatons"
+    },
+    "boots_goldwork_sabatons": {
+      "name": "Goldwork Sabatons"
+    },
+    "boots_bastion_sabatons": {
+      "name": "Bastion Sabatons"
+    },
+    "boots_adherent_leggings": {
+      "name": "Adherent Leggings"
+    },
+    "boots_bound_leggings": {
+      "name": "Bound Leggings"
+    },
+    "boots_shamanistic_leggings": {
+      "name": "Shamanistic Leggings"
+    },
+    "boots_wayfarer_shoes": {
+      "name": "Wayfarer Shoes"
+    },
+    "boots_silverbuckled_shoes": {
+      "name": "Silverbuckled Shoes"
+    },
+    "boots_treerunner_shoes": {
+      "name": "Treerunner Shoes"
+    },
+    "boots_bulwark_greaves": {
+      "name": "Bulwark Greaves"
+    },
+    "boots_ornate_greaves": {
+      "name": "Ornate Greaves"
+    },
+    "boots_vaal_greaves": {
+      "name": "Vaal Greaves"
+    },
+    "boots_tasalian_greaves": {
+      "name": "Tasalian Greaves"
+    },
+    "boots_cinched_boots": {
+      "name": "Cinched Boots"
+    },
+    "boots_cavalry_boots": {
+      "name": "Cavalry Boots"
+    },
+    "boots_dragonscale_boots": {
+      "name": "Dragonscale Boots"
+    },
+    "boots_drakeskin_boots": {
+      "name": "Drakeskin Boots"
+    },
+    "boots_bound_sandals": {
+      "name": "Bound Sandals"
+    },
+    "boots_luxurious_slippers": {
+      "name": "Luxurious Slippers"
+    },
+    "boots_sandsworn_sandals": {
+      "name": "Sandsworn Sandals"
+    },
+    "boots_sekhema_sandals": {
+      "name": "Sekhema Sandals"
+    },
+    "boots_veteran_sabatons": {
+      "name": "Veteran Sabatons"
+    },
+    "boots_noble_sabatons": {
+      "name": "Noble Sabatons"
+    },
+    "boots_fortress_sabatons": {
+      "name": "Fortress Sabatons"
+    },
+    "boots_blacksteel_sabatons": {
+      "name": "Blacksteel Sabatons"
+    },
+    "boots_faithful_leggings": {
+      "name": "Faithful Leggings"
+    },
+    "boots_apostle_leggings": {
+      "name": "Apostle Leggings"
+    },
+    "boots_warlock_leggings": {
+      "name": "Warlock Leggings"
+    },
+    "boots_cryptic_leggings": {
+      "name": "Cryptic Leggings"
+    },
+    "boots_wanderer_shoes": {
+      "name": "Wanderer Shoes"
+    },
+    "boots_charmed_shoes": {
+      "name": "Charmed Shoes"
+    },
+    "boots_quickslip_shoes": {
+      "name": "Quickslip Shoes"
+    },
+    "boots_daggerfoot_shoes": {
+      "name": "Daggerfoot Shoes"
+    },
+    "body_armour_golden_mantle": {
+      "name": "Golden Mantle"
+    },
+    "body_armour_rusted_cuirass": {
+      "name": "Rusted Cuirass"
+    },
+    "body_armour_fur_plate": {
+      "name": "Fur Plate"
+    },
+    "body_armour_iron_cuirass": {
+      "name": "Iron Cuirass"
+    },
+    "body_armour_raider_plate": {
+      "name": "Raider Plate"
+    },
+    "body_armour_maraketh_cuirass": {
+      "name": "Maraketh Cuirass"
+    },
+    "body_armour_steel_plate": {
+      "name": "Steel Plate"
+    },
+    "body_armour_full_plate": {
+      "name": "Full Plate"
+    },
+    "body_armour_vaal_cuirass": {
+      "name": "Vaal Cuirass"
+    },
+    "body_armour_juggernaut_plate": {
+      "name": "Juggernaut Plate"
+    },
+    "body_armour_chieftain_cuirass": {
+      "name": "Chieftain Cuirass"
+    },
+    "body_armour_colosseum_plate": {
+      "name": "Colosseum Plate"
+    },
+    "body_armour_champion_cuirass": {
+      "name": "Champion Cuirass"
+    },
+    "body_armour_glorious_plate": {
+      "name": "Glorious Plate"
+    },
+    "body_armour_conqueror_plate": {
+      "name": "Conqueror Plate"
+    },
+    "body_armour_abyssal_cuirass": {
+      "name": "Abyssal Cuirass"
+    },
+    "body_armour_leather_vest": {
+      "name": "Leather Vest"
+    },
+    "body_armour_quilted_vest": {
+      "name": "Quilted Vest"
+    },
+    "body_armour_pathfinder_coat": {
+      "name": "Pathfinder Coat"
+    },
+    "body_armour_shrouded_vest": {
+      "name": "Shrouded Vest"
+    },
+    "body_armour_rhoahide_coat": {
+      "name": "Rhoahide Coat"
+    },
+    "body_armour_studded_vest": {
+      "name": "Studded Vest"
+    },
+    "body_armour_scouts_vest": {
+      "name": "Scout's Vest"
+    },
+    "body_armour_serpentscale_coat": {
+      "name": "Serpentscale Coat"
+    },
+    "body_armour_corsair_vest": {
+      "name": "Corsair Vest"
+    },
+    "body_armour_smuggler_coat": {
+      "name": "Smuggler Coat"
+    },
+    "body_armour_strider_vest": {
+      "name": "Strider Vest"
+    },
+    "body_armour_hardleather_coat": {
+      "name": "Hardleather Coat"
+    },
+    "body_armour_exquisite_vest": {
+      "name": "Exquisite Vest"
+    },
+    "body_armour_mail_coat": {
+      "name": "Mail Coat"
+    },
+    "body_armour_armoured_vest": {
+      "name": "Armoured Vest"
+    },
+    "body_armour_tattered_robe": {
+      "name": "Tattered Robe"
+    },
+    "body_armour_feathered_robe": {
+      "name": "Feathered Robe"
+    },
+    "body_armour_hexers_robe": {
+      "name": "Hexer's Robe"
+    },
+    "body_armour_bone_raiment": {
+      "name": "Bone Raiment"
+    },
+    "body_armour_silk_robe": {
+      "name": "Silk Robe"
+    },
+    "body_armour_keth_raiment": {
+      "name": "Keth Raiment"
+    },
+    "body_armour_votive_raiment": {
+      "name": "Votive Raiment"
+    },
+    "body_armour_altar_robe": {
+      "name": "Altar Robe"
+    },
+    "body_armour_elementalist_robe": {
+      "name": "Elementalist Robe"
+    },
+    "body_armour_mystic_raiment": {
+      "name": "Mystic Raiment"
+    },
+    "body_armour_imperial_robe": {
+      "name": "Imperial Robe"
+    },
+    "body_armour_plated_raiment": {
+      "name": "Plated Raiment"
+    },
+    "body_armour_havoc_raiment": {
+      "name": "Havoc Raiment"
+    },
+    "body_armour_enlightened_robe": {
+      "name": "Enlightened Robe"
+    },
+    "body_armour_arcane_raiment": {
+      "name": "Arcane Raiment"
+    },
+    "body_armour_chain_mail": {
+      "name": "Chain Mail"
+    },
+    "body_armour_rogue_armour": {
+      "name": "Rogue Armour"
+    },
+    "body_armour_vagabond_armour": {
+      "name": "Vagabond Armour"
+    },
+    "body_armour_cloaked_mail": {
+      "name": "Cloaked Mail"
+    },
+    "body_armour_explorer_armour": {
+      "name": "Explorer Armour"
+    },
+    "body_armour_scale_mail": {
+      "name": "Scale Mail"
+    },
+    "body_armour_knight_armour": {
+      "name": "Knight Armour"
+    },
+    "body_armour_ancestral_mail": {
+      "name": "Ancestral Mail"
+    },
+    "body_armour_lamellar_mail": {
+      "name": "Lamellar Mail"
+    },
+    "body_armour_gladiator_armour": {
+      "name": "Gladiator Armour"
+    },
+    "body_armour_heroic_armour": {
+      "name": "Heroic Armour"
+    },
+    "body_armour_tournament_mail": {
+      "name": "Tournament Mail"
+    },
+    "body_armour_tournament_mail_2": {
+      "name": "Tournament Mail"
+    },
+    "body_armour_tournament_mail_3": {
+      "name": "Tournament Mail"
+    },
+    "body_armour_slayer_armour": {
+      "name": "Slayer Armour"
+    },
+    "body_armour_pilgrim_vestments": {
+      "name": "Pilgrim Vestments"
+    },
+    "body_armour_pelt_mantle": {
+      "name": "Pelt Mantle"
+    },
+    "body_armour_mail_vestments": {
+      "name": "Mail Vestments"
+    },
+    "body_armour_shaman_mantle": {
+      "name": "Shaman Mantle"
+    },
+    "body_armour_ironclad_vestments": {
+      "name": "Ironclad Vestments"
+    },
+    "body_armour_sacrificial_mantle": {
+      "name": "Sacrificial Mantle"
+    },
+    "body_armour_cleric_vestments": {
+      "name": "Cleric Vestments"
+    },
+    "body_armour_tideseer_mantle": {
+      "name": "Tideseer Mantle"
+    },
+    "body_armour_gilded_vestments": {
+      "name": "Gilded Vestments"
+    },
+    "body_armour_venerated_mantle": {
+      "name": "Venerated Mantle"
+    },
+    "body_armour_revered_vestments": {
+      "name": "Revered Vestments"
+    },
+    "body_armour_corvus_mantle": {
+      "name": "Corvus Mantle"
+    },
+    "body_armour_zenith_vestments": {
+      "name": "Zenith Vestments"
+    },
+    "body_armour_hermit_garb": {
+      "name": "Hermit Garb"
+    },
+    "body_armour_waxed_jacket": {
+      "name": "Waxed Jacket"
+    },
+    "body_armour_marabout_garb": {
+      "name": "Marabout Garb"
+    },
+    "body_armour_wayfarer_jacket": {
+      "name": "Wayfarer Jacket"
+    },
+    "body_armour_anchorite_garb": {
+      "name": "Anchorite Garb"
+    },
+    "body_armour_scalpers_jacket": {
+      "name": "Scalper's Jacket"
+    },
+    "body_armour_scoundrel_jacket": {
+      "name": "Scoundrel Jacket"
+    },
+    "body_armour_ascetic_garb": {
+      "name": "Ascetic Garb"
+    },
+    "body_armour_clandestine_jacket": {
+      "name": "Clandestine Jacket"
+    },
+    "body_armour_monastic_garb": {
+      "name": "Monastic Garb"
+    },
+    "body_armour_torment_jacket": {
+      "name": "Torment Jacket"
+    },
+    "body_armour_devout_garb": {
+      "name": "Devout Garb"
+    },
+    "body_armour_assassin_garb": {
+      "name": "Assassin Garb"
+    },
+    "body_armour_garment": {
+      "name": "Garment"
+    },
+    "body_armour_grand_regalia": {
+      "name": "Grand Regalia"
+    },
+    "body_armour_sacrificial_regalia": {
+      "name": "Sacrificial Regalia"
+    },
+    "body_armour_golden_plate": {
+      "name": "Golden Plate"
+    },
+    "body_armour_barbarian_plate": {
+      "name": "Barbarian Plate"
+    },
+    "body_armour_rugged_cuirass": {
+      "name": "Rugged Cuirass"
+    },
+    "body_armour_sandsworn_cuirass": {
+      "name": "Sandsworn Cuirass"
+    },
+    "body_armour_elegant_plate": {
+      "name": "Elegant Plate"
+    },
+    "body_armour_heavy_plate": {
+      "name": "Heavy Plate"
+    },
+    "body_armour_stone_cuirass": {
+      "name": "Stone Cuirass"
+    },
+    "body_armour_patchwork_vest": {
+      "name": "Patchwork Vest"
+    },
+    "body_armour_hunting_coat": {
+      "name": "Hunting Coat"
+    },
+    "body_armour_riding_coat": {
+      "name": "Riding Coat"
+    },
+    "body_armour_layered_vest": {
+      "name": "Layered Vest"
+    },
+    "body_armour_runner_vest": {
+      "name": "Runner Vest"
+    },
+    "body_armour_lizardscale_coat": {
+      "name": "Lizardscale Coat"
+    },
+    "body_armour_avian_robe": {
+      "name": "Avian Robe"
+    },
+    "body_armour_cursespeakers_robe": {
+      "name": "Cursespeaker's Robe"
+    },
+    "body_armour_luxurious_robe": {
+      "name": "Luxurious Robe"
+    },
+    "body_armour_river_raiment": {
+      "name": "River Raiment"
+    },
+    "body_armour_adherents_raiment": {
+      "name": "Adherent's Raiment"
+    },
+    "body_armour_ceremonial_robe": {
+      "name": "Ceremonial Robe"
+    },
+    "body_armour_ring_mail": {
+      "name": "Ring Mail"
+    },
+    "body_armour_scoundrel_armour": {
+      "name": "Scoundrel Armour"
+    },
+    "body_armour_wanderer_armour": {
+      "name": "Wanderer Armour"
+    },
+    "body_armour_mantled_mail": {
+      "name": "Mantled Mail"
+    },
+    "body_armour_trailblazer_armour": {
+      "name": "Trailblazer Armour"
+    },
+    "body_armour_golden_mail": {
+      "name": "Golden Mail"
+    },
+    "body_armour_templar_vestments": {
+      "name": "Templar Vestments"
+    },
+    "body_armour_bearskin_mantle": {
+      "name": "Bearskin Mantle"
+    },
+    "body_armour_chain_vestments": {
+      "name": "Chain Vestments"
+    },
+    "body_armour_occultist_mantle": {
+      "name": "Occultist Mantle"
+    },
+    "body_armour_plated_vestments": {
+      "name": "Plated Vestments"
+    },
+    "body_armour_heartcarver_mantle": {
+      "name": "Heartcarver Mantle"
+    },
+    "body_armour_ascetic_garb_2": {
+      "name": "Ascetic Garb"
+    },
+    "body_armour_oiled_jacket": {
+      "name": "Oiled Jacket"
+    },
+    "body_armour_evangelist_garb": {
+      "name": "Evangelist Garb"
+    },
+    "body_armour_itinerant_jacket": {
+      "name": "Itinerant Jacket"
+    },
+    "body_armour_hatungo_garb": {
+      "name": "Hatungo Garb"
+    },
+    "body_armour_hawkers_jacket": {
+      "name": "Hawker's Jacket"
+    },
+    "body_armour_soldier_cuirass": {
+      "name": "Soldier Cuirass"
+    },
+    "body_armour_ornate_plate": {
+      "name": "Ornate Plate"
+    },
+    "body_armour_utzaal_cuirass": {
+      "name": "Utzaal Cuirass"
+    },
+    "body_armour_warlord_cuirass": {
+      "name": "Warlord Cuirass"
+    },
+    "body_armour_swiftstalker_coat": {
+      "name": "Swiftstalker Coat"
+    },
+    "body_armour_slipstrike_vest": {
+      "name": "Slipstrike Vest"
+    },
+    "body_armour_wyrmscale_coat": {
+      "name": "Wyrmscale Coat"
+    },
+    "body_armour_corsair_coat": {
+      "name": "Corsair Coat"
+    },
+    "body_armour_vile_robe": {
+      "name": "Vile Robe"
+    },
+    "body_armour_flowing_raiment": {
+      "name": "Flowing Raiment"
+    },
+    "body_armour_sacramental_robe": {
+      "name": "Sacramental Robe"
+    },
+    "body_armour_feathered_raiment": {
+      "name": "Feathered Raiment"
+    },
+    "body_armour_dastard_armour": {
+      "name": "Dastard Armour"
+    },
+    "body_armour_shrouded_mail": {
+      "name": "Shrouded Mail"
+    },
+    "body_armour_shrouded_mail_2": {
+      "name": "Shrouded Mail"
+    },
+    "body_armour_shrouded_mail_3": {
+      "name": "Shrouded Mail"
+    },
+    "body_armour_death_mail": {
+      "name": "Death Mail"
+    },
+    "body_armour_thane_mail": {
+      "name": "Thane Mail"
+    },
+    "body_armour_wolfskin_mantle": {
+      "name": "Wolfskin Mantle"
+    },
+    "body_armour_conjurer_mantle": {
+      "name": "Conjurer Mantle"
+    },
+    "body_armour_death_mantle": {
+      "name": "Death Mantle"
+    },
+    "body_armour_seastorm_mantle": {
+      "name": "Seastorm Mantle"
+    },
+    "body_armour_sleek_jacket": {
+      "name": "Sleek Jacket"
+    },
+    "body_armour_rambler_jacket": {
+      "name": "Rambler Jacket"
+    },
+    "body_armour_falconers_jacket": {
+      "name": "Falconer's Jacket"
+    },
+    "body_armour_austere_garb": {
+      "name": "Austere Garb"
+    },
+    "helmet_golden_wreath": {
+      "name": "Golden Wreath"
+    },
+    "helmet_golden_visage": {
+      "name": "Golden Visage"
+    },
+    "helmet_rusted_greathelm": {
+      "name": "Rusted Greathelm"
+    },
+    "helmet_soldier_greathelm": {
+      "name": "Soldier Greathelm"
+    },
+    "helmet_wrapped_greathelm": {
+      "name": "Wrapped Greathelm"
+    },
+    "helmet_spired_greathelm": {
+      "name": "Spired Greathelm"
+    },
+    "helmet_elite_greathelm": {
+      "name": "Elite Greathelm"
+    },
+    "helmet_warrior_greathelm": {
+      "name": "Warrior Greathelm"
+    },
+    "helmet_commander_greathelm": {
+      "name": "Commander Greathelm"
+    },
+    "helmet_fierce_greathelm": {
+      "name": "Fierce Greathelm"
+    },
+    "helmet_sentinel_greathelm": {
+      "name": "Sentinel Greathelm"
+    },
+    "helmet_goliath_greathelm": {
+      "name": "Goliath Greathelm"
+    },
+    "helmet_guardian_greathelm": {
+      "name": "Guardian Greathelm"
+    },
+    "helmet_shabby_hood": {
+      "name": "Shabby Hood"
+    },
+    "helmet_felt_cap": {
+      "name": "Felt Cap"
+    },
+    "helmet_lace_hood": {
+      "name": "Lace Hood"
+    },
+    "helmet_swathed_cap": {
+      "name": "Swathed Cap"
+    },
+    "helmet_hunter_hood": {
+      "name": "Hunter Hood"
+    },
+    "helmet_viper_cap": {
+      "name": "Viper Cap"
+    },
+    "helmet_corsair_cap": {
+      "name": "Corsair Cap"
+    },
+    "helmet_leatherbound_hood": {
+      "name": "Leatherbound Hood"
+    },
+    "helmet_velvet_cap": {
+      "name": "Velvet Cap"
+    },
+    "helmet_covert_hood": {
+      "name": "Covert Hood"
+    },
+    "helmet_armoured_cap": {
+      "name": "Armoured Cap"
+    },
+    "helmet_twig_circlet": {
+      "name": "Twig Circlet"
+    },
+    "helmet_wicker_tiara": {
+      "name": "Wicker Tiara"
+    },
+    "helmet_beaded_circlet": {
+      "name": "Beaded Circlet"
+    },
+    "helmet_chain_tiara": {
+      "name": "Chain Tiara"
+    },
+    "helmet_feathered_tiara": {
+      "name": "Feathered Tiara"
+    },
+    "helmet_gold_circlet": {
+      "name": "Gold Circlet"
+    },
+    "helmet_vermeil_circlet": {
+      "name": "Vermeil Circlet"
+    },
+    "helmet_jade_tiara": {
+      "name": "Jade Tiara"
+    },
+    "helmet_noble_circlet": {
+      "name": "Noble Circlet"
+    },
+    "helmet_twilight_tiara": {
+      "name": "Twilight Tiara"
+    },
+    "helmet_magus_tiara": {
+      "name": "Magus Tiara"
+    },
+    "helmet_brimmed_helm": {
+      "name": "Brimmed Helm"
+    },
+    "helmet_guarded_helm": {
+      "name": "Guarded Helm"
+    },
+    "helmet_visored_helm": {
+      "name": "Visored Helm"
+    },
+    "helmet_cowled_helm": {
+      "name": "Cowled Helm"
+    },
+    "helmet_shielded_helm": {
+      "name": "Shielded Helm"
+    },
+    "helmet_closed_helm": {
+      "name": "Closed Helm"
+    },
+    "helmet_decorated_helm": {
+      "name": "Decorated Helm"
+    },
+    "helmet_gallant_helm": {
+      "name": "Gallant Helm"
+    },
+    "helmet_iron_crown": {
+      "name": "Iron Crown"
+    },
+    "helmet_horned_crown": {
+      "name": "Horned Crown"
+    },
+    "helmet_cultist_crown": {
+      "name": "Cultist Crown"
+    },
+    "helmet_martyr_crown": {
+      "name": "Martyr Crown"
+    },
+    "helmet_heavy_crown": {
+      "name": "Heavy Crown"
+    },
+    "helmet_spiritbone_crown": {
+      "name": "Spiritbone Crown"
+    },
+    "helmet_lavish_crown": {
+      "name": "Lavish Crown"
+    },
+    "helmet_archon_crown": {
+      "name": "Archon Crown"
+    },
+    "helmet_hewn_mask": {
+      "name": "Hewn Mask"
+    },
+    "helmet_face_mask": {
+      "name": "Face Mask"
+    },
+    "helmet_hooded_mask": {
+      "name": "Hooded Mask"
+    },
+    "helmet_veiled_mask": {
+      "name": "Veiled Mask"
+    },
+    "helmet_tribal_mask": {
+      "name": "Tribal Mask"
+    },
+    "helmet_solid_mask": {
+      "name": "Solid Mask"
+    },
+    "helmet_shaded_mask": {
+      "name": "Shaded Mask"
+    },
+    "helmet_death_mask": {
+      "name": "Death Mask"
+    },
+    "helmet_grand_visage": {
+      "name": "Grand Visage"
+    },
+    "helmet_golden_visage_2": {
+      "name": "Golden Visage"
+    },
+    "helmet_corroded_greathelm": {
+      "name": "Corroded Greathelm"
+    },
+    "helmet_mercenary_greathelm": {
+      "name": "Mercenary Greathelm"
+    },
+    "helmet_homeguard_greathelm": {
+      "name": "Homeguard Greathelm"
+    },
+    "helmet_elegant_greathelm": {
+      "name": "Elegant Greathelm"
+    },
+    "helmet_noble_greathelm": {
+      "name": "Noble Greathelm"
+    },
+    "helmet_rotted_hood": {
+      "name": "Rotted Hood"
+    },
+    "helmet_wool_cap": {
+      "name": "Wool Cap"
+    },
+    "helmet_narrow_hood": {
+      "name": "Narrow Hood"
+    },
+    "helmet_wrapped_cap": {
+      "name": "Wrapped Cap"
+    },
+    "helmet_deerstalker_hood": {
+      "name": "Deerstalker Hood"
+    },
+    "helmet_druidic_circlet": {
+      "name": "Druidic Circlet"
+    },
+    "helmet_avian_tiara": {
+      "name": "Avian Tiara"
+    },
+    "helmet_desert_circlet": {
+      "name": "Desert Circlet"
+    },
+    "helmet_sandsworn_tiara": {
+      "name": "Sandsworn Tiara"
+    },
+    "helmet_jungle_tiara": {
+      "name": "Jungle Tiara"
+    },
+    "helmet_domed_helm": {
+      "name": "Domed Helm"
+    },
+    "helmet_engraved_helm": {
+      "name": "Engraved Helm"
+    },
+    "helmet_soldier_helm": {
+      "name": "Soldier Helm"
+    },
+    "helmet_cabalist_helm": {
+      "name": "Cabalist Helm"
+    },
+    "helmet_gladiatoral_helm": {
+      "name": "Gladiatoral Helm"
+    },
+    "helmet_mailed_crown": {
+      "name": "Mailed Crown"
+    },
+    "helmet_forest_crown": {
+      "name": "Forest Crown"
+    },
+    "helmet_zealot_crown": {
+      "name": "Zealot Crown"
+    },
+    "helmet_hallowed_crown": {
+      "name": "Hallowed Crown"
+    },
+    "helmet_inquisitor_crown": {
+      "name": "Inquisitor Crown"
+    },
+    "helmet_oak_mask": {
+      "name": "Oak Mask"
+    },
+    "helmet_bandit_mask": {
+      "name": "Bandit Mask"
+    },
+    "helmet_skulking_mask": {
+      "name": "Skulking Mask"
+    },
+    "helmet_pariah_mask": {
+      "name": "Pariah Mask"
+    },
+    "helmet_avian_mask": {
+      "name": "Avian Mask"
+    },
+    "helmet_warmonger_greathelm": {
+      "name": "Warmonger Greathelm"
+    },
+    "helmet_masked_greathelm": {
+      "name": "Masked Greathelm"
+    },
+    "helmet_paragon_greathelm": {
+      "name": "Paragon Greathelm"
+    },
+    "helmet_imperial_greathelm": {
+      "name": "Imperial Greathelm"
+    },
+    "helmet_woven_cap": {
+      "name": "Woven Cap"
+    },
+    "helmet_desert_cap": {
+      "name": "Desert Cap"
+    },
+    "helmet_trapper_hood": {
+      "name": "Trapper Hood"
+    },
+    "helmet_freebooter_cap": {
+      "name": "Freebooter Cap"
+    },
+    "helmet_skycrown_tiara": {
+      "name": "Skycrown Tiara"
+    },
+    "helmet_sorcerous_tiara": {
+      "name": "Sorcerous Tiara"
+    },
+    "helmet_kamasan_tiara": {
+      "name": "Kamasan Tiara"
+    },
+    "helmet_ancestral_tiara": {
+      "name": "Ancestral Tiara"
+    },
+    "helmet_warded_helm": {
+      "name": "Warded Helm"
+    },
+    "helmet_cryptic_helm": {
+      "name": "Cryptic Helm"
+    },
+    "helmet_champion_helm": {
+      "name": "Champion Helm"
+    },
+    "helmet_gladiatorial_helm": {
+      "name": "Gladiatorial Helm"
+    },
+    "helmet_druidic_crown": {
+      "name": "Druidic Crown"
+    },
+    "helmet_saintly_crown": {
+      "name": "Saintly Crown"
+    },
+    "helmet_divine_crown": {
+      "name": "Divine Crown"
+    },
+    "helmet_cryptic_crown": {
+      "name": "Cryptic Crown"
+    },
+    "helmet_brigand_mask": {
+      "name": "Brigand Mask"
+    },
+    "helmet_faridun_mask": {
+      "name": "Faridun Mask"
+    },
+    "helmet_soaring_mask": {
+      "name": "Soaring Mask"
+    },
+    "helmet_grinning_mask": {
+      "name": "Grinning Mask"
+    },
+    "amulet_crimson_amulet": {
+      "name": "Crimson Amulet"
+    },
+    "amulet_azure_amulet": {
+      "name": "Azure Amulet"
+    },
+    "amulet_amber_amulet": {
+      "name": "Amber Amulet"
+    },
+    "amulet_jade_amulet": {
+      "name": "Jade Amulet"
+    },
+    "amulet_lapis_amulet": {
+      "name": "Lapis Amulet"
+    },
+    "amulet_lunar_amulet": {
+      "name": "Lunar Amulet"
+    },
+    "amulet_bloodstone_amulet": {
+      "name": "Bloodstone Amulet"
+    },
+    "amulet_stellar_amulet": {
+      "name": "Stellar Amulet"
+    },
+    "amulet_solar_amulet": {
+      "name": "Solar Amulet"
+    },
+    "amulet_gold_amulet": {
+      "name": "Gold Amulet"
+    },
+    "amulet_pearlescent_amulet": {
+      "name": "Pearlescent Amulet"
+    },
+    "amulet_dusk_amulet": {
+      "name": "Dusk Amulet"
+    },
+    "amulet_gloam_amulet": {
+      "name": "Gloam Amulet"
+    },
+    "amulet_penumbra_amulet": {
+      "name": "Penumbra Amulet"
+    },
+    "amulet_tenebrous_amulet": {
+      "name": "Tenebrous Amulet"
+    },
+    "amulet_distorted_amulet": {
+      "name": "Distorted Amulet"
+    },
+    "ring_golden_hoop": {
+      "name": "Golden Hoop"
+    },
+    "ring_iron_ring": {
+      "name": "Iron Ring"
+    },
+    "ring_lazuli_ring": {
+      "name": "Lazuli Ring"
+    },
+    "ring_ruby_ring": {
+      "name": "Ruby Ring"
+    },
+    "ring_sapphire_ring": {
+      "name": "Sapphire Ring"
+    },
+    "ring_topaz_ring": {
+      "name": "Topaz Ring"
+    },
+    "ring_amethyst_ring": {
+      "name": "Amethyst Ring"
+    },
+    "ring_emerald_ring": {
+      "name": "Emerald Ring"
+    },
+    "ring_pearl_ring": {
+      "name": "Pearl Ring"
+    },
+    "ring_prismatic_ring": {
+      "name": "Prismatic Ring"
+    },
+    "ring_gold_ring": {
+      "name": "Gold Ring"
+    },
+    "ring_unset_ring": {
+      "name": "Unset Ring"
+    },
+    "ring_abyssal_signet": {
+      "name": "Abyssal Signet"
+    },
+    "ring_ring": {
+      "name": "Ring"
+    },
+    "ring_dusk_ring": {
+      "name": "Dusk Ring"
+    },
+    "ring_gloam_ring": {
+      "name": "Gloam Ring"
+    },
+    "ring_penumbra_ring": {
+      "name": "Penumbra Ring"
+    },
+    "ring_tenebrous_ring": {
+      "name": "Tenebrous Ring"
+    },
+    "ring_breach_ring": {
+      "name": "Breach Ring"
+    },
+    "belt_golden_obi": {
+      "name": "Golden Obi"
+    },
+    "belt_rawhide_belt": {
+      "name": "Rawhide Belt"
+    },
+    "belt_linen_belt": {
+      "name": "Linen Belt"
+    },
+    "belt_wide_belt": {
+      "name": "Wide Belt"
+    },
+    "belt_long_belt": {
+      "name": "Long Belt"
+    },
+    "belt_plate_belt": {
+      "name": "Plate Belt"
+    },
+    "belt_ornate_belt": {
+      "name": "Ornate Belt"
+    },
+    "belt_mail_belt": {
+      "name": "Mail Belt"
+    },
+    "belt_double_belt": {
+      "name": "Double Belt"
+    },
+    "belt_heavy_belt": {
+      "name": "Heavy Belt"
+    },
+    "belt_utility_belt": {
+      "name": "Utility Belt"
+    },
+    "belt_fine_belt": {
+      "name": "Fine Belt"
+    },
+    "two_hand_sword_energy_blade": {
+      "name": "Energy Blade"
     }
   },
   "baseItemImplicits": {

@@ -1,5 +1,3 @@
-import type { IItemRoll, IModDefinition } from "@/types/poe2-item-simulator";
-
 const modSignature = (mod: IModDefinition): string => {
   return [
     mod.modKey,

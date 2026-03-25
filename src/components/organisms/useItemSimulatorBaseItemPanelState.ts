@@ -4,18 +4,11 @@ import { useMemo, useState } from "react";
 import type { Dispatch, SetStateAction } from "react";
 
 import type { ItemSimulatorBaseItemFilterRangeFieldsPropsType } from "@/components/organisms/ItemSimulatorBaseItemFilterRangeFields";
-import type {
-  ItemSimulatorEquipmentFilterType,
-  ItemSimulatorSubTypeFilterType,
-} from "@/types/item-simulator-filters";
 import { BASE_ITEMS } from "@/lib/poe2-item-simulator/baseItems";
 import {
   BASE_ITEM_DB,
   BASE_ITEM_SUB_TYPES_BY_EQUIPMENT,
-  type IBaseItemDbRecordType,
-  type IBaseItemSubTypeType,
 } from "@/lib/poe2-item-simulator/baseItemDb";
-import type { IBaseItemDefinition } from "@/types/poe2-item-simulator";
 
 export type UseItemSimulatorBaseItemPanelStateReturnType = {
   selectedBaseItemKey: string;

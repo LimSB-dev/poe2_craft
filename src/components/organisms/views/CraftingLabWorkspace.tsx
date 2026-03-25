@@ -127,10 +127,10 @@ const HINEKORA_SKIP_CURRENCY_IDS = new Set<CraftingCurrencyIdType>([
 ]);
 
 const CRAFT_LAB_STASH_TAB_LABEL_KEYS: Record<CraftLabStashTabIdType, string> = {
-  currency: "stashTabCurrency",
-  essence: "stashTabEssence",
-  abyss: "stashTabAbyss",
-  ritual: "stashTabRitual",
+  currency: "craftLab.stashTabCurrency",
+  essence: "craftLab.stashTabEssence",
+  abyss: "craftLab.stashTabAbyss",
+  ritual: "craftLab.stashTabRitual",
 };
 
 const EMPTY_NORMAL_ROLL: IItemRoll = {
@@ -621,7 +621,7 @@ export const CraftingLabWorkspace = (): ReactElement => {
         noteKeys: ["boneSimulationNote"],
         sections: [],
       });
-      setSimPreviewLabel(t(`currency.${boneId}`));
+      setSimPreviewLabel(t(`craftLab.currency.${boneId}`));
       setLastError(null);
       return;
     }
@@ -733,7 +733,7 @@ export const CraftingLabWorkspace = (): ReactElement => {
     }
     return order
       .map((id) => {
-        return `${t(`currency.${id}`)} ×${String(counts.get(id) ?? 0)}`;
+        return `${t(`craftLab.currency.${id}`)} ×${String(counts.get(id) ?? 0)}`;
       })
       .join(", ");
   }, [completionSnapshot, t]);
@@ -760,8 +760,8 @@ export const CraftingLabWorkspace = (): ReactElement => {
         : family === "orb_chaos" && hasStagedWhittlingOmen
           ? { clearActiveStagedOmenId: "omen_whittling" as const }
           : undefined;
-    const name = t(`currency.${id}`);
-    const hoverHint = t(`currencyHoverHint.${id}`);
+    const name = t(`craftLab.currency.${id}`);
+    const hoverHint = t(`craftLab.currencyHoverHint.${id}`);
     const orbBlockedReason = applicable ? undefined : t("craftLab.orbDisabledTooltip");
     const iconSrc = getCraftingLabCurrencyIconUrl(id);
     const tierRoman = getOrbSlotTierRoman(id);
@@ -831,8 +831,8 @@ export const CraftingLabWorkspace = (): ReactElement => {
     }
 
     const iconSrc = getCraftingLabCurrencyIconUrl(id);
-    const name = t(`currency.${id}`);
-    const hoverHint = t(`currencyHoverHint.${id}`);
+    const name = t(`craftLab.currency.${id}`);
+    const hoverHint = t(`craftLab.currencyHoverHint.${id}`);
 
     if (id === "orb_hinekoras_lock") {
       const hinekoraApplicable = canApplyHinekorasLock(itemRoll);
@@ -915,8 +915,8 @@ export const CraftingLabWorkspace = (): ReactElement => {
     if (boneDef === undefined) {
       return null;
     }
-    const name = t(`currency.${boneId}`);
-    const hoverHint = t(`currencyHoverHint.${boneId}`);
+    const name = t(`craftLab.currency.${boneId}`);
+    const hoverHint = t(`craftLab.currencyHoverHint.${boneId}`);
     const boneOk = canApplyPreservedBone(itemRoll, boneDef, modRollFilters);
     const boneDisabledInRandom = craftLabMode !== "random" || !boneOk;
     const boneDisabledTitle = boneDisabledInRandom
@@ -1282,7 +1282,7 @@ export const CraftingLabWorkspace = (): ReactElement => {
                               />
                             );
                           }
-                          const name = t(`currency.${omenId}`);
+                          const name = t(`craftLab.currency.${omenId}`);
                           return (
                             <CraftingLabOrbSlotButton
                               key={`active-staged-omen-slot-${omenId}`}
@@ -1413,9 +1413,9 @@ export const CraftingLabWorkspace = (): ReactElement => {
                         <div className="mx-auto grid w-max grid-cols-3 gap-1.5 sm:gap-2">
                           {CRAFT_LAB_ESSENCE_DEFINITIONS.map((essenceDef) => {
                             const id = essenceDef.essenceKey;
-                            const name = t(`currency.${id}`);
+                            const name = t(`craftLab.currency.${id}`);
                             const hoverHint = t(
-                              `currencyHoverHint.${essenceDef.essenceFamilyKey}`,
+                              `craftLab.currencyHoverHint.${essenceDef.essenceFamilyKey}`,
                             );
                             const essenceApplicable = canApplyEssence(
                               itemRoll,
@@ -1537,9 +1537,9 @@ export const CraftingLabWorkspace = (): ReactElement => {
                             </p>
                             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-1.5 sm:gap-2">
                               {CRAFT_LAB_ABYSS_OMEN_IDS.map((omenId) => {
-                                const name = t(`currency.${omenId}`);
+                                const name = t(`craftLab.currency.${omenId}`);
                                 const hoverHint = t(
-                                  `currencyHoverHint.${omenId}`,
+                                  `craftLab.currencyHoverHint.${omenId}`,
                                 );
                                 const isSelected =
                                   activeStagedOmenIds.includes(omenId);
@@ -1627,8 +1627,8 @@ export const CraftingLabWorkspace = (): ReactElement => {
                       <div className="mx-auto max-h-[min(70vh,28rem)] w-max max-w-full overflow-y-auto overflow-x-hidden pr-0.5">
                         <div className="mx-auto grid w-max grid-cols-3 gap-1.5 sm:gap-2">
                           {CRAFT_LAB_RITUAL_OMEN_IDS.map((omenId) => {
-                            const name = t(`currency.${omenId}`);
-                            const hoverHint = t(`currencyHoverHint.${omenId}`);
+                            const name = t(`craftLab.currency.${omenId}`);
+                            const hoverHint = t(`craftLab.currencyHoverHint.${omenId}`);
                             const isSelected =
                               activeStagedOmenIds.includes(omenId);
                             return (
@@ -1759,7 +1759,7 @@ export const CraftingLabWorkspace = (): ReactElement => {
                     {completionSnapshot.map((id, index) => {
                       return (
                         <li key={`${id}-${String(index)}`}>
-                          {t(`currency.${id}`)}
+                          {t(`craftLab.currency.${id}`)}
                         </li>
                       );
                     })}

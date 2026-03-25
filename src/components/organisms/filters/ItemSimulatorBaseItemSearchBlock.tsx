@@ -16,7 +16,7 @@ type ItemSimulatorBaseItemSearchBlockPropsType = {
 };
 
 /**
- * 베이스 아이템 검색·드롭다운 — `simulator.itemSimulatorCatalog` 단일 네임스페이스.
+ * 베이스 아이템 검색·드롭다운 — 베이스 표시명은 전체 목록이 있는 `simulator.baseItems`를 사용한다.
  */
 export const ItemSimulatorBaseItemSearchBlock = ({
   filteredBaseItemRecords,
@@ -26,7 +26,7 @@ export const ItemSimulatorBaseItemSearchBlock = ({
   ariaLabelBaseItem,
   noResultsLabel,
 }: ItemSimulatorBaseItemSearchBlockPropsType): ReactElement => {
-  const tCatalog = useTranslations("simulator.itemSimulatorCatalog");
+  const tBaseNames = useTranslations("simulator");
   const [baseItemQuery, setBaseItemQuery] = useState("");
   const [isBaseItemDropdownOpen, setIsBaseItemDropdownOpen] = useState(false);
   const baseItemContainerRef = useRef<HTMLDivElement>(null);
@@ -37,7 +37,7 @@ export const ItemSimulatorBaseItemSearchBlock = ({
       return baseItemKey;
     }
     try {
-      return tCatalog(`baseItems.${def.baseItemKey}.name`);
+      return tBaseNames(`baseItems.${def.baseItemKey}.name`);
     } catch {
       return baseItemKey;
     }

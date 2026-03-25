@@ -12,7 +12,7 @@ export const ItemSimulatorCatalogBaseName = ({
   baseItemKey,
   className,
 }: ItemSimulatorCatalogBaseNamePropsType): ReactElement => {
-  const t = useTranslations("simulator.itemSimulatorCatalog");
+  const t = useTranslations("simulator");
   let label: string;
   try {
     label = t(`baseItems.${baseItemKey}.name`);

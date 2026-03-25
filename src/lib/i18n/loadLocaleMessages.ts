@@ -22,26 +22,6 @@ const deepMergeRecords = (
   return result;
 };
 
-/**
- * `itemSimulatorCatalog.baseItems`는 JSON에 일부 베이스만 두는 경우가 있어,
- * 루트 `baseItems`를 베이스로 깊게 합쳐 `t('baseItems.*.name')` 누락을 막는다.
- * 카탈로그에만 있는 항목은 카탈로그 값이 우선한다.
- */
-const expandItemSimulatorCatalogBaseItems = (
-  simulator: Record<string, unknown>,
-): void => {
-  const rootBaseItems = simulator.baseItems;
-  const catalog = simulator.itemSimulatorCatalog;
-  if (!isPlainObject(rootBaseItems) || !isPlainObject(catalog)) {
-    return;
-  }
-  const catalogBaseItems = catalog.baseItems;
-  catalog.baseItems = deepMergeRecords(
-    rootBaseItems as Record<string, unknown>,
-    isPlainObject(catalogBaseItems) ? catalogBaseItems : {},
-  );
-};
-
 export const loadLocaleMessages = async (locale: AppLocaleType) => {
   const [metadataMod, simulatorLocale] = await Promise.all([
     import(`../../i18n/${locale}/metadata.json`),
@@ -73,8 +53,6 @@ export const loadLocaleMessages = async (locale: AppLocaleType) => {
       // Optional fragment: skip when not provided for this locale.
     }
   }
-
-  expandItemSimulatorCatalogBaseItems(simulator);
 
   return {
     metadata: metadataMod.default,

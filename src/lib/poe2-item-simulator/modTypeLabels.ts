@@ -3,7 +3,6 @@ import {
   type AppSupportedLocaleType,
 } from "@/lib/i18n/appLocales";
 
-import type { ModTypeType } from "./types";
 import modTypeLabelsJson from "./data/modTypeLabels.json";
 
 export type ModTypeLabelRowType = {

@@ -1,8 +1,3 @@
-import type {
-  IBaseItemEquipmentTypeType,
-  IBaseItemSubTypeType,
-} from "@/lib/poe2-item-simulator/baseItemDb";
-
 import baseItemImageMeta from "../../../data/generated/base-item-image-meta.json";
 
 const BASE_ITEM_IMAGE_ROOT_PATH: string = "/images/items";

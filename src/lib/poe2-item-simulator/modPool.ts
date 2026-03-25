@@ -1,7 +1,4 @@
 import { MOD_DB } from "./modDb";
-import type { IModDbRecordType } from "./modDb";
-import type { IModDefinition } from "./types";
-import type { IBaseItemSubTypeType } from "./baseItemDb";
 
 /**
  * Returns all mod records applicable to the given item sub-type.

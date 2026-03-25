@@ -1,6 +1,5 @@
 import { rollRareItemRoll } from "../roller";
 import { getRandomIntInclusive } from "../random";
-import type { IItemRoll } from "../types";
 
 const RARE_MAX_PREFIX_COUNT: number = 3;
 const RARE_MAX_SUFFIX_COUNT: number = 3;

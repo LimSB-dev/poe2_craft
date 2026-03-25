@@ -1,5 +1,3 @@
-import type { ModTypeType } from "@/types/poe2-item-simulator";
-
 import type { IRlTrainDesiredModPayloadType } from "./rlTrainApiTypes";
 
 const MOD_TYPES: ReadonlySet<string> = new Set([

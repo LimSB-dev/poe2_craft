@@ -1,18 +1,21 @@
 import { NextResponse } from "next/server";
 import { GOOD_MOD_MAX_TIER } from "@/lib/poe2-item-simulator/currency/chaosOrb";
 import { runStrategyComparisonEngine } from "@/lib/poe2-item-simulator/strategyComparisonEngine";
-
-const MAX_TRIALS: number = 50000;
-const DEFAULT_TRIALS: number = 10000;
-const DEFAULT_BUDGET_MAX_CHAOS: number = 80;
-const BUDGET_MIN: number = 1;
-const BUDGET_MAX: number = 200;
-const MIN_GOOD_MODS_MIN: number = 1;
-const MIN_GOOD_MODS_MAX: number = 6;
-const MIN_TOTAL_AFFIXES_MIN: number = 1;
-const MIN_TOTAL_AFFIXES_MAX: number = 6;
-const GOOD_TIER_MIN: number = 1;
-const GOOD_TIER_MAX: number = 5;
+import {
+  STRATEGY_COMPARISON_BUDGET_MAX,
+  STRATEGY_COMPARISON_BUDGET_MIN,
+  STRATEGY_COMPARISON_DEFAULT_BUDGET_MAX_CHAOS,
+  STRATEGY_COMPARISON_DEFAULT_MIN_GOOD_MODS,
+  STRATEGY_COMPARISON_DEFAULT_MIN_TOTAL_AFFIXES,
+  STRATEGY_COMPARISON_DEFAULT_TRIALS,
+  STRATEGY_COMPARISON_GOOD_TIER_MAX,
+  STRATEGY_COMPARISON_GOOD_TIER_MIN,
+  STRATEGY_COMPARISON_MAX_TRIALS,
+  STRATEGY_COMPARISON_MIN_GOOD_MODS_MAX,
+  STRATEGY_COMPARISON_MIN_GOOD_MODS_MIN,
+  STRATEGY_COMPARISON_MIN_TOTAL_AFFIXES_MAX,
+  STRATEGY_COMPARISON_MIN_TOTAL_AFFIXES_MIN,
+} from "@/constants/strategyComparison";
 
 const parsePositiveInt = (value: string | null, fallback: number): number => {
   if (value === null) {
@@ -22,7 +25,7 @@ const parsePositiveInt = (value: string | null, fallback: number): number => {
   if (!Number.isFinite(parsed) || parsed <= 0) {
     return fallback;
   }
-  return Math.min(parsed, MAX_TRIALS);
+  return Math.min(parsed, STRATEGY_COMPARISON_MAX_TRIALS);
 };
 
 const parseBoundedInt = (
@@ -43,30 +46,30 @@ const parseBoundedInt = (
 
 export const GET = async (request: Request): Promise<Response> => {
   const { searchParams } = new URL(request.url);
-  const trials = parsePositiveInt(searchParams.get("trials"), DEFAULT_TRIALS);
+  const trials = parsePositiveInt(searchParams.get("trials"), STRATEGY_COMPARISON_DEFAULT_TRIALS);
   const budget = parseBoundedInt(
     searchParams.get("budget"),
-    DEFAULT_BUDGET_MAX_CHAOS,
-    BUDGET_MIN,
-    BUDGET_MAX
+    STRATEGY_COMPARISON_DEFAULT_BUDGET_MAX_CHAOS,
+    STRATEGY_COMPARISON_BUDGET_MIN,
+    STRATEGY_COMPARISON_BUDGET_MAX
   );
   const minGoodMods = parseBoundedInt(
     searchParams.get("minGoodMods"),
-    3,
-    MIN_GOOD_MODS_MIN,
-    MIN_GOOD_MODS_MAX
+    STRATEGY_COMPARISON_DEFAULT_MIN_GOOD_MODS,
+    STRATEGY_COMPARISON_MIN_GOOD_MODS_MIN,
+    STRATEGY_COMPARISON_MIN_GOOD_MODS_MAX
   );
   const minTotalAffixes = parseBoundedInt(
     searchParams.get("minTotalAffixes"),
-    4,
-    MIN_TOTAL_AFFIXES_MIN,
-    MIN_TOTAL_AFFIXES_MAX
+    STRATEGY_COMPARISON_DEFAULT_MIN_TOTAL_AFFIXES,
+    STRATEGY_COMPARISON_MIN_TOTAL_AFFIXES_MIN,
+    STRATEGY_COMPARISON_MIN_TOTAL_AFFIXES_MAX
   );
   const goodTierMaxInclusive = parseBoundedInt(
     searchParams.get("goodTierMax"),
     GOOD_MOD_MAX_TIER,
-    GOOD_TIER_MIN,
-    GOOD_TIER_MAX
+    STRATEGY_COMPARISON_GOOD_TIER_MIN,
+    STRATEGY_COMPARISON_GOOD_TIER_MAX
   );
 
   const result = runStrategyComparisonEngine({

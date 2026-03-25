@@ -1,4 +1,3 @@
-import type { IModDbRecordType, IModTierType } from "./modDb";
 import { MOD_WIKI_TIER_SOURCES } from "./modWikiTierSources";
 import type { WikiExtractedModTierRowType, WikiItemModTiersFileType } from "./wikiModTierTypes";
 

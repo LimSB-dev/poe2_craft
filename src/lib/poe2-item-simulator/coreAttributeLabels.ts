@@ -3,10 +3,6 @@ import {
   type AppSupportedLocaleType,
 } from "@/lib/i18n/appLocales";
 
-import type {
-  IBaseItemDbRecordType,
-  IBaseItemStatTagType,
-} from "./baseItemDb";
 import coreAttributeLabelsJson from "./data/coreAttributeLabels.json";
 
 export type CoreAttributeLocaleRowType = {

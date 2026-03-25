@@ -1,5 +1,3 @@
-import type { IItemRoll } from "./types";
-
 /**
  * PoE2-style rule for this simulator: while `isCorrupted` is set, **standard** crafting
  * (basic orbs, essences, preserved bone) cannot change the item.

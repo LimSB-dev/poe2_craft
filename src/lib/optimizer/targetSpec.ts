@@ -1,5 +1,3 @@
-import type { IItemRoll } from "@/types/poe2-item-simulator";
-
 export type IOptimizationTargetSpecType = {
   validModKeys: ReadonlyArray<string>;
   minTotalAffixes: number;

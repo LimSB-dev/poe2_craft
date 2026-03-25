@@ -6,7 +6,6 @@ import { toOptimizerModPoolFromPoe2Db } from "@/lib/poe2db/optimizerModPool";
 import type { IPoe2DbImportResultType } from "@/lib/poe2db/schema";
 import { runOptimization } from "@/lib/optimizer/optimize";
 import type { IOptimizationTargetSpecType } from "@/lib/optimizer/targetSpec";
-import type { IModDefinition } from "@/types/poe2-item-simulator";
 
 type IDataSourceType = "local" | "poe2db";
 

@@ -1,1 +1,1 @@
-export * from "@/lib/poe2-item-simulator/ritual/ritualCrafting";
+export * from "./ritualCrafting";

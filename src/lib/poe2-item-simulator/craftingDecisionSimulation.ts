@@ -12,7 +12,6 @@
  */
 import { applyLegacyChaosOrbFullReroll, countGoodMods, GOOD_MOD_MAX_TIER } from "./currency/chaosOrb";
 import { shouldContinue, type IShouldContinueOptionsType } from "./craftingDecision";
-import type { IItemRoll } from "./types";
 
 const EMPTY_RARE: IItemRoll = { rarity: "rare", prefixes: [], suffixes: [] };
 

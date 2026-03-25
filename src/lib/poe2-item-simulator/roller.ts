@@ -1,15 +1,5 @@
-import type { IBaseItemStatTagType, IBaseItemSubTypeType } from "./baseItemDb";
 import { MOD_DB } from "./modDb";
-import type { IModDbRecordType } from "./modDb";
 import { MOD_POOL } from "./modPool";
-import type {
-  IItemRoll,
-  IModDefinition,
-  IModRollContext,
-  ISimulationOptionsType,
-  ItemRarityType,
-  ModTypeType,
-} from "./types";
 import { getRandomIntInclusive, pickWeightedRandom } from "./random";
 
 /** 베이스가 알려질 때만 적용(크래프트 랩 등). 생략 시 기존 전역 MOD_POOL 동작. */

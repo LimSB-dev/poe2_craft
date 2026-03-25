@@ -1,9 +1,8 @@
 import fs from "fs";
 import path from "path";
 
-import type { IModDbRecordType } from "@/lib/poe2-item-simulator/modDb";
 import { MOD_DB } from "@/lib/poe2-item-simulator/modDb";
-import koSimulatorMessages from "@/i18n/messages/ko/simulator.json";
+import koSimulatorMessages from "@/i18n/ko/simulator.json";
 
 type ExtractedModifierRowType = {
   sourcePageSlug: string;
@@ -50,10 +49,6 @@ const OUT_MATCH_PATH = path.join(
   process.cwd(),
   "data/generated/poe2db-modifiers.moddb-match.json",
 );
-
-const compact = (value: string): string => {
-  return value.replace(/\s+/g, " ").trim();
-};
 
 const toTokenSet = (value: string): Set<string> => {
   const normalized = value

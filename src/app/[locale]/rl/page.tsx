@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { ReactElement } from "react";
-import { RlTrainerContainer } from "@/features/rl/containers/RlTrainerContainer";
+import { RlTrainerView } from "@/components/organisms/views/RlTrainerView";
 
 type RlPagePropsType = {
   params: Promise<{ locale: string }>;
@@ -23,7 +23,7 @@ export const generateMetadata = async ({
 const RlPage = async ({ params }: RlPagePropsType): Promise<ReactElement> => {
   const { locale } = await params;
   setRequestLocale(locale);
-  return <RlTrainerContainer />;
+  return <RlTrainerView />;
 };
 
 export default RlPage;

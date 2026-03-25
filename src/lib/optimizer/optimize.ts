@@ -3,7 +3,6 @@ import {
   type ICurrencyCostModelType,
   type IOptimizationStrategyIdType,
 } from "@/lib/optimizer/actionModel";
-import type { IModDefinition } from "@/types/poe2-item-simulator";
 import type { IOptimizationTargetSpecType } from "@/lib/optimizer/targetSpec";
 
 export type IOptimizationStrategySummaryType = {

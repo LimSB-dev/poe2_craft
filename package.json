@@ -39,6 +39,10 @@
     "eslint-visitor-keys": "4.2.1"
   },
   "optionalDependencies": {
+    "@parcel/watcher-darwin-arm64": "2.5.6",
+    "@parcel/watcher-darwin-x64": "2.5.6",
+    "@parcel/watcher-linux-x64-glibc": "2.5.6",
+    "@parcel/watcher-win32-x64": "2.5.6",
     "lightningcss-darwin-arm64": "1.32.0",
     "lightningcss-darwin-x64": "1.32.0",
     "lightningcss-linux-x64-gnu": "1.32.0",

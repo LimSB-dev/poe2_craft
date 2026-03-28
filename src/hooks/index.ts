@@ -1,4 +1,4 @@
 export {
   useBaseItemWorkspaceState,
   type UseBaseItemWorkspaceStateReturnType,
-} from "./useBaseItemWorkspaceState";
+} from "@/hooks/useBaseItemWorkspaceState";

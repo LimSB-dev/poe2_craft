@@ -3,13 +3,13 @@ import {
   countGoodMods,
   countTotalAffixes,
   GOOD_MOD_MAX_TIER,
-} from "./currency/chaosOrb";
-import { shouldContinue, type IShouldContinueOptionsType } from "./craftingDecision";
+} from "@/lib/poe2-item-simulator/currency/chaosOrb";
+import { shouldContinue, type IShouldContinueOptionsType } from "@/lib/poe2-item-simulator/craftingDecision";
 import {
   applyEssence,
   getBenchModFiltersForEssence,
   LIFE_ESSENCE,
-} from "./essence/essence";
+} from "@/lib/poe2-item-simulator/essence/essence";
 import {
   STRATEGY_COMPARISON_DEFAULT_BUDGET_MAX_CHAOS,
   STRATEGY_COMPARISON_DEFAULT_MIN_GOOD_MODS,

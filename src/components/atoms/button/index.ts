@@ -1,6 +1,6 @@
-export { Button } from "./Button";
-export type { ButtonSizeType, ButtonVariantType } from "./Button";
+export { Button } from "@/components/atoms/button/Button";
+export type { ButtonSizeType, ButtonVariantType } from "@/components/atoms/button/Button";
 
-export { IconButton } from "./IconButton";
-export type { IconButtonSizeType, IconButtonVariantType } from "./IconButton";
+export { IconButton } from "@/components/atoms/button/IconButton";
+export type { IconButtonSizeType, IconButtonVariantType } from "@/components/atoms/button/IconButton";
 

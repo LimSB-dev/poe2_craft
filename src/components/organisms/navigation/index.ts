@@ -1,3 +1,3 @@
-export { ItemWorkbenchColumns } from "./ItemWorkbenchColumns";
-export { LocaleSwitcher } from "./LocaleSwitcher";
-export { SiteTopBar } from "./SiteTopBar";
+export { ItemWorkbenchColumns } from "@/components/organisms/navigation/ItemWorkbenchColumns";
+export { LocaleSwitcher } from "@/components/organisms/navigation/LocaleSwitcher";
+export { SiteTopBar } from "@/components/organisms/navigation/SiteTopBar";

@@ -3,7 +3,7 @@ import {
   type AppSupportedLocaleType,
 } from "@/lib/i18n/appLocales";
 
-import coreAttributeLabelsJson from "./data/coreAttributeLabels.json";
+import coreAttributeLabelsJson from "@/lib/poe2-item-simulator/data/coreAttributeLabels.json";
 
 export type CoreAttributeLocaleRowType = {
   requirementPrefix: string;

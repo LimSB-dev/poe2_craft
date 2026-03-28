@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { createInitialLocaleState, localeReducer } from "./localeSlice";
+import { createInitialLocaleState, localeReducer } from "@/store/localeSlice";
 import type { AppLocaleType } from "@/lib/i18n/routing";
 import type { AbstractIntlMessages } from "next-intl";
 

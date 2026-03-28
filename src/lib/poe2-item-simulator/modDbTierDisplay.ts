@@ -1,4 +1,4 @@
-import { tryGetWikiModTiers } from "./wikiModTierMerge";
+import { tryGetWikiModTiers } from "@/lib/poe2-item-simulator/wikiModTierMerge";
 
 /**
  * One row in the DB UI tier breakdown (either from `record.tiers` or synthesized).

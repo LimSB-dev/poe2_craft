@@ -1,4 +1,4 @@
-import type { AppLocaleType } from "./routing";
+import type { AppLocaleType } from "@/lib/i18n/routing";
 
 const isPlainObject = (value: unknown): value is Record<string, unknown> => {
   return Boolean(value) && typeof value === "object" && !Array.isArray(value);

@@ -5,7 +5,7 @@ import { useMemo, type ReactElement } from "react";
 
 import { EmptyStateText } from "@/components/atoms";
 import { DesiredModListItem } from "@/components/molecules";
-import { DesiredModsModPickerList } from "./DesiredModsModPickerList";
+import { DesiredModsModPickerList } from "@/components/organisms/filters/DesiredModsModPickerList";
 import { getModPool } from "@/lib/poe2-item-simulator/modPool";
 import { getModTypeDisplayName } from "@/lib/poe2-item-simulator/modTypeLabels";
 import { useAppSelector } from "@/store/hooks";

@@ -7,14 +7,14 @@
 import {
   assertRollNotCorruptedForStandardCrafting,
   isCorruptedRoll,
-} from "../itemCorruptionCraftingGuard";
-import { getRandomIntInclusive } from "../random";
+} from "@/lib/poe2-item-simulator/itemCorruptionCraftingGuard";
+import { getRandomIntInclusive } from "@/lib/poe2-item-simulator/random";
 import {
   listModRollCandidates,
   rollRandomMod,
   rollRareItemRoll,
   type IModRollBaseFiltersType,
-} from "../roller";
+} from "@/lib/poe2-item-simulator/roller";
 
 const MAGIC_MAX_PREFIX_SLOTS: number = 1;
 const MAGIC_MAX_SUFFIX_SLOTS: number = 1;

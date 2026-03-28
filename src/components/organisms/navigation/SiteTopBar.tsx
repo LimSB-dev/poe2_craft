@@ -3,7 +3,7 @@
 import { useTranslations } from "next-intl";
 import type { ReactElement } from "react";
 
-import { LocaleSwitcher } from "./LocaleSwitcher";
+import { LocaleSwitcher } from "@/components/organisms/navigation/LocaleSwitcher";
 import { Link, usePathname } from "@/lib/i18n/navigation";
 
 type SiteTopBarPropsType = {

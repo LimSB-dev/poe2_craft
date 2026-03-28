@@ -1,5 +1,5 @@
-import { rollRareItemRoll } from "../roller";
-import { getRandomIntInclusive } from "../random";
+import { rollRareItemRoll } from "@/lib/poe2-item-simulator/roller";
+import { getRandomIntInclusive } from "@/lib/poe2-item-simulator/random";
 
 const RARE_MAX_PREFIX_COUNT: number = 3;
 const RARE_MAX_SUFFIX_COUNT: number = 3;

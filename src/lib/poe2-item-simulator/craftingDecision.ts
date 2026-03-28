@@ -1,4 +1,4 @@
-import { countGoodMods, GOOD_MOD_MAX_TIER } from "./currency/chaosOrb";
+import { countGoodMods, GOOD_MOD_MAX_TIER } from "@/lib/poe2-item-simulator/currency/chaosOrb";
 
 /** When exactly one good mod exists, continue with this probability (otherwise stop). */
 export const DEFAULT_PROBABILITY_CONTINUE_WITH_ONE_GOOD_MOD: number = 0.5;

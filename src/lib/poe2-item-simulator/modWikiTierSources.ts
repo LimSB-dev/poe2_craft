@@ -1,4 +1,4 @@
-import type { WikiExtractedModTierRowType } from "./wikiModTierTypes";
+import type { WikiExtractedModTierRowType } from "@/lib/poe2-item-simulator/wikiModTierTypes";
 
 /**
  * Maps simulator `modKey` → poe2wiki Cargo `mods.mod_groups` (+ prefix/suffix).

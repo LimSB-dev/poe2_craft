@@ -13,8 +13,8 @@ import {
   type CraftingLabOrbSlotIdType,
   type CraftingOrbFamilyIdType,
   orbSlotIdToFamilyKind,
-} from "./craftingLabCurrencyIds";
-import { isCraftLabOrbSlotItemLevelAllowed } from "./craftLabOrbTierItemLevel";
+} from "@/lib/crafting-lab/craftingLabCurrencyIds";
+import { isCraftLabOrbSlotItemLevelAllowed } from "@/lib/crafting-lab/craftLabOrbTierItemLevel";
 
 /**
  * Whether the given orb **family** can be used on `roll` (same rules as `canApply*` in the simulator).

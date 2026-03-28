@@ -3,11 +3,11 @@
 import { useTranslations } from "next-intl";
 import type { ReactElement } from "react";
 
-import { BaseItemFilterEquipmentFields } from "./BaseItemFilterEquipmentFields";
+import { BaseItemFilterEquipmentFields } from "@/components/organisms/filters/BaseItemFilterEquipmentFields";
 import {
   BaseItemFilterRangeFields,
   type BaseItemFilterRangeFieldsPropsType,
-} from "./BaseItemFilterRangeFields";
+} from "@/components/organisms/filters/BaseItemFilterRangeFields";
 
 type BaseItemFilterCollapsiblePropsType = {
   isOpen: boolean;

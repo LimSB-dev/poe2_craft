@@ -1,4 +1,4 @@
-import { BASE_ITEMS } from "./baseItemDb";
+import { BASE_ITEMS } from "@/lib/poe2-item-simulator/baseItemDb";
 
 export { BASE_ITEMS };
 

@@ -1,10 +1,10 @@
-import { applyLegacyChaosOrbFullReroll, countGoodMods, GOOD_MOD_MAX_TIER } from "./currency/chaosOrb";
+import { applyLegacyChaosOrbFullReroll, countGoodMods, GOOD_MOD_MAX_TIER } from "@/lib/poe2-item-simulator/currency/chaosOrb";
 import {
   applyEssence,
   ATTACK_ESSENCE,
   getBenchModFiltersForEssence,
   LIFE_ESSENCE,
-} from "./essence/essence";
+} from "@/lib/poe2-item-simulator/essence/essence";
 
 const EMPTY_MAGIC: IItemRoll = { rarity: "magic", prefixes: [], suffixes: [] };
 const EMPTY_RARE: IItemRoll = { rarity: "rare", prefixes: [], suffixes: [] };

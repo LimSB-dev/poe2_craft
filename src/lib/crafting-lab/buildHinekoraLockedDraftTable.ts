@@ -25,8 +25,8 @@ import type { IModRollBaseFiltersType } from "@/lib/poe2-item-simulator/roller";
 import {
   isCraftLabEssenceItemLevelAllowed,
   mergeModRollFiltersWithCurrencyTierFloor,
-} from "./craftLabOrbTierItemLevel";
-import { isCraftLabOrbSlotApplicable } from "./isCraftLabOrbFamilyApplicable";
+} from "@/lib/crafting-lab/craftLabOrbTierItemLevel";
+import { isCraftLabOrbSlotApplicable } from "@/lib/crafting-lab/isCraftLabOrbFamilyApplicable";
 
 const CRAFT_LAB_ORB_APPLY: Record<
   CraftingOrbFamilyIdType,

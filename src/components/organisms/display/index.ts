@@ -1,6 +1,6 @@
-export { BaseItemTooltipCard } from "./BaseItemTooltipCard";
-export { DbModsTable } from "./DbModsTable";
+export { BaseItemTooltipCard } from "@/components/organisms/display/BaseItemTooltipCard";
+export { DbModsTable } from "@/components/organisms/display/DbModsTable";
 export {
   StrategySuccessRateChart,
   type IStrategyRateRowType,
-} from "./StrategySuccessRateChart";
+} from "@/components/organisms/display/StrategySuccessRateChart";

@@ -1,1 +1,1 @@
-export { SitePageShell } from "./SitePageShell";
+export { SitePageShell } from "@/components/organisms/layout/SitePageShell";

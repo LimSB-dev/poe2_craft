@@ -1,6 +1,6 @@
 import { defineRouting } from "next-intl/routing";
 
-import { APP_SUPPORTED_LOCALES } from "./appLocales";
+import { APP_SUPPORTED_LOCALES } from "@/lib/i18n/appLocales";
 
 export const routing = defineRouting({
   locales: [...APP_SUPPORTED_LOCALES],

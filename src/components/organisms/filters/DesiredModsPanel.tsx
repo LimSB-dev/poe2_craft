@@ -12,7 +12,7 @@ import { useAppSelector } from "@/store/hooks";
 
 interface DesiredModsPanelPropsType {
   subType?: IBaseItemSubTypeType;
-  /** Stat tags of the selected base item. Used to filter out mods whose requiredItemTags the item doesn't satisfy. */
+  /** PoE2DB `tags`에서 추론한 str/dex/int (`itemAttributeStatTagsForModFiltering`). */
   statTags?: ReadonlyArray<IBaseItemStatTagType>;
   desiredMods: ReadonlyArray<IDesiredModEntryType>;
   onAdd: (entry: IDesiredModEntryType) => void;

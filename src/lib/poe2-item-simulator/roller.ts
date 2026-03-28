@@ -8,6 +8,7 @@ import {
   type IModTierDisplayRowType,
 } from "@/lib/poe2-item-simulator/modDbTierDisplay";
 import { toModDefinition } from "@/lib/poe2-item-simulator/modPool";
+import { wikiTierSpawnContextFromBaseFilters } from "@/lib/poe2-item-simulator/wikiTierSpawnFilter";
 import { getRandomIntInclusive, pickWeightedRandom } from "@/lib/poe2-item-simulator/random";
 
 /**
@@ -16,12 +17,22 @@ import { getRandomIntInclusive, pickWeightedRandom } from "@/lib/poe2-item-simul
  */
 export type IModRollBaseFiltersType = {
   baseItemSubType?: IBaseItemSubTypeType;
+  /**
+   * PoE2DB `tags`에서 추론한 str/dex/int (`itemAttributeStatTagsForModFiltering`).
+   * 레코드의 요구 스탯 `statTags`는 쓰지 않는다.
+   */
   itemStatTags?: ReadonlyArray<IBaseItemStatTagType>;
+  /**
+   * PoE2DB 베이스 `tags` 전체(`str_armour`, `helmet`, `ezomyte_basetype` 등).
+   * 위키 스폰 매칭 보강·`itemStatTags`가 빈 경우 ModifiersCalc 슬러그 추론 등.
+   */
+  poe2dbTags?: ReadonlyArray<string>;
   /** 장비 아이템 레벨(ilvl). 티어 후보는 `levelRequirement <= itemLevel`만 허용. */
   itemLevel?: number;
   /**
    * Greater/Perfect 오브·상위 에센스 등: 롤되는 티어 행의 `levelRequirement`가 이 값 **이상**인 것만.
    * (위키 Minimum Modifier Level과 동일한 숫자를 크래프트 랩에서 `craftLabOrbTierItemLevel`에 두고 합성.)
+   * 부위별 위키 풀에서 최대 `required_level`이 이 값보다 낮으면(예: 투구 생명 최대 65) **그 풀의 최대치까지** 실효 플로어를 낮춰 후보가 사라지지 않게 한다.
    */
   minModifierLevelFloor?: number;
 };
@@ -93,6 +104,31 @@ export const mapLadderTierToSimDisplayTier = (
 };
 
 /**
+ * 표시 티어(`mod.tier`)에 맞는 티어 줄 statRanges. `mod.statRanges`가 있으면 그대로 쓴다.
+ */
+export const resolveStatRangesForModDefinition = (
+  mod: IModDefinition,
+): ReadonlyArray<{ min: number; max: number }> => {
+  if (mod.statRanges !== undefined && mod.statRanges.length > 0) {
+    return mod.statRanges;
+  }
+  const record = MOD_DB.records.find((r) => {
+    return r.modKey === mod.modKey;
+  });
+  if (record === undefined) {
+    return [];
+  }
+  const fullRows = getModTierDisplayRows(record);
+  for (const row of fullRows) {
+    const displayTier = mapLadderTierToSimDisplayTier(record, row.tier, fullRows);
+    if (displayTier === mod.tier) {
+      return row.statRanges;
+    }
+  }
+  return [];
+};
+
+/**
  * 실제 롤에 쓸 티어 번호 상한. (1 = 최상위)
  * `record.tierCount`만 쓰면 위키 병합으로 `getModTierDisplayRows`가 36줄인데 DB에는 9로 남은 경우
  * 뒤쪽(저 ilvl) 티어가 전부 잘려 후보 0개가 된다 → **해결된 행의 최대 tier**를 기본 상한으로 쓴다.
@@ -123,15 +159,38 @@ const listEligibleTierRowsForRecord = (
   itemLevel: number,
   filters: IModRollBaseFiltersType | undefined,
 ): IModTierDisplayRowType[] => {
-  const rows = getModTierDisplayRows(record);
+  const wikiCtx = wikiTierSpawnContextFromBaseFilters(filters);
+  const rows = getModTierDisplayRows(record, wikiCtx);
   const tierCeiling = resolveTierCeilingForRoll(record, rows, filters);
-  const floor = Math.max(1, filters?.minModifierLevelFloor ?? 1);
+  const requestedModifierFloor = Math.max(1, filters?.minModifierLevelFloor ?? 1);
+
+  const passesBaseLimits = (row: IModTierDisplayRowType): boolean => {
+    return row.tier <= tierCeiling && row.levelRequirement <= itemLevel && row.weight > 0;
+  };
+
+  const maxLevelReqInPool = ((): number => {
+    let max = 0;
+    for (const row of rows) {
+      if (passesBaseLimits(row) && row.levelRequirement > max) {
+        max = row.levelRequirement;
+      }
+    }
+    return max;
+  })();
+
+  /**
+   * 부위·위키 풀에 따라 최상위 티의 `required_level`이 오브 상한(예: 75)보다 낮을 수 있음(투구 생명/마나 최대 65 등).
+   * 그대로 `levelRequirement >= 75`를 쓰면 후보가 0개가 되어 UI·롤에서 속성이 통째로 사라진다.
+   * 상한 플로어는 **현재 풀에서 달성 가능한 최대 required_level**까지 낮춘다.
+   */
+  const effectiveModifierFloor =
+    maxLevelReqInPool > 0
+      ? Math.min(requestedModifierFloor, maxLevelReqInPool)
+      : requestedModifierFloor;
+
   return rows.filter((row) => {
     return (
-      row.tier <= tierCeiling &&
-      row.levelRequirement <= itemLevel &&
-      row.levelRequirement >= floor &&
-      row.weight > 0
+      passesBaseLimits(row) && row.levelRequirement >= effectiveModifierFloor
     );
   });
 };
@@ -189,7 +248,10 @@ const buildModRollGroups = (
   return groups;
 };
 
-const rollModFromGroups = (groups: IModRollGroupType[]): IModDefinition => {
+const rollModFromGroups = (
+  groups: IModRollGroupType[],
+  baseFilters: IModRollBaseFiltersType | undefined,
+): IModDefinition => {
   if (groups.length === 0) {
     throw new Error("No mod roll groups available.");
   }
@@ -208,14 +270,20 @@ const rollModFromGroups = (groups: IModRollGroupType[]): IModDefinition => {
     }),
   );
 
-  const fullRows = getModTierDisplayRows(pickedGroup.record);
+  const wikiCtx = wikiTierSpawnContextFromBaseFilters(baseFilters);
+  const fullRows = getModTierDisplayRows(pickedGroup.record, wikiCtx);
   const displayTier = mapLadderTierToSimDisplayTier(
     pickedGroup.record,
     tierPick.tier,
     fullRows,
   );
-  const base = toModDefinition(pickedGroup.record, tierPick.tier);
-  return { ...base, tier: displayTier, weight: tierPick.weight };
+  const base = toModDefinition(pickedGroup.record, tierPick.tier, wikiCtx);
+  return {
+    ...base,
+    tier: displayTier,
+    weight: tierPick.weight,
+    statRanges: tierPick.statRanges,
+  };
 };
 
 export const rollRandomMod = (modRollContext: IModRollContextInputType): IModDefinition => {
@@ -247,7 +315,7 @@ export const rollRandomMod = (modRollContext: IModRollContextInputType): IModDef
     );
   }
 
-  return rollModFromGroups(groups);
+  return rollModFromGroups(groups, baseFilters);
 };
 
 /**
@@ -255,14 +323,32 @@ export const rollRandomMod = (modRollContext: IModRollContextInputType): IModDef
  * 동일 `modKey`에 여러 티어가 있으면 행이 여러 개 반환된다.
  */
 export const listModRollCandidates = (modRollContext: IModRollContextInputType): IModDefinition[] => {
+  const baseFilters: IModRollBaseFiltersType | undefined =
+    modRollContext.baseItemSubType !== undefined ||
+    modRollContext.itemStatTags !== undefined ||
+    modRollContext.itemLevel !== undefined ||
+    modRollContext.minModifierLevelFloor !== undefined
+      ? {
+          baseItemSubType: modRollContext.baseItemSubType,
+          itemStatTags: modRollContext.itemStatTags,
+          itemLevel: modRollContext.itemLevel,
+          minModifierLevelFloor: modRollContext.minModifierLevelFloor,
+        }
+      : undefined;
+  const wikiCtx = wikiTierSpawnContextFromBaseFilters(baseFilters);
   const groups = buildModRollGroups(modRollContext);
   const out: IModDefinition[] = [];
   for (const { record, tiers } of groups) {
-    const fullRows = getModTierDisplayRows(record);
+    const fullRows = getModTierDisplayRows(record, wikiCtx);
     for (const row of tiers) {
-      const base = toModDefinition(record, row.tier);
+      const base = toModDefinition(record, row.tier, wikiCtx);
       const displayTier = mapLadderTierToSimDisplayTier(record, row.tier, fullRows);
-      out.push({ ...base, tier: displayTier, weight: row.weight });
+      out.push({
+        ...base,
+        tier: displayTier,
+        weight: row.weight,
+        statRanges: row.statRanges,
+      });
     }
   }
   return out;
@@ -379,7 +465,7 @@ const buildItemRoll = (
   };
 };
 
-/** Full rare reroll with explicit prefix/suffix counts (each capped at 3). Used by Chaos Orb and benchmarks. */
+/** Full rare reroll with explicit prefix/suffix counts (each capped at 3). Used by Orb of Alchemy, legacy full reroll, and benchmarks — not by PoE2-style single-line Chaos Orb. */
 export const rollRareItemRoll = (
   prefixCount: number,
   suffixCount: number,

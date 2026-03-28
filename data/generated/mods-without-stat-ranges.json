@@ -1,0 +1,252 @@
+{
+  "generatedAt": "2026-03-28T11:08:23.110Z",
+  "modDbVersion": "0.1.0",
+  "totalModRecords": 79,
+  "withoutStatRangesCount": 24,
+  "withoutStatRangesByModType": {
+    "suffix": 1,
+    "corruptedSuffix": 23
+  },
+  "entries": [
+    {
+      "modKey": "suffix_fortify_from_evasion",
+      "modType": "suffix",
+      "nameTemplateKey": "suffix_fortify_from_evasion",
+      "displayRowCount": 5,
+      "hasEmbeddedTiersInModDb": false,
+      "hasWikiTierSourceRule": false,
+      "wikiTierRuleMatchedRows": null,
+      "note": "위키 tier 소스 규칙 없음 → 합성 티어만 사용"
+    },
+    {
+      "modKey": "corrupted_fire_chaos_res",
+      "modType": "corruptedSuffix",
+      "nameTemplateKey": "corrupted_fire_chaos_res",
+      "displayRowCount": 1,
+      "hasEmbeddedTiersInModDb": false,
+      "hasWikiTierSourceRule": false,
+      "wikiTierRuleMatchedRows": null,
+      "note": "위키 tier 소스 규칙 없음 → 합성 티어만 사용"
+    },
+    {
+      "modKey": "corrupted_str_int",
+      "modType": "corruptedSuffix",
+      "nameTemplateKey": "corrupted_str_int",
+      "displayRowCount": 2,
+      "hasEmbeddedTiersInModDb": false,
+      "hasWikiTierSourceRule": false,
+      "wikiTierRuleMatchedRows": null,
+      "note": "위키 tier 소스 규칙 없음 → 합성 티어만 사용"
+    },
+    {
+      "modKey": "corrupted_str_dex",
+      "modType": "corruptedSuffix",
+      "nameTemplateKey": "corrupted_str_dex",
+      "displayRowCount": 2,
+      "hasEmbeddedTiersInModDb": false,
+      "hasWikiTierSourceRule": false,
+      "wikiTierRuleMatchedRows": null,
+      "note": "위키 tier 소스 규칙 없음 → 합성 티어만 사용"
+    },
+    {
+      "modKey": "corrupted_spirit_retention",
+      "modType": "corruptedSuffix",
+      "nameTemplateKey": "corrupted_spirit_retention",
+      "displayRowCount": 1,
+      "hasEmbeddedTiersInModDb": false,
+      "hasWikiTierSourceRule": false,
+      "wikiTierRuleMatchedRows": null,
+      "note": "위키 tier 소스 규칙 없음 → 합성 티어만 사용"
+    },
+    {
+      "modKey": "corrupted_reduced_curse_effect",
+      "modType": "corruptedSuffix",
+      "nameTemplateKey": "corrupted_reduced_curse_effect",
+      "displayRowCount": 1,
+      "hasEmbeddedTiersInModDb": false,
+      "hasWikiTierSourceRule": false,
+      "wikiTierRuleMatchedRows": null,
+      "note": "위키 tier 소스 규칙 없음 → 합성 티어만 사용"
+    },
+    {
+      "modKey": "corrupted_cold_chaos_res",
+      "modType": "corruptedSuffix",
+      "nameTemplateKey": "corrupted_cold_chaos_res",
+      "displayRowCount": 1,
+      "hasEmbeddedTiersInModDb": false,
+      "hasWikiTierSourceRule": false,
+      "wikiTierRuleMatchedRows": null,
+      "note": "위키 tier 소스 규칙 없음 → 합성 티어만 사용"
+    },
+    {
+      "modKey": "corrupted_dex_int",
+      "modType": "corruptedSuffix",
+      "nameTemplateKey": "corrupted_dex_int",
+      "displayRowCount": 1,
+      "hasEmbeddedTiersInModDb": false,
+      "hasWikiTierSourceRule": false,
+      "wikiTierRuleMatchedRows": null,
+      "note": "위키 tier 소스 규칙 없음 → 합성 티어만 사용"
+    },
+    {
+      "modKey": "corrupted_damage_as_mana_cost",
+      "modType": "corruptedSuffix",
+      "nameTemplateKey": "corrupted_damage_as_mana_cost",
+      "displayRowCount": 1,
+      "hasEmbeddedTiersInModDb": false,
+      "hasWikiTierSourceRule": false,
+      "wikiTierRuleMatchedRows": null,
+      "note": "위키 tier 소스 규칙 없음 → 합성 티어만 사용"
+    },
+    {
+      "modKey": "corrupted_damage_to_mana_recoup",
+      "modType": "corruptedSuffix",
+      "nameTemplateKey": "corrupted_damage_to_mana_recoup",
+      "displayRowCount": 1,
+      "hasEmbeddedTiersInModDb": false,
+      "hasWikiTierSourceRule": false,
+      "wikiTierRuleMatchedRows": null,
+      "note": "위키 tier 소스 규칙 없음 → 합성 티어만 사용"
+    },
+    {
+      "modKey": "corrupted_lightning_chaos_res",
+      "modType": "corruptedSuffix",
+      "nameTemplateKey": "corrupted_lightning_chaos_res",
+      "displayRowCount": 1,
+      "hasEmbeddedTiersInModDb": false,
+      "hasWikiTierSourceRule": false,
+      "wikiTierRuleMatchedRows": null,
+      "note": "위키 tier 소스 규칙 없음 → 합성 티어만 사용"
+    },
+    {
+      "modKey": "corrupted_reduced_crit_chance_vs_player",
+      "modType": "corruptedSuffix",
+      "nameTemplateKey": "corrupted_reduced_crit_chance_vs_player",
+      "displayRowCount": 1,
+      "hasEmbeddedTiersInModDb": false,
+      "hasWikiTierSourceRule": false,
+      "wikiTierRuleMatchedRows": null,
+      "note": "위키 tier 소스 규칙 없음 → 합성 티어만 사용"
+    },
+    {
+      "modKey": "corrupted_stun_on_hit",
+      "modType": "corruptedSuffix",
+      "nameTemplateKey": "corrupted_stun_on_hit",
+      "displayRowCount": 1,
+      "hasEmbeddedTiersInModDb": false,
+      "hasWikiTierSourceRule": false,
+      "wikiTierRuleMatchedRows": null,
+      "note": "위키 tier 소스 규칙 없음 → 합성 티어만 사용"
+    },
+    {
+      "modKey": "corrupted_instant_leech",
+      "modType": "corruptedSuffix",
+      "nameTemplateKey": "corrupted_instant_leech",
+      "displayRowCount": 1,
+      "hasEmbeddedTiersInModDb": false,
+      "hasWikiTierSourceRule": false,
+      "wikiTierRuleMatchedRows": null,
+      "note": "위키 tier 소스 규칙 없음 → 합성 티어만 사용"
+    },
+    {
+      "modKey": "corrupted_mana_cost_efficiency",
+      "modType": "corruptedSuffix",
+      "nameTemplateKey": "corrupted_mana_cost_efficiency",
+      "displayRowCount": 1,
+      "hasEmbeddedTiersInModDb": false,
+      "hasWikiTierSourceRule": false,
+      "wikiTierRuleMatchedRows": null,
+      "note": "위키 tier 소스 규칙 없음 → 합성 티어만 사용"
+    },
+    {
+      "modKey": "corrupted_ailment_intensity",
+      "modType": "corruptedSuffix",
+      "nameTemplateKey": "corrupted_ailment_intensity",
+      "displayRowCount": 1,
+      "hasEmbeddedTiersInModDb": false,
+      "hasWikiTierSourceRule": false,
+      "wikiTierRuleMatchedRows": null,
+      "note": "위키 tier 소스 규칙 없음 → 합성 티어만 사용"
+    },
+    {
+      "modKey": "corrupted_bleed_chance",
+      "modType": "corruptedSuffix",
+      "nameTemplateKey": "corrupted_bleed_chance",
+      "displayRowCount": 1,
+      "hasEmbeddedTiersInModDb": false,
+      "hasWikiTierSourceRule": false,
+      "wikiTierRuleMatchedRows": null,
+      "note": "위키 tier 소스 규칙 없음 → 합성 티어만 사용"
+    },
+    {
+      "modKey": "corrupted_poison_chance",
+      "modType": "corruptedSuffix",
+      "nameTemplateKey": "corrupted_poison_chance",
+      "displayRowCount": 1,
+      "hasEmbeddedTiersInModDb": false,
+      "hasWikiTierSourceRule": false,
+      "wikiTierRuleMatchedRows": null,
+      "note": "위키 tier 소스 규칙 없음 → 합성 티어만 사용"
+    },
+    {
+      "modKey": "corrupted_curse_effect_area",
+      "modType": "corruptedSuffix",
+      "nameTemplateKey": "corrupted_curse_effect_area",
+      "displayRowCount": 1,
+      "hasEmbeddedTiersInModDb": false,
+      "hasWikiTierSourceRule": false,
+      "wikiTierRuleMatchedRows": null,
+      "note": "위키 tier 소스 규칙 없음 → 합성 티어만 사용"
+    },
+    {
+      "modKey": "corrupted_immobilize_buildup",
+      "modType": "corruptedSuffix",
+      "nameTemplateKey": "corrupted_immobilize_buildup",
+      "displayRowCount": 1,
+      "hasEmbeddedTiersInModDb": false,
+      "hasWikiTierSourceRule": false,
+      "wikiTierRuleMatchedRows": null,
+      "note": "위키 tier 소스 규칙 없음 → 합성 티어만 사용"
+    },
+    {
+      "modKey": "corrupted_arcane_shadow_on_crit",
+      "modType": "corruptedSuffix",
+      "nameTemplateKey": "corrupted_arcane_shadow_on_crit",
+      "displayRowCount": 1,
+      "hasEmbeddedTiersInModDb": false,
+      "hasWikiTierSourceRule": false,
+      "wikiTierRuleMatchedRows": null,
+      "note": "위키 tier 소스 규칙 없음 → 합성 티어만 사용"
+    },
+    {
+      "modKey": "corrupted_cast_speed_at_full_life",
+      "modType": "corruptedSuffix",
+      "nameTemplateKey": "corrupted_cast_speed_at_full_life",
+      "displayRowCount": 1,
+      "hasEmbeddedTiersInModDb": false,
+      "hasWikiTierSourceRule": false,
+      "wikiTierRuleMatchedRows": null,
+      "note": "위키 tier 소스 규칙 없음 → 합성 티어만 사용"
+    },
+    {
+      "modKey": "corrupted_skill_speed_consume_frenzy",
+      "modType": "corruptedSuffix",
+      "nameTemplateKey": "corrupted_skill_speed_consume_frenzy",
+      "displayRowCount": 1,
+      "hasEmbeddedTiersInModDb": false,
+      "hasWikiTierSourceRule": false,
+      "wikiTierRuleMatchedRows": null,
+      "note": "위키 tier 소스 규칙 없음 → 합성 티어만 사용"
+    },
+    {
+      "modKey": "corrupted_lacerate_on_hit",
+      "modType": "corruptedSuffix",
+      "nameTemplateKey": "corrupted_lacerate_on_hit",
+      "displayRowCount": 1,
+      "hasEmbeddedTiersInModDb": false,
+      "hasWikiTierSourceRule": false,
+      "wikiTierRuleMatchedRows": null,
+      "note": "위키 tier 소스 규칙 없음 → 합성 티어만 사용"
+    }
+  ]
+}

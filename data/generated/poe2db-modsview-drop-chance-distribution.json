@@ -1,0 +1,1630 @@
+{
+  "schemaVersion": "poe2db-modsview-drop-chance-distribution@1",
+  "source": "poe2db_modsview_normal_rows_resolved_wiki_mod_id",
+  "fetchedAtIso": "2026-03-28T13:08:01.307Z",
+  "pageCount": 60,
+  "rowsWithResolvedWikiModIdAndDropGt1": 6537,
+  "uniqueDropChanceValues": [
+    25,
+    50,
+    80,
+    90,
+    100,
+    110,
+    120,
+    125,
+    150,
+    200,
+    225,
+    250,
+    275,
+    300,
+    320,
+    360,
+    375,
+    400,
+    440,
+    480,
+    500,
+    540,
+    600,
+    660,
+    700,
+    720,
+    750,
+    800,
+    900,
+    1000,
+    1100,
+    1200
+  ],
+  "dropChanceRowHistogram": {
+    "25": 7,
+    "50": 25,
+    "80": 10,
+    "90": 2,
+    "100": 77,
+    "110": 3,
+    "120": 3,
+    "125": 48,
+    "150": 2,
+    "200": 116,
+    "225": 2,
+    "250": 333,
+    "275": 3,
+    "300": 66,
+    "320": 9,
+    "360": 3,
+    "375": 2,
+    "400": 120,
+    "440": 3,
+    "480": 13,
+    "500": 1030,
+    "540": 2,
+    "600": 55,
+    "660": 3,
+    "700": 30,
+    "720": 3,
+    "750": 335,
+    "800": 527,
+    "900": 42,
+    "1000": 3627,
+    "1100": 18,
+    "1200": 18
+  },
+  "byPrimaryModFamily": {
+    "AdditionalAmmo": {
+      "125": 1,
+      "250": 1
+    },
+    "AdditionalArrows": {
+      "125": 1,
+      "200": 1,
+      "300": 1,
+      "400": 1
+    },
+    "AllAttributes": {
+      "400": 4,
+      "800": 9
+    },
+    "AllDamage": {
+      "50": 1,
+      "100": 1,
+      "200": 1,
+      "400": 1,
+      "600": 1,
+      "1000": 3
+    },
+    "AllResistances": {
+      "800": 23
+    },
+    "ArmourAppliesToElementalDamage": {
+      "500": 54,
+      "1000": 27
+    },
+    "BaseLocalDefences": {
+      "1000": 206
+    },
+    "BaseLocalDefencesAndDefencePercent": {
+      "1000": 36
+    },
+    "BaseLocalDefencesAndLife": {
+      "1000": 108
+    },
+    "BaseLocalDefencesAndMana": {
+      "1000": 42
+    },
+    "BaseSpirit": {
+      "100": 6,
+      "200": 6,
+      "300": 6,
+      "400": 7,
+      "500": 28
+    },
+    "BeltCharmChargesGained": {
+      "800": 6
+    },
+    "BeltCharmChargesUsed": {
+      "800": 6
+    },
+    "BeltCharmDuration": {
+      "800": 5
+    },
+    "BeltFlaskChargesGained": {
+      "800": 6
+    },
+    "BeltFlaskChargesUsed": {
+      "800": 6
+    },
+    "BeltFlaskRecoveryRate": {
+      "800": 12
+    },
+    "ChanceToPierce": {
+      "500": 5
+    },
+    "ChaosResistance": {
+      "250": 192
+    },
+    "ColdDamage": {
+      "80": 5,
+      "90": 1,
+      "100": 1,
+      "200": 14,
+      "225": 1,
+      "250": 1,
+      "300": 9,
+      "320": 5,
+      "360": 1,
+      "400": 10,
+      "480": 5,
+      "500": 66,
+      "540": 1,
+      "600": 1,
+      "800": 30,
+      "900": 6,
+      "1000": 6
+    },
+    "ColdDamagePercentage": {
+      "500": 6
+    },
+    "ColdResistance": {
+      "1000": 256
+    },
+    "CriticalStrikeChanceIncrease": {
+      "125": 10,
+      "250": 16,
+      "500": 16,
+      "1000": 48
+    },
+    "CriticalStrikeMultiplier": {
+      "125": 12,
+      "250": 19,
+      "500": 19,
+      "1000": 57
+    },
+    "DamageTakenGainedAsLife": {
+      "500": 5
+    },
+    "DamageWithWeaponTypeSkill": {
+      "500": 6
+    },
+    "DefencesPercent": {
+      "1000": 213
+    },
+    "DefencesPercentAndStunThreshold": {
+      "1000": 60
+    },
+    "Dexterity": {
+      "500": 64,
+      "750": 16,
+      "1000": 118
+    },
+    "EnergyShieldDelay": {
+      "500": 12,
+      "1000": 12
+    },
+    "EnergyShieldPercent": {
+      "1000": 7
+    },
+    "EnergyShieldRegeneration": {
+      "500": 30,
+      "1000": 18
+    },
+    "EvasionAppliesToDeflection": {
+      "500": 48,
+      "1000": 27
+    },
+    "EvasionRatingPercent": {
+      "1000": 7
+    },
+    "FireDamage": {
+      "80": 2,
+      "90": 1,
+      "100": 1,
+      "110": 1,
+      "120": 2,
+      "200": 11,
+      "225": 1,
+      "250": 1,
+      "275": 1,
+      "300": 11,
+      "320": 2,
+      "360": 1,
+      "400": 10,
+      "440": 1,
+      "480": 4,
+      "500": 66,
+      "540": 1,
+      "600": 1,
+      "660": 1,
+      "720": 2,
+      "800": 12,
+      "900": 6,
+      "1000": 6,
+      "1100": 6,
+      "1200": 12
+    },
+    "FireDamagePercentage": {
+      "500": 6
+    },
+    "FireResistance": {
+      "1000": 256
+    },
+    "FreezeDamageIncrease": {
+      "500": 4,
+      "1000": 6
+    },
+    "IgniteChanceIncrease": {
+      "500": 4,
+      "1000": 6
+    },
+    "IncreasedAccuracy": {
+      "100": 2,
+      "200": 20,
+      "300": 7,
+      "400": 15,
+      "600": 14,
+      "800": 140
+    },
+    "IncreasedAttackSpeed": {
+      "100": 5,
+      "200": 5,
+      "400": 2,
+      "500": 40,
+      "1000": 30
+    },
+    "IncreasedCastSpeed": {
+      "250": 2,
+      "500": 3,
+      "800": 5,
+      "1000": 23
+    },
+    "IncreasedChaosDamage": {
+      "500": 6
+    },
+    "IncreasedEnergyShield": {
+      "1000": 10
+    },
+    "IncreasedEvasionRating": {
+      "1000": 9
+    },
+    "IncreasedLife": {
+      "1000": 317
+    },
+    "IncreasedMana": {
+      "1000": 246
+    },
+    "IncreasedPhysicalDamageReductionRating": {
+      "1000": 10
+    },
+    "IncreasedPhysicalDamageReductionRatingPercent": {
+      "1000": 7
+    },
+    "IncreasedShieldBlockPercentage": {
+      "1000": 12
+    },
+    "IncreasedWeaponElementalDamagePercent": {
+      "500": 42
+    },
+    "IncreaseSocketedGemLevel": {
+      "50": 4,
+      "100": 23,
+      "125": 2,
+      "150": 2,
+      "200": 2,
+      "250": 37,
+      "375": 2,
+      "500": 37,
+      "750": 17,
+      "1000": 16
+    },
+    "Intelligence": {
+      "250": 8,
+      "400": 8,
+      "500": 56,
+      "750": 8,
+      "1000": 118
+    },
+    "ItemFoundRarityIncrease": {
+      "1000": 60
+    },
+    "ItemFoundRarityIncreasePrefix": {
+      "1000": 24
+    },
+    "LifeGainedFromEnemyDeath": {
+      "750": 132
+    },
+    "LifeGainPerTarget": {
+      "1000": 52
+    },
+    "LifeLeech": {
+      "1000": 66
+    },
+    "LifeRegeneration": {
+      "1000": 198
+    },
+    "LightningDamage": {
+      "80": 3,
+      "100": 1,
+      "110": 2,
+      "120": 1,
+      "200": 12,
+      "250": 1,
+      "275": 2,
+      "300": 10,
+      "320": 2,
+      "360": 1,
+      "400": 10,
+      "440": 2,
+      "480": 4,
+      "500": 66,
+      "600": 1,
+      "660": 2,
+      "720": 1,
+      "800": 18,
+      "1000": 6,
+      "1100": 12,
+      "1200": 6
+    },
+    "LightningDamagePercentage": {
+      "500": 6
+    },
+    "LightningResistance": {
+      "1000": 256
+    },
+    "LightRadiusAndAccuracy": {
+      "1000": 39
+    },
+    "LightRadiusAndManaRegeneration": {
+      "1000": 12
+    },
+    "LocalAttributeRequirements": {
+      "700": 30,
+      "750": 30,
+      "800": 55,
+      "900": 30,
+      "1000": 50
+    },
+    "LocalIncreasedPhysicalDamagePercentAndAccuracyRating": {
+      "100": 7,
+      "200": 7,
+      "400": 7,
+      "600": 7,
+      "1000": 28
+    },
+    "LocalIncreasedSpiritAndMana": {
+      "100": 1,
+      "200": 1,
+      "400": 1,
+      "600": 1,
+      "1000": 3
+    },
+    "LocalIncreasedSpiritPercent": {
+      "50": 1,
+      "100": 1,
+      "200": 1,
+      "400": 1,
+      "600": 1,
+      "1000": 3
+    },
+    "LocalPhysicalDamagePercent": {
+      "25": 7,
+      "50": 7,
+      "100": 7,
+      "200": 7,
+      "400": 7,
+      "1000": 21
+    },
+    "ManaGainedFromEnemyDeath": {
+      "750": 132
+    },
+    "ManaLeech": {
+      "1000": 66
+    },
+    "ManaRegeneration": {
+      "1000": 36
+    },
+    "MaximumChaosResistance": {
+      "125": 12
+    },
+    "MaximumColdResist": {
+      "250": 12
+    },
+    "MaximumFireResist": {
+      "250": 12
+    },
+    "MaximumLifeIncreasePercent": {
+      "300": 3
+    },
+    "MaximumLightningResistance": {
+      "250": 12
+    },
+    "MaximumManaIncreasePercent": {
+      "300": 3
+    },
+    "MaximumResistances": {
+      "125": 8
+    },
+    "MinionLife": {
+      "1000": 6
+    },
+    "MovementVelocity": {
+      "1000": 36
+    },
+    "PercentDamageGoesToMana": {
+      "500": 5
+    },
+    "PhysicalDamage": {
+      "100": 7,
+      "200": 8,
+      "300": 1,
+      "400": 16,
+      "500": 6,
+      "600": 15,
+      "800": 8,
+      "1000": 83
+    },
+    "PresenceRadius": {
+      "500": 4
+    },
+    "ProjectileSpeed": {
+      "1000": 5
+    },
+    "ReducedAilmentDuration": {
+      "500": 180
+    },
+    "ReducedExtraDamageFromCrits": {
+      "800": 5
+    },
+    "ReducedPhysicalDamageTaken": {
+      "800": 5
+    },
+    "ShockChanceIncrease": {
+      "500": 4,
+      "1000": 6
+    },
+    "SpellCriticalStrikeChanceIncrease": {
+      "125": 2,
+      "250": 3,
+      "500": 3,
+      "1000": 9
+    },
+    "SpellDamage": {
+      "1000": 6
+    },
+    "SpellDamageAndMana": {
+      "100": 2,
+      "200": 2,
+      "400": 2,
+      "600": 2,
+      "1000": 6
+    },
+    "Strength": {
+      "250": 16,
+      "500": 88,
+      "600": 8,
+      "1000": 81
+    },
+    "StunDamageIncrease": {
+      "1000": 30
+    },
+    "StunDurationIncreasePercent": {
+      "1000": 30
+    },
+    "StunThreshold": {
+      "800": 176
+    },
+    "Thorns": {
+      "1000": 77
+    },
+    "WeaponCasterDamagePrefix": {
+      "50": 2,
+      "100": 2,
+      "200": 3,
+      "400": 3,
+      "600": 3,
+      "1000": 9
+    },
+    "WeaponDamageTypePrefix": {
+      "50": 10,
+      "100": 10,
+      "200": 15,
+      "300": 15,
+      "400": 15,
+      "500": 45
+    }
+  },
+  "wikiModIdsWithMultipleDistinctDropChanceCount": 137,
+  "wikiModIdsWithMultipleDistinctDropChance": [
+    {
+      "wikiModId": "AddedLightningDamage1",
+      "distinctDropChances": [
+        500,
+        800,
+        1100,
+        1200
+      ]
+    },
+    {
+      "wikiModId": "AddedPhysicalDamage2",
+      "distinctDropChances": [
+        500,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "AddedPhysicalDamage3",
+      "distinctDropChances": [
+        500,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "AddedPhysicalDamage4",
+      "distinctDropChances": [
+        500,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "AddedPhysicalDamage5",
+      "distinctDropChances": [
+        500,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "AddedPhysicalDamage6",
+      "distinctDropChances": [
+        500,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "AddedPhysicalDamage7",
+      "distinctDropChances": [
+        400,
+        800
+      ]
+    },
+    {
+      "wikiModId": "AddedPhysicalDamage8",
+      "distinctDropChances": [
+        300,
+        600
+      ]
+    },
+    {
+      "wikiModId": "AddedPhysicalDamage9",
+      "distinctDropChances": [
+        200,
+        400
+      ]
+    },
+    {
+      "wikiModId": "AllAttributes1",
+      "distinctDropChances": [
+        400,
+        800
+      ]
+    },
+    {
+      "wikiModId": "AllAttributes2",
+      "distinctDropChances": [
+        400,
+        800
+      ]
+    },
+    {
+      "wikiModId": "AllAttributes3",
+      "distinctDropChances": [
+        400,
+        800
+      ]
+    },
+    {
+      "wikiModId": "AllAttributes4",
+      "distinctDropChances": [
+        400,
+        800
+      ]
+    },
+    {
+      "wikiModId": "ArmourAppliesToElementalDamage1",
+      "distinctDropChances": [
+        500,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "ArmourAppliesToElementalDamage2",
+      "distinctDropChances": [
+        500,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "ArmourAppliesToElementalDamage3",
+      "distinctDropChances": [
+        500,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "ArmourAppliesToElementalDamage4",
+      "distinctDropChances": [
+        500,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "ArmourAppliesToElementalDamage5",
+      "distinctDropChances": [
+        500,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "ArmourAppliesToElementalDamage6",
+      "distinctDropChances": [
+        500,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "Dexterity1",
+      "distinctDropChances": [
+        500,
+        750,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "Dexterity2",
+      "distinctDropChances": [
+        500,
+        750,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "Dexterity3",
+      "distinctDropChances": [
+        500,
+        750,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "Dexterity4",
+      "distinctDropChances": [
+        500,
+        750,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "Dexterity5",
+      "distinctDropChances": [
+        500,
+        750,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "Dexterity6",
+      "distinctDropChances": [
+        500,
+        750,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "Dexterity7",
+      "distinctDropChances": [
+        500,
+        750,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "Dexterity8",
+      "distinctDropChances": [
+        500,
+        750,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "EnergyShieldRechargeRate1",
+      "distinctDropChances": [
+        500,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "EnergyShieldRechargeRate2",
+      "distinctDropChances": [
+        500,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "EnergyShieldRechargeRate3",
+      "distinctDropChances": [
+        500,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "EnergyShieldRechargeRate4",
+      "distinctDropChances": [
+        500,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "EnergyShieldRechargeRate5______",
+      "distinctDropChances": [
+        500,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "EnergyShieldRechargeRate6",
+      "distinctDropChances": [
+        500,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "EvasionGrantsDeflection1",
+      "distinctDropChances": [
+        500,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "EvasionGrantsDeflection2",
+      "distinctDropChances": [
+        500,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "EvasionGrantsDeflection3",
+      "distinctDropChances": [
+        500,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "EvasionGrantsDeflection4",
+      "distinctDropChances": [
+        500,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "EvasionGrantsDeflection5",
+      "distinctDropChances": [
+        500,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "EvasionGrantsDeflection6",
+      "distinctDropChances": [
+        500,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "FasterStartOfEnergyShieldRecharge1",
+      "distinctDropChances": [
+        500,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "FasterStartOfEnergyShieldRecharge2",
+      "distinctDropChances": [
+        500,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "FasterStartOfEnergyShieldRecharge3",
+      "distinctDropChances": [
+        500,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "FasterStartOfEnergyShieldRecharge4",
+      "distinctDropChances": [
+        500,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "FasterStartOfEnergyShieldRecharge5",
+      "distinctDropChances": [
+        500,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "FasterStartOfEnergyShieldRecharge6",
+      "distinctDropChances": [
+        500,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "GlobalChaosSpellGemsLevel1",
+      "distinctDropChances": [
+        200,
+        500
+      ]
+    },
+    {
+      "wikiModId": "GlobalChaosSpellGemsLevelTwoHandWeapon1",
+      "distinctDropChances": [
+        500,
+        750,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "GlobalChaosSpellGemsLevelTwoHandWeapon2",
+      "distinctDropChances": [
+        375,
+        750
+      ]
+    },
+    {
+      "wikiModId": "GlobalChaosSpellGemsLevelTwoHandWeapon3",
+      "distinctDropChances": [
+        250,
+        500
+      ]
+    },
+    {
+      "wikiModId": "GlobalChaosSpellGemsLevelWeapon4",
+      "distinctDropChances": [
+        100,
+        125,
+        250
+      ]
+    },
+    {
+      "wikiModId": "GlobalChaosSpellGemsLevelWeapon5",
+      "distinctDropChances": [
+        50,
+        100
+      ]
+    },
+    {
+      "wikiModId": "GlobalMinionSpellSkillGemLevelWeapon2",
+      "distinctDropChances": [
+        150,
+        500
+      ]
+    },
+    {
+      "wikiModId": "GlobalMinionSpellSkillGemLevelWeapon3",
+      "distinctDropChances": [
+        100,
+        250
+      ]
+    },
+    {
+      "wikiModId": "GlobalMinionSpellSkillGemLevelWeapon4",
+      "distinctDropChances": [
+        50,
+        100
+      ]
+    },
+    {
+      "wikiModId": "IncreasedAccuracy6",
+      "distinctDropChances": [
+        600,
+        800
+      ]
+    },
+    {
+      "wikiModId": "IncreasedAccuracy7",
+      "distinctDropChances": [
+        600,
+        800
+      ]
+    },
+    {
+      "wikiModId": "IncreasedAccuracy8",
+      "distinctDropChances": [
+        300,
+        400
+      ]
+    },
+    {
+      "wikiModId": "IncreasedAttackSpeed1",
+      "distinctDropChances": [
+        500,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "IncreasedCastSpeed1",
+      "distinctDropChances": [
+        800,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "IncreasedCastSpeed2",
+      "distinctDropChances": [
+        800,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "IncreasedCastSpeed3",
+      "distinctDropChances": [
+        800,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "IncreasedCastSpeed4",
+      "distinctDropChances": [
+        800,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "IncreasedCastSpeed5",
+      "distinctDropChances": [
+        800,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "Intelligence1",
+      "distinctDropChances": [
+        250,
+        400,
+        500,
+        750,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "Intelligence2",
+      "distinctDropChances": [
+        250,
+        400,
+        500,
+        750,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "Intelligence3",
+      "distinctDropChances": [
+        250,
+        400,
+        500,
+        750,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "Intelligence4",
+      "distinctDropChances": [
+        250,
+        400,
+        500,
+        750,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "Intelligence5",
+      "distinctDropChances": [
+        250,
+        400,
+        500,
+        750,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "Intelligence6",
+      "distinctDropChances": [
+        250,
+        400,
+        500,
+        750,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "Intelligence7",
+      "distinctDropChances": [
+        250,
+        400,
+        500,
+        750,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "Intelligence8",
+      "distinctDropChances": [
+        250,
+        400,
+        500,
+        750,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "LocalAddedColdDamage1",
+      "distinctDropChances": [
+        500,
+        800
+      ]
+    },
+    {
+      "wikiModId": "LocalAddedColdDamageTwoHand1",
+      "distinctDropChances": [
+        800,
+        900,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "LocalAddedColdDamageTwoHand10",
+      "distinctDropChances": [
+        80,
+        90,
+        100
+      ]
+    },
+    {
+      "wikiModId": "LocalAddedColdDamageTwoHand2",
+      "distinctDropChances": [
+        800,
+        900,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "LocalAddedColdDamageTwoHand3",
+      "distinctDropChances": [
+        800,
+        900,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "LocalAddedColdDamageTwoHand4",
+      "distinctDropChances": [
+        800,
+        900,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "LocalAddedColdDamageTwoHand5",
+      "distinctDropChances": [
+        800,
+        900,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "LocalAddedColdDamageTwoHand6",
+      "distinctDropChances": [
+        800,
+        900,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "LocalAddedColdDamageTwoHand7",
+      "distinctDropChances": [
+        480,
+        540,
+        600
+      ]
+    },
+    {
+      "wikiModId": "LocalAddedColdDamageTwoHand8",
+      "distinctDropChances": [
+        320,
+        360,
+        400
+      ]
+    },
+    {
+      "wikiModId": "LocalAddedColdDamageTwoHand9",
+      "distinctDropChances": [
+        200,
+        225,
+        250
+      ]
+    },
+    {
+      "wikiModId": "LocalAddedFireDamage1",
+      "distinctDropChances": [
+        500,
+        800,
+        900,
+        1200
+      ]
+    },
+    {
+      "wikiModId": "LocalAddedFireDamage10_",
+      "distinctDropChances": [
+        80,
+        90,
+        120
+      ]
+    },
+    {
+      "wikiModId": "LocalAddedFireDamage2",
+      "distinctDropChances": [
+        800,
+        900,
+        1200
+      ]
+    },
+    {
+      "wikiModId": "LocalAddedFireDamage3",
+      "distinctDropChances": [
+        800,
+        900,
+        1200
+      ]
+    },
+    {
+      "wikiModId": "LocalAddedFireDamage4",
+      "distinctDropChances": [
+        500,
+        800,
+        900,
+        1200
+      ]
+    },
+    {
+      "wikiModId": "LocalAddedFireDamage5",
+      "distinctDropChances": [
+        800,
+        900,
+        1200
+      ]
+    },
+    {
+      "wikiModId": "LocalAddedFireDamage6",
+      "distinctDropChances": [
+        800,
+        900,
+        1200
+      ]
+    },
+    {
+      "wikiModId": "LocalAddedFireDamage7",
+      "distinctDropChances": [
+        480,
+        540,
+        720
+      ]
+    },
+    {
+      "wikiModId": "LocalAddedFireDamage8",
+      "distinctDropChances": [
+        320,
+        360,
+        480
+      ]
+    },
+    {
+      "wikiModId": "LocalAddedFireDamage9",
+      "distinctDropChances": [
+        200,
+        225,
+        300
+      ]
+    },
+    {
+      "wikiModId": "LocalAddedFireDamageTwoHand1",
+      "distinctDropChances": [
+        800,
+        1000,
+        1100,
+        1200
+      ]
+    },
+    {
+      "wikiModId": "LocalAddedFireDamageTwoHand10",
+      "distinctDropChances": [
+        80,
+        100,
+        110,
+        120
+      ]
+    },
+    {
+      "wikiModId": "LocalAddedFireDamageTwoHand2",
+      "distinctDropChances": [
+        800,
+        1000,
+        1100,
+        1200
+      ]
+    },
+    {
+      "wikiModId": "LocalAddedFireDamageTwoHand3",
+      "distinctDropChances": [
+        800,
+        1000,
+        1100,
+        1200
+      ]
+    },
+    {
+      "wikiModId": "LocalAddedFireDamageTwoHand4",
+      "distinctDropChances": [
+        800,
+        1000,
+        1100,
+        1200
+      ]
+    },
+    {
+      "wikiModId": "LocalAddedFireDamageTwoHand5",
+      "distinctDropChances": [
+        800,
+        1000,
+        1100,
+        1200
+      ]
+    },
+    {
+      "wikiModId": "LocalAddedFireDamageTwoHand6",
+      "distinctDropChances": [
+        800,
+        1000,
+        1100,
+        1200
+      ]
+    },
+    {
+      "wikiModId": "LocalAddedFireDamageTwoHand7",
+      "distinctDropChances": [
+        480,
+        600,
+        660,
+        720
+      ]
+    },
+    {
+      "wikiModId": "LocalAddedFireDamageTwoHand8_",
+      "distinctDropChances": [
+        320,
+        400,
+        440,
+        480
+      ]
+    },
+    {
+      "wikiModId": "LocalAddedFireDamageTwoHand9",
+      "distinctDropChances": [
+        200,
+        250,
+        275,
+        300
+      ]
+    },
+    {
+      "wikiModId": "LocalAddedLightningDamage10",
+      "distinctDropChances": [
+        80,
+        110,
+        120
+      ]
+    },
+    {
+      "wikiModId": "LocalAddedLightningDamage2",
+      "distinctDropChances": [
+        800,
+        1100,
+        1200
+      ]
+    },
+    {
+      "wikiModId": "LocalAddedLightningDamage3",
+      "distinctDropChances": [
+        800,
+        1100,
+        1200
+      ]
+    },
+    {
+      "wikiModId": "LocalAddedLightningDamage4",
+      "distinctDropChances": [
+        800,
+        1100,
+        1200
+      ]
+    },
+    {
+      "wikiModId": "LocalAddedLightningDamage5",
+      "distinctDropChances": [
+        800,
+        1100,
+        1200
+      ]
+    },
+    {
+      "wikiModId": "LocalAddedLightningDamage6",
+      "distinctDropChances": [
+        800,
+        1100,
+        1200
+      ]
+    },
+    {
+      "wikiModId": "LocalAddedLightningDamage7",
+      "distinctDropChances": [
+        480,
+        660,
+        720
+      ]
+    },
+    {
+      "wikiModId": "LocalAddedLightningDamage8",
+      "distinctDropChances": [
+        320,
+        440,
+        480
+      ]
+    },
+    {
+      "wikiModId": "LocalAddedLightningDamage9",
+      "distinctDropChances": [
+        200,
+        275,
+        300
+      ]
+    },
+    {
+      "wikiModId": "LocalAddedLightningDamageTwoHand1_",
+      "distinctDropChances": [
+        800,
+        1000,
+        1100
+      ]
+    },
+    {
+      "wikiModId": "LocalAddedLightningDamageTwoHand10",
+      "distinctDropChances": [
+        80,
+        100,
+        110
+      ]
+    },
+    {
+      "wikiModId": "LocalAddedLightningDamageTwoHand2",
+      "distinctDropChances": [
+        800,
+        1000,
+        1100
+      ]
+    },
+    {
+      "wikiModId": "LocalAddedLightningDamageTwoHand3",
+      "distinctDropChances": [
+        800,
+        1000,
+        1100
+      ]
+    },
+    {
+      "wikiModId": "LocalAddedLightningDamageTwoHand4",
+      "distinctDropChances": [
+        800,
+        1000,
+        1100
+      ]
+    },
+    {
+      "wikiModId": "LocalAddedLightningDamageTwoHand5",
+      "distinctDropChances": [
+        800,
+        1000,
+        1100
+      ]
+    },
+    {
+      "wikiModId": "LocalAddedLightningDamageTwoHand6",
+      "distinctDropChances": [
+        800,
+        1000,
+        1100
+      ]
+    },
+    {
+      "wikiModId": "LocalAddedLightningDamageTwoHand7",
+      "distinctDropChances": [
+        480,
+        600,
+        660
+      ]
+    },
+    {
+      "wikiModId": "LocalAddedLightningDamageTwoHand8",
+      "distinctDropChances": [
+        320,
+        360,
+        400,
+        440
+      ]
+    },
+    {
+      "wikiModId": "LocalAddedLightningDamageTwoHand9",
+      "distinctDropChances": [
+        200,
+        250,
+        275
+      ]
+    },
+    {
+      "wikiModId": "LocalIncreasedAttackSpeed4",
+      "distinctDropChances": [
+        500,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "LocalIncreasedAttackSpeed5",
+      "distinctDropChances": [
+        400,
+        500
+      ]
+    },
+    {
+      "wikiModId": "NearbyAlliesAddedPhysicalDamage1",
+      "distinctDropChances": [
+        500,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "ReducedLocalAttributeRequirements1",
+      "distinctDropChances": [
+        700,
+        750,
+        800,
+        900,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "ReducedLocalAttributeRequirements2",
+      "distinctDropChances": [
+        700,
+        750,
+        800,
+        900,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "ReducedLocalAttributeRequirements3",
+      "distinctDropChances": [
+        700,
+        750,
+        800,
+        900,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "ReducedLocalAttributeRequirements4",
+      "distinctDropChances": [
+        700,
+        750,
+        800,
+        900,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "ReducedLocalAttributeRequirements5",
+      "distinctDropChances": [
+        700,
+        750,
+        800,
+        900,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "Strength1",
+      "distinctDropChances": [
+        250,
+        500,
+        600,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "Strength2",
+      "distinctDropChances": [
+        250,
+        500,
+        600,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "Strength3",
+      "distinctDropChances": [
+        250,
+        500,
+        600,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "Strength4",
+      "distinctDropChances": [
+        250,
+        500,
+        600,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "Strength5",
+      "distinctDropChances": [
+        250,
+        500,
+        600,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "Strength6",
+      "distinctDropChances": [
+        250,
+        500,
+        600,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "Strength7",
+      "distinctDropChances": [
+        250,
+        500,
+        600,
+        1000
+      ]
+    },
+    {
+      "wikiModId": "Strength8",
+      "distinctDropChances": [
+        250,
+        500,
+        600,
+        1000
+      ]
+    }
+  ],
+  "failedPages": [],
+  "note": "dropChanceRowHistogram counts ModsView normal rows (same wikiModId may appear on many pages). extract-poe2db-mod-drop-weights keeps max(DropChance) per wikiModId."
+}

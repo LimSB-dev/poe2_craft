@@ -1,4 +1,6 @@
 import { MOD_DB } from "@/lib/poe2-item-simulator/modDb";
+import { getModTierDisplayRows } from "@/lib/poe2-item-simulator/modDbTierDisplay";
+import type { WikiTierSpawnContextType } from "@/lib/poe2-item-simulator/wikiTierSpawnFilter";
 
 /**
  * Returns all mod records applicable to the given item sub-type.
@@ -23,14 +25,21 @@ export const getModPool = (
 export const toModDefinition = (
   record: IModDbRecordType,
   tier: number = 1,
+  wikiTierContext?: WikiTierSpawnContextType,
 ): IModDefinition => {
   const tierData = record.tiers?.find((t) => t.tier === tier);
+  const tierRows = getModTierDisplayRows(record, wikiTierContext);
+  const tierRow = tierRows.find((row) => {
+    return row.tier === tier;
+  });
+  const statRanges = tierRow?.statRanges ?? tierData?.statRanges;
   return {
     modKey: record.modKey,
     displayName: record.nameTemplateKey,
     tier,
     modType: record.modType,
     weight: tierData?.weight ?? Math.round(record.totalWeight / record.tierCount),
+    ...(statRanges !== undefined && statRanges.length > 0 ? { statRanges } : {}),
   };
 };
 

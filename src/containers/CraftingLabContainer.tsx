@@ -16,6 +16,7 @@ import { ModTemplateText } from "@/components/atoms/catalog";
 import { CraftingLabOrbSlotButton } from "@/components/molecules";
 import {
   BaseItemWorkspaceSection,
+  CraftingLabOrbPreviewModal,
   CraftingLabOrbPreviewPanel,
   CraftingLabStashAbyssBoneSlot,
   CraftingLabStashMiscCurrencySlot,
@@ -55,6 +56,7 @@ import {
   isCraftLabOrbSlotItemLevelAllowed,
   mergeModRollFiltersWithCurrencyTierFloor,
 } from "@/lib/crafting-lab/craftLabOrbTierItemLevel";
+import { itemAttributeStatTagsForModFiltering } from "@/lib/poe2db/poe2dbStatAffinityPages";
 import { clampBaseItemItemLevel } from "@/lib/poe2-item-simulator/baseItemItemLevel";
 import type { IModRollBaseFiltersType } from "@/lib/poe2-item-simulator/roller";
 import {
@@ -248,7 +250,11 @@ export const CraftingLabContainer = (): ReactElement => {
     }
     return {
       baseItemSubType: selectedBaseItemRecord.subType,
-      itemStatTags: selectedBaseItemRecord.statTags,
+      itemStatTags: itemAttributeStatTagsForModFiltering(selectedBaseItemRecord),
+      ...(selectedBaseItemRecord.tags !== undefined &&
+      selectedBaseItemRecord.tags.length > 0
+        ? { poe2dbTags: selectedBaseItemRecord.tags }
+        : {}),
       itemLevel: baseItemItemLevel,
     };
   }, [selectedBaseItemRecord, baseItemItemLevel]);
@@ -439,6 +445,8 @@ export const CraftingLabContainer = (): ReactElement => {
     setActiveStagedOmenIds([]);
     clearSoulWellCandidateCache();
     setSoulWellReveal(null);
+    setHinekoraHoverPreview(null);
+    setEssenceHoverPreview(null);
     writeCraftingLabUsage({
       baseItemKey: effectiveSelectedBaseItemKey,
       events: [],
@@ -1732,7 +1740,12 @@ export const CraftingLabContainer = (): ReactElement => {
                 ) : null}
 
                 {simPreview !== null ? (
-                  <div className="mt-1.5">
+                  <CraftingLabOrbPreviewModal
+                    onClose={() => {
+                      setSimPreview(null);
+                      setSimPreviewLabel("");
+                    }}
+                  >
                     <CraftingLabOrbPreviewPanel
                       orbLabel={simPreviewLabel}
                       preview={simPreview}
@@ -1741,7 +1754,7 @@ export const CraftingLabContainer = (): ReactElement => {
                         setSimPreviewLabel("");
                       }}
                     />
-                  </div>
+                  </CraftingLabOrbPreviewModal>
                 ) : null}
               </>
             )}

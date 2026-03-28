@@ -33,6 +33,21 @@ const HELMET_GLOVES_AND_WEAPON_ATTACK_SUB_TYPES: readonly IBaseItemSubTypeType[]
   ...GLOVES_AND_WEAPON_ATTACK_SUB_TYPES,
 ];
 
+/** `ItemFoundRarityIncrease` 접미 — 위키 `mod_spawn_weights` 합집합(ring, amulet, gloves, boots, helmet). 무기 없음. */
+const RING_AMULET_BOOTS_HELMET_GLOVES_SUB_TYPES: readonly IBaseItemSubTypeType[] = [
+  "ring",
+  "amulet",
+  "boots",
+  "helmet",
+  "gloves",
+];
+
+/**
+ * `ItemFoundRarityIncreasePrefix` 접두 — 반지·목걸이는 전 티어.
+ * 투구는 PoE2DB상 최상위 2티어(`Prefix4_`, `Prefix5`)가 `helmet` 스폰 없음 → 추출 시 `applyPoe2dbWikiSpawnPostCorrections`.
+ */
+const RING_AMULET_HELMET_SUB_TYPES: readonly IBaseItemSubTypeType[] = ["ring", "amulet", "helmet"];
+
 export const MOD_DB: { readonly version: string; readonly records: ReadonlyArray<IModDbRecordType> } = {
   version: "0.1.0",
   records: [
@@ -51,6 +66,8 @@ export const MOD_DB: { readonly version: string; readonly records: ReadonlyArray
       maxLevelRequirement: 80,
       totalWeight: 13000,
       nameTemplateKey: "prefix_max_life",
+      modFamilyKey: "IncreasedLife",
+      modDomain: 1,
     },
     {
       modKey: "prefix_max_es",
@@ -86,6 +103,19 @@ export const MOD_DB: { readonly version: string; readonly records: ReadonlyArray
       nameTemplateKey: "prefix_inc_es_max_life",
     },
     {
+      modKey: "prefix_inc_es_max_mana",
+      modType: "prefix",
+      /** PoE2DB: `BaseLocalDefencesAndMana`는 Helmets·Foci 풀에만 존재(몸통·장갑·장화 없음). */
+      applicableSubTypes: ["helmet", "focus"],
+      requiredItemTags: ["int"],
+      modTags: ["마나", "방어막"],
+      tierCount: 6,
+      maxLevelRequirement: 78,
+      totalWeight: 6000,
+      nameTemplateKey: "prefix_inc_es_max_mana",
+      modFamilyKey: "BaseLocalDefencesAndMana",
+    },
+    {
       modKey: "prefix_max_es_inc_es",
       modType: "prefix",
       applicableSubTypes: ["bodyArmour", "gloves", "boots", "helmet", "focus"],
@@ -99,7 +129,8 @@ export const MOD_DB: { readonly version: string; readonly records: ReadonlyArray
     {
       modKey: "prefix_phys_thorns",
       modType: "prefix",
-      applicableSubTypes: ["bodyArmour", "gloves", "boots", "helmet"],
+      /** 위키 Thorns(`AttackerTakesDamage*`): 몸통·방패·허리만 — 장갑·장화·투구 없음. */
+      applicableSubTypes: ["bodyArmour", "shield", "buckler", "belt"],
       requiredItemTags: [],
       modTags: ["근접", "물리"],
       tierCount: 7,
@@ -129,9 +160,9 @@ export const MOD_DB: { readonly version: string; readonly records: ReadonlyArray
       applicableSubTypes: ["bodyArmour", "gloves", "boots", "helmet", "focus", "ring", "amulet", "belt"],
       requiredItemTags: ["int"],
       modTags: ["능력치"],
-      tierCount: 8,
-      maxLevelRequirement: 74,
-      totalWeight: 8000,
+      tierCount: 9,
+      maxLevelRequirement: 81,
+      totalWeight: 9000,
       nameTemplateKey: "suffix_intelligence",
     },
     {
@@ -186,24 +217,39 @@ export const MOD_DB: { readonly version: string; readonly records: ReadonlyArray
       modTags: [],
       tierCount: 5,
       maxLevelRequirement: 60,
-      totalWeight: 4500,
+      totalWeight: 5000,
       nameTemplateKey: "suffix_reduced_attr_req",
     },
     {
       modKey: "suffix_stun_threshold",
       modType: "suffix",
-      applicableSubTypes: ["bodyArmour", "gloves", "boots", "helmet"],
+      /** 위키 `StunThreshold` 스폰: 몸통·장화·허리띠·방패 — 투구·장갑 없음. */
+      applicableSubTypes: ["bodyArmour", "boots", "belt", "shield", "buckler"],
       requiredItemTags: [],
       modTags: [],
-      tierCount: 10,
+      tierCount: 11,
       maxLevelRequirement: 72,
-      totalWeight: 5000,
+      totalWeight: 8800,
       nameTemplateKey: "suffix_stun_threshold",
+    },
+    {
+      modKey: "suffix_crit_chance",
+      modType: "suffix",
+      /** 위키 `CriticalStrikeChance1–6` — 투구·목걸이 전역 치명타 확률(동일 mod_groups의 무기·궁술·함정 등은 제외). */
+      applicableSubTypes: ["helmet", "amulet"],
+      requiredItemTags: [],
+      modTags: ["치명타"],
+      tierCount: 6,
+      maxLevelRequirement: 72,
+      totalWeight: 3875,
+      nameTemplateKey: "suffix_crit_chance",
+      modFamilyKey: "CriticalStrikeChanceIncrease",
     },
     {
       modKey: "suffix_life_regen",
       modType: "suffix",
-      applicableSubTypes: ["bodyArmour", "gloves", "boots", "helmet", "belt"],
+      /** 위키 `LifeRegeneration` 스폰 합집합에서 `gloves` 제외; 투구 슬롯은 시뮬에서 제외. */
+      applicableSubTypes: ["bodyArmour", "boots", "belt", "amulet", "ring"],
       requiredItemTags: [],
       modTags: ["생명력"],
       tierCount: 11,
@@ -214,34 +260,38 @@ export const MOD_DB: { readonly version: string; readonly records: ReadonlyArray
     {
       modKey: "suffix_reduced_bleed_duration",
       modType: "suffix",
-      applicableSubTypes: ["bodyArmour", "gloves", "boots", "helmet"],
+      /** 위키 `ReducedBleedDuration*` — `mods.mod_groups` `ReducedAilmentDuration` (PoE2DB는 출혈·중독·점화 3줄 묶음 표기). */
+      applicableSubTypes: ["bodyArmour"],
       requiredItemTags: [],
       modTags: ["물리", "상태 이상"],
-      tierCount: 15,
+      modFamilyKey: "ReducedAilmentDuration",
+      tierCount: 5,
       maxLevelRequirement: 76,
-      totalWeight: 7500,
+      totalWeight: 2500,
       nameTemplateKey: "suffix_reduced_bleed_duration",
     },
     {
       modKey: "suffix_reduced_poison_duration",
       modType: "suffix",
-      applicableSubTypes: ["bodyArmour", "gloves", "boots", "helmet"],
+      applicableSubTypes: ["bodyArmour"],
       requiredItemTags: [],
       modTags: ["카오스", "상태 이상"],
-      tierCount: 15,
+      modFamilyKey: "ReducedAilmentDuration",
+      tierCount: 5,
       maxLevelRequirement: 76,
-      totalWeight: 7500,
+      totalWeight: 2500,
       nameTemplateKey: "suffix_reduced_poison_duration",
     },
     {
       modKey: "suffix_reduced_ignite_duration",
       modType: "suffix",
-      applicableSubTypes: ["bodyArmour", "gloves", "boots", "helmet"],
+      applicableSubTypes: ["bodyArmour"],
       requiredItemTags: [],
       modTags: ["원소", "화염", "상태 이상"],
-      tierCount: 15,
+      modFamilyKey: "ReducedAilmentDuration",
+      tierCount: 5,
       maxLevelRequirement: 76,
-      totalWeight: 7500,
+      totalWeight: 2500,
       nameTemplateKey: "suffix_reduced_ignite_duration",
     },
     {
@@ -257,13 +307,13 @@ export const MOD_DB: { readonly version: string; readonly records: ReadonlyArray
     },
 
     // =========================================================================
-    // Gloves — Prefixes: Max Mana (common)
+    // Gloves / helmet / boots — Prefixes: Max Mana (Body Armour는 PoE2DB·위키 풀에 없음)
     // =========================================================================
 
     {
       modKey: "prefix_max_mana",
       modType: "prefix",
-      applicableSubTypes: ["bodyArmour", "gloves", "boots", "helmet"],
+      applicableSubTypes: ["gloves", "boots", "helmet"],
       requiredItemTags: [],
       modTags: ["마나"],
       tierCount: 9,
@@ -282,9 +332,9 @@ export const MOD_DB: { readonly version: string; readonly records: ReadonlyArray
       applicableSubTypes: ["bodyArmour", "gloves", "boots", "helmet"],
       requiredItemTags: ["str"],
       modTags: ["방어막"],
-      tierCount: 7,
-      maxLevelRequirement: 54,
-      totalWeight: 7000,
+      tierCount: 10,
+      maxLevelRequirement: 80,
+      totalWeight: 10000,
       nameTemplateKey: "prefix_max_armour",
     },
     {
@@ -293,9 +343,9 @@ export const MOD_DB: { readonly version: string; readonly records: ReadonlyArray
       applicableSubTypes: ["bodyArmour", "gloves", "boots", "helmet"],
       requiredItemTags: ["str"],
       modTags: ["방어막"],
-      tierCount: 7,
-      maxLevelRequirement: 65,
-      totalWeight: 7000,
+      tierCount: 6,
+      maxLevelRequirement: 78,
+      totalWeight: 6000,
       nameTemplateKey: "prefix_inc_armour",
     },
     {
@@ -320,9 +370,9 @@ export const MOD_DB: { readonly version: string; readonly records: ReadonlyArray
       applicableSubTypes: ["bodyArmour", "gloves", "boots", "helmet"],
       requiredItemTags: ["dex"],
       modTags: ["방어막"],
-      tierCount: 7,
-      maxLevelRequirement: 54,
-      totalWeight: 7000,
+      tierCount: 9,
+      maxLevelRequirement: 70,
+      totalWeight: 9000,
       nameTemplateKey: "prefix_max_evasion",
     },
     {
@@ -331,9 +381,9 @@ export const MOD_DB: { readonly version: string; readonly records: ReadonlyArray
       applicableSubTypes: ["bodyArmour", "gloves", "boots", "helmet"],
       requiredItemTags: ["dex"],
       modTags: ["방어막"],
-      tierCount: 7,
-      maxLevelRequirement: 65,
-      totalWeight: 7000,
+      tierCount: 6,
+      maxLevelRequirement: 78,
+      totalWeight: 6000,
       nameTemplateKey: "prefix_inc_evasion",
     },
     {
@@ -358,9 +408,9 @@ export const MOD_DB: { readonly version: string; readonly records: ReadonlyArray
       applicableSubTypes: ["bodyArmour", "gloves", "boots", "helmet"],
       requiredItemTags: ["str", "dex"],
       modTags: ["방어막"],
-      tierCount: 4,
-      maxLevelRequirement: 46,
-      totalWeight: 4000,
+      tierCount: 8,
+      maxLevelRequirement: 75,
+      totalWeight: 8000,
       nameTemplateKey: "prefix_armour_evasion_flat",
     },
     {
@@ -369,9 +419,9 @@ export const MOD_DB: { readonly version: string; readonly records: ReadonlyArray
       applicableSubTypes: ["bodyArmour", "gloves", "boots", "helmet"],
       requiredItemTags: ["str", "dex"],
       modTags: ["방어막"],
-      tierCount: 7,
-      maxLevelRequirement: 65,
-      totalWeight: 7000,
+      tierCount: 6,
+      maxLevelRequirement: 78,
+      totalWeight: 6000,
       nameTemplateKey: "prefix_inc_armour_evasion",
     },
     {
@@ -396,9 +446,9 @@ export const MOD_DB: { readonly version: string; readonly records: ReadonlyArray
       applicableSubTypes: ["bodyArmour", "gloves", "boots", "helmet"],
       requiredItemTags: ["str", "int"],
       modTags: ["방어막"],
-      tierCount: 4,
-      maxLevelRequirement: 49,
-      totalWeight: 4000,
+      tierCount: 8,
+      maxLevelRequirement: 75,
+      totalWeight: 8000,
       nameTemplateKey: "prefix_armour_es_flat",
     },
     {
@@ -407,9 +457,9 @@ export const MOD_DB: { readonly version: string; readonly records: ReadonlyArray
       applicableSubTypes: ["bodyArmour", "gloves", "boots", "helmet"],
       requiredItemTags: ["str", "int"],
       modTags: ["방어막"],
-      tierCount: 7,
-      maxLevelRequirement: 65,
-      totalWeight: 7000,
+      tierCount: 6,
+      maxLevelRequirement: 78,
+      totalWeight: 6000,
       nameTemplateKey: "prefix_inc_armour_es",
     },
     {
@@ -434,9 +484,9 @@ export const MOD_DB: { readonly version: string; readonly records: ReadonlyArray
       applicableSubTypes: ["bodyArmour", "gloves", "boots", "helmet"],
       requiredItemTags: ["dex", "int"],
       modTags: ["방어막"],
-      tierCount: 4,
-      maxLevelRequirement: 46,
-      totalWeight: 4000,
+      tierCount: 8,
+      maxLevelRequirement: 75,
+      totalWeight: 8000,
       nameTemplateKey: "prefix_evasion_es_flat",
     },
     {
@@ -445,9 +495,9 @@ export const MOD_DB: { readonly version: string; readonly records: ReadonlyArray
       applicableSubTypes: ["bodyArmour", "gloves", "boots", "helmet"],
       requiredItemTags: ["dex", "int"],
       modTags: ["방어막"],
-      tierCount: 7,
-      maxLevelRequirement: 65,
-      totalWeight: 7000,
+      tierCount: 6,
+      maxLevelRequirement: 78,
+      totalWeight: 6000,
       nameTemplateKey: "prefix_inc_evasion_es",
     },
     {
@@ -513,7 +563,12 @@ export const MOD_DB: { readonly version: string; readonly records: ReadonlyArray
     {
       modKey: "prefix_accuracy",
       modType: "prefix",
-      applicableSubTypes: [...GLOVES_AND_WEAPON_ATTACK_SUB_TYPES],
+      applicableSubTypes: [
+        ...HELMET_GLOVES_AND_WEAPON_ATTACK_SUB_TYPES,
+        "ring",
+        "amulet",
+        "quiver",
+      ],
       requiredItemTags: [],
       modTags: ["공격"],
       tierCount: 9,
@@ -532,9 +587,9 @@ export const MOD_DB: { readonly version: string; readonly records: ReadonlyArray
       applicableSubTypes: ["bodyArmour", "gloves", "boots", "helmet", "ring", "amulet", "belt"],
       requiredItemTags: ["str"],
       modTags: ["능력치"],
-      tierCount: 8,
-      maxLevelRequirement: 74,
-      totalWeight: 8000,
+      tierCount: 9,
+      maxLevelRequirement: 81,
+      totalWeight: 9000,
       nameTemplateKey: "suffix_strength",
     },
     {
@@ -642,15 +697,40 @@ export const MOD_DB: { readonly version: string; readonly records: ReadonlyArray
       nameTemplateKey: "suffix_crit_damage_bonus",
     },
     {
-      modKey: "suffix_item_rarity",
-      modType: "suffix",
-      applicableSubTypes: [...HELMET_GLOVES_AND_WEAPON_ATTACK_SUB_TYPES],
+      modKey: "prefix_item_rarity",
+      modType: "prefix",
+      applicableSubTypes: [...RING_AMULET_HELMET_SUB_TYPES],
       requiredItemTags: [],
       modTags: [],
-      tierCount: 3,
-      maxLevelRequirement: 40,
-      totalWeight: 3000,
+      tierCount: 5,
+      maxLevelRequirement: 81,
+      totalWeight: 5000,
+      nameTemplateKey: "prefix_item_rarity",
+    },
+    {
+      modKey: "suffix_item_rarity",
+      modType: "suffix",
+      applicableSubTypes: [...RING_AMULET_BOOTS_HELMET_GLOVES_SUB_TYPES],
+      requiredItemTags: [],
+      modTags: [],
+      tierCount: 5,
+      maxLevelRequirement: 75,
+      totalWeight: 5000,
       nameTemplateKey: "suffix_item_rarity",
+    },
+    {
+      modKey: "suffix_minion_spell_gem_level",
+      modType: "suffix",
+      /** 위키 `GlobalMinionSpellSkillGemLevel*`(비무기): 투구·목걸이 — 상위 티는 목걸이 전용. 스폰 가중치 숫자는 `wikiModTierMerge`+Cargo(플래그형 value)로 합성. */
+      applicableSubTypes: ["helmet", "amulet"],
+      requiredItemTags: [],
+      modTags: ["소환수", "시전"],
+      craftTags: ["minion", "spell"],
+      tierCount: 3,
+      maxLevelRequirement: 75,
+      totalWeight: 850,
+      nameTemplateKey: "suffix_minion_spell_gem_level",
+      modFamilyKey: "IncreaseSocketedGemLevel",
     },
 
     // =========================================================================
@@ -663,9 +743,9 @@ export const MOD_DB: { readonly version: string; readonly records: ReadonlyArray
       applicableSubTypes: ["bodyArmour", "gloves", "boots", "helmet"],
       requiredItemTags: ["str"],
       modTags: ["방어막", "원소"],
-      tierCount: 5,
-      maxLevelRequirement: 66,
-      totalWeight: 5000,
+      tierCount: 6,
+      maxLevelRequirement: 81,
+      totalWeight: 6000,
       nameTemplateKey: "suffix_armour_to_elemental",
     },
     {

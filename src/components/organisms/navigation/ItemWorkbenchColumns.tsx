@@ -3,6 +3,7 @@
 import type { ReactElement } from "react";
 
 import type { UseBaseItemWorkspaceStateReturnType } from "@/hooks";
+import { itemAttributeStatTagsForModFiltering } from "@/lib/poe2db/poe2dbStatAffinityPages";
 import {
   BaseItemWorkspaceSection,
   DesiredModsPanelSection,
@@ -59,7 +60,11 @@ export const ItemWorkbenchColumns = ({
 
       <DesiredModsPanelSection
         subType={baseItemWorkspace.selectedBaseItemRecord?.subType}
-        statTags={baseItemWorkspace.selectedBaseItemRecord?.statTags}
+        statTags={
+          baseItemWorkspace.selectedBaseItemRecord !== undefined
+            ? itemAttributeStatTagsForModFiltering(baseItemWorkspace.selectedBaseItemRecord)
+            : undefined
+        }
         desiredMods={desiredMods}
         onAdd={onAddDesiredMod}
         onRemove={onRemoveDesiredMod}

@@ -189,7 +189,7 @@ export const canApplyExaltedOrb = (item: IItemRoll): boolean => {
  *
  * - `rarity === "rare"`.
  * - At least one explicit mod.
- * - At least one **non-fractured** mod (fractured mods cannot be removed, so chaos would stall).
+ * - At least one **non-fractured** mod (fractured 줄은 재굴림 대상에서 제외).
  * - Not corrupted.
  */
 export const canApplyChaosOrb = (item: IItemRoll): boolean => {
@@ -255,6 +255,162 @@ export const canApplyOrbOfAnnulmentDesecratedOnly = (item: IItemRoll): boolean =
   return [...item.prefixes, ...item.suffixes].some((m) => {
     return !isFracturedMod(m) && isDesecratedMod(m);
   });
+};
+
+/** 다른 슬롯의 `modKey`만 제외 — 해당 슬롯은 새로 굴릴 수 있음(동일 modKey 다른 티 가능). */
+const excludedModKeysForRerollSlot = (
+  item: IItemRoll,
+  kind: "prefix" | "suffix",
+  slotIndex: number,
+): Set<string> => {
+  const s = new Set<string>();
+  item.prefixes.forEach((m, j) => {
+    if (kind === "prefix" && j === slotIndex) {
+      return;
+    }
+    s.add(m.modKey);
+  });
+  item.suffixes.forEach((m, j) => {
+    if (kind === "suffix" && j === slotIndex) {
+      return;
+    }
+    s.add(m.modKey);
+  });
+  return s;
+};
+
+const rerollOneRandomRareAffix = (
+  item: IItemRoll,
+  baseFilters?: IModRollBaseFiltersType,
+): IItemRoll => {
+  const next = cloneRoll(item);
+  const removablePrefixIndices: number[] = [];
+  next.prefixes.forEach((mod, index) => {
+    if (!isFracturedMod(mod)) {
+      removablePrefixIndices.push(index);
+    }
+  });
+  const removableSuffixIndices: number[] = [];
+  next.suffixes.forEach((mod, index) => {
+    if (!isFracturedMod(mod)) {
+      removableSuffixIndices.push(index);
+    }
+  });
+  const totalRemovable = removablePrefixIndices.length + removableSuffixIndices.length;
+  if (totalRemovable === 0) {
+    throw new Error(
+      "Cannot reroll a modifier: no removable modifiers (fractured mods cannot be rerolled).",
+    );
+  }
+  const pick = getRandomIntInclusive(0, totalRemovable - 1);
+  let kind: "prefix" | "suffix";
+  let index: number;
+  if (pick < removablePrefixIndices.length) {
+    kind = "prefix";
+    const idx = removablePrefixIndices[pick];
+    if (idx === undefined) {
+      throw new Error("Internal error: removable prefix index missing.");
+    }
+    index = idx;
+  } else {
+    kind = "suffix";
+    const idx = removableSuffixIndices[pick - removablePrefixIndices.length];
+    if (idx === undefined) {
+      throw new Error("Internal error: removable suffix index missing.");
+    }
+    index = idx;
+  }
+  const excludedModKeys = excludedModKeysForRerollSlot(item, kind, index);
+  const modType: ModTypeType = kind === "prefix" ? "prefix" : "suffix";
+  const rolled = rollRandomMod({
+    rarity: "rare",
+    modType,
+    excludedModKeys,
+    ...baseFilters,
+  });
+  if (kind === "prefix") {
+    next.prefixes = [...next.prefixes];
+    next.prefixes[index] = rolled;
+  } else {
+    next.suffixes = [...next.suffixes];
+    next.suffixes[index] = rolled;
+  }
+  return next;
+};
+
+type WeakestAffixPickType = {
+  kind: "prefix" | "suffix";
+  index: number;
+};
+
+const pickWeakestRemovableAffix = (item: IItemRoll): WeakestAffixPickType => {
+  const next = cloneRoll(item);
+  type CandidateType = {
+    kind: "prefix" | "suffix";
+    index: number;
+    tier: number;
+  };
+  const candidates: CandidateType[] = [];
+  next.prefixes.forEach((mod, index) => {
+    if (!isFracturedMod(mod)) {
+      candidates.push({
+        kind: "prefix",
+        index,
+        tier: mod.tier,
+      });
+    }
+  });
+  next.suffixes.forEach((mod, index) => {
+    if (!isFracturedMod(mod)) {
+      candidates.push({
+        kind: "suffix",
+        index,
+        tier: mod.tier,
+      });
+    }
+  });
+  if (candidates.length === 0) {
+    throw new Error(
+      "Cannot reroll a modifier: no removable modifiers (fractured mods cannot be rerolled).",
+    );
+  }
+  const maxTier = Math.max(
+    ...candidates.map((c) => {
+      return c.tier;
+    }),
+  );
+  const weakest = candidates.filter((c) => {
+    return c.tier === maxTier;
+  });
+  const pick = weakest[getRandomIntInclusive(0, weakest.length - 1)];
+  if (pick === undefined) {
+    throw new Error("Internal error: Whittling pick missing.");
+  }
+  return { kind: pick.kind, index: pick.index };
+};
+
+const rerollWeakestRareAffix = (
+  item: IItemRoll,
+  baseFilters?: IModRollBaseFiltersType,
+): IItemRoll => {
+  const next = cloneRoll(item);
+  const { kind, index } = pickWeakestRemovableAffix(item);
+  const excludedModKeys = excludedModKeysForRerollSlot(item, kind, index);
+  const modType: ModTypeType = kind === "prefix" ? "prefix" : "suffix";
+  const rolled = rollRandomMod({
+    rarity: "rare",
+    modType,
+    excludedModKeys,
+    ...baseFilters,
+  });
+  if (kind === "prefix") {
+    next.prefixes = [...next.prefixes];
+    next.prefixes[index] = rolled;
+  } else {
+    next.suffixes = [...next.suffixes];
+    next.suffixes[index] = rolled;
+  }
+  return next;
 };
 
 const removeOneRandomAffix = (item: IItemRoll): IItemRoll => {
@@ -587,7 +743,7 @@ export const applyFracturingOrb = (item: IItemRoll): IItemRoll => {
 };
 
 /**
- * 카오스 오브 — Chaos Orb (PoE2): 레어 전용. 무작위 명시 옵션 하나 제거 후 하나 추가, 희귀도 유지.
+ * 카오스 오브 — Chaos Orb: 레어 전용. **제거·추가가 아니라** 무작위로 **한 줄(접두 또는 접미 슬롯 하나)**을 새로 굴린다. 희귀도·접두/접미 개수 유지.
  */
 export const applyChaosOrb = (item: IItemRoll, baseFilters?: IModRollBaseFiltersType): IItemRoll => {
   assertRollNotCorruptedForStandardCrafting(item);
@@ -595,70 +751,19 @@ export const applyChaosOrb = (item: IItemRoll, baseFilters?: IModRollBaseFilters
     throw new Error("Chaos Orb can only be used on rare items.");
   }
   if (totalAffixCount(item) === 0) {
-    throw new Error("Chaos Orb requires at least one explicit modifier to remove.");
+    throw new Error("Chaos Orb requires at least one explicit modifier.");
   }
-  const without = removeOneRandomAffix(item);
-  if (totalAffixCount(without) >= RARE_MAX_TOTAL_AFFIXES) {
-    throw new Error("Chaos Orb: internal state has no room for a new modifier.");
+  if (countRemovableAffixes(item) === 0) {
+    throw new Error(
+      "Chaos Orb: no removable modifiers (fractured mods cannot be rerolled).",
+    );
   }
-  return addOneRandomMod(without, "rare", baseFilters);
+  return rerollOneRandomRareAffix(item, baseFilters);
 };
 
 /**
- * 절사의 징조(Omen of Whittling) — 카오스: **가장 높은 tier 숫자(가장 약한 롤)** 옵션을 제거한 뒤 1줄 추가.
- * 게임은 아이템 레벨 요구가 가장 낮은 옵션 — 시뮬에서는 `tier` 최댓값으로 근사.
+ * 절사의 징조(Omen of Whittling) — 카오스: **가장 높은 tier 숫자(가장 약한 롤 근사)** 한 줄만 재굴림.
  */
-const removeWeakestAffixByTier = (item: IItemRoll): IItemRoll => {
-  const next = cloneRoll(item);
-  type CandidateType = {
-    kind: "prefix" | "suffix";
-    index: number;
-    tier: number;
-  };
-  const candidates: CandidateType[] = [];
-  next.prefixes.forEach((mod, index) => {
-    if (!isFracturedMod(mod)) {
-      candidates.push({
-        kind: "prefix",
-        index,
-        tier: mod.tier,
-      });
-    }
-  });
-  next.suffixes.forEach((mod, index) => {
-    if (!isFracturedMod(mod)) {
-      candidates.push({
-        kind: "suffix",
-        index,
-        tier: mod.tier,
-      });
-    }
-  });
-  if (candidates.length === 0) {
-    throw new Error(
-      "Cannot remove a modifier: no removable modifiers (fractured mods cannot be removed).",
-    );
-  }
-  const maxTier = Math.max(
-    ...candidates.map((c) => {
-      return c.tier;
-    }),
-  );
-  const weakest = candidates.filter((c) => {
-    return c.tier === maxTier;
-  });
-  const pick = weakest[getRandomIntInclusive(0, weakest.length - 1)];
-  if (pick === undefined) {
-    throw new Error("Internal error: Whittling pick missing.");
-  }
-  if (pick.kind === "prefix") {
-    next.prefixes.splice(pick.index, 1);
-  } else {
-    next.suffixes.splice(pick.index, 1);
-  }
-  return next;
-};
-
 export const applyChaosOrbWithWhittling = (
   item: IItemRoll,
   baseFilters?: IModRollBaseFiltersType,
@@ -668,13 +773,14 @@ export const applyChaosOrbWithWhittling = (
     throw new Error("Chaos Orb can only be used on rare items.");
   }
   if (totalAffixCount(item) === 0) {
-    throw new Error("Chaos Orb requires at least one explicit modifier to remove.");
+    throw new Error("Chaos Orb requires at least one explicit modifier.");
   }
-  const without = removeWeakestAffixByTier(item);
-  if (totalAffixCount(without) >= RARE_MAX_TOTAL_AFFIXES) {
-    throw new Error("Chaos Orb: internal state has no room for a new modifier.");
+  if (countRemovableAffixes(item) === 0) {
+    throw new Error(
+      "Chaos Orb: no removable modifiers (fractured mods cannot be rerolled).",
+    );
   }
-  return addOneRandomMod(without, "rare", baseFilters);
+  return rerollWeakestRareAffix(item, baseFilters);
 };
 
 /** 소멸의 오브 — Orb of Annulment: 무작위 명시 하나 제거. 일반/매직/레어 등급은 유지(옵션 0개여도). */

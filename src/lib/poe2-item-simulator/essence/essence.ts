@@ -11,6 +11,7 @@ import craftLabEssenceWikiTiers from "@/lib/poe2-item-simulator/data/craftLabEss
 import { MOD_DB } from "@/lib/poe2-item-simulator/modDb";
 import { getModTierDisplayRows } from "@/lib/poe2-item-simulator/modDbTierDisplay";
 import { toModDefinition } from "@/lib/poe2-item-simulator/modPool";
+import { wikiTierSpawnContextFromBaseFilters } from "@/lib/poe2-item-simulator/wikiTierSpawnFilter";
 import { getRandomIntInclusive, pickWeightedRandom } from "@/lib/poe2-item-simulator/random";
 import {
   listEligibleModTierRowsForRecord,
@@ -212,9 +213,10 @@ const buildForcedMod = (
       return { candidate: row, weight: row.weight };
     }),
   );
-  const fullRows = getModTierDisplayRows(record);
+  const wikiCtx = wikiTierSpawnContextFromBaseFilters(baseFilters);
+  const fullRows = getModTierDisplayRows(record, wikiCtx);
   const displayTier = mapLadderTierToSimDisplayTier(record, tierPick.tier, fullRows);
-  const base = toModDefinition(record, tierPick.tier);
+  const base = toModDefinition(record, tierPick.tier, wikiCtx);
   return {
     ...base,
     tier: displayTier,
@@ -530,7 +532,8 @@ export const buildEssenceGuaranteedModPreviewRoll = (
       });
       const mid = sorted[Math.floor((sorted.length - 1) / 2)];
       if (mid !== undefined) {
-        const fullRows = getModTierDisplayRows(record);
+        const wikiCtx = wikiTierSpawnContextFromBaseFilters(baseFilters);
+        const fullRows = getModTierDisplayRows(record, wikiCtx);
         tier = mapLadderTierToSimDisplayTier(record, mid.tier, fullRows);
       }
     }

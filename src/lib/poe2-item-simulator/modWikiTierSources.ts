@@ -63,6 +63,17 @@ const wikiRow = {
       !t.includes("Evasion")
     );
   },
+  /** `BaseLocalDefencesAndMana`: `LocalIncreasedEnergyShieldAndMana*` (not Armour/Evasion hybrid lines). */
+  baseLocalDefencesManaEsOnly: (row: WikiExtractedModTierRowType): boolean => {
+    const t = normStatText(row);
+    return (
+      t.includes("increased [[Energy Shield]]") &&
+      t.includes("maximum Mana") &&
+      !t.includes("Armour") &&
+      !t.includes("Evasion") &&
+      !t.includes("Life")
+    );
+  },
   baseLocalDefencesLifeEvasionEs: (row: WikiExtractedModTierRowType): boolean => {
     const t = normStatText(row);
     return (
@@ -104,6 +115,23 @@ const wikiRow = {
       !t.includes("Armour") &&
       !t.includes("Evasion")
     );
+  },
+  /** `+(n–m) to maximum Energy Shield` only (local). Excludes % ES, 하이브리드(생명/마나/방어 등). */
+  baseLocalDefencesFlatEsOnly: (row: WikiExtractedModTierRowType): boolean => {
+    const t = normStatText(row);
+    if (!t.includes("maximum [[Energy Shield]]")) {
+      return false;
+    }
+    if (t.includes("increased")) {
+      return false;
+    }
+    if (t.includes("Life") || t.includes("Mana")) {
+      return false;
+    }
+    if (t.includes("Armour") || t.includes("Evasion")) {
+      return false;
+    }
+    return true;
   },
   baseLocalDefencesPctEvasionEs: (row: WikiExtractedModTierRowType): boolean => {
     const t = normStatText(row);
@@ -150,6 +178,41 @@ const wikiRow = {
     const t = normStatText(row);
     return t.includes("Critical Damage Bonus]]") && !t.includes("for [[Attack]]");
   },
+  /**
+   * Wiki Cargo often lists a parallel ladder for two-hand weapons (e.g. `IncreasedManaTwoHandWeapon*`,
+   * `LocalAddedFireDamageTwoHand*`) under the same `mod_groups` as one-hand / glove. Merging both
+   * duplicates ilvl rows and scrambles tier order — keep a single ladder for simulator `modKey`s.
+   */
+  wikiModExcludeTwoHandVariant: (row: WikiExtractedModTierRowType): boolean => {
+    return !row.wikiModId.includes("TwoHand");
+  },
+  /** `GlobalMinionSpellSkillGemLevel1–3` — `Weapon` 변형(셉터) 제외. */
+  minionGlobalSocketedGemSkill: (row: WikiExtractedModTierRowType): boolean => {
+    return (
+      row.wikiModId.startsWith("GlobalMinionSpellSkillGemLevel") &&
+      !row.wikiModId.includes("Weapon")
+    );
+  },
+  /**
+   * 동일 `mod_groups`에 `NearbyAlliesLifeRegeneration*`(셉터·아군 재생)가 있으면 티어가 섞인다.
+   * `suffix_life_regen`(플레이어 % 재생)만 남긴다.
+   */
+  lifeRegenerationPlayerSuffix: (row: WikiExtractedModTierRowType): boolean => {
+    return !row.wikiModId.startsWith("NearbyAllies");
+  },
+  /**
+   * `CriticalStrikeChanceIncrease`에 무기 지역·궁술·함정·셉터(아군) 등이 섞여 있음.
+   * 투구·목걸이 전역 줄만 — `CriticalStrikeChance1`…`CriticalStrikeChance6`.
+   */
+  criticalStrikeChanceGlobalHelmetAmulet: (row: WikiExtractedModTierRowType): boolean => {
+    return /^CriticalStrikeChance\d+$/.test(row.wikiModId);
+  },
+  /**
+   * 로컬 ES % (`DefencesPercent`) — `EnergyShieldPercent`의 전역 최대 ES %(`IncreasedEnergyShieldPercent*`)와 분리.
+   */
+  localIncreasedEnergyShieldPercentOnly: (row: WikiExtractedModTierRowType): boolean => {
+    return row.wikiModId.startsWith("LocalIncreasedEnergyShieldPercent");
+  },
 };
 
 /**
@@ -160,12 +223,25 @@ export const MOD_WIKI_TIER_SOURCES: Readonly<
   Partial<Readonly<Record<string, ModWikiTierSourceRuleType>>>
 > = {
   prefix_max_life: { modGroups: "IncreasedLife", generationType: 1 },
-  prefix_max_es: { modGroups: "IncreasedEnergyShield", generationType: 1 },
-  prefix_inc_es: { modGroups: "EnergyShieldPercent", generationType: 1 },
+  prefix_max_es: {
+    modGroups: "BaseLocalDefences",
+    generationType: 1,
+    rowMatches: wikiRow.baseLocalDefencesFlatEsOnly,
+  },
+  prefix_inc_es: {
+    modGroups: "DefencesPercent",
+    generationType: 1,
+    rowMatches: wikiRow.localIncreasedEnergyShieldPercentOnly,
+  },
   prefix_inc_es_max_life: {
     modGroups: "BaseLocalDefencesAndLife",
     generationType: 1,
     rowMatches: wikiRow.baseLocalDefencesLifeEsOnly,
+  },
+  prefix_inc_es_max_mana: {
+    modGroups: "BaseLocalDefencesAndMana",
+    generationType: 1,
+    rowMatches: wikiRow.baseLocalDefencesManaEsOnly,
   },
   prefix_max_es_inc_es: {
     modGroups: "BaseLocalDefencesAndDefencePercent",
@@ -174,7 +250,11 @@ export const MOD_WIKI_TIER_SOURCES: Readonly<
   },
   prefix_phys_thorns: { modGroups: "Thorns", generationType: 1 },
   prefix_spirit: { modGroups: "BaseSpirit", generationType: 1 },
-  prefix_max_mana: { modGroups: "IncreasedMana", generationType: 1 },
+  prefix_max_mana: {
+    modGroups: "IncreasedMana",
+    generationType: 1,
+    rowMatches: wikiRow.wikiModExcludeTwoHandVariant,
+  },
   prefix_max_armour: { modGroups: "IncreasedPhysicalDamageReductionRating", generationType: 1 },
   prefix_inc_armour: {
     modGroups: "BaseLocalDefencesAndDefencePercent",
@@ -242,10 +322,26 @@ export const MOD_WIKI_TIER_SOURCES: Readonly<
     generationType: 1,
     rowMatches: wikiRow.baseLocalDefencesLifeEvasionEs,
   },
-  prefix_added_phys_damage_attack: { modGroups: "PhysicalDamage", generationType: 1 },
-  prefix_added_fire_damage_attack: { modGroups: "FireDamage", generationType: 1 },
-  prefix_added_cold_damage_attack: { modGroups: "ColdDamage", generationType: 1 },
-  prefix_added_lightning_damage_attack: { modGroups: "LightningDamage", generationType: 1 },
+  prefix_added_phys_damage_attack: {
+    modGroups: "PhysicalDamage",
+    generationType: 1,
+    rowMatches: wikiRow.wikiModExcludeTwoHandVariant,
+  },
+  prefix_added_fire_damage_attack: {
+    modGroups: "FireDamage",
+    generationType: 1,
+    rowMatches: wikiRow.wikiModExcludeTwoHandVariant,
+  },
+  prefix_added_cold_damage_attack: {
+    modGroups: "ColdDamage",
+    generationType: 1,
+    rowMatches: wikiRow.wikiModExcludeTwoHandVariant,
+  },
+  prefix_added_lightning_damage_attack: {
+    modGroups: "LightningDamage",
+    generationType: 1,
+    rowMatches: wikiRow.wikiModExcludeTwoHandVariant,
+  },
   prefix_accuracy: {
     modGroups: "IncreasedAccuracy",
     generationType: 1,
@@ -258,7 +354,16 @@ export const MOD_WIKI_TIER_SOURCES: Readonly<
   suffix_chaos_res: { modGroups: "ChaosResistance", generationType: 2 },
   suffix_reduced_attr_req: { modGroups: "LocalAttributeRequirements", generationType: 2 },
   suffix_stun_threshold: { modGroups: "StunThreshold", generationType: 2 },
-  suffix_life_regen: { modGroups: "LifeRegeneration", generationType: 2 },
+  suffix_crit_chance: {
+    modGroups: "CriticalStrikeChanceIncrease",
+    generationType: 2,
+    rowMatches: wikiRow.criticalStrikeChanceGlobalHelmetAmulet,
+  },
+  suffix_life_regen: {
+    modGroups: "LifeRegeneration",
+    generationType: 2,
+    rowMatches: wikiRow.lifeRegenerationPlayerSuffix,
+  },
   suffix_reduced_bleed_duration: {
     modGroups: "ReducedAilmentDuration",
     generationType: 2,
@@ -280,7 +385,16 @@ export const MOD_WIKI_TIER_SOURCES: Readonly<
   suffix_melee_skill_levels: {
     modGroups: "IncreaseSocketedGemLevel",
     generationType: 2,
-    rowMatches: wikiRow.meleeSocketedOnly,
+    rowMatches: (row: WikiExtractedModTierRowType): boolean => {
+      return (
+        wikiRow.meleeSocketedOnly(row) && wikiRow.wikiModExcludeTwoHandVariant(row)
+      );
+    },
+  },
+  suffix_minion_spell_gem_level: {
+    modGroups: "IncreaseSocketedGemLevel",
+    generationType: 2,
+    rowMatches: wikiRow.minionGlobalSocketedGemSkill,
   },
   suffix_life_leech_from_phys: {
     modGroups: "LifeLeech",
@@ -293,12 +407,15 @@ export const MOD_WIKI_TIER_SOURCES: Readonly<
     rowMatches: wikiRow.manaLeechAttack,
   },
   suffix_life_on_hit: { modGroups: "LifeGainPerTarget", generationType: 2 },
+  suffix_life_on_kill: { modGroups: "LifeGainedFromEnemyDeath", generationType: 2 },
+  suffix_mana_on_kill: { modGroups: "ManaGainedFromEnemyDeath", generationType: 2 },
   suffix_attack_speed: { modGroups: "IncreasedAttackSpeed", generationType: 2 },
   suffix_crit_damage_bonus: {
     modGroups: "CriticalStrikeMultiplier",
     generationType: 2,
     rowMatches: wikiRow.critMultGlobal,
   },
+  prefix_item_rarity: { modGroups: "ItemFoundRarityIncreasePrefix", generationType: 1 },
   suffix_item_rarity: { modGroups: "ItemFoundRarityIncrease", generationType: 2 },
   suffix_armour_to_elemental: { modGroups: "ArmourAppliesToElementalDamage", generationType: 2 },
 };

@@ -5,6 +5,7 @@ import {
   mapLadderTierToSimDisplayTier,
   type IModRollBaseFiltersType,
 } from "@/lib/poe2-item-simulator/roller";
+import { wikiTierSpawnContextFromBaseFilters } from "@/lib/poe2-item-simulator/wikiTierSpawnFilter";
 
 /**
  * 변경 후 아이템 레벨에서도, 현재 붙어 있는 명시 옵션의 **표시 티어**가
@@ -32,7 +33,8 @@ export const areExplicitModsStillValidAtItemLevel = (
     if (record === undefined) {
       return false;
     }
-    const fullRows = getModTierDisplayRows(record);
+    const wikiCtx = wikiTierSpawnContextFromBaseFilters(filtersAtNew);
+    const fullRows = getModTierDisplayRows(record, wikiCtx);
     const eligible = listEligibleModTierRowsForRecord(record, filtersAtNew);
     const eligibleDisplayTiers = new Set(
       eligible.map((row) => {

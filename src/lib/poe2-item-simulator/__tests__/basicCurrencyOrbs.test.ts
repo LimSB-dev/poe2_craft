@@ -325,15 +325,14 @@ describe("basicCurrencyOrbs — happy path with deterministic randomness", () =>
     expect(next.prefixes.length + next.suffixes.length).toBe(1);
   });
 
-  test("applyOrbOfTransmutation: ring has no prefix pool in MOD_DB — still rolls suffix (no throw)", () => {
+  test("applyOrbOfTransmutation: ring rolls one explicit (prefix pool e.g. accuracy exists — no throw)", () => {
     jest.spyOn(Math, "random").mockReturnValue(0);
     const next = applyOrbOfTransmutation(
       { rarity: "normal", prefixes: [], suffixes: [] },
       { baseItemSubType: "ring", itemStatTags: [] },
     );
     expect(next.rarity).toBe("magic");
-    expect(next.suffixes.length).toBe(1);
-    expect(next.prefixes.length).toBe(0);
+    expect(next.prefixes.length + next.suffixes.length).toBe(1);
   });
 
   test("applyOrbOfTransmutation: claw uses weapon attack mod pool (prefix+suffix candidates exist)", () => {

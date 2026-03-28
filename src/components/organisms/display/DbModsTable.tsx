@@ -12,10 +12,21 @@ import {
   buildModStatDisplayLines,
   getModTierDisplayRows,
 } from "@/lib/poe2-item-simulator/modDbTierDisplay";
+import { wikiTierSpawnContextFromBaseFilters } from "@/lib/poe2-item-simulator/wikiTierSpawnFilter";
+
+export type DbModsTableViewContextType = {
+  baseItemSubType: IBaseItemSubTypeType;
+  itemStatTags: ReadonlyArray<IBaseItemStatTagType>;
+};
 
 export type DbModsTablePropsType = {
   records: readonly IModDbRecordType[];
   locale: string;
+  /**
+   * Current DB page (item class + optional armour stat affinity). When set, tier counts / weights /
+   * T1 req. ilvl follow `mod_spawn_weights` for that slot (PoE2DB parity).
+   */
+  viewContext?: DbModsTableViewContextType;
 };
 
 type TierBucketType = "weapon" | "nonWeapon";
@@ -64,6 +75,38 @@ const TWO_HAND_SUB_TYPE_SET = new Set<string>([
   "crossbow",
 ]);
 
+/** 위키 `mods.mod_groups` — DB 뷰에서 출혈/중독/점화 3 modKey를 한 행으로 묶는다(PoE2DB ModsView 묶음 표기와 동일). */
+const REDUCED_AILMENT_DURATION_FAMILY = "ReducedAilmentDuration";
+
+const dbViewGroupingTemplateKey = (record: IModDbRecordType): string => {
+  if (record.modFamilyKey === REDUCED_AILMENT_DURATION_FAMILY) {
+    return REDUCED_AILMENT_DURATION_FAMILY;
+  }
+  return record.nameTemplateKey;
+};
+
+const isReducedAilmentDurationFamilyGroup = (records: readonly IModDbRecordType[]): boolean => {
+  return (
+    records.length >= 2 &&
+    records.every((r) => {
+      return r.modFamilyKey === REDUCED_AILMENT_DURATION_FAMILY;
+    })
+  );
+};
+
+const sumFirstTierDisplayWeights = (
+  records: readonly IModDbRecordType[],
+  cache: ReadonlyMap<string, ReturnType<typeof getModTierDisplayRows>>,
+): number => {
+  return records.reduce((sum, r) => {
+    const rows = cache.get(r.modKey) ?? [];
+    const asc = [...rows].sort((a, b) => {
+      return a.tier - b.tier;
+    });
+    return sum + (asc[0]?.weight ?? 0);
+  }, 0);
+};
+
 const bumpMaxTierFromRecord = (
   record: IModDbRecordType,
   target: Map<string, number>,
@@ -91,7 +134,11 @@ const maxTierDepthForRecord = (record: IModDbRecordType): number => {
   );
 };
 
-export const DbModsTable = ({ records, locale }: DbModsTablePropsType): ReactElement => {
+export const DbModsTable = ({
+  records,
+  locale,
+  viewContext,
+}: DbModsTablePropsType): ReactElement => {
   const t = useTranslations("simulator");
   const [expandedModKey, setExpandedModKey] = useState<string | null>(null);
   const [bucketByGroupKey, setBucketByGroupKey] = useState<Partial<Record<string, TierBucketType>>>(
@@ -169,6 +216,21 @@ export const DbModsTable = ({ records, locale }: DbModsTablePropsType): ReactEle
     return "legacy";
   };
 
+  const wikiCtx = useMemo(() => {
+    if (viewContext === undefined) {
+      return undefined;
+    }
+    return wikiTierSpawnContextFromBaseFilters(viewContext);
+  }, [viewContext]);
+
+  const tierRowsCache = useMemo(() => {
+    const map = new Map<string, ReturnType<typeof getModTierDisplayRows>>();
+    for (const record of records) {
+      map.set(record.modKey, getModTierDisplayRows(record, wikiCtx));
+    }
+    return map;
+  }, [records, wikiCtx]);
+
   const groupedRows = useMemo(() => {
     const groups = new Map<string, GroupedModRowType>();
     for (const record of records) {
@@ -177,7 +239,7 @@ export const DbModsTable = ({ records, locale }: DbModsTablePropsType): ReactEle
       const key = [
         sectionKey(record),
         record.modType,
-        record.nameTemplateKey,
+        dbViewGroupingTemplateKey(record),
         [...record.requiredItemTags].sort().join("|"),
         [...record.modTags].sort().join("|"),
         applicableKey,
@@ -218,16 +280,54 @@ export const DbModsTable = ({ records, locale }: DbModsTablePropsType): ReactEle
       );
       groups.set(key, current);
     }
-    return [...groups.values()];
-  }, [records]);
-
-  const tierRowsCache = useMemo(() => {
-    const map = new Map<string, ReturnType<typeof getModTierDisplayRows>>();
-    for (const record of records) {
-      map.set(record.modKey, getModTierDisplayRows(record));
+    const baseRaw = [...groups.values()];
+    const base = baseRaw.map((g) => {
+      const allRecords = [...g.weaponRecords, ...g.nonWeaponRecords];
+      if (!isReducedAilmentDurationFamilyGroup(allRecords)) {
+        return g;
+      }
+      const sorted = [...allRecords].sort((a, b) => {
+        return a.modKey.localeCompare(b.modKey);
+      });
+      const first = sorted[0];
+      return {
+        ...g,
+        displayRecord: first ?? g.displayRecord,
+        totalWeight: sumFirstTierDisplayWeights(sorted, tierRowsCache),
+      };
+    });
+    if (viewContext === undefined || wikiCtx === undefined) {
+      return base;
     }
-    return map;
-  }, [records]);
+    const focus = viewContext.baseItemSubType;
+    return base.map((g) => {
+      const allRecords = [...g.weaponRecords, ...g.nonWeaponRecords];
+      let maxTier = 0;
+      for (const r of allRecords) {
+        maxTier = Math.max(maxTier, (tierRowsCache.get(r.modKey) ?? []).length);
+      }
+      const dr = g.displayRecord;
+      const drRowsAsc = [...(tierRowsCache.get(dr.modKey) ?? [])].sort((a, b) => {
+        return a.tier - b.tier;
+      });
+      const newWeight = isReducedAilmentDurationFamilyGroup(allRecords)
+        ? sumFirstTierDisplayWeights(allRecords, tierRowsCache)
+        : drRowsAsc[0]?.weight ?? g.totalWeight;
+      const newMaxMap = new Map(g.maxTierBySubType);
+      for (const r of allRecords) {
+        if (r.applicableSubTypes.includes(focus)) {
+          newMaxMap.set(focus, (tierRowsCache.get(r.modKey) ?? []).length);
+          break;
+        }
+      }
+      return {
+        ...g,
+        tierCount: maxTier,
+        totalWeight: newWeight,
+        maxTierBySubType: newMaxMap,
+      };
+    });
+  }, [records, viewContext, wikiCtx, tierRowsCache]);
 
   return (
     <table className="w-full text-sm">
@@ -260,19 +360,33 @@ export const DbModsTable = ({ records, locale }: DbModsTablePropsType): ReactEle
         {groupedRows.map((group, rowIndex) => {
           const isExpanded = expandedModKey === group.groupKey;
           const displayRecord = group.displayRecord;
-          const displayName = modName(displayRecord.nameTemplateKey);
+          const allInGroup = [...group.weaponRecords, ...group.nonWeaponRecords];
+          const displayName =
+            isReducedAilmentDurationFamilyGroup(allInGroup)
+              ? t("mods.reduced_ailment_duration_group")
+              : modName(displayRecord.nameTemplateKey);
           const defaultBucket: TierBucketType = group.weaponRecords.length > 0 ? "weapon" : "nonWeapon";
           const selectedBucket = bucketByGroupKey[group.groupKey] ?? defaultBucket;
           const modTemplate = modName(displayRecord.nameTemplateKey);
+          const tagChips =
+            isReducedAilmentDurationFamilyGroup(allInGroup)
+              ? Array.from(new Set(allInGroup.flatMap((r) => [...r.modTags])))
+              : displayRecord.modTags;
           const selectedRecords = selectedBucket === "weapon" ? group.weaponRecords : group.nonWeaponRecords;
           const recordTierGroups = selectedRecords.map((row) => {
             const tierRows = tierRowsCache.get(row.modKey) ?? [];
-            const sortedTierRows = [...tierRows].sort((a, b) => b.tier - a.tier);
+            const sortedTierRows = [...tierRows].sort((a, b) => a.tier - b.tier);
             return { row, sortedTierRows };
           });
           const hasSynthetic = recordTierGroups.some((entry) => {
             return entry.sortedTierRows.some((tierRow) => tierRow.isSynthetic);
           });
+          const bestTierRowForSummary =
+            viewContext !== undefined
+              ? [...(tierRowsCache.get(displayRecord.modKey) ?? [])].sort((a, b) => {
+                  return a.tier - b.tier;
+                })[0]
+              : undefined;
 
           return (
             <Fragment key={group.groupKey}>
@@ -323,7 +437,7 @@ export const DbModsTable = ({ records, locale }: DbModsTablePropsType): ReactEle
                 </td>
                 <td className="px-4 py-2.5">
                   <div className="flex flex-wrap gap-1">
-                    {displayRecord.modTags.map((tag) => (
+                    {tagChips.map((tag) => (
                       <span
                         key={tag}
                         className="inline-flex items-center rounded px-1.5 py-0.5 text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400"
@@ -357,7 +471,13 @@ export const DbModsTable = ({ records, locale }: DbModsTablePropsType): ReactEle
                 </td>
                 <td className="px-4 py-2.5 text-right tabular-nums text-zinc-700 dark:text-zinc-300 font-medium">
                   <span className="block">{group.tierCount}</span>
-                  {group.applicableSubTypes.length === 1 ? (
+                  {viewContext !== undefined && bestTierRowForSummary !== undefined ? (
+                    <span className="mt-0.5 block text-[11px] font-normal leading-tight text-zinc-500 dark:text-zinc-400">
+                      {t("dbView.bestTierReqIlvlShort", {
+                        ilvl: bestTierRowForSummary.levelRequirement,
+                      })}
+                    </span>
+                  ) : viewContext === undefined && group.applicableSubTypes.length === 1 ? (
                     <span className="mt-0.5 block text-[11px] font-normal leading-tight text-zinc-500 dark:text-zinc-400">
                       {t("dbView.maxTierStepsShort", {
                         count:
@@ -481,7 +601,10 @@ export const DbModsTable = ({ records, locale }: DbModsTablePropsType): ReactEle
                                   return subTypeLabel(subType);
                                 });
                                 const weaponGroupLabel = getWeaponGroupLabel(row.applicableSubTypes);
-                                const ladderDepth = maxTierDepthForRecord(row);
+                                const ladderDepth =
+                                  viewContext !== undefined
+                                    ? (tierRowsCache.get(row.modKey) ?? []).length
+                                    : maxTierDepthForRecord(row);
                                 return (
                                   <Fragment key={`${row.modKey}-t${String(tierRow.tier)}`}>
                                     {index === 0 ? (
@@ -505,10 +628,15 @@ export const DbModsTable = ({ records, locale }: DbModsTablePropsType): ReactEle
                                         </span>
                                       </td>
                                       <td className="px-3 py-3 align-middle text-zinc-500">
-                                        {t("dbView.tierAffixPlaceholder")}
+                                        {tierRow.tierRollName ?? t("dbView.tierAffixPlaceholder")}
                                       </td>
                                       <td className="px-3 py-3 align-middle text-right text-sm tabular-nums text-zinc-300">
                                         {tierRow.levelRequirement}
+                                        {tierRow.requiredIntelligence !== undefined
+                                          ? t("dbView.tierReqIntAppend", {
+                                              value: tierRow.requiredIntelligence,
+                                            })
+                                          : null}
                                       </td>
                                       <td className="px-3 py-3 align-middle">
                                         <div className="flex flex-col gap-2">
@@ -530,9 +658,9 @@ export const DbModsTable = ({ records, locale }: DbModsTablePropsType): ReactEle
                                               })}
                                             </ul>
                                           )}
-                                          {displayRecord.modTags.length > 0 ? (
+                                          {row.modTags.length > 0 ? (
                                             <div className="flex flex-wrap gap-1.5 pt-0.5">
-                                              {displayRecord.modTags.map((tag) => (
+                                              {row.modTags.map((tag) => (
                                                 <span
                                                   key={tag}
                                                   className="inline-flex rounded-full bg-sky-950/90 px-2 py-0.5 text-[11px] font-medium text-sky-200 ring-1 ring-sky-700/50"

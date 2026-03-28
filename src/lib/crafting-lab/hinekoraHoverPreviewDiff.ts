@@ -1,3 +1,15 @@
+const statRangesSignature = (mod: IModDefinition): string => {
+  if (mod.statRanges === undefined || mod.statRanges.length === 0) {
+    return "";
+  }
+  return mod.statRanges
+    .map((r) => {
+      const id = r.statId ?? "";
+      return `${id}:${r.min}-${r.max}`;
+    })
+    .join("|");
+};
+
 const modSignature = (mod: IModDefinition): string => {
   return [
     mod.modKey,
@@ -5,6 +17,7 @@ const modSignature = (mod: IModDefinition): string => {
     mod.displayName,
     mod.modType,
     mod.isFractured === true ? "1" : "0",
+    statRangesSignature(mod),
   ].join("\u0001");
 };
 

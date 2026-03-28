@@ -14,4 +14,15 @@ describe("extractPoe2DbModifierPartitionKey", () => {
   it("handles null as empty string", () => {
     expect(extractPoe2DbModifierPartitionKey(null)).toBe("");
   });
+
+  it("strips HTML tags for names with angle brackets but no href (fallback key)", () => {
+    expect(extractPoe2DbModifierPartitionKey("<span>담금질한</span>")).toBe("담금질한");
+  });
+
+  it("truncates stripped fallback to 200 chars", () => {
+    const long = `<b>${"x".repeat(250)}</b>`;
+    const out = extractPoe2DbModifierPartitionKey(long);
+    expect(out.length).toBe(200);
+    expect(out.startsWith("x")).toBe(true);
+  });
 });

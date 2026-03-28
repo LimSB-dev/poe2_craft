@@ -1,7 +1,14 @@
 import "./globals.css";
 import { Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
+import type { Metadata } from "next";
+import { NextIntlClientProvider } from "next-intl";
+import { getLocale, getMessages, getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
+
+import { HtmlLangSetter } from "@/components/atoms";
+import type { AppLocaleType } from "@/lib/i18n/routing";
+import { StoreProvider } from "@/store/StoreProvider";
 
 const fontin = localFont({
   src: [
@@ -26,17 +33,39 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+export const generateMetadata = async (): Promise<Metadata> => {
+  const t = await getTranslations("metadata");
+  return {
+    title: t("title"),
+    description: t("description"),
+  };
+};
+
 type RootLayoutPropsType = {
   children: ReactNode;
 };
 
-const RootLayout = ({ children }: RootLayoutPropsType) => {
+const RootLayout = async ({ children }: RootLayoutPropsType) => {
+  const locale = await getLocale();
+  const messages = await getMessages();
+
   return (
     <html
       suppressHydrationWarning
       className={`${fontin.className} ${fontin.variable} ${fontinSmallCaps.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <HtmlLangSetter locale={locale} />
+        <StoreProvider
+          key={locale}
+          initialLocale={locale as AppLocaleType}
+          initialMessages={messages}
+        >
+          <NextIntlClientProvider locale={locale} messages={messages}>
+            {children}
+          </NextIntlClientProvider>
+        </StoreProvider>
+      </body>
     </html>
   );
 };

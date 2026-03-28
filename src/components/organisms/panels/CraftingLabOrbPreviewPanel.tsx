@@ -3,7 +3,7 @@
 import { useFormatter, useTranslations } from "next-intl";
 import type { ReactElement } from "react";
 
-import { SimulatorModTemplateText } from "@/components/organisms/display/SimulatorModTemplateText";
+import { ModTemplateText } from "@/components/organisms/display";
 import type { CraftLabOrbPreviewResultType } from "@/lib/crafting-lab/craftLabOrbPreview";
 
 type CraftingLabOrbPreviewPanelPropsType = {
@@ -97,7 +97,7 @@ export const CraftingLabOrbPreviewPanel = ({
                               className="border-t border-zinc-800/80"
                             >
                               <td className="px-2 py-1 align-top">
-                                <SimulatorModTemplateText
+                                <ModTemplateText
                                   nameTemplateKey={row.nameTemplateKey}
                                 />
                               </td>

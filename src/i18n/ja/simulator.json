@@ -39,10 +39,8 @@
     "title": "データベース",
     "description": "アイテムクラスを選ぶと、そのベースとModだけを表示します。",
     "hubTitle": "アイテムクラス",
-    "hubDescription": "クラスを選ぶと、このサイト内でそのタイプのベース一覧と属性ティアだけを表示します。",
     "hubRouteHint": "URL例: /db/claw。防具は /db/gloves/str, str_dex …（Gloves_str, Gloves_str_dex など）",
     "statAffinityHubTitle": "{label} — ステ分類",
-    "statAffinityHubDescription": "PoE2DB と同様、単一ステとハイブリッド（str_dex など）で防具ページが分かれます。",
     "statAffinity": {
       "str": "筋力 (STR)",
       "dex": "敏捷 (DEX)",
@@ -3926,7 +3924,6 @@
     "metaTitle": "クラフトラボ — 手動通貨テスト",
     "metaDescription": "ベースを選び、スタッシュのオーブ・エッセンスでクラフトを試します。シミュレーター規則でありゲーム本体と同一ではありません。",
     "title": "クラフトラボ",
-    "intro": "左でベースを選び、右のスタッシュから通貨を使います。挙動は basicCurrencyOrbs・essence・abyssCrafting に従います。エッセンスはマジック専用。アビスタブで骨とアビスオーメンをまとめ、儀式タブでは儀式報酬のオーメン（Whittling など）を選びます。同時に1つだけ有効で、骨・消滅（光）・カオス（Whittling）に反映します。ヒネコラの錠前は次の通貨1回を予見します。ディバインは数値ロール未モデルです。",
     "navToSimulator": "アイテムシミュレーターに戻る",
     "itemColumnTitle": "アイテム",
     "stashColumnTitle": "スタッシュ",
@@ -5033,14 +5030,7 @@
   },
   "itemSimulatorWorkspace": {
     "title": "Path of Exile 2 — アイテムシミュレーター",
-    "intro": "ベースと任意の目標属性を選び、ボタンを押すたびにサーバーでQ学習を最初から実行します（RLページと同じエクス換算コスト）。推奨の初手と行動比率を表示します。",
-    "nav": {
-      "strategy": "戦略画面を開く",
-      "rl": "RL環境",
-      "optimizer": "最適化画面を開く",
-      "craftingLab": "クラフトラボ",
-      "db": "DB"
-    },
+    "topNavAria": "主要ナビゲーション",
     "panels": {
       "baseItem": {
         "title": "ベースアイテム",
@@ -5116,7 +5106,6 @@
   },
   "strategyView": {
     "title": "クラフトシミュレーター",
-    "intro": "目標の良いモッド数と予算を設定し、戦略を比較します。成功条件は最小アフィックス数、良いモッド数（ティア）、1試行あたりのカオス最大使用回数です。単位コスト: 既定 Chaos=1、Essence=3（コードで変更可）。",
     "loading": "シミュレーション実行中…",
     "error": "結果を読み込めませんでした。再試行してください。",
     "retry": "再実行",
@@ -5158,7 +5147,6 @@
   },
   "rlView": {
     "title": "強化学習クラフト環境",
-    "intro": "アイテム状態を状態として扱い、クラフト行動を選び、シンプルなQ-learningエージェントを学習します。",
     "navToSimulator": "アイテムシミュレーターに戻る",
     "navLabel": "RL環境",
     "inputs": {
@@ -5191,7 +5179,6 @@
   },
   "optimizerView": {
     "title": "クラフト最適化",
-    "intro": "目標達成までの成功あたり期待コストが最小の戦略を探します。条件は「全アフィックスが有効モッド」で、必要なら「全アフィックスがTier1」です。現在はプロジェクト内サンプルデータを使用し、PoE2DB連携は次段で拡張します。",
     "navToSimulator": "アイテムシミュレーターに戻る",
     "navLabel": "最適化画面を開く",
     "inputs": {

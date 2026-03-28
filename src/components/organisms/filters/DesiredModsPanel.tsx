@@ -3,9 +3,9 @@
 import { useTranslations } from "next-intl";
 import { useMemo, type ReactElement } from "react";
 
-import { ItemSimulatorEmptyStateText } from "@/components/atoms/typography/ItemSimulatorEmptyStateText";
-import { ItemSimulatorDesiredModListItem } from "@/components/molecules/list-items/ItemSimulatorDesiredModListItem";
-import { DesiredModsModPickerList } from "@/components/organisms/filters/DesiredModsModPickerList";
+import { EmptyStateText } from "@/components/atoms";
+import { DesiredModListItem } from "@/components/molecules";
+import { DesiredModsModPickerList } from "./DesiredModsModPickerList";
 import { getModPool } from "@/lib/poe2-item-simulator/modPool";
 import { getModTypeDisplayName } from "@/lib/poe2-item-simulator/modTypeLabels";
 import { useAppSelector } from "@/store/hooks";
@@ -86,7 +86,7 @@ export const DesiredModsPanel = ({
     <div className="flex flex-col gap-3">
       <div className="min-h-[280px] flex flex-col justify-start">
         {desiredMods.length === 0 ? (
-          <ItemSimulatorEmptyStateText>{t("emptyState")}</ItemSimulatorEmptyStateText>
+          <EmptyStateText>{t("emptyState")}</EmptyStateText>
         ) : (
           <ul
             className="flex flex-col gap-1"
@@ -94,7 +94,7 @@ export const DesiredModsPanel = ({
           >
             {desiredMods.map((mod) => {
               return (
-                <ItemSimulatorDesiredModListItem
+                <DesiredModListItem
                   key={mod.id}
                   mod={mod}
                   typeBadgeLabel={typeBadgeLabels[mod.modType]}

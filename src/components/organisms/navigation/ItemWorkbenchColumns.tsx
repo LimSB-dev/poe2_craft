@@ -53,6 +53,8 @@ export const ItemWorkbenchColumns = ({
         onSubTypeChange={baseItemWorkspace.setSubTypeFilter}
         availableSubTypes={baseItemWorkspace.availableSubTypes}
         rangeFieldsProps={baseItemWorkspace.rangeFieldsProps}
+        baseItemItemLevel={baseItemWorkspace.baseItemItemLevel}
+        onBaseItemItemLevelChange={baseItemWorkspace.setBaseItemItemLevel}
       />
 
       <DesiredModsPanelSection

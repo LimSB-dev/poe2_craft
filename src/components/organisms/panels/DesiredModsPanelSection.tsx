@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 import type { ReactElement } from "react";
 
 import { DesiredModsPanel } from "@/components/organisms/filters";
-import { PanelShell } from "./PanelShell";
+import { PanelShell } from "@/components/molecules/panels";
 
 type DesiredModsPanelSectionPropsType = {
   subType: IBaseItemSubTypeType | undefined;

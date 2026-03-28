@@ -2,15 +2,11 @@
 
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { useId, useState, type ReactElement } from "react";
+import { useState, type ReactElement } from "react";
 
-import { CatalogBaseName } from "./CatalogBaseName";
-import { ExplicitModLine } from "./ExplicitModLine";
+import { CatalogBaseName } from "@/components/atoms/catalog";
+import { ExplicitModLine } from "@/components/molecules";
 import { buildHinekoraExplicitSlotHighlights } from "@/lib/crafting-lab/hinekoraHoverPreviewDiff";
-import {
-  BASE_ITEM_ITEM_LEVEL_MAX,
-  BASE_ITEM_ITEM_LEVEL_MIN,
-} from "@/lib/poe2-item-simulator/baseItemItemLevel";
 import { getBaseItemImageUrl } from "@/lib/poe2-item-simulator/baseItemImagePaths";
 import { buildBaseItemRequirementLineParts } from "@/lib/poe2-item-simulator/buildBaseItemRequirementLineParts";
 import { useAppSelector } from "@/store/hooks";
@@ -66,9 +62,10 @@ type BaseItemTooltipCardPropsType = {
   ) => void;
   /** 히네코라·에센스 호버 미리보기 중에는 클릭 비활성 */
   soulWellInteractionDisabled?: boolean;
-  /** 크래프트 랩: 시뮬레이션용 아이템 레벨(ilvl) */
-  baseItemItemLevel?: number;
-  onBaseItemItemLevelChange?: (value: number) => void;
+  /**
+   * 심연의 메아리 징조 스테이징 시: 호버 미리보기가 있어도 미공개 훼손 줄 클릭(영혼의 우물) 허용.
+   */
+  allowSoulWellClickDuringHoverPreview?: boolean;
 };
 
 export const BaseItemTooltipCard = ({
@@ -79,15 +76,11 @@ export const BaseItemTooltipCard = ({
   previewExplicitItemRoll,
   onUnrevealedDesecratedModClick,
   soulWellInteractionDisabled = false,
-  baseItemItemLevel,
-  onBaseItemItemLevelChange,
+  allowSoulWellClickDuringHoverPreview = false,
 }: BaseItemTooltipCardPropsType): ReactElement => {
   const locale = useAppSelector((state) => state.locale.locale);
   const t = useTranslations("simulator");
-  const itemLevelInputId = useId();
   const [imageLoadErrorSrc, setImageLoadErrorSrc] = useState<string | null>(null);
-  const showItemLevelControl =
-    baseItemItemLevel !== undefined && onBaseItemItemLevelChange !== undefined;
 
   const requirementParts = buildBaseItemRequirementLineParts(record, locale);
   const implicitKeys = record.implicitMods ?? [];
@@ -99,9 +92,11 @@ export const BaseItemTooltipCard = ({
     previewExplicitItemRoll !== undefined && previewExplicitItemRoll !== null
       ? previewExplicitItemRoll
       : explicitItemRoll;
-  const soulWellLineDisabled =
+  const hoverPreviewBlocksSoulWell =
     soulWellInteractionDisabled ||
     (previewExplicitItemRoll !== undefined && previewExplicitItemRoll !== null);
+  const soulWellLineDisabled =
+    hoverPreviewBlocksSoulWell && !allowSoulWellClickDuringHoverPreview;
   const hinekoraPreviewHighlight =
     previewExplicitItemRoll !== undefined &&
     previewExplicitItemRoll !== null &&
@@ -155,32 +150,6 @@ export const BaseItemTooltipCard = ({
           <span className="text-[#a38d6d]">{t("itemSimulatorWorkspace.baseFilter.quality")}</span>
           <span className="text-[#c8c8c8]"> 0%</span>
         </p>
-
-        {showItemLevelControl ? (
-          <div className="mb-2 flex w-full flex-wrap items-center justify-center gap-2 text-xs tabular-nums">
-            <label
-              className="text-[#a38d6d]"
-              htmlFor={itemLevelInputId}
-            >
-              {t("itemSimulatorWorkspace.baseFilter.itemLevel")}
-            </label>
-            <input
-              id={itemLevelInputId}
-              type="number"
-              inputMode="numeric"
-              min={BASE_ITEM_ITEM_LEVEL_MIN}
-              max={BASE_ITEM_ITEM_LEVEL_MAX}
-              value={baseItemItemLevel}
-              onChange={(event) => {
-                const parsed = Number.parseInt(event.target.value, 10);
-                onBaseItemItemLevelChange(
-                  Number.isNaN(parsed) ? baseItemItemLevel : parsed,
-                );
-              }}
-              className="w-14 rounded border border-[#3d3429] bg-[#1a1612] px-1 py-0.5 text-center text-[#c8c8c8]"
-            />
-          </div>
-        ) : null}
 
         <div className={`w-full border-t mb-2 ${rc.divider}`} />
 

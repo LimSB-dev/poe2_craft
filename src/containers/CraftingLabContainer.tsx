@@ -12,14 +12,14 @@ import {
 } from "react";
 
 import { ReservedStatusRegion } from "@/components/atoms";
+import { ModTemplateText } from "@/components/atoms/catalog";
+import { CraftingLabOrbSlotButton } from "@/components/molecules";
 import {
   BaseItemWorkspaceSection,
   CraftingLabOrbPreviewPanel,
-  CraftingLabOrbSlotButton,
   CraftingLabStashAbyssBoneSlot,
   CraftingLabStashMiscCurrencySlot,
   CraftingLabStashOrbSlot,
-  ModTemplateText,
   SiteTopBar,
 } from "@/components/organisms";
 import { useBaseItemWorkspaceState } from "@/hooks";
@@ -55,10 +55,7 @@ import {
   isCraftLabOrbSlotItemLevelAllowed,
   mergeModRollFiltersWithCurrencyTierFloor,
 } from "@/lib/crafting-lab/craftLabOrbTierItemLevel";
-import {
-  BASE_ITEM_ITEM_LEVEL_DEFAULT,
-  clampBaseItemItemLevel,
-} from "@/lib/poe2-item-simulator/baseItemItemLevel";
+import { clampBaseItemItemLevel } from "@/lib/poe2-item-simulator/baseItemItemLevel";
 import type { IModRollBaseFiltersType } from "@/lib/poe2-item-simulator/roller";
 import {
   aggregateUsageCounts,
@@ -241,11 +238,9 @@ export const CraftingLabContainer = (): ReactElement => {
     setSubTypeFilter,
     availableSubTypes,
     rangeFieldsProps,
+    baseItemItemLevel,
+    setBaseItemItemLevel,
   } = useBaseItemWorkspaceState();
-
-  const [baseItemItemLevel, setBaseItemItemLevel] = useState<number>(() => {
-    return clampBaseItemItemLevel(BASE_ITEM_ITEM_LEVEL_DEFAULT);
-  });
 
   const modRollFilters = useMemo((): IModRollBaseFiltersType | undefined => {
     if (selectedBaseItemRecord === undefined) {
@@ -386,10 +381,11 @@ export const CraftingLabContainer = (): ReactElement => {
 
   useEffect(() => {
     if (craftLabMode !== "random") {
+      clearSoulWellCandidateCache();
       // eslint-disable-next-line react-hooks/set-state-in-effect -- 모드 전환 시 패널만 닫음
       setSoulWellReveal(null);
     }
-  }, [craftLabMode]);
+  }, [clearSoulWellCandidateCache, craftLabMode]);
 
   useEffect(() => {
     // 베이스가 바뀌면 롤·완료 스냅샷 초기화, 로컬에 동일 베이스 기록이 있으면 복원 후 저장
@@ -402,6 +398,7 @@ export const CraftingLabContainer = (): ReactElement => {
     setSimPreview(null);
     setSimPreviewLabel("");
     setStashValidationMessage(null);
+    clearSoulWellCandidateCache();
     setSoulWellReveal(null);
     setPendingBaseItemItemLevel(null);
     setIsItemLevelChangeDialogOpen(false);
@@ -421,7 +418,7 @@ export const CraftingLabContainer = (): ReactElement => {
       baseItemKey: effectiveSelectedBaseItemKey,
       events: restored,
     });
-  }, [effectiveSelectedBaseItemKey]);
+  }, [clearSoulWellCandidateCache, effectiveSelectedBaseItemKey]);
 
   const handleResetCraft = (): void => {
     if (
@@ -440,6 +437,7 @@ export const CraftingLabContainer = (): ReactElement => {
     setSimPreviewLabel("");
     setStashValidationMessage(null);
     setActiveStagedOmenIds([]);
+    clearSoulWellCandidateCache();
     setSoulWellReveal(null);
     writeCraftingLabUsage({
       baseItemKey: effectiveSelectedBaseItemKey,
@@ -563,6 +561,7 @@ export const CraftingLabContainer = (): ReactElement => {
     setCompletionSnapshot(null);
     setLastError(null);
     setStashValidationMessage(null);
+    clearSoulWellCandidateCache();
     setSoulWellReveal(null);
   };
 
@@ -597,6 +596,7 @@ export const CraftingLabContainer = (): ReactElement => {
     setCompletionSnapshot(null);
     setLastError(null);
     setStashValidationMessage(null);
+    clearSoulWellCandidateCache();
     setSoulWellReveal(null);
   };
 
@@ -609,6 +609,7 @@ export const CraftingLabContainer = (): ReactElement => {
     id: CraftingCurrencyIdType,
     options?: CommitCraftLabOptionsType,
   ): void => {
+    clearSoulWellCandidateCache();
     const nextEvents = [...usageEvents, id];
     setUndoStack((stack) => {
       const appended = [
@@ -802,12 +803,17 @@ export const CraftingLabContainer = (): ReactElement => {
       if (!isUnrevealedDesecratedMod(mod)) {
         return;
       }
+      const cacheKey = mod.modKey;
       try {
-        const candidates = rollSoulWellRevealCandidates(
-          itemRoll,
-          payload.affixKind,
-          modRollFilters,
-        );
+        let candidates = soulWellCandidateCacheRef.current.get(cacheKey);
+        if (candidates === undefined) {
+          candidates = rollSoulWellRevealCandidates(
+            itemRoll,
+            payload.affixKind,
+            modRollFilters,
+          );
+          soulWellCandidateCacheRef.current.set(cacheKey, candidates);
+        }
         setSoulWellReveal({
           affixKind: payload.affixKind,
           slotIndex: payload.slotIndex,
@@ -838,6 +844,44 @@ export const CraftingLabContainer = (): ReactElement => {
       setLastError(getErrorMessage(error));
     }
   };
+
+  const handleSoulWellRerollCandidates = useCallback((): void => {
+    if (soulWellReveal === null) {
+      return;
+    }
+    if (!activeStagedOmenSlotIds.includes("omen_abyssal_echoes")) {
+      return;
+    }
+    const { affixKind, slotIndex } = soulWellReveal;
+    const list = affixKind === "prefix" ? itemRoll.prefixes : itemRoll.suffixes;
+    const mod = list[slotIndex];
+    if (!isUnrevealedDesecratedMod(mod)) {
+      return;
+    }
+    const cacheKey = mod.modKey;
+    try {
+      const candidates = rollSoulWellRevealCandidates(
+        itemRoll,
+        affixKind,
+        modRollFilters,
+      );
+      soulWellCandidateCacheRef.current.set(cacheKey, candidates);
+      setSoulWellReveal({
+        affixKind,
+        slotIndex,
+        candidates,
+      });
+      setLastError(null);
+    } catch (error: unknown) {
+      setLastError(getErrorMessage(error));
+      setSoulWellReveal(null);
+    }
+  }, [
+    activeStagedOmenSlotIds,
+    itemRoll,
+    modRollFilters,
+    soulWellReveal,
+  ]);
 
   const usageTotalsLine = useMemo(() => {
     if (completionSnapshot === null || completionSnapshot.length === 0) {
@@ -995,6 +1039,9 @@ export const CraftingLabContainer = (): ReactElement => {
                 craftLabMode === "random" ? handleUnrevealedDesecratedModClick : undefined,
               soulWellInteractionDisabled:
                 essenceHoverPreview !== null || hinekoraHoverPreview !== null,
+              allowSoulWellClickDuringHoverPreview: activeStagedOmenSlotIds.includes(
+                "omen_abyssal_echoes",
+              ),
             }}
             betweenTooltipAndSearch={
               soulWellReveal !== null ? (
@@ -1039,15 +1086,29 @@ export const CraftingLabContainer = (): ReactElement => {
                       );
                     })}
                   </ul>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setSoulWellReveal(null);
-                    }}
-                    className="self-start rounded-lg border border-zinc-300 px-2.5 py-1 text-xs font-medium text-zinc-700 hover:bg-zinc-100 dark:border-zinc-600 dark:text-zinc-300 dark:hover:bg-zinc-800"
-                  >
-                    {t("craftLab.soulWellRevealCancel")}
-                  </button>
+                  <div className="flex flex-wrap items-center gap-2 self-start">
+                    {activeStagedOmenSlotIds.includes("omen_abyssal_echoes") ? (
+                      <button
+                        type="button"
+                        onClick={() => {
+                          handleSoulWellRerollCandidates();
+                        }}
+                        className="rounded-lg border border-emerald-700/60 bg-emerald-950/20 px-2.5 py-1 text-xs font-medium text-emerald-900 hover:bg-emerald-950/35 dark:border-emerald-600/50 dark:bg-emerald-950/30 dark:text-emerald-200 dark:hover:bg-emerald-950/50"
+                        aria-label={t("craftLab.soulWellRevealRerollAria")}
+                      >
+                        {t("craftLab.soulWellRevealReroll")}
+                      </button>
+                    ) : null}
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setSoulWellReveal(null);
+                      }}
+                      className="rounded-lg border border-zinc-300 px-2.5 py-1 text-xs font-medium text-zinc-700 hover:bg-zinc-100 dark:border-zinc-600 dark:text-zinc-300 dark:hover:bg-zinc-800"
+                    >
+                      {t("craftLab.soulWellRevealCancel")}
+                    </button>
+                  </div>
                 </div>
               ) : null
             }

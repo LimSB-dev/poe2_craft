@@ -40,7 +40,10 @@
       "evasion": "회피",
       "energyShield": "에너지실드",
       "filterToggle": "필터",
-      "baseItemSearchPlaceholder": "{label} 검색... ({count})"
+      "baseItemSearchPlaceholder": "{label} 검색... ({count})",
+      "itemLevel": "아이템 레벨",
+      "itemLevelSlider": "아이템 레벨 슬라이더",
+      "itemLevelInput": "아이템 레벨 숫자 입력"
     },
     "optimizationExplore": {
       "emptyNeedBase": "먼저 베이스 아이템을 선택하세요.",

@@ -3,7 +3,7 @@
 import { useTranslations } from "next-intl";
 import type { ReactElement } from "react";
 
-import { CatalogBaseName, CatalogItemClassLabel } from "@/components/organisms/display";
+import { CatalogBaseName, CatalogItemClassLabel } from "@/components/atoms/catalog";
 import { BASE_ITEM_DB } from "@/lib/poe2-item-simulator/baseItemDb";
 
 type SelectedBaseItemSummaryCardPropsType = {

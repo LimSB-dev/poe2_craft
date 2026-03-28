@@ -9,7 +9,12 @@ import {
   isCorruptedRoll,
 } from "../itemCorruptionCraftingGuard";
 import { getRandomIntInclusive } from "../random";
-import { rollRandomMod, rollRareItemRoll, type IModRollBaseFiltersType } from "../roller";
+import {
+  listModRollCandidates,
+  rollRandomMod,
+  rollRareItemRoll,
+  type IModRollBaseFiltersType,
+} from "../roller";
 
 const MAGIC_MAX_PREFIX_SLOTS: number = 1;
 const MAGIC_MAX_SUFFIX_SLOTS: number = 1;
@@ -360,18 +365,62 @@ const pickRandomModTypeForRareFill = (item: IItemRoll): ModTypeType => {
   throw new Error("Rare item already has the maximum number of modifiers.");
 };
 
+/**
+ * When the preferred prefix/suffix pool is empty (incomplete MOD_DB for a base), use the other
+ * side if it has room and non-empty candidates so Transmutation/Augmentation/Exalt do not hard-fail.
+ */
+const resolveModTypeWithNonEmptyPool = (
+  preferred: ModTypeType,
+  item: IItemRoll,
+  rarityForRoll: "magic" | "rare",
+  excludedModKeys: ReadonlySet<string>,
+  baseFilters?: IModRollBaseFiltersType,
+): ModTypeType => {
+  const rollCtx = (modType: ModTypeType) => {
+    return {
+      rarity: rarityForRoll,
+      modType,
+      excludedModKeys,
+      ...baseFilters,
+    };
+  };
+  if (listModRollCandidates(rollCtx(preferred)).length > 0) {
+    return preferred;
+  }
+  const other: ModTypeType = preferred === "prefix" ? "suffix" : "prefix";
+  const canUseOther =
+    rarityForRoll === "magic"
+      ? other === "prefix"
+        ? item.prefixes.length < MAGIC_MAX_PREFIX_SLOTS
+        : item.suffixes.length < MAGIC_MAX_SUFFIX_SLOTS
+      : other === "prefix"
+        ? item.prefixes.length < RARE_MAX_PREFIX_SLOTS
+        : item.suffixes.length < RARE_MAX_SUFFIX_SLOTS;
+  if (canUseOther && listModRollCandidates(rollCtx(other)).length > 0) {
+    return other;
+  }
+  return preferred;
+};
+
 const addOneRandomMod = (
   item: IItemRoll,
   rarityForRoll: "magic" | "rare",
   baseFilters?: IModRollBaseFiltersType,
 ): IItemRoll => {
   const next = cloneRoll(item);
-  const modType =
+  const preferredModType =
     rarityForRoll === "magic" ? pickRandomModTypeForMagicFill(next) : pickRandomModTypeForRareFill(next);
   const excludedModKeys = new Set<string>([
     ...next.prefixes.map((m) => m.modKey),
     ...next.suffixes.map((m) => m.modKey),
   ]);
+  const modType = resolveModTypeWithNonEmptyPool(
+    preferredModType,
+    next,
+    rarityForRoll,
+    excludedModKeys,
+    baseFilters,
+  );
   const rolled = rollRandomMod({
     rarity: rarityForRoll,
     modType,
@@ -398,11 +447,39 @@ export const applyOrbOfTransmutation = (
   if (totalAffixCount(item) !== 0) {
     throw new Error("Orb of Transmutation requires a normal item with no explicit modifiers.");
   }
-  const modType: ModTypeType = Math.random() < 0.5 ? "prefix" : "suffix";
+  const emptyExcluded = new Set<string>();
+  const prefixCount = listModRollCandidates({
+    rarity: "magic",
+    modType: "prefix",
+    excludedModKeys: emptyExcluded,
+    ...baseFilters,
+  }).length;
+  const suffixCount = listModRollCandidates({
+    rarity: "magic",
+    modType: "suffix",
+    excludedModKeys: emptyExcluded,
+    ...baseFilters,
+  }).length;
+  if (prefixCount === 0 && suffixCount === 0) {
+    const sub = baseFilters?.baseItemSubType;
+    throw new Error(
+      sub !== undefined
+        ? `No modifier candidates for this base (subType=${sub}). The simulator MOD_DB may not cover this equipment type yet.`
+        : "No modifier candidates for this roll (empty prefix and suffix pools).",
+    );
+  }
+  let modType: ModTypeType;
+  if (prefixCount === 0) {
+    modType = "suffix";
+  } else if (suffixCount === 0) {
+    modType = "prefix";
+  } else {
+    modType = Math.random() < 0.5 ? "prefix" : "suffix";
+  }
   const rolled = rollRandomMod({
     rarity: "magic",
     modType,
-    excludedModKeys: new Set(),
+    excludedModKeys: emptyExcluded,
     ...baseFilters,
   });
   if (modType === "prefix") {

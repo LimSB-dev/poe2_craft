@@ -39,10 +39,8 @@
     "title": "데이터베이스",
     "description": "아이템 클래스를 고른 뒤, 해당 유형의 베이스와 속성만 확인합니다.",
     "hubTitle": "아이템 클래스",
-    "hubDescription": "클래스를 선택하면 이 사이트에서 베이스 목록과 속성(티어)만 모아서 보여 줍니다.",
     "hubRouteHint": "주소 예: /db/claw, 방어구는 /db/gloves/str, str_dex … (PoE2DB Gloves_str, Gloves_str_dex 등)",
     "statAffinityHubTitle": "{label} — 스탯 분류",
-    "statAffinityHubDescription": "PoE2DB와 같이 단일 스탯(힘·민첩·지능)과 하이브리드(str_dex 등)로 방어구 목록·속성이 나뉩니다.",
     "statAffinity": {
       "str": "힘 (STR)",
       "dex": "민첩 (DEX)",
@@ -3926,7 +3924,6 @@
     "metaTitle": "크래프팅 랩 — 수동 화폐 테스트",
     "metaDescription": "베이스를 고르고 창고의 오브·에센스로 제작해 보세요. 시뮬레이터 규칙이며 게임 클라이언트와 1:1은 아닙니다.",
     "title": "크래프팅 랩",
-    "intro": "왼쪽에서 베이스를 고른 뒤, 오른쪽 창고의 화폐를 사용합니다. 동작은 basicCurrencyOrbs·essence·abyssCrafting을 따릅니다. 에센스는 매직 전용. 심연 탭에서 보존된 뼈와 심연 징조를 함께 다루고, 의식 탭에서는 의식 보상 징조(절사 등)를 선택합니다. 한 번에 하나의 징조만 활성화되며, 뼈·소멸(빛)·카오스(절사) 등에 반영됩니다. 히네코라의 자물쇠는 다음 화폐 1회를 예견합니다. 디바인은 수치 롤 미구현입니다.",
     "navToSimulator": "아이템 시뮬레이터로 돌아가기",
     "itemColumnTitle": "아이템",
     "stashColumnTitle": "창고",
@@ -5033,14 +5030,7 @@
   },
   "itemSimulatorWorkspace": {
     "title": "패스 오브 엑자일 2 — 아이템 시뮬레이터",
-    "intro": "베이스와 선택한 목표 속성을 바탕으로, 버튼을 누를 때마다 서버에서 Q-러닝을 처음부터 학습합니다(RL 화면과 동일한 엑잘 비용 모델). 초기 추천 행동과 행동 비율을 보여 줍니다.",
-    "nav": {
-      "strategy": "전략 화면 열기",
-      "rl": "RL 환경",
-      "optimizer": "최적화 화면",
-      "craftingLab": "크래프트 랩",
-      "db": "DB"
-    },
+    "topNavAria": "주요 내비게이션",
     "panels": {
       "baseItem": {
         "title": "베이스 아이템",
@@ -5116,7 +5106,6 @@
   },
   "strategyView": {
     "title": "크래프트 시뮬레이터",
-    "intro": "목표 좋은 옵션 수와 예산을 넣고 전략을 비교합니다. 성공 조건은 최소 접두·접미 합, 좋은 옵션 수(티어 기준), 시도당 카오스 최대 사용 횟수입니다. 비용 단위: 기본 Chaos=1, Essence=3(코드에서 변경 가능).",
     "loading": "시뮬레이션 실행 중…",
     "error": "결과를 불러오지 못했습니다. 다시 시도하세요.",
     "retry": "다시 실행",
@@ -5158,7 +5147,6 @@
   },
   "rlView": {
     "title": "강화학습 크래프팅 환경",
-    "intro": "아이템 상태를 상태(state)로, 크래프팅 선택을 행동(action)으로 보고 간단한 Q-learning 에이전트를 학습합니다.",
     "navToSimulator": "아이템 시뮬레이터로 돌아가기",
     "navLabel": "RL 환경",
     "inputs": {
@@ -5191,7 +5179,6 @@
   },
   "optimizerView": {
     "title": "크래프팅 최적화",
-    "intro": "모든 롤 옵션이 유효 옵션이면서 가능한 경우 전부 1티어가 되도록, 성공당 기대 비용이 가장 낮은 전략을 찾습니다. 현재 데이터셋은 프로젝트 내 샘플 풀을 사용하며, PoE2DB 기반 확장은 다음 단계에서 연결합니다.",
     "navToSimulator": "아이템 시뮬레이터로 돌아가기",
     "navLabel": "최적화 화면",
     "inputs": {

@@ -28,6 +28,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.11.2",
+    "@vercel/analytics": "^2.0.1",
     "express": "^5.2.1",
     "next": "16.2.1",
     "next-intl": "^4.8.3",

@@ -39,10 +39,8 @@
     "title": "Database",
     "description": "Pick an item class to see only its bases and modifiers.",
     "hubTitle": "Item classes",
-    "hubDescription": "Choose a class to view bases and affix tiers for that type only.",
     "hubRouteHint": "URLs: /db/claw; armour: /db/gloves/str, str_dex, … (PoE2DB Gloves_str, Gloves_str_dex, …)",
     "statAffinityHubTitle": "{label} — stat category",
-    "statAffinityHubDescription": "Same as PoE2DB: pure STR/DEX/INT and hybrids (str_dex, str_int, dex_int) split bases and modifiers.",
     "statAffinity": {
       "str": "Strength (STR)",
       "dex": "Dexterity (DEX)",
@@ -3929,7 +3927,6 @@
     "metaTitle": "Crafting lab — manual currency test",
     "metaDescription": "Pick a base item, use orbs and essences from a stash, and compare outcomes with Path of Exile 2. Simulator rules; not a 1:1 game client.",
     "title": "Crafting lab",
-    "intro": "Select a base on the left, then spend currency from the stash on the right. Behaviour follows basicCurrencyOrbs, essence, and abyssCrafting. Essences are magic-only. The Abyss tab combines Preserved bones and Abyss omens; the Ritual tab lists Ritual reward omens (e.g. Omen of Whittling). Only one omen can be active at a time; it affects bones, annulment (Light), Chaos (Whittling), etc. Hinekora's Lock foresees the next currency use. Divine Orb numeric rolls are not modeled.",
     "navToSimulator": "Back to item simulator",
     "itemColumnTitle": "Item",
     "stashColumnTitle": "Stash",
@@ -5039,14 +5036,7 @@
   },
   "itemSimulatorWorkspace": {
     "title": "Path of Exile 2 — Item simulator",
-    "intro": "Pick a base and optional target modifiers. Each time you press optimization search, the server runs Q-learning from scratch (same exalted cost model as the RL page) and reports a suggested first action and action mix.",
-    "nav": {
-      "strategy": "Open strategy view",
-      "rl": "RL environment",
-      "optimizer": "Open optimizer",
-      "craftingLab": "Crafting lab",
-      "db": "DB"
-    },
+    "topNavAria": "Primary navigation",
     "panels": {
       "baseItem": {
         "title": "Base item",
@@ -5122,7 +5112,6 @@
   },
   "strategyView": {
     "title": "Crafting simulator",
-    "intro": "Set your target good mods and budget, then compare strategies. Success rule: minimum affix count, minimum “good” mods (by tier), and a cap on Chaos Orb uses per attempt. Unit costs: Chaos = 1, Essence = 3 unless changed in code.",
     "loading": "Running simulation…",
     "error": "Could not load results. Try again.",
     "retry": "Run again",
@@ -5164,7 +5153,6 @@
   },
   "rlView": {
     "title": "Reinforcement learning crafting environment",
-    "intro": "Treat item status as state, crafting choices as actions, and train a simple Q-learning agent to maximize reward.",
     "navToSimulator": "Back to item simulator",
     "navLabel": "RL environment",
     "inputs": {
@@ -5197,7 +5185,6 @@
   },
   "optimizerView": {
     "title": "Crafting optimizer",
-    "intro": "Find the strategy with the lowest expected cost to reach your target: all rolled affixes must be valid, and optionally every affix must be tier 1. Current dataset uses the local sample pool; PoE2DB-backed expansion is the next step.",
     "navToSimulator": "Back to item simulator",
     "navLabel": "Open optimizer",
     "inputs": {

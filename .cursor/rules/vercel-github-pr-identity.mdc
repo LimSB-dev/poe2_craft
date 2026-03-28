@@ -1,0 +1,30 @@
+---
+alwaysApply: true
+---
+
+# Vercel · GitHub author & PR identity (this repository)
+
+## Goal
+
+Vercel (Hobby) ties preview deployments to the **Git commit author** and the **GitHub account** that opens the PR. Commits or PRs from an unrelated GitHub user can fail with errors such as: *Git author … must have access to the project on Vercel*.
+
+## Authorized GitHub identity for this repo
+
+- **Canonical remote**: `origin` → `github.com/LimSB-dev/poe2_craft`.
+- **Commits and PRs** for this project should use the GitHub user **LimSB-dev** (or whichever account actually has access to the linked Vercel project—must match `origin` ownership / team policy).
+
+## Local Git (this repository only)
+
+- This clone uses **repository-local** `[user]` in `.git/config` (not `--global`) so other projects on the same machine keep their own author.
+- **`user.email`**: defaults to GitHub’s legacy no-reply form `LimSB-dev@users.noreply.github.com`. If GitHub shows a different **no-reply** address under **Settings → Emails** (e.g. `id+username@users.noreply.github.com`), update `.git/config` `[user] email` to that exact value so commits link correctly to the profile.
+- **`user.name`**: set to the display name you want on commits (currently aligned with the `LimSB-dev` handle).
+
+## GitHub CLI (`gh`)
+
+- Before **`gh pr create`** (or when debugging Vercel PR builds), ensure the active account is the Vercel-authorized one: `gh auth status`.
+- If needed: `gh auth login` with that account, or `gh auth switch` when multiple accounts are configured.
+
+## Agent behavior
+
+- When creating commits or PRs for **this** repository, assume **local** `user.name` / `user.email` and **`gh`** are already aligned with the Vercel-authorized GitHub user; do not suggest changing **global** Git config unless the user asks for machine-wide defaults.
+- If the user hits Vercel author/access errors, point them to: local `[user]` in `.git/config`, GitHub **Settings → Emails**, and **`gh auth status`**.

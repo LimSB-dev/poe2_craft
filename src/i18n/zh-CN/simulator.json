@@ -39,10 +39,8 @@
     "title": "数据库",
     "description": "先选择物品类别，仅查看该类别的基础物品与词缀。",
     "hubTitle": "物品类别",
-    "hubDescription": "选择类别后，仅在此站显示该类型的基础列表与词缀阶层。",
     "hubRouteHint": "示例：/db/claw；护甲：/db/gloves/str、str_dex…（对应 Gloves_str、Gloves_str_dex 等）",
     "statAffinityHubTitle": "{label} — 属性分类",
-    "statAffinityHubDescription": "与 PoE2DB 相同：单属性与混合（str_dex 等）分页显示护甲与词缀。",
     "statAffinity": {
       "str": "力量 (STR)",
       "dex": "敏捷 (DEX)",
@@ -3926,7 +3924,6 @@
     "metaTitle": "工艺实验室 — 手动通货测试",
     "metaDescription": "选择基底，从仓库使用通货与精华。遵循本项目的模拟器规则，与游戏客户端并非一一对应。",
     "title": "工艺实验室",
-    "intro": "左侧选择基底，右侧从仓库使用货币。行为遵循 basicCurrencyOrbs、essence、abyssCrafting。精华为魔法专用。深渊标签合并了保存的骸骨与深渊预兆；仪式标签为仪式奖励预兆（如 Whittling）。同时只能激活一个预兆，作用于骸骨、消灭（光）、混沌（Whittling）等。希妮克拉之锁可预见下一次通货。神圣石数值 roll 未建模。",
     "navToSimulator": "返回物品模拟器",
     "itemColumnTitle": "物品",
     "stashColumnTitle": "仓库",
@@ -5033,14 +5030,7 @@
   },
   "itemSimulatorWorkspace": {
     "title": "流放之路2 — 物品模拟器",
-    "intro": "选择基底与可选目标词缀；每次点击都会在服务器上从头运行 Q 学习（与 RL 页相同的崇高换算成本），并给出推荐起手与行为占比。",
-    "nav": {
-      "strategy": "打开策略页",
-      "rl": "RL环境",
-      "optimizer": "打开优化页",
-      "craftingLab": "工艺实验室",
-      "db": "DB"
-    },
+    "topNavAria": "主导航",
     "panels": {
       "baseItem": {
         "title": "基底物品",
@@ -5116,7 +5106,6 @@
   },
   "strategyView": {
     "title": "制作模拟器",
-    "intro": "设置目标好词缀数量与预算，比较策略。成功条件包括最少词缀数、好词缀数（按 tier），以及每次尝试最多使用混沌石的数量。单位费用：默认 Chaos=1、Essence=3（可在代码中修改）。",
     "loading": "正在运行模拟…",
     "error": "无法加载结果，请重试。",
     "retry": "重新运行",
@@ -5158,7 +5147,6 @@
   },
   "rlView": {
     "title": "强化学习制作环境",
-    "intro": "将物品状态视为状态(state)，将制作选择视为动作(action)，训练一个简单的Q-learning智能体。",
     "navToSimulator": "返回物品模拟器",
     "navLabel": "RL环境",
     "inputs": {
@@ -5191,7 +5179,6 @@
   },
   "optimizerView": {
     "title": "制作优化",
-    "intro": "寻找达到目标时“单次成功期望成本”最低的策略。目标条件是“所有词缀都在有效列表中”，并可选“所有词缀都为T1”。当前使用项目内样例数据，下一阶段将扩展为PoE2DB数据源。",
     "navToSimulator": "返回物品模拟器",
     "navLabel": "打开优化页",
     "inputs": {

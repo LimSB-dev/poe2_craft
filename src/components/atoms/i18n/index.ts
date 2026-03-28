@@ -1,0 +1,1 @@
+export { HtmlLangSetter } from "./HtmlLangSetter";

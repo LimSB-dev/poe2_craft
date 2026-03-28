@@ -77,7 +77,7 @@ declare global {
     allowedSubTypes?: ReadonlyArray<string>;
   }
 
-  type ItemSimulatorEquipmentFilterType = "all" | IBaseItemEquipmentTypeType;
-  type ItemSimulatorSubTypeFilterType = "all" | IBaseItemSubTypeType;
+  type BaseItemEquipmentFilterType = "all" | IBaseItemEquipmentTypeType;
+  type BaseItemSubTypeFilterType = "all" | IBaseItemSubTypeType;
 }
 

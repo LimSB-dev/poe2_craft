@@ -11,6 +11,11 @@ alwaysApply: true
 
 Vercel deployment runs automatically via GitHub integration when a PR is pushed. **Do not run Vercel CLI or any hosting deployment commands.**
 
+## Git author & `gh` (this repo)
+
+- Commits must use the **GitHub account that has Vercel access** for this project (see **vercel-github-pr-identity** rule). This repo sets **local** `user.name` / `user.email` in `.git/config` for that purpose.
+- Use **`gh pr create`** only when **`gh auth status`** shows that same authorized account (or create the PR in the GitHub web UI while logged in as that user).
+
 ## 1. Check the branch
 
 - Check the current branch and changed files with `git status` and `git branch`.

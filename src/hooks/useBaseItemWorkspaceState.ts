@@ -9,6 +9,10 @@ import {
   BASE_ITEM_DB,
   BASE_ITEM_SUB_TYPES_BY_EQUIPMENT,
 } from "@/lib/poe2-item-simulator/baseItemDb";
+import {
+  BASE_ITEM_ITEM_LEVEL_DEFAULT,
+  clampBaseItemItemLevel,
+} from "@/lib/poe2-item-simulator/baseItemItemLevel";
 
 export type UseBaseItemWorkspaceStateReturnType = {
   selectedBaseItemKey: string;
@@ -25,6 +29,8 @@ export type UseBaseItemWorkspaceStateReturnType = {
   selectedBaseItemRecord: IBaseItemDbRecordType | undefined;
   rangeFieldsProps: BaseItemFilterRangeFieldsPropsType;
   handleEquipmentTypeChange: (value: BaseItemEquipmentFilterType) => void;
+  baseItemItemLevel: number;
+  setBaseItemItemLevel: (value: number) => void;
 };
 
 export const useBaseItemWorkspaceState =
@@ -62,6 +68,9 @@ export const useBaseItemWorkspaceState =
     const [maximumEnergyShield, setMaximumEnergyShield] =
       useState<number>(9999);
     const [isFilterOpen, setIsFilterOpen] = useState<boolean>(false);
+    const [baseItemItemLevel, setBaseItemItemLevelState] = useState<number>(
+      BASE_ITEM_ITEM_LEVEL_DEFAULT,
+    );
 
     const availableSubTypes = useMemo(() => {
       if (equipmentTypeFilter === "all") {
@@ -268,6 +277,10 @@ export const useBaseItemWorkspaceState =
       setSubTypeFilter("all");
     };
 
+    const setBaseItemItemLevel = (value: number): void => {
+      setBaseItemItemLevelState(clampBaseItemItemLevel(value));
+    };
+
     return {
       selectedBaseItemKey,
       setSelectedBaseItemKey,
@@ -283,5 +296,7 @@ export const useBaseItemWorkspaceState =
       selectedBaseItemRecord,
       rangeFieldsProps,
       handleEquipmentTypeChange,
+      baseItemItemLevel,
+      setBaseItemItemLevel,
     };
   };

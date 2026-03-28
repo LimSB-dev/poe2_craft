@@ -40,7 +40,10 @@
       "evasion": "EVA",
       "energyShield": "ES",
       "filterToggle": "Filters",
-      "baseItemSearchPlaceholder": "Search {label}… ({count})"
+      "baseItemSearchPlaceholder": "Search {label}… ({count})",
+      "itemLevel": "Item level",
+      "itemLevelSlider": "Item level slider",
+      "itemLevelInput": "Item level numeric input"
     },
     "optimizationExplore": {
       "emptyNeedBase": "Select a base item first.",

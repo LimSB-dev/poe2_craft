@@ -3,7 +3,7 @@
 import { useTranslations } from "next-intl";
 import type { ReactElement } from "react";
 
-import { ModTemplateText } from "./ModTemplateText";
+import { ModTemplateText } from "@/components/atoms/catalog";
 
 type ExplicitModLinePropsType = {
   modDefinition: IModDefinition;
@@ -55,8 +55,18 @@ export const ExplicitModLine = ({
   }
   if (modDefinition.modKey.startsWith("desecrated_family_")) {
     return (
-      <span className="text-emerald-300">
+      <span className="text-emerald-400">
         {t(`explicitMod.${modDefinition.displayName}`)}
+      </span>
+    );
+  }
+  if (
+    modDefinition.isDesecrated === true &&
+    modDefinition.isDesecratedRevealed === true
+  ) {
+    return (
+      <span className="text-emerald-400">
+        <ModTemplateText nameTemplateKey={modDefinition.displayName} />
       </span>
     );
   }

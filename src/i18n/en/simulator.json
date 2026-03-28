@@ -4043,6 +4043,8 @@
     "hinekoraDraftTableMissing": "Foreseen outcomes are not ready. Try selecting a base item again or reset the craft.",
     "soulWellRevealTitle": "Soul Well — choose a modifier",
     "soulWellRevealHint": "Three candidates are rolled from this lab’s rare prefix/suffix pool (same slot as the unrevealed line). Exact in-game odds for Desecrated vs normal lines are not public.",
+    "soulWellRevealReroll": "Reroll",
+    "soulWellRevealRerollAria": "Roll three new Soul Well candidates",
     "soulWellRevealCancel": "Cancel",
     "soulWellRevealCandidateAria": "Soul Well candidate {index}",
     "currencyTabDisabledGeneric": "Not wired to manual crafting yet.",

@@ -9,7 +9,7 @@ import {
   SelectedBaseItemSummaryCard,
   StatCalloutCard,
 } from "@/components/molecules";
-import { PanelShell } from "./PanelShell";
+import { PanelShell } from "@/components/molecules/panels";
 
 type OptimizationResultPanelPropsType = {
   selectedBaseItem: IBaseItemDefinition | null;

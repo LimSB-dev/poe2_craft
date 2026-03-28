@@ -3,7 +3,7 @@
 import { useFormatter, useTranslations } from "next-intl";
 import type { ReactElement } from "react";
 
-import { ModTemplateText } from "@/components/organisms/display";
+import { ModTemplateText } from "@/components/atoms/catalog";
 import type { CraftLabOrbPreviewResultType } from "@/lib/crafting-lab/craftLabOrbPreview";
 
 type CraftingLabOrbPreviewPanelPropsType = {

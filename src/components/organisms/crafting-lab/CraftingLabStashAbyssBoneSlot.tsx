@@ -3,7 +3,7 @@
 import { useTranslations } from "next-intl";
 import type { ReactElement } from "react";
 
-import { CraftingLabOrbSlotButton } from "@/components/organisms/display";
+import { CraftingLabOrbSlotButton } from "@/components/molecules";
 import { getCraftingLabCurrencyIconUrl } from "@/lib/crafting-lab/craftingLabCurrencyIconUrls";
 import {
   canApplyPreservedBone,

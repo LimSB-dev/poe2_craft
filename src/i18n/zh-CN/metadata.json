@@ -1,4 +1,9 @@
 {
   "title": "PoE2 Craft — 物品模拟器",
-  "description": "流放之路2 物品roll预览：选择基底、设定稀有度与前后缀数量后roll一次。"
+  "description": "流放之路2 物品roll预览：选择基底、设定稀有度与前后缀数量后roll一次。",
+  "notFound": {
+    "title": "页面未找到",
+    "description": "您访问的页面不存在或已移动。",
+    "backHome": "返回首页"
+  }
 }

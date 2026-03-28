@@ -1,4 +1,4 @@
-import type { IRlTrainDesiredModPayloadType } from "./rlTrainApiTypes";
+import type { IRlTrainDesiredModPayloadType } from "@/lib/rl/rlTrainApiTypes";
 
 const MOD_TYPES: ReadonlySet<string> = new Set([
   "prefix",

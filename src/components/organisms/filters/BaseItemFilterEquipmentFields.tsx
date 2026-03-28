@@ -3,7 +3,7 @@
 import { useTranslations } from "next-intl";
 import type { ReactElement } from "react";
 
-import { BaseItemSubtypeOptions } from "./BaseItemSubtypeOptions";
+import { BaseItemSubtypeOptions } from "@/components/organisms/filters/BaseItemSubtypeOptions";
 
 type BaseItemFilterEquipmentFieldsPropsType = {
   equipmentTypeFilter: BaseItemEquipmentFilterType;

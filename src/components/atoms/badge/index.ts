@@ -1,1 +1,1 @@
-export { ModTypeBadge } from "./ModTypeBadge";
+export { ModTypeBadge } from "@/components/atoms/badge/ModTypeBadge";

@@ -1,7 +1,7 @@
-import { MOD_WIKI_TIER_SOURCES } from "./modWikiTierSources";
-import type { WikiExtractedModTierRowType, WikiItemModTiersFileType } from "./wikiModTierTypes";
+import { MOD_WIKI_TIER_SOURCES } from "@/lib/poe2-item-simulator/modWikiTierSources";
+import type { WikiExtractedModTierRowType, WikiItemModTiersFileType } from "@/lib/poe2-item-simulator/wikiModTierTypes";
 
-import wikiModTierPayload from "./data/poe2wiki-item-mod-tiers.json";
+import wikiModTierPayload from "@/lib/poe2-item-simulator/data/poe2wiki-item-mod-tiers.json";
 
 const wikiFile = wikiModTierPayload as WikiItemModTiersFileType;
 

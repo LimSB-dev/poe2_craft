@@ -1,4 +1,4 @@
-import { MOD_DB } from "./modDb";
+import { MOD_DB } from "@/lib/poe2-item-simulator/modDb";
 
 /**
  * Returns all mod records applicable to the given item sub-type.

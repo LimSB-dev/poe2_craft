@@ -2,7 +2,7 @@
 
 import type { ButtonHTMLAttributes, ReactElement } from "react";
 
-import { Spinner } from "../feedback";
+import { Spinner } from "@/components/atoms/feedback";
 
 export type ButtonVariantType = "primary" | "secondary" | "outline" | "ghost" | "danger";
 export type ButtonSizeType = "sm" | "md" | "lg";

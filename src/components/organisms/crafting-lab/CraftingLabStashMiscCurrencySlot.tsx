@@ -7,7 +7,7 @@ import { CraftingLabOrbSlotButton } from "@/components/molecules";
 import {
   CraftingLabStashOrbSlot,
   type CraftingLabStashOrbSlotPropsType,
-} from "./CraftingLabStashOrbSlot";
+} from "@/components/organisms/crafting-lab/CraftingLabStashOrbSlot";
 import { getCraftingLabCurrencyIconUrl } from "@/lib/crafting-lab/craftingLabCurrencyIconUrls";
 import type { CraftingCurrencyIdType } from "@/lib/crafting-lab/craftingLabCurrencyIds";
 import { getCraftLabDisabledCurrencyRowTooltip } from "@/lib/crafting-lab/craftLabDisabledCurrencyTooltips";

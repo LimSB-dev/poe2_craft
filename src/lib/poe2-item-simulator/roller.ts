@@ -1,14 +1,14 @@
 import {
   BASE_ITEM_ITEM_LEVEL_DEFAULT,
   clampBaseItemItemLevel,
-} from "./baseItemItemLevel";
-import { MOD_DB } from "./modDb";
+} from "@/lib/poe2-item-simulator/baseItemItemLevel";
+import { MOD_DB } from "@/lib/poe2-item-simulator/modDb";
 import {
   getModTierDisplayRows,
   type IModTierDisplayRowType,
-} from "./modDbTierDisplay";
-import { toModDefinition } from "./modPool";
-import { getRandomIntInclusive, pickWeightedRandom } from "./random";
+} from "@/lib/poe2-item-simulator/modDbTierDisplay";
+import { toModDefinition } from "@/lib/poe2-item-simulator/modPool";
+import { getRandomIntInclusive, pickWeightedRandom } from "@/lib/poe2-item-simulator/random";
 
 /**
  * 베이스가 알려질 때만 적용(크래프트 랩 등).

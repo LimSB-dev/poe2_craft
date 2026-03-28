@@ -3,7 +3,7 @@ import {
   type AppSupportedLocaleType,
 } from "@/lib/i18n/appLocales";
 
-import modTypeLabelsJson from "./data/modTypeLabels.json";
+import modTypeLabelsJson from "@/lib/poe2-item-simulator/data/modTypeLabels.json";
 
 export type ModTypeLabelRowType = {
   displayName: string;

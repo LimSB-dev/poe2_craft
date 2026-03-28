@@ -1,5 +1,5 @@
 export {
   BaseItemItemLevelControl,
   type BaseItemItemLevelControlPropsType,
-} from "./BaseItemItemLevelControl";
-export { PanelShell } from "./PanelShell";
+} from "@/components/molecules/panels/BaseItemItemLevelControl";
+export { PanelShell } from "@/components/molecules/panels/PanelShell";

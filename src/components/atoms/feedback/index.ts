@@ -1,3 +1,3 @@
-export { ReservedStatusRegion } from "./ReservedStatusRegion";
-export type { ReservedStatusRegionPropsType } from "./ReservedStatusRegion";
-export { Spinner } from "./Spinner";
+export { ReservedStatusRegion } from "@/components/atoms/feedback/ReservedStatusRegion";
+export type { ReservedStatusRegionPropsType } from "@/components/atoms/feedback/ReservedStatusRegion";
+export { Spinner } from "@/components/atoms/feedback/Spinner";

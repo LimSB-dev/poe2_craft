@@ -2,22 +2,22 @@ import {
   RARE_FULL_REROLL_AFFIX_MAX,
   RARE_FULL_REROLL_AFFIX_MIN,
   type IPrefixSuffixSplitType,
-} from "../currency/chaosOrb";
+} from "@/lib/poe2-item-simulator/currency/chaosOrb";
 import {
   assertRollNotCorruptedForStandardCrafting,
   isCorruptedRoll,
-} from "../itemCorruptionCraftingGuard";
-import craftLabEssenceWikiTiers from "../data/craftLabEssenceWikiTiers.json";
-import { MOD_DB } from "../modDb";
-import { getModTierDisplayRows } from "../modDbTierDisplay";
-import { toModDefinition } from "../modPool";
-import { getRandomIntInclusive, pickWeightedRandom } from "../random";
+} from "@/lib/poe2-item-simulator/itemCorruptionCraftingGuard";
+import craftLabEssenceWikiTiers from "@/lib/poe2-item-simulator/data/craftLabEssenceWikiTiers.json";
+import { MOD_DB } from "@/lib/poe2-item-simulator/modDb";
+import { getModTierDisplayRows } from "@/lib/poe2-item-simulator/modDbTierDisplay";
+import { toModDefinition } from "@/lib/poe2-item-simulator/modPool";
+import { getRandomIntInclusive, pickWeightedRandom } from "@/lib/poe2-item-simulator/random";
 import {
   listEligibleModTierRowsForRecord,
   mapLadderTierToSimDisplayTier,
   rollRareModSlots,
   type IModRollBaseFiltersType,
-} from "../roller";
+} from "@/lib/poe2-item-simulator/roller";
 
 const RARE_MAX_PREFIX_SLOTS: number = 3;
 const RARE_MAX_SUFFIX_SLOTS: number = 3;

@@ -1,4 +1,4 @@
-import poe2dbBaseItemRecords from "./data/poe2dbBaseItems.generated.json";
+import poe2dbBaseItemRecords from "@/lib/poe2-item-simulator/data/poe2dbBaseItems.generated.json";
 
 export const BASE_ITEM_SUB_TYPES_BY_EQUIPMENT: Readonly<
   Record<IBaseItemEquipmentTypeType, ReadonlyArray<IBaseItemSubTypeType>>

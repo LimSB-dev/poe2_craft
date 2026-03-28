@@ -1,4 +1,9 @@
 {
   "title": "PoE2 Craft — アイテムシミュレーター",
-  "description": "Path of Exile 2 のアイテムロール試行: ベース選択、レアリティと接頭・接尾の数を設定して1回ロール。"
+  "description": "Path of Exile 2 のアイテムロール試行: ベース選択、レアリティと接頭・接尾の数を設定して1回ロール。",
+  "notFound": {
+    "title": "ページが見つかりません",
+    "description": "お探しのページは存在しないか、移動した可能性があります。",
+    "backHome": "ホームへ"
+  }
 }

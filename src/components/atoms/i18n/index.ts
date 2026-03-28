@@ -1,1 +1,1 @@
-export { HtmlLangSetter } from "./HtmlLangSetter";
+export { HtmlLangSetter } from "@/components/atoms/i18n/HtmlLangSetter";

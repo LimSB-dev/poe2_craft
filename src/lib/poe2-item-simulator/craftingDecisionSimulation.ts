@@ -10,8 +10,8 @@
  *
  * The printed Δ lines make the cost / success trade-off explicit for the current mod pool and limits.
  */
-import { applyLegacyChaosOrbFullReroll, countGoodMods, GOOD_MOD_MAX_TIER } from "./currency/chaosOrb";
-import { shouldContinue, type IShouldContinueOptionsType } from "./craftingDecision";
+import { applyLegacyChaosOrbFullReroll, countGoodMods, GOOD_MOD_MAX_TIER } from "@/lib/poe2-item-simulator/currency/chaosOrb";
+import { shouldContinue, type IShouldContinueOptionsType } from "@/lib/poe2-item-simulator/craftingDecision";
 
 const EMPTY_RARE: IItemRoll = { rarity: "rare", prefixes: [], suffixes: [] };
 

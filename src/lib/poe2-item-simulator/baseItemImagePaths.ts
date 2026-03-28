@@ -1,4 +1,4 @@
-import baseItemImageMeta from "../../../data/generated/base-item-image-meta.json";
+import baseItemImageMeta from "@data/generated/base-item-image-meta.json";
 
 const BASE_ITEM_IMAGE_ROOT_PATH: string = "/images/items";
 

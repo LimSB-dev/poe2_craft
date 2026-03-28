@@ -19,7 +19,7 @@ export type CraftingLabOrbSlotButtonPropsType = {
   onBlockedClick?: () => void;
   /** 툴팁·스크린리더용 재료 이름(항상 표시) */
   currencyName: string;
-  /** 호버 툴팁: 이름 아래 한 줄 (`simulator.craftLab.currencyHoverHint.*`) */
+  /** 호버 툴팁: 이름 아래 (`simulator.craftLab.currencyHoverHint.*`, `\n`으로 줄바꿈) */
   hoverHint?: string;
   /** 비활성 사유 — 툴팁 아래, 클릭 시 onBlockedClick과 함께 쓰면 됨 */
   disabledReason?: string;
@@ -177,12 +177,12 @@ export const CraftingLabOrbSlotButton = ({
       >
         <span className="text-zinc-50">{currencyName}</span>
         {hoverHint !== undefined && hoverHint.length > 0 ? (
-          <span className="mt-1 block text-[9px] font-normal leading-snug text-zinc-400">
+          <span className="mt-1 block whitespace-pre-line text-[9px] font-normal leading-snug text-zinc-400">
             {hoverHint}
           </span>
         ) : null}
         {ghosted && disabledReason !== undefined && disabledReason.length > 0 ? (
-          <span className="mt-1 block text-[10px] font-normal leading-snug text-zinc-400">
+          <span className="mt-1 block whitespace-pre-line text-[10px] font-normal leading-snug text-zinc-400">
             {disabledReason}
           </span>
         ) : null}

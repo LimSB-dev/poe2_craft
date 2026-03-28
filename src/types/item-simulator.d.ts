@@ -8,7 +8,11 @@ declare global {
   interface IModDefinition {
     modKey: string;
     displayName: string;
-    tier: number; // 1..5
+    /**
+     * 시뮬 표시·비교용 티어 (1 = 최상). 위키 병합 사다리는 내부적으로 더 길 수 있으나
+     * `record.tierCount` 범위(예: T1~T9)로 압축해 둔다.
+     */
+    tier: number;
     modType: ModTypeType;
     weight: number; // probability weight > 0
     isFractured?: boolean;

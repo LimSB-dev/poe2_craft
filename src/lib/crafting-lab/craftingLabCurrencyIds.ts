@@ -12,6 +12,7 @@ import type { CraftLabEssenceCurrencyIdType } from "@/lib/poe2-item-simulator/es
  * 연금술 오브는 PoE2에서 일반(단일)만 두고 티어 슬롯은 두지 않는다.
  * 제왕의 오브는 일반·상위·완벽(티어 3종) 슬롯이 있다.
  * 티어별 수치·가중치는 아직 시뮬에 없으므로, 적용 로직은 동일 패밀리로 묶는다.
+ * 크래프트 랩에서는 `craftLabOrbTierItemLevel`의 최소 ilvl로 오브·에센스 상위·완벽 슬롯을 막는다.
  */
 
 export type CurrencyTierIndexType = 1 | 2 | 3;

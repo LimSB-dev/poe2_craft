@@ -5,6 +5,7 @@ import {
 import { ATTACK_ESSENCE, canApplyEssence } from "@/lib/poe2-item-simulator/essence/essence";
 import { normalizeCraftingCurrencyEventId } from "@/lib/crafting-lab/craftingLabCurrencyIds";
 import { isCraftLabOrbSlotApplicable } from "@/lib/crafting-lab/isCraftLabOrbFamilyApplicable";
+import { isCraftLabEssenceItemLevelAllowed } from "@/lib/crafting-lab/craftLabOrbTierItemLevel";
 
 describe("crafting material applicability (essence, abyss bone, craft-lab orb slot)", () => {
   test("normalizeCraftingCurrencyEventId: legacy essence id maps to tier 1 slot", () => {
@@ -47,6 +48,31 @@ describe("crafting material applicability (essence, abyss bone, craft-lab orb sl
       isCorrupted: true,
     };
     expect(isCraftLabOrbSlotApplicable("orb_chaos_t1", roll)).toBe(false);
+  });
+
+  test("isCraftLabEssenceItemLevelAllowed: tier 3 essence uses min modifier level 70 (magic-tier)", () => {
+    expect(isCraftLabEssenceItemLevelAllowed("essence_attack_t3", 7)).toBe(false);
+    expect(isCraftLabEssenceItemLevelAllowed("essence_attack_t3", 70)).toBe(true);
+  });
+
+  test("isCraftLabOrbSlotApplicable: augmentation perfect requires ilvl 70 (wiki min modifier level)", () => {
+    const roll: IItemRoll = {
+      rarity: "magic",
+      prefixes: [{ modKey: "a", displayName: "a", tier: 1, modType: "prefix", weight: 1 }],
+      suffixes: [],
+    };
+    expect(isCraftLabOrbSlotApplicable("orb_augmentation_t3", roll, 7)).toBe(false);
+    expect(isCraftLabOrbSlotApplicable("orb_augmentation_t3", roll, 70)).toBe(true);
+  });
+
+  test("isCraftLabOrbSlotApplicable: chaos perfect requires ilvl 50 (wiki min modifier level)", () => {
+    const roll: IItemRoll = {
+      rarity: "rare",
+      prefixes: [{ modKey: "a", displayName: "a", tier: 1, modType: "prefix", weight: 1 }],
+      suffixes: [{ modKey: "b", displayName: "b", tier: 1, modType: "suffix", weight: 1 }],
+    };
+    expect(isCraftLabOrbSlotApplicable("orb_chaos_t3", roll, 40)).toBe(false);
+    expect(isCraftLabOrbSlotApplicable("orb_chaos_t3", roll, 50)).toBe(true);
   });
 });
 

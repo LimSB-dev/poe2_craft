@@ -1,0 +1,1332 @@
+{
+  "schemaVersion": "spawn-tag-union@1",
+  "source": "poe2wiki_cargo_derived",
+  "fetchedAtIso": "2026-03-28T13:19:49.780Z",
+  "note": "Union of mod_spawn_weights.tag where value>0, grouped by mod_groups + generation_type. modDb.applicableSubTypes may omit tags intentionally.",
+  "groupCount": 203,
+  "groups": {
+    "AddedColdDamagePerFrenzyCharge::1": {
+      "tags": [],
+      "wikiModCount": 2
+    },
+    "AddedFireDamageIfBlockedRecently::2": {
+      "tags": [],
+      "wikiModCount": 1
+    },
+    "AdditionalAmmo::2": {
+      "tags": [
+        "crossbow"
+      ],
+      "wikiModCount": 2
+    },
+    "AdditionalArrows::2": {
+      "tags": [
+        "bow"
+      ],
+      "wikiModCount": 6
+    },
+    "AdditionalCharm::2": {
+      "tags": [],
+      "wikiModCount": 2
+    },
+    "AdditionalPhysicalDamageReductionDuringFlaskEffect::2": {
+      "tags": [],
+      "wikiModCount": 1
+    },
+    "AlchemistsGeniusOnFlaskUseChance::2": {
+      "tags": [],
+      "wikiModCount": 1
+    },
+    "AllAttributes::2": {
+      "tags": [
+        "amulet",
+        "ring"
+      ],
+      "wikiModCount": 9
+    },
+    "AllDamage::1": {
+      "tags": [
+        "sceptre"
+      ],
+      "wikiModCount": 9
+    },
+    "AllDefences::1": {
+      "tags": [],
+      "wikiModCount": 1
+    },
+    "AllResistances::2": {
+      "tags": [
+        "amulet",
+        "ring",
+        "sceptre",
+        "str_int_shield"
+      ],
+      "wikiModCount": 12
+    },
+    "AlwaysHits::1": {
+      "tags": [],
+      "wikiModCount": 1
+    },
+    "AreaOfEffect::2": {
+      "tags": [],
+      "wikiModCount": 1
+    },
+    "ArmourAppliesToElementalDamage::2": {
+      "tags": [
+        "str_armour",
+        "str_dex_armour",
+        "str_dex_int_armour",
+        "str_int_armour"
+      ],
+      "wikiModCount": 6
+    },
+    "AttackAndCastSpeedDuringFlaskEffect::2": {
+      "tags": [],
+      "wikiModCount": 1
+    },
+    "AttackCastSpeed::2": {
+      "tags": [],
+      "wikiModCount": 3
+    },
+    "AttackDamage::1": {
+      "tags": [],
+      "wikiModCount": 5
+    },
+    "AttackerTakesDamageNoRange::1": {
+      "tags": [],
+      "wikiModCount": 3
+    },
+    "AuraEffect::2": {
+      "tags": [],
+      "wikiModCount": 1
+    },
+    "AvoidElementalStatusAilments::2": {
+      "tags": [],
+      "wikiModCount": 8
+    },
+    "AvoidIgnite::2": {
+      "tags": [],
+      "wikiModCount": 4
+    },
+    "AvoidStun::2": {
+      "tags": [],
+      "wikiModCount": 7
+    },
+    "BaseLocalDefences::1": {
+      "tags": [
+        "dex_armour",
+        "dex_int_armour",
+        "int_armour",
+        "str_armour",
+        "str_dex_armour",
+        "str_dex_int_armour",
+        "str_int_armour"
+      ],
+      "wikiModCount": 57
+    },
+    "BaseLocalDefencesAndDefencePercent::1": {
+      "tags": [
+        "dex_armour",
+        "dex_int_armour",
+        "int_armour",
+        "str_armour",
+        "str_dex_armour",
+        "str_int_armour"
+      ],
+      "wikiModCount": 36
+    },
+    "BaseLocalDefencesAndLife::1": {
+      "tags": [
+        "dex_armour",
+        "dex_int_armour",
+        "int_armour",
+        "str_armour",
+        "str_dex_armour",
+        "str_int_armour"
+      ],
+      "wikiModCount": 36
+    },
+    "BaseLocalDefencesAndMana::1": {
+      "tags": [
+        "dex_armour",
+        "dex_int_armour",
+        "int_armour",
+        "str_armour",
+        "str_dex_armour",
+        "str_int_armour"
+      ],
+      "wikiModCount": 36
+    },
+    "BaseSpirit::1": {
+      "tags": [
+        "amulet",
+        "body_armour"
+      ],
+      "wikiModCount": 8
+    },
+    "BeltCharmChargesGained::2": {
+      "tags": [
+        "belt"
+      ],
+      "wikiModCount": 6
+    },
+    "BeltCharmChargesUsed::2": {
+      "tags": [
+        "belt"
+      ],
+      "wikiModCount": 6
+    },
+    "BeltCharmDuration::1": {
+      "tags": [
+        "belt"
+      ],
+      "wikiModCount": 5
+    },
+    "BeltFlaskChargesGained::2": {
+      "tags": [
+        "belt"
+      ],
+      "wikiModCount": 6
+    },
+    "BeltFlaskChargesUsed::2": {
+      "tags": [
+        "belt"
+      ],
+      "wikiModCount": 6
+    },
+    "BeltFlaskRecoveryRate::1": {
+      "tags": [
+        "belt"
+      ],
+      "wikiModCount": 22
+    },
+    "BleedDuration::2": {
+      "tags": [],
+      "wikiModCount": 2
+    },
+    "BlockVsProjectiles::2": {
+      "tags": [],
+      "wikiModCount": 6
+    },
+    "CannotBePoisoned::2": {
+      "tags": [],
+      "wikiModCount": 1
+    },
+    "CausesBleeding::1": {
+      "tags": [],
+      "wikiModCount": 2
+    },
+    "ChanceToAvoidFreezeAndChill::2": {
+      "tags": [],
+      "wikiModCount": 5
+    },
+    "ChanceToPierce::2": {
+      "tags": [
+        "quiver"
+      ],
+      "wikiModCount": 5
+    },
+    "ChanceToRecoverManaOnSkillUse::2": {
+      "tags": [],
+      "wikiModCount": 1
+    },
+    "ChaosDamage::1": {
+      "tags": [],
+      "wikiModCount": 3
+    },
+    "ChaosDamageLifeLeech::2": {
+      "tags": [],
+      "wikiModCount": 1
+    },
+    "ChaosDamageOverTimeTaken::2": {
+      "tags": [],
+      "wikiModCount": 1
+    },
+    "ChaosResistance::2": {
+      "tags": [
+        "amulet",
+        "armour",
+        "belt",
+        "ring"
+      ],
+      "wikiModCount": 6
+    },
+    "ChaosResistanceWhileUsingFlask::2": {
+      "tags": [],
+      "wikiModCount": 1
+    },
+    "ColdDamage::1": {
+      "tags": [
+        "axe",
+        "bow",
+        "claw",
+        "crossbow",
+        "dagger",
+        "flail",
+        "gloves",
+        "mace",
+        "quiver",
+        "ring",
+        "sceptre",
+        "spear",
+        "staff",
+        "sword",
+        "talisman",
+        "wand",
+        "warstaff"
+      ],
+      "wikiModCount": 50
+    },
+    "ColdDamagePercentage::1": {
+      "tags": [
+        "ring"
+      ],
+      "wikiModCount": 6
+    },
+    "ColdDamageTakenRecoupedAsLife::2": {
+      "tags": [],
+      "wikiModCount": 1
+    },
+    "ColdResistance::2": {
+      "tags": [
+        "amulet",
+        "armour",
+        "belt",
+        "ring"
+      ],
+      "wikiModCount": 8
+    },
+    "ColdResistancePenetration::1": {
+      "tags": [],
+      "wikiModCount": 13
+    },
+    "CorruptionIntertactions::2": {
+      "tags": [],
+      "wikiModCount": 1
+    },
+    "CriticalStrikeChanceIncrease::2": {
+      "tags": [
+        "amulet",
+        "helmet",
+        "quiver",
+        "sceptre",
+        "trap",
+        "weapon"
+      ],
+      "wikiModCount": 30
+    },
+    "CriticalStrikeMultiplier::2": {
+      "tags": [
+        "amulet",
+        "focus",
+        "gloves",
+        "quiver",
+        "sceptre",
+        "staff",
+        "trap",
+        "wand",
+        "weapon"
+      ],
+      "wikiModCount": 42
+    },
+    "CrushOnHitChance::2": {
+      "tags": [],
+      "wikiModCount": 1
+    },
+    "CurseEffectiveness::2": {
+      "tags": [],
+      "wikiModCount": 3
+    },
+    "DamageOverTimeMultiplier::2": {
+      "tags": [
+        "amulet_elder",
+        "amulet_shaper",
+        "gloves_elder",
+        "gloves_shaper"
+      ],
+      "wikiModCount": 8
+    },
+    "DamageTakenGainedAsLife::2": {
+      "tags": [
+        "amulet"
+      ],
+      "wikiModCount": 5
+    },
+    "DamageWithWeaponTypeSkill::1": {
+      "tags": [
+        "quiver"
+      ],
+      "wikiModCount": 6
+    },
+    "DecayOnHit::2": {
+      "tags": [],
+      "wikiModCount": 1
+    },
+    "DefencesPercent::1": {
+      "tags": [
+        "body_armour",
+        "dex_armour",
+        "dex_int_armour",
+        "int_armour",
+        "shield",
+        "str_armour",
+        "str_dex_armour",
+        "str_dex_int_armour",
+        "str_int_armour"
+      ],
+      "wikiModCount": 56
+    },
+    "DefencesPercentAndStunThreshold::1": {
+      "tags": [
+        "dex_armour",
+        "dex_int_armour",
+        "int_armour",
+        "str_armour",
+        "str_dex_armour",
+        "str_int_armour"
+      ],
+      "wikiModCount": 36
+    },
+    "Dexterity::2": {
+      "tags": [
+        "amulet",
+        "bow",
+        "claw",
+        "crossbow",
+        "dagger",
+        "dex_armour",
+        "dex_int_armour",
+        "gloves",
+        "quiver",
+        "ring",
+        "spear",
+        "str_dex_armour",
+        "str_dex_int_armour",
+        "sword",
+        "trap",
+        "warstaff"
+      ],
+      "wikiModCount": 9
+    },
+    "DisplaySupportedSkillsDealDamageOnLowLife::2": {
+      "tags": [],
+      "wikiModCount": 1
+    },
+    "DisplaySupportedSkillsHaveAChanceToIgnite::2": {
+      "tags": [],
+      "wikiModCount": 1
+    },
+    "DummyStatDisplayNothing::2": {
+      "tags": [],
+      "wikiModCount": 1
+    },
+    "ElementalPenetrationDuringFlaskEffect::2": {
+      "tags": [],
+      "wikiModCount": 1
+    },
+    "EnergyShieldDelay::2": {
+      "tags": [
+        "dex_int_armour",
+        "int_armour",
+        "str_dex_int_armour",
+        "str_int_armour"
+      ],
+      "wikiModCount": 6
+    },
+    "EnergyShieldPercent::1": {
+      "tags": [
+        "amulet"
+      ],
+      "wikiModCount": 7
+    },
+    "EnergyShieldRegeneration::2": {
+      "tags": [
+        "dex_int_armour",
+        "focus",
+        "int_armour",
+        "str_dex_int_armour",
+        "str_int_armour"
+      ],
+      "wikiModCount": 6
+    },
+    "EssenceAbyss::1": {
+      "tags": [],
+      "wikiModCount": 1
+    },
+    "EssenceAbyss::2": {
+      "tags": [],
+      "wikiModCount": 1
+    },
+    "EssenceGoldDropped::2": {
+      "tags": [],
+      "wikiModCount": 1
+    },
+    "EssenceGrantedPassive::1": {
+      "tags": [],
+      "wikiModCount": 1
+    },
+    "EvasionAppliesToDeflection::2": {
+      "tags": [
+        "dex_armour",
+        "dex_int_armour",
+        "str_dex_armour",
+        "str_dex_int_armour"
+      ],
+      "wikiModCount": 6
+    },
+    "EvasionRatingPercent::1": {
+      "tags": [
+        "amulet"
+      ],
+      "wikiModCount": 7
+    },
+    "FireDamage::1": {
+      "tags": [
+        "axe",
+        "bow",
+        "claw",
+        "crossbow",
+        "dagger",
+        "flail",
+        "gloves",
+        "mace",
+        "quiver",
+        "ring",
+        "sceptre",
+        "spear",
+        "staff",
+        "sword",
+        "talisman",
+        "wand",
+        "warstaff"
+      ],
+      "wikiModCount": 50
+    },
+    "FireDamageAsPortionOfDamage::1": {
+      "tags": [],
+      "wikiModCount": 2
+    },
+    "FireDamagePercentage::1": {
+      "tags": [
+        "ring"
+      ],
+      "wikiModCount": 6
+    },
+    "FireDamageTakenRecoupedAsLife::2": {
+      "tags": [],
+      "wikiModCount": 1
+    },
+    "FireResistance::2": {
+      "tags": [
+        "amulet",
+        "armour",
+        "belt",
+        "ring"
+      ],
+      "wikiModCount": 8
+    },
+    "FireResistancePenetration::1": {
+      "tags": [],
+      "wikiModCount": 11
+    },
+    "FishingCastDistance::2": {
+      "tags": [
+        "fishing_rod"
+      ],
+      "wikiModCount": 1
+    },
+    "FishingHookType::2": {
+      "tags": [
+        "fishing_rod"
+      ],
+      "wikiModCount": 1
+    },
+    "FishingLineStrength::1": {
+      "tags": [
+        "fishing_rod"
+      ],
+      "wikiModCount": 1
+    },
+    "FishingLureType::1": {
+      "tags": [
+        "fishing_rod"
+      ],
+      "wikiModCount": 1
+    },
+    "FishingPoolConsumption::1": {
+      "tags": [
+        "fishing_rod"
+      ],
+      "wikiModCount": 1
+    },
+    "FishingQuantity::2": {
+      "tags": [
+        "fishing_rod"
+      ],
+      "wikiModCount": 1
+    },
+    "FishingRarity::2": {
+      "tags": [
+        "fishing_rod"
+      ],
+      "wikiModCount": 1
+    },
+    "FortifyEffect::2": {
+      "tags": [],
+      "wikiModCount": 1
+    },
+    "FreezeDamageIncrease::2": {
+      "tags": [
+        "staff",
+        "trap",
+        "wand"
+      ],
+      "wikiModCount": 5
+    },
+    "GainLifeOnBlock::2": {
+      "tags": [],
+      "wikiModCount": 6
+    },
+    "GainManaOnBlock::2": {
+      "tags": [],
+      "wikiModCount": 4
+    },
+    "GrantedSkill::2": {
+      "tags": [],
+      "wikiModCount": 5
+    },
+    "GrantsMinion::2": {
+      "tags": [],
+      "wikiModCount": 1
+    },
+    "IgniteChanceIncrease::2": {
+      "tags": [
+        "staff",
+        "trap",
+        "wand"
+      ],
+      "wikiModCount": 5
+    },
+    "IncreasedAccuracy::1": {
+      "tags": [
+        "amulet",
+        "gloves",
+        "helmet",
+        "quiver",
+        "ranged",
+        "ring",
+        "weapon"
+      ],
+      "wikiModCount": 27
+    },
+    "IncreasedAttackSpeed::2": {
+      "tags": [
+        "gloves",
+        "quiver",
+        "ranged",
+        "sceptre",
+        "weapon"
+      ],
+      "wikiModCount": 16
+    },
+    "IncreasedCastSpeed::2": {
+      "tags": [
+        "amulet",
+        "focus",
+        "ring",
+        "sceptre",
+        "staff",
+        "wand"
+      ],
+      "wikiModCount": 18
+    },
+    "IncreasedChaosDamage::1": {
+      "tags": [
+        "ring"
+      ],
+      "wikiModCount": 6
+    },
+    "IncreasedChaosDamage::2": {
+      "tags": [],
+      "wikiModCount": 3
+    },
+    "IncreasedEnergyShield::1": {
+      "tags": [
+        "amulet"
+      ],
+      "wikiModCount": 10
+    },
+    "IncreasedEvasionRating::1": {
+      "tags": [
+        "ring"
+      ],
+      "wikiModCount": 9
+    },
+    "IncreasedLife::1": {
+      "tags": [
+        "amulet",
+        "belt",
+        "body_armour",
+        "boots",
+        "gloves",
+        "helmet",
+        "ring",
+        "shield"
+      ],
+      "wikiModCount": 13
+    },
+    "IncreasedLifeLeechRate::2": {
+      "tags": [],
+      "wikiModCount": 1
+    },
+    "IncreasedMana::1": {
+      "tags": [
+        "amulet",
+        "belt",
+        "boots",
+        "focus",
+        "gloves",
+        "helmet",
+        "ring",
+        "sceptre",
+        "staff",
+        "trap",
+        "wand"
+      ],
+      "wikiModCount": 25
+    },
+    "IncreasedPhysicalDamageReductionRating::1": {
+      "tags": [
+        "belt"
+      ],
+      "wikiModCount": 10
+    },
+    "IncreasedPhysicalDamageReductionRatingPercent::1": {
+      "tags": [
+        "amulet"
+      ],
+      "wikiModCount": 7
+    },
+    "IncreasedShieldBlockPercentage::1": {
+      "tags": [
+        "shield"
+      ],
+      "wikiModCount": 7
+    },
+    "IncreasedShieldBlockPercentage::2": {
+      "tags": [],
+      "wikiModCount": 4
+    },
+    "IncreasedStunThreshold::2": {
+      "tags": [],
+      "wikiModCount": 3
+    },
+    "IncreasedWeaponElementalDamagePercent::1": {
+      "tags": [
+        "bow",
+        "one_hand_weapon",
+        "two_hand_weapon"
+      ],
+      "wikiModCount": 12
+    },
+    "IncreaseSocketedGemLevel::2": {
+      "tags": [
+        "amulet",
+        "bow",
+        "crossbow",
+        "focus",
+        "gloves",
+        "helmet",
+        "one_hand_weapon",
+        "quiver",
+        "sceptre",
+        "spear",
+        "staff",
+        "trap",
+        "two_hand_weapon",
+        "wand"
+      ],
+      "wikiModCount": 122
+    },
+    "IncreaseSpecificSocketedGemLevel::1": {
+      "tags": [],
+      "wikiModCount": 1
+    },
+    "IncreaseSpecificSocketedGemLevel::2": {
+      "tags": [],
+      "wikiModCount": 1
+    },
+    "Intelligence::2": {
+      "tags": [
+        "amulet",
+        "dagger",
+        "dex_int_armour",
+        "flail",
+        "helmet",
+        "int_armour",
+        "ring",
+        "sceptre",
+        "staff",
+        "str_dex_int_armour",
+        "str_int_armour",
+        "talisman",
+        "trap",
+        "wand",
+        "warstaff"
+      ],
+      "wikiModCount": 9
+    },
+    "ItemFoundRarityIncrease::2": {
+      "tags": [
+        "amulet",
+        "boots",
+        "gloves",
+        "helmet",
+        "ring"
+      ],
+      "wikiModCount": 5
+    },
+    "ItemFoundRarityIncreasePrefix::1": {
+      "tags": [
+        "amulet",
+        "helmet",
+        "ring"
+      ],
+      "wikiModCount": 5
+    },
+    "ItemGrantsBuff::2": {
+      "tags": [],
+      "wikiModCount": 1
+    },
+    "LifeGainedFromEnemyDeath::2": {
+      "tags": [
+        "gloves",
+        "quiver",
+        "ring",
+        "staff",
+        "trap",
+        "wand",
+        "weapon"
+      ],
+      "wikiModCount": 8
+    },
+    "LifeGainPerTarget::2": {
+      "tags": [
+        "gloves",
+        "weapon"
+      ],
+      "wikiModCount": 8
+    },
+    "LifeLeech::1": {
+      "tags": [],
+      "wikiModCount": 7
+    },
+    "LifeLeech::2": {
+      "tags": [
+        "gloves",
+        "ring",
+        "weapon"
+      ],
+      "wikiModCount": 10
+    },
+    "LifeRegeneration::2": {
+      "tags": [
+        "amulet",
+        "belt",
+        "body_armour",
+        "boots",
+        "helmet",
+        "ring",
+        "sceptre"
+      ],
+      "wikiModCount": 21
+    },
+    "LightningDamage::1": {
+      "tags": [
+        "axe",
+        "bow",
+        "claw",
+        "crossbow",
+        "dagger",
+        "flail",
+        "gloves",
+        "mace",
+        "quiver",
+        "ring",
+        "sceptre",
+        "spear",
+        "staff",
+        "sword",
+        "talisman",
+        "wand",
+        "warstaff"
+      ],
+      "wikiModCount": 50
+    },
+    "LightningDamagePercentage::1": {
+      "tags": [
+        "ring"
+      ],
+      "wikiModCount": 6
+    },
+    "LightningDamageTakenRecoupedAsLife::2": {
+      "tags": [],
+      "wikiModCount": 1
+    },
+    "LightningResistance::2": {
+      "tags": [
+        "amulet",
+        "armour",
+        "belt",
+        "ring"
+      ],
+      "wikiModCount": 8
+    },
+    "LightningResistancePenetration::1": {
+      "tags": [],
+      "wikiModCount": 9
+    },
+    "LightRadiusAndAccuracy::2": {
+      "tags": [
+        "helmet",
+        "weapon"
+      ],
+      "wikiModCount": 6
+    },
+    "LightRadiusAndManaRegeneration::2": {
+      "tags": [
+        "ring",
+        "sceptre",
+        "staff",
+        "wand"
+      ],
+      "wikiModCount": 3
+    },
+    "LocalAttributeRequirements::2": {
+      "tags": [
+        "body_armour",
+        "boots",
+        "focus",
+        "gloves",
+        "helmet",
+        "sceptre",
+        "shield",
+        "staff",
+        "wand",
+        "weapon"
+      ],
+      "wikiModCount": 5
+    },
+    "LocalChaosDamage::1": {
+      "tags": [],
+      "wikiModCount": 8
+    },
+    "LocalIncreasedPhysicalDamagePercentAndAccuracyRating::1": {
+      "tags": [
+        "weapon"
+      ],
+      "wikiModCount": 8
+    },
+    "LocalIncreasedSpiritAndMana::1": {
+      "tags": [
+        "sceptre"
+      ],
+      "wikiModCount": 7
+    },
+    "LocalIncreasedSpiritPercent::1": {
+      "tags": [
+        "sceptre"
+      ],
+      "wikiModCount": 8
+    },
+    "LocalPhysicalDamagePercent::1": {
+      "tags": [
+        "weapon"
+      ],
+      "wikiModCount": 8
+    },
+    "ManaCostEfficiency::2": {
+      "tags": [],
+      "wikiModCount": 2
+    },
+    "ManaGainedFromEnemyDeath::2": {
+      "tags": [
+        "gloves",
+        "quiver",
+        "ring",
+        "staff",
+        "trap",
+        "wand",
+        "weapon"
+      ],
+      "wikiModCount": 8
+    },
+    "ManaGainedOnBlock::2": {
+      "tags": [],
+      "wikiModCount": 1
+    },
+    "ManaLeech::2": {
+      "tags": [
+        "gloves",
+        "ring",
+        "weapon"
+      ],
+      "wikiModCount": 10
+    },
+    "ManaRegeneration::2": {
+      "tags": [
+        "amulet",
+        "focus",
+        "ring",
+        "sceptre",
+        "staff",
+        "trap",
+        "wand"
+      ],
+      "wikiModCount": 12
+    },
+    "ManaRegenerationWhileShocked::2": {
+      "tags": [],
+      "wikiModCount": 1
+    },
+    "MapInvasionMonsterPacks::1": {
+      "tags": [],
+      "wikiModCount": 1
+    },
+    "MartialWeaponGainedDamage::1": {
+      "tags": [],
+      "wikiModCount": 8
+    },
+    "MaximumChaosResistance::2": {
+      "tags": [
+        "shield"
+      ],
+      "wikiModCount": 3
+    },
+    "MaximumColdResist::2": {
+      "tags": [
+        "shield"
+      ],
+      "wikiModCount": 3
+    },
+    "MaximumFireResist::2": {
+      "tags": [
+        "shield"
+      ],
+      "wikiModCount": 3
+    },
+    "MaximumLifeIncreasePercent::1": {
+      "tags": [
+        "amulet"
+      ],
+      "wikiModCount": 4
+    },
+    "MaximumLightningResistance::2": {
+      "tags": [
+        "shield"
+      ],
+      "wikiModCount": 3
+    },
+    "MaximumManaIncreasePercent::1": {
+      "tags": [
+        "amulet"
+      ],
+      "wikiModCount": 4
+    },
+    "MaximumResistances::2": {
+      "tags": [
+        "shield"
+      ],
+      "wikiModCount": 2
+    },
+    "MeleeWeaponAndUnarmedRange::2": {
+      "tags": [],
+      "wikiModCount": 3
+    },
+    "MinionLife::2": {
+      "tags": [
+        "sceptre"
+      ],
+      "wikiModCount": 6
+    },
+    "MovementSpeedDuringFlaskEffect::2": {
+      "tags": [],
+      "wikiModCount": 1
+    },
+    "MovementSpeedOnBurningChilledShockedGround::2": {
+      "tags": [],
+      "wikiModCount": 1
+    },
+    "MovementVelocity::1": {
+      "tags": [
+        "boots"
+      ],
+      "wikiModCount": 6
+    },
+    "NearbyEnemiesChilledOnBlock::2": {
+      "tags": [],
+      "wikiModCount": 1
+    },
+    "Onslaught::2": {
+      "tags": [],
+      "wikiModCount": 1
+    },
+    "OnslaughtWhenHitChance::2": {
+      "tags": [],
+      "wikiModCount": 2
+    },
+    "PercentageDexterity::2": {
+      "tags": [],
+      "wikiModCount": 1
+    },
+    "PercentageIntelligence::2": {
+      "tags": [],
+      "wikiModCount": 1
+    },
+    "PercentageStrength::2": {
+      "tags": [],
+      "wikiModCount": 1
+    },
+    "PercentDamageGoesToMana::2": {
+      "tags": [
+        "amulet"
+      ],
+      "wikiModCount": 5
+    },
+    "PhysicalDamage::1": {
+      "tags": [
+        "bow",
+        "gloves",
+        "one_hand_weapon",
+        "quiver",
+        "ring",
+        "sceptre",
+        "two_hand_weapon"
+      ],
+      "wikiModCount": 36
+    },
+    "PhysicalDamageTakenAsChaos::1": {
+      "tags": [],
+      "wikiModCount": 1
+    },
+    "PhysicalDamageTakenAsElement::1": {
+      "tags": [],
+      "wikiModCount": 2
+    },
+    "PoisonDamage::1": {
+      "tags": [],
+      "wikiModCount": 1
+    },
+    "PoisonDuration::2": {
+      "tags": [],
+      "wikiModCount": 3
+    },
+    "PowerChargeOnBlock::2": {
+      "tags": [],
+      "wikiModCount": 1
+    },
+    "PowerFrenzyOrEnduranceChargeOnKill::2": {
+      "tags": [],
+      "wikiModCount": 1
+    },
+    "PresenceRadius::2": {
+      "tags": [
+        "sceptre"
+      ],
+      "wikiModCount": 4
+    },
+    "ProjectileSpeed::1": {
+      "tags": [
+        "quiver"
+      ],
+      "wikiModCount": 5
+    },
+    "ReducedAilmentDuration::2": {
+      "tags": [
+        "body_armour",
+        "boots"
+      ],
+      "wikiModCount": 30
+    },
+    "ReducedCriticalStrikeDamageTaken::2": {
+      "tags": [],
+      "wikiModCount": 1
+    },
+    "ReducedExtraDamageFromCrits::2": {
+      "tags": [
+        "str_dex_shield"
+      ],
+      "wikiModCount": 5
+    },
+    "ReducedManaReservationsCost::2": {
+      "tags": [],
+      "wikiModCount": 8
+    },
+    "ReducedPhysicalDamageTaken::2": {
+      "tags": [
+        "str_shield"
+      ],
+      "wikiModCount": 5
+    },
+    "ReducedShockChance::2": {
+      "tags": [],
+      "wikiModCount": 6
+    },
+    "ReflectDamageTaken::2": {
+      "tags": [],
+      "wikiModCount": 1
+    },
+    "ShockChanceIncrease::2": {
+      "tags": [
+        "staff",
+        "trap",
+        "wand"
+      ],
+      "wikiModCount": 5
+    },
+    "SocketedSkillsCriticalChance::2": {
+      "tags": [],
+      "wikiModCount": 1
+    },
+    "SoulCore::2": {
+      "tags": [],
+      "wikiModCount": 1
+    },
+    "SpellAddedElementalDamage::1": {
+      "tags": [],
+      "wikiModCount": 60
+    },
+    "SpellBlockPercentage::2": {
+      "tags": [],
+      "wikiModCount": 2
+    },
+    "SpellCriticalStrikeChanceIncrease::2": {
+      "tags": [
+        "focus",
+        "staff",
+        "wand"
+      ],
+      "wikiModCount": 12
+    },
+    "SpellDamage::1": {
+      "tags": [
+        "amulet"
+      ],
+      "wikiModCount": 6
+    },
+    "SpellDamageAndMana::1": {
+      "tags": [
+        "staff",
+        "wand"
+      ],
+      "wikiModCount": 14
+    },
+    "StormBladeExplicitAttackLightningConvertToChaos::1": {
+      "tags": [],
+      "wikiModCount": 1
+    },
+    "StormBladeExplicitLocalIncreasedCriticalStrikeChance::1": {
+      "tags": [],
+      "wikiModCount": 1
+    },
+    "StormBladeExplicitShockChance::1": {
+      "tags": [],
+      "wikiModCount": 1
+    },
+    "Strength::2": {
+      "tags": [
+        "amulet",
+        "axe",
+        "belt",
+        "crossbow",
+        "flail",
+        "mace",
+        "ring",
+        "sceptre",
+        "spear",
+        "str_armour",
+        "str_dex_armour",
+        "str_dex_int_armour",
+        "str_int_armour",
+        "sword",
+        "talisman"
+      ],
+      "wikiModCount": 9
+    },
+    "StunDamageIncrease::2": {
+      "tags": [
+        "weapon"
+      ],
+      "wikiModCount": 6
+    },
+    "StunDurationIncreasePercent::2": {
+      "tags": [
+        "weapon"
+      ],
+      "wikiModCount": 6
+    },
+    "StunThreshold::2": {
+      "tags": [
+        "belt",
+        "body_armour",
+        "boots",
+        "shield"
+      ],
+      "wikiModCount": 11
+    },
+    "SummonTotemCastSpeed::2": {
+      "tags": [],
+      "wikiModCount": 4
+    },
+    "Supported::2": {
+      "tags": [],
+      "wikiModCount": 7
+    },
+    "Thorns::1": {
+      "tags": [
+        "belt",
+        "body_armour",
+        "shield"
+      ],
+      "wikiModCount": 7
+    },
+    "TrapAndMineThrowSpeed::2": {
+      "tags": [
+        "trap"
+      ],
+      "wikiModCount": 7
+    },
+    "TrapCascadeSpeed::2": {
+      "tags": [],
+      "wikiModCount": 5
+    },
+    "TrapDamageAndMana::1": {
+      "tags": [
+        "trap"
+      ],
+      "wikiModCount": 7
+    },
+    "TrapTriggerRadius::2": {
+      "tags": [],
+      "wikiModCount": 5
+    },
+    "WeaponCasterDamagePrefix::1": {
+      "tags": [
+        "focus",
+        "staff",
+        "trap",
+        "wand"
+      ],
+      "wikiModCount": 24
+    },
+    "WeaponDamageTypePrefix::1": {
+      "tags": [
+        "focus",
+        "staff",
+        "trap",
+        "wand"
+      ],
+      "wikiModCount": 80
+    }
+  }
+}

@@ -48,8 +48,16 @@ declare global {
     requiredDexterity: number;
     requiredIntelligence: number;
     levelRequirement: number;
-    /** Primary stat tags derived from required attributes. Used to filter which mods can appear. */
+    /**
+     * 요구 힘/민/지에서 유도한 str/dex/int (참고·레거시).
+     * 모드 풀·크래프트 필터에는 쓰지 않고 `tags` 기반 `itemAttributeStatTagsForModFiltering`를 쓴다.
+     */
     statTags: ReadonlyArray<IBaseItemStatTagType>;
+    /**
+     * PoE2DB 상세 페이지 `Tags` 행 — `str_armour`, `str_shield`, `helmet`, `ezomyte_basetype` 등.
+     * 속성·모드 적합성의 기준.
+     */
+    tags?: ReadonlyArray<string>;
     /** Base armour value (undefined for items with no armour). */
     armour?: number;
     /** Base evasion value (undefined for items with no evasion). */

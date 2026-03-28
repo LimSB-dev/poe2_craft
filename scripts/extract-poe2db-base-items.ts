@@ -5,6 +5,7 @@ import {
   BASE_ITEM_SUB_TYPES_BY_EQUIPMENT,
 } from "@/lib/poe2-item-simulator/baseItemDb";
 import { POE2DB_ITEM_CLASS_WIKI_SLUG_BY_SUB_TYPE } from "@/lib/poe2db/poe2dbItemClassSlugs";
+import { extractPoe2dbBaseItemTagsFromDetailHtml } from "@/lib/poe2db/poe2dbBaseItemTagsFromHtml";
 import {
   ARMOUR_SUB_TYPES_WITH_POE2DB_STAT_PAGE,
   buildPoe2DbStatAffinitySourceSlug,
@@ -451,7 +452,7 @@ const mergeSimulatorBaseItems = (
   namesByKey: Readonly<Record<string, { en: string; ko: string }>>,
 ): void => {
   for (const locale of LOCALES) {
-    const filePath = path.join(ROOT, "src/i18n/messages", locale, "simulator.json");
+    const filePath = path.join(ROOT, "src/i18n", locale, "simulator.json");
     const raw = fs.readFileSync(filePath, "utf8");
     const data = JSON.parse(raw) as Record<string, unknown>;
     const baseItems =
@@ -561,6 +562,7 @@ const run = async (): Promise<void> => {
       }
 
       const tabChunk = extractActiveTabHtml(detailHtml);
+      const poe2dbTags = extractPoe2dbBaseItemTagsFromDetailHtml(tabChunk);
       const englishName = extractEnglishBaseType(tabChunk);
       if (englishName === null) {
         warnings.push(`no-english-basetype: ${row.slug}`);
@@ -670,7 +672,9 @@ const run = async (): Promise<void> => {
         requiredDexterity: dex,
         requiredIntelligence: int,
         levelRequirement: level,
+        /** 요구 스탯 유도값(참고). 앱 모드 필터는 PoE2DB `tags` 기반으로 처리한다. */
         statTags: buildStatTags(str, dex, int),
+        ...(poe2dbTags.length > 0 ? { tags: poe2dbTags } : {}),
         source: "poe2db",
         sourceUrl: detailUrl,
       };
@@ -690,7 +694,7 @@ const run = async (): Promise<void> => {
   }
 
   const payload: IBaseItemDbType = {
-    version: "2026.03.poe2db.extract.v1",
+    version: "2026.03.poe2db.extract.v2",
     records,
   };
   fs.mkdirSync(path.dirname(OUT_JSON), { recursive: true });

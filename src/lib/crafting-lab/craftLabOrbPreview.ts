@@ -9,8 +9,10 @@ import {
   canApplyOrbOfTransmutation,
   canApplyRegalOrb,
 } from "@/lib/poe2-item-simulator/currency";
+import { mergeCraftLabPreviewRows } from "@/lib/crafting-lab/craftLabPreviewMerge";
 import {
   listModRollCandidates,
+  resolveStatRangesForModDefinition,
   type IModRollBaseFiltersType,
 } from "@/lib/poe2-item-simulator/roller";
 
@@ -21,6 +23,14 @@ export type CraftLabPreviewRowType = {
   /** 0~1, 모든 섹션·행 합이 대략 1이 되도록(알림 섹션 제외) */
   probability: number;
   weight: number;
+  /**
+   * 해당 접두 또는 접미 풀 안에서의 상대 비중 `weight / sum(풀)`.
+   * 최종 확률은 `probability ≈ affixTypeMass × poolFraction`(예: 접두·접미 동시 공개 시 각 50%).
+   * 가중치 열과 비율을 맞출 때는 이 열과 비교한다.
+   */
+  poolFraction?: number;
+  /** UI `#` 치환. 없으면 템플릿만 표시. */
+  statRanges?: ReadonlyArray<{ min: number; max: number }>;
 };
 
 export type CraftLabPreviewSectionType = {
@@ -82,33 +92,17 @@ const toRows = (
     return [];
   }
   return mods.map((m) => {
+    const ranges = resolveStatRangesForModDefinition(m);
+    const poolFraction = m.weight / total;
     return {
       modKey: m.modKey,
       nameTemplateKey: m.displayName,
       tier: m.tier,
-      probability: probabilityMass * (m.weight / total),
+      probability: probabilityMass * poolFraction,
       weight: m.weight,
+      poolFraction,
+      ...(ranges.length > 0 ? { statRanges: ranges } : {}),
     };
-  });
-};
-
-const mergeRowsByModKey = (rows: CraftLabPreviewRowType[]): CraftLabPreviewRowType[] => {
-  const map = new Map<string, CraftLabPreviewRowType>();
-  for (const row of rows) {
-    const key = `${row.modKey}::t${String(row.tier)}`;
-    const prev = map.get(key);
-    if (prev === undefined) {
-      map.set(key, { ...row });
-    } else {
-      map.set(key, {
-        ...prev,
-        probability: prev.probability + row.probability,
-        weight: prev.weight,
-      });
-    }
-  }
-  return [...map.values()].sort((a, b) => {
-    return b.probability - a.probability;
   });
 };
 
@@ -155,7 +149,7 @@ const rareAddOneRows = (
     excludedModKeys,
     ...baseFilters,
   });
-  return [...toRows(pref, prefixMass), ...toRows(suff, suffixMass)];
+  return mergeCraftLabPreviewRows([...toRows(pref, prefixMass), ...toRows(suff, suffixMass)]);
 };
 
 /** 확장의 오브: 매직 한 줄 추가 시 접두/접미 (코드는 basicCurrencyOrbs.pickRandomModTypeForMagicFill 과 동일). */
@@ -201,55 +195,90 @@ const magicAugmentRows = (
     excludedModKeys,
     ...baseFilters,
   });
-  return [...toRows(pref, prefixMass), ...toRows(suff, suffixMass)];
+  return mergeCraftLabPreviewRows([...toRows(pref, prefixMass), ...toRows(suff, suffixMass)]);
 };
 
-const removePrefixAt = (item: IItemRoll, index: number): IItemRoll => {
-  const next = cloneRoll(item);
-  next.prefixes = [...next.prefixes];
-  next.prefixes.splice(index, 1);
-  return next;
+const excludedModKeysForChaosRerollSlot = (
+  item: IItemRoll,
+  kind: "prefix" | "suffix",
+  slotIndex: number,
+): Set<string> => {
+  const s = new Set<string>();
+  item.prefixes.forEach((m, j) => {
+    if (kind === "prefix" && j === slotIndex) {
+      return;
+    }
+    s.add(m.modKey);
+  });
+  item.suffixes.forEach((m, j) => {
+    if (kind === "suffix" && j === slotIndex) {
+      return;
+    }
+    s.add(m.modKey);
+  });
+  return s;
 };
 
-const removeSuffixAt = (item: IItemRoll, index: number): IItemRoll => {
-  const next = cloneRoll(item);
-  next.suffixes = [...next.suffixes];
-  next.suffixes.splice(index, 1);
-  return next;
-};
-
-/** 카오스: 제거 후보(균등)마다 추가 1줄 분포를 가중 합산. */
-const chaosCombinedAddRows = (
+/** 카오스: 재굴림 대상 슬롯(균등)마다 그 슬롯에 올 수 있는 새 옵션 풀을 가중 합산. */
+const chaosRerollCombinedRows = (
   item: IItemRoll,
   baseFilters?: IModRollBaseFiltersType,
 ): CraftLabPreviewRowType[] => {
-  const outcomes: IItemRoll[] = [];
+  let n = 0;
   for (let i = 0; i < item.prefixes.length; i += 1) {
-    if (!isFracturedMod(item.prefixes[i])) {
-      outcomes.push(removePrefixAt(item, i));
+    if (!isFracturedMod(item.prefixes[i]!)) {
+      n += 1;
     }
   }
   for (let i = 0; i < item.suffixes.length; i += 1) {
-    if (!isFracturedMod(item.suffixes[i])) {
-      outcomes.push(removeSuffixAt(item, i));
+    if (!isFracturedMod(item.suffixes[i]!)) {
+      n += 1;
     }
   }
-  const n = outcomes.length;
   if (n === 0) {
     return [];
   }
   const pScenario = 1 / n;
   const combined: CraftLabPreviewRowType[] = [];
-  for (const after of outcomes) {
-    const addRows = rareAddOneRows(after, baseFilters);
-    for (const row of addRows) {
+  for (let i = 0; i < item.prefixes.length; i += 1) {
+    if (isFracturedMod(item.prefixes[i]!)) {
+      continue;
+    }
+    const excluded = excludedModKeysForChaosRerollSlot(item, "prefix", i);
+    const pref = listModRollCandidates({
+      rarity: "rare",
+      modType: "prefix",
+      excludedModKeys: excluded,
+      ...baseFilters,
+    });
+    const rows = mergeCraftLabPreviewRows(toRows(pref, 1));
+    for (const row of rows) {
       combined.push({
         ...row,
         probability: row.probability * pScenario,
       });
     }
   }
-  return mergeRowsByModKey(combined);
+  for (let i = 0; i < item.suffixes.length; i += 1) {
+    if (isFracturedMod(item.suffixes[i]!)) {
+      continue;
+    }
+    const excluded = excludedModKeysForChaosRerollSlot(item, "suffix", i);
+    const suff = listModRollCandidates({
+      rarity: "rare",
+      modType: "suffix",
+      excludedModKeys: excluded,
+      ...baseFilters,
+    });
+    const rows = mergeCraftLabPreviewRows(toRows(suff, 1));
+    for (const row of rows) {
+      combined.push({
+        ...row,
+        probability: row.probability * pScenario,
+      });
+    }
+  }
+  return mergeCraftLabPreviewRows(combined);
 };
 
 const transmutationSections = (
@@ -271,11 +300,11 @@ const transmutationSections = (
   return [
     {
       headingKey: "previewSectionPrefix50",
-      rows: toRows(pref, 0.5),
+      rows: mergeCraftLabPreviewRows(toRows(pref, 0.5)),
     },
     {
       headingKey: "previewSectionSuffix50",
-      rows: toRows(suff, 0.5),
+      rows: mergeCraftLabPreviewRows(toRows(suff, 0.5)),
     },
   ];
 };
@@ -294,24 +323,28 @@ const fractureOrAnnulRows = (
     if (useRemovableOnly && isFracturedMod(mod)) {
       continue;
     }
+    const ranges = resolveStatRangesForModDefinition(mod);
     rows.push({
       modKey: mod.modKey,
       nameTemplateKey: mod.displayName,
       tier: mod.tier,
       probability: p,
       weight: 0,
+      ...(ranges.length > 0 ? { statRanges: ranges } : {}),
     });
   }
   for (const mod of item.suffixes) {
     if (useRemovableOnly && isFracturedMod(mod)) {
       continue;
     }
+    const ranges = resolveStatRangesForModDefinition(mod);
     rows.push({
       modKey: mod.modKey,
       nameTemplateKey: mod.displayName,
       tier: mod.tier,
       probability: p,
       weight: 0,
+      ...(ranges.length > 0 ? { statRanges: ranges } : {}),
     });
   }
   return rows;
@@ -392,11 +425,11 @@ export const buildCraftLabOrbPreview = (
         sections: [
           {
             headingKey: "previewAlchemyPrefixPool",
-            rows: toRows(pref, 1),
+            rows: mergeCraftLabPreviewRows(toRows(pref, 1)),
           },
           {
             headingKey: "previewAlchemySuffixPool",
-            rows: toRows(suff, 1),
+            rows: mergeCraftLabPreviewRows(toRows(suff, 1)),
           },
         ],
       };
@@ -433,18 +466,12 @@ export const buildCraftLabOrbPreview = (
       if (!canApplyChaosOrb(item)) {
         return { status: "unavailable" };
       }
-      const removalRows = fractureOrAnnulRows(item, true);
-      const addRows = chaosCombinedAddRows(item, baseFilters);
       return {
         status: "ok",
         sections: [
           {
-            headingKey: "previewChaosRemoval",
-            rows: removalRows,
-          },
-          {
-            headingKey: "previewChaosAddCombined",
-            rows: addRows,
+            headingKey: "previewChaosRerollOneLine",
+            rows: chaosRerollCombinedRows(item, baseFilters),
           },
         ],
       };

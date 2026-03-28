@@ -1,3 +1,4 @@
+import type { WikiTierSpawnContextType } from "@/lib/poe2-item-simulator/wikiTierSpawnFilter";
 import { tryGetWikiModTiers } from "@/lib/poe2-item-simulator/wikiModTierMerge";
 
 /**
@@ -6,8 +7,11 @@ import { tryGetWikiModTiers } from "@/lib/poe2-item-simulator/wikiModTierMerge";
 export type IModTierDisplayRowType = {
   tier: number;
   levelRequirement: number;
+  requiredIntelligence?: number;
   weight: number;
-  statRanges: ReadonlyArray<{ min: number; max: number }>;
+  statRanges: ReadonlyArray<IModStatRangeType>;
+  /** PoE2DB·위키 티어 롤 이름(정정한 등). */
+  tierRollName?: string;
   /** True when `record.tiers` was empty and rows were derived from overview fields. */
   isSynthetic: boolean;
 };
@@ -19,37 +23,43 @@ export type IModTierDisplayRowType = {
  * - Otherwise interpolates `tierCount` levels from 1 .. `maxLevelRequirement` (tier 1 = highest ilvl)
  *   and splits `totalWeight` evenly.
  */
-export const getModTierDisplayRows = (record: IModDbRecordType): IModTierDisplayRowType[] => {
-  const tiers = record.tiers;
-  if (tiers !== undefined && tiers.length > 0) {
-    return [...tiers]
-      .slice()
-      .sort((a, b) => a.tier - b.tier)
-      .map((row) => {
-        return {
-          tier: row.tier,
-          levelRequirement: row.levelRequirement,
-          weight: row.weight,
-          statRanges: row.statRanges,
-          isSynthetic: false,
-        };
-      });
+const mapModTiersToDisplayRows = (source: readonly IModTierType[]): IModTierDisplayRowType[] => {
+  return [...source]
+    .slice()
+    .sort((a, b) => a.tier - b.tier)
+    .map((row) => {
+      return {
+        tier: row.tier,
+        levelRequirement: row.levelRequirement,
+        ...(row.requiredIntelligence !== undefined ? { requiredIntelligence: row.requiredIntelligence } : {}),
+        weight: row.weight,
+        statRanges: row.statRanges,
+        tierRollName: row.tierRollName,
+        isSynthetic: false,
+      };
+    });
+};
+
+export const getModTierDisplayRows = (
+  record: IModDbRecordType,
+  wikiTierContext?: WikiTierSpawnContextType,
+): IModTierDisplayRowType[] => {
+  /** Slot / stat spawn filter must win over raw `record.tiers` (e.g. helmet life vs body-only tiers). */
+  if (wikiTierContext !== undefined) {
+    const wikiForSlot = tryGetWikiModTiers(record, wikiTierContext);
+    if (wikiForSlot !== null && wikiForSlot.length > 0) {
+      return mapModTiersToDisplayRows(wikiForSlot);
+    }
   }
 
-  const wikiTiers = tryGetWikiModTiers(record);
+  const tiers = record.tiers;
+  if (tiers !== undefined && tiers.length > 0) {
+    return mapModTiersToDisplayRows(tiers);
+  }
+
+  const wikiTiers = tryGetWikiModTiers(record, undefined);
   if (wikiTiers !== null && wikiTiers.length > 0) {
-    return [...wikiTiers]
-      .slice()
-      .sort((a, b) => a.tier - b.tier)
-      .map((row) => {
-        return {
-          tier: row.tier,
-          levelRequirement: row.levelRequirement,
-          weight: row.weight,
-          statRanges: row.statRanges,
-          isSynthetic: false,
-        };
-      });
+    return mapModTiersToDisplayRows(wikiTiers);
   }
 
   const tierCount = Math.max(1, record.tierCount);

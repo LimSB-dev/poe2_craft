@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import type { ReactElement } from "react";
 
 import { ModTemplateText } from "@/components/atoms/catalog";
+import { resolveStatRangesForModDefinition } from "@/lib/poe2-item-simulator/roller";
 
 type ExplicitModLinePropsType = {
   modDefinition: IModDefinition;
@@ -66,9 +67,17 @@ export const ExplicitModLine = ({
   ) {
     return (
       <span className="text-emerald-400">
-        <ModTemplateText nameTemplateKey={modDefinition.displayName} />
+        <ModTemplateText
+          nameTemplateKey={modDefinition.displayName}
+          statRanges={resolveStatRangesForModDefinition(modDefinition)}
+        />
       </span>
     );
   }
-  return <ModTemplateText nameTemplateKey={modDefinition.displayName} />;
+  return (
+    <ModTemplateText
+      nameTemplateKey={modDefinition.displayName}
+      statRanges={resolveStatRangesForModDefinition(modDefinition)}
+    />
+  );
 };

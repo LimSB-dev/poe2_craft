@@ -1,9 +1,13 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import type { Dispatch, SetStateAction } from "react";
 
 import type { BaseItemFilterRangeFieldsPropsType } from "@/components/organisms/filters";
+import {
+  persistSelectedBaseItemKey,
+  readPersistedSelectedBaseItemKey,
+} from "@/lib/persistence/selectedBaseItemKeyStorage";
 import { BASE_ITEMS } from "@/lib/poe2-item-simulator/baseItems";
 import {
   BASE_ITEM_DB,
@@ -38,9 +42,21 @@ export const useBaseItemWorkspaceState =
     const firstBaseItem: IBaseItemDefinition | undefined = BASE_ITEMS[0];
     const baseItemRecords: ReadonlyArray<IBaseItemDbRecordType> =
       BASE_ITEM_DB.records;
-    const [selectedBaseItemKey, setSelectedBaseItemKey] = useState<string>(
+    const [selectedBaseItemKey, setSelectedBaseItemKeyState] = useState<string>(
       firstBaseItem ? firstBaseItem.baseItemKey : "",
     );
+
+    useEffect(() => {
+      const persisted = readPersistedSelectedBaseItemKey();
+      if (persisted !== null) {
+        setSelectedBaseItemKeyState(persisted);
+      }
+    }, []);
+
+    const setSelectedBaseItemKey = useCallback((key: string): void => {
+      setSelectedBaseItemKeyState(key);
+      persistSelectedBaseItemKey(key);
+    }, []);
     const [equipmentTypeFilter, setEquipmentTypeFilter] =
       useState<BaseItemEquipmentFilterType>("all");
     const [subTypeFilter, setSubTypeFilter] =

@@ -21,7 +21,9 @@ import { itemClassToDbPathSegment } from "@/lib/poe2db/dbItemClassRoute";
 import {
   buildPoe2DbStatAffinitySourceSlug,
   DB_ARMOUR_STAT_AFFINITY_VALUES,
+  itemAttributeStatTagsForModFiltering,
   matchesBaseItemToArmourStatAffinity,
+  statTagsFromDbArmourStatAffinity,
   subTypeUsesPoe2DbStatAffinityPages,
 } from "@/lib/poe2db/poe2dbStatAffinityPages";
 import { toViewRecordsFromPoe2Db } from "@/lib/poe2db/toViewRecordsFromPoe2Db";
@@ -165,7 +167,8 @@ export const DbItemClassContainer = ({
         return false;
       }
       if (statAffinity !== undefined) {
-        if (!matchesBaseItemToArmourStatAffinity(r.statTags, statAffinity)) {
+        const affinityTags = itemAttributeStatTagsForModFiltering(r);
+        if (!matchesBaseItemToArmourStatAffinity(affinityTags, statAffinity)) {
           return false;
         }
       }
@@ -239,6 +242,14 @@ export const DbItemClassContainer = ({
     (safeModPage - 1) * DB_MOD_PAGE_SIZE,
     safeModPage * DB_MOD_PAGE_SIZE,
   );
+
+  const modsTableViewContext = useMemo(() => {
+    return {
+      baseItemSubType: itemClass,
+      itemStatTags:
+        statAffinity !== undefined ? statTagsFromDbArmourStatAffinity(statAffinity) : [],
+    };
+  }, [itemClass, statAffinity]);
 
   const itemName = (key: string): string => {
     try {
@@ -421,7 +432,9 @@ export const DbItemClassContainer = ({
                 </tr>
               </thead>
               <tbody>
-                {filteredItems.map((r, i) => (
+                {filteredItems.map((r, i) => {
+                  const attrTags = itemAttributeStatTagsForModFiltering(r);
+                  return (
                   <tr
                     key={r.baseItemKey}
                     className={`border-b border-zinc-100 dark:border-zinc-800 last:border-0 ${
@@ -433,7 +446,7 @@ export const DbItemClassContainer = ({
                     </td>
                     <td className="px-4 py-2.5">
                       <div className="flex gap-1">
-                        {r.statTags.map((tag) => (
+                        {attrTags.map((tag) => (
                           <span
                             key={tag}
                             className={`inline-flex items-center rounded px-1.5 py-0.5 text-xs font-semibold ${
@@ -447,7 +460,7 @@ export const DbItemClassContainer = ({
                             {getAttributeRequirementPrefix(tag, locale)}
                           </span>
                         ))}
-                        {r.statTags.length === 0 && (
+                        {attrTags.length === 0 && (
                           <span className="text-zinc-300 dark:text-zinc-700 text-xs">–</span>
                         )}
                       </div>
@@ -477,7 +490,8 @@ export const DbItemClassContainer = ({
                       {formatBaseItemRequirementSummary(r, locale)}
                     </td>
                   </tr>
-                ))}
+                  );
+                })}
                 {filteredItems.length === 0 && (
                   <tr>
                     <td colSpan={6} className="px-4 py-8 text-center text-zinc-400">
@@ -542,7 +556,7 @@ export const DbItemClassContainer = ({
                 </button>
               </div>
               <div className="overflow-x-auto px-2 pb-4">
-                <DbModsTable records={pagedMods} locale={locale} />
+                <DbModsTable records={pagedMods} locale={locale} viewContext={modsTableViewContext} />
               </div>
             </>
           )}

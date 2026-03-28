@@ -15,6 +15,8 @@ declare global {
     tier: number;
     modType: ModTypeType;
     weight: number; // probability weight > 0
+    /** 티어 줄의 `#` 치환용. 없으면 MOD_DB·티어 사다리로 재조회한다. */
+    statRanges?: ReadonlyArray<IModStatRangeType>;
     isFractured?: boolean;
     isDesecrated?: boolean;
     isDesecratedRevealed?: boolean;

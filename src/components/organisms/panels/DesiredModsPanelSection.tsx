@@ -8,6 +8,7 @@ import { PanelShell } from "@/components/molecules/panels";
 
 type DesiredModsPanelSectionPropsType = {
   subType: IBaseItemSubTypeType | undefined;
+  /** PoE2DB `tags` 기반 추론(`itemAttributeStatTagsForModFiltering`). */
   statTags: ReadonlyArray<IBaseItemStatTagType> | undefined;
   desiredMods: ReadonlyArray<IDesiredModEntryType>;
   onAdd: (entry: IDesiredModEntryType) => void;

@@ -5,6 +5,7 @@ import {
   formatStatRangesCell,
   getModTierDisplayRows,
 } from "@/lib/poe2-item-simulator/modDbTierDisplay";
+import { wikiTierSpawnContextFromBaseFilters } from "@/lib/poe2-item-simulator/wikiTierSpawnFilter";
 
 describe("modDbTierDisplay", () => {
   test("getModTierDisplayRows: synthetic tier 1 has highest level requirement", () => {
@@ -30,6 +31,39 @@ describe("modDbTierDisplay", () => {
     const rows = getModTierDisplayRows(record);
     expect(rows.length).toBeGreaterThan(0);
     expect(rows.every((row) => row.isSynthetic)).toBe(false);
+    expect(rows.every((row) => row.statRanges.length > 0)).toBe(true);
+  });
+
+  test("getModTierDisplayRows: helmet slot filters prefix_max_life tiers (PoE2DB parity)", () => {
+    const record = MOD_DB.records.find((r) => r.modKey === "prefix_max_life");
+    expect(record).toBeDefined();
+    if (record === undefined) {
+      return;
+    }
+    const ctx = wikiTierSpawnContextFromBaseFilters({
+      baseItemSubType: "helmet",
+      itemStatTags: ["int"],
+    });
+    expect(ctx).toBeDefined();
+    const rows = getModTierDisplayRows(record, ctx);
+    expect(rows.length).toBe(10);
+    expect(rows[0]?.statRanges[0]).toMatchObject({
+      min: 150,
+      max: 174,
+      statId: "base_maximum_life",
+    });
+  });
+
+  test("getModTierDisplayRows: prefix_max_mana matches single wiki ladder (no two-hand merge)", () => {
+    const record = MOD_DB.records.find((r) => r.modKey === "prefix_max_mana");
+    expect(record).toBeDefined();
+    if (record === undefined) {
+      return;
+    }
+    const rows = getModTierDisplayRows(record);
+    expect(rows.length).toBe(13);
+    expect(rows[0]?.isSynthetic).toBe(false);
+    expect(rows[0]?.levelRequirement).toBe(82);
     expect(rows.every((row) => row.statRanges.length > 0)).toBe(true);
   });
 

@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "body-armour-suffix-audit@1",
+  "fetchedAtIso": "2026-03-28T10:56:59.786Z",
+  "weightsFile": "/Users/imseongbin/Documents/GitHub/poe2_craft/data/generated/poe2db-mod-drop-weights.json",
+  "bodySuffixModCount": 16,
+  "wikiMappedModKeys": 15,
+  "issueCount": 5,
+  "issues": [
+    {
+      "modKey": "suffix_reduced_bleed_duration",
+      "statTags": [],
+      "kind": "weightHint",
+      "detail": "PoE2DB 가중치 누락 wikiModId: ReducedBleedDuration5, ReducedBleedDuration4, ReducedBleedDuration3, ReducedBleedDuration2, ReducedBleedDuration1"
+    },
+    {
+      "modKey": "suffix_reduced_bleed_duration",
+      "statTags": [],
+      "kind": "weightHint",
+      "detail": "modDb.totalWeight=2500 vs PoE2DB 힌트 합=0 (티어 5개)"
+    },
+    {
+      "modKey": "suffix_reduced_poison_duration",
+      "statTags": [],
+      "kind": "weightHint",
+      "detail": "PoE2DB 가중치 누락 wikiModId: ReducedPoisonDuration5, ReducedPoisonDuration4, ReducedPoisonDuration3, ReducedPoisonDuration2, ReducedPoisonDuration1"
+    },
+    {
+      "modKey": "suffix_reduced_poison_duration",
+      "statTags": [],
+      "kind": "weightHint",
+      "detail": "modDb.totalWeight=2500 vs PoE2DB 힌트 합=0 (티어 5개)"
+    },
+    {
+      "modKey": "suffix_fortify_from_evasion",
+      "statTags": [],
+      "kind": "missingWikiMapping",
+      "detail": "MOD_WIKI_TIER_SOURCES에 없음(위키 티어 대조 생략)"
+    }
+  ]
+}

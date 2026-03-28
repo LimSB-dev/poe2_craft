@@ -2,6 +2,7 @@ import "./globals.css";
 import { Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages, getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
@@ -65,6 +66,7 @@ const RootLayout = async ({ children }: RootLayoutPropsType) => {
             {children}
           </NextIntlClientProvider>
         </StoreProvider>
+        <Analytics />
       </body>
     </html>
   );

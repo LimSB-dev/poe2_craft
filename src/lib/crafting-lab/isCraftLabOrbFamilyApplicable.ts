@@ -14,6 +14,7 @@ import {
   type CraftingOrbFamilyIdType,
   orbSlotIdToFamilyKind,
 } from "./craftingLabCurrencyIds";
+import { isCraftLabOrbSlotItemLevelAllowed } from "./craftLabOrbTierItemLevel";
 
 /**
  * Whether the given orb **family** can be used on `roll` (same rules as `canApply*` in the simulator).
@@ -53,10 +54,20 @@ export const isCraftLabOrbFamilyApplicable = (
   }
 };
 
-/** Tiered slot id → same applicability as its orb family. */
+/**
+ * 티어 슬롯 id → 패밀리 규칙 + (옵션) 아이템 레벨이 해당 티어 오브 최소 ilvl을 만족하는지.
+ * `itemLevel` 생략 시 티어 ilvl 제한은 적용하지 않음(테스트·레거시 호출 호환).
+ */
 export const isCraftLabOrbSlotApplicable = (
   id: CraftingLabOrbSlotIdType,
   roll: IItemRoll,
+  itemLevel?: number,
 ): boolean => {
-  return isCraftLabOrbFamilyApplicable(orbSlotIdToFamilyKind(id), roll);
+  if (!isCraftLabOrbFamilyApplicable(orbSlotIdToFamilyKind(id), roll)) {
+    return false;
+  }
+  if (itemLevel === undefined) {
+    return true;
+  }
+  return isCraftLabOrbSlotItemLevelAllowed(id, itemLevel);
 };

@@ -32,7 +32,11 @@ export type CraftingLabStashOrbSlotPropsType = {
   modRollFilters: IModRollBaseFiltersType | undefined;
   hasStagedLightOmen: boolean;
   hasStagedWhittlingOmen: boolean;
-  isOrbApplicableForLab: (id: CraftingLabOrbSlotIdType, roll: IItemRoll) => boolean;
+  /** `undefined`이면 슬롯 사용 가능. */
+  getOrbSlotDisabledReason: (
+    id: CraftingLabOrbSlotIdType,
+    roll: IItemRoll,
+  ) => string | undefined;
   tryApply: (
     id: CraftingCurrencyIdType,
     apply: (
@@ -53,14 +57,15 @@ export const CraftingLabStashOrbSlot = ({
   modRollFilters,
   hasStagedLightOmen,
   hasStagedWhittlingOmen,
-  isOrbApplicableForLab,
+  getOrbSlotDisabledReason,
   tryApply,
   onSimulationOrbUse,
   onOrbBlockedMessage,
   onOrbHoverChange,
 }: CraftingLabStashOrbSlotPropsType): ReactElement => {
   const t = useTranslations("simulator");
-  const applicable = isOrbApplicableForLab(slotId, itemRoll);
+  const orbBlockedReason = getOrbSlotDisabledReason(slotId, itemRoll);
+  const applicable = orbBlockedReason === undefined;
   const family = orbSlotIdToFamilyKind(slotId);
   const applyOrb =
     family === "orb_annulment" && hasStagedLightOmen
@@ -81,7 +86,6 @@ export const CraftingLabStashOrbSlot = ({
         : undefined;
   const name = t(`craftLab.currency.${slotId}`);
   const hoverHint = t(`craftLab.currencyHoverHint.${slotId}`);
-  const orbBlockedReason = applicable ? undefined : t("craftLab.orbDisabledTooltip");
   const iconSrc = getCraftingLabCurrencyIconUrl(slotId);
   const tierRoman = getOrbSlotTierRoman(slotId);
 

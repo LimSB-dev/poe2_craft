@@ -31,6 +31,9 @@ type BaseItemWorkspaceSectionSharedPropsType = {
   onSubTypeChange: (value: BaseItemSubTypeFilterType) => void;
   availableSubTypes: readonly IBaseItemSubTypeType[];
   rangeFieldsProps: BaseItemFilterRangeFieldsPropsType;
+  /** 크래프트 랩 등: 베이스 툴팁에 아이템 레벨 입력 표시 */
+  baseItemItemLevel?: number;
+  onBaseItemItemLevelChange?: (value: number) => void;
   tooltipExtras?: BaseItemTooltipCardExtraPropsType;
   betweenTooltipAndSearch?: ReactNode;
 };
@@ -63,6 +66,8 @@ export const BaseItemWorkspaceSection = (
     onSubTypeChange,
     availableSubTypes,
     rangeFieldsProps,
+    baseItemItemLevel,
+    onBaseItemItemLevelChange,
     layout,
     tooltipExtras,
     betweenTooltipAndSearch,
@@ -108,6 +113,8 @@ export const BaseItemWorkspaceSection = (
         <BaseItemTooltipCard
           record={selectedBaseItemRecord}
           baseItemKey={selectedBaseItemKey}
+          baseItemItemLevel={baseItemItemLevel}
+          onBaseItemItemLevelChange={onBaseItemItemLevelChange}
           {...tooltipExtras}
         />
       ) : (

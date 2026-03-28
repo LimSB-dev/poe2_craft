@@ -8,8 +8,16 @@ import {
   isCorruptedRoll,
 } from "../itemCorruptionCraftingGuard";
 import craftLabEssenceWikiTiers from "../data/craftLabEssenceWikiTiers.json";
-import { getRandomIntInclusive } from "../random";
-import { rollRareModSlots, type IModRollBaseFiltersType } from "../roller";
+import { MOD_DB } from "../modDb";
+import { getModTierDisplayRows } from "../modDbTierDisplay";
+import { toModDefinition } from "../modPool";
+import { getRandomIntInclusive, pickWeightedRandom } from "../random";
+import {
+  listEligibleModTierRowsForRecord,
+  mapLadderTierToSimDisplayTier,
+  rollRareModSlots,
+  type IModRollBaseFiltersType,
+} from "../roller";
 
 const RARE_MAX_PREFIX_SLOTS: number = 3;
 const RARE_MAX_SUFFIX_SLOTS: number = 3;
@@ -166,15 +174,52 @@ const pickRandomSplit = (splits: ReadonlyArray<IPrefixSuffixSplitType>): IPrefix
   return chosen;
 };
 
-const buildForcedMod = (essence: IEssenceDefinitionType): IModDefinition => {
-  const tier = getRandomIntInclusive(essence.forcedTierMin, essence.forcedTierMax);
+const buildForcedMod = (
+  essence: IEssenceDefinitionType,
+  baseFilters?: IModRollBaseFiltersType,
+): IModDefinition => {
+  const record = MOD_DB.records.find((row) => {
+    return row.modKey === essence.forcedModKey;
+  });
+  if (record === undefined) {
+    const tier = getRandomIntInclusive(essence.forcedTierMin, essence.forcedTierMax);
+    return {
+      modKey: essence.forcedModKey,
+      displayName: essence.forcedDisplayName,
+      tier,
+      modType: essence.guaranteedModType,
+      weight: 1,
+    };
+  }
 
+  const ilvlEligible = listEligibleModTierRowsForRecord(record, baseFilters);
+  let candidates = ilvlEligible.filter((row) => {
+    return row.tier >= essence.forcedTierMin && row.tier <= essence.forcedTierMax;
+  });
+  if (candidates.length === 0) {
+    candidates = ilvlEligible.filter((row) => {
+      return row.tier <= essence.forcedTierMax;
+    });
+  }
+  if (candidates.length === 0) {
+    throw new Error(
+      `Essence: no eligible tier for forced mod at this item level (modKey=${essence.forcedModKey}).`,
+    );
+  }
+
+  const tierPick = pickWeightedRandom(
+    candidates.map((row) => {
+      return { candidate: row, weight: row.weight };
+    }),
+  );
+  const fullRows = getModTierDisplayRows(record);
+  const displayTier = mapLadderTierToSimDisplayTier(record, tierPick.tier, fullRows);
+  const base = toModDefinition(record, tierPick.tier);
   return {
-    modKey: essence.forcedModKey,
+    ...base,
+    tier: displayTier,
     displayName: essence.forcedDisplayName,
-    tier,
-    modType: essence.guaranteedModType,
-    weight: 1,
+    weight: tierPick.weight,
   };
 };
 
@@ -455,7 +500,7 @@ export const canApplyEssence = (
 
 /**
  * 크래프트 랩 에센스 슬롯 호버: 적용 시 **보장되는** 접두/접미 1줄만 반영한 미리보기 롤.
- * 등급은 `forcedTierMin`~`forcedTierMax`의 중간(내림)으로 고정한다(실제 적용은 해당 구간 무작위).
+ * 등급은 ilvl·에센스 티 구간에 맞는 후보 티어 목록의 중앙값에 가깝게 고정한다(실제 적용은 가중 무작위).
  */
 export const buildEssenceGuaranteedModPreviewRoll = (
   item: IItemRoll,
@@ -465,7 +510,31 @@ export const buildEssenceGuaranteedModPreviewRoll = (
   if (!canApplyEssence(item, essence, baseFilters)) {
     return null;
   }
-  const tier = Math.floor((essence.forcedTierMin + essence.forcedTierMax) / 2);
+  const record = MOD_DB.records.find((row) => {
+    return row.modKey === essence.forcedModKey;
+  });
+  let tier = Math.floor((essence.forcedTierMin + essence.forcedTierMax) / 2);
+  if (record !== undefined) {
+    const ilvlEligible = listEligibleModTierRowsForRecord(record, baseFilters);
+    let candidates = ilvlEligible.filter((row) => {
+      return row.tier >= essence.forcedTierMin && row.tier <= essence.forcedTierMax;
+    });
+    if (candidates.length === 0) {
+      candidates = ilvlEligible.filter((row) => {
+        return row.tier <= essence.forcedTierMax;
+      });
+    }
+    if (candidates.length > 0) {
+      const sorted = [...candidates].sort((a, b) => {
+        return a.tier - b.tier;
+      });
+      const mid = sorted[Math.floor((sorted.length - 1) / 2)];
+      if (mid !== undefined) {
+        const fullRows = getModTierDisplayRows(record);
+        tier = mapLadderTierToSimDisplayTier(record, mid.tier, fullRows);
+      }
+    }
+  }
   const forcedMod: IModDefinition = {
     modKey: essence.forcedModKey,
     displayName: essence.forcedDisplayName,
@@ -497,7 +566,7 @@ export const applyEssence = (
   if (!canApplyEssence(_item, essence, baseFilters)) {
     throw new Error("Essence: item rarity or base equipment does not match this essence.");
   }
-  const forcedMod = buildForcedMod(essence);
+  const forcedMod = buildForcedMod(essence, baseFilters);
   const totalAffixes = getRandomIntInclusive(RARE_FULL_REROLL_AFFIX_MIN, RARE_FULL_REROLL_AFFIX_MAX);
   const remainingAffixes = totalAffixes - 1;
 

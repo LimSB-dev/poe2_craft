@@ -1,0 +1,156 @@
+{
+  "meta": {
+    "purpose": "Illustrative JSON shapes for PoE2DB extraction outputs in this repository. Values are synthetic; replace with real extractor output.",
+    "relatedRule": ".cursor/rules/poe2db-data-extraction.mdc",
+    "typesReference": {
+      "baseItemRecord": "src/types/base-item.d.ts (IBaseItemDbRecordType)",
+      "modifiersExtract": "scripts/extract-poe2db-modifiers.ts (Poe2DbModifiersFileType, ExtractedModifierRowType)"
+    }
+  },
+  "poe2dbModifiersFull": {
+    "source": "poe2db_modifiers_page",
+    "fetchedAtIso": "2026-03-28T12:00:00.000Z",
+    "pageCount": 2,
+    "sectionKeys": ["Prefixes", "Suffixes"],
+    "rowCount": 2,
+    "rows": [
+      {
+        "sourcePageSlug": "example-item-class",
+        "sourcePageLabel": "Example item class",
+        "sourcePageUrl": "https://poe2db.tw/kr/example-item-class",
+        "section": "Prefixes",
+        "subgroup": null,
+        "modifierName": "Added Fire Damage",
+        "requiredLevel": 8,
+        "modGenerationTypeId": 1,
+        "modFamilies": ["fire_damage"],
+        "statLineText": "Adds 10 to 15 Fire Damage to Attacks",
+        "dropChanceRaw": "1000",
+        "dropChanceValue": 1000,
+        "hoverUrl": "https://poe2db.tw/kr/path/to/hover",
+        "applicableItemClass": {
+          "code": "Weapon",
+          "nameKo": "무기",
+          "tags": "weapon attack",
+          "attrs": [],
+          "options": {}
+        }
+      },
+      {
+        "sourcePageSlug": "example-item-class",
+        "sourcePageLabel": "Example item class",
+        "sourcePageUrl": "https://poe2db.tw/kr/example-item-class",
+        "section": "Suffixes",
+        "subgroup": null,
+        "modifierName": "of the Novice",
+        "requiredLevel": 1,
+        "modGenerationTypeId": 2,
+        "modFamilies": [],
+        "statLineText": "+(8-12) to Strength",
+        "dropChanceRaw": null,
+        "dropChanceValue": null,
+        "hoverUrl": null,
+        "applicableItemClass": {
+          "code": "Weapon",
+          "nameKo": "무기",
+          "tags": "weapon attack",
+          "attrs": [],
+          "options": {}
+        }
+      }
+    ]
+  },
+  "poe2dbModifiersSummary": {
+    "source": "poe2db_modifiers_page",
+    "fetchedAtIso": "2026-03-28T12:00:00.000Z",
+    "pageCount": 2,
+    "rowCount": 2,
+    "sectionKeys": ["Prefixes", "Suffixes"],
+    "failed": [
+      "broken-page-slug: HTTP 404: https://poe2db.tw/kr/broken-page-slug"
+    ],
+    "note": "Full rows are stored in poe2db-modifiers.full.json (see scripts/extract-poe2db-modifiers.ts)."
+  },
+  "poe2dbBaseItemsGeneratedFile": [
+    {
+      "baseItemKey": "ring_rustic_sash_example",
+      "itemClass": "Ring",
+      "itemClassKey": "ring",
+      "equipmentType": "jewellery",
+      "subType": "ring",
+      "requiredStrength": 0,
+      "requiredDexterity": 0,
+      "requiredIntelligence": 0,
+      "levelRequirement": 1,
+      "statTags": [],
+      "source": "poe2db",
+      "sourceUrl": "https://poe2db.tw/kr/Example_Ring"
+    },
+    {
+      "baseItemKey": "body_armour_example_garb",
+      "itemClass": "Body Armour",
+      "itemClassKey": "bodyArmour",
+      "equipmentType": "armour",
+      "subType": "bodyArmour",
+      "requiredStrength": 28,
+      "requiredDexterity": 0,
+      "requiredIntelligence": 0,
+      "levelRequirement": 17,
+      "statTags": ["str"],
+      "armour": 150,
+      "evasion": 0,
+      "energyShield": 0,
+      "source": "poe2db",
+      "sourceUrl": "https://poe2db.tw/kr/Example_Body_Armour"
+    }
+  ],
+  "poe2dbBaseItemDbEnvelope": {
+    "version": "2026.03.poe2db.extract.v1",
+    "records": [
+      {
+        "baseItemKey": "ring_rustic_sash_example",
+        "itemClass": "Ring",
+        "itemClassKey": "ring",
+        "equipmentType": "jewellery",
+        "subType": "ring",
+        "requiredStrength": 0,
+        "requiredDexterity": 0,
+        "requiredIntelligence": 0,
+        "levelRequirement": 1,
+        "statTags": [],
+        "source": "poe2db",
+        "sourceUrl": "https://poe2db.tw/kr/Example_Ring"
+      }
+    ]
+  },
+  "noteBaseItemsOutputFile": "extract-poe2db-base-items.ts writes only the records array (same shape as poe2dbBaseItemsGeneratedFile) to src/lib/poe2-item-simulator/data/poe2dbBaseItems.generated.json, not the version wrapper.",
+  "poe2dbImportBundleRoot": {
+    "source": "poe2db",
+    "importedAt": "2026-03-21T09:18:21.184Z",
+    "patchVersion": "5.3.8",
+    "baseUrl": "https://poe2db.tw",
+    "pages": ["https://poe2db.tw/"],
+    "stats": {
+      "pageCount": 1,
+      "anchorCount": 321,
+      "entityCount": 309
+    },
+    "entities": [
+      {
+        "id": "poe2db:item:https_poe2db_tw_us_items",
+        "source": "poe2db",
+        "kind": "base_item",
+        "key": "item",
+        "name": "Item",
+        "url": "https://poe2db.tw/us/Items",
+        "tags": [],
+        "patchVersion": "5.3.8",
+        "updatedAt": "2026-03-21T09:18:21.184Z",
+        "metadata": {
+          "pageUrl": "https://poe2db.tw/",
+          "tier": null
+        }
+      }
+    ]
+  }
+}

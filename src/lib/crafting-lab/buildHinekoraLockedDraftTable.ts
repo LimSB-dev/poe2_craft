@@ -4,6 +4,7 @@ import {
   type CraftingCurrencyIdType,
   type CraftingOrbFamilyIdType,
 } from "@/lib/crafting-lab/craftingLabCurrencyIds";
+import { clampBaseItemItemLevel } from "@/lib/poe2-item-simulator/baseItemItemLevel";
 import {
   applyChaosOrb,
   applyExaltedOrb,
@@ -21,6 +22,10 @@ import {
 } from "@/lib/poe2-item-simulator/essence/essence";
 import type { IModRollBaseFiltersType } from "@/lib/poe2-item-simulator/roller";
 
+import {
+  isCraftLabEssenceItemLevelAllowed,
+  mergeModRollFiltersWithCurrencyTierFloor,
+} from "./craftLabOrbTierItemLevel";
 import { isCraftLabOrbSlotApplicable } from "./isCraftLabOrbFamilyApplicable";
 
 const CRAFT_LAB_ORB_APPLY: Record<
@@ -51,14 +56,20 @@ export const buildHinekoraLockedDraftTable = (
   cloneItemRoll: CloneItemRollFnType,
 ): Partial<Record<CraftingCurrencyIdType, IItemRoll>> => {
   const out: Partial<Record<CraftingCurrencyIdType, IItemRoll>> = {};
+  const itemLevelForTier =
+    filters?.itemLevel !== undefined ? clampBaseItemItemLevel(filters.itemLevel) : undefined;
   for (const id of CRAFT_LAB_ORB_SLOT_IDS) {
-    if (!isCraftLabOrbSlotApplicable(id, rollForApplicability)) {
+    if (!isCraftLabOrbSlotApplicable(id, rollForApplicability, itemLevelForTier)) {
       continue;
     }
     try {
       const family = orbSlotIdToFamilyKind(id);
       const applyOrb = CRAFT_LAB_ORB_APPLY[family];
-      out[id] = applyOrb(cloneItemRoll(strippedBase), filters);
+      const filtersForSlot = mergeModRollFiltersWithCurrencyTierFloor(
+        filters,
+        id,
+      );
+      out[id] = applyOrb(cloneItemRoll(strippedBase), filtersForSlot);
     } catch {
       // 적용 불가/내부 오류는 해당 슬롯만 생략
     }
@@ -67,11 +78,21 @@ export const buildHinekoraLockedDraftTable = (
     if (!canApplyEssence(rollForApplicability, essenceDef, filters)) {
       continue;
     }
+    if (
+      itemLevelForTier !== undefined &&
+      !isCraftLabEssenceItemLevelAllowed(essenceDef.essenceKey, itemLevelForTier)
+    ) {
+      continue;
+    }
     try {
+      const filtersForEssence = mergeModRollFiltersWithCurrencyTierFloor(
+        filters,
+        essenceDef.essenceKey as CraftingCurrencyIdType,
+      );
       out[essenceDef.essenceKey as CraftingCurrencyIdType] = applyEssence(
         cloneItemRoll(strippedBase),
         essenceDef,
-        filters,
+        filtersForEssence,
       );
     } catch {
       // omit

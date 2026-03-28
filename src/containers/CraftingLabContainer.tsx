@@ -4,7 +4,9 @@ import { useTranslations } from "next-intl";
 import {
   useCallback,
   useEffect,
+  useId,
   useMemo,
+  useRef,
   useState,
   type ReactElement,
 } from "react";
@@ -28,6 +30,7 @@ import {
 import { getCraftingLabCurrencyIconUrl } from "@/lib/crafting-lab/craftingLabCurrencyIconUrls";
 import {
   CRAFT_LAB_CURRENCY_MISC_GRID_ROWS,
+  CRAFT_LAB_ORB_SLOT_IDS,
   getCraftLabOrbSlotIdsGrouped,
   getOrbSlotTierRoman,
   normalizeCraftingCurrencyEventId,
@@ -40,7 +43,22 @@ import {
   buildCraftLabOrbPreview,
   type CraftLabOrbPreviewResultType,
 } from "@/lib/crafting-lab/craftLabOrbPreview";
-import { isCraftLabOrbSlotApplicable } from "@/lib/crafting-lab/isCraftLabOrbFamilyApplicable";
+import {
+  isCraftLabOrbFamilyApplicable,
+  isCraftLabOrbSlotApplicable,
+} from "@/lib/crafting-lab/isCraftLabOrbFamilyApplicable";
+import { needsCraftLabItemLevelChangeConfirmation } from "@/lib/crafting-lab/craftLabItemLevelChangeGate";
+import {
+  getCraftLabEssenceTierMinItemLevel,
+  getMinItemLevelForCraftLabOrbSlot,
+  isCraftLabEssenceItemLevelAllowed,
+  isCraftLabOrbSlotItemLevelAllowed,
+  mergeModRollFiltersWithCurrencyTierFloor,
+} from "@/lib/crafting-lab/craftLabOrbTierItemLevel";
+import {
+  BASE_ITEM_ITEM_LEVEL_DEFAULT,
+  clampBaseItemItemLevel,
+} from "@/lib/poe2-item-simulator/baseItemItemLevel";
 import type { IModRollBaseFiltersType } from "@/lib/poe2-item-simulator/roller";
 import {
   aggregateUsageCounts,
@@ -225,6 +243,10 @@ export const CraftingLabContainer = (): ReactElement => {
     rangeFieldsProps,
   } = useBaseItemWorkspaceState();
 
+  const [baseItemItemLevel, setBaseItemItemLevel] = useState<number>(() => {
+    return clampBaseItemItemLevel(BASE_ITEM_ITEM_LEVEL_DEFAULT);
+  });
+
   const modRollFilters = useMemo((): IModRollBaseFiltersType | undefined => {
     if (selectedBaseItemRecord === undefined) {
       return undefined;
@@ -232,8 +254,9 @@ export const CraftingLabContainer = (): ReactElement => {
     return {
       baseItemSubType: selectedBaseItemRecord.subType,
       itemStatTags: selectedBaseItemRecord.statTags,
+      itemLevel: baseItemItemLevel,
     };
-  }, [selectedBaseItemRecord]);
+  }, [selectedBaseItemRecord, baseItemItemLevel]);
 
   const [itemRoll, setItemRoll] = useState<IItemRoll>(EMPTY_NORMAL_ROLL);
   const [usageEvents, setUsageEvents] = useState<CraftingCurrencyIdType[]>([]);
@@ -265,6 +288,22 @@ export const CraftingLabContainer = (): ReactElement => {
   }, [activeStagedOmenIds]);
   const [soulWellReveal, setSoulWellReveal] =
     useState<SoulWellRevealStateType | null>(null);
+  const [pendingBaseItemItemLevel, setPendingBaseItemItemLevel] = useState<
+    number | null
+  >(null);
+  const [isItemLevelChangeDialogOpen, setIsItemLevelChangeDialogOpen] =
+    useState<boolean>(false);
+  const itemLevelCancelButtonRef = useRef<HTMLButtonElement>(null);
+  const itemLevelDialogTitleId = useId();
+  const itemLevelDialogDescId = useId();
+  /** 미공개 훼손 줄(`modKey`)별 영혼의 우물 후보 — 취소 후 재오픈 시 동일 후보 유지, 재굴림 버튼만 갱신. */
+  const soulWellCandidateCacheRef = useRef<Map<string, IModDefinition[]>>(
+    new Map(),
+  );
+
+  const clearSoulWellCandidateCache = useCallback((): void => {
+    soulWellCandidateCacheRef.current.clear();
+  }, []);
 
   const hinekoraLockSessionKey = useMemo(() => {
     if (itemRoll.hinekoraLockActive !== true) {
@@ -364,6 +403,8 @@ export const CraftingLabContainer = (): ReactElement => {
     setSimPreviewLabel("");
     setStashValidationMessage(null);
     setSoulWellReveal(null);
+    setPendingBaseItemItemLevel(null);
+    setIsItemLevelChangeDialogOpen(false);
     if (effectiveSelectedBaseItemKey.length === 0) {
       setUsageEvents([]);
       return;
@@ -405,6 +446,95 @@ export const CraftingLabContainer = (): ReactElement => {
       events: [],
     });
   };
+
+  const handleItemLevelChangeConfirm = useCallback((): void => {
+    if (pendingBaseItemItemLevel === null) {
+      return;
+    }
+    const nextLevel = pendingBaseItemItemLevel;
+    setPendingBaseItemItemLevel(null);
+    setIsItemLevelChangeDialogOpen(false);
+    setBaseItemItemLevel(nextLevel);
+    setItemRoll(EMPTY_NORMAL_ROLL);
+    setLastError(null);
+    setUsageEvents([]);
+    setCompletionSnapshot(null);
+    setUndoStack([]);
+    setRedoStack([]);
+    setSimPreview(null);
+    setSimPreviewLabel("");
+    setStashValidationMessage(null);
+    setActiveStagedOmenIds([]);
+    clearSoulWellCandidateCache();
+    setSoulWellReveal(null);
+    setHinekoraHoverPreview(null);
+    setEssenceHoverPreview(null);
+    if (effectiveSelectedBaseItemKey.length > 0) {
+      writeCraftingLabUsage({
+        baseItemKey: effectiveSelectedBaseItemKey,
+        events: [],
+      });
+    }
+  }, [
+    clearSoulWellCandidateCache,
+    effectiveSelectedBaseItemKey,
+    pendingBaseItemItemLevel,
+    setBaseItemItemLevel,
+  ]);
+
+  const handleItemLevelChangeCancel = useCallback((): void => {
+    setPendingBaseItemItemLevel(null);
+    setIsItemLevelChangeDialogOpen(false);
+  }, []);
+
+  const handleBaseItemItemLevelChange = useCallback(
+    (rawValue: number): void => {
+      const next = clampBaseItemItemLevel(rawValue);
+      if (next === baseItemItemLevel) {
+        return;
+      }
+      if (
+        !needsCraftLabItemLevelChangeConfirmation(
+          itemRoll,
+          soulWellReveal !== null,
+          next,
+          modRollFilters,
+        )
+      ) {
+        setBaseItemItemLevel(next);
+        return;
+      }
+      setPendingBaseItemItemLevel(next);
+      setIsItemLevelChangeDialogOpen(true);
+    },
+    [
+      baseItemItemLevel,
+      itemRoll,
+      modRollFilters,
+      setBaseItemItemLevel,
+      soulWellReveal,
+    ],
+  );
+
+  useEffect(() => {
+    if (!isItemLevelChangeDialogOpen) {
+      return;
+    }
+    const focus = (): void => {
+      itemLevelCancelButtonRef.current?.focus();
+    };
+    focus();
+    const onKeyDown = (event: KeyboardEvent): void => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        handleItemLevelChangeCancel();
+      }
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [handleItemLevelChangeCancel, isItemLevelChangeDialogOpen]);
 
   const handleUndoCraft = (): void => {
     if (effectiveSelectedBaseItemKey.length === 0 || undoStack.length === 0) {
@@ -527,6 +657,28 @@ export const CraftingLabContainer = (): ReactElement => {
       setLastError(t("itemSimulatorWorkspace.baseFilter.noResults"));
       return;
     }
+    if (CRAFT_LAB_ORB_SLOT_IDS.includes(id as CraftingLabOrbSlotIdType)) {
+      const orbId = id as CraftingLabOrbSlotIdType;
+      const rollForOrb = stripHinekoraLock(itemRoll);
+      const ilvl = clampBaseItemItemLevel(baseItemItemLevel);
+      if (!isCraftLabOrbSlotApplicable(orbId, rollForOrb, ilvl)) {
+        if (!isCraftLabOrbFamilyApplicable(orbSlotIdToFamilyKind(orbId), rollForOrb)) {
+          setLastError(t("craftLab.orbDisabledTooltip"));
+        } else {
+          const minIlvl = getMinItemLevelForCraftLabOrbSlot(orbId) ?? 1;
+          setLastError(t("craftLab.orbTierItemLevelBlocked", { minIlvl }));
+        }
+        return;
+      }
+    }
+    if (id.startsWith("essence_")) {
+      const ilvlForEssence = clampBaseItemItemLevel(baseItemItemLevel);
+      if (!isCraftLabEssenceItemLevelAllowed(id, ilvlForEssence)) {
+        const minIlvl = getCraftLabEssenceTierMinItemLevel(id) ?? 1;
+        setLastError(t("craftLab.orbTierItemLevelBlocked", { minIlvl }));
+        return;
+      }
+    }
     if (id === "orb_hinekoras_lock") {
       try {
         const nextRoll = applyHinekorasLock(itemRoll);
@@ -550,7 +702,10 @@ export const CraftingLabContainer = (): ReactElement => {
       return;
     }
     try {
-      const nextRoll = apply(stripHinekoraLock(itemRoll), modRollFilters);
+      const nextRoll = apply(
+        stripHinekoraLock(itemRoll),
+        mergeModRollFiltersWithCurrencyTierFloor(modRollFilters, id),
+      );
       commitCraftingResult(nextRoll, id, options);
     } catch (error: unknown) {
       setLastError(getErrorMessage(error));
@@ -592,15 +747,26 @@ export const CraftingLabContainer = (): ReactElement => {
     );
   };
 
-  const isOrbApplicableForLab = useCallback(
-    (id: CraftingLabOrbSlotIdType, roll: IItemRoll): boolean => {
+  const getOrbSlotDisabledReason = useCallback(
+    (id: CraftingLabOrbSlotIdType, roll: IItemRoll): string | undefined => {
       const family = orbSlotIdToFamilyKind(id);
       if (family === "orb_annulment" && hasStagedLightOmen) {
-        return canApplyOrbOfAnnulmentDesecratedOnly(roll);
+        if (!canApplyOrbOfAnnulmentDesecratedOnly(roll)) {
+          return t("craftLab.orbDisabledTooltip");
+        }
+        return undefined;
       }
-      return isCraftLabOrbSlotApplicable(id, roll);
+      const ilvl = clampBaseItemItemLevel(baseItemItemLevel);
+      if (!isCraftLabOrbFamilyApplicable(family, roll)) {
+        return t("craftLab.orbDisabledTooltip");
+      }
+      if (!isCraftLabOrbSlotItemLevelAllowed(id, ilvl)) {
+        const minIlvl = getMinItemLevelForCraftLabOrbSlot(id) ?? 1;
+        return t("craftLab.orbTierItemLevelBlocked", { minIlvl });
+      }
+      return undefined;
     },
-    [hasStagedLightOmen],
+    [hasStagedLightOmen, baseItemItemLevel, t],
   );
 
   const hasBaseForCraft = selectedBaseItemRecord !== undefined;
@@ -699,7 +865,7 @@ export const CraftingLabContainer = (): ReactElement => {
       const prev = buildCraftLabOrbPreview(
         family,
         stripHinekoraLock(itemRoll),
-        modRollFilters,
+        mergeModRollFiltersWithCurrencyTierFloor(modRollFilters, slotId),
       );
       setSimPreview(prev);
       setSimPreviewLabel(currencyName);
@@ -738,7 +904,7 @@ export const CraftingLabContainer = (): ReactElement => {
     modRollFilters,
     hasStagedLightOmen,
     hasStagedWhittlingOmen,
-    isOrbApplicableForLab,
+    getOrbSlotDisabledReason,
     tryApply,
     onSimulationOrbUse: handleSimulationOrbUse,
     onOrbBlockedMessage: handleOrbSlotBlockedMessage,
@@ -820,6 +986,8 @@ export const CraftingLabContainer = (): ReactElement => {
             onSubTypeChange={setSubTypeFilter}
             availableSubTypes={availableSubTypes}
             rangeFieldsProps={rangeFieldsProps}
+            baseItemItemLevel={baseItemItemLevel}
+            onBaseItemItemLevelChange={handleBaseItemItemLevelChange}
             tooltipExtras={{
               explicitItemRoll: itemRoll,
               previewExplicitItemRoll: essenceHoverPreview ?? hinekoraHoverPreview,
@@ -1170,14 +1338,36 @@ export const CraftingLabContainer = (): ReactElement => {
                               essenceDef,
                               modRollFilters,
                             );
-                            const essenceDisabledInRandom =
-                              craftLabMode !== "simulation" &&
-                              !essenceApplicable;
-                            const essenceDisabledTitle = essenceDisabledInRandom
-                              ? itemRoll.rarity !== "magic"
-                                ? t("craftLab.essenceRequiresMagicItem")
-                                : t("craftLab.essenceIncompatibleBase")
-                              : undefined;
+                            const ilvlForEssenceTab =
+                              clampBaseItemItemLevel(baseItemItemLevel);
+                            const essenceTierIlvlOk = isCraftLabEssenceItemLevelAllowed(
+                              id,
+                              ilvlForEssenceTab,
+                            );
+                            let essenceDisabledInRandom: boolean;
+                            let essenceDisabledTitle: string | undefined;
+                            if (craftLabMode === "simulation") {
+                              essenceDisabledInRandom = false;
+                              essenceDisabledTitle = undefined;
+                            } else if (!essenceApplicable) {
+                              essenceDisabledInRandom = true;
+                              essenceDisabledTitle =
+                                itemRoll.rarity !== "magic"
+                                  ? t("craftLab.essenceRequiresMagicItem")
+                                  : t("craftLab.essenceIncompatibleBase");
+                            } else if (!essenceTierIlvlOk) {
+                              essenceDisabledInRandom = true;
+                              essenceDisabledTitle = t(
+                                "craftLab.orbTierItemLevelBlocked",
+                                {
+                                  minIlvl:
+                                    getCraftLabEssenceTierMinItemLevel(id) ?? 1,
+                                },
+                              );
+                            } else {
+                              essenceDisabledInRandom = false;
+                              essenceDisabledTitle = undefined;
+                            }
                             return (
                               <CraftingLabOrbSlotButton
                                 key={id}
@@ -1223,7 +1413,10 @@ export const CraftingLabContainer = (): ReactElement => {
                                     buildEssenceGuaranteedModPreviewRoll(
                                       itemRoll,
                                       essenceDef,
-                                      modRollFilters,
+                                      mergeModRollFiltersWithCurrencyTierFloor(
+                                        modRollFilters,
+                                        id as CraftingCurrencyIdType,
+                                      ),
                                     ),
                                   );
                                 }}
@@ -1540,6 +1733,61 @@ export const CraftingLabContainer = (): ReactElement => {
               </>
             )}
           </section>
+        ) : null}
+
+        {isItemLevelChangeDialogOpen ? (
+          <div
+            className="fixed inset-0 z-[10000] flex items-center justify-center bg-black/55 p-4"
+            role="presentation"
+            onClick={() => {
+              handleItemLevelChangeCancel();
+            }}
+          >
+            <div
+              role="alertdialog"
+              aria-modal="true"
+              aria-labelledby={itemLevelDialogTitleId}
+              aria-describedby={itemLevelDialogDescId}
+              className="max-w-md rounded-xl border border-zinc-600/90 bg-zinc-950 px-4 py-3 shadow-xl dark:bg-zinc-950"
+              onClick={(event) => {
+                event.stopPropagation();
+              }}
+            >
+              <h2
+                id={itemLevelDialogTitleId}
+                className="text-sm font-semibold text-zinc-100"
+              >
+                {t("craftLab.itemLevelChangeConfirmTitle")}
+              </h2>
+              <p
+                id={itemLevelDialogDescId}
+                className="mt-2 text-xs leading-snug text-zinc-400"
+              >
+                {t("craftLab.itemLevelChangeConfirmDescription")}
+              </p>
+              <div className="mt-4 flex flex-wrap justify-end gap-2">
+                <button
+                  ref={itemLevelCancelButtonRef}
+                  type="button"
+                  className="rounded-lg border border-zinc-600 bg-zinc-900 px-3 py-1.5 text-xs font-medium text-zinc-200 hover:bg-zinc-800"
+                  onClick={() => {
+                    handleItemLevelChangeCancel();
+                  }}
+                >
+                  {t("craftLab.itemLevelChangeConfirmCancel")}
+                </button>
+                <button
+                  type="button"
+                  className="rounded-lg border border-amber-600/80 bg-amber-950/50 px-3 py-1.5 text-xs font-medium text-amber-100 hover:bg-amber-900/60"
+                  onClick={() => {
+                    handleItemLevelChangeConfirm();
+                  }}
+                >
+                  {t("craftLab.itemLevelChangeConfirmConfirm")}
+                </button>
+              </div>
+            </div>
+          </div>
         ) : null}
     </>
   );

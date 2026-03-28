@@ -95,11 +95,12 @@ const toRows = (
 const mergeRowsByModKey = (rows: CraftLabPreviewRowType[]): CraftLabPreviewRowType[] => {
   const map = new Map<string, CraftLabPreviewRowType>();
   for (const row of rows) {
-    const prev = map.get(row.modKey);
+    const key = `${row.modKey}::t${String(row.tier)}`;
+    const prev = map.get(key);
     if (prev === undefined) {
-      map.set(row.modKey, { ...row });
+      map.set(key, { ...row });
     } else {
-      map.set(row.modKey, {
+      map.set(key, {
         ...prev,
         probability: prev.probability + row.probability,
         weight: prev.weight,
@@ -318,7 +319,7 @@ const fractureOrAnnulRows = (
 
 /**
  * 시뮬레이션 모드: 선택한 오브 패밀리에 대해, 현재 아이템 상태에서의 **모델 기준** 확률 요약.
- * (실제 게임과 다를 수 있음 — 시뮬레이터 MOD_POOL 기준.)
+ * (실제 게임과 다를 수 있음 — 시뮬레이터 MOD_DB·티어 사다리·ilvl 필터 기준.)
  */
 export const buildCraftLabOrbPreview = (
   family: CraftingOrbFamilyIdType,

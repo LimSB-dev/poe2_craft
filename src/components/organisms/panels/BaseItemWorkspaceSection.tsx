@@ -10,7 +10,10 @@ import {
   BaseItemSearchBlock,
   type BaseItemFilterRangeFieldsPropsType,
 } from "@/components/organisms/filters";
-import { PanelShell } from "./PanelShell";
+import {
+  BaseItemItemLevelControl,
+  PanelShell,
+} from "@/components/molecules/panels";
 
 type BaseItemTooltipCardExtraPropsType = Omit<
   React.ComponentProps<typeof BaseItemTooltipCard>,
@@ -31,6 +34,8 @@ type BaseItemWorkspaceSectionSharedPropsType = {
   onSubTypeChange: (value: BaseItemSubTypeFilterType) => void;
   availableSubTypes: readonly IBaseItemSubTypeType[];
   rangeFieldsProps: BaseItemFilterRangeFieldsPropsType;
+  baseItemItemLevel: number;
+  onBaseItemItemLevelChange: (value: number) => void;
   tooltipExtras?: BaseItemTooltipCardExtraPropsType;
   betweenTooltipAndSearch?: ReactNode;
 };
@@ -63,6 +68,8 @@ export const BaseItemWorkspaceSection = (
     onSubTypeChange,
     availableSubTypes,
     rangeFieldsProps,
+    baseItemItemLevel,
+    onBaseItemItemLevelChange,
     layout,
     tooltipExtras,
     betweenTooltipAndSearch,
@@ -120,6 +127,10 @@ export const BaseItemWorkspaceSection = (
     <div className="flex flex-col gap-3">
       {topAddon}
       {tooltipBlock}
+      <BaseItemItemLevelControl
+        value={baseItemItemLevel}
+        onChange={onBaseItemItemLevelChange}
+      />
       {betweenTooltipAndSearch}
       {searchAndFilter}
     </div>

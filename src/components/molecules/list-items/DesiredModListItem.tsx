@@ -3,7 +3,7 @@
 import type { ReactElement } from "react";
 
 import { ModTypeBadge } from "@/components/atoms";
-import { ModTemplateText } from "@/components/organisms/display";
+import { ModTemplateText } from "@/components/atoms/catalog";
 
 type DesiredModListItemPropsType = {
   mod: IDesiredModEntryType;

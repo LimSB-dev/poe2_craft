@@ -95,8 +95,14 @@ export const rollRandomMod = (modRollContext: IModRollContextInputType): IModDef
   });
 
   if (candidates.length === 0) {
+    const sub = modRollContext.baseItemSubType;
+    const tags = modRollContext.itemStatTags;
+    const baseHint =
+      sub !== undefined || tags !== undefined
+        ? ` baseSubType=${sub ?? "n/a"} statTags=[${tags?.join(",") ?? ""}]`
+        : "";
     throw new Error(
-      `No candidates available for mod roll. rarity=${modRollContext.rarity} modType=${modRollContext.modType}`
+      `No candidates available for mod roll. rarity=${modRollContext.rarity} modType=${modRollContext.modType}.${baseHint}`
     );
   }
 

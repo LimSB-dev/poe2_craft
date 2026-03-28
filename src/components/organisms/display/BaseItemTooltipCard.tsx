@@ -4,8 +4,8 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { useState, type ReactElement } from "react";
 
-import { CatalogBaseName } from "./CatalogBaseName";
-import { ExplicitModLine } from "./ExplicitModLine";
+import { CatalogBaseName } from "@/components/atoms/catalog";
+import { ExplicitModLine } from "@/components/molecules";
 import { buildHinekoraExplicitSlotHighlights } from "@/lib/crafting-lab/hinekoraHoverPreviewDiff";
 import { getBaseItemImageUrl } from "@/lib/poe2-item-simulator/baseItemImagePaths";
 import { buildBaseItemRequirementLineParts } from "@/lib/poe2-item-simulator/buildBaseItemRequirementLineParts";
@@ -62,6 +62,10 @@ type BaseItemTooltipCardPropsType = {
   ) => void;
   /** 히네코라·에센스 호버 미리보기 중에는 클릭 비활성 */
   soulWellInteractionDisabled?: boolean;
+  /**
+   * 심연의 메아리 징조 스테이징 시: 호버 미리보기가 있어도 미공개 훼손 줄 클릭(영혼의 우물) 허용.
+   */
+  allowSoulWellClickDuringHoverPreview?: boolean;
 };
 
 export const BaseItemTooltipCard = ({
@@ -72,6 +76,7 @@ export const BaseItemTooltipCard = ({
   previewExplicitItemRoll,
   onUnrevealedDesecratedModClick,
   soulWellInteractionDisabled = false,
+  allowSoulWellClickDuringHoverPreview = false,
 }: BaseItemTooltipCardPropsType): ReactElement => {
   const locale = useAppSelector((state) => state.locale.locale);
   const t = useTranslations("simulator");
@@ -87,9 +92,11 @@ export const BaseItemTooltipCard = ({
     previewExplicitItemRoll !== undefined && previewExplicitItemRoll !== null
       ? previewExplicitItemRoll
       : explicitItemRoll;
-  const soulWellLineDisabled =
+  const hoverPreviewBlocksSoulWell =
     soulWellInteractionDisabled ||
     (previewExplicitItemRoll !== undefined && previewExplicitItemRoll !== null);
+  const soulWellLineDisabled =
+    hoverPreviewBlocksSoulWell && !allowSoulWellClickDuringHoverPreview;
   const hinekoraPreviewHighlight =
     previewExplicitItemRoll !== undefined &&
     previewExplicitItemRoll !== null &&

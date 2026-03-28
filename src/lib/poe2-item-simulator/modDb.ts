@@ -1,3 +1,38 @@
+/**
+ * Weapon classes share the simulator's glove-style attack mod pool until per-class mod tables exist.
+ */
+const WEAPON_SUB_TYPES_FOR_ATTACK_MODS: readonly IBaseItemSubTypeType[] = [
+  "claw",
+  "dagger",
+  "oneHandSword",
+  "oneHandAxe",
+  "oneHandMace",
+  "sceptre",
+  "spear",
+  "flail",
+  "staff",
+  "wand",
+  "bow",
+  "twoHandSword",
+  "twoHandAxe",
+  "twoHandMace",
+  "quarterstaff",
+  "fishingRod",
+  "crossbow",
+  "trap",
+  "talisman",
+];
+
+const GLOVES_AND_WEAPON_ATTACK_SUB_TYPES: readonly IBaseItemSubTypeType[] = [
+  "gloves",
+  ...WEAPON_SUB_TYPES_FOR_ATTACK_MODS,
+];
+
+const HELMET_GLOVES_AND_WEAPON_ATTACK_SUB_TYPES: readonly IBaseItemSubTypeType[] = [
+  "helmet",
+  ...GLOVES_AND_WEAPON_ATTACK_SUB_TYPES,
+];
+
 export const MOD_DB: { readonly version: string; readonly records: ReadonlyArray<IModDbRecordType> } = {
   version: "0.1.0",
   records: [
@@ -434,7 +469,7 @@ export const MOD_DB: { readonly version: string; readonly records: ReadonlyArray
     {
       modKey: "prefix_added_phys_damage_attack",
       modType: "prefix",
-      applicableSubTypes: ["gloves"],
+      applicableSubTypes: [...GLOVES_AND_WEAPON_ATTACK_SUB_TYPES],
       requiredItemTags: [],
       modTags: ["근접", "물리", "공격"],
       tierCount: 9,
@@ -445,7 +480,7 @@ export const MOD_DB: { readonly version: string; readonly records: ReadonlyArray
     {
       modKey: "prefix_added_fire_damage_attack",
       modType: "prefix",
-      applicableSubTypes: ["gloves"],
+      applicableSubTypes: [...GLOVES_AND_WEAPON_ATTACK_SUB_TYPES],
       requiredItemTags: [],
       modTags: ["원소", "화염", "공격"],
       tierCount: 9,
@@ -456,7 +491,7 @@ export const MOD_DB: { readonly version: string; readonly records: ReadonlyArray
     {
       modKey: "prefix_added_cold_damage_attack",
       modType: "prefix",
-      applicableSubTypes: ["gloves"],
+      applicableSubTypes: [...GLOVES_AND_WEAPON_ATTACK_SUB_TYPES],
       requiredItemTags: [],
       modTags: ["원소", "냉기", "공격"],
       tierCount: 9,
@@ -467,7 +502,7 @@ export const MOD_DB: { readonly version: string; readonly records: ReadonlyArray
     {
       modKey: "prefix_added_lightning_damage_attack",
       modType: "prefix",
-      applicableSubTypes: ["gloves"],
+      applicableSubTypes: [...GLOVES_AND_WEAPON_ATTACK_SUB_TYPES],
       requiredItemTags: [],
       modTags: ["원소", "번개", "공격"],
       tierCount: 9,
@@ -478,7 +513,7 @@ export const MOD_DB: { readonly version: string; readonly records: ReadonlyArray
     {
       modKey: "prefix_accuracy",
       modType: "prefix",
-      applicableSubTypes: ["gloves"],
+      applicableSubTypes: [...GLOVES_AND_WEAPON_ATTACK_SUB_TYPES],
       requiredItemTags: [],
       modTags: ["공격"],
       tierCount: 9,
@@ -521,7 +556,7 @@ export const MOD_DB: { readonly version: string; readonly records: ReadonlyArray
     {
       modKey: "suffix_melee_skill_levels",
       modType: "suffix",
-      applicableSubTypes: ["gloves"],
+      applicableSubTypes: [...GLOVES_AND_WEAPON_ATTACK_SUB_TYPES],
       requiredItemTags: [],
       modTags: ["공격"],
       tierCount: 2,
@@ -532,7 +567,7 @@ export const MOD_DB: { readonly version: string; readonly records: ReadonlyArray
     {
       modKey: "suffix_life_leech_from_phys",
       modType: "suffix",
-      applicableSubTypes: ["gloves"],
+      applicableSubTypes: [...GLOVES_AND_WEAPON_ATTACK_SUB_TYPES],
       requiredItemTags: [],
       modTags: ["생명력", "물리", "공격"],
       tierCount: 5,
@@ -543,7 +578,7 @@ export const MOD_DB: { readonly version: string; readonly records: ReadonlyArray
     {
       modKey: "suffix_mana_leech_from_phys",
       modType: "suffix",
-      applicableSubTypes: ["gloves"],
+      applicableSubTypes: [...GLOVES_AND_WEAPON_ATTACK_SUB_TYPES],
       requiredItemTags: [],
       modTags: ["마나", "물리", "공격"],
       tierCount: 5,
@@ -554,7 +589,7 @@ export const MOD_DB: { readonly version: string; readonly records: ReadonlyArray
     {
       modKey: "suffix_life_on_kill",
       modType: "suffix",
-      applicableSubTypes: ["gloves"],
+      applicableSubTypes: [...GLOVES_AND_WEAPON_ATTACK_SUB_TYPES],
       requiredItemTags: [],
       modTags: ["생명력"],
       tierCount: 8,
@@ -565,7 +600,7 @@ export const MOD_DB: { readonly version: string; readonly records: ReadonlyArray
     {
       modKey: "suffix_mana_on_kill",
       modType: "suffix",
-      applicableSubTypes: ["gloves"],
+      applicableSubTypes: [...GLOVES_AND_WEAPON_ATTACK_SUB_TYPES],
       requiredItemTags: [],
       modTags: ["마나"],
       tierCount: 8,
@@ -576,7 +611,7 @@ export const MOD_DB: { readonly version: string; readonly records: ReadonlyArray
     {
       modKey: "suffix_life_on_hit",
       modType: "suffix",
-      applicableSubTypes: ["gloves"],
+      applicableSubTypes: [...GLOVES_AND_WEAPON_ATTACK_SUB_TYPES],
       requiredItemTags: [],
       modTags: ["생명력", "공격"],
       tierCount: 4,
@@ -587,7 +622,7 @@ export const MOD_DB: { readonly version: string; readonly records: ReadonlyArray
     {
       modKey: "suffix_attack_speed",
       modType: "suffix",
-      applicableSubTypes: ["gloves"],
+      applicableSubTypes: [...GLOVES_AND_WEAPON_ATTACK_SUB_TYPES],
       requiredItemTags: [],
       modTags: ["공격", "속도"],
       tierCount: 4,
@@ -598,7 +633,7 @@ export const MOD_DB: { readonly version: string; readonly records: ReadonlyArray
     {
       modKey: "suffix_crit_damage_bonus",
       modType: "suffix",
-      applicableSubTypes: ["gloves"],
+      applicableSubTypes: [...GLOVES_AND_WEAPON_ATTACK_SUB_TYPES],
       requiredItemTags: [],
       modTags: ["치명타"],
       tierCount: 5,
@@ -609,7 +644,7 @@ export const MOD_DB: { readonly version: string; readonly records: ReadonlyArray
     {
       modKey: "suffix_item_rarity",
       modType: "suffix",
-      applicableSubTypes: ["gloves", "helmet"],
+      applicableSubTypes: [...HELMET_GLOVES_AND_WEAPON_ATTACK_SUB_TYPES],
       requiredItemTags: [],
       modTags: [],
       tierCount: 3,

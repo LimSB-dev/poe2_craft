@@ -4040,6 +4040,8 @@
     "hinekoraDraftTableMissing": "예견 결과표를 불러오지 못했습니다. 베이스를 다시 선택하거나 초기화해 보세요.",
     "soulWellRevealTitle": "영혼의 우물 — 속성 선택",
     "soulWellRevealHint": "후보 3개는 이 랩의 희귀 접두/접미 풀에서 굴립니다(미공개 줄과 같은 슬롯). 게임에서 타락·일반 혼합 여부와 정확한 확률은 공개 자료가 거의 없습니다.",
+    "soulWellRevealReroll": "재굴림",
+    "soulWellRevealRerollAria": "영혼의 우물 후보 세 개 다시 굴리기",
     "soulWellRevealCancel": "취소",
     "soulWellRevealCandidateAria": "영혼의 우물 후보 {index}",
     "currencyTabDisabledGeneric": "아직 수동 제작에 연결되지 않았습니다.",

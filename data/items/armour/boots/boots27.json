@@ -1,0 +1,25 @@
+{
+  "drop_level": "45",
+  "name": "covered_sabatons",
+  "armour": "73",
+  "evasion": "65",
+  "energy_shield": "0",
+  "required_level": "45",
+  "required_str": "34",
+  "required_dex": "34",
+  "required_int": "0",
+  "class": "boots",
+  "flags": [],
+  "tags": [
+    "str_dex_armour",
+    "karui_basetype",
+    "boots",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "drop_level": "33",
+  "name": "shielded_helm",
+  "armour": "75",
+  "evasion": "66",
+  "energy_shield": "0",
+  "required_level": "33",
+  "required_str": "27",
+  "required_dex": "27",
+  "required_int": "0",
+  "class": "helmets",
+  "flags": [],
+  "tags": [
+    "str_dex_armour",
+    "vaal_basetype",
+    "helmet",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

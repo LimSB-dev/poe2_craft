@@ -1,0 +1,25 @@
+{
+  "drop_level": "16",
+  "name": "bone_raiment",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "52",
+  "required_level": "16",
+  "required_str": "0",
+  "required_dex": "0",
+  "required_int": "28",
+  "class": "body_armours",
+  "flags": [],
+  "tags": [
+    "int_armour",
+    "maraketh_basetype",
+    "body_armour",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "drop_level": "45",
+  "name": "reefsteel_greaves",
+  "armour": "132",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "45",
+  "required_str": "60",
+  "required_dex": "0",
+  "required_int": "0",
+  "class": "boots",
+  "flags": [],
+  "tags": [
+    "str_armour",
+    "karui_basetype",
+    "boots",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

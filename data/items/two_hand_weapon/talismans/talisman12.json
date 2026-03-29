@@ -1,0 +1,25 @@
+{
+  "drop_level": "58",
+  "name": "roaring_talisman",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "58",
+  "required_str": "66",
+  "required_dex": "0",
+  "required_int": "47",
+  "class": "talismans",
+  "flags": [],
+  "tags": [
+    "talisman",
+    "two_hand_weapon",
+    "twohand",
+    "weapon"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

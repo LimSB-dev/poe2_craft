@@ -1,0 +1,24 @@
+{
+  "drop_level": "45",
+  "name": "templar_vestments",
+  "armour": "148",
+  "evasion": "0",
+  "energy_shield": "53",
+  "required_level": "45",
+  "required_str": "41",
+  "required_dex": "0",
+  "required_int": "41",
+  "class": "body_armours",
+  "flags": [],
+  "tags": [
+    "str_int_armour",
+    "body_armour",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

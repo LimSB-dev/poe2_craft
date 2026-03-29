@@ -1,0 +1,24 @@
+{
+  "drop_level": "45",
+  "name": "bound_boots",
+  "armour": "0",
+  "evasion": "119",
+  "energy_shield": "0",
+  "required_level": "45",
+  "required_str": "0",
+  "required_dex": "60",
+  "required_int": "0",
+  "class": "boots",
+  "flags": [],
+  "tags": [
+    "dex_armour",
+    "boots",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

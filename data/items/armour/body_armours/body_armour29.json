@@ -1,0 +1,25 @@
+{
+  "drop_level": "28",
+  "name": "shaman_mantle",
+  "armour": "100",
+  "evasion": "0",
+  "energy_shield": "39",
+  "required_level": "28",
+  "required_str": "26",
+  "required_dex": "0",
+  "required_int": "26",
+  "class": "body_armours",
+  "flags": [],
+  "tags": [
+    "str_int_armour",
+    "maraketh_basetype",
+    "body_armour",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

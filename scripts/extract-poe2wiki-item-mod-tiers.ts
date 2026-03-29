@@ -14,7 +14,12 @@
  * 슬롯별 상대 비교·필터에는 쓰이지만, PoE2DB 숫자와 1:1 대응은 보장하지 않는다.
  *
  * 실행: `yarn extract:mod-tiers`
- * 테스트용 상한: `MAX_MODS=500 yarn extract:mod-tiers`
+ *
+ * **전량 추출(기본)**: `MAX_MODS`를 **설정하지 않으면** domain=1 접두·접미 모드를 **끝까지** 가져온다.
+ * 위키 Cargo는 한 요청에 전부를 담기 어려우므로, 스크립트는 `offset`으로 **500건(`PAGE_SIZE`)씩**
+ * 페이지네이션한다 — 요청 횟수는 전체 모드 수에 비례하며, “한 번에만 받기” API는 없다.
+ *
+ * **개발용 상한**: 빠른 스모크만 할 때 `MAX_MODS=500` 등. 일부 mod_groups는 뒤쪽 offset에만 나온다.
  *
  * 앱 번들에 반영하려면 생성 후 다음으로 복사한다:
  * `cp data/generated/poe2wiki-item-mod-tiers.json src/lib/poe2-item-simulator/data/poe2wiki-item-mod-tiers.json`
@@ -23,7 +28,7 @@
  * 같은 실행에서 `data/generated/poe2wiki-spawn-tag-unions.json`도 쓴다(mod_groups+접두/접미별 스폰 태그 합집합).
  *
  * **빈 `spawnWeights` 보정**: `repairEmptySpawnWeightsInWikiTierRows`(`wikiModTierSpawnRepair.ts`)가 Cargo 누락·전부 0인 행을
- * 동일 사다리 인접 티어에서 복사한다.
+ * 동일 사다리 인접 티어에서 ㅌ.
  *
  * **PoE2DB 정합 보정**: 그 다음 `applyPoe2dbWikiSpawnPostCorrections`(`wikiTierSpawnExtractPostProcess.ts`)가
  * Cargo와 PoE2DB가 다른 부위 스폰(예: `ItemFoundRarityIncreasePrefix` 최상위 티의 `helmet`)을 덮어쓴다.
@@ -32,15 +37,29 @@
 import fs from "fs";
 import path from "path";
 
-import type { WikiExtractedModTierRowType, WikiItemModTiersFileType } from "@/lib/poe2-item-simulator/wikiModTierTypes";
+import type {
+  WikiExtractedModTierRowType,
+  WikiItemModTiersFileType,
+} from "@/lib/poe2-item-simulator/wikiModTierTypes";
 import { enrichWikiModStatRangesWithLocalFlag } from "@/lib/poe2-item-simulator/wikiModTierNormalization";
 import { repairEmptySpawnWeightsInWikiTierRows } from "@/lib/poe2-item-simulator/wikiModTierSpawnRepair";
 import { applyPoe2dbWikiSpawnPostCorrections } from "@/lib/poe2-item-simulator/wikiTierSpawnExtractPostProcess";
 
+import { isExtractDebug, logExtractDebugBlock, previewJson } from "./extract-debug";
+
 const WIKI_API = "https://www.poe2wiki.net/w/api.php";
-const OUT_PATH = path.join(process.cwd(), "data/generated/poe2wiki-item-mod-tiers.json");
-const SUMMARY_PATH = path.join(process.cwd(), "data/generated/poe2wiki-item-mod-tiers.summary.json");
-const SPAWN_UNION_PATH = path.join(process.cwd(), "data/generated/poe2wiki-spawn-tag-unions.json");
+const OUT_PATH = path.join(
+  process.cwd(),
+  "data/generated/poe2wiki-item-mod-tiers.json",
+);
+const SUMMARY_PATH = path.join(
+  process.cwd(),
+  "data/generated/poe2wiki-item-mod-tiers.summary.json",
+);
+const SPAWN_UNION_PATH = path.join(
+  process.cwd(),
+  "data/generated/poe2wiki-spawn-tag-unions.json",
+);
 
 const PAGE_SIZE = 500;
 const ID_CHUNK = 60;
@@ -107,7 +126,9 @@ const buildWikiModifierPageName = (wikiModId: string): string => {
   return `Modifier:${wikiModId}`;
 };
 
-const dedupeSpawnWeights = (weights: WikiModSpawnWeightType[]): WikiModSpawnWeightType[] => {
+const dedupeSpawnWeights = (
+  weights: WikiModSpawnWeightType[],
+): WikiModSpawnWeightType[] => {
   const byKey = new Map<string, WikiModSpawnWeightType>();
   for (const w of weights) {
     const key = `${String(w.ordinal)}::${w.tag}`;
@@ -127,6 +148,8 @@ const dedupeSpawnWeights = (weights: WikiModSpawnWeightType[]): WikiModSpawnWeig
   return merged;
 };
 
+let wikiCargoResponseSampleLogged = false;
+
 const cargoQuery = async (params: Record<string, string>): Promise<unknown> => {
   const url = new URL(WIKI_API);
   for (const [key, value] of Object.entries(params)) {
@@ -139,13 +162,46 @@ const cargoQuery = async (params: Record<string, string>): Promise<unknown> => {
     try {
       const response = await fetch(url.toString(), {
         headers: {
-          "User-Agent": "poe2_craft-mod-tier-extract/1.0 (+https://github.com/)",
+          "User-Agent":
+            "poe2_craft-mod-tier-extract/1.0 (+https://github.com/)",
         },
       });
       if (!response.ok) {
         throw new Error(`HTTP ${String(response.status)}`);
       }
-      return (await response.json()) as unknown;
+      const json = (await response.json()) as unknown;
+      if (isExtractDebug() && !wikiCargoResponseSampleLogged) {
+        wikiCargoResponseSampleLogged = true;
+        const payload = json as Record<string, unknown>;
+        const cq = payload.cargoquery;
+        const firstEntry =
+          Array.isArray(cq) && cq.length > 0 ? cq[0] : undefined;
+        let firstTitle: Record<string, string> | undefined;
+        if (
+          firstEntry !== undefined &&
+          typeof firstEntry === "object" &&
+          firstEntry !== null &&
+          "title" in firstEntry
+        ) {
+          const t = (firstEntry as { title?: unknown }).title;
+          if (typeof t === "object" && t !== null) {
+            firstTitle = t as Record<string, string>;
+          }
+        }
+        logExtractDebugBlock(
+          "poe2wiki api.php cargoquery JSON (첫 성공 응답)",
+          previewJson({
+            requestUrl: url.toString(),
+            topLevelKeys: Object.keys(payload),
+            cargoqueryIsArray: Array.isArray(cq),
+            cargoqueryLength: Array.isArray(cq) ? cq.length : null,
+            firstRowTitleFieldKeys:
+              firstTitle !== undefined ? Object.keys(firstTitle) : null,
+            firstRowTitleSample: firstTitle,
+          }),
+        );
+      }
+      return json;
     } catch (error) {
       lastError = error;
       await delay(1200 * (attempt + 1));
@@ -176,21 +232,26 @@ const readCargoRows = (payload: unknown): Record<string, string>[] => {
   return out;
 };
 
-const fetchAllModSummaries = async (maxMods: number | null): Promise<CargoModsRowType[]> => {
+const fetchAllModSummaries = async (
+  maxMods: number | null,
+): Promise<CargoModsRowType[]> => {
   const summaries: CargoModsRowType[] = [];
   for (let offset = 0; ; offset += PAGE_SIZE) {
     if (maxMods !== null && summaries.length >= maxMods) {
       break;
     }
     const limit =
-      maxMods === null ? PAGE_SIZE : Math.min(PAGE_SIZE, maxMods - summaries.length);
+      maxMods === null
+        ? PAGE_SIZE
+        : Math.min(PAGE_SIZE, maxMods - summaries.length);
     if (limit <= 0) {
       break;
     }
     const payload = await cargoQuery({
       action: "cargoquery",
       tables: "mods=m",
-      fields: "m.id,m.mod_groups,m.required_level,m.generation_type,m.tier_text,m.stat_text,m.name",
+      fields:
+        "m.id,m.mod_groups,m.required_level,m.generation_type,m.tier_text,m.stat_text,m.name",
       where: "m.domain=1 AND (m.generation_type=1 OR m.generation_type=2)",
       offset: String(offset),
       limit: String(limit),
@@ -210,7 +271,9 @@ const fetchAllModSummaries = async (maxMods: number | null): Promise<CargoModsRo
   return summaries;
 };
 
-const fetchStatsForIds = async (ids: readonly string[]): Promise<Map<string, CargoRawStatRangeType[]>> => {
+const fetchStatsForIds = async (
+  ids: readonly string[],
+): Promise<Map<string, CargoRawStatRangeType[]>> => {
   const map = new Map<string, CargoRawStatRangeType[]>();
   if (ids.length === 0) {
     return map;
@@ -330,8 +393,7 @@ const buildSpawnTagUnionsPayload = (
     schemaVersion: "spawn-tag-union@1",
     source: "poe2wiki_cargo_derived",
     fetchedAtIso: new Date().toISOString(),
-    note:
-      "Union of mod_spawn_weights.tag where value>0, grouped by mod_groups + generation_type. modDb.applicableSubTypes may omit tags intentionally.",
+    note: "Union of mod_spawn_weights.tag where value>0, grouped by mod_groups + generation_type. modDb.applicableSubTypes may omit tags intentionally.",
     groupCount: sortedKeys.length,
     groups,
   };
@@ -364,12 +426,29 @@ const assignSimulatorTiers = (rows: WikiExtractedModTierRowType[]): void => {
 const main = async (): Promise<void> => {
   const maxModsRaw = process.env.MAX_MODS;
   const maxMods =
-    maxModsRaw === undefined || maxModsRaw === "" ? null : Number.parseInt(maxModsRaw, 10);
+    maxModsRaw === undefined || maxModsRaw === ""
+      ? null
+      : Number.parseInt(maxModsRaw, 10);
+
+  if (isExtractDebug()) {
+    console.log(
+      "[EXTRACT_DEBUG] 첫 Cargo API JSON 응답 형식을 콘솔에 출력합니다.",
+    );
+  }
+
+  const maxModsEffective = Number.isNaN(maxMods as number) ? null : maxMods;
+  if (maxModsEffective === null) {
+    console.log(
+      "[extract:mod-tiers] 전량 추출: MAX_MODS 미설정 — Cargo mods 요약을 offset 페이지네이션(500건/회)으로 끝까지 가져옵니다.",
+    );
+  } else {
+    console.log(
+      `[extract:mod-tiers] 상한 추출: MAX_MODS=${String(maxModsEffective)} — 전체 데이터가 아닐 수 있습니다(개발/스모크용).`,
+    );
+  }
 
   console.log("Fetching mod summaries from poe2wiki Cargo…");
-  const summaries = await fetchAllModSummaries(
-    Number.isNaN(maxMods as number) ? null : maxMods,
-  );
+  const summaries = await fetchAllModSummaries(maxModsEffective);
   const ids = summaries
     .map((row) => row.id)
     .filter((id): id is string => id !== undefined && id.length > 0);
@@ -381,7 +460,9 @@ const main = async (): Promise<void> => {
 
   for (let index = 0; index < ids.length; index += ID_CHUNK) {
     const chunk = ids.slice(index, index + ID_CHUNK);
-    console.log(`Fetching stats & spawn weights ${String(index + 1)}–${String(index + chunk.length)} / ${String(ids.length)}…`);
+    console.log(
+      `Fetching stats & spawn weights ${String(index + 1)}–${String(index + chunk.length)} / ${String(ids.length)}…`,
+    );
     const [stats, spawns] = await Promise.all([
       fetchStatsForIds(chunk),
       fetchSpawnWeightsByModifierPageNames(chunk),
@@ -427,7 +508,6 @@ const main = async (): Promise<void> => {
 
   const spawnRepair = repairEmptySpawnWeightsInWikiTierRows(rows);
   if (spawnRepair.repairedCount > 0) {
-    // eslint-disable-next-line no-console -- CLI 진단
     console.log(
       `Repaired empty mod_spawn_weights for ${String(spawnRepair.repairedCount)} wiki mod id(s) (see wikiModTierSpawnRepair).`,
     );
@@ -435,13 +515,11 @@ const main = async (): Promise<void> => {
 
   const spawnPost = applyPoe2dbWikiSpawnPostCorrections(rows);
   if (spawnPost.correctionsApplied > 0) {
-    // eslint-disable-next-line no-console -- CLI 진단
     console.log(
       `Applied PoE2DB spawn post-corrections for ${String(spawnPost.correctionsApplied)} wiki mod id(s) (see wikiTierSpawnExtractPostProcess).`,
     );
   }
   if (spawnPost.intelligenceHintsApplied > 0) {
-    // eslint-disable-next-line no-console -- CLI 진단
     console.log(
       `Applied PoE2DB required-intelligence hints for ${String(spawnPost.intelligenceHintsApplied)} wiki mod id(s).`,
     );
@@ -449,7 +527,33 @@ const main = async (): Promise<void> => {
 
   assignSimulatorTiers(rows);
 
-  const uniqueKeys = new Set(rows.map((row) => groupKey(row.modGroups, row.generationType)));
+  {
+    const hit = rows.find((r) => {
+      return r.modGroups === "SpellDamageAndMana";
+    });
+    if (hit !== undefined) {
+      console.log(
+        `[extract:mod-tiers] SpellDamageAndMana 최종 행(1건, mod_groups 파싱됨): ${JSON.stringify({
+          wikiModId: hit.wikiModId,
+          modGroups: hit.modGroups,
+          generationType: hit.generationType,
+          requiredLevel: hit.requiredLevel,
+          statText: hit.statText,
+          name: hit.name,
+          spawnWeightTagSample: hit.spawnWeights.slice(0, 5),
+          statRangesSample: hit.statRanges.slice(0, 2),
+        })}`,
+      );
+    } else {
+      console.log(
+        `[extract:mod-tiers] SpellDamageAndMana 없음 — 요약에 이 mod_groups가 포함되지 않았습니다. Cargo는 페이지 순이라 해당 그룹은 대략 offset 1500 이후에 나옵니다. MAX_MODS를 늘리거나(≥1800 권장) 제거한 뒤 전체 추출하세요.`,
+      );
+    }
+  }
+
+  const uniqueKeys = new Set(
+    rows.map((row) => groupKey(row.modGroups, row.generationType)),
+  );
 
   const output: WikiItemModTiersFileType = {
     schemaVersion: POE2DB_STYLE_SCHEMA_VERSION,
@@ -473,15 +577,25 @@ const main = async (): Promise<void> => {
     uniqueModGroupKeys: output.uniqueModGroupKeys,
     note: "Full data is in poe2wiki-item-mod-tiers.json (this file omits `rows` for quick inspection).",
   };
-  fs.writeFileSync(SUMMARY_PATH, `${JSON.stringify(summary, null, 2)}\n`, "utf8");
+  fs.writeFileSync(
+    SUMMARY_PATH,
+    `${JSON.stringify(summary, null, 2)}\n`,
+    "utf8",
+  );
 
   const spawnUnions = buildSpawnTagUnionsPayload(rows);
-  fs.writeFileSync(SPAWN_UNION_PATH, `${JSON.stringify(spawnUnions, null, 2)}\n`, "utf8");
+  fs.writeFileSync(
+    SPAWN_UNION_PATH,
+    `${JSON.stringify(spawnUnions, null, 2)}\n`,
+    "utf8",
+  );
 
   console.log(`Wrote ${OUT_PATH}`);
   console.log(`Wrote ${SUMMARY_PATH}`);
   console.log(`Wrote ${SPAWN_UNION_PATH}`);
-  console.log(`Rows: ${String(output.rowCount)}, unique mod group keys: ${String(output.uniqueModGroupKeys)}`);
+  console.log(
+    `Rows: ${String(output.rowCount)}, unique mod group keys: ${String(output.uniqueModGroupKeys)}`,
+  );
 };
 
 void main().catch((error: unknown) => {

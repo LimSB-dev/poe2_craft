@@ -1,0 +1,26 @@
+{
+  "drop_level": "10",
+  "name": "slim_mace",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "10",
+  "required_str": "21",
+  "required_dex": "0",
+  "required_int": "0",
+  "class": "one_hand_maces",
+  "flags": [],
+  "tags": [
+    "ezomyte_basetype",
+    "mace",
+    "one_hand_weapon",
+    "onehand",
+    "weapon"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "drop_level": "8",
+  "name": "pelage_targe",
+  "armour": "18",
+  "evasion": "14",
+  "energy_shield": "0",
+  "required_level": "8",
+  "required_str": "9",
+  "required_dex": "9",
+  "required_int": "0",
+  "class": "shields",
+  "flags": [],
+  "tags": [
+    "str_dex_armour",
+    "str_dex_shield",
+    "ezomyte_basetype",
+    "shield",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

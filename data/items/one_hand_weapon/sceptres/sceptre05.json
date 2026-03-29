@@ -1,0 +1,23 @@
+{
+  "drop_level": "21",
+  "name": "ochre_sceptre",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "21",
+  "required_str": "14",
+  "required_dex": "0",
+  "required_int": "31",
+  "class": "sceptres",
+  "flags": [],
+  "tags": [
+    "sceptre",
+    "onehand"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

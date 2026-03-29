@@ -1,0 +1,24 @@
+{
+  "drop_level": "52",
+  "name": "imperial_robe",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "108",
+  "required_level": "52",
+  "required_str": "0",
+  "required_dex": "0",
+  "required_int": "83",
+  "class": "body_armours",
+  "flags": [],
+  "tags": [
+    "int_armour",
+    "body_armour",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

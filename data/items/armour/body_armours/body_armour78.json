@@ -1,0 +1,24 @@
+{
+  "drop_level": "54",
+  "name": "elegant_plate",
+  "armour": "315",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "54",
+  "required_str": "86",
+  "required_dex": "0",
+  "required_int": "0",
+  "class": "body_armours",
+  "flags": [],
+  "tags": [
+    "str_armour",
+    "body_armour",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "drop_level": "59",
+  "name": "bastion_sabatons",
+  "armour": "92",
+  "evasion": "84",
+  "energy_shield": "0",
+  "required_level": "59",
+  "required_str": "44",
+  "required_dex": "44",
+  "required_int": "0",
+  "class": "boots",
+  "flags": [],
+  "tags": [
+    "str_dex_armour",
+    "boots",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "drop_level": "57",
+  "name": "empyreal_crest_shield",
+  "armour": "74",
+  "evasion": "0",
+  "energy_shield": "26",
+  "required_level": "57",
+  "required_str": "45",
+  "required_dex": "0",
+  "required_int": "45",
+  "class": "shields",
+  "flags": [],
+  "tags": [
+    "str_int_armour",
+    "str_int_shield",
+    "shield",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

@@ -67,6 +67,96 @@ describe("modDbTierDisplay", () => {
     expect(rows.every((row) => row.statRanges.length > 0)).toBe(true);
   });
 
+  test("getModTierDisplayRows: staff spell damage prefix uses wiki staff ladder (SpellDamageOnTwoHandWeapon)", () => {
+    const record = MOD_DB.records.find((r) => r.modKey === "prefix_inc_spell_damage_staff");
+    expect(record).toBeDefined();
+    if (record === undefined) {
+      return;
+    }
+    const ctx = wikiTierSpawnContextFromBaseFilters({
+      baseItemSubType: "staff",
+      itemStatTags: ["int"],
+      poe2dbTags: ["staff", "twohand"],
+    });
+    expect(ctx).toBeDefined();
+    const rows = getModTierDisplayRows(record, ctx);
+    expect(rows.length).toBe(8);
+    expect(rows.every((row) => row.isSynthetic)).toBe(false);
+    expect(rows.every((row) => row.statRanges.length > 0)).toBe(true);
+  });
+
+  test("getModTierDisplayRows: staff fire gain-as-extra uses wiki SpellDamageGainedAsFireTwoHand ladder", () => {
+    const record = MOD_DB.records.find((r) => r.modKey === "prefix_gain_as_extra_fire_staff");
+    expect(record).toBeDefined();
+    if (record === undefined) {
+      return;
+    }
+    const ctx = wikiTierSpawnContextFromBaseFilters({
+      baseItemSubType: "staff",
+      itemStatTags: ["int"],
+      poe2dbTags: ["staff", "twohand"],
+    });
+    expect(ctx).toBeDefined();
+    const rows = getModTierDisplayRows(record, ctx);
+    expect(rows.length).toBe(6);
+    expect(rows.every((row) => row.isSynthetic)).toBe(false);
+    expect(rows[0]?.statRanges[0]?.statId).toBe("non_skill_base_all_damage_%_to_gain_as_fire");
+  });
+
+  test("getModTierDisplayRows: no_* blocks inc% only; gain-as-extra still has wiki tiers", () => {
+    const fireWeapon = MOD_DB.records.find((r) => r.modKey === "prefix_inc_weapon_fire_damage_staff");
+    const fireGain = MOD_DB.records.find((r) => r.modKey === "prefix_gain_as_extra_fire_staff");
+    const lightningWeapon = MOD_DB.records.find((r) => {
+      return r.modKey === "prefix_inc_weapon_lightning_damage_staff";
+    });
+    expect(fireWeapon).toBeDefined();
+    expect(fireGain).toBeDefined();
+    expect(lightningWeapon).toBeDefined();
+    const lightningThemedStaffTags = [
+      "no_fire_spell_mods",
+      "no_cold_spell_mods",
+      "no_chaos_spell_mods",
+      "no_physical_spell_mods",
+      "staff",
+      "twohand",
+    ];
+    const ctx = wikiTierSpawnContextFromBaseFilters({
+      baseItemSubType: "staff",
+      itemStatTags: ["int"],
+      poe2dbTags: lightningThemedStaffTags,
+    });
+    expect(ctx).toBeDefined();
+    expect(getModTierDisplayRows(fireWeapon!, ctx!).length).toBe(0);
+    expect(getModTierDisplayRows(fireGain!, ctx!).length).toBe(6);
+    expect(getModTierDisplayRows(lightningWeapon!, ctx!).length).toBeGreaterThan(0);
+  });
+
+  test("getModTierDisplayRows: prefix_max_mana_staff tier row count matches wiki staff ladder (8)", () => {
+    const record = MOD_DB.records.find((r) => r.modKey === "prefix_max_mana_staff");
+    expect(record).toBeDefined();
+    if (record === undefined) {
+      return;
+    }
+    expect(record.tierCount).toBe(8);
+    const ctx = wikiTierSpawnContextFromBaseFilters({
+      baseItemSubType: "staff",
+      itemStatTags: ["int"],
+      poe2dbTags: ["staff", "twohand"],
+    });
+    const rows = getModTierDisplayRows(record, ctx);
+    expect(rows.length).toBe(8);
+    expect(rows[0]?.levelRequirement).toBe(70);
+  });
+
+  test("getModTierDisplayRows: prefix_added_fire_damage_attack not applicable to staff (no synthetic fallback needed here)", () => {
+    const record = MOD_DB.records.find((r) => r.modKey === "prefix_added_fire_damage_attack");
+    expect(record).toBeDefined();
+    if (record === undefined) {
+      return;
+    }
+    expect(record.applicableSubTypes.includes("staff")).toBe(false);
+  });
+
   test("formatStatRangesCell", () => {
     expect(formatStatRangesCell([])).toBe("");
     expect(formatStatRangesCell([{ min: 5, max: 5 }])).toBe("5");

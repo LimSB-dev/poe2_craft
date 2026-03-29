@@ -1,0 +1,24 @@
+{
+  "drop_level": "52",
+  "name": "embroidered_gloves",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "35",
+  "required_level": "52",
+  "required_str": "0",
+  "required_dex": "0",
+  "required_int": "64",
+  "class": "gloves",
+  "flags": [],
+  "tags": [
+    "int_armour",
+    "gloves",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

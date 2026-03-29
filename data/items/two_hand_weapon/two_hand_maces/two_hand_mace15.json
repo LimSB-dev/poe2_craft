@@ -1,0 +1,25 @@
+{
+  "drop_level": "54",
+  "name": "precise_greathammer",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "54",
+  "required_str": "96",
+  "required_dex": "0",
+  "required_int": "0",
+  "class": "two_hand_maces",
+  "flags": [],
+  "tags": [
+    "mace",
+    "two_hand_weapon",
+    "twohand",
+    "weapon"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

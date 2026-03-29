@@ -1,0 +1,26 @@
+{
+  "drop_level": "36",
+  "name": "omen_crest_shield",
+  "armour": "50",
+  "evasion": "0",
+  "energy_shield": "19",
+  "required_level": "36",
+  "required_str": "30",
+  "required_dex": "0",
+  "required_int": "30",
+  "class": "shields",
+  "flags": [],
+  "tags": [
+    "str_int_armour",
+    "str_int_shield",
+    "vaal_basetype",
+    "shield",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

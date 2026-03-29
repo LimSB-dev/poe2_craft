@@ -8,6 +8,45 @@ const recordByKey = (modKey: string) => {
 };
 
 describe("modDb applicableSubTypes (PoE2 wiki spawn alignment)", () => {
+  test("prefix_gain_as_extra_fire_staff: not blocked by no_* tags (game gain mods; inc only uses modPoe2dbSpellExclusionTags)", () => {
+    const rec = recordByKey("prefix_gain_as_extra_fire_staff");
+    expect(rec).toBeDefined();
+    const lightningStaffTags = [
+      "no_fire_spell_mods",
+      "no_cold_spell_mods",
+      "no_chaos_spell_mods",
+      "no_physical_spell_mods",
+      "staff",
+      "twohand",
+    ] as const;
+    expect(
+      isRecordEligibleForBaseFilters(rec!, {
+        baseItemSubType: "staff",
+        itemStatTags: ["int"],
+        poe2dbTags: lightningStaffTags,
+      }),
+    ).toBe(true);
+  });
+
+  test("prefix_inc_weapon_fire_damage_staff: blocked when base has no_fire_spell_mods", () => {
+    const rec = recordByKey("prefix_inc_weapon_fire_damage_staff");
+    expect(rec).toBeDefined();
+    expect(
+      isRecordEligibleForBaseFilters(rec!, {
+        baseItemSubType: "staff",
+        itemStatTags: ["int"],
+        poe2dbTags: [
+          "no_fire_spell_mods",
+          "no_cold_spell_mods",
+          "no_chaos_spell_mods",
+          "no_physical_spell_mods",
+          "staff",
+          "twohand",
+        ],
+      }),
+    ).toBe(false);
+  });
+
   test("prefix_phys_thorns: body / shield / belt — not helmet or gloves", () => {
     const rec = recordByKey("prefix_phys_thorns");
     expect(rec).toBeDefined();

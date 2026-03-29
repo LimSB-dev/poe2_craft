@@ -1,0 +1,25 @@
+{
+  "drop_level": "80",
+  "name": "imperial_greathelm",
+  "armour": "316",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "80",
+  "required_str": "115",
+  "required_dex": "0",
+  "required_int": "0",
+  "class": "helmets",
+  "flags": [],
+  "tags": [
+    "str_armour",
+    "karui_basetype",
+    "helmet",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

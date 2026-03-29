@@ -1,0 +1,24 @@
+{
+  "drop_level": "73",
+  "name": "slayer_armour",
+  "armour": "294",
+  "evasion": "268",
+  "energy_shield": "0",
+  "required_level": "73",
+  "required_str": "67",
+  "required_dex": "67",
+  "required_int": "0",
+  "class": "body_armours",
+  "flags": [],
+  "tags": [
+    "str_dex_armour",
+    "body_armour",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

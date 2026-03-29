@@ -1,0 +1,25 @@
+{
+  "drop_level": "4",
+  "name": "gauze_wraps",
+  "armour": "0",
+  "evasion": "8",
+  "energy_shield": "6",
+  "required_level": "4",
+  "required_str": "0",
+  "required_dex": "6",
+  "required_int": "6",
+  "class": "gloves",
+  "flags": [],
+  "tags": [
+    "dex_int_armour",
+    "ezomyte_basetype",
+    "gloves",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

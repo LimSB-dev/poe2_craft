@@ -1,0 +1,25 @@
+{
+  "drop_level": "45",
+  "name": "cutlass",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "45",
+  "required_str": "45",
+  "required_dex": "45",
+  "required_int": "0",
+  "class": "one_hand_swords",
+  "flags": [],
+  "tags": [
+    "sword",
+    "one_hand_weapon",
+    "onehand",
+    "weapon"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "drop_level": "5",
+  "name": "iron_crown",
+  "armour": "23",
+  "evasion": "0",
+  "energy_shield": "12",
+  "required_level": "5",
+  "required_str": "7",
+  "required_dex": "0",
+  "required_int": "7",
+  "class": "helmets",
+  "flags": [],
+  "tags": [
+    "str_int_armour",
+    "ezomyte_basetype",
+    "helmet",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

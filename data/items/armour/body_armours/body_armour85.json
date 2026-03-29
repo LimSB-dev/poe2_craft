@@ -1,0 +1,24 @@
+{
+  "drop_level": "56",
+  "name": "hardleather_coat",
+  "armour": "0",
+  "evasion": "295",
+  "energy_shield": "0",
+  "required_level": "56",
+  "required_str": "0",
+  "required_dex": "89",
+  "required_int": "0",
+  "class": "body_armours",
+  "flags": [],
+  "tags": [
+    "dex_armour",
+    "body_armour",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

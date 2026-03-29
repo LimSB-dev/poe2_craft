@@ -1,0 +1,26 @@
+{
+  "drop_level": "40",
+  "name": "treasured_blade",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "40",
+  "required_str": "40",
+  "required_dex": "40",
+  "required_int": "0",
+  "class": "one_hand_swords",
+  "flags": [],
+  "tags": [
+    "vaal_basetype",
+    "sword",
+    "one_hand_weapon",
+    "onehand",
+    "weapon"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

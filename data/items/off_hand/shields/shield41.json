@@ -1,0 +1,25 @@
+{
+  "drop_level": "54",
+  "name": "bulwark_tower_shield",
+  "armour": "129",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "54",
+  "required_str": "77",
+  "required_dex": "0",
+  "required_int": "0",
+  "class": "shields",
+  "flags": [],
+  "tags": [
+    "str_armour",
+    "str_shield",
+    "shield",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

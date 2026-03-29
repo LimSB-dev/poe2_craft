@@ -1,0 +1,25 @@
+{
+  "drop_level": "45",
+  "name": "ironwood_targe",
+  "armour": "61",
+  "evasion": "54",
+  "energy_shield": "0",
+  "required_level": "45",
+  "required_str": "36",
+  "required_dex": "36",
+  "required_int": "0",
+  "class": "shields",
+  "flags": [],
+  "tags": [
+    "str_dex_armour",
+    "str_dex_shield",
+    "shield",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

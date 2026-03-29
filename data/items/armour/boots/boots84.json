@@ -1,0 +1,25 @@
+{
+  "drop_level": "80",
+  "name": "daggerfoot_shoes",
+  "armour": "0",
+  "evasion": "119",
+  "energy_shield": "45",
+  "required_level": "80",
+  "required_str": "0",
+  "required_dex": "59",
+  "required_int": "59",
+  "class": "boots",
+  "flags": [],
+  "tags": [
+    "dex_int_armour",
+    "karui_basetype",
+    "boots",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

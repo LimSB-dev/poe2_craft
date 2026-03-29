@@ -1,0 +1,25 @@
+{
+  "drop_level": "20",
+  "name": "maraketh_cuirass",
+  "armour": "141",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "20",
+  "required_str": "34",
+  "required_dex": "0",
+  "required_int": "0",
+  "class": "body_armours",
+  "flags": [],
+  "tags": [
+    "str_armour",
+    "maraketh_basetype",
+    "body_armour",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "drop_level": "26",
+  "name": "emerald_ring",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "26",
+  "required_str": "0",
+  "required_dex": "0",
+  "required_int": "0",
+  "class": "rings",
+  "flags": [],
+  "tags": [
+    "ring"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

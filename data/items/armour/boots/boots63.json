@@ -1,0 +1,24 @@
+{
+  "drop_level": "65",
+  "name": "elaborate_sandals",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "63",
+  "required_level": "65",
+  "required_str": "0",
+  "required_dex": "0",
+  "required_int": "86",
+  "class": "boots",
+  "flags": [],
+  "tags": [
+    "int_armour",
+    "boots",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

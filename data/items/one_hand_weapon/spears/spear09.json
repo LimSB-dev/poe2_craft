@@ -1,0 +1,26 @@
+{
+  "drop_level": "45",
+  "name": "crossblade_spear",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "45",
+  "required_str": "26",
+  "required_dex": "63",
+  "required_int": "0",
+  "class": "spears",
+  "flags": [],
+  "tags": [
+    "karui_basetype",
+    "spear",
+    "one_hand_weapon",
+    "onehand",
+    "weapon"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

@@ -1,4 +1,5 @@
 import wikiModTierPayload from "@/lib/poe2-item-simulator/data/poe2wiki-item-mod-tiers.json";
+import { isModKeyBlockedByPoe2dbSpellExclusionTags } from "@/lib/poe2-item-simulator/modPoe2dbSpellExclusionTags";
 import { MOD_WIKI_TIER_SOURCES } from "@/lib/poe2-item-simulator/modWikiTierSources";
 import type { WikiExtractedModTierRowType, WikiItemModTiersFileType } from "@/lib/poe2-item-simulator/wikiModTierTypes";
 import {
@@ -23,6 +24,13 @@ export const getWikiModTierMergeCandidates = (
   modKey: string,
   wikiTierContext?: WikiTierSpawnContextType,
 ): WikiExtractedModTierRowType[] | null => {
+  if (
+    wikiTierContext !== undefined &&
+    isModKeyBlockedByPoe2dbSpellExclusionTags(modKey, wikiTierContext.poe2dbTags)
+  ) {
+    return [];
+  }
+
   const rule = MOD_WIKI_TIER_SOURCES[modKey];
   if (rule === undefined) {
     return null;
@@ -48,6 +56,12 @@ export const getWikiModTierMergeCandidates = (
     });
     if (spawnFiltered.length > 0) {
       candidates = spawnFiltered;
+    } else {
+      /**
+       * 스폰으로 한 줄도 남지 않으면 **빈 배열** — 이전에는 비필터 후보로 되돌려 지팡이에서도
+       * `two_hand_weapon` 전용 접두가 나오는 문제가 있었다.
+       */
+      return [];
     }
   }
 

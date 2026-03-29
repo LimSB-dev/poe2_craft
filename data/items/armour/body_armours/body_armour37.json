@@ -1,0 +1,25 @@
+{
+  "drop_level": "36",
+  "name": "sacrificial_mantle",
+  "armour": "123",
+  "evasion": "0",
+  "energy_shield": "46",
+  "required_level": "36",
+  "required_str": "33",
+  "required_dex": "0",
+  "required_int": "33",
+  "class": "body_armours",
+  "flags": [],
+  "tags": [
+    "str_int_armour",
+    "vaal_basetype",
+    "body_armour",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

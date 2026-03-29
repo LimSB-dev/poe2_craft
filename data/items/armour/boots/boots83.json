@@ -1,0 +1,25 @@
+{
+  "drop_level": "80",
+  "name": "cryptic_leggings",
+  "armour": "130",
+  "evasion": "0",
+  "energy_shield": "45",
+  "required_level": "80",
+  "required_str": "59",
+  "required_dex": "0",
+  "required_int": "59",
+  "class": "boots",
+  "flags": [],
+  "tags": [
+    "str_int_armour",
+    "karui_basetype",
+    "boots",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

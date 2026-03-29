@@ -1,0 +1,24 @@
+{
+  "drop_level": "48",
+  "name": "mercenary_greathelm",
+  "armour": "186",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "48",
+  "required_str": "69",
+  "required_dex": "0",
+  "required_int": "0",
+  "class": "helmets",
+  "flags": [],
+  "tags": [
+    "str_armour",
+    "helmet",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

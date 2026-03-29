@@ -1,0 +1,25 @@
+{
+  "drop_level": "45",
+  "name": "reaching_quarterstaff",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "45",
+  "required_str": "0",
+  "required_dex": "63",
+  "required_int": "26",
+  "class": "quarterstaves",
+  "flags": [],
+  "tags": [
+    "warstaff",
+    "two_hand_weapon",
+    "twohand",
+    "weapon"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

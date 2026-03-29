@@ -1,0 +1,25 @@
+{
+  "drop_level": "12",
+  "name": "soldier_greathelm",
+  "armour": "66",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "12",
+  "required_str": "19",
+  "required_dex": "0",
+  "required_int": "0",
+  "class": "helmets",
+  "flags": [],
+  "tags": [
+    "str_armour",
+    "ezomyte_basetype",
+    "helmet",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

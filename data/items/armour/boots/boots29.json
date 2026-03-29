@@ -1,0 +1,25 @@
+{
+  "drop_level": "45",
+  "name": "flax_sandals",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "48",
+  "required_level": "45",
+  "required_str": "0",
+  "required_dex": "0",
+  "required_int": "60",
+  "class": "boots",
+  "flags": [],
+  "tags": [
+    "int_armour",
+    "karui_basetype",
+    "boots",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

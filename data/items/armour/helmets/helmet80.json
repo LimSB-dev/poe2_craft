@@ -1,0 +1,24 @@
+{
+  "drop_level": "59",
+  "name": "jungle_tiara",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "78",
+  "required_level": "59",
+  "required_str": "0",
+  "required_dex": "0",
+  "required_int": "83",
+  "class": "helmets",
+  "flags": [],
+  "tags": [
+    "int_armour",
+    "helmet",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

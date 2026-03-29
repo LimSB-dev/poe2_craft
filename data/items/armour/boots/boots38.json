@@ -1,0 +1,24 @@
+{
+  "drop_level": "51",
+  "name": "bound_leggings",
+  "armour": "81",
+  "evasion": "0",
+  "energy_shield": "29",
+  "required_level": "51",
+  "required_str": "38",
+  "required_dex": "0",
+  "required_int": "38",
+  "class": "boots",
+  "flags": [],
+  "tags": [
+    "str_int_armour",
+    "boots",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

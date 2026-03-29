@@ -1,0 +1,25 @@
+{
+  "drop_level": "70",
+  "name": "baroque_targe",
+  "armour": "92",
+  "evasion": "84",
+  "energy_shield": "0",
+  "required_level": "70",
+  "required_str": "54",
+  "required_dex": "54",
+  "required_int": "0",
+  "class": "shields",
+  "flags": [],
+  "tags": [
+    "str_dex_armour",
+    "str_dex_shield",
+    "shield",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

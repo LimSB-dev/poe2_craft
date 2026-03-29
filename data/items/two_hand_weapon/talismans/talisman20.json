@@ -1,0 +1,26 @@
+{
+  "drop_level": "75",
+  "name": "alpha_talisman",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "75",
+  "required_str": "98",
+  "required_dex": "0",
+  "required_int": "72",
+  "class": "talismans",
+  "flags": [],
+  "tags": [
+    "maraketh_basetype",
+    "talisman",
+    "two_hand_weapon",
+    "twohand",
+    "weapon"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

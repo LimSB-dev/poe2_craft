@@ -1,0 +1,27 @@
+{
+  "drop_level": "16",
+  "name": "varnished_crossbow",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "16",
+  "required_str": "19",
+  "required_dex": "19",
+  "required_int": "0",
+  "class": "crossbows",
+  "flags": [],
+  "tags": [
+    "maraketh_basetype",
+    "crossbow",
+    "ranged",
+    "two_hand_weapon",
+    "twohand",
+    "weapon"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

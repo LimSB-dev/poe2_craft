@@ -1,0 +1,27 @@
+{
+  "drop_level": "16",
+  "name": "recurve_bow",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "16",
+  "required_str": "0",
+  "required_dex": "31",
+  "required_int": "0",
+  "class": "bows",
+  "flags": [],
+  "tags": [
+    "maraketh_basetype",
+    "bow",
+    "ranged",
+    "two_hand_weapon",
+    "twohand",
+    "weapon"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

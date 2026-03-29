@@ -1,0 +1,25 @@
+{
+  "drop_level": "12",
+  "name": "sombre_gloves",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "15",
+  "required_level": "12",
+  "required_str": "0",
+  "required_dex": "0",
+  "required_int": "17",
+  "class": "gloves",
+  "flags": [],
+  "tags": [
+    "int_armour",
+    "ezomyte_basetype",
+    "gloves",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

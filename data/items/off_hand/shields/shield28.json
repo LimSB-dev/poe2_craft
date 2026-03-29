@@ -1,0 +1,25 @@
+{
+  "drop_level": "46",
+  "name": "stratified_targe",
+  "armour": "62",
+  "evasion": "56",
+  "energy_shield": "0",
+  "required_level": "46",
+  "required_str": "37",
+  "required_dex": "37",
+  "required_int": "0",
+  "class": "shields",
+  "flags": [],
+  "tags": [
+    "str_dex_armour",
+    "str_dex_shield",
+    "shield",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

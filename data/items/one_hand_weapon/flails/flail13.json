@@ -1,0 +1,25 @@
+{
+  "drop_level": "65",
+  "name": "abyssal_flail",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "65",
+  "required_str": "89",
+  "required_dex": "0",
+  "required_int": "36",
+  "class": "flails",
+  "flags": [],
+  "tags": [
+    "flail",
+    "one_hand_weapon",
+    "onehand",
+    "weapon"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

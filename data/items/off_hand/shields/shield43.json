@@ -1,0 +1,25 @@
+{
+  "drop_level": "54",
+  "name": "polished_targe",
+  "armour": "71",
+  "evasion": "64",
+  "energy_shield": "0",
+  "required_level": "54",
+  "required_str": "42",
+  "required_dex": "42",
+  "required_int": "0",
+  "class": "shields",
+  "flags": [],
+  "tags": [
+    "str_dex_armour",
+    "str_dex_shield",
+    "shield",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

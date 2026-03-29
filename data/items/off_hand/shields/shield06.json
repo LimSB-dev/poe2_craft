@@ -1,0 +1,26 @@
+{
+  "drop_level": "7",
+  "name": "sigil_crest_shield",
+  "armour": "17",
+  "evasion": "0",
+  "energy_shield": "8",
+  "required_level": "7",
+  "required_str": "8",
+  "required_dex": "0",
+  "required_int": "8",
+  "class": "shields",
+  "flags": [],
+  "tags": [
+    "str_int_armour",
+    "str_int_shield",
+    "ezomyte_basetype",
+    "shield",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

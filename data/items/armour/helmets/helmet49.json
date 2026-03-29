@@ -1,0 +1,24 @@
+{
+  "drop_level": "48",
+  "name": "forest_crown",
+  "armour": "102",
+  "evasion": "0",
+  "energy_shield": "37",
+  "required_level": "48",
+  "required_str": "38",
+  "required_dex": "0",
+  "required_int": "38",
+  "class": "helmets",
+  "flags": [],
+  "tags": [
+    "str_int_armour",
+    "helmet",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

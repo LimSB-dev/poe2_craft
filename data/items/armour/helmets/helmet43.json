@@ -1,0 +1,25 @@
+{
+  "drop_level": "45",
+  "name": "solid_mask",
+  "armour": "0",
+  "evasion": "87",
+  "energy_shield": "35",
+  "required_level": "45",
+  "required_str": "0",
+  "required_dex": "36",
+  "required_int": "36",
+  "class": "helmets",
+  "flags": [],
+  "tags": [
+    "dex_int_armour",
+    "karui_basetype",
+    "helmet",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

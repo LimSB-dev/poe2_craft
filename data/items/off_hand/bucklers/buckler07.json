@@ -1,0 +1,27 @@
+{
+  "drop_level": "33",
+  "name": "ringed_buckler",
+  "armour": "0",
+  "evasion": "60",
+  "energy_shield": "0",
+  "required_level": "33",
+  "required_str": "0",
+  "required_dex": "48",
+  "required_int": "0",
+  "class": "bucklers",
+  "flags": [],
+  "tags": [
+    "dex_armour",
+    "dex_shield",
+    "vaal_basetype",
+    "buckler",
+    "shield",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

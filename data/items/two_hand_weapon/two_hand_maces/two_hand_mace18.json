@@ -1,0 +1,25 @@
+{
+  "drop_level": "62",
+  "name": "disintegrating_maul",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "62",
+  "required_str": "109",
+  "required_dex": "0",
+  "required_int": "0",
+  "class": "two_hand_maces",
+  "flags": [],
+  "tags": [
+    "mace",
+    "two_hand_weapon",
+    "twohand",
+    "weapon"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

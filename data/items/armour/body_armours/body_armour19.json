@@ -1,0 +1,25 @@
+{
+  "drop_level": "16",
+  "name": "raider_plate",
+  "armour": "121",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "16",
+  "required_str": "28",
+  "required_dex": "0",
+  "required_int": "0",
+  "class": "body_armours",
+  "flags": [],
+  "tags": [
+    "str_armour",
+    "maraketh_basetype",
+    "body_armour",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "drop_level": "59",
+  "name": "plated_vestments",
+  "armour": "187",
+  "evasion": "0",
+  "energy_shield": "65",
+  "required_level": "59",
+  "required_str": "52",
+  "required_dex": "0",
+  "required_int": "52",
+  "class": "body_armours",
+  "flags": [],
+  "tags": [
+    "str_int_armour",
+    "body_armour",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

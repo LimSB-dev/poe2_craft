@@ -1,0 +1,24 @@
+{
+  "drop_level": "1",
+  "name": "fishing_rod",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "1",
+  "required_str": "100",
+  "required_dex": "0",
+  "required_int": "0",
+  "class": "fishing_rods",
+  "flags": [],
+  "tags": [
+    "not_for_sale",
+    "fishing_rod",
+    "twohand"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "drop_level": "28",
+  "name": "wayfarer_jacket",
+  "armour": "0",
+  "evasion": "88",
+  "energy_shield": "39",
+  "required_level": "28",
+  "required_str": "0",
+  "required_dex": "26",
+  "required_int": "26",
+  "class": "body_armours",
+  "flags": [],
+  "tags": [
+    "dex_int_armour",
+    "maraketh_basetype",
+    "body_armour",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

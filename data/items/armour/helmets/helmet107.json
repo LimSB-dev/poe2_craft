@@ -1,0 +1,25 @@
+{
+  "drop_level": "80",
+  "name": "cryptic_crown",
+  "armour": "174",
+  "evasion": "0",
+  "energy_shield": "60",
+  "required_level": "80",
+  "required_str": "63",
+  "required_dex": "0",
+  "required_int": "63",
+  "class": "helmets",
+  "flags": [],
+  "tags": [
+    "str_int_armour",
+    "karui_basetype",
+    "helmet",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

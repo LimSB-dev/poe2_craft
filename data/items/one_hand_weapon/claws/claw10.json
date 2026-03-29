@@ -1,0 +1,25 @@
+{
+  "drop_level": "49",
+  "name": "sharktooth_claw",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "49",
+  "required_str": "0",
+  "required_dex": "87",
+  "required_int": "0",
+  "class": "claws",
+  "flags": [],
+  "tags": [
+    "claw",
+    "one_hand_weapon",
+    "onehand",
+    "weapon"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "drop_level": "61",
+  "name": "goldworked_tower_shield",
+  "armour": "144",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "61",
+  "required_str": "86",
+  "required_dex": "0",
+  "required_int": "0",
+  "class": "shields",
+  "flags": [],
+  "tags": [
+    "str_armour",
+    "str_shield",
+    "shield",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

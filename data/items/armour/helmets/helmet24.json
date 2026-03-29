@@ -1,0 +1,25 @@
+{
+  "drop_level": "28",
+  "name": "veiled_mask",
+  "armour": "0",
+  "evasion": "58",
+  "energy_shield": "25",
+  "required_level": "28",
+  "required_str": "0",
+  "required_dex": "23",
+  "required_int": "23",
+  "class": "helmets",
+  "flags": [],
+  "tags": [
+    "dex_int_armour",
+    "maraketh_basetype",
+    "helmet",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

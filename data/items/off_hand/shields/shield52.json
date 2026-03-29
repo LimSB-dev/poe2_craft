@@ -1,0 +1,25 @@
+{
+  "drop_level": "62",
+  "name": "glowering_crest_shield",
+  "armour": "80",
+  "evasion": "0",
+  "energy_shield": "28",
+  "required_level": "62",
+  "required_str": "48",
+  "required_dex": "0",
+  "required_int": "48",
+  "class": "shields",
+  "flags": [],
+  "tags": [
+    "str_int_armour",
+    "str_int_shield",
+    "shield",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

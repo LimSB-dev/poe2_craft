@@ -1,0 +1,26 @@
+{
+  "drop_level": "70",
+  "name": "soaring_spear",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "70",
+  "required_str": "41",
+  "required_dex": "115",
+  "required_int": "0",
+  "class": "spears",
+  "flags": [],
+  "tags": [
+    "maraketh_basetype",
+    "spear",
+    "one_hand_weapon",
+    "onehand",
+    "weapon"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

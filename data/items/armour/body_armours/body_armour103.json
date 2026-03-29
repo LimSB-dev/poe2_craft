@@ -1,0 +1,24 @@
+{
+  "drop_level": "65",
+  "name": "exquisite_vest",
+  "armour": "0",
+  "evasion": "487",
+  "energy_shield": "0",
+  "required_level": "65",
+  "required_str": "0",
+  "required_dex": "121",
+  "required_int": "0",
+  "class": "body_armours",
+  "flags": [],
+  "tags": [
+    "dex_armour",
+    "body_armour",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

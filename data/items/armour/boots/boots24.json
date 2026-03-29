@@ -1,0 +1,25 @@
+{
+  "drop_level": "33",
+  "name": "stone_greaves",
+  "armour": "102",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "33",
+  "required_str": "45",
+  "required_dex": "0",
+  "required_int": "0",
+  "class": "boots",
+  "flags": [],
+  "tags": [
+    "str_armour",
+    "vaal_basetype",
+    "boots",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "drop_level": "80",
+  "name": "golden_targe",
+  "armour": "109",
+  "evasion": "99",
+  "energy_shield": "0",
+  "required_level": "80",
+  "required_str": "63",
+  "required_dex": "63",
+  "required_int": "0",
+  "class": "shields",
+  "flags": [],
+  "tags": [
+    "str_dex_armour",
+    "str_dex_shield",
+    "karui_basetype",
+    "shield",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

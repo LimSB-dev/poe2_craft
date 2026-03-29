@@ -1,0 +1,24 @@
+{
+  "drop_level": "59",
+  "name": "adherents_raiment",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "119",
+  "required_level": "59",
+  "required_str": "0",
+  "required_dex": "0",
+  "required_int": "94",
+  "class": "body_armours",
+  "flags": [],
+  "tags": [
+    "int_armour",
+    "body_armour",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "drop_level": "5",
+  "name": "feathered_robe",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "35",
+  "required_level": "5",
+  "required_str": "0",
+  "required_dex": "0",
+  "required_int": "11",
+  "class": "body_armours",
+  "flags": [],
+  "tags": [
+    "int_armour",
+    "ezomyte_basetype",
+    "body_armour",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

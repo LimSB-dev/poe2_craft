@@ -1,0 +1,25 @@
+{
+  "drop_level": "54",
+  "name": "profane_cleaver",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "54",
+  "required_str": "75",
+  "required_dex": "30",
+  "required_int": "0",
+  "class": "one_hand_axes",
+  "flags": [],
+  "tags": [
+    "axe",
+    "one_hand_weapon",
+    "onehand",
+    "weapon"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

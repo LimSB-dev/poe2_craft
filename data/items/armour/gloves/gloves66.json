@@ -1,0 +1,24 @@
+{
+  "drop_level": "65",
+  "name": "signet_cuffs",
+  "armour": "67",
+  "evasion": "0",
+  "energy_shield": "23",
+  "required_level": "65",
+  "required_str": "44",
+  "required_dex": "0",
+  "required_int": "44",
+  "class": "gloves",
+  "flags": [],
+  "tags": [
+    "str_int_armour",
+    "gloves",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

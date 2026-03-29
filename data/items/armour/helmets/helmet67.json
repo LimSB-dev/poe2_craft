@@ -1,0 +1,24 @@
+{
+  "drop_level": "54",
+  "name": "cabalist_helm",
+  "armour": "113",
+  "evasion": "103",
+  "energy_shield": "0",
+  "required_level": "54",
+  "required_str": "42",
+  "required_dex": "42",
+  "required_int": "0",
+  "class": "helmets",
+  "flags": [],
+  "tags": [
+    "str_dex_armour",
+    "helmet",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

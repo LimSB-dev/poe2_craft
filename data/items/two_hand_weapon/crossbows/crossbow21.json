@@ -1,0 +1,26 @@
+{
+  "drop_level": "72",
+  "name": "engraved_crossbow",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "72",
+  "required_str": "82",
+  "required_dex": "82",
+  "required_int": "0",
+  "class": "crossbows",
+  "flags": [],
+  "tags": [
+    "crossbow",
+    "ranged",
+    "two_hand_weapon",
+    "twohand",
+    "weapon"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

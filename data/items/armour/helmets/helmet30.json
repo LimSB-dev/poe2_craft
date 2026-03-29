@@ -1,0 +1,25 @@
+{
+  "drop_level": "33",
+  "name": "tribal_mask",
+  "armour": "0",
+  "evasion": "66",
+  "energy_shield": "28",
+  "required_level": "33",
+  "required_str": "0",
+  "required_dex": "27",
+  "required_int": "27",
+  "class": "helmets",
+  "flags": [],
+  "tags": [
+    "dex_int_armour",
+    "vaal_basetype",
+    "helmet",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

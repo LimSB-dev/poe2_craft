@@ -1,6 +1,13 @@
 import fs from "fs";
 import path from "path";
 
+import {
+  isExtractDebug,
+  logExtractDebugBlock,
+  previewJson,
+  summarizeModsViewLikePayload,
+} from "./extract-debug";
+
 const ROOT_URL = "https://poe2db.tw";
 const MODIFIERS_URL = `${ROOT_URL}/kr/Modifiers`;
 const OUT_PATH = path.join(process.cwd(), "data/generated/poe2db-modifiers.full.json");
@@ -282,20 +289,70 @@ const extractRowsFromPayload = (
 };
 
 const run = async (): Promise<void> => {
+  if (isExtractDebug()) {
+    console.log(
+      "[EXTRACT_DEBUG] /kr/Modifiers HTML 및 첫 ModsView JSON 요약을 콘솔에 출력합니다.",
+    );
+  }
   console.log("Fetching /kr/Modifiers …");
   const modifiersHtml = await fetchText(MODIFIERS_URL);
+  if (isExtractDebug()) {
+    logExtractDebugBlock(
+      "PoE2DB /kr/Modifiers 응답 (HTML 앞부분)",
+      previewJson({
+        url: MODIFIERS_URL,
+        htmlCharLength: modifiersHtml.length,
+        htmlPreview: modifiersHtml.slice(0, 3500),
+      }),
+    );
+  }
   const links = extractModifierCalcLinks(modifiersHtml);
   console.log(`Found ${String(links.length)} #ModifiersCalc pages.`);
 
   const allRows: ExtractedModifierRowType[] = [];
   const sectionKeys = new Set<string>();
   const failed: string[] = [];
+  let modsViewSampleLogged = false;
+  let modsViewOneLineShapeLogged = false;
 
   for (const link of links) {
     try {
       console.log(`- ${link.slug}`);
       const html = await fetchText(link.href.replace(/#ModifiersCalc$/, ""));
       const payload = parseModsViewPayload(html);
+      if (!modsViewOneLineShapeLogged) {
+        modsViewOneLineShapeLogged = true;
+        const rec = payload as Record<string, unknown>;
+        const normal = rec.normal;
+        const normalRowCount = Array.isArray(normal) ? normal.length : 0;
+        const first = Array.isArray(normal) && normal.length > 0 ? normal[0] : undefined;
+        const firstNormalKeys =
+          first !== undefined && typeof first === "object" && first !== null
+            ? Object.keys(first as object)
+            : [];
+        console.log(
+          `[poe2db-modifiers] ModsView JSON 형식(첫 성공 페이지, #ModifiersCalc 데이터): ${JSON.stringify({
+            slug: link.slug,
+            topLevelKeys: Object.keys(rec),
+            normalRowCount,
+            firstNormalRowKeys: firstNormalKeys,
+          })}`,
+        );
+      }
+      if (isExtractDebug() && !modsViewSampleLogged) {
+        modsViewSampleLogged = true;
+        const rec = payload as Record<string, unknown>;
+        logExtractDebugBlock(
+          "PoE2DB new ModsView(...) JSON 파싱 결과 요약 (첫 성공 페이지)",
+          previewJson({
+            pageUrl: link.href.replace(/#ModifiersCalc$/, ""),
+            slug: link.slug,
+            topLevelKeys: Object.keys(rec),
+            baseitem: rec.baseitem,
+            sectionsSummary: summarizeModsViewLikePayload(rec),
+          }),
+        );
+      }
       const rows = extractRowsFromPayload(payload, link);
       for (const row of rows) {
         sectionKeys.add(row.section);
@@ -305,6 +362,30 @@ const run = async (): Promise<void> => {
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);
       failed.push(`${link.slug}: ${message}`);
+    }
+  }
+
+  {
+    const hit = allRows.find((r) => {
+      return r.modFamilies.includes("SpellDamageAndMana");
+    });
+    if (hit !== undefined) {
+      console.log(
+        `[poe2db-modifiers] SpellDamageAndMana 패밀리 행 예시(ModFamilyList, 1건): ${JSON.stringify({
+          sourcePageSlug: hit.sourcePageSlug,
+          section: hit.section,
+          modifierName: hit.modifierName,
+          modFamilies: hit.modFamilies,
+          requiredLevel: hit.requiredLevel,
+          modGenerationTypeId: hit.modGenerationTypeId,
+          statLineText: hit.statLineText,
+          dropChanceRaw: hit.dropChanceRaw,
+        })}`,
+      );
+    } else {
+      console.log(
+        `[poe2db-modifiers] SpellDamageAndMana 패밀리 행 없음 — 전체 페이지 파싱 후에도 ModFamilyList에 없음. failed 목록을 확인하세요.`,
+      );
     }
   }
 

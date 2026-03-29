@@ -1,0 +1,24 @@
+{
+  "drop_level": "59",
+  "name": "heavy_plate",
+  "armour": "340",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "59",
+  "required_str": "94",
+  "required_dex": "0",
+  "required_int": "0",
+  "class": "body_armours",
+  "flags": [],
+  "tags": [
+    "str_armour",
+    "body_armour",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

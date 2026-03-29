@@ -1,0 +1,24 @@
+{
+  "drop_level": "51",
+  "name": "goldwork_sabatons",
+  "armour": "81",
+  "evasion": "73",
+  "energy_shield": "0",
+  "required_level": "51",
+  "required_str": "38",
+  "required_dex": "38",
+  "required_int": "0",
+  "class": "boots",
+  "flags": [],
+  "tags": [
+    "str_dex_armour",
+    "boots",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

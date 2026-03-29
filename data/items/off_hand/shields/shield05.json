@@ -1,0 +1,26 @@
+{
+  "drop_level": "6",
+  "name": "painted_tower_shield",
+  "armour": "29",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "6",
+  "required_str": "11",
+  "required_dex": "0",
+  "required_int": "0",
+  "class": "shields",
+  "flags": [],
+  "tags": [
+    "str_armour",
+    "str_shield",
+    "ezomyte_basetype",
+    "shield",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

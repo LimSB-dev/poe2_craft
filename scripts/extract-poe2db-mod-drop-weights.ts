@@ -44,6 +44,13 @@ import { resolveWikiModIdForPoe2DbModsViewNormalRow } from "@/lib/poe2-item-simu
 import type { WikiItemModTiersFileType } from "@/lib/poe2-item-simulator/wikiModTierTypes";
 import wikiModTierPayload from "@/lib/poe2-item-simulator/data/poe2wiki-item-mod-tiers.json";
 
+import {
+  isExtractDebug,
+  logExtractDebugBlock,
+  previewJson,
+  summarizeModsViewLikePayload,
+} from "./extract-debug";
+
 const ROOT_URL = "https://poe2db.tw";
 const MODIFIERS_URL = `${ROOT_URL}/kr/Modifiers`;
 const OUT_PATH = path.join(process.cwd(), "data/generated/poe2db-mod-drop-weights.json");
@@ -206,8 +213,23 @@ const parseDropChance = (raw: unknown): number | null => {
 };
 
 const run = async (): Promise<void> => {
+  if (isExtractDebug()) {
+    console.log(
+      "[EXTRACT_DEBUG] Modifiers HTML 및 첫 ModsView JSON(normal 행) 샘플을 콘솔에 출력합니다.",
+    );
+  }
   console.log("Fetching /kr/Modifiers …");
   const modifiersHtml = await fetchText(MODIFIERS_URL);
+  if (isExtractDebug()) {
+    logExtractDebugBlock(
+      "PoE2DB /kr/Modifiers 응답 (HTML 앞부분)",
+      previewJson({
+        url: MODIFIERS_URL,
+        htmlCharLength: modifiersHtml.length,
+        htmlPreview: modifiersHtml.slice(0, 3500),
+      }),
+    );
+  }
   const links = extractModifierCalcLinks(modifiersHtml);
   console.log(`Found ${String(links.length)} #ModifiersCalc pages.`);
 
@@ -216,11 +238,38 @@ const run = async (): Promise<void> => {
   /** PoE2DB `#ModifiersCalc` 페이지 슬러그별 — 방어구는 `Helmets_str` 등 능력치 페이지(`poe2dbStatAffinityPages`). */
   const weightsByWikiModIdAndPoe2DbPageSlug: Record<string, Record<string, number>> = {};
   const failed: string[] = [];
+  let modsViewSampleLogged = false;
 
   for (const link of links) {
     try {
       const html = await fetchText(link.href.replace(/#ModifiersCalc$/, ""));
       const payload = parseModsViewPayload(html);
+      if (isExtractDebug() && !modsViewSampleLogged) {
+        modsViewSampleLogged = true;
+        const rec = payload as Record<string, unknown>;
+        const normal = rec.normal;
+        const firstNormal =
+          Array.isArray(normal) && normal.length > 0 ? normal[0] : undefined;
+        logExtractDebugBlock(
+          "PoE2DB ModsView (drop-weights: 첫 페이지, normal 배열 첫 행)",
+          previewJson({
+            pageUrl: link.href.replace(/#ModifiersCalc$/, ""),
+            slug: link.slug,
+            topLevelKeys: Object.keys(rec),
+            baseitem: rec.baseitem,
+            sectionsSummary: summarizeModsViewLikePayload(rec),
+            normalRowCount: Array.isArray(normal) ? normal.length : null,
+            firstNormalRowKeys:
+              firstNormal !== undefined && typeof firstNormal === "object" && firstNormal !== null
+                ? Object.keys(firstNormal as object)
+                : null,
+            firstNormalRowSample:
+              firstNormal !== undefined && typeof firstNormal === "object" && firstNormal !== null
+                ? previewJson(firstNormal, 4000)
+                : firstNormal,
+          }),
+        );
+      }
       const normal = payload.normal;
       if (!Array.isArray(normal)) {
         await delay(120);

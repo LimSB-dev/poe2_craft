@@ -1,0 +1,15 @@
+{
+  "drop_level": "",
+  "name": "",
+  "armour": "",
+  "evasion": "",
+  "energy_shield": "",
+  "required_level": "",
+  "required_str": "",
+  "required_dex": "",
+  "required_int": "",
+  "class": "",
+  "flags": [],
+  "tags": [],
+  "enable_rarity": ["normal", "magic", "rare", "unique"]
+}

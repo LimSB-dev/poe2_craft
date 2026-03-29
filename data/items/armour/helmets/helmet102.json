@@ -1,0 +1,24 @@
+{
+  "drop_level": "75",
+  "name": "kamasan_tiara",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "101",
+  "required_level": "75",
+  "required_str": "0",
+  "required_dex": "0",
+  "required_int": "107",
+  "class": "helmets",
+  "flags": [],
+  "tags": [
+    "int_armour",
+    "helmet",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

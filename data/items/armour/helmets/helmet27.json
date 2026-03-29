@@ -1,0 +1,25 @@
+{
+  "drop_level": "33",
+  "name": "heavy_crown",
+  "armour": "75",
+  "evasion": "0",
+  "energy_shield": "28",
+  "required_level": "33",
+  "required_str": "27",
+  "required_dex": "0",
+  "required_int": "27",
+  "class": "helmets",
+  "flags": [],
+  "tags": [
+    "str_int_armour",
+    "vaal_basetype",
+    "helmet",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "drop_level": "11",
+  "name": "pathfinder_coat",
+  "armour": "0",
+  "evasion": "78",
+  "energy_shield": "0",
+  "required_level": "11",
+  "required_str": "0",
+  "required_dex": "21",
+  "required_int": "0",
+  "class": "body_armours",
+  "flags": [],
+  "tags": [
+    "dex_armour",
+    "ezomyte_basetype",
+    "body_armour",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

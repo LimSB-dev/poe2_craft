@@ -1,0 +1,25 @@
+{
+  "drop_level": "45",
+  "name": "closed_helm",
+  "armour": "97",
+  "evasion": "87",
+  "energy_shield": "0",
+  "required_level": "45",
+  "required_str": "36",
+  "required_dex": "36",
+  "required_int": "0",
+  "class": "helmets",
+  "flags": [],
+  "tags": [
+    "str_dex_armour",
+    "karui_basetype",
+    "helmet",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

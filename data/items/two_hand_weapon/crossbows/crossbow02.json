@@ -1,0 +1,27 @@
+{
+  "drop_level": "4",
+  "name": "tense_crossbow",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "4",
+  "required_str": "8",
+  "required_dex": "8",
+  "required_int": "0",
+  "class": "crossbows",
+  "flags": [],
+  "tags": [
+    "ezomyte_basetype",
+    "crossbow",
+    "ranged",
+    "two_hand_weapon",
+    "twohand",
+    "weapon"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

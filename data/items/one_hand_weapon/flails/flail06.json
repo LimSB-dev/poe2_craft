@@ -1,0 +1,26 @@
+{
+  "drop_level": "26",
+  "name": "slender_flail",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "26",
+  "required_str": "38",
+  "required_dex": "0",
+  "required_int": "17",
+  "class": "flails",
+  "flags": [],
+  "tags": [
+    "maraketh_basetype",
+    "flail",
+    "one_hand_weapon",
+    "onehand",
+    "weapon"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

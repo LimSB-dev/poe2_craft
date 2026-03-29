@@ -1,0 +1,24 @@
+{
+  "drop_level": "52",
+  "name": "monument_greaves",
+  "armour": "150",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "52",
+  "required_str": "69",
+  "required_dex": "0",
+  "required_int": "0",
+  "class": "boots",
+  "flags": [],
+  "tags": [
+    "str_armour",
+    "boots",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

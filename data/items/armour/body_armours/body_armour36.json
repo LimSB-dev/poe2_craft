@@ -1,0 +1,25 @@
+{
+  "drop_level": "33",
+  "name": "votive_raiment",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "78",
+  "required_level": "33",
+  "required_str": "0",
+  "required_dex": "0",
+  "required_int": "54",
+  "class": "body_armours",
+  "flags": [],
+  "tags": [
+    "int_armour",
+    "vaal_basetype",
+    "body_armour",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

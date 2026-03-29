@@ -1,0 +1,26 @@
+{
+  "drop_level": "77",
+  "name": "fang_talisman",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "77",
+  "required_str": "89",
+  "required_dex": "0",
+  "required_int": "68",
+  "class": "talismans",
+  "flags": [],
+  "tags": [
+    "maraketh_basetype",
+    "talisman",
+    "two_hand_weapon",
+    "twohand",
+    "weapon"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

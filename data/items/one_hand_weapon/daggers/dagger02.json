@@ -1,0 +1,26 @@
+{
+  "drop_level": "1",
+  "name": "glass_shank",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "1",
+  "required_str": "100",
+  "required_dex": "0",
+  "required_int": "0",
+  "class": "daggers",
+  "flags": [],
+  "tags": [
+    "ezomyte_basetype",
+    "dagger",
+    "one_hand_weapon",
+    "onehand",
+    "weapon"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

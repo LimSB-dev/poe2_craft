@@ -1,0 +1,25 @@
+{
+  "drop_level": "26",
+  "name": "cowled_helm",
+  "armour": "62",
+  "evasion": "54",
+  "energy_shield": "0",
+  "required_level": "26",
+  "required_str": "22",
+  "required_dex": "22",
+  "required_int": "0",
+  "class": "helmets",
+  "flags": [],
+  "tags": [
+    "str_dex_armour",
+    "maraketh_basetype",
+    "helmet",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

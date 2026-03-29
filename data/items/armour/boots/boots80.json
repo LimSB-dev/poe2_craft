@@ -1,0 +1,24 @@
+{
+  "drop_level": "75",
+  "name": "vaal_greaves",
+  "armour": "219",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "75",
+  "required_str": "101",
+  "required_dex": "0",
+  "required_int": "0",
+  "class": "boots",
+  "flags": [],
+  "tags": [
+    "str_armour",
+    "boots",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

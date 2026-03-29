@@ -1,0 +1,23 @@
+{
+  "drop_level": "49",
+  "name": "wrath_sceptre",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "49",
+  "required_str": "28",
+  "required_dex": "0",
+  "required_int": "68",
+  "class": "sceptres",
+  "flags": [],
+  "tags": [
+    "sceptre",
+    "onehand"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

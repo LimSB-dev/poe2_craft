@@ -1,0 +1,25 @@
+{
+  "drop_level": "11",
+  "name": "waxed_jacket",
+  "armour": "0",
+  "evasion": "43",
+  "energy_shield": "24",
+  "required_level": "11",
+  "required_str": "0",
+  "required_dex": "13",
+  "required_int": "13",
+  "class": "body_armours",
+  "flags": [],
+  "tags": [
+    "dex_int_armour",
+    "ezomyte_basetype",
+    "body_armour",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

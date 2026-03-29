@@ -1,7 +1,7 @@
 {
   "schemaVersion": "spawn-tag-union@1",
   "source": "poe2wiki_cargo_derived",
-  "fetchedAtIso": "2026-03-28T13:19:49.780Z",
+  "fetchedAtIso": "2026-03-28T23:51:44.917Z",
   "note": "Union of mod_spawn_weights.tag where value>0, grouped by mod_groups + generation_type. modDb.applicableSubTypes may omit tags intentionally.",
   "groupCount": 203,
   "groups": {

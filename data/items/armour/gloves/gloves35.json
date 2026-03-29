@@ -1,0 +1,25 @@
+{
+  "drop_level": "45",
+  "name": "plate_gauntlets",
+  "armour": "48",
+  "evasion": "44",
+  "energy_shield": "0",
+  "required_level": "45",
+  "required_str": "32",
+  "required_dex": "32",
+  "required_int": "0",
+  "class": "gloves",
+  "flags": [],
+  "tags": [
+    "str_dex_armour",
+    "karui_basetype",
+    "gloves",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

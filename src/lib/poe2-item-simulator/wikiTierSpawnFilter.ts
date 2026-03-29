@@ -130,7 +130,12 @@ const WIKI_SPAWN_TAGS_BY_WEAPON_SUBTYPE: Partial<
   sceptre: ["sceptre", "one_hand_weapon", "weapon"],
   spear: ["spear", "one_hand_weapon", "ranged", "weapon"],
   flail: ["flail", "one_hand_weapon", "weapon"],
-  staff: ["staff", "two_hand_weapon", "weapon"],
+  /**
+   * Spell staves vs quarterstaves: attack-style two-hand mods often have `two_hand_weapon` only,
+   * while caster staves use the `staff` column. Including `two_hand_weapon`/`weapon` here made
+   * melee-attack pools appear on spell staves.
+   */
+  staff: ["staff"],
   wand: ["wand", "one_hand_weapon", "weapon"],
   bow: ["bow", "ranged", "weapon"],
   claw: ["claw", "one_hand_weapon", "weapon"],
@@ -176,6 +181,14 @@ export const wikiPositiveSpawnTagsForSubType = (
 ): string[] => {
   const weapon = WIKI_SPAWN_TAGS_BY_WEAPON_SUBTYPE[subType];
   if (weapon !== undefined) {
+    if (subType === "staff") {
+      /**
+       * 스펠 스태프: 위키 `mod_spawn_weights`의 **`staff` 열만** 본다 (PoE2 Cargo 키는 `staff`; 게임 UI/DB의 “Staves”와 동일 축).
+       * `poe2dbTags`를 OR 후보에 합치면 `weapon`만 양수인 행(예: `LocalCriticalMultiplier*`)이 매칭되어
+       * `SpellCriticalStrikeMultiplierTwoHand*` 등 **staff 열이 있는 접미 사다리**와 섞인다.
+       */
+      return [...weapon];
+    }
     return [...new Set([...weapon, ...(poe2dbTags ?? [])])];
   }
 

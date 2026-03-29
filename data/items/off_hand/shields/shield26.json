@@ -1,0 +1,25 @@
+{
+  "drop_level": "45",
+  "name": "painted_crest_shield",
+  "armour": "61",
+  "evasion": "0",
+  "energy_shield": "22",
+  "required_level": "45",
+  "required_str": "36",
+  "required_dex": "0",
+  "required_int": "36",
+  "class": "shields",
+  "flags": [],
+  "tags": [
+    "str_int_armour",
+    "str_int_shield",
+    "shield",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "drop_level": "16",
+  "name": "mail_vestments",
+  "armour": "67",
+  "evasion": "0",
+  "energy_shield": "28",
+  "required_level": "16",
+  "required_str": "17",
+  "required_dex": "0",
+  "required_int": "17",
+  "class": "body_armours",
+  "flags": [],
+  "tags": [
+    "str_int_armour",
+    "maraketh_basetype",
+    "body_armour",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

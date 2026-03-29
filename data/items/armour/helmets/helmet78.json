@@ -1,0 +1,24 @@
+{
+  "drop_level": "59",
+  "name": "gladiatoral_helm",
+  "armour": "123",
+  "evasion": "111",
+  "energy_shield": "0",
+  "required_level": "59",
+  "required_str": "46",
+  "required_dex": "46",
+  "required_int": "0",
+  "class": "helmets",
+  "flags": [],
+  "tags": [
+    "str_dex_armour",
+    "helmet",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

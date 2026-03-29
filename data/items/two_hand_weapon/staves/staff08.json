@@ -1,0 +1,27 @@
+{
+  "drop_level": "38",
+  "name": "reaping_staff",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "38",
+  "required_str": "0",
+  "required_dex": "0",
+  "required_int": "69",
+  "class": "staves",
+  "flags": [],
+  "tags": [
+    "no_fire_spell_mods",
+    "no_cold_spell_mods",
+    "no_lightning_spell_mods",
+    "no_chaos_spell_mods",
+    "staff",
+    "twohand"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

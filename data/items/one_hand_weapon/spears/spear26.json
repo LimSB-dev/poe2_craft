@@ -1,0 +1,26 @@
+{
+  "drop_level": "78",
+  "name": "akoyan_spear",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "78",
+  "required_str": "50",
+  "required_dex": "127",
+  "required_int": "90",
+  "class": "spears",
+  "flags": [],
+  "tags": [
+    "karui_basetype",
+    "spear",
+    "one_hand_weapon",
+    "onehand",
+    "weapon"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

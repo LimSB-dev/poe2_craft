@@ -1,0 +1,25 @@
+{
+  "drop_level": "80",
+  "name": "sekhema_sandals",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "82",
+  "required_level": "80",
+  "required_str": "0",
+  "required_dex": "0",
+  "required_int": "108",
+  "class": "boots",
+  "flags": [],
+  "tags": [
+    "int_armour",
+    "karui_basetype",
+    "boots",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

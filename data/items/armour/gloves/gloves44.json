@@ -1,0 +1,24 @@
+{
+  "drop_level": "52",
+  "name": "burnished_gauntlets",
+  "armour": "55",
+  "evasion": "50",
+  "energy_shield": "0",
+  "required_level": "52",
+  "required_str": "36",
+  "required_dex": "36",
+  "required_int": "0",
+  "class": "gloves",
+  "flags": [],
+  "tags": [
+    "str_dex_armour",
+    "gloves",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

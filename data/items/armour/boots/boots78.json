@@ -1,0 +1,24 @@
+{
+  "drop_level": "75",
+  "name": "quickslip_shoes",
+  "armour": "0",
+  "evasion": "110",
+  "energy_shield": "42",
+  "required_level": "75",
+  "required_str": "0",
+  "required_dex": "56",
+  "required_int": "56",
+  "class": "boots",
+  "flags": [],
+  "tags": [
+    "dex_int_armour",
+    "boots",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

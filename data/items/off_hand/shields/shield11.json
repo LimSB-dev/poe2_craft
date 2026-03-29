@@ -1,0 +1,26 @@
+{
+  "drop_level": "16",
+  "name": "emblem_crest_shield",
+  "armour": "27",
+  "evasion": "0",
+  "energy_shield": "12",
+  "required_level": "16",
+  "required_str": "15",
+  "required_dex": "0",
+  "required_int": "15",
+  "class": "shields",
+  "flags": [],
+  "tags": [
+    "str_int_armour",
+    "str_int_shield",
+    "maraketh_basetype",
+    "shield",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

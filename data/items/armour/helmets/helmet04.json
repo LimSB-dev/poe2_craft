@@ -1,0 +1,25 @@
+{
+  "drop_level": "5",
+  "name": "brimmed_helm",
+  "armour": "23",
+  "evasion": "18",
+  "energy_shield": "0",
+  "required_level": "5",
+  "required_str": "7",
+  "required_dex": "7",
+  "required_int": "0",
+  "class": "helmets",
+  "flags": [],
+  "tags": [
+    "str_dex_armour",
+    "ezomyte_basetype",
+    "helmet",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

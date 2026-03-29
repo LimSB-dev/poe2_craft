@@ -1,0 +1,24 @@
+{
+  "drop_level": "51",
+  "name": "sleek_boots",
+  "armour": "0",
+  "evasion": "133",
+  "energy_shield": "0",
+  "required_level": "51",
+  "required_str": "0",
+  "required_dex": "68",
+  "required_int": "0",
+  "class": "boots",
+  "flags": [],
+  "tags": [
+    "dex_armour",
+    "boots",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

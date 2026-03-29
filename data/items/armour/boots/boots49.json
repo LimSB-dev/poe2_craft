@@ -1,0 +1,24 @@
+{
+  "drop_level": "54",
+  "name": "elegant_greaves",
+  "armour": "155",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "54",
+  "required_str": "72",
+  "required_dex": "0",
+  "required_int": "0",
+  "class": "boots",
+  "flags": [],
+  "tags": [
+    "str_armour",
+    "boots",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

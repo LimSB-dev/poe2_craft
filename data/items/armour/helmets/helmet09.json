@@ -1,0 +1,25 @@
+{
+  "drop_level": "10",
+  "name": "horned_crown",
+  "armour": "33",
+  "evasion": "0",
+  "energy_shield": "15",
+  "required_level": "10",
+  "required_str": "10",
+  "required_dex": "0",
+  "required_int": "10",
+  "class": "helmets",
+  "flags": [],
+  "tags": [
+    "str_int_armour",
+    "ezomyte_basetype",
+    "helmet",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

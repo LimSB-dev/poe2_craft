@@ -1,0 +1,24 @@
+{
+  "drop_level": "59",
+  "name": "carved_greaves",
+  "armour": "167",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "59",
+  "required_str": "78",
+  "required_dex": "0",
+  "required_int": "0",
+  "class": "boots",
+  "flags": [],
+  "tags": [
+    "str_armour",
+    "boots",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

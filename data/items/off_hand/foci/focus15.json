@@ -1,0 +1,24 @@
+{
+  "drop_level": "54",
+  "name": "arrayed_focus",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "45",
+  "required_level": "54",
+  "required_str": "0",
+  "required_dex": "0",
+  "required_int": "77",
+  "class": "foci",
+  "flags": [],
+  "tags": [
+    "int_armour",
+    "focus",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

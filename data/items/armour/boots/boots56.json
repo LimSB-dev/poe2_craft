@@ -1,0 +1,24 @@
+{
+  "drop_level": "59",
+  "name": "shamanistic_leggings",
+  "armour": "92",
+  "evasion": "0",
+  "energy_shield": "32",
+  "required_level": "59",
+  "required_str": "44",
+  "required_dex": "0",
+  "required_int": "44",
+  "class": "boots",
+  "flags": [],
+  "tags": [
+    "str_int_armour",
+    "boots",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "drop_level": "70",
+  "name": "ancient_cuffs",
+  "armour": "74",
+  "evasion": "0",
+  "energy_shield": "25",
+  "required_level": "70",
+  "required_str": "48",
+  "required_dex": "0",
+  "required_int": "48",
+  "class": "gloves",
+  "flags": [],
+  "tags": [
+    "str_int_armour",
+    "gloves",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

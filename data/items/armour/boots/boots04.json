@@ -1,0 +1,25 @@
+{
+  "drop_level": "5",
+  "name": "frayed_shoes",
+  "armour": "0",
+  "evasion": "13",
+  "energy_shield": "9",
+  "required_level": "5",
+  "required_str": "0",
+  "required_dex": "7",
+  "required_int": "7",
+  "class": "boots",
+  "flags": [],
+  "tags": [
+    "dex_int_armour",
+    "ezomyte_basetype",
+    "boots",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

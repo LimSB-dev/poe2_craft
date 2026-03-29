@@ -1,0 +1,25 @@
+{
+  "drop_level": "67",
+  "name": "sinister_quarterstaff",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "67",
+  "required_str": "0",
+  "required_dex": "104",
+  "required_int": "41",
+  "class": "quarterstaves",
+  "flags": [],
+  "tags": [
+    "warstaff",
+    "two_hand_weapon",
+    "twohand",
+    "weapon"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

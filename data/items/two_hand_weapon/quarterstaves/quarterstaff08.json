@@ -1,0 +1,26 @@
+{
+  "drop_level": "37",
+  "name": "barrier_quarterstaff",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "37",
+  "required_str": "0",
+  "required_dex": "52",
+  "required_int": "22",
+  "class": "quarterstaves",
+  "flags": [],
+  "tags": [
+    "vaal_basetype",
+    "warstaff",
+    "two_hand_weapon",
+    "twohand",
+    "weapon"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

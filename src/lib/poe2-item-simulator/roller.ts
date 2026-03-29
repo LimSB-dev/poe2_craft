@@ -8,6 +8,7 @@ import {
   type IModTierDisplayRowType,
 } from "@/lib/poe2-item-simulator/modDbTierDisplay";
 import { toModDefinition } from "@/lib/poe2-item-simulator/modPool";
+import { isModKeyBlockedByPoe2dbSpellExclusionTags } from "@/lib/poe2-item-simulator/modPoe2dbSpellExclusionTags";
 import { wikiTierSpawnContextFromBaseFilters } from "@/lib/poe2-item-simulator/wikiTierSpawnFilter";
 import { getRandomIntInclusive, pickWeightedRandom } from "@/lib/poe2-item-simulator/random";
 
@@ -54,7 +55,9 @@ export const isRecordEligibleForBaseFilters = (
   }
   const hasSubType = filters.baseItemSubType !== undefined;
   const hasStatTags = filters.itemStatTags !== undefined;
-  if (!hasSubType && !hasStatTags) {
+  const hasPoe2dbTags =
+    filters.poe2dbTags !== undefined && filters.poe2dbTags.length > 0;
+  if (!hasSubType && !hasStatTags && !hasPoe2dbTags) {
     return true;
   }
   if (hasSubType) {
@@ -72,6 +75,11 @@ export const isRecordEligibleForBaseFilters = (
       if (!tags.includes(requiredTag)) {
         return false;
       }
+    }
+  }
+  if (hasPoe2dbTags) {
+    if (isModKeyBlockedByPoe2dbSpellExclusionTags(record.modKey, filters.poe2dbTags)) {
+      return false;
     }
   }
   return true;
@@ -209,21 +217,33 @@ type IModRollGroupType = {
   tiers: IModTierDisplayRowType[];
 };
 
-const buildModRollGroups = (
+const baseFiltersFromModRollContext = (
   modRollContext: IModRollContextInputType,
-): IModRollGroupType[] => {
-  const baseFilters: IModRollBaseFiltersType | undefined =
+): IModRollBaseFiltersType | undefined => {
+  const hasPoe2dbTags =
+    modRollContext.poe2dbTags !== undefined && modRollContext.poe2dbTags.length > 0;
+  const has =
     modRollContext.baseItemSubType !== undefined ||
     modRollContext.itemStatTags !== undefined ||
     modRollContext.itemLevel !== undefined ||
-    modRollContext.minModifierLevelFloor !== undefined
-      ? {
-          baseItemSubType: modRollContext.baseItemSubType,
-          itemStatTags: modRollContext.itemStatTags,
-          itemLevel: modRollContext.itemLevel,
-          minModifierLevelFloor: modRollContext.minModifierLevelFloor,
-        }
-      : undefined;
+    modRollContext.minModifierLevelFloor !== undefined ||
+    hasPoe2dbTags;
+  if (!has) {
+    return undefined;
+  }
+  return {
+    baseItemSubType: modRollContext.baseItemSubType,
+    itemStatTags: modRollContext.itemStatTags,
+    itemLevel: modRollContext.itemLevel,
+    minModifierLevelFloor: modRollContext.minModifierLevelFloor,
+    ...(hasPoe2dbTags ? { poe2dbTags: modRollContext.poe2dbTags } : {}),
+  };
+};
+
+const buildModRollGroups = (
+  modRollContext: IModRollContextInputType,
+): IModRollGroupType[] => {
+  const baseFilters = baseFiltersFromModRollContext(modRollContext);
 
   const itemLevel = resolveModRollItemLevel(baseFilters);
   const groups: IModRollGroupType[] = [];
@@ -287,18 +307,7 @@ const rollModFromGroups = (
 };
 
 export const rollRandomMod = (modRollContext: IModRollContextInputType): IModDefinition => {
-  const baseFilters: IModRollBaseFiltersType | undefined =
-    modRollContext.baseItemSubType !== undefined ||
-    modRollContext.itemStatTags !== undefined ||
-    modRollContext.itemLevel !== undefined ||
-    modRollContext.minModifierLevelFloor !== undefined
-      ? {
-          baseItemSubType: modRollContext.baseItemSubType,
-          itemStatTags: modRollContext.itemStatTags,
-          itemLevel: modRollContext.itemLevel,
-          minModifierLevelFloor: modRollContext.minModifierLevelFloor,
-        }
-      : undefined;
+  const baseFilters = baseFiltersFromModRollContext(modRollContext);
 
   const groups = buildModRollGroups(modRollContext);
 
@@ -323,18 +332,7 @@ export const rollRandomMod = (modRollContext: IModRollContextInputType): IModDef
  * 동일 `modKey`에 여러 티어가 있으면 행이 여러 개 반환된다.
  */
 export const listModRollCandidates = (modRollContext: IModRollContextInputType): IModDefinition[] => {
-  const baseFilters: IModRollBaseFiltersType | undefined =
-    modRollContext.baseItemSubType !== undefined ||
-    modRollContext.itemStatTags !== undefined ||
-    modRollContext.itemLevel !== undefined ||
-    modRollContext.minModifierLevelFloor !== undefined
-      ? {
-          baseItemSubType: modRollContext.baseItemSubType,
-          itemStatTags: modRollContext.itemStatTags,
-          itemLevel: modRollContext.itemLevel,
-          minModifierLevelFloor: modRollContext.minModifierLevelFloor,
-        }
-      : undefined;
+  const baseFilters = baseFiltersFromModRollContext(modRollContext);
   const wikiCtx = wikiTierSpawnContextFromBaseFilters(baseFilters);
   const groups = buildModRollGroups(modRollContext);
   const out: IModDefinition[] = [];

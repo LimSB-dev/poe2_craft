@@ -1,0 +1,24 @@
+{
+  "drop_level": "51",
+  "name": "heirloom_cuffs",
+  "armour": "54",
+  "evasion": "0",
+  "energy_shield": "19",
+  "required_level": "51",
+  "required_str": "35",
+  "required_dex": "0",
+  "required_int": "35",
+  "class": "gloves",
+  "flags": [],
+  "tags": [
+    "str_int_armour",
+    "gloves",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

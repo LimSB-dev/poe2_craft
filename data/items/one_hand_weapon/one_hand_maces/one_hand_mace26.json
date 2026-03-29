@@ -1,0 +1,25 @@
+{
+  "drop_level": "78",
+  "name": "strife_pick",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "78",
+  "required_str": "163",
+  "required_dex": "0",
+  "required_int": "0",
+  "class": "one_hand_maces",
+  "flags": [],
+  "tags": [
+    "mace",
+    "one_hand_weapon",
+    "onehand",
+    "weapon"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

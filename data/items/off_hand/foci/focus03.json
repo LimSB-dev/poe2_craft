@@ -1,0 +1,25 @@
+{
+  "drop_level": "10",
+  "name": "antler_focus",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "17",
+  "required_level": "10",
+  "required_str": "0",
+  "required_dex": "0",
+  "required_int": "17",
+  "class": "foci",
+  "flags": [],
+  "tags": [
+    "int_armour",
+    "ezomyte_basetype",
+    "focus",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

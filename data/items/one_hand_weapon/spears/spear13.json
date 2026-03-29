@@ -1,0 +1,25 @@
+{
+  "drop_level": "51",
+  "name": "swift_spear",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "51",
+  "required_str": "29",
+  "required_dex": "71",
+  "required_int": "0",
+  "class": "spears",
+  "flags": [],
+  "tags": [
+    "spear",
+    "one_hand_weapon",
+    "onehand",
+    "weapon"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

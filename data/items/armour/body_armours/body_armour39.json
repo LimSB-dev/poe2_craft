@@ -1,0 +1,25 @@
+{
+  "drop_level": "37",
+  "name": "scale_mail",
+  "armour": "125",
+  "evasion": "112",
+  "energy_shield": "0",
+  "required_level": "37",
+  "required_str": "34",
+  "required_dex": "34",
+  "required_int": "0",
+  "class": "body_armours",
+  "flags": [],
+  "tags": [
+    "str_dex_armour",
+    "vaal_basetype",
+    "body_armour",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

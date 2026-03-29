@@ -1,0 +1,24 @@
+{
+  "drop_level": "65",
+  "name": "war_wraps",
+  "armour": "0",
+  "evasion": "61",
+  "energy_shield": "23",
+  "required_level": "65",
+  "required_str": "0",
+  "required_dex": "44",
+  "required_int": "44",
+  "class": "gloves",
+  "flags": [],
+  "tags": [
+    "dex_int_armour",
+    "gloves",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

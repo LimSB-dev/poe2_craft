@@ -1,0 +1,25 @@
+{
+  "drop_level": "80",
+  "name": "tasalian_focus",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "85",
+  "required_level": "80",
+  "required_str": "0",
+  "required_dex": "0",
+  "required_int": "115",
+  "class": "foci",
+  "flags": [],
+  "tags": [
+    "int_armour",
+    "karui_basetype",
+    "focus",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

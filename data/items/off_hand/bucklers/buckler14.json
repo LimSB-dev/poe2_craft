@@ -1,0 +1,26 @@
+{
+  "drop_level": "52",
+  "name": "ornate_buckler",
+  "armour": "0",
+  "evasion": "90",
+  "energy_shield": "0",
+  "required_level": "52",
+  "required_str": "0",
+  "required_dex": "74",
+  "required_int": "0",
+  "class": "bucklers",
+  "flags": [],
+  "tags": [
+    "dex_armour",
+    "dex_shield",
+    "buckler",
+    "shield",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "drop_level": "59",
+  "name": "hatungo_garb",
+  "armour": "0",
+  "evasion": "170",
+  "energy_shield": "65",
+  "required_level": "59",
+  "required_str": "0",
+  "required_dex": "52",
+  "required_int": "52",
+  "class": "body_armours",
+  "flags": [],
+  "tags": [
+    "dex_int_armour",
+    "body_armour",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

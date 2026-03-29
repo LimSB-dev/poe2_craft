@@ -1,0 +1,26 @@
+{
+  "drop_level": "27",
+  "name": "engraved_knife",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "27",
+  "required_str": "0",
+  "required_dex": "29",
+  "required_int": "29",
+  "class": "daggers",
+  "flags": [],
+  "tags": [
+    "maraketh_basetype",
+    "dagger",
+    "one_hand_weapon",
+    "onehand",
+    "weapon"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

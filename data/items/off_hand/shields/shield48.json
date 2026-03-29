@@ -1,0 +1,25 @@
+{
+  "drop_level": "59",
+  "name": "quartered_crest_shield",
+  "armour": "77",
+  "evasion": "0",
+  "energy_shield": "27",
+  "required_level": "59",
+  "required_str": "46",
+  "required_dex": "0",
+  "required_int": "46",
+  "class": "shields",
+  "flags": [],
+  "tags": [
+    "str_int_armour",
+    "str_int_shield",
+    "shield",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

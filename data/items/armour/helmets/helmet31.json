@@ -1,0 +1,25 @@
+{
+  "drop_level": "36",
+  "name": "warrior_greathelm",
+  "armour": "146",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "36",
+  "required_str": "52",
+  "required_dex": "0",
+  "required_int": "0",
+  "class": "helmets",
+  "flags": [],
+  "tags": [
+    "str_armour",
+    "vaal_basetype",
+    "helmet",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

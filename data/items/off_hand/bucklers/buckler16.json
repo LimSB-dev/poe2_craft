@@ -1,0 +1,26 @@
+{
+  "drop_level": "55",
+  "name": "array_buckler",
+  "armour": "0",
+  "evasion": "95",
+  "energy_shield": "0",
+  "required_level": "55",
+  "required_str": "0",
+  "required_dex": "78",
+  "required_int": "0",
+  "class": "bucklers",
+  "flags": [],
+  "tags": [
+    "dex_armour",
+    "dex_shield",
+    "buckler",
+    "shield",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

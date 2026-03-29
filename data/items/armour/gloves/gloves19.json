@@ -1,0 +1,25 @@
+{
+  "drop_level": "28",
+  "name": "sectioned_bracers",
+  "armour": "0",
+  "evasion": "52",
+  "energy_shield": "0",
+  "required_level": "28",
+  "required_str": "0",
+  "required_dex": "36",
+  "required_int": "0",
+  "class": "gloves",
+  "flags": [],
+  "tags": [
+    "dex_armour",
+    "maraketh_basetype",
+    "gloves",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

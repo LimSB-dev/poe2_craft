@@ -1,0 +1,25 @@
+{
+  "drop_level": "50",
+  "name": "chieftain_cuirass",
+  "armour": "294",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "50",
+  "required_str": "80",
+  "required_dex": "0",
+  "required_int": "0",
+  "class": "body_armours",
+  "flags": [],
+  "tags": [
+    "str_armour",
+    "karui_basetype",
+    "body_armour",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

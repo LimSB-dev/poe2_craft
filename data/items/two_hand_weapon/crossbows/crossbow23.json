@@ -1,0 +1,26 @@
+{
+  "drop_level": "77",
+  "name": "flexed_crossbow",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "77",
+  "required_str": "89",
+  "required_dex": "89",
+  "required_int": "0",
+  "class": "crossbows",
+  "flags": [],
+  "tags": [
+    "crossbow",
+    "ranged",
+    "two_hand_weapon",
+    "twohand",
+    "weapon"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

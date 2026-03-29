@@ -1,0 +1,24 @@
+{
+  "drop_level": "51",
+  "name": "captain_gauntlets",
+  "armour": "54",
+  "evasion": "49",
+  "energy_shield": "0",
+  "required_level": "51",
+  "required_str": "35",
+  "required_dex": "35",
+  "required_int": "0",
+  "class": "gloves",
+  "flags": [],
+  "tags": [
+    "str_dex_armour",
+    "gloves",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

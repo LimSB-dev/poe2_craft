@@ -1,0 +1,24 @@
+{
+  "drop_level": "65",
+  "name": "druidic_crown",
+  "armour": "134",
+  "evasion": "0",
+  "energy_shield": "46",
+  "required_level": "65",
+  "required_str": "50",
+  "required_dex": "0",
+  "required_int": "50",
+  "class": "helmets",
+  "flags": [],
+  "tags": [
+    "str_int_armour",
+    "helmet",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

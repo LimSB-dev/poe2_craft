@@ -1,0 +1,26 @@
+{
+  "drop_level": "37",
+  "name": "feathered_targe",
+  "armour": "51",
+  "evasion": "46",
+  "energy_shield": "0",
+  "required_level": "37",
+  "required_str": "30",
+  "required_dex": "30",
+  "required_int": "0",
+  "class": "shields",
+  "flags": [],
+  "tags": [
+    "str_dex_armour",
+    "str_dex_shield",
+    "vaal_basetype",
+    "shield",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

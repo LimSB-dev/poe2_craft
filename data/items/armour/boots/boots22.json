@@ -1,0 +1,25 @@
+{
+  "drop_level": "33",
+  "name": "pelt_leggings",
+  "armour": "56",
+  "evasion": "0",
+  "energy_shield": "21",
+  "required_level": "33",
+  "required_str": "26",
+  "required_dex": "0",
+  "required_int": "26",
+  "class": "boots",
+  "flags": [],
+  "tags": [
+    "str_int_armour",
+    "vaal_basetype",
+    "boots",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

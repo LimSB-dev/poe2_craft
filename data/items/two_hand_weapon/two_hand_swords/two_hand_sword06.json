@@ -1,0 +1,26 @@
+{
+  "drop_level": "28",
+  "name": "arced_longsword",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "28",
+  "required_str": "29",
+  "required_dex": "29",
+  "required_int": "0",
+  "class": "two_hand_swords",
+  "flags": [],
+  "tags": [
+    "maraketh_basetype",
+    "sword",
+    "two_hand_weapon",
+    "twohand",
+    "weapon"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

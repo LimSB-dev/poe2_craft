@@ -1,0 +1,24 @@
+{
+  "drop_level": "45",
+  "name": "ring_mail",
+  "armour": "148",
+  "evasion": "133",
+  "energy_shield": "0",
+  "required_level": "45",
+  "required_str": "41",
+  "required_dex": "41",
+  "required_int": "0",
+  "class": "body_armours",
+  "flags": [],
+  "tags": [
+    "str_dex_armour",
+    "body_armour",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

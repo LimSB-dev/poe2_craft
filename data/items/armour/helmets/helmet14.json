@@ -1,0 +1,25 @@
+{
+  "drop_level": "16",
+  "name": "cultist_crown",
+  "armour": "44",
+  "evasion": "0",
+  "energy_shield": "19",
+  "required_level": "16",
+  "required_str": "15",
+  "required_dex": "0",
+  "required_int": "15",
+  "class": "helmets",
+  "flags": [],
+  "tags": [
+    "str_int_armour",
+    "maraketh_basetype",
+    "helmet",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

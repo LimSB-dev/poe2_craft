@@ -1,0 +1,25 @@
+{
+  "drop_level": "16",
+  "name": "visored_helm",
+  "armour": "44",
+  "evasion": "37",
+  "energy_shield": "0",
+  "required_level": "16",
+  "required_str": "15",
+  "required_dex": "15",
+  "required_int": "0",
+  "class": "helmets",
+  "flags": [],
+  "tags": [
+    "str_dex_armour",
+    "maraketh_basetype",
+    "helmet",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

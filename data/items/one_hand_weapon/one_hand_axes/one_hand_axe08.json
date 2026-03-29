@@ -1,0 +1,26 @@
+{
+  "drop_level": "37",
+  "name": "sacrificial_axe",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "37",
+  "required_str": "52",
+  "required_dex": "22",
+  "required_int": "0",
+  "class": "one_hand_axes",
+  "flags": [],
+  "tags": [
+    "vaal_basetype",
+    "axe",
+    "one_hand_weapon",
+    "onehand",
+    "weapon"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

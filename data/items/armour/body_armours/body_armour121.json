@@ -1,0 +1,24 @@
+{
+  "drop_level": "70",
+  "name": "flowing_raiment",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "153",
+  "required_level": "70",
+  "required_str": "0",
+  "required_dex": "0",
+  "required_int": "121",
+  "class": "body_armours",
+  "flags": [],
+  "tags": [
+    "int_armour",
+    "body_armour",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

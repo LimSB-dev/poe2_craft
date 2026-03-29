@@ -1,0 +1,23 @@
+{
+  "drop_level": "25",
+  "name": "chiming_staff",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "25",
+  "required_str": "0",
+  "required_dex": "0",
+  "required_int": "46",
+  "class": "staves",
+  "flags": [],
+  "tags": [
+    "staff",
+    "twohand"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

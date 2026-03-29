@@ -1,0 +1,25 @@
+{
+  "drop_level": "16",
+  "name": "threaded_shoes",
+  "armour": "0",
+  "evasion": "28",
+  "energy_shield": "14",
+  "required_level": "16",
+  "required_str": "0",
+  "required_dex": "14",
+  "required_int": "14",
+  "class": "boots",
+  "flags": [],
+  "tags": [
+    "dex_int_armour",
+    "maraketh_basetype",
+    "boots",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "drop_level": "26",
+  "name": "crescent_targe",
+  "armour": "39",
+  "evasion": "34",
+  "energy_shield": "0",
+  "required_level": "26",
+  "required_str": "22",
+  "required_dex": "22",
+  "required_int": "0",
+  "class": "shields",
+  "flags": [],
+  "tags": [
+    "str_dex_armour",
+    "str_dex_shield",
+    "maraketh_basetype",
+    "shield",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

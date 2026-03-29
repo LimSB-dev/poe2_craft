@@ -1,0 +1,25 @@
+{
+  "drop_level": "47",
+  "name": "icicle_flail",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "47",
+  "required_str": "66",
+  "required_dex": "0",
+  "required_int": "27",
+  "class": "flails",
+  "flags": [],
+  "tags": [
+    "flail",
+    "one_hand_weapon",
+    "onehand",
+    "weapon"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

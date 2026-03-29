@@ -1,0 +1,25 @@
+{
+  "drop_level": "33",
+  "name": "goldcast_cuffs",
+  "armour": "37",
+  "evasion": "0",
+  "energy_shield": "14",
+  "required_level": "33",
+  "required_str": "24",
+  "required_dex": "0",
+  "required_int": "24",
+  "class": "gloves",
+  "flags": [],
+  "tags": [
+    "str_int_armour",
+    "vaal_basetype",
+    "gloves",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

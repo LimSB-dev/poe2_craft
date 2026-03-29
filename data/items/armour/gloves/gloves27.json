@@ -1,0 +1,24 @@
+{
+  "drop_level": "45",
+  "name": "braided_cuffs",
+  "armour": "48",
+  "evasion": "0",
+  "energy_shield": "17",
+  "required_level": "45",
+  "required_str": "32",
+  "required_dex": "0",
+  "required_int": "32",
+  "class": "gloves",
+  "flags": [],
+  "tags": [
+    "str_int_armour",
+    "gloves",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "drop_level": "65",
+  "name": "mammoth_targe",
+  "armour": "84",
+  "evasion": "76",
+  "energy_shield": "0",
+  "required_level": "65",
+  "required_str": "50",
+  "required_dex": "50",
+  "required_int": "0",
+  "class": "shields",
+  "flags": [],
+  "tags": [
+    "str_dex_armour",
+    "str_dex_shield",
+    "shield",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

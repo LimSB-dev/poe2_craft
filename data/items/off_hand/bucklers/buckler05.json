@@ -1,0 +1,27 @@
+{
+  "drop_level": "22",
+  "name": "ridged_buckler",
+  "armour": "0",
+  "evasion": "43",
+  "energy_shield": "0",
+  "required_level": "22",
+  "required_str": "0",
+  "required_dex": "33",
+  "required_int": "0",
+  "class": "bucklers",
+  "flags": [],
+  "tags": [
+    "dex_armour",
+    "dex_shield",
+    "maraketh_basetype",
+    "buckler",
+    "shield",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

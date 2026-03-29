@@ -1,0 +1,24 @@
+{
+  "drop_level": "62",
+  "name": "heartcarver_mantle",
+  "armour": "195",
+  "evasion": "0",
+  "energy_shield": "68",
+  "required_level": "62",
+  "required_str": "54",
+  "required_dex": "0",
+  "required_int": "54",
+  "class": "body_armours",
+  "flags": [],
+  "tags": [
+    "str_int_armour",
+    "body_armour",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

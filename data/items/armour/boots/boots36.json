@@ -1,0 +1,25 @@
+{
+  "drop_level": "45",
+  "name": "weaver_leggings",
+  "armour": "73",
+  "evasion": "0",
+  "energy_shield": "26",
+  "required_level": "45",
+  "required_str": "34",
+  "required_dex": "0",
+  "required_int": "34",
+  "class": "boots",
+  "flags": [],
+  "tags": [
+    "str_int_armour",
+    "karui_basetype",
+    "boots",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

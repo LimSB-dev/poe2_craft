@@ -1,0 +1,26 @@
+{
+  "drop_level": "36",
+  "name": "obsidian_greatsword",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "36",
+  "required_str": "37",
+  "required_dex": "37",
+  "required_int": "0",
+  "class": "two_hand_swords",
+  "flags": [],
+  "tags": [
+    "vaal_basetype",
+    "sword",
+    "two_hand_weapon",
+    "twohand",
+    "weapon"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

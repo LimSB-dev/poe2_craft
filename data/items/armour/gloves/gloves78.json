@@ -1,0 +1,24 @@
+{
+  "drop_level": "75",
+  "name": "cultist_gauntlets",
+  "armour": "80",
+  "evasion": "73",
+  "energy_shield": "0",
+  "required_level": "75",
+  "required_str": "52",
+  "required_dex": "52",
+  "required_int": "0",
+  "class": "gloves",
+  "flags": [],
+  "tags": [
+    "str_dex_armour",
+    "gloves",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

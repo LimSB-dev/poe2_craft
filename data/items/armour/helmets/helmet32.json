@@ -1,0 +1,25 @@
+{
+  "drop_level": "38",
+  "name": "viper_cap",
+  "armour": "0",
+  "evasion": "136",
+  "energy_shield": "0",
+  "required_level": "38",
+  "required_str": "0",
+  "required_dex": "54",
+  "required_int": "0",
+  "class": "helmets",
+  "flags": [],
+  "tags": [
+    "dex_armour",
+    "vaal_basetype",
+    "helmet",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "drop_level": "45",
+  "name": "corroded_greathelm",
+  "armour": "176",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "45",
+  "required_str": "64",
+  "required_dex": "0",
+  "required_int": "0",
+  "class": "helmets",
+  "flags": [],
+  "tags": [
+    "str_armour",
+    "helmet",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

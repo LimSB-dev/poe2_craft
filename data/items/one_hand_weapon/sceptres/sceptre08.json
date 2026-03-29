@@ -1,0 +1,23 @@
+{
+  "drop_level": "36",
+  "name": "clasped_sceptre",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "36",
+  "required_str": "22",
+  "required_dex": "0",
+  "required_int": "51",
+  "class": "sceptres",
+  "flags": [],
+  "tags": [
+    "sceptre",
+    "onehand"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

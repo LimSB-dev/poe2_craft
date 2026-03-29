@@ -1,0 +1,25 @@
+{
+  "drop_level": "75",
+  "name": "soaring_targe",
+  "armour": "100",
+  "evasion": "91",
+  "energy_shield": "0",
+  "required_level": "75",
+  "required_str": "59",
+  "required_dex": "59",
+  "required_int": "0",
+  "class": "shields",
+  "flags": [],
+  "tags": [
+    "str_dex_armour",
+    "str_dex_shield",
+    "shield",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

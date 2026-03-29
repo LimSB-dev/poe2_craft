@@ -1,0 +1,27 @@
+{
+  "drop_level": "5",
+  "name": "wooden_buckler",
+  "armour": "0",
+  "evasion": "16",
+  "energy_shield": "0",
+  "required_level": "5",
+  "required_str": "0",
+  "required_dex": "10",
+  "required_int": "0",
+  "class": "bucklers",
+  "flags": [],
+  "tags": [
+    "dex_armour",
+    "dex_shield",
+    "ezomyte_basetype",
+    "buckler",
+    "shield",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "drop_level": "52",
+  "name": "sentinel_greathelm",
+  "armour": "200",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "52",
+  "required_str": "74",
+  "required_dex": "0",
+  "required_int": "0",
+  "class": "helmets",
+  "flags": [],
+  "tags": [
+    "str_armour",
+    "helmet",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

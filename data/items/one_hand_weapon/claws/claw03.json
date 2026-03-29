@@ -1,0 +1,26 @@
+{
+  "drop_level": "12",
+  "name": "wolfbone_claw",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "12",
+  "required_str": "0",
+  "required_dex": "24",
+  "required_int": "0",
+  "class": "claws",
+  "flags": [],
+  "tags": [
+    "ezomyte_basetype",
+    "claw",
+    "one_hand_weapon",
+    "onehand",
+    "weapon"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

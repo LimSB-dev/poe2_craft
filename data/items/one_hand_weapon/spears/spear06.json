@@ -1,0 +1,26 @@
+{
+  "drop_level": "26",
+  "name": "forked_spear",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "26",
+  "required_str": "17",
+  "required_dex": "38",
+  "required_int": "0",
+  "class": "spears",
+  "flags": [],
+  "tags": [
+    "maraketh_basetype",
+    "spear",
+    "one_hand_weapon",
+    "onehand",
+    "weapon"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

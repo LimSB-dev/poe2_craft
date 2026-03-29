@@ -1,0 +1,25 @@
+{
+  "drop_level": "27",
+  "name": "spired_greathelm",
+  "armour": "116",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "27",
+  "required_str": "40",
+  "required_dex": "0",
+  "required_int": "0",
+  "class": "helmets",
+  "flags": [],
+  "tags": [
+    "str_armour",
+    "maraketh_basetype",
+    "helmet",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

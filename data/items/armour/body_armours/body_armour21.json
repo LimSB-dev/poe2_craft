@@ -1,0 +1,25 @@
+{
+  "drop_level": "16",
+  "name": "vagabond_armour",
+  "armour": "67",
+  "evasion": "56",
+  "energy_shield": "0",
+  "required_level": "16",
+  "required_str": "17",
+  "required_dex": "17",
+  "required_int": "0",
+  "class": "body_armours",
+  "flags": [],
+  "tags": [
+    "str_dex_armour",
+    "maraketh_basetype",
+    "body_armour",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

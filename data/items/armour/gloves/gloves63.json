@@ -1,0 +1,24 @@
+{
+  "drop_level": "65",
+  "name": "grim_gloves",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "42",
+  "required_level": "65",
+  "required_str": "0",
+  "required_dex": "0",
+  "required_int": "80",
+  "class": "gloves",
+  "flags": [],
+  "tags": [
+    "int_armour",
+    "gloves",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

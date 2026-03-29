@@ -1,0 +1,24 @@
+{
+  "drop_level": "51",
+  "name": "zealot_crown",
+  "armour": "108",
+  "evasion": "0",
+  "energy_shield": "38",
+  "required_level": "51",
+  "required_str": "40",
+  "required_dex": "0",
+  "required_int": "40",
+  "class": "helmets",
+  "flags": [],
+  "tags": [
+    "str_int_armour",
+    "helmet",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

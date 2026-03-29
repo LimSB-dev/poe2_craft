@@ -28,6 +28,12 @@ describe("wikiTierSpawnFilter", () => {
     expect(broad).toContain("dex_armour");
   });
 
+  test("wikiPositiveSpawnTagsForSubType: staff ignores poe2dbTags — only wiki staff column for spawn OR", () => {
+    expect(wikiPositiveSpawnTagsForSubType("staff", ["int"], ["staff", "twohand", "weapon"])).toEqual([
+      "staff",
+    ]);
+  });
+
   test("wikiPositiveSpawnTagsForSubType covers weapon / shield / jewellery / focus (never empty when applicable)", () => {
     expect(wikiPositiveSpawnTagsForSubType("bow", [])).toEqual(
       expect.arrayContaining(["bow", "weapon"]),
@@ -181,4 +187,49 @@ describe("wikiTierSpawnFilter", () => {
     });
     expect(wikiSpawnRowMatchesBaseItem(row!, bowCtx!)).toBe(true);
   });
+
+  test("wikiSpawnRowMatchesBaseItem: spell staff uses staff spawn column — exclude two_hand_weapon-only attack rows", () => {
+    const attackTwoHandOnly = wikiFile.rows.find((r) => {
+      return r.wikiModId === "LocalAddedPhysicalDamageTwoHand1";
+    });
+    expect(attackTwoHandOnly).toBeDefined();
+    const spellStaffRow = wikiFile.rows.find((r) => {
+      return r.wikiModId === "SpellDamageOnTwoHandWeapon1";
+    });
+    expect(spellStaffRow).toBeDefined();
+
+    const staffCtx = wikiTierSpawnContextFromBaseFilters({
+      baseItemSubType: "staff",
+      itemStatTags: ["int"],
+      poe2dbTags: ["staff", "twohand"],
+    });
+    expect(wikiSpawnRowMatchesBaseItem(attackTwoHandOnly!, staffCtx!)).toBe(
+      false,
+    );
+    expect(wikiSpawnRowMatchesBaseItem(spellStaffRow!, staffCtx!)).toBe(true);
+  });
+
+  test("wikiSpawnRowMatchesBaseItem: spell staff suffix — weapon-only crit mult row excluded even if poe2db has weapon tag", () => {
+    const localCritWeaponOnly = wikiFile.rows.find((r) => {
+      return r.wikiModId === "LocalCriticalMultiplier1";
+    });
+    expect(localCritWeaponOnly).toBeDefined();
+    const spellCritTwoHand = wikiFile.rows.find((r) => {
+      return r.wikiModId === "SpellCriticalStrikeMultiplierTwoHand1";
+    });
+    expect(spellCritTwoHand).toBeDefined();
+
+    const staffCtx = wikiTierSpawnContextFromBaseFilters({
+      baseItemSubType: "staff",
+      itemStatTags: ["int"],
+      poe2dbTags: ["staff", "twohand", "weapon"],
+    });
+    expect(wikiSpawnRowMatchesBaseItem(localCritWeaponOnly!, staffCtx!)).toBe(
+      false,
+    );
+    expect(wikiSpawnRowMatchesBaseItem(spellCritTwoHand!, staffCtx!)).toBe(
+      true,
+    );
+  });
+
 });

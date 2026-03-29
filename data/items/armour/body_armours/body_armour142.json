@@ -1,0 +1,25 @@
+{
+  "drop_level": "80",
+  "name": "thane_mail",
+  "armour": "245",
+  "evasion": "223",
+  "energy_shield": "0",
+  "required_level": "80",
+  "required_str": "67",
+  "required_dex": "67",
+  "required_int": "0",
+  "class": "body_armours",
+  "flags": [],
+  "tags": [
+    "str_dex_armour",
+    "karui_basetype",
+    "body_armour",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

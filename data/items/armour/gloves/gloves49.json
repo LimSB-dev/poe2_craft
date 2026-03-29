@@ -1,0 +1,24 @@
+{
+  "drop_level": "52",
+  "name": "titan_mitts",
+  "armour": "100",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "52",
+  "required_str": "64",
+  "required_dex": "0",
+  "required_int": "0",
+  "class": "gloves",
+  "flags": [],
+  "tags": [
+    "str_armour",
+    "gloves",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

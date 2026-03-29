@@ -1,0 +1,26 @@
+{
+  "drop_level": "20",
+  "name": "crescent_quarterstaff",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "20",
+  "required_str": "0",
+  "required_dex": "30",
+  "required_int": "14",
+  "class": "quarterstaves",
+  "flags": [],
+  "tags": [
+    "maraketh_basetype",
+    "warstaff",
+    "two_hand_weapon",
+    "twohand",
+    "weapon"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

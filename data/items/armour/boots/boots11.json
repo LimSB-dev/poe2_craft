@@ -1,0 +1,25 @@
+{
+  "drop_level": "16",
+  "name": "bronze_greaves",
+  "armour": "60",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "16",
+  "required_str": "23",
+  "required_dex": "0",
+  "required_int": "0",
+  "class": "boots",
+  "flags": [],
+  "tags": [
+    "str_armour",
+    "maraketh_basetype",
+    "boots",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

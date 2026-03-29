@@ -1,0 +1,25 @@
+{
+  "drop_level": "5",
+  "name": "rope_cuffs",
+  "armour": "12",
+  "evasion": "0",
+  "energy_shield": "6",
+  "required_level": "5",
+  "required_str": "6",
+  "required_dex": "0",
+  "required_int": "6",
+  "class": "gloves",
+  "flags": [],
+  "tags": [
+    "str_int_armour",
+    "ezomyte_basetype",
+    "gloves",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

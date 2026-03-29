@@ -1,0 +1,26 @@
+{
+  "drop_level": "36",
+  "name": "stone_tower_shield",
+  "armour": "91",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "36",
+  "required_str": "52",
+  "required_dex": "0",
+  "required_int": "0",
+  "class": "shields",
+  "flags": [],
+  "tags": [
+    "str_armour",
+    "str_shield",
+    "vaal_basetype",
+    "shield",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

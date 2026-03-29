@@ -1,0 +1,25 @@
+{
+  "drop_level": "80",
+  "name": "blacksteel_gauntlets",
+  "armour": "87",
+  "evasion": "79",
+  "energy_shield": "0",
+  "required_level": "80",
+  "required_str": "55",
+  "required_dex": "55",
+  "required_int": "0",
+  "class": "gloves",
+  "flags": [],
+  "tags": [
+    "str_dex_armour",
+    "karui_basetype",
+    "gloves",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

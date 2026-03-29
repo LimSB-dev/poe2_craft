@@ -1,0 +1,24 @@
+{
+  "drop_level": "75",
+  "name": "trapper_hood",
+  "armour": "0",
+  "evasion": "266",
+  "energy_shield": "0",
+  "required_level": "75",
+  "required_str": "0",
+  "required_dex": "107",
+  "required_int": "0",
+  "class": "helmets",
+  "flags": [],
+  "tags": [
+    "dex_armour",
+    "helmet",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

@@ -347,6 +347,100 @@ export const MOD_WIKI_TIER_SOURCES: Readonly<
     generationType: 1,
     rowMatches: wikiRow.increasedAccuracyNoLightRadius,
   },
+  /** `SpellDamageOnTwoHandWeapon*` — 위키 `staff` 열만. */
+  prefix_inc_spell_damage_staff: {
+    modGroups: "WeaponCasterDamagePrefix",
+    generationType: 1,
+    rowMatches: (row: WikiExtractedModTierRowType): boolean => {
+      return row.wikiModId.startsWith("SpellDamageOnTwoHandWeapon");
+    },
+  },
+  /** `SpellDamageOnWeapon*` — 완드·포커스(셉터는 Cargo에 별도 행 없음). */
+  prefix_inc_spell_damage_wand_focus: {
+    modGroups: "WeaponCasterDamagePrefix",
+    generationType: 1,
+    rowMatches: (row: WikiExtractedModTierRowType): boolean => {
+      return /^SpellDamageOnWeapon/.test(row.wikiModId);
+    },
+  },
+  /** `IncreasedManaTwoHandWeapon*` — 위키 `staff` 열(스펠 스태프). */
+  prefix_max_mana_staff: {
+    modGroups: "IncreasedMana",
+    generationType: 1,
+    rowMatches: (row: WikiExtractedModTierRowType): boolean => {
+      return row.wikiModId.startsWith("IncreasedManaTwoHandWeapon");
+    },
+  },
+  prefix_spell_damage_and_mana_staff: {
+    modGroups: "SpellDamageAndMana",
+    generationType: 1,
+    rowMatches: (row: WikiExtractedModTierRowType): boolean => {
+      return row.wikiModId.startsWith("SpellDamageAndManaOnTwoHandWeapon");
+    },
+  },
+  prefix_spell_damage_and_mana_wand_focus: {
+    modGroups: "SpellDamageAndMana",
+    generationType: 1,
+    rowMatches: (row: WikiExtractedModTierRowType): boolean => {
+      return /^SpellDamageAndManaOnWeapon/.test(row.wikiModId);
+    },
+  },
+  prefix_inc_weapon_fire_damage_staff: {
+    modGroups: "WeaponDamageTypePrefix",
+    generationType: 1,
+    rowMatches: (row: WikiExtractedModTierRowType): boolean => {
+      return row.wikiModId.startsWith("FireDamagePrefixOnTwoHandWeapon");
+    },
+  },
+  prefix_inc_weapon_cold_damage_staff: {
+    modGroups: "WeaponDamageTypePrefix",
+    generationType: 1,
+    rowMatches: (row: WikiExtractedModTierRowType): boolean => {
+      return row.wikiModId.startsWith("ColdDamagePrefixOnTwoHandWeapon");
+    },
+  },
+  prefix_inc_weapon_lightning_damage_staff: {
+    modGroups: "WeaponDamageTypePrefix",
+    generationType: 1,
+    rowMatches: (row: WikiExtractedModTierRowType): boolean => {
+      return row.wikiModId.startsWith("LightningDamagePrefixOnTwoHandWeapon");
+    },
+  },
+  prefix_inc_weapon_phys_damage_staff: {
+    modGroups: "WeaponDamageTypePrefix",
+    generationType: 1,
+    rowMatches: (row: WikiExtractedModTierRowType): boolean => {
+      return row.wikiModId.startsWith("PhysicalDamagePrefixOnTwoHandWeapon");
+    },
+  },
+  prefix_inc_weapon_chaos_damage_staff: {
+    modGroups: "WeaponDamageTypePrefix",
+    generationType: 1,
+    rowMatches: (row: WikiExtractedModTierRowType): boolean => {
+      return row.wikiModId.startsWith("ChaosDamagePrefixOnTwoHandWeapon");
+    },
+  },
+  prefix_gain_as_extra_fire_staff: {
+    modGroups: "FireDamage",
+    generationType: 1,
+    rowMatches: (row: WikiExtractedModTierRowType): boolean => {
+      return row.wikiModId.startsWith("SpellDamageGainedAsFireTwoHand");
+    },
+  },
+  prefix_gain_as_extra_cold_staff: {
+    modGroups: "ColdDamage",
+    generationType: 1,
+    rowMatches: (row: WikiExtractedModTierRowType): boolean => {
+      return row.wikiModId.startsWith("SpellDamageGainedAsColdTwoHand");
+    },
+  },
+  prefix_gain_as_extra_lightning_staff: {
+    modGroups: "LightningDamage",
+    generationType: 1,
+    rowMatches: (row: WikiExtractedModTierRowType): boolean => {
+      return row.wikiModId.startsWith("SpellDamageGainedAsLightningTwoHand");
+    },
+  },
   suffix_intelligence: { modGroups: "Intelligence", generationType: 2 },
   suffix_fire_res: { modGroups: "FireResistance", generationType: 2 },
   suffix_cold_res: { modGroups: "ColdResistance", generationType: 2 },

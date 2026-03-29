@@ -1,0 +1,26 @@
+{
+  "drop_level": "21",
+  "name": "effigial_tower_shield",
+  "armour": "60",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "21",
+  "required_str": "32",
+  "required_dex": "0",
+  "required_int": "0",
+  "class": "shields",
+  "flags": [],
+  "tags": [
+    "str_armour",
+    "str_shield",
+    "maraketh_basetype",
+    "shield",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

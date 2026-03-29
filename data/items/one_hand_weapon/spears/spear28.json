@@ -1,0 +1,25 @@
+{
+  "drop_level": "79",
+  "name": "grand_spear",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "79",
+  "required_str": "68",
+  "required_dex": "109",
+  "required_int": "0",
+  "class": "spears",
+  "flags": [],
+  "tags": [
+    "spear",
+    "one_hand_weapon",
+    "onehand",
+    "weapon"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

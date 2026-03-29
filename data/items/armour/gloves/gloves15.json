@@ -1,0 +1,25 @@
+{
+  "drop_level": "16",
+  "name": "stitched_gloves",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "17",
+  "required_level": "16",
+  "required_str": "0",
+  "required_dex": "0",
+  "required_int": "22",
+  "class": "gloves",
+  "flags": [],
+  "tags": [
+    "int_armour",
+    "maraketh_basetype",
+    "gloves",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

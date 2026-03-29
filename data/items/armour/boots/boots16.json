@@ -1,0 +1,25 @@
+{
+  "drop_level": "27",
+  "name": "silk_slippers",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "34",
+  "required_level": "27",
+  "required_str": "0",
+  "required_dex": "0",
+  "required_int": "38",
+  "class": "boots",
+  "flags": [],
+  "tags": [
+    "int_armour",
+    "maraketh_basetype",
+    "boots",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

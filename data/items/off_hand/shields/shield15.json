@@ -1,0 +1,26 @@
+{
+  "drop_level": "28",
+  "name": "jingling_crest_shield",
+  "armour": "41",
+  "evasion": "0",
+  "energy_shield": "16",
+  "required_level": "28",
+  "required_str": "23",
+  "required_dex": "0",
+  "required_int": "23",
+  "class": "shields",
+  "flags": [],
+  "tags": [
+    "str_int_armour",
+    "str_int_shield",
+    "maraketh_basetype",
+    "shield",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

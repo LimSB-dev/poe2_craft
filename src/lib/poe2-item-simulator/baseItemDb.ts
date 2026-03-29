@@ -30,7 +30,7 @@ export const BASE_ITEM_SUB_TYPES_BY_EQUIPMENT: Readonly<
 };
 
 export const BASE_ITEM_DB: { version: string; records: ReadonlyArray<IBaseItemDbRecordType> } = {
-  version: "2026.03.poe2db.extract.v1",
+  version: "2026.03.poe2db.extract.v5",
   records: poe2dbBaseItemRecords as IBaseItemDbRecordType[],
 };
 export const BASE_ITEMS: ReadonlyArray<IBaseItemDefinition> = BASE_ITEM_DB.records.map((record) => {

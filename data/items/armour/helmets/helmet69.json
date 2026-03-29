@@ -1,0 +1,24 @@
+{
+  "drop_level": "54",
+  "name": "hallowed_crown",
+  "armour": "113",
+  "evasion": "0",
+  "energy_shield": "40",
+  "required_level": "54",
+  "required_str": "42",
+  "required_dex": "0",
+  "required_int": "42",
+  "class": "helmets",
+  "flags": [],
+  "tags": [
+    "str_int_armour",
+    "helmet",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

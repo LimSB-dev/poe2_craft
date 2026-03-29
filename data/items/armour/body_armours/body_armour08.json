@@ -1,0 +1,25 @@
+{
+  "drop_level": "4",
+  "name": "quilted_vest",
+  "armour": "0",
+  "evasion": "44",
+  "energy_shield": "0",
+  "required_level": "4",
+  "required_str": "0",
+  "required_dex": "10",
+  "required_int": "0",
+  "class": "body_armours",
+  "flags": [],
+  "tags": [
+    "dex_armour",
+    "ezomyte_basetype",
+    "body_armour",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

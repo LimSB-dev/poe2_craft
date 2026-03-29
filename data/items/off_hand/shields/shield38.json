@@ -1,0 +1,26 @@
+{
+  "drop_level": "52",
+  "name": "mosaic_targe",
+  "armour": "69",
+  "evasion": "62",
+  "energy_shield": "0",
+  "required_level": "52",
+  "required_str": "41",
+  "required_dex": "41",
+  "required_int": "0",
+  "class": "shields",
+  "flags": [],
+  "tags": [
+    "str_dex_armour",
+    "str_dex_shield",
+    "karui_basetype",
+    "shield",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

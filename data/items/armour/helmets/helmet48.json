@@ -1,0 +1,24 @@
+{
+  "drop_level": "48",
+  "name": "engraved_helm",
+  "armour": "102",
+  "evasion": "92",
+  "energy_shield": "0",
+  "required_level": "48",
+  "required_str": "38",
+  "required_dex": "38",
+  "required_int": "0",
+  "class": "helmets",
+  "flags": [],
+  "tags": [
+    "str_dex_armour",
+    "helmet",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

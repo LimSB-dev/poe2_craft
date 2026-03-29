@@ -1,0 +1,24 @@
+{
+  "drop_level": "59",
+  "name": "spiked_bracers",
+  "armour": "0",
+  "evasion": "101",
+  "energy_shield": "0",
+  "required_level": "59",
+  "required_str": "0",
+  "required_dex": "73",
+  "required_int": "0",
+  "class": "gloves",
+  "flags": [],
+  "tags": [
+    "dex_armour",
+    "gloves",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

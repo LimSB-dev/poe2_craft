@@ -1,0 +1,24 @@
+{
+  "drop_level": "52",
+  "name": "flexile_sabatons",
+  "armour": "82",
+  "evasion": "74",
+  "energy_shield": "0",
+  "required_level": "52",
+  "required_str": "38",
+  "required_dex": "38",
+  "required_int": "0",
+  "class": "boots",
+  "flags": [],
+  "tags": [
+    "str_dex_armour",
+    "boots",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "drop_level": "78",
+  "name": "jade_talisman",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "78",
+  "required_str": "109",
+  "required_dex": "0",
+  "required_int": "65",
+  "class": "talismans",
+  "flags": [],
+  "tags": [
+    "karui_basetype",
+    "talisman",
+    "two_hand_weapon",
+    "twohand",
+    "weapon"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

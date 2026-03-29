@@ -1,0 +1,24 @@
+{
+  "drop_level": "65",
+  "name": "totemic_greaves",
+  "armour": "182",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "65",
+  "required_str": "86",
+  "required_dex": "0",
+  "required_int": "0",
+  "class": "boots",
+  "flags": [],
+  "tags": [
+    "str_armour",
+    "boots",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

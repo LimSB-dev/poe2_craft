@@ -1,0 +1,26 @@
+{
+  "drop_level": "26",
+  "name": "crescent_axe",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "26",
+  "required_str": "38",
+  "required_dex": "17",
+  "required_int": "0",
+  "class": "one_hand_axes",
+  "flags": [],
+  "tags": [
+    "maraketh_basetype",
+    "axe",
+    "one_hand_weapon",
+    "onehand",
+    "weapon"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

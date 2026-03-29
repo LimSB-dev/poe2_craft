@@ -1,0 +1,24 @@
+{
+  "drop_level": "70",
+  "name": "conjurer_mantle",
+  "armour": "245",
+  "evasion": "0",
+  "energy_shield": "84",
+  "required_level": "70",
+  "required_str": "67",
+  "required_dex": "0",
+  "required_int": "67",
+  "class": "body_armours",
+  "flags": [],
+  "tags": [
+    "str_int_armour",
+    "body_armour",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

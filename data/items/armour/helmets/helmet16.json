@@ -1,0 +1,25 @@
+{
+  "drop_level": "16",
+  "name": "lace_hood",
+  "armour": "0",
+  "evasion": "67",
+  "energy_shield": "0",
+  "required_level": "16",
+  "required_str": "0",
+  "required_dex": "25",
+  "required_int": "0",
+  "class": "helmets",
+  "flags": [],
+  "tags": [
+    "dex_armour",
+    "maraketh_basetype",
+    "helmet",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

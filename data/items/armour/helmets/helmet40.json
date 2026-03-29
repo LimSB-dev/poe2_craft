@@ -1,0 +1,24 @@
+{
+  "drop_level": "45",
+  "name": "mailed_crown",
+  "armour": "97",
+  "evasion": "0",
+  "energy_shield": "35",
+  "required_level": "45",
+  "required_str": "36",
+  "required_dex": "0",
+  "required_int": "36",
+  "class": "helmets",
+  "flags": [],
+  "tags": [
+    "str_int_armour",
+    "helmet",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

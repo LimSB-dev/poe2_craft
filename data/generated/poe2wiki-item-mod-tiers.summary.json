@@ -1,7 +1,7 @@
 {
   "schemaVersion": "poe2db-style@1",
   "source": "poe2wiki_cargo",
-  "fetchedAtIso": "2026-03-28T13:19:49.771Z",
+  "fetchedAtIso": "2026-03-28T23:51:44.909Z",
   "filter": {
     "domain": 1,
     "generationTypes": [

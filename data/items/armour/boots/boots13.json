@@ -1,0 +1,25 @@
+{
+  "drop_level": "16",
+  "name": "lattice_sandals",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "25",
+  "required_level": "16",
+  "required_str": "0",
+  "required_dex": "0",
+  "required_int": "23",
+  "class": "boots",
+  "flags": [],
+  "tags": [
+    "int_armour",
+    "maraketh_basetype",
+    "boots",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "drop_level": "59",
+  "name": "runner_vest",
+  "armour": "0",
+  "evasion": "309",
+  "energy_shield": "0",
+  "required_level": "59",
+  "required_str": "0",
+  "required_dex": "94",
+  "required_int": "0",
+  "class": "body_armours",
+  "flags": [],
+  "tags": [
+    "dex_armour",
+    "body_armour",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

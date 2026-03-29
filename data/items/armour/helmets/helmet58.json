@@ -1,0 +1,24 @@
+{
+  "drop_level": "51",
+  "name": "skulking_mask",
+  "armour": "0",
+  "evasion": "98",
+  "energy_shield": "38",
+  "required_level": "51",
+  "required_str": "0",
+  "required_dex": "40",
+  "required_int": "40",
+  "class": "helmets",
+  "flags": [],
+  "tags": [
+    "dex_int_armour",
+    "helmet",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

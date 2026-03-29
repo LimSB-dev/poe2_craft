@@ -1,0 +1,24 @@
+{
+  "drop_level": "54",
+  "name": "pariah_mask",
+  "armour": "0",
+  "evasion": "103",
+  "energy_shield": "40",
+  "required_level": "54",
+  "required_str": "0",
+  "required_dex": "42",
+  "required_int": "42",
+  "class": "helmets",
+  "flags": [],
+  "tags": [
+    "dex_int_armour",
+    "helmet",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

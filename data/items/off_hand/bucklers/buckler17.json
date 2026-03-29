@@ -1,0 +1,26 @@
+{
+  "drop_level": "59",
+  "name": "jingling_buckler",
+  "armour": "0",
+  "evasion": "101",
+  "energy_shield": "0",
+  "required_level": "59",
+  "required_str": "0",
+  "required_dex": "83",
+  "required_int": "0",
+  "class": "bucklers",
+  "flags": [],
+  "tags": [
+    "dex_armour",
+    "dex_shield",
+    "buckler",
+    "shield",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

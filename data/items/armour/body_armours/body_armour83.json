@@ -1,0 +1,24 @@
+{
+  "drop_level": "54",
+  "name": "river_raiment",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "111",
+  "required_level": "54",
+  "required_str": "0",
+  "required_dex": "0",
+  "required_int": "86",
+  "class": "body_armours",
+  "flags": [],
+  "tags": [
+    "int_armour",
+    "body_armour",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "drop_level": "16",
+  "name": "layered_gauntlets",
+  "armour": "22",
+  "evasion": "18",
+  "energy_shield": "0",
+  "required_level": "16",
+  "required_str": "13",
+  "required_dex": "13",
+  "required_int": "0",
+  "class": "gloves",
+  "flags": [],
+  "tags": [
+    "str_dex_armour",
+    "maraketh_basetype",
+    "gloves",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

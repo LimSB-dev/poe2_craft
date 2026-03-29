@@ -1,0 +1,26 @@
+{
+  "drop_level": "65",
+  "name": "esoteric_crossbow",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "65",
+  "required_str": "63",
+  "required_dex": "63",
+  "required_int": "0",
+  "class": "crossbows",
+  "flags": [],
+  "tags": [
+    "crossbow",
+    "ranged",
+    "two_hand_weapon",
+    "twohand",
+    "weapon"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "drop_level": "59",
+  "name": "stone_targe",
+  "armour": "77",
+  "evasion": "70",
+  "energy_shield": "0",
+  "required_level": "59",
+  "required_str": "46",
+  "required_dex": "46",
+  "required_int": "0",
+  "class": "shields",
+  "flags": [],
+  "tags": [
+    "str_dex_armour",
+    "str_dex_shield",
+    "shield",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

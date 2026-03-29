@@ -1,0 +1,26 @@
+{
+  "drop_level": "16",
+  "name": "extended_cleaver",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "16",
+  "required_str": "25",
+  "required_dex": "12",
+  "required_int": "0",
+  "class": "one_hand_axes",
+  "flags": [],
+  "tags": [
+    "maraketh_basetype",
+    "axe",
+    "one_hand_weapon",
+    "onehand",
+    "weapon"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

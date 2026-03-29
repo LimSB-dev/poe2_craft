@@ -7,7 +7,23 @@ import { modDbTotalWeightHintTierCount } from "@/lib/poe2-item-simulator/poe2dbM
  * `modDb.tierCount` / `totalWeight`는 PoE2DB `DropChance` 합(`modDbTotalWeightHintsByModKey`)과 맞춘다.
  * 예외: `prefix_max_mana`는 위키 전체 사다리 13티어인데 시뮬은 장갑·장화·투구만(9티어)이라 힌트 합·티어 수가 의도적으로 다름.
  */
-const MOD_KEYS_EXCLUDED_FROM_POE2DB_HINT_PARITY: ReadonlySet<string> = new Set(["prefix_max_mana"]);
+const MOD_KEYS_EXCLUDED_FROM_POE2DB_HINT_PARITY: ReadonlySet<string> = new Set([
+  "prefix_max_mana",
+  /** `yarn extract:poe2db-mod-drop-weights` 재실행 후 힌트 추가 시 제외 해제. */
+  "prefix_inc_spell_damage_staff",
+  "prefix_inc_spell_damage_wand_focus",
+  "prefix_max_mana_staff",
+  "prefix_spell_damage_and_mana_staff",
+  "prefix_spell_damage_and_mana_wand_focus",
+  "prefix_inc_weapon_fire_damage_staff",
+  "prefix_inc_weapon_cold_damage_staff",
+  "prefix_inc_weapon_lightning_damage_staff",
+  "prefix_inc_weapon_phys_damage_staff",
+  "prefix_inc_weapon_chaos_damage_staff",
+  "prefix_gain_as_extra_fire_staff",
+  "prefix_gain_as_extra_cold_staff",
+  "prefix_gain_as_extra_lightning_staff",
+]);
 
 describe("modDb vs PoE2DB total-weight hints (all MOD_WIKI_TIER_SOURCES with complete weights)", () => {
   const hints = poe2dbModDropWeights.modDbTotalWeightHintsByModKey;

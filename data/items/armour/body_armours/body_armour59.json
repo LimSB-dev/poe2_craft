@@ -1,0 +1,24 @@
+{
+  "drop_level": "48",
+  "name": "scoundrel_armour",
+  "armour": "156",
+  "evasion": "141",
+  "energy_shield": "0",
+  "required_level": "48",
+  "required_str": "43",
+  "required_dex": "43",
+  "required_int": "0",
+  "class": "body_armours",
+  "flags": [],
+  "tags": [
+    "str_dex_armour",
+    "body_armour",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

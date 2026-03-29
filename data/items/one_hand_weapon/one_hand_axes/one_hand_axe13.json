@@ -1,0 +1,25 @@
+{
+  "drop_level": "65",
+  "name": "dread_hatchet",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "65",
+  "required_str": "89",
+  "required_dex": "36",
+  "required_int": "0",
+  "class": "one_hand_axes",
+  "flags": [],
+  "tags": [
+    "axe",
+    "one_hand_weapon",
+    "onehand",
+    "weapon"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

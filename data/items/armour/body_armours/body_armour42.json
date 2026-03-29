@@ -1,0 +1,25 @@
+{
+  "drop_level": "40",
+  "name": "altar_robe",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "89",
+  "required_level": "40",
+  "required_str": "0",
+  "required_dex": "0",
+  "required_int": "65",
+  "class": "body_armours",
+  "flags": [],
+  "tags": [
+    "int_armour",
+    "vaal_basetype",
+    "body_armour",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "drop_level": "45",
+  "name": "bandage_wraps",
+  "armour": "0",
+  "evasion": "44",
+  "energy_shield": "17",
+  "required_level": "45",
+  "required_str": "0",
+  "required_dex": "32",
+  "required_int": "32",
+  "class": "gloves",
+  "flags": [],
+  "tags": [
+    "dex_int_armour",
+    "gloves",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

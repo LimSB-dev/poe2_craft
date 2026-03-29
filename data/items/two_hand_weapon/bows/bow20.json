@@ -1,0 +1,26 @@
+{
+  "drop_level": "67",
+  "name": "ironwood_shortbow",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "67",
+  "required_str": "0",
+  "required_dex": "134",
+  "required_int": "0",
+  "class": "bows",
+  "flags": [],
+  "tags": [
+    "bow",
+    "ranged",
+    "two_hand_weapon",
+    "twohand",
+    "weapon"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

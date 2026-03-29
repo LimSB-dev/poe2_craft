@@ -1,0 +1,26 @@
+{
+  "drop_level": "49",
+  "name": "smooth_quarterstaff",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "49",
+  "required_str": "0",
+  "required_dex": "68",
+  "required_int": "28",
+  "class": "quarterstaves",
+  "flags": [],
+  "tags": [
+    "karui_basetype",
+    "warstaff",
+    "two_hand_weapon",
+    "twohand",
+    "weapon"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

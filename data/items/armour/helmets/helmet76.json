@@ -1,0 +1,24 @@
+{
+  "drop_level": "59",
+  "name": "avian_mask",
+  "armour": "0",
+  "evasion": "111",
+  "energy_shield": "43",
+  "required_level": "59",
+  "required_str": "0",
+  "required_dex": "46",
+  "required_int": "46",
+  "class": "helmets",
+  "flags": [],
+  "tags": [
+    "dex_int_armour",
+    "helmet",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

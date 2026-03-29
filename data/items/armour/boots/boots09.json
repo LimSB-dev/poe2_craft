@@ -1,0 +1,25 @@
+{
+  "drop_level": "11",
+  "name": "wrapped_sandals",
+  "armour": "0",
+  "evasion": "0",
+  "energy_shield": "22",
+  "required_level": "11",
+  "required_str": "0",
+  "required_dex": "0",
+  "required_int": "17",
+  "class": "boots",
+  "flags": [],
+  "tags": [
+    "int_armour",
+    "ezomyte_basetype",
+    "boots",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

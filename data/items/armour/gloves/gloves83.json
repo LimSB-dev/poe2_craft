@@ -1,0 +1,25 @@
+{
+  "drop_level": "80",
+  "name": "adherent_cuffs",
+  "armour": "87",
+  "evasion": "0",
+  "energy_shield": "30",
+  "required_level": "80",
+  "required_str": "55",
+  "required_dex": "0",
+  "required_int": "55",
+  "class": "gloves",
+  "flags": [],
+  "tags": [
+    "str_int_armour",
+    "karui_basetype",
+    "gloves",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

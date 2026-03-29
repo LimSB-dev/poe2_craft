@@ -1,0 +1,25 @@
+{
+  "drop_level": "16",
+  "name": "embossed_boots",
+  "armour": "0",
+  "evasion": "50",
+  "energy_shield": "0",
+  "required_level": "16",
+  "required_str": "0",
+  "required_dex": "23",
+  "required_int": "0",
+  "class": "boots",
+  "flags": [],
+  "tags": [
+    "dex_armour",
+    "maraketh_basetype",
+    "boots",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

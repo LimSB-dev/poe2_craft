@@ -1,0 +1,25 @@
+{
+  "drop_level": "39",
+  "name": "scalpers_jacket",
+  "armour": "0",
+  "evasion": "117",
+  "energy_shield": "48",
+  "required_level": "39",
+  "required_str": "0",
+  "required_dex": "35",
+  "required_int": "35",
+  "class": "body_armours",
+  "flags": [],
+  "tags": [
+    "dex_int_armour",
+    "vaal_basetype",
+    "body_armour",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

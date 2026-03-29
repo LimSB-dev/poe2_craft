@@ -1,3 +1,4 @@
+import { isModKeyBlockedByPoe2dbSpellExclusionTags } from "@/lib/poe2-item-simulator/modPoe2dbSpellExclusionTags";
 import type { WikiTierSpawnContextType } from "@/lib/poe2-item-simulator/wikiTierSpawnFilter";
 import { tryGetWikiModTiers } from "@/lib/poe2-item-simulator/wikiModTierMerge";
 
@@ -40,28 +41,7 @@ const mapModTiersToDisplayRows = (source: readonly IModTierType[]): IModTierDisp
     });
 };
 
-export const getModTierDisplayRows = (
-  record: IModDbRecordType,
-  wikiTierContext?: WikiTierSpawnContextType,
-): IModTierDisplayRowType[] => {
-  /** Slot / stat spawn filter must win over raw `record.tiers` (e.g. helmet life vs body-only tiers). */
-  if (wikiTierContext !== undefined) {
-    const wikiForSlot = tryGetWikiModTiers(record, wikiTierContext);
-    if (wikiForSlot !== null && wikiForSlot.length > 0) {
-      return mapModTiersToDisplayRows(wikiForSlot);
-    }
-  }
-
-  const tiers = record.tiers;
-  if (tiers !== undefined && tiers.length > 0) {
-    return mapModTiersToDisplayRows(tiers);
-  }
-
-  const wikiTiers = tryGetWikiModTiers(record, undefined);
-  if (wikiTiers !== null && wikiTiers.length > 0) {
-    return mapModTiersToDisplayRows(wikiTiers);
-  }
-
+const buildSyntheticModTierDisplayRows = (record: IModDbRecordType): IModTierDisplayRowType[] => {
   const tierCount = Math.max(1, record.tierCount);
   const maxLv = Math.max(1, record.maxLevelRequirement);
   const weightEach = Math.max(1, Math.round(record.totalWeight / tierCount));
@@ -82,6 +62,51 @@ export const getModTierDisplayRows = (
   }
 
   return rows;
+};
+
+export const getModTierDisplayRows = (
+  record: IModDbRecordType,
+  wikiTierContext?: WikiTierSpawnContextType,
+): IModTierDisplayRowType[] => {
+  /**
+   * PoE2DB `no_*_spell_mods` — 위키 행 값만으로는 불충분(`SpellDamageGainedAs*` 등 `no_*` 열 없음).
+   * 배제 시 티어 0개(합성 티어로 떨어지지 않음).
+   */
+  if (
+    wikiTierContext !== undefined &&
+    isModKeyBlockedByPoe2dbSpellExclusionTags(record.modKey, wikiTierContext.poe2dbTags)
+  ) {
+    return [];
+  }
+
+  /** Slot / stat spawn filter must win over raw `record.tiers` (e.g. helmet life vs body-only tiers). */
+  if (wikiTierContext !== undefined) {
+    const wikiForSlot = tryGetWikiModTiers(record, wikiTierContext);
+    if (wikiForSlot !== null && wikiForSlot.length > 0) {
+      return mapModTiersToDisplayRows(wikiForSlot);
+    }
+    /**
+     * `MOD_WIKI_TIER_SOURCES`는 있으나 현재 부위·스폰과 맞는 위키 행이 0개일 때(`[]`).
+     * 빈 배열을 그대로 쓰면 DB·롤에서 접두/접미가 통째로 사라진다(예: 지팡이 공격 접두).
+     * `tryGetWikiModTiers(undefined)`로 넘기면 비슷한 `mod_groups` 전체가 섞여 부위 오염이 난다.
+     * → 슬롯별 위키가 비었을 때는 `record.tiers`도 건너뛰고 합성 티어만 사용한다.
+     */
+    if (wikiForSlot !== null && wikiForSlot.length === 0) {
+      return buildSyntheticModTierDisplayRows(record);
+    }
+  }
+
+  const tiers = record.tiers;
+  if (tiers !== undefined && tiers.length > 0) {
+    return mapModTiersToDisplayRows(tiers);
+  }
+
+  const wikiTiers = tryGetWikiModTiers(record, undefined);
+  if (wikiTiers !== null && wikiTiers.length > 0) {
+    return mapModTiersToDisplayRows(wikiTiers);
+  }
+
+  return buildSyntheticModTierDisplayRows(record);
 };
 
 export const formatStatRangesCell = (

@@ -1,0 +1,24 @@
+{
+  "drop_level": "70",
+  "name": "charmed_shoes",
+  "armour": "0",
+  "evasion": "101",
+  "energy_shield": "38",
+  "required_level": "70",
+  "required_str": "0",
+  "required_dex": "51",
+  "required_int": "51",
+  "class": "boots",
+  "flags": [],
+  "tags": [
+    "dex_int_armour",
+    "boots",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

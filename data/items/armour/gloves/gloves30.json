@@ -1,0 +1,25 @@
+{
+  "drop_level": "45",
+  "name": "fine_bracers",
+  "armour": "0",
+  "evasion": "79",
+  "energy_shield": "0",
+  "required_level": "45",
+  "required_str": "0",
+  "required_dex": "56",
+  "required_int": "0",
+  "class": "gloves",
+  "flags": [],
+  "tags": [
+    "dex_armour",
+    "karui_basetype",
+    "gloves",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

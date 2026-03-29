@@ -44,15 +44,12 @@ const resolvePoe2dbDropChanceForTierRow = (
     wikiTierContext?.baseItemSubType,
     effectiveStatTags,
   );
-  let bestSlugWeight: number | undefined;
+  /** 동일 `wikiModId`가 여러 ModifiersCalc 페이지에 중복되면 값이 다를 수 있음 — 최댓값 합성은 과대 추정이므로 슬러그 순 첫 매칭만 사용한다. */
   for (const slug of pageSlugs) {
     const v = POE2DB_DROP_BY_WIKI_MOD_ID_AND_PAGE_SLUG[wikiModId]?.[slug];
     if (v !== undefined && v > 1) {
-      bestSlugWeight = bestSlugWeight === undefined ? v : Math.max(bestSlugWeight, v);
+      return v;
     }
-  }
-  if (bestSlugWeight !== undefined) {
-    return bestSlugWeight;
   }
   if (slotTag !== null) {
     const byTag = POE2DB_DROP_BY_WIKI_MOD_ID_AND_SPAWN_TAG[wikiModId]?.[slotTag];
@@ -173,8 +170,12 @@ export const tryGetWikiModTiers = (
   wikiTierContext?: WikiTierSpawnContextType,
 ): IModTierType[] | null => {
   const candidates = getWikiModTierMergeCandidates(record.modKey, wikiTierContext);
-  if (candidates === null || candidates.length === 0) {
+  if (candidates === null) {
     return null;
+  }
+  /** `getWikiModTierMergeCandidates`: 매핑은 있으나 현재 베이스 스폰과 맞는 위키 행 없음 → 티 없음(폴백 금지). */
+  if (candidates.length === 0) {
+    return [];
   }
 
   const weights = buildTierWeights(record, candidates);
@@ -215,15 +216,7 @@ export const tryGetWikiModTiers = (
     if (useRawSlotWeights && slotTag !== null) {
       tierWeight = spawnWeightForTag(row, slotTag);
     }
-    let poe2dbDrop = resolvePoe2dbDropChanceForTierRow(row.wikiModId, slotTag, wikiTierContext);
-    /** PoE2DB ModsView가 출혈/중독/점화 3줄 묶음에 동일 DropChance(합계)를 넣는 경우 1500→개별 500으로 보정. */
-    if (
-      poe2dbDrop !== undefined &&
-      poe2dbDrop === 1500 &&
-      /^(ReducedBleedDuration|ReducedPoisonDuration|ReducedBurnDuration)\d+$/.test(row.wikiModId)
-    ) {
-      poe2dbDrop = 500;
-    }
+    const poe2dbDrop = resolvePoe2dbDropChanceForTierRow(row.wikiModId, slotTag, wikiTierContext);
     if (poe2dbDrop !== undefined && poe2dbDrop > 1) {
       tierWeight = poe2dbDrop;
     }

@@ -1,0 +1,24 @@
+{
+  "drop_level": "54",
+  "name": "wrapped_cap",
+  "armour": "0",
+  "evasion": "187",
+  "energy_shield": "0",
+  "required_level": "54",
+  "required_str": "0",
+  "required_dex": "77",
+  "required_int": "0",
+  "class": "helmets",
+  "flags": [],
+  "tags": [
+    "dex_armour",
+    "helmet",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

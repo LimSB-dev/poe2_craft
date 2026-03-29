@@ -1,0 +1,25 @@
+{
+  "drop_level": "33",
+  "name": "stacked_sabatons",
+  "armour": "56",
+  "evasion": "50",
+  "energy_shield": "0",
+  "required_level": "33",
+  "required_str": "26",
+  "required_dex": "26",
+  "required_int": "0",
+  "class": "boots",
+  "flags": [],
+  "tags": [
+    "str_dex_armour",
+    "vaal_basetype",
+    "boots",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

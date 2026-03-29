@@ -1,0 +1,24 @@
+{
+  "drop_level": "58",
+  "name": "gladiator_armour",
+  "armour": "184",
+  "evasion": "167",
+  "energy_shield": "0",
+  "required_level": "58",
+  "required_str": "51",
+  "required_dex": "51",
+  "required_int": "0",
+  "class": "body_armours",
+  "flags": [],
+  "tags": [
+    "str_dex_armour",
+    "body_armour",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

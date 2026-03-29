@@ -1,0 +1,24 @@
+{
+  "drop_level": "59",
+  "name": "deerstalker_hood",
+  "armour": "0",
+  "evasion": "203",
+  "energy_shield": "0",
+  "required_level": "59",
+  "required_str": "0",
+  "required_dex": "83",
+  "required_int": "0",
+  "class": "helmets",
+  "flags": [],
+  "tags": [
+    "dex_armour",
+    "helmet",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

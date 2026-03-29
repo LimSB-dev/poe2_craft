@@ -1,0 +1,25 @@
+{
+  "drop_level": "6",
+  "name": "mail_sabatons",
+  "armour": "19",
+  "evasion": "15",
+  "energy_shield": "0",
+  "required_level": "6",
+  "required_str": "7",
+  "required_dex": "7",
+  "required_int": "0",
+  "class": "boots",
+  "flags": [],
+  "tags": [
+    "str_dex_armour",
+    "ezomyte_basetype",
+    "boots",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

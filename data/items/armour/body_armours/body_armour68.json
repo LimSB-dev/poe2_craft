@@ -1,0 +1,24 @@
+{
+  "drop_level": "51",
+  "name": "sandsworn_cuirass",
+  "armour": "299",
+  "evasion": "0",
+  "energy_shield": "0",
+  "required_level": "51",
+  "required_str": "82",
+  "required_dex": "0",
+  "required_int": "0",
+  "class": "body_armours",
+  "flags": [],
+  "tags": [
+    "str_armour",
+    "body_armour",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "drop_level": "33",
+  "name": "anchorite_garb",
+  "armour": "0",
+  "evasion": "101",
+  "energy_shield": "43",
+  "required_level": "33",
+  "required_str": "0",
+  "required_dex": "31",
+  "required_int": "31",
+  "class": "body_armours",
+  "flags": [],
+  "tags": [
+    "dex_int_armour",
+    "vaal_basetype",
+    "body_armour",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

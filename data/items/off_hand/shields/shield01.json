@@ -1,0 +1,26 @@
+{
+  "drop_level": "1",
+  "name": "blazon_crest_shield",
+  "armour": "10",
+  "evasion": "0",
+  "energy_shield": "6",
+  "required_level": "1",
+  "required_str": "0",
+  "required_dex": "0",
+  "required_int": "0",
+  "class": "shields",
+  "flags": [],
+  "tags": [
+    "str_int_armour",
+    "str_int_shield",
+    "ezomyte_basetype",
+    "shield",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

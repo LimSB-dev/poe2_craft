@@ -1,0 +1,25 @@
+{
+  "drop_level": "6",
+  "name": "ringmail_gauntlets",
+  "armour": "13",
+  "evasion": "10",
+  "energy_shield": "0",
+  "required_level": "6",
+  "required_str": "6",
+  "required_dex": "6",
+  "required_int": "0",
+  "class": "gloves",
+  "flags": [],
+  "tags": [
+    "str_dex_armour",
+    "ezomyte_basetype",
+    "gloves",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}

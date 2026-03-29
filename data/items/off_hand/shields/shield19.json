@@ -1,0 +1,26 @@
+{
+  "drop_level": "33",
+  "name": "sectarian_crest_shield",
+  "armour": "47",
+  "evasion": "0",
+  "energy_shield": "18",
+  "required_level": "33",
+  "required_str": "27",
+  "required_dex": "0",
+  "required_int": "27",
+  "class": "shields",
+  "flags": [],
+  "tags": [
+    "str_int_armour",
+    "str_int_shield",
+    "vaal_basetype",
+    "shield",
+    "armour"
+  ],
+  "enable_rarity": [
+    "normal",
+    "magic",
+    "rare",
+    "unique"
+  ]
+}
